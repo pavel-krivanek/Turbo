@@ -20,6 +20,9 @@ BaselineOfTurbo >> baseline: spec [
 			package: #'Sparta-Math';
 			package: 'TextBloc-Core';
 			package: 'TextBloc-Tests';
-			package: 'TextBloc-Morphic'.
-	].
+			package: 'Spec-TextBlocAdapters-Widgets';
+			package: 'Spec-TextBlocAdapters-Base';
+			package: 'Spec-TextBloc-Tests';
+			package: 'Spec-TextBloc-Examples'.
+].
 ]
