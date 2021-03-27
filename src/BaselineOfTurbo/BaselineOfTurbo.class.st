@@ -18,7 +18,7 @@ BaselineOfTurbo >> baseline: spec [
 	    	with: [ spec repository: 'github://pharo-spec/Spec-Gtk' ].
 
 		spec
-	    	baseline: 'Spec-VTE'
+	    	baseline: 'Vte'
 	    	with: [ spec repository: 'github://estebanlm/Spec-VTE' ].
 
 		spec
