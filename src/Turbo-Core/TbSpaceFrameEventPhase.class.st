@@ -21,6 +21,6 @@ TbSpaceFrameEventPhase >> runOn: aSpace [
 	aSpace doUpdateFocus.
 
 	aSpace
-		dispatchTimeEvent: BlSpaceEventEndEvent
+		dispatchTimeEvent: TbSpaceEventEndEvent
 		during: [ :theSpace | theSpace hasHostSpace ifTrue: [ theSpace processEvents ] ]
 ]

@@ -17,6 +17,6 @@ TbSpaceFrameLayoutPhase >> name [
 { #category : #actions }
 TbSpaceFrameLayoutPhase >> runOn: aSpace [
 	aSpace
-		dispatchTimeEvent: BlSpaceLayoutEndEvent
+		dispatchTimeEvent: TbSpaceLayoutEndEvent
 		during: [ :theSpace | theSpace isLayoutRequested ifTrue: [ theSpace doLayout ] ].
 ]

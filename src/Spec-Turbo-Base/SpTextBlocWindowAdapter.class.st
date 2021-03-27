@@ -52,16 +52,16 @@ SpTextBlocWindowAdapter >> initialize [
 { #category : #accessing }
 SpTextBlocWindowAdapter >> initializeSpace [
 
-	space := TextBlocSpace2 new.
+	space := TbSpace2 new.
 	space extent: 80@25.
 	space root size: 80@25.	
 	
-	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop2 new 
+	universe := TbUniverse new.
+	universe pulseLoop: (TbPulseLoop2 new 
 		universe: universe;
 		yourself).
 
-	host := TextBlocMorphicHost new.
+	host := TbMorphicHost new.
 	space host: host.
 	universe spaceManager addSpace: space.
 
@@ -69,7 +69,7 @@ SpTextBlocWindowAdapter >> initializeSpace [
 	space hostSpace show.
 		
 	universe start.
-	space dispatchEvent: (BlSpaceShownEvent new space: universe).
+	space dispatchEvent: (TbSpaceShownEvent new space: universe).
 
 
 ]

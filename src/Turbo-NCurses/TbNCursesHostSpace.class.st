@@ -103,7 +103,7 @@ TbNCursesHostSpace >> show [
 { #category : #'host space - accessing' }
 TbNCursesHostSpace >> space [
 	"Return a space I am assigned to"
-	<return: #BlSpace>
+	<return: #TbSpace>
 
 	^ space
 ]

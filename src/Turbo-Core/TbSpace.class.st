@@ -279,7 +279,7 @@ TbSpace >> defaultEventDispatcher [
 
 { #category : #initialization }
 TbSpace >> defaultEventListener [
-	^ BlSpaceEventListener space: self
+	^ TbSpaceEventListener space: self
 ]
 
 { #category : #initialization }
@@ -548,7 +548,7 @@ TbSpace >> focusedProperty [
 
 { #category : #accessing }
 TbSpace >> frame [
-	<return: #BlSpaceFrame>
+	<return: #TbSpaceFrame>
 
 	^ frame
 ]
@@ -696,15 +696,15 @@ TbSpace >> initialize [
 	eventRecorder := self defaultEventRecorder.
 	self initDispatcher.
 	
-	mouseProcessor := BlMouseProcessor space: self.
-	focusProcessor := BlFocusProcessor space: self.
-	keyboardProcessor := BlKeyboardProcessor space: self.
-	touchProcessor := BlTouchProcessor space: self.
-	gestureProcessor := BlGestureProcessor space: self.
+	mouseProcessor := TbMouseProcessor space: self.
+	focusProcessor := TbFocusProcessor space: self.
+	keyboardProcessor := TbKeyboardProcessor space: self.
+	touchProcessor := TbTouchProcessor space: self.
+	gestureProcessor := TbGestureProcessor space: self.
 
-	tasks := BlTaskQueue new.
-	time := BlTime real.
-	frame := BlSpaceFrame new.
+	tasks := TbTaskQueue new.
+	time := TbTime real.
+	frame := TbSpaceFrame new.
 
 	root := self defaultRoot.
 

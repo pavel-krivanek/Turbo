@@ -21,16 +21,16 @@ TbDragHandler >> delegate: aBlDragDelegate [
 
 { #category : #'dnd handlers' }
 TbDragHandler >> dragEndEvent: anEvent [
-	anEvent currentTarget space dispatchEvent: (BlSpaceDragCancelEvent new delegate: delegate; position: anEvent position)
+	anEvent currentTarget space dispatchEvent: (TbSpaceDragCancelEvent new delegate: delegate; position: anEvent position)
 ]
 
 { #category : #'dnd handlers' }
 TbDragHandler >> dragStartEvent: anEvent [
 	anEvent consumed: true.
 
-	delegate items: { BlDragItem new sourceElement: anEvent currentTarget }.
+	delegate items: { TbDragItem new sourceElement: anEvent currentTarget }.
 
-	anEvent currentTarget space dispatchEvent: (BlSpaceDragLiftEvent new delegate: delegate; position: anEvent position)
+	anEvent currentTarget space dispatchEvent: (TbSpaceDragLiftEvent new delegate: delegate; position: anEvent position)
 ]
 
 { #category : #initialization }

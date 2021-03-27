@@ -115,7 +115,7 @@ TbMorphicHostSpace >> show [
 { #category : #'host space - accessing' }
 TbMorphicHostSpace >> space [
 	"Return a space I am assigned to"
-	<return: #BlSpace>
+	<return: #TbSpace>
 
 	^ space
 ]

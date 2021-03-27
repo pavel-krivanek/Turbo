@@ -103,7 +103,7 @@ TbTerminalHostSpace >> show [
 { #category : #'host space - accessing' }
 TbTerminalHostSpace >> space [
 	"Return a space I am assigned to"
-	<return: #BlSpace>
+	<return: #TbSpace>
 
 	^ space
 ]

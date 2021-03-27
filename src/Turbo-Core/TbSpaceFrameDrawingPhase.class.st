@@ -17,6 +17,6 @@ TbSpaceFrameDrawingPhase >> name [
 { #category : #actions }
 TbSpaceFrameDrawingPhase >> runOn: aSpace [
 	aSpace
-		dispatchTimeEvent: BlSpaceRenderEndEvent
+		dispatchTimeEvent: TbSpaceRenderEndEvent
 		during: [ :theSpace | theSpace hasDirtyAreas ifTrue: [ theSpace render ] ]
 ]

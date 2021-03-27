@@ -208,7 +208,7 @@ TbHeadlessHostSpace >> show [
 { #category : #'host space - accessing' }
 TbHeadlessHostSpace >> space [
 	"Return a space I am assigned to"
-	<return: #BlSpace>
+	<return: #TbSpace>
 
 	^ space
 ]

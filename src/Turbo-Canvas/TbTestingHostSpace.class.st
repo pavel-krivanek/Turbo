@@ -127,7 +127,7 @@ TbTestingHostSpace >> show [
 { #category : #'host space - accessing' }
 TbTestingHostSpace >> space [
 	"Return a space I am assigned to"
-	<return: #BlSpace>
+	<return: #TbSpace>
 
 	^ space
 ]

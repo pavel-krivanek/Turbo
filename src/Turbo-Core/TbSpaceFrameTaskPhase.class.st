@@ -18,6 +18,6 @@ TbSpaceFrameTaskPhase >> name [
 TbSpaceFrameTaskPhase >> runOn: aSpace [
 	"process animations and other runnable tasks"
 	aSpace
-		dispatchTimeEvent: BlSpaceTasksEndEvent
+		dispatchTimeEvent: TbSpaceTasksEndEvent
 		during: [ :theSpace | theSpace runTasks ]
 ]

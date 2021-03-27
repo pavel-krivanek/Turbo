@@ -22,7 +22,7 @@ Class {
 
 { #category : #accessing }
 TbSpaceClosedEvent >> space [
-	<return: #BlSpace>
+	<return: #TbSpace>
 
 	^ space
 ]

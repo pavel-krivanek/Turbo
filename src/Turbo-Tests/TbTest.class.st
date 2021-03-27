@@ -25,21 +25,21 @@ TbTest >> firePulse [
 { #category : #running }
 TbTest >> setUp [
 
-	space := BlSpace new.
+	space := TbSpace new.
 	space extent: 50@10.
 
-	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop2 new 
+	universe := TbUniverse new.
+	universe pulseLoop: (TbPulseLoop2 new 
 		universe: universe;
 		yourself).
 
-	host := TextBlocTestingHost new.
+	host := TbTestingHost new.
 	space host: host.
 	universe spaceManager addSpace: space.
 
 	space host createHostSpaceFor: space.
 	space hostSpace show.
 
-	space dispatchEvent: (BlSpaceShownEvent new space: universe).
+	space dispatchEvent: (TbSpaceShownEvent new space: universe).
 
 ]

@@ -33,18 +33,18 @@ TbErrorHandler >> errors [
 
 { #category : #accessing }
 TbErrorHandler >> errorsForPhase: aFramePhase [
-	<return: #Collection of: #BlSpaceFramePhase>
+	<return: #Collection of: #TbSpaceFramePhase>
 
 	^ self errors select: [ :aHandledError | aHandledError framePhase = aFramePhase ]
 ]
 
 { #category : #private }
 TbErrorHandler >> framePhaseOf: anElement [
-	<return: #BlSpaceFramePhase>
+	<return: #TbSpaceFramePhase>
 
 	^ anElement isAttachedToSceneGraph
 		ifTrue: [ anElement space frame currentPhase ]
-		ifFalse: [ BlSpaceFrameUnknownPhase new ]
+		ifFalse: [ TbSpaceFrameUnknownPhase new ]
 ]
 
 { #category : #private }

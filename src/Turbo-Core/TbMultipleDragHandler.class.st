@@ -19,7 +19,7 @@ TbMultipleDragHandler >> delegate: anObject [
 
 { #category : #'dnd handlers' }
 TbMultipleDragHandler >> dragEndEvent: anEvent [
-	anEvent currentTarget space dispatchEvent: (BlSpaceDragCancelEvent new delegate: delegate; position: anEvent position)
+	anEvent currentTarget space dispatchEvent: (TbSpaceDragCancelEvent new delegate: delegate; position: anEvent position)
 ]
 
 { #category : #'dnd handlers' }
@@ -34,12 +34,12 @@ TbMultipleDragHandler >> dragStartEvent: anEvent [
 		do: [ :aDragItem :aSourceElement | aDragItem dragSession: (BlDragSession new sourceElement: aSourceElement)].
 	anEvent consumed: true.
 
-	anEvent currentTarget space dispatchEvent: (BlSpaceDragLiftEvent new dragItems: theDraggedItems)."
+	anEvent currentTarget space dispatchEvent: (TbSpaceDragLiftEvent new dragItems: theDraggedItems)."
 	
 	anEvent consumed: true.
 
-	delegate items: (anEvent currentTarget children collect: [ :aChild | BlDragItem new sourceElement: aChild ]).
-	anEvent currentTarget space dispatchEvent: (BlSpaceDragLiftEvent new delegate: delegate; position: anEvent position)
+	delegate items: (anEvent currentTarget children collect: [ :aChild | TbDragItem new sourceElement: aChild ]).
+	anEvent currentTarget space dispatchEvent: (TbSpaceDragLiftEvent new delegate: delegate; position: anEvent position)
 ]
 
 { #category : #initialization }

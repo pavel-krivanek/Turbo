@@ -232,7 +232,7 @@ TbVTEEventHandler >> handleMouseWheel: anEvent [
 TbVTEEventHandler >> handleWindowClosed: aMorphicEvent [
 	| aBlEvent |
 	
-	aBlEvent := BlSpaceCloseRequest new
+	aBlEvent := TbSpaceCloseRequest new
 		timestamp: DateAndTime now.
 	
 	self enqueue: aBlEvent
@@ -246,7 +246,7 @@ TbVTEEventHandler >> handleWindowEvent: anEvent [
 { #category : #'event handling' }
 TbVTEEventHandler >> handleWindowResize: aMorphicEvent [
 	| aBlEvent |
-	aBlEvent := BlSpaceResizedEvent new
+	aBlEvent := TbSpaceResizedEvent new
 		extent: aMorphicEvent width @ aMorphicEvent height;
 		timestamp: DateAndTime now;
 		yourself.

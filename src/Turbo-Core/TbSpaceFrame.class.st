@@ -42,7 +42,7 @@ TbSpaceFrame >> addPhases: aCollectonOfPhases [
 
 { #category : #accessing }
 TbSpaceFrame >> currentPhase [
-	<return: #BlSpaceFramePhase>
+	<return: #TbSpaceFramePhase>
 
 	self
 		assert: [ currentPhaseLink isNotNil ]
@@ -70,17 +70,17 @@ TbSpaceFrame >> initialize [
 { #category : #initialization }
 TbSpaceFrame >> initializePhases [
 	self addPhases: { 
-		BlSpaceFrameIdlePhase new.
-		BlSpaceFrameEventPhase new.
-		BlSpaceFrameTaskPhase new.
-		BlSpaceFrameLayoutPhase new.
-		BlSpaceFrameDrawingPhase new }
+		TbSpaceFrameIdlePhase new.
+		TbSpaceFrameEventPhase new.
+		TbSpaceFrameTaskPhase new.
+		TbSpaceFrameLayoutPhase new.
+		TbSpaceFrameDrawingPhase new }
 ]
 
 { #category : #accessing }
 TbSpaceFrame >> nextPhase [
 	"Return the next frame after the current one"
-	<return: #BlSpaceFramePhase>
+	<return: #TbSpaceFramePhase>
 	
 	^ self nextPhaseLink value
 ]
@@ -98,7 +98,7 @@ TbSpaceFrame >> nextPhaseLink [
 { #category : #accessing }
 TbSpaceFrame >> phases [
 	"Return a collection of all phases"
-	<return: #Collection of: #BlSpaceFramePhase>
+	<return: #Collection of: #TbSpaceFramePhase>
 
 	^ phases
 ]
