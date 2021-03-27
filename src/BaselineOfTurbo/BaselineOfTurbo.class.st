@@ -14,15 +14,16 @@ BaselineOfTurbo >> baseline: spec [
 	    	with: [ spec repository: 'github://zweidenker/Units:master/src' ].
 
 		spec
-			package: #Bloc;
-			package: #'Bloc-Layout';
-			package: #'Bloc-Animation';
-			package: #'Sparta-Math';
-			package: 'TextBloc-Core';
-			package: 'TextBloc-Tests';
-			package: 'Spec-TextBlocAdapters-Widgets';
-			package: 'Spec-TextBlocAdapters-Base';
-			package: 'Spec-TextBloc-Tests';
-			package: 'Spec-TextBloc-Examples'.
+			package: 'Turbo-Core';
+			package: 'Turbo-Layout';
+			package: 'Turbo-Animation';
+			package: 'Turbo-Math';
+			package: 'Turbo-Canvas';
+			package: 'Turbo-Tests';
+			package: 'Turbo-Morphic';
+			package: 'Spec-Turbo-Widgets';
+			package: 'Spec-Turbo-Base';
+			package: 'Spec-Turbo-Tests';
+			package: 'Spec-Turbo-Examples'.
 ].
 ]
