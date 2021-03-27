@@ -57,7 +57,7 @@ TbEvent >> bubblingTarget: aTBlEventTarget [
 		description: [ 'Target must not be nil' ].
 
 	currentTarget := aTBlEventTarget.	
-	self traversedTargets add: (BlEventTraversalBubblingStep new target: currentTarget)
+	self traversedTargets add: (TbEventTraversalBubblingStep new target: currentTarget)
 ]
 
 { #category : #testing }

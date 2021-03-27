@@ -77,8 +77,8 @@ TbTransformationBuilder >> inherit [
 TbTransformationBuilder >> initialize [
 	super initialize.
 	
-	transformation := BlAffineCompositeTransformation new.
-	origin := BlAffineTransformationCenterOrigin new
+	transformation := TbAffineCompositeTransformation new.
+	origin := TbAffineTransformationCenterOrigin new
 ]
 
 { #category : #transformations }

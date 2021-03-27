@@ -23,7 +23,7 @@ TbBoundsCache class >> on: anElement [
 { #category : #accessing }
 TbBoundsCache >> boundsInLocal [
 	^ boundsInLocal ifNil: [
-		boundsInLocal := (self owner boundsInLocal: BlBounds new) asRectangle ]
+		boundsInLocal := (self owner boundsInLocal: TbBounds new) asRectangle ]
 ]
 
 { #category : #accessing }

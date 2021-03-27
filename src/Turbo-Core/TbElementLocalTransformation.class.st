@@ -27,7 +27,7 @@ TbElementLocalTransformation >> computeMatrix [
 TbElementLocalTransformation >> initialize [
 	super initialize.
 	
-	transformation := BlAffineCompositeTransformation new
+	transformation := TbAffineCompositeTransformation new
 ]
 
 { #category : #initialization }

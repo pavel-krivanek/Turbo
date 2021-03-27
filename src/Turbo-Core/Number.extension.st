@@ -4,12 +4,12 @@ Extension { #name : #Number }
 Number >> , aNumber [
 	<return: #BlVector>
 
-	^ BlVector2D x: self y: aNumber
+	^ TbVector2D x: self y: aNumber
 ]
 
 { #category : #'*Turbo-Core' }
 Number >> asBlocVector [
-	^ BlVector x: self y: self
+	^ TbVector x: self y: self
 ]
 
 { #category : #'*Turbo-Core' }
@@ -17,7 +17,7 @@ Number >> asScale3D [
 	"Return a 3D vector representing a scale factor"
 	<return: #BlVector3D>
 
-	^ BlVector x: self y: self z: 1
+	^ TbVector x: self y: self z: 1
 ]
 
 { #category : #'*Turbo-Core' }
@@ -25,7 +25,7 @@ Number >> asTranslate3D [
 	"Return a 3D vector representing a translation vector"
 	<return: #BlVector3D>
 
-	^ BlVector x: self y: self z: 0
+	^ TbVector x: self y: self z: 0
 ]
 
 { #category : #'*Turbo-Core' }
@@ -33,7 +33,7 @@ Number >> scalarMultiplicate2D: aVector2D [
 	"Perform a scalar multiplication of a given 2D vector by me"
 	<return: #BlVector>
 
-	^ BlVector
+	^ TbVector
 		x: aVector2D x * self
 		y: aVector2D y * self
 ]
@@ -43,7 +43,7 @@ Number >> scalarMultiplicate3D: aVector3D [
 	"Perform a scalar multiplication of a given 3D vector by me"
 	<return: #BlVector>
 
-	^ BlVector
+	^ TbVector
 		x: aVector3D x * self
 		y: aVector3D y * self
 		z: aVector3D z * self

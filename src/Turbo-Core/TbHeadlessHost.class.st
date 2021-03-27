@@ -26,7 +26,7 @@ TbHeadlessHost class >> priority [
 { #category : #api }
 TbHeadlessHost >> createHostSpaceFor: aSpace [
 
-	aSpace hostSpace: (BlHeadlessHostSpace new host: self)
+	aSpace hostSpace: (TbHeadlessHostSpace new host: self)
 ]
 
 { #category : #api }

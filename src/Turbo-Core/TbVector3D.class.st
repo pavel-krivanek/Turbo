@@ -59,7 +59,7 @@ TbVector3D >> adaptToNumber: aNumber andSend: aSelector [
 	"If I am involved in arithmetic with an Integer, convert it to a Vector of the same dimension"
 	<return: #BlVector>
 
-	^ (BlVector x: aNumber y: aNumber z: aNumber) perform: aSelector with: self
+	^ (TbVector x: aNumber y: aNumber z: aNumber) perform: aSelector with: self
 ]
 
 { #category : #arithmetic }
@@ -116,7 +116,7 @@ TbVector3D >> length [
 TbVector3D >> negated [
 	<return: #BlVector>
 
-	^ BlVector
+	^ TbVector
 		x: self x negated
 		y: self y negated
 		z: self z negated

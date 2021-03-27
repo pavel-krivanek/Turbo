@@ -9,16 +9,16 @@ WinPlatform >> blocKeyFor: aKeyValue in: aKeyTable [
 
 { #category : #'*Turbo-Core' }
 WinPlatform >> primaryModifier [
-	^ BlAlternativeCombination new
-		key: BlKeyboardKey controlLeft;
-		key: BlKeyboardKey controlRight;
+	^ TbAlternativeCombination new
+		key: TbKeyboardKey controlLeft;
+		key: TbKeyboardKey controlRight;
 		yourself
 ]
 
 { #category : #'*Turbo-Core' }
 WinPlatform >> secondaryModifier [
-	^ BlAlternativeCombination new
-		key: BlKeyboardKey altLeft;
-		key: BlKeyboardKey altRight;
+	^ TbAlternativeCombination new
+		key: TbKeyboardKey altLeft;
+		key: TbKeyboardKey altRight;
 		yourself
 ]

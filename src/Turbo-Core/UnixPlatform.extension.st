@@ -9,16 +9,16 @@ UnixPlatform >> blocKeyFor: aKeyValue in: aKeyTable [
 
 { #category : #'*Turbo-Core' }
 UnixPlatform >> primaryModifier [
-	^ BlAlternativeCombination new
-		key: BlKeyboardKey controlLeft;
-		key: BlKeyboardKey controlRight;
+	^ TbAlternativeCombination new
+		key: TbKeyboardKey controlLeft;
+		key: TbKeyboardKey controlRight;
 		yourself
 ]
 
 { #category : #'*Turbo-Core' }
 UnixPlatform >> secondaryModifier [
-	^ BlAlternativeCombination new
-		key: BlKeyboardKey altLeft;
-		key: BlKeyboardKey altRight;
+	^ TbAlternativeCombination new
+		key: TbKeyboardKey altLeft;
+		key: TbKeyboardKey altRight;
 		yourself
 ]

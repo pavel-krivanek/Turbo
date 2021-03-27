@@ -109,7 +109,7 @@ TbElement class >> invalidationBounds [
 	I must only be used on UI thread! Always make a copy if you want to store bounds!"
 	<return: #BlBounds>
 
-	^ invalidateBounds ifNil: [ invalidateBounds := BlBounds new ]
+	^ invalidateBounds ifNil: [ invalidateBounds := TbBounds new ]
 ]
 
 { #category : #'api - animations' }
@@ -1683,7 +1683,7 @@ TbElement >> invalidationBounds: aBounds [
 
 	self clipChildren ifFalse: [ 
 		| aChildBounds |
-		aChildBounds := BlBounds new.
+		aChildBounds := TbBounds new.
 		self children do: [ :anElement |
 			anElement invalidationBounds: aChildBounds.
 			anElement localBoundsToParent: aChildBounds.

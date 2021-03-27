@@ -24,11 +24,11 @@ TbTerminalEventHandler >> clear [
 TbTerminalEventHandler >> convertButtonFromMouseButtonEvent: aMorphicEvent [
 
 	aMorphicEvent redButtonChanged
-		ifTrue: [ ^BlMouseButton primary ].
+		ifTrue: [ ^TbMouseButton primary ].
 	aMorphicEvent blueButtonChanged
-		ifTrue: [ ^ BlMouseButton middle ].
+		ifTrue: [ ^ TbMouseButton middle ].
 	aMorphicEvent yellowButtonChanged
-		ifTrue: [ ^ BlMouseButton secondary ].
+		ifTrue: [ ^ TbMouseButton secondary ].
 		
 	^ aMorphicEvent whichButton
 ]
@@ -275,17 +275,17 @@ TbTerminalEventHandler >> readInput [
 				byte := stream next.
 				y := byte - 32.
 				
-				aBlEvent := BlMouseDownEvent new
+				aBlEvent := TbMouseDownEvent new
 					position: (x@y);
 					screenPosition: (x@y);
-					button: (BlMouseButton primary);
+					button: (TbMouseButton primary);
 					timestamp: DateAndTime now
 					yourself.
 				self enqueue: aBlEvent. 
-				aBlEvent := BlMouseUpEvent new
+				aBlEvent := TbMouseUpEvent new
 					position: (x@y);
 					screenPosition: (x@y);
-					button: (BlMouseButton primary);
+					button: (TbMouseButton primary);
 					timestamp: DateAndTime now
 					yourself.
 				self enqueue: aBlEvent 

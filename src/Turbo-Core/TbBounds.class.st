@@ -177,10 +177,10 @@ TbBounds >> clockwiseEdges [
 	<return: #Collection of: #BlRay>
 
 	^ { 
-		BlRay from: self topLeft directed: (self topRight - self topLeft) asBlocVector.
-		BlRay from: self topRight directed: (self bottomRight - self topRight) asBlocVector.
-		BlRay from: self bottomRight directed: (self bottomLeft - self bottomRight) asBlocVector.
-		BlRay from: self bottomLeft directed: (self topLeft - self bottomLeft) asBlocVector.
+		TbRay from: self topLeft directed: (self topRight - self topLeft) asBlocVector.
+		TbRay from: self topRight directed: (self bottomRight - self topRight) asBlocVector.
+		TbRay from: self bottomRight directed: (self bottomLeft - self bottomRight) asBlocVector.
+		TbRay from: self bottomLeft directed: (self topLeft - self bottomLeft) asBlocVector.
 	}
 ]
 
@@ -254,10 +254,10 @@ TbBounds >> counterClockwiseEdges [
 	<return: #Collection of: #BlRay>
 	
 	^ { 
-		BlRay from: self topRight directed: (self topLeft - self topRight) asBlocVector.
-		BlRay from: self topLeft directed: (self bottomLeft - self topLeft) asBlocVector.
-		BlRay from: self bottomLeft directed: (self bottomRight - self bottomLeft) asBlocVector.		
-		BlRay from: self bottomRight directed: (self topRight - self bottomRight) asBlocVector.
+		TbRay from: self topRight directed: (self topLeft - self topRight) asBlocVector.
+		TbRay from: self topLeft directed: (self bottomLeft - self topLeft) asBlocVector.
+		TbRay from: self bottomLeft directed: (self bottomRight - self bottomLeft) asBlocVector.		
+		TbRay from: self bottomRight directed: (self topRight - self bottomRight) asBlocVector.
 	}
 ]
 
@@ -546,7 +546,7 @@ TbBounds >> outsideNormalCloseTo: aPoint [
 	aProjection := anEdge projection: aPoint.
 	aNormal := anEdge vector normal.
 
-	^ BlRay from: aProjection directed: aNormal
+	^ TbRay from: aProjection directed: aNormal
 ]
 
 { #category : #accessing }

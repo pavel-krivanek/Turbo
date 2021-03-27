@@ -89,7 +89,7 @@ TbMonotoneSelection >> complement: aMonotoneTextSelection [
 	^ (aMonotoneTextSelection inside: self)
 		"I am splitted in two selections"
 		ifTrue: [
-			BlCompositeSelection new
+			TbCompositeSelection new
 				select: self from to: aMonotoneTextSelection from;
 				select: aMonotoneTextSelection to to: self to;
 				yourself ]

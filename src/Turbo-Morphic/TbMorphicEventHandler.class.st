@@ -18,11 +18,11 @@ TbMorphicEventHandler class >> window: aMorphicWindow [
 TbMorphicEventHandler >> convertButtonFromMouseButtonEvent: aMorphicEvent [
 
 	aMorphicEvent redButtonChanged
-		ifTrue: [ ^BlMouseButton primary ].
+		ifTrue: [ ^TbMouseButton primary ].
 	aMorphicEvent blueButtonChanged
-		ifTrue: [ ^ BlMouseButton middle ].
+		ifTrue: [ ^TbMouseButton middle ].
 	aMorphicEvent yellowButtonChanged
-		ifTrue: [ ^ BlMouseButton secondary ].
+		ifTrue: [ ^ TbMouseButton secondary ].
 		
 	^ aMorphicEvent whichButton
 ]

@@ -26,7 +26,7 @@ Class {
 
 { #category : #builder }
 TbBorderBuilder >> build [
-	^ BlBorder basicNew
+	^ TbBorder basicNew
 		initialize;
 		paint: self paint;
 		width: self width;
@@ -37,7 +37,7 @@ TbBorderBuilder >> build [
 
 { #category : #builder }
 TbBorderBuilder >> buildStyle [
-	^ BlStrokeStyle new
+	^ TbStrokeStyle new
 		lineCap: self lineCap;
 		lineJoin: self lineJoin;
 		miterLimit: self miterLimit;
@@ -47,7 +47,7 @@ TbBorderBuilder >> buildStyle [
 
 { #category : #styles }
 TbBorderBuilder >> capRound [
-	self lineCap: BlStrokeLineCap round
+	self lineCap: TbStrokeLineCap round
 ]
 
 { #category : #accessing }
@@ -94,12 +94,12 @@ TbBorderBuilder >> defaultDashOffset [
 
 { #category : #initialization }
 TbBorderBuilder >> defaultLineCap [
-	^ BlStrokeLineCap butt
+	^ TbStrokeLineCap butt
 ]
 
 { #category : #initialization }
 TbBorderBuilder >> defaultLineJoin [
-	^ BlStrokeLineJoin miter
+	^ TbStrokeLineJoin miter
 ]
 
 { #category : #initialization }
@@ -114,7 +114,7 @@ TbBorderBuilder >> defaultOpacity [
 
 { #category : #initialization }
 TbBorderBuilder >> defaultPaint [
-	^ BlPaint transparent 
+	^ TbPaint transparent 
 ]
 
 { #category : #initialization }
@@ -138,7 +138,7 @@ TbBorderBuilder >> initialize [
 
 { #category : #styles }
 TbBorderBuilder >> joinRound [
-	self lineJoin: BlStrokeLineJoin round
+	self lineJoin: TbStrokeLineJoin round
 ]
 
 { #category : #accessing }

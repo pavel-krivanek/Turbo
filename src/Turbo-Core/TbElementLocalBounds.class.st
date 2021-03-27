@@ -19,7 +19,7 @@ TbElementLocalBounds >> asRectangle [
 TbElementLocalBounds >> bounds [
 	<return: #BlBounds>
 
-	^ BlBounds origin: self position extent: self extent
+	^ TbBounds origin: self position extent: self extent
 ]
 
 { #category : #'geometry - accessing' }

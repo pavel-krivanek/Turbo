@@ -2,12 +2,12 @@ Extension { #name : #Form }
 
 { #category : #'*Turbo-Core' }
 Form >> asBlBackground [
-	^ BlBackground image: self
+	^ TbBackground image: self
 ]
 
 { #category : #'*Turbo-Core' }
 Form >> asElement [
-	^ BlElement new
+	^ TbElement new
 		size: self extent;
 		background: self;
 		yourself

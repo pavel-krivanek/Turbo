@@ -18,7 +18,7 @@ TbMouseEvent class >> middleButton [
 		deprecated: 'Use `BlMouseButton middle` instead'
 		on: 	'17 January 2018' 
 		in: 'Pharo-6.0-60520-'.
-	^ BlMouseButton middle
+	^ TbMouseButton middle
 ]
 
 { #category : #constants }
@@ -27,7 +27,7 @@ TbMouseEvent class >> primaryButton [
 		deprecated: 'Use `BlMouseButton primary` instead'
 		on: 	'17 January 2018' 
 		in: 'Pharo-6.0-60520-'.
-	^ BlMouseButton primary
+	^ TbMouseButton primary
 ]
 
 { #category : #constants }
@@ -36,7 +36,7 @@ TbMouseEvent class >> secondaryButton [
 		deprecated: 'Use `BlMouseButton secondary` instead'
 		on: 	'17 January 2018' 
 		in: 'Pharo-6.0-60520-'.
-	^ BlMouseButton secondary
+	^ TbMouseButton secondary
 ]
 
 { #category : #testing }
@@ -145,17 +145,17 @@ TbMouseEvent >> isMouse [
 
 { #category : #testing }
 TbMouseEvent >> middleButtonPressed [
-	^ button = BlMouseButton middle
+	^ button = TbMouseButton middle
 ]
 
 { #category : #testing }
 TbMouseEvent >> primaryButtonPressed [
-	^ button = BlMouseButton primary
+	^ button = TbMouseButton primary
 ]
 
 { #category : #testing }
 TbMouseEvent >> secondaryButtonPressed [
-	^ button = BlMouseButton secondary
+	^ button = TbMouseButton secondary
 ]
 
 { #category : #sending }

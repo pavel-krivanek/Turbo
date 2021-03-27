@@ -21,7 +21,7 @@ TbMouseDownEvent class >> middle [
 	"Create a sample middle button down event for testing purposes"
 	<return: #BlMouseDownEvent>
 
-	^ self button: BlMouseButton middle
+	^ self button: TbMouseButton middle
 ]
 
 { #category : #'instance creation' }
@@ -29,7 +29,7 @@ TbMouseDownEvent class >> primary [
 	"Create a sample primary button down event for testing purposes"
 	<return: #BlMouseDownEvent>
 	
-	^ self button: BlMouseButton primary
+	^ self button: TbMouseButton primary
 ]
 
 { #category : #'instance creation' }
@@ -37,7 +37,7 @@ TbMouseDownEvent class >> secondary [
 	"Create a sample secondary button down event for testing purposes"
 	<return: #BlMouseDownEvent>
 	
-	^ self button: BlMouseButton secondary
+	^ self button: TbMouseButton secondary
 ]
 
 { #category : #converting }

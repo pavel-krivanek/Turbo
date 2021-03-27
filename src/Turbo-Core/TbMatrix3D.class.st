@@ -421,10 +421,10 @@ TbMatrix3D >> transformBounds: aBlBounds [
 	| quads minX maxX minY maxY|
 	
 	quads := { 
-		self transformPoint: (BlPoint2D x: aBlBounds left y: aBlBounds top).
-		self transformPoint: (BlPoint2D x: aBlBounds right y: aBlBounds top).
-		self transformPoint: (BlPoint2D x: aBlBounds left y: aBlBounds bottom).
-		self transformPoint: (BlPoint2D x: aBlBounds right y: aBlBounds bottom).
+		self transformPoint: (TbPoint2D x: aBlBounds left y: aBlBounds top).
+		self transformPoint: (TbPoint2D x: aBlBounds right y: aBlBounds top).
+		self transformPoint: (TbPoint2D x: aBlBounds left y: aBlBounds bottom).
+		self transformPoint: (TbPoint2D x: aBlBounds right y: aBlBounds bottom).
 	}.
 	
 	minX := maxX := quads first x.

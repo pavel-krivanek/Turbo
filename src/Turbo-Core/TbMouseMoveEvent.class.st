@@ -26,7 +26,7 @@ TbMouseMoveEvent class >> middle [
 	"Create a mouse move event for testing purposes"
 	<return: #BlMouseMoveEvent>
 
-	^ self button: BlMouseButton middle
+	^ self button: TbMouseButton middle
 ]
 
 { #category : #'instance creation' }
@@ -34,7 +34,7 @@ TbMouseMoveEvent class >> primary [
 	"Create a mouse move event for testing purposes"
 	<return: #BlMouseMoveEvent>
 	
-	^ self button: BlMouseButton primary
+	^ self button: TbMouseButton primary
 ]
 
 { #category : #'instance creation' }
@@ -42,7 +42,7 @@ TbMouseMoveEvent class >> secondary [
 	"Create a mouse move event for testing purposes"
 	<return: #BlMouseMoveEvent>
 	
-	^ self button: BlMouseButton secondary
+	^ self button: TbMouseButton secondary
 ]
 
 { #category : #testing }

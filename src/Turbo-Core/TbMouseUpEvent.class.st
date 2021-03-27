@@ -21,7 +21,7 @@ TbMouseUpEvent class >> middle [
 	"Create a sample middle button up event for testing purposes"
 	<return: #BlMouseUpEvent>
 
-	^ self button: BlMouseButton middle
+	^ self button: TbMouseButton middle
 ]
 
 { #category : #'instance creation' }
@@ -29,7 +29,7 @@ TbMouseUpEvent class >> primary [
 	"Create a sample primary button up event for testing purposes"
 	<return: #BlMouseUpEvent>
 	
-	^ self button: BlMouseButton primary
+	^ self button: TbMouseButton primary
 ]
 
 { #category : #'instance creation' }
@@ -37,7 +37,7 @@ TbMouseUpEvent class >> secondary [
 	"Create a sample secondary button up event for testing purposes"
 	<return: #BlMouseUpEvent>
 	
-	^ self button: BlMouseButton secondary
+	^ self button: TbMouseButton secondary
 ]
 
 { #category : #converting }
