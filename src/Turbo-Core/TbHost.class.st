@@ -28,7 +28,7 @@ TbHost class >> defaultHostClass [
 
 	^ self availableHostClasses
 		"There are no availbale hosts, return a null one"
-		ifEmpty: [ BlHeadlessHost ]
+		ifEmpty: [ TbHeadlessHost ]
 		ifNotEmpty: [ :theHostClasses | theHostClasses first ]
 ]
 

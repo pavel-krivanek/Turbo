@@ -324,7 +324,7 @@ TbFlowLayoutMeasurer >> measureLine: aLine [
 		| aRequestedExtent |
 		aRequestedExtent := aChild width @ aChild height.
 		aChild element measuredExtent = aRequestedExtent ifFalse: [ 
-			aChild element measure: (BlExtentMeasurementSpec exact: aRequestedExtent) ] ]
+			aChild element measure: (TbExtentMeasurementSpec exact: aRequestedExtent) ] ]
 ]
 
 { #category : #accessing }

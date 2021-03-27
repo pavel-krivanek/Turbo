@@ -52,7 +52,7 @@ SpTextBlocGridAdapter >> layout: aLayout [
 	widget constraintsDo: [ :c |
 			c horizontal matchParent .
 			c vertical matchParent ].
-	widget layout: (BlGridLayout new) vertical.
+	widget layout: (TbGridLayout new) vertical.
 	widget layout cellSpacing: (self convert: aLayout rowSpacing)
 ]
 

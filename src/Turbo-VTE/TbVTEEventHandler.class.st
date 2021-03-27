@@ -151,7 +151,7 @@ TbVTEEventHandler >> handleMouseDown: anEvent [
 "
 	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
-		aBlEvent := BlMouseDownEvent new
+		aBlEvent := TbMouseDownEvent new
 			position: (self transform: (aMorphicEvent position));
 			screenPosition: (self transform: ((self globalMousePositionForEvent: aMorphicEvent)));
 			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);

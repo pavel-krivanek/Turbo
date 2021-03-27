@@ -55,7 +55,7 @@ SpTextBlocBoxAdapter >> layout: aLayout [
 	widget constraintsDo: [ :c |
 			c horizontal matchParent .
 			c vertical matchParent ].
-	widget layout: (BlGridLayout new columnCount: 1) vertical.
+	widget layout: (TbGridLayout new columnCount: 1) vertical.
 	widget layout cellSpacing: (self convert: aLayout spacing).
 
 ]

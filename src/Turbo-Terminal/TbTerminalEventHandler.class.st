@@ -137,7 +137,7 @@ TbTerminalEventHandler >> handleMouseDown: anEvent [
 
 	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
-		aBlEvent := BlMouseDownEvent new
+		aBlEvent := TbMouseDownEvent new
 			position: (self transform: (aMorphicEvent position));
 			screenPosition: (self transform: ((self globalMousePositionForEvent: aMorphicEvent)));
 			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
@@ -164,7 +164,7 @@ TbTerminalEventHandler >> handleMouseMove: anEvent [
 	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
 
-		aBlEvent := BlMouseMoveEvent new
+		aBlEvent := TbMouseMoveEvent new
 			position: aMorphicEvent position;
 			delta: aMorphicEvent position - (self window pointToSpace: aMorphicEvent startPoint);
 			screenPosition: (self globalMousePositionForEvent: aMorphicEvent);

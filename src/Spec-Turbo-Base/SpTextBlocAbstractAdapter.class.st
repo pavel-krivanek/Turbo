@@ -30,7 +30,7 @@ SpTextBlocAbstractAdapter >> add: anAdapter [
 		child := anAdapter asWidget.
 		child size: 10@3.
 		child hasParent ifFalse: [
-		aWidget layout: BlLinearLayout new.
+		aWidget layout: TbLinearLayout new.
 		aWidget addChild: child.]
 		 ]
 ]

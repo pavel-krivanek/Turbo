@@ -143,7 +143,7 @@ TbBloc class >> preferencesOn: aBuilder [
 				target: self;
 				order: 1;
 				label: 'Preferable host' ;
-				domainValues: (BlHost availableHostClasses collect: [ :aHostClass | aHostClass label -> aHostClass ]);
+				domainValues: (TbHost availableHostClasses collect: [ :aHostClass | aHostClass label -> aHostClass ]);
 				description: 'Choose which host to be used for opening spaces'.
 
 			(aBuilder pickOne: #preferableSpartaCanvas)
@@ -158,14 +158,14 @@ TbBloc class >> preferencesOn: aBuilder [
 				target: self;
 				order: 3;
 				label: 'Preferable event handler registry backend' ;
-				domainValues: ((BlHandlerRegistry availableRegistryClasses collect: [ :aClass | aClass label -> aClass ]) sort: [ :a :b | a key < b key ]);
+				domainValues: ((TbHandlerRegistry availableRegistryClasses collect: [ :aClass | aClass label -> aClass ]) sort: [ :a :b | a key < b key ]);
 				description: 'Choose which data structure should be used for event handler registry'.
 				
 			(aBuilder pickOne: #preferableChildrenDataStructure)
 				target: self;
 				order: 4;
 				label: 'Preferable children data structure' ;
-				domainValues: { BlChildrenArray . BlChildrenRope . BlChildrenLinkedList };
+				domainValues: { TbChildrenArray . TbChildrenRope . TbChildrenLinkedList };
 				description: 'Choose which data structure should be used to store element''s children'.
 
 			(aBuilder setting: #assertionsEnabled)

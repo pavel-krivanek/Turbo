@@ -207,7 +207,7 @@ TbGridLayoutSpec >> setAlignment: anAlignment span: aSpan startDefined: isStartD
 
 	"Debugging internal implementation"
 	self
-		assert: [ aSpan isKindOf: BlGridLayoutInterval ]
+		assert: [ aSpan isKindOf: TbGridLayoutInterval ]
 		description: [ 'Span must be a special type of Interval' ].
 
 	alignment := anAlignment.

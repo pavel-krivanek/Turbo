@@ -36,7 +36,7 @@ TTbDebug classSide >> assert: aBlock description: aStringOrBlock [
 TTbDebug classSide >> assertionsEnabled [
 	<return: #Boolean>
 
-	^ Bloc assertionsEnabled
+	^ TbBloc assertionsEnabled
 ]
 
 { #category : #'debug - asserting' }

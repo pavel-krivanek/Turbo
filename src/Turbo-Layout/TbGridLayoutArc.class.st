@@ -58,7 +58,7 @@ TbGridLayoutArc >> span [
 TbGridLayoutArc >> span: aBlGridLayoutInterval [
 	"Debugging internal implementation"
 	self
-		assert: [ aBlGridLayoutInterval isKindOf: BlGridLayoutInterval ]
+		assert: [ aBlGridLayoutInterval isKindOf: TbGridLayoutInterval ]
 		description: [ 'Span must be a special type of Interval' ].
 
 	span := aBlGridLayoutInterval

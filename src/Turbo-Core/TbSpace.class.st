@@ -315,7 +315,7 @@ TbSpace >> defaultRootStyler [
 	^ self class environment
 		at: #BrRootStyler
 		ifPresent: [ :aStylerClass | aStylerClass on: self root ]
-		ifAbsent: [ BlNullStyler new ]
+		ifAbsent: [ TbNullStyler new ]
 ]
 
 { #category : #initialization }
@@ -778,7 +778,7 @@ TbSpace >> looseFocusFor: anElement [
 TbSpace >> makeDirty: aBlBounds [
 
 	self
-		assert: [ aBlBounds isKindOf: BlBounds ]
+		assert: [ aBlBounds isKindOf: TbBounds ]
 		description: [ 'Only BlBounds can be used as dirty area' ].
 
 	aBlBounds expanded.

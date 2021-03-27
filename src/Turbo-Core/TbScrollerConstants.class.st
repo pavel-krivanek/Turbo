@@ -38,9 +38,9 @@ TbScrollerConstants class >> initialize [
 	SplinePosition := Array new: NbSamples + 1.
 	SplineTime := Array new: NbSamples + 1.
 
-	Spline := BlSplineOverScrollerStep spline.
-	Cubic := BlSplineOverScrollerStep cubic.
-	Ballistic := BlSplineOverScrollerStep ballistic.
+	Spline := TbSplineOverScrollerStep spline.
+	Cubic := TbSplineOverScrollerStep cubic.
+	Ballistic := TbSplineOverScrollerStep ballistic.
 	
 	self initializeSplines
 ]

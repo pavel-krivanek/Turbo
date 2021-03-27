@@ -78,7 +78,7 @@ TbLinearLayoutMeasurer >> initializeWith: aParentElement layout: aLinearLayout e
 	lengthSpec := orientation lengthSpec: anExtentSpec.
 
 	nodes := aParentElement children accountedByLayout
-		collect: [ :aChildElement | BlLinearLayoutNode new initializeWith: aChildElement orientation: orientation ]
+		collect: [ :aChildElement | TbLinearLayoutNode new initializeWith: aChildElement orientation: orientation ]
 ]
 
 { #category : #'accessing - properties' }
@@ -190,7 +190,7 @@ TbLinearLayoutMeasurer >> preMeasure [
 				Measure using WRAP_CONTENT so that we can find out the view's optimal width.
 				We'll restore the original width of 0 after measurement."
 				shouldUseExcessSpace
-					ifTrue: [ aNode lengthResizer: BlLayoutResizer fitContent ].
+					ifTrue: [ aNode lengthResizer: TbLayoutResizer fitContent ].
 
 				"Determine how big this child would like to be.
 				If this or previous children have given a weight,
@@ -210,7 +210,7 @@ TbLinearLayoutMeasurer >> preMeasure [
 						"Restore the original width and record how much space
 						we've allocated to excess-only children so that we can
 						match the behavior of EXACTLY measurement."
-						aNode lengthResizer: BlLayoutResizer matchParent.
+						aNode lengthResizer: TbLayoutResizer matchParent.
 						usedExcessSpace := usedExcessSpace + childLength ].
 				
 				self updateTotalLengthAfterMeasuring: aNode.
@@ -369,7 +369,7 @@ TbLinearLayoutMeasurer >> weightedMeasure [
 								"This child had some intrinsic width to which we need to add its share of excess space."
 								ifFalse: [ aNode measuredLength + shareSpace ] ].
 							
-						childLengthSpec := BlMeasurementSpec exact: (0 max: childLength).
+						childLengthSpec := TbMeasurementSpec exact: (0 max: childLength).
 						childBreadthSpec := parent layout
 							measurementSpecFor: breadthSpec
 							usedSize: (orientation paddingBreadth: parent) + (aNode marginBreadth)
@@ -403,6 +403,6 @@ TbLinearLayoutMeasurer >> weightedMeasure [
 						select: [ :aNode | aNode weight > 0 ]
 						thenDo: [ :aNode |
 							aNode measure: (orientation
-								extentBreadth: (BlMeasurementSpec exact: aNode measuredBreadth)
-								lengthSpec: (BlMeasurementSpec exact: largestChildLength)) ] ] ]
+								extentBreadth: (TbMeasurementSpec exact: aNode measuredBreadth)
+								lengthSpec: (TbMeasurementSpec exact: largestChildLength)) ] ] ]
 ]

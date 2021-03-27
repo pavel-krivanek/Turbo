@@ -228,10 +228,10 @@ TbLayout >> measureIgnored: anElement with: anExtentSpec [
 			aHeightSpec := anExtentSpec heightSpec.
 
 			aChild constraints horizontal resizer isMatchParent
-				ifTrue: [ aWidthSpec := BlMeasurementSpec exact: (anElement measuredBounds width * aChild constraints ignored horizontal weight) ].
+				ifTrue: [ aWidthSpec := TbMeasurementSpec exact: (anElement measuredBounds width * aChild constraints ignored horizontal weight) ].
 			
 			aChild constraints vertical resizer isMatchParent
-				ifTrue: [ aHeightSpec := BlMeasurementSpec exact: (anElement measuredBounds height * aChild constraints ignored vertical weight) ].
+				ifTrue: [ aHeightSpec := TbMeasurementSpec exact: (anElement measuredBounds height * aChild constraints ignored vertical weight) ].
 			
 			self
 				measureChild: aChild

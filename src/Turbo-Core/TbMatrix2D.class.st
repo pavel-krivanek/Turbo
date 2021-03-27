@@ -276,7 +276,7 @@ TbMatrix2D >> reflection: aDiagonalVector [
 TbMatrix2D >> rotateByRadians: anAngle around: aBlVector [
 	"Apply a rotation transformation by a given amount of radians around a provided axis vector"
 	self
-		assert: [ aBlVector = BlVector zAxis ]
+		assert: [ aBlVector = TbVector zAxis ]
 		description: [ '2D Matrix is incompatible with 3D transformation' ].
 		
 	"Apply the rotation AFTER my existing transformation.

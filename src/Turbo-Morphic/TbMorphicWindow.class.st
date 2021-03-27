@@ -62,9 +62,9 @@ TbMorphicWindow >> hostSpace: aHostSpace [
 TbMorphicWindow >> initialize [
 	super initialize.
 
-	spaceMorph := TextBlocMorphicSpaceMorph new.
+	spaceMorph := TbMorphicSpaceMorph new.
 	self addMorph: spaceMorph fullFrame: LayoutFrame identity. 
-	eventHandler := TextBlocMorphicEventHandler window: self.
+	eventHandler := TbMorphicEventHandler window: self.
 	preventResize := false.
 ]
 

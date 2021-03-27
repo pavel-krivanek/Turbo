@@ -68,7 +68,7 @@ TbElement >> fullDrawOnTextBlocCanvas: aCanvas [
 
 		aTransformedCanvas clip
 			when: [ self clipChildren ]
-			by: [ (self visualBounds: BlBounds new on: aTransformedCanvas) merge: anEffectBounds ]
+			by: [ (self visualBounds: TbBounds new on: aTransformedCanvas) merge: anEffectBounds ]
 			during: [
 				self drawOnTextBlocCanvas: aTransformedCanvas.
 				self drawChildrenOnTextBlocCanvas: aTransformedCanvas ] ] 

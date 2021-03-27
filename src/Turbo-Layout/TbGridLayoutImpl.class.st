@@ -243,7 +243,7 @@ TbGridLayoutImpl >> layout: anElement in: aRectangle [
 		cy := paddingTop + locationBounds top + gravityOffsetY + alignmentOffsetY + topMargin.
 		
 		 (width ~= child measuredWidth or: [ height ~= child measuredHeight ])
-			ifTrue: [ child measure: (BlExtentMeasurementSpec exact: width @ height) ].
+			ifTrue: [ child measure: (TbExtentMeasurementSpec exact: width @ height) ].
 			
 		child applyLayoutIn: (cx @ cy extent: width @ height) ]
 ]
@@ -328,13 +328,13 @@ TbGridLayoutImpl >> validateChildConstraints: aChildElement [
 		ifMatchParent: [
 			childConstraints horizontal spec weight isZero
 				ifTrue: [ childConstraints horizontal weight: 1 ].
-			childConstraints horizontal specAlignment: BlGridAlignment fill ].
+			childConstraints horizontal specAlignment: TbGridAlignment fill ].
 	
 	aChildElement constraints vertical resizer
 		ifMatchParent: [
 			childConstraints vertical spec weight isZero
 				ifTrue: [ childConstraints vertical weight: 1 ].
-			childConstraints vertical specAlignment: BlGridAlignment fill ]
+			childConstraints vertical specAlignment: TbGridAlignment fill ]
 ]
 
 { #category : #private }

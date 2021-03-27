@@ -9,13 +9,13 @@ TbKeyboardKeyTable >> initialize: aMapDictionary with: aMapArray [
 	aMapArray pairsDo: [ :eachCode :eachName |
 		| aName |
 		
-		aName := (BlKeyboardKey respondsTo: eachName)
+		aName := (TbKeyboardKey respondsTo: eachName)
 			ifTrue: [ eachName ]
-			ifFalse: [ (BlKeyboardKey respondsTo: eachName uncapitalized)
+			ifFalse: [ (TbKeyboardKey respondsTo: eachName uncapitalized)
 				ifTrue: [ eachName uncapitalized ]
 				ifFalse: [ #unknown ] ].
 
-		aMapDictionary at: eachCode put: ((BlKeyboardKey perform: aName) setValue: eachCode) ]
+		aMapDictionary at: eachCode put: ((TbKeyboardKey perform: aName) setValue: eachCode) ]
 ]
 
 { #category : #'api - converting' }
