@@ -1,8 +1,8 @@
 Class {
 	#name : #TbTransformationBuilder2,
 	#superclass : #TbAbstractBuilder,
-	#traits : 'TSpartaTransformable',
-	#classTraits : 'TSpartaTransformable classTrait',
+	#traits : 'TTbSpartaTransformable',
+	#classTraits : 'TTbSpartaTransformable classTrait',
 	#instVars : [
 		'transformation',
 		'current'
@@ -58,7 +58,7 @@ TbTransformationBuilder2 >> during: aBlock [
 TbTransformationBuilder2 >> initialize [
 
 	super initialize.
-	current := SpartaMatrix new.
+	current := TbSpartaMatrix new.
 ]
 
 { #category : #'as yet unclassified' }
@@ -76,13 +76,13 @@ TbTransformationBuilder2 >> push [
 { #category : #'as yet unclassified' }
 TbTransformationBuilder2 >> reset [
 	super reset.
-	transformation := SpartaMatrix new
+	transformation := TbSpartaMatrix new
 ]
 
 { #category : #'as yet unclassified' }
 TbTransformationBuilder2 >> set: aMatrix [
 
-	transformation := SpartaMatrix new loadAffineTransform: aMatrix
+	transformation := TbSpartaMatrix new loadAffineTransform: aMatrix
 ]
 
 { #category : #'as yet unclassified' }

@@ -208,7 +208,7 @@ TbCanvas >> initialize [
 	
 	transformationStack := Stack new.
 	layerStack := Stack new.
-	currentTransformation := SpartaMatrix new.
+	currentTransformation := TbSpartaMatrix new.
 	
 	self blueBackground.
 	self whiteText.
