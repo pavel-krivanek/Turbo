@@ -9,8 +9,8 @@ Transform animation can be absolute or relative.
 Class {
 	#name : #BlTransformAnimation,
 	#superclass : #BlAnimation,
-	#traits : 'TBlTransformable',
-	#classTraits : 'TBlTransformable classTrait',
+	#traits : 'TTbTransformable',
+	#classTraits : 'TTbTransformable classTrait',
 	#instVars : [
 		'transformation',
 		'fromMatrix',

@@ -1,8 +1,8 @@
 Class {
 	#name : #BlBaseAnimation,
-	#superclass : #BlTask,
-	#traits : 'TBlEventTarget + TBlDebug',
-	#classTraits : 'TBlEventTarget classTrait + TBlDebug classTrait',
+	#superclass : #TbTask,
+	#traits : 'TTbEventTarget + TTbDebug',
+	#classTraits : 'TTbEventTarget classTrait + TTbDebug classTrait',
 	#instVars : [
 		'loop',
 		'delay',

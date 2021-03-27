@@ -1,6 +1,6 @@
 Class {
 	#name : #BlSquaredLayout,
-	#superclass : #BlLayout,
+	#superclass : #TbLayout,
 	#instVars : [
 		'layout',
 		'isTight'

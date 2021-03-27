@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocRendererNCursesSurface,
-	#superclass : #BlHostRendererSurface,
+	#superclass : #TbHostRendererSurface,
 	#instVars : [
 		'form'
 	],

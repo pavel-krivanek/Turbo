@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocRendererVTESurface,
-	#superclass : #BlHostRendererSurface,
+	#superclass : #TbHostRendererSurface,
 	#instVars : [
 		'presenter',
 		'charSize',

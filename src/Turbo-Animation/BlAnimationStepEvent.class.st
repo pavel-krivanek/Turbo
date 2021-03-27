@@ -3,7 +3,7 @@ I am sent after every animation step with current progress as a parameter
 "
 Class {
 	#name : #BlAnimationStepEvent,
-	#superclass : #BlEvent,
+	#superclass : #TbEvent,
 	#instVars : [
 		'progress'
 	],

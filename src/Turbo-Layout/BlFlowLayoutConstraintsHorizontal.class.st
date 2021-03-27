@@ -1,6 +1,6 @@
 Class {
 	#name : #BlFlowLayoutConstraintsHorizontal,
-	#superclass : #BlLayoutConstraintsAxis,
+	#superclass : #TbLayoutConstraintsAxis,
 	#instVars : [
 		'alignment'
 	],

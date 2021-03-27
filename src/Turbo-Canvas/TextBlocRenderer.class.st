@@ -1,8 +1,8 @@
 Class {
 	#name : #TextBlocRenderer,
 	#superclass : #Object,
-	#traits : 'TBlHostRenderer + TBlDebug',
-	#classTraits : 'TBlHostRenderer classTrait + TBlDebug classTrait',
+	#traits : 'TTbHostRenderer + TTbDebug',
+	#classTraits : 'TTbHostRenderer classTrait + TTbDebug classTrait',
 	#instVars : [
 		'surface',
 		'textBlocCanvas'

@@ -25,7 +25,7 @@ space hostSpace content
 "
 Class {
 	#name : #TextBlocTestingHost,
-	#superclass : #BlHost,
+	#superclass : #TbHost,
 	#instVars : [
 		'isRunning'
 	],

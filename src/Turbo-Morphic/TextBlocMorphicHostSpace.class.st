@@ -1,8 +1,8 @@
 Class {
 	#name : #TextBlocMorphicHostSpace,
 	#superclass : #Object,
-	#traits : 'TBlHostSpace',
-	#classTraits : 'TBlHostSpace classTrait',
+	#traits : 'TTbHostSpace',
+	#classTraits : 'TTbHostSpace classTrait',
 	#instVars : [
 		'morphicWindow',
 		'host',

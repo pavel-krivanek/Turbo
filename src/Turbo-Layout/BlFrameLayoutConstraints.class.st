@@ -1,6 +1,6 @@
 Class {
 	#name : #BlFrameLayoutConstraints,
-	#superclass : #BlLayoutConstraints,
+	#superclass : #TbLayoutConstraints,
 	#category : #'Turbo-Layout-Frame'
 }
 

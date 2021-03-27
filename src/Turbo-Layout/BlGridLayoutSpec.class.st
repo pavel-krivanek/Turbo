@@ -28,8 +28,8 @@ Instance Variables
 Class {
 	#name : #BlGridLayoutSpec,
 	#superclass : #Object,
-	#traits : 'TBlDebug',
-	#classTraits : 'TBlDebug classTrait',
+	#traits : 'TTbDebug',
+	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'startDefined',
 		'span',

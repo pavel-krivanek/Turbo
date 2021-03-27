@@ -1,6 +1,6 @@
 Class {
 	#name : #SpTextBlocWidget,
-	#superclass : #BlElement,
+	#superclass : #TbElement,
 	#instVars : [
 		'enabled'
 	],

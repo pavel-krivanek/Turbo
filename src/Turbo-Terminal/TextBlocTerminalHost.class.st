@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocTerminalHost,
-	#superclass : #BlHost,
+	#superclass : #TbHost,
 	#instVars : [
 		'isRunning',
 		'lib',

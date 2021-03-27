@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocRendererTestingSurface,
-	#superclass : #BlHostRendererSurface,
+	#superclass : #TbHostRendererSurface,
 	#instVars : [
 		'displayMatrix'
 	],

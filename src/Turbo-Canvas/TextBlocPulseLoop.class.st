@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocPulseLoop,
-	#superclass : #BlPulseLoop,
+	#superclass : #TbPulseLoop,
 	#instVars : [
 		'universe'
 	],

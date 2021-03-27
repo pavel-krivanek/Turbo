@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocSpace,
-	#superclass : #BlSpace,
+	#superclass : #TbSpace,
 	#category : #'Turbo-Canvas-Testing'
 }
 

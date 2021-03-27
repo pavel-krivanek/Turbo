@@ -5,7 +5,7 @@ I should be considered to be a root of graph or visualisation layouts. For that 
 "
 Class {
 	#name : #BlFitLayout,
-	#superclass : #BlLayout,
+	#superclass : #TbLayout,
 	#category : #'Turbo-Layout-Fit'
 }
 

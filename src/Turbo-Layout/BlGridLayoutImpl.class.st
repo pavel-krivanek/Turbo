@@ -1,6 +1,6 @@
 Class {
 	#name : #BlGridLayoutImpl,
-	#superclass : #BlLayout,
+	#superclass : #TbLayout,
 	#instVars : [
 		'horizontalAxis',
 		'verticalAxis',

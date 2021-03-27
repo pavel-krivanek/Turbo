@@ -51,7 +51,7 @@ parent
 "
 Class {
 	#name : #BlFrameLayout,
-	#superclass : #BlLayout,
+	#superclass : #TbLayout,
 	#category : #'Turbo-Layout-Frame'
 }
 

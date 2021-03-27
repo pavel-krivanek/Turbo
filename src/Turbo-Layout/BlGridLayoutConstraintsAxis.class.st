@@ -1,6 +1,6 @@
 Class {
 	#name : #BlGridLayoutConstraintsAxis,
-	#superclass : #BlLayoutConstraintsAxis,
+	#superclass : #TbLayoutConstraintsAxis,
 	#instVars : [
 		'spec'
 	],

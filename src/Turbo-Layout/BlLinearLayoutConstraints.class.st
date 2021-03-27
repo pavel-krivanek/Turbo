@@ -1,6 +1,6 @@
 Class {
 	#name : #BlLinearLayoutConstraints,
-	#superclass : #BlLayoutConstraints,
+	#superclass : #TbLayoutConstraints,
 	#instVars : [
 		'weight'
 	],

@@ -40,7 +40,7 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #BlGridLayout,
-	#superclass : #BlLayout,
+	#superclass : #TbLayout,
 	#instVars : [
 		'impl',
 		'cellSpacing',

@@ -1,6 +1,6 @@
 Class {
 	#name : #BlFlowLayoutConstraints,
-	#superclass : #BlLayoutConstraints,
+	#superclass : #TbLayoutConstraints,
 	#instVars : [
 		'newLine',
 		'weight',

@@ -1,8 +1,8 @@
 Class {
 	#name : #BlFlowLayoutLine,
 	#superclass : #Object,
-	#traits : 'TBlDebug',
-	#classTraits : 'TBlDebug classTrait',
+	#traits : 'TTbDebug',
+	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'children',
 		'startLength',

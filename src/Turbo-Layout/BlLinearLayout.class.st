@@ -1,8 +1,8 @@
 Class {
 	#name : #BlLinearLayout,
-	#superclass : #BlLayout,
-	#traits : 'TBlAlignable',
-	#classTraits : 'TBlAlignable classTrait',
+	#superclass : #TbLayout,
+	#traits : 'TTbAlignable',
+	#classTraits : 'TTbAlignable classTrait',
 	#instVars : [
 		'weightSum',
 		'verticalAlignment',

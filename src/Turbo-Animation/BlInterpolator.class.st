@@ -12,8 +12,8 @@ Example
 Class {
 	#name : #BlInterpolator,
 	#superclass : #Object,
-	#traits : 'TBlDebug',
-	#classTraits : 'TBlDebug classTrait',
+	#traits : 'TTbDebug',
+	#classTraits : 'TTbDebug classTrait',
 	#classInstVars : [
 		'default'
 	],

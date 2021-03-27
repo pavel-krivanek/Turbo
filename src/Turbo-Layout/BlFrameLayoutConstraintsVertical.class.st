@@ -1,6 +1,6 @@
 Class {
 	#name : #BlFrameLayoutConstraintsVertical,
-	#superclass : #BlLayoutConstraintsAxis,
+	#superclass : #TbLayoutConstraintsAxis,
 	#instVars : [
 		'alignment',
 		'weight'

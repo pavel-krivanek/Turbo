@@ -49,8 +49,8 @@ Internal Representation and Key Implementation Points.
 Class {
 	#name : #BlGridLayoutAxis,
 	#superclass : #Object,
-	#traits : 'TBlDebug',
-	#classTraits : 'TBlDebug classTrait',
+	#traits : 'TTbDebug',
+	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'element',
 		'layout',

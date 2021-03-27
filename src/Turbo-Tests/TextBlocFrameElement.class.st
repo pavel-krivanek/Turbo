@@ -1,6 +1,6 @@
 Class {
 	#name : #TextBlocFrameElement,
-	#superclass : #BlElement,
+	#superclass : #TbElement,
 	#category : #'Turbo-Tests'
 }
 

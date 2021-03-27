@@ -1,6 +1,6 @@
 Class {
 	#name : #BlGridLayoutConstraints,
-	#superclass : #BlLayoutConstraints,
+	#superclass : #TbLayoutConstraints,
 	#category : #'Turbo-Layout-Grid'
 }
 

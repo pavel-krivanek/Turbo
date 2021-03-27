@@ -1,8 +1,8 @@
 Class {
 	#name : #TextBlocNCursesHostSpace,
 	#superclass : #Object,
-	#traits : 'TBlHostSpace',
-	#classTraits : 'TBlHostSpace classTrait',
+	#traits : 'TTbHostSpace',
+	#classTraits : 'TTbHostSpace classTrait',
 	#instVars : [
 		'host',
 		'renderer',

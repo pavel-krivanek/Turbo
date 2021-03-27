@@ -1,6 +1,6 @@
 Class {
 	#name : #BlAnimatedCursor,
-	#superclass : #BlCursor,
+	#superclass : #TbCursor,
 	#instVars : [
 		'images',
 		'animation',
