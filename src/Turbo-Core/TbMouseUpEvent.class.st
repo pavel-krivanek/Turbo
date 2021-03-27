@@ -42,7 +42,7 @@ TbMouseUpEvent class >> secondary [
 
 { #category : #converting }
 TbMouseUpEvent >> asClickEvent [
-	^ BlClickEvent new
+	^ TbClickEvent new
 		copyFrom: self;
 		yourself
 ]

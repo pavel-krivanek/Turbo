@@ -15,28 +15,28 @@ TbMorphicSpaceMorph class >> example1 [
 	
 	| e1 e2 e3 space universe host |
 	
-	e1 := TextBlocFrameElement new.
+	e1 := TbFrameElement new.
 	e1 size: 23@4.
-	e2 := TextBlocFrameElement new.
+	e2 := TbFrameElement new.
 	e2 size: 20@6.
-	e3 := TextBlocHelloElement new.
+	e3 := TbHelloElement new.
 	e3 size: 15@2.
 	e3 relocate: 2@2.
 
-	space := BlSpace new.
+	space := TbSpace new.
 	space extent: 50@20.
-	space root layout: BlFlowLayout new horizontal.
+	space root layout: TbFlowLayout new horizontal.
 	space root relocate: 2@2.
 	space root addChild: e1.
 	space root addChild: e2.
 	e2 addChild: e3.
 
-	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop2 new 
+	universe := TbUniverse new.
+	universe pulseLoop: (TbPulseLoop2 new 
 		universe: universe;
 		yourself).
 
-	host := TextBlocMorphicHost new.
+	host := TbMorphicHost new.
 	space host: host.
 	universe spaceManager addSpace: space.
 
@@ -44,7 +44,7 @@ TbMorphicSpaceMorph class >> example1 [
 	space hostSpace show.
 
 	universe start.
-	space dispatchEvent: (BlSpaceShownEvent new space: universe).
+	space dispatchEvent: (TbSpaceShownEvent new space: universe).
 
 
 ]
@@ -56,29 +56,29 @@ TbMorphicSpaceMorph class >> example2 [
 	
 | e1 e2 e3 space universe host moved  clickHandler animation |
 	
-	e1 := TextBlocFrameElement new.
+	e1 := TbFrameElement new.
 	e1 size: 23@4.
-	e2 := TextBlocFrameElement new.
+	e2 := TbFrameElement new.
 	e2 size: 20@6.
-	e3 := TextBlocHelloElement new.
+	e3 := TbHelloElement new.
 	e3 size: 15@2.
 	e3 relocate: 2@2.
 	
 
-	space := BlSpace new.
+	space := TbSpace new.
 	space extent: 50@20.
-	space root layout: BlFlowLayout new horizontal.
+	space root layout: TbFlowLayout new horizontal.
 "	space root relocate: 2@2."
 	space root addChild: e1.
 	space root addChild: e2.
 	e2 addChild: e3.
 
-	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop2 new 
+	universe := TbUniverse new.
+	universe pulseLoop: (TbPulseLoop2 new 
 		universe: universe;
 		yourself).
 
-	host := TextBlocMorphicHost new.
+	host := TbMorphicHost new.
 	space host: host.
 	universe spaceManager addSpace: space.
 
@@ -87,10 +87,10 @@ TbMorphicSpaceMorph class >> example2 [
 	
 	
 	moved := e2.
-	clickHandler := BlEventHandler
-		on: BlClickEvent
+	clickHandler := TbEventHandler
+		on: TbClickEvent
 		do: [ :evt |
-				animation := BlTransformAnimation new.
+				animation := TbTransformAnimation new.
 	animation transform
 		translateBy: (evt position - moved position );
 		rotateBy: 0;
@@ -104,7 +104,7 @@ TbMorphicSpaceMorph class >> example2 [
 
 	
 	universe start.
-	space dispatchEvent: (BlSpaceShownEvent new space: universe).
+	space dispatchEvent: (TbSpaceShownEvent new space: universe).
 
 
 ]

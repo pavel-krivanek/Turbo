@@ -14,7 +14,7 @@ Class {
 
 { #category : #constraints }
 TbFlowLayout class >> constraints [
-	^ BlFlowLayoutConstraints new
+	^ TbFlowLayoutConstraints new
 ]
 
 { #category : #factory }
@@ -81,7 +81,7 @@ TbFlowLayout >> initialize [
 	
 	verticalAlignment := self defaultVerticalAlignment.
 	horizontalAlignment := self defaultHorizontalAlignment.
-	measurer := BlFlowLayoutMeasurer for: self.
+	measurer := TbFlowLayoutMeasurer for: self.
 	self orientation: self defaultOrientation
 ]
 

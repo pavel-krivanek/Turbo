@@ -22,20 +22,20 @@ TbDrawingErrorHandler >> processError: aHandledError [
 		childNamed: #errorContainer
 		ifFound: [ :anElement | anErrorContainer := anElement ]
 		ifNone: [
-			aHandledError element addChild: (anErrorContainer := BlElement new
-				layout: BlLinearLayout vertical;
+			aHandledError element addChild: (anErrorContainer := TbElement new
+				layout: TbLinearLayout vertical;
 				constraintsDo: [ :c |
 					c horizontal fitContent.
 					c vertical fitContent ]) as: #errorContainer ].
 	
 	anErrorContainer
 		addChild: (BlTextElement new
-			padding: (BlInsets all: 5);
+			padding: (TbInsets all: 5);
 			text: 'Debug draw error' asRopedText;
-			geometry: (BlRectangle cornerRadius: 3);
-			border: (BlBorder paint: Color gray width: 1);
+			geometry: (TbRectangle cornerRadius: 3);
+			border: (TbBorder paint: Color gray width: 1);
 			background: Color white;
-			when: BlClickEvent do: [ :anEvent |
+			when: TbClickEvent do: [ :anEvent |
 				anEvent consumed: true.
 				aHandledError error debug
 			])

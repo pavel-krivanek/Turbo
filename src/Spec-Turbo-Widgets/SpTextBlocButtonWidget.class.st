@@ -92,13 +92,13 @@ SpTextBlocButtonWidget >> initialize [
 	
 	super initialize.
 			
-	self addEventHandlerOn: BlClickEvent do: [ :evt | 
+	self addEventHandlerOn: TbClickEvent do: [ :evt | 
 		self enabled ifTrue: [ self clickBlock value ]].
-	self addEventHandlerOn: BlMouseDownEvent do: [ :evt | 
+	self addEventHandlerOn: TbMouseDownEvent do: [ :evt | 
 		self enabled ifTrue: [
 			self hasFocus ifFalse: [self transferFocus].
 			pressed := true. self invalidate ]].
-	self addEventHandlerOn: BlMouseUpEvent do: [ :evt |
+	self addEventHandlerOn: TbMouseUpEvent do: [ :evt |
 		self enabled ifTrue: [
 		 pressed := false. self invalidate ]].
 

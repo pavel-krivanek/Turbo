@@ -56,14 +56,14 @@ SpTextBlocCheckBoxWidget >> initialize [
 	
 	super initialize.
 	
-	self addEventHandlerOn: BlClickEvent do: [ :evt | 
+	self addEventHandlerOn: TbClickEvent do: [ :evt | 
 		self enabled ifTrue: [ self clickBlock value ]].
 
-	self addEventHandlerOn: BlMouseDownEvent do: [ :evt | 
+	self addEventHandlerOn: TbMouseDownEvent do: [ :evt | 
 			self onMouseDown: evt ].
-	self addEventHandlerOn: BlMouseUpEvent do: [ :evt |
+	self addEventHandlerOn: TbMouseUpEvent do: [ :evt |
 		 self onMouseUp: evt ].
-	self addEventHandlerOn: BlKeystrokeEvent do: [ :evt |
+	self addEventHandlerOn: TbKeystrokeEvent do: [ :evt |
 		self onKeystroke: evt ].
 			
 

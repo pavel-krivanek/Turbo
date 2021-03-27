@@ -107,7 +107,7 @@ TbFlowLayoutPriorityQueue >> enqueue: anObject [
 	| priority node |
 	priority := priorityBlock value: anObject.
 	
-	node := BlFlowLayoutPriorityQueueNode new.
+	node := TbFlowLayoutPriorityQueueNode new.
 	node value: anObject.
 	node priority: priority.
 	
@@ -191,7 +191,7 @@ TbFlowLayoutPriorityQueue >> priorityBlock: aPriorityBlock [
 
 { #category : #'add / remove' }
 TbFlowLayoutPriorityQueue >> remove: aNode [
-	<return: #BlFlowLayoutPriorityQueueNode>
+	<return: #TbFlowLayoutPriorityQueueNode>
 	
 	| formerLastNode |
 	

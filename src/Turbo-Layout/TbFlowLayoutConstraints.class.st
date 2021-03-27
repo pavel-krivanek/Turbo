@@ -16,17 +16,17 @@ TbFlowLayoutConstraints >> alignment [
 
 { #category : #initialization }
 TbFlowLayoutConstraints >> defaultDisplay [
-	^ BlFlowLayoutDisplay inline
+	^ TbFlowLayoutDisplay inline
 ]
 
 { #category : #initialization }
 TbFlowLayoutConstraints >> defaultHorizontal [
-	^ BlFlowLayoutConstraintsHorizontal new
+	^ TbFlowLayoutConstraintsHorizontal new
 ]
 
 { #category : #initialization }
 TbFlowLayoutConstraints >> defaultVertical [
-	^ BlFlowLayoutConstraintsVertical new
+	^ TbFlowLayoutConstraintsVertical new
 ]
 
 { #category : #accessing }
@@ -36,7 +36,7 @@ TbFlowLayoutConstraints >> display [
 
 { #category : #accessing }
 TbFlowLayoutConstraints >> float [
-	display := BlFlowLayoutDisplay float
+	display := TbFlowLayoutDisplay float
 ]
 
 { #category : #initialization }
@@ -50,7 +50,7 @@ TbFlowLayoutConstraints >> initialize [
 
 { #category : #accessing }
 TbFlowLayoutConstraints >> inline [
-	display := BlFlowLayoutDisplay inline
+	display := TbFlowLayoutDisplay inline
 ]
 
 { #category : #testing }

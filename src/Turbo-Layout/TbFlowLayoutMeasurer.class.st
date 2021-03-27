@@ -95,12 +95,12 @@ TbFlowLayoutMeasurer >> alignLines: theLines within: anExtent [
 
 { #category : #accessing }
 TbFlowLayoutMeasurer >> beHorizontal [
-	orientation := BlFlowLayoutHorizontal new
+	orientation := TbFlowLayoutHorizontal new
 ]
 
 { #category : #accessing }
 TbFlowLayoutMeasurer >> beVertical [
-	orientation := BlFlowLayoutVertical new
+	orientation := TbFlowLayoutVertical new
 ]
 
 { #category : #accessing }
@@ -131,13 +131,13 @@ TbFlowLayoutMeasurer >> fillLines: theLines with: theChildren [
 	self flag: 'REFACTOR ME!!!'.
 	self flag: 'p.s. but first cover with unit tests :)'.
 	
-	currentLine := BlFlowLayoutLine for: self.
+	currentLine := TbFlowLayoutLine for: self.
 	theLines add: currentLine.
 
 	floatingQueue := SortedCollection sortBlock: [ :a :b | a startLength < b startLength ].
 	lineLength := 0.
 	totalBreadth := 0.
-	availableSpace := BlFlowLayoutLineSpace new initializeFor: floatingQueue maxLength: self maxLength.
+	availableSpace := TbFlowLayoutLineSpace new initializeFor: floatingQueue maxLength: self maxLength.
 	currentSpaceIndex := 1.
 	currentSpace := availableSpace intervals at: currentSpaceIndex.
 
@@ -166,10 +166,10 @@ TbFlowLayoutMeasurer >> fillLines: theLines with: theChildren [
 			"remove obsolete floating elements here"
 			floatingQueue := floatingQueue select: [ :aFloatingChild |
 				aFloatingChild excessBreadth > 0 ].
-			availableSpace := BlFlowLayoutLineSpace new initializeFor: floatingQueue maxLength: self maxLength.
+			availableSpace := TbFlowLayoutLineSpace new initializeFor: floatingQueue maxLength: self maxLength.
 			currentSpaceIndex := 1.
 			currentSpace := availableSpace intervals at: currentSpaceIndex.
-			currentLine := BlFlowLayoutLine for: self.
+			currentLine := TbFlowLayoutLine for: self.
 			currentLine addTo: theLines.
 			floatingQueue do: [ :aFloatingChild | aFloatingChild addToLine: currentLine ].
 			currentLine startBreadth: totalBreadth.
@@ -269,8 +269,8 @@ TbFlowLayoutMeasurer >> measure: anElement with: anExtentSpec [
 		layout measureChildWithMargins: aChildElement parentSpec: anExtentSpec.
 
 		childType := childConstraints display isFloating
-			ifTrue: [ BlFlowLayoutFloatingChild ]
-			ifFalse: [ BlFlowLayoutInlineChild ].
+			ifTrue: [ TbFlowLayoutFloatingChild ]
+			ifFalse: [ TbFlowLayoutInlineChild ].
 
 		child := childType measurer: self element: aChildElement.
 		child width: aChildElement measuredWidth.

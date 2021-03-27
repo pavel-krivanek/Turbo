@@ -17,8 +17,8 @@ TbFlowLayoutDisplay class >> float [
 TbFlowLayoutDisplay class >> initialize [
 	super initialize.
 	
-	inline := BlFlowLayoutInline new.
-	float := BlFlowLayoutFloat new
+	inline := TbFlowLayoutInline new.
+	float := TbFlowLayoutFloat new
 ]
 
 { #category : #factory }

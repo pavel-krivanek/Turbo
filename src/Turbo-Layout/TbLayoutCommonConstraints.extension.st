@@ -2,7 +2,7 @@ Extension { #name : #TbLayoutCommonConstraints }
 
 { #category : #'*Turbo-Layout' }
 TbLayoutCommonConstraints >> flow [
-	^ self at: BlFlowLayout
+	^ self at: TbFlowLayout
 ]
 
 { #category : #'*Turbo-Layout' }

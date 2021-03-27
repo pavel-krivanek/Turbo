@@ -17,7 +17,7 @@ Class {
 TbNCursesHostSpace >> eventFetcher [
 	"Return event fetcher used to enqueue events that should be
 	processed in the beginning of every frame"
-	<return: #BlHostEventFetcher>
+	<return: #TbHostEventFetcher>
 
 	^ eventFetcher
 ]
@@ -41,7 +41,7 @@ TbNCursesHostSpace >> host: aBlHost [
 TbNCursesHostSpace >> initialize [
 	super initialize.
 
-	eventFetcher := BlHostEventFetcher new.
+	eventFetcher := TbHostEventFetcher new.
 	mutex := Mutex new.
 
 ]

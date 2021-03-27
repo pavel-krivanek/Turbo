@@ -30,15 +30,15 @@ TbBasicLayoutTest >> setUp [
 
 	super setUp.
 	
-	e1 := TextBlocFrameElement new.
+	e1 := TbFrameElement new.
 	e1 size: 23@4.
-	e2 := TextBlocFrameElement new.
+	e2 := TbFrameElement new.
 	e2 size: 20@6.
-	e3 := TextBlocHelloElement new.
+	e3 := TbHelloElement new.
 	e3 size: 15@2.
 	e3 relocate: 2@2.
 
-	space root layout: BlFlowLayout new horizontal.
+	space root layout: TbFlowLayout new horizontal.
 	space root relocate: 2@2.
 	space root addChild: e1.
 	space root addChild: e2.

@@ -61,7 +61,7 @@ TbHeadlessHostSpace >> densityDpi [
 TbHeadlessHostSpace >> eventFetcher [
 	"Return event fetcher used to enqueue events that should be
 	processed in the beginning of every frame"
-	<return: #BlHostEventFetcher>
+	<return: #TbHostEventFetcher>
 
 	^ eventFetcher
 ]
@@ -110,7 +110,7 @@ TbHeadlessHostSpace >> icon: aForm [
 TbHeadlessHostSpace >> initialize [
 	super initialize.
 	
-	eventFetcher := BlHostEventFetcher new
+	eventFetcher := TbHostEventFetcher new
 ]
 
 { #category : #'host space - testing' }

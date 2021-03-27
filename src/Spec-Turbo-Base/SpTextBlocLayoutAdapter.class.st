@@ -20,7 +20,7 @@ SpTextBlocLayoutAdapter >> basicAdd: aPresenter constraints: constraints to: aPa
 	| childWidget | 
 
 	childWidget := aPresenter buildWithSpec: constraints spec.
-	aPanel layout: BlFlowLayout new horizontal.
+	aPanel layout: TbFlowLayout new horizontal.
 	aPanel addChild: childWidget.
 
 	^ aPanel
