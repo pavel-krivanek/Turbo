@@ -25,7 +25,7 @@ Class {
 { #category : #'loop process' }
 TbPulseLoop >> createLoopProcess [
 	^ self createLoopTask newProcess
-		priority: BlUniverse default mainLoopPriority;
+		priority: TbUniverse default mainLoopPriority;
 		name: self processId;
 		yourself
 ]
@@ -74,7 +74,7 @@ TbPulseLoop >> forceStartOfUIProcess: aProces [
 { #category : #initialization }
 TbPulseLoop >> initialize [
 	super initialize.
-	pulseEvent := BlPulseEvent new.
+	pulseEvent := TbPulseEvent new.
 	lastElpasedTime := 0.
 	pulseStartTime := DateAndTime now.
 ]

@@ -24,7 +24,7 @@ TbScalingTransformation class >> scale: aVector [
 TbScalingTransformation >> initialize [
 	super initialize.
 	
-	scale := BlVector one
+	scale := TbVector one
 ]
 
 { #category : #testing }

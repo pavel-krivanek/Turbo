@@ -19,7 +19,7 @@ TbMatrixTransformation class >> matrix: aBlMatrix [
 TbMatrixTransformation >> initialize [
 	super initialize.
 	
-	matrix := BlMatrix2D new
+	matrix := TbMatrix2D new
 ]
 
 { #category : #testing }

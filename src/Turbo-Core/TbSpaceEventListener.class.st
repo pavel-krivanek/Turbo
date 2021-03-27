@@ -126,8 +126,8 @@ TbSpaceEventListener >> spaceDragLift: anEvent [
 
 	aDelegate lift: aPosition in: self space root.
 
-	mouseDragListener := BlEventHandler
-		on: BlMouseMoveEvent
+	mouseDragListener := TbEventHandler
+		on: TbMouseMoveEvent
 		do: [ :aMouseMoveEvent | aDelegate drag: aMouseMoveEvent position ].
 
 	self space addEventHandler: mouseDragListener

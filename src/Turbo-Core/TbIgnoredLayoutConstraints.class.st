@@ -11,10 +11,10 @@ TbIgnoredLayoutConstraints >> alignment [
 
 { #category : #initialization }
 TbIgnoredLayoutConstraints >> defaultHorizontal [
-	^ BlIgnoredLayoutConstraintsHorizontal new
+	^ TbIgnoredLayoutConstraintsHorizontal new
 ]
 
 { #category : #initialization }
 TbIgnoredLayoutConstraints >> defaultVertical [
-	^ BlIgnoredLayoutConstraintsVertical new
+	^ TbIgnoredLayoutConstraintsVertical new
 ]

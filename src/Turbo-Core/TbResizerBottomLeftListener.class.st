@@ -17,5 +17,5 @@ TbResizerBottomLeftListener >> resizeBounds: aBlBounds by: aPoint [
 
 { #category : #resizer }
 TbResizerBottomLeftListener >> resizerCursor [
-	^ BlCursor resizeBottomLeft
+	^ TbCursor resizeBottomLeft
 ]

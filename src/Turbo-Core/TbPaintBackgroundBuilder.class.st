@@ -11,7 +11,7 @@ Class {
 TbPaintBackgroundBuilder >> build [
 	<return: #BlBackground>
 
-	^ (BlPaintBackground paint: self paint) opacity: self opacity
+	^ (TbPaintBackground paint: self paint) opacity: self opacity
 ]
 
 { #category : #accessing }

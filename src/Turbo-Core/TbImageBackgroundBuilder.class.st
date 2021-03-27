@@ -11,7 +11,7 @@ Class {
 TbImageBackgroundBuilder >> build [
 	<return: #BlBackground>
 
-	^ (BlImageBackground image: self form) opacity: self opacity
+	^ (TbImageBackground image: self form) opacity: self opacity
 ]
 
 { #category : #accessing }

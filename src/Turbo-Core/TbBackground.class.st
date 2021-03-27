@@ -28,7 +28,7 @@ Class {
 
 { #category : #builder }
 TbBackground class >> builder [
-	^ BlCompositeBackgroundBuilder new
+	^ TbCompositeBackgroundBuilder new
 ]
 
 { #category : #'instance creation' }
@@ -99,7 +99,7 @@ TbBackground >> opacity: aNumber [
 		description: [ 'Opacity value must be within interval [0..1]' ].
 
 	opacity isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 
 	self opacity = aNumber
 		ifTrue: [ ^ self ].

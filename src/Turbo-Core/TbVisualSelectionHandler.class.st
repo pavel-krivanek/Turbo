@@ -40,10 +40,10 @@ TbVisualSelectionHandler >> mouseDownEvent: anEvent [
 TbVisualSelectionHandler >> onInstalledIn: anElement [
 	super onInstalledIn: anElement.
 
-	selection := BlElement new
+	selection := TbElement new
 		size: 0@0;
 		background: (Color blue alpha: 0.1);
-		border: (BlBorder builder paint: (Color blue alpha: 0.7); width: 2; build);
+		border: (TbBorder builder paint: (Color blue alpha: 0.7); width: 2; build);
 		yourself
 ]
 
@@ -52,7 +52,7 @@ TbVisualSelectionHandler >> selectionChanged [
 	| aSelectionBounds |
 	super selectionChanged.
 	
-	aSelectionBounds := BlBounds fromRectangle: ((origin min: corner) corner: (corner max: origin)).
+	aSelectionBounds := TbBounds fromRectangle: ((origin min: corner) corner: (corner max: origin)).
 	aSelectionBounds := container globalBoundsToLocal: aSelectionBounds.
 
 	selection

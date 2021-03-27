@@ -61,7 +61,7 @@ TbPaintBackground >> paint: aBlPaint [
 		description: [ 'Paint must not be nil' ].
 
 	paint isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 
 	paint := aBlPaint asBlPaint
 ]

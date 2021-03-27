@@ -42,7 +42,7 @@ TbMouseProcessor >> canBeDblClickEvent: aMouseUpEvent [
 TbMouseProcessor >> canStartDrag: aMouseMoveEvent [
 	<return: #Boolean>
 
-	^ (pressedButtons includes: BlMouseButton primary)
+	^ (pressedButtons includes: TbMouseButton primary)
 		and: [ previousMouseDownEvent isNotNil
 			and: [ previousMouseDownEvent primaryButtonPressed
 				and: [ (aMouseMoveEvent position - previousMouseDownEvent position) r > self startDragThreshold ] ] ]
@@ -272,7 +272,7 @@ TbMouseProcessor >> initialize [
 
 	"a set of currently pressed mouse buttons button"
 	pressedButtons := Set new.
-	dragState := BlMouseDragState new
+	dragState := TbMouseDragState new
 ]
 
 { #category : #testing }

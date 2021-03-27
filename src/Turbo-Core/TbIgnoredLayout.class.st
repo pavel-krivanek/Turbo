@@ -9,5 +9,5 @@ Class {
 
 { #category : #constraints }
 TbIgnoredLayout class >> constraints [
-	^ BlIgnoredLayoutConstraints new
+	^ TbIgnoredLayoutConstraints new
 ]

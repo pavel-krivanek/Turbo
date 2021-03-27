@@ -26,7 +26,7 @@ Class {
 
 { #category : #'predefined instances' }
 TbStrokeLineJoin class >> bevel [
-	^ bevel ifNil: [ bevel := BlStrokeLineBevelJoin new ]
+	^ bevel ifNil: [ bevel := TbStrokeLineBevelJoin new ]
 ]
 
 { #category : #cleanup }

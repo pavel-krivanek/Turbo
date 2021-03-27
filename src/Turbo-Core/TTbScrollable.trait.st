@@ -48,7 +48,7 @@ TTbScrollable >> dispatchOnScrolled: aPoint [
 TTbScrollable >> notifyScrolled: aPoint [
 	"Notify all event handlers that InfiniteElemnet scrolled by a delta point"
 
-	self fireEvent: (BlElementScrolledEvent delta: aPoint)
+	self fireEvent: (TbElementScrolledEvent delta: aPoint)
 ]
 
 { #category : #'hooks - scrolling' }
@@ -61,7 +61,7 @@ TTbScrollable >> onScrolled: aPoint [
 
 { #category : #'api - scrolling accessing' }
 TTbScrollable >> overScrollMode [
-	^ BlOverScrollMode never
+	^ TbOverScrollMode never
 ]
 
 { #category : #'api - scrolling accessing' }

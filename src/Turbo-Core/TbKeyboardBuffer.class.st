@@ -21,7 +21,7 @@ TbKeyboardBuffer >> add: anEvent [
 
 { #category : #accessing }
 TbKeyboardBuffer >> eventAt: aKey [
-	<return: #BlKeyDownEvent>
+	<return: #TbKeyDownEvent>
 	
 	^ events at: aKey
 ]

@@ -75,7 +75,7 @@ TbFocusProcessor >> looseFor: anElement [
 	focusOwner ~= anElement
 		ifTrue: [ ^ self ].
 	
-	evt := BlBaseFocusEvent new
+	evt := TbBaseFocusEvent new
 		target: anElement;
 		yourself.
 		
@@ -90,7 +90,7 @@ TbFocusProcessor >> newBlurEvent [
 	that just lost its focus"
 	<return: #BlBlurEvent>
 
-	^ BlBlurEvent new
+	^ TbBlurEvent new
 		canBePropagated: false
 ]
 
@@ -100,7 +100,7 @@ TbFocusProcessor >> newFocusEvent [
 	after it gets focus"
 	<return: #BlFocusEvent>
 
-	^ BlFocusEvent new
+	^ TbFocusEvent new
 		canBePropagated: false
 ]
 
@@ -110,7 +110,7 @@ TbFocusProcessor >> newFocusInEvent [
 	as a part of focus processing"
 	<return: #BlFocusInEvent>
 	
-	^ BlFocusInEvent new
+	^ TbFocusInEvent new
 ]
 
 { #category : #'instance creation' }
@@ -119,7 +119,7 @@ TbFocusProcessor >> newFocusOutEvent [
 	as a part of blur processing"
 	<return: #BlFocusOutEvent>
 	
-	^ BlFocusOutEvent new
+	^ TbFocusOutEvent new
 ]
 
 { #category : #'instance creation' }
@@ -128,7 +128,7 @@ TbFocusProcessor >> newFocusTransferEvent [
 	before performing a focus transfer"
 	<return: #BlFocusTransferEvent>
 
-	^ BlFocusTransferEvent new
+	^ TbFocusTransferEvent new
 ]
 
 { #category : #'focus - processing' }
@@ -154,7 +154,7 @@ TbFocusProcessor >> processFocus: anElement [
 
 	"first make element to be focused"
 	focusOwner := anElement.
-	focusChain := BlFocusChain of: focusOwner.
+	focusChain := TbFocusChain of: focusOwner.
 
 	self space focusOwner: anElement.
 	anElement focused: true.

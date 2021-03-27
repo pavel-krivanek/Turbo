@@ -72,7 +72,7 @@ TbScrollFlinger >> createScrollerFor: anInterpolator [
 
 { #category : #initialization }
 TbScrollFlinger >> createState [
-	^ BlScrollFlingerState new
+	^ TbScrollFlingerState new
 ]
 
 { #category : #initialization }
@@ -302,7 +302,7 @@ TbScrollFlinger >> runFinalizeOn: anOverScroller with: aState [
 
 { #category : #private }
 TbScrollFlinger >> runInitOn: anOverScroller [
-	<return: #BlScrollFlingerState>
+	<return: #TbScrollFlingerState>
 	| aState |
 
 	aState := self createState.
@@ -324,7 +324,7 @@ TbScrollFlinger >> runInitOn: anOverScroller [
 
 { #category : #private }
 TbScrollFlinger >> runLayoutScrollWith: aState [
-	"A state is an instance of BlScrollFlingerState"
+	"A state is an instance of TbScrollFlingerState"
 
 	aState dX isZero
 		ifFalse: [ 

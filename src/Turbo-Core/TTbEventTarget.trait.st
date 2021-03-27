@@ -14,7 +14,7 @@ TTbEventTarget >> addEventFilter: anEventHandler [
 
 { #category : #'event management' }
 TTbEventTarget >> addEventFilterOn: anEventClass do: aBlock [
-	self addEventFilter: (BlEventHandler on: anEventClass do: aBlock)
+	self addEventFilter: (TbEventHandler on: anEventClass do: aBlock)
 ]
 
 { #category : #'event management' }
@@ -24,7 +24,7 @@ TTbEventTarget >> addEventHandler: anEventHandler [
 
 { #category : #'event management' }
 TTbEventTarget >> addEventHandlerOn: anEventClass do: aBlock [
-	self addEventHandler: (BlEventHandler on: anEventClass do: aBlock)
+	self addEventHandler: (TbEventHandler on: anEventClass do: aBlock)
 ]
 
 { #category : #'shortcut management' }
@@ -75,7 +75,7 @@ TTbEventTarget >> fireEvent: anEvent [
 	(from target to the root element) and dispatch the event with it.
 	anEvent must not be nil"
 
-	BlEvent fireEvent: anEvent target: self
+	TbEvent fireEvent: anEvent target: self
 ]
 
 { #category : #'event management accessing' }

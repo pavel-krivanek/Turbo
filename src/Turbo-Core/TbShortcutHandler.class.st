@@ -22,7 +22,7 @@ TbShortcutHandler >> addShortcut: aBlShortcut [
 
 { #category : #'private - accessing' }
 TbShortcutHandler >> eventClass [ 
- 	^ BlShortcutEvent
+ 	^ TbShortcutEvent
 ]
 
 { #category : #'api - event managing' }
@@ -49,7 +49,7 @@ TbShortcutHandler >> handleEvent: aShortcutEvent [
 { #category : #initialization }
 TbShortcutHandler >> initialize [
 	super initialize.
-	shortcutRegistry := BlShortcutRegistry new
+	shortcutRegistry := TbShortcutRegistry new
 ]
 
 { #category : #accessing }

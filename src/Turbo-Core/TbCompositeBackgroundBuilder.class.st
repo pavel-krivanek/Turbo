@@ -21,20 +21,20 @@ TbCompositeBackgroundBuilder >> build [
 		description: [ 'There should be specified at least one background' ].
 
 	^ builders size > 1
-		ifTrue: [ (BlCompositeBackground withAll: (builders collect: #build)) opacity: self opacity ]
+		ifTrue: [ (TbCompositeBackground withAll: (builders collect: #build)) opacity: self opacity ]
 		ifFalse: [
 			self isOpaque
 				ifTrue: [ builders first build ]
 				ifFalse: [ builders first isOpaque
 					ifTrue: [ builders first build opacity: self opacity ]
-					ifFalse: [ (BlCompositeBackground withAll: (builders collect: #build)) opacity: self opacity ] ] ]
+					ifFalse: [ (TbCompositeBackground withAll: (builders collect: #build)) opacity: self opacity ] ] ]
 ]
 
 { #category : #builder }
 TbCompositeBackgroundBuilder >> image [
 	| aBuilder |
 	
-	aBuilder := BlImageBackgroundBuilder new.
+	aBuilder := TbImageBackgroundBuilder new.
 	builders add: aBuilder.
 
 	^ aBuilder
@@ -42,7 +42,7 @@ TbCompositeBackgroundBuilder >> image [
 
 { #category : #accessing }
 TbCompositeBackgroundBuilder >> image: aForm [
-	builders add: (BlImageBackgroundBuilder new form: aForm)
+	builders add: (TbImageBackgroundBuilder new form: aForm)
 ]
 
 { #category : #initialization }
@@ -67,7 +67,7 @@ TbCompositeBackgroundBuilder >> opacity: aNumber [
 TbCompositeBackgroundBuilder >> paint [
 	| aBuilder |
 	
-	aBuilder := BlPaintBackgroundBuilder new.
+	aBuilder := TbPaintBackgroundBuilder new.
 	builders add: aBuilder.
 
 	^ aBuilder
@@ -75,5 +75,5 @@ TbCompositeBackgroundBuilder >> paint [
 
 { #category : #accessing }
 TbCompositeBackgroundBuilder >> paint: aColorOrBlPaint [
-	builders add: (BlPaintBackgroundBuilder new paint: aColorOrBlPaint)
+	builders add: (TbPaintBackgroundBuilder new paint: aColorOrBlPaint)
 ]

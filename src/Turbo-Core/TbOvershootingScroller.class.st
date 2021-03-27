@@ -84,7 +84,7 @@ TbOvershootingScroller >> defaultInterpolator [
 
 { #category : #initialization }
 TbOvershootingScroller >> defaultSplineScroller [
-	^ BlOvershootingSplineBasedScroller new
+	^ TbOvershootingSplineBasedScroller new
 ]
 
 { #category : #'event management accessing' }
@@ -316,14 +316,14 @@ TbOvershootingScroller >> run [
 
 { #category : #accessing }
 TbOvershootingScroller >> scrollerX [
-	<return: #BlOvershootingSplineBasedScroller>
+	<return: #TbOvershootingSplineBasedScroller>
 
 	^ scrollerX
 ]
 
 { #category : #accessing }
 TbOvershootingScroller >> scrollerY [
-	<return: #BlOvershootingSplineBasedScroller>
+	<return: #TbOvershootingSplineBasedScroller>
 
 	^ scrollerY
 ]

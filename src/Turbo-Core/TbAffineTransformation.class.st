@@ -21,8 +21,8 @@ TbAffineTransformation >> asMatrix [
 	| aMatrix |
 	
 	aMatrix := self is2D
-		ifTrue: [ BlMatrix2D new ]
-		ifFalse: [ BlMatrix3D new ].
+		ifTrue: [ TbMatrix2D new ]
+		ifFalse: [ TbMatrix3D new ].
 		
 	self multiplyOn: aMatrix.
 	^ aMatrix
@@ -37,7 +37,7 @@ TbAffineTransformation >> do: aBlock [
 TbAffineTransformation >> initialize [
 	super initialize.
 	
-	origin := BlAffineTransformationCenterOrigin new
+	origin := TbAffineTransformationCenterOrigin new
 ]
 
 { #category : #testing }

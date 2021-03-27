@@ -16,7 +16,7 @@ Class {
 
 { #category : #'predefined instances' }
 TbOutskirts class >> centered [
-	^ Centered ifNil: [ Centered := BlOutskirtsCentered new ]
+	^ Centered ifNil: [ Centered := TbOutskirtsCentered new ]
 ]
 
 { #category : #cleanup }
@@ -28,12 +28,12 @@ TbOutskirts class >> cleanUp [
 
 { #category : #'predefined instances' }
 TbOutskirts class >> inside [
-	^ Inside ifNil: [ Inside := BlOutskirtsInside new  ]
+	^ Inside ifNil: [ Inside := TbOutskirtsInside new  ]
 ]
 
 { #category : #'predefined instances' }
 TbOutskirts class >> outside [
-	^ Outside ifNil: [ Outside := BlOutskirtsOutside new ]
+	^ Outside ifNil: [ Outside := TbOutskirtsOutside new ]
 ]
 
 { #category : #'visual bounds' }

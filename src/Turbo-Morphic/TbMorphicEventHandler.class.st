@@ -82,7 +82,7 @@ TbMorphicEventHandler >> handleDropMorph: anEvent [
 TbMorphicEventHandler >> handleKeyDown: aMorphicEvent [
 	| aBlEvent |
 
-	aBlEvent := BlKeyDownEvent new
+	aBlEvent := TbKeyDownEvent new
 		key: aMorphicEvent key;
 		scanCode: aMorphicEvent scanCode;
 		

@@ -30,7 +30,7 @@ TbRotationTransformation >> angle: aNumber [
 TbRotationTransformation >> asQuaternion [
 	<return: #BlQuaternion>
 
-	^ BlQuaternion x: self axis x y: self axis y z: self axis z angle: self angle
+	^ TbQuaternion x: self axis x y: self axis y z: self axis z angle: self angle
 ]
 
 { #category : #accessing }
@@ -50,7 +50,7 @@ TbRotationTransformation >> initialize [
 	super initialize.
 	
 	angle := 0. "degrees"
-	axis := BlVector zAxis
+	axis := TbVector zAxis
 ]
 
 { #category : #testing }
@@ -59,7 +59,7 @@ TbRotationTransformation >> is2D [
 	By definition a rotation is in 2D when rotation axis is z-Axis (it has no x or y components)"
 	<return: #Boolean>
 
-	^ self axis = BlVector zAxis
+	^ self axis = TbVector zAxis
 ]
 
 { #category : #'mathematical functions' }

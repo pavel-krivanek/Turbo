@@ -33,9 +33,9 @@ TbSplineOverScrollerMode >> gtInspectorGraphIn: aComposite [
 		display: [
 			| aScroller theData theColors aPlotter |
 			
-			aScroller := BlOvershootingSplineBasedScroller new.
+			aScroller := TbOvershootingSplineBasedScroller new.
 			aScroller bePrecise.
-			aScroller time: (BlTime simulated).
+			aScroller time: (TbTime simulated).
 			aScroller mode: self.
 
 			theData := OrderedCollection new.
@@ -49,16 +49,16 @@ TbSplineOverScrollerMode >> gtInspectorGraphIn: aComposite [
 				} asDictionary ].
 
 			theColors := {
-				BlSplineOverScrollerStep spline -> Color red.
-				BlSplineOverScrollerStep ballistic -> Color blue.
-				BlSplineOverScrollerStep cubic -> Color green muchDarker.
+				TbSplineOverScrollerStep spline -> Color red.
+				TbSplineOverScrollerStep ballistic -> Color blue.
+				TbSplineOverScrollerStep cubic -> Color green muchDarker.
 			} asDictionary.
 
 			aPlotter := #GtPlotter asClass new.
 			aPlotter line
 				y: [ :each | each at: #position ];
 				x: [ :each | each at: #time ];
-				shape: [ :from :to :line | line border: (BlBorder paint: (theColors at: (to at: #step)) width: 1) ];
+				shape: [ :from :to :line | line border: (TbBorder paint: (theColors at: (to at: #step)) width: 1) ];
 				with: theData.
 
 			aPlotter root ]

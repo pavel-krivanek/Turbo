@@ -25,7 +25,7 @@ TbBaseEventProcessor >> dispatchEvent: anEvent target: aTarget [
 TbBaseEventProcessor >> fireEvent: anEvent [
 	<return: #BlEvent>
 
-	^ BlEvent fireEvent: anEvent
+	^ TbEvent fireEvent: anEvent
 ]
 
 { #category : #accessing }

@@ -10,7 +10,7 @@ Trait {
 TTbTransformable >> transform [
 	<return: #BlTransformationBuilder>
 	
-	^ BlTransformationBuilder on: self
+	^ TbTransformationBuilder on: self
 ]
 
 { #category : #transformations }

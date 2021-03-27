@@ -163,7 +163,7 @@ TbBorder >> opacity: aNumber [
 		description: [ 'Opacity value must be within interval [0..1]' ].
 
 	opacity isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 
 	opacity := aNumber
 ]
@@ -182,7 +182,7 @@ TbBorder >> paint: aBlPaint [
 		description: [ 'Paint must not be nil' ].
 
 	paint isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 
 	paint := aBlPaint asBlPaint
 ]
@@ -201,7 +201,7 @@ TbBorder >> style: aBlStrokeStyle [
 		description: [ 'Style must not be nil' ].
 
 	style isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 
 	style := aBlStrokeStyle
 ]
@@ -223,7 +223,7 @@ TbBorder >> width: aNumber [
 		description: [ 'Width vmust not be negative' ].
 
 	width isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 	
 	width := aNumber
 ]

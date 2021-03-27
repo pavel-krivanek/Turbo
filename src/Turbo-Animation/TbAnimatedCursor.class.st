@@ -21,7 +21,7 @@ TbAnimatedCursor >> activateOn: aSpace [
 TbAnimatedCursor >> createAnimation [
 	animation ifNotNil:[animation stop].
 	imgIndex := 0.
-	^ animation := BlAnimation new
+	^ animation := TbAnimation new
 		duration: 50;
 		beInfinite;
 		yourself

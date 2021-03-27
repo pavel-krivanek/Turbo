@@ -10,56 +10,56 @@ Trait {
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignBottomCenter [
-	self verticalAlignment: BlElementAlignment vertical end.
-	self horizontalAlignment: BlElementAlignment horizontal center
+	self verticalAlignment: TbElementAlignment vertical end.
+	self horizontalAlignment: TbElementAlignment horizontal center
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignBottomLeft [
-	self verticalAlignment: BlElementAlignment vertical end.
-	self horizontalAlignment: BlElementAlignment horizontal start
+	self verticalAlignment: TbElementAlignment vertical end.
+	self horizontalAlignment: TbElementAlignment horizontal start
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignBottomRight [
-	self verticalAlignment: BlElementAlignment vertical end.
-	self horizontalAlignment: BlElementAlignment horizontal end
+	self verticalAlignment: TbElementAlignment vertical end.
+	self horizontalAlignment: TbElementAlignment horizontal end
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignCenter [
-	self verticalAlignment: BlElementAlignment vertical center.
-	self horizontalAlignment: BlElementAlignment horizontal center
+	self verticalAlignment: TbElementAlignment vertical center.
+	self horizontalAlignment: TbElementAlignment horizontal center
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignCenterLeft [
-	self verticalAlignment: BlElementAlignment vertical center.
-	self horizontalAlignment: BlElementAlignment horizontal start
+	self verticalAlignment: TbElementAlignment vertical center.
+	self horizontalAlignment: TbElementAlignment horizontal start
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignCenterRight [
-	self verticalAlignment: BlElementAlignment vertical center.
-	self horizontalAlignment: BlElementAlignment horizontal end
+	self verticalAlignment: TbElementAlignment vertical center.
+	self horizontalAlignment: TbElementAlignment horizontal end
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignTopCenter [
-	self verticalAlignment: BlElementAlignment vertical start.
-	self horizontalAlignment: BlElementAlignment horizontal center
+	self verticalAlignment: TbElementAlignment vertical start.
+	self horizontalAlignment: TbElementAlignment horizontal center
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignTopLeft [
-	self verticalAlignment: BlElementAlignment vertical start.
-	self horizontalAlignment: BlElementAlignment horizontal start
+	self verticalAlignment: TbElementAlignment vertical start.
+	self horizontalAlignment: TbElementAlignment horizontal start
 ]
 
 { #category : #'api - alignment' }
 TTbAlignable >> alignTopRight [
-	self verticalAlignment: BlElementAlignment vertical start.
-	self horizontalAlignment: BlElementAlignment horizontal end
+	self verticalAlignment: TbElementAlignment vertical start.
+	self horizontalAlignment: TbElementAlignment horizontal end
 ]
 
 { #category : #accessing }

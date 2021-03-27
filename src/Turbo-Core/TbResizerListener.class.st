@@ -34,7 +34,7 @@ TbResizerListener >> dragEvent: anEvent [
 	dragPosition := anEvent position.
 	dragDelta := dragPosition - dragStartPosition.
 
-	theBounds := BlBounds origin: originalPosition extent: originalExtent.
+	theBounds := TbBounds origin: originalPosition extent: originalExtent.
 	theOriginalBounds := theBounds copy.
 
 	self
@@ -58,7 +58,7 @@ TbResizerListener >> dragEvent: anEvent [
 	heightChanged
 		ifTrue: [ self resizeTarget height: theBounds height ].
 	
-	anEvent currentTarget dispatchEvent: (BlResizerResizedEvent new extent: theBounds extent)
+	anEvent currentTarget dispatchEvent: (TbResizerResizedEvent new extent: theBounds extent)
 ]
 
 { #category : #'dnd handlers' }

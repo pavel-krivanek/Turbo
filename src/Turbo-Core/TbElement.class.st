@@ -521,7 +521,7 @@ TbElement >> border [
 { #category : #'api - look' }
 TbElement >> border: aBlBorder [
 	"Change my border and invalidate me"
-	<event: #BlElementBorderChangedEvent>
+	<event: #TbElementBorderChangedEvent>
 
 	self
 		assert: [ aBlBorder isNotNil ]
@@ -529,7 +529,7 @@ TbElement >> border: aBlBorder [
 
 	self invalidate.
 	border := aBlBorder.
-	self dispatchEvent: (BlElementBorderChangedEvent target: self).
+	self dispatchEvent: (TbElementBorderChangedEvent target: self).
 	self invalidate
 ]
 
@@ -880,9 +880,9 @@ TbElement >> defaultElevation [
 
 { #category : #initialization }
 TbElement >> defaultErrorHandler [
-	^ BlCompositeErrorHandler withAll: { 
-		BlDrawingErrorHandler new.
-		BlLayoutErrorHandler new
+	^ TbCompositeErrorHandler withAll: { 
+		TbDrawingErrorHandler new.
+		TbLayoutErrorHandler new
 	}
 ]
 
@@ -1576,13 +1576,13 @@ TbElement >> height: aNumber [
 TbElement >> initialize [
 	super initialize.
 
-	boundsCache := BlBoundsCache on: self.
-	bounds := BlElementLocalBounds new referenceElement: self.
-	measuredBounds := BlElementLocalBounds new referenceElement: self.
-	changes := BlElementChanges new.
+	boundsCache := TbBoundsCache on: self.
+	bounds := TbElementLocalBounds new referenceElement: self.
+	measuredBounds := TbElementLocalBounds new referenceElement: self.
+	changes := TbElementChanges new.
 
-	eventDispatcher := BlBubblingEventDispatcher on: self.
-	constraints := BlLayoutCommonConstraints new.
+	eventDispatcher := TbBubblingEventDispatcher on: self.
+	constraints := TbLayoutCommonConstraints new.
 	self resetChildrenArray.
 
 	transformation := self defaultTransformation owner: self.
@@ -1598,11 +1598,11 @@ TbElement >> initialize [
 	shouldHandleMouseEvents := true.
 	shouldChildrenHandleMouseEvents := true.
 
-	misc := BlMiscProperties new.
+	misc := TbMiscProperties new.
 	misc label: self className.
 	opacity := 1.0.
 	
-	taskQueue := BlTaskQueue new.
+	taskQueue := TbTaskQueue new.
 	errorHandler := self defaultErrorHandler.
 ]
 

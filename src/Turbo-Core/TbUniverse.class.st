@@ -62,7 +62,7 @@ TbUniverse class >> reset [
 { #category : #'pulse managing' }
 TbUniverse >> addPulseListener: anObject [
 	pulseListeners add: anObject.
-	announcer subscribe: BlPulseEvent send: #pulse to: anObject
+	announcer subscribe: TbPulseEvent send: #pulse to: anObject
 ]
 
 { #category : #enumerating }
@@ -124,7 +124,7 @@ TbUniverse >> closeSpaceWindow: aSpace [
 
 { #category : #'initialize-release' }
 TbUniverse >> defaultPulseLoop [
-	^ BlPulseLoop new
+	^ TbPulseLoop new
 ]
 
 { #category : #'deferred actions' }
@@ -148,7 +148,7 @@ TbUniverse >> firePulse: aPulseEvent [
 
 { #category : #accessing }
 TbUniverse >> host [
-	^ preferableHost ifNil: [ BlHost pickHost ]
+	^ preferableHost ifNil: [ TbHost pickHost ]
 ]
 
 { #category : #'initialize-release' }

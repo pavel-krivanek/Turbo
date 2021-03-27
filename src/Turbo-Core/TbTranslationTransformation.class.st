@@ -28,7 +28,7 @@ TbTranslationTransformation class >> x: aX y: aY z: aZ [
 TbTranslationTransformation >> initialize [
 	super initialize.
 	
-	translation := BlVector zero
+	translation := TbVector zero
 ]
 
 { #category : #testing }

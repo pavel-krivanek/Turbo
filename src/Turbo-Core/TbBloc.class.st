@@ -5,7 +5,7 @@ I allow users to:
  - manually select preferable BlHost
 "
 Class {
-	#name : #TbBlboc,
+	#name : #TbBloc,
 	#superclass : #Object,
 	#classVars : [
 		'AssertionsEnabled',
@@ -19,107 +19,107 @@ Class {
 }
 
 { #category : #assertions }
-TbBlboc class >> assertionsEnabled [
+TbBloc class >> assertionsEnabled [
 	^ AssertionsEnabled ifNil: [ true ]
 ]
 
 { #category : #assertions }
-TbBlboc class >> assertionsEnabled: aBoolean [
+TbBloc class >> assertionsEnabled: aBoolean [
 	AssertionsEnabled := aBoolean
 ]
 
 { #category : #debugging }
-TbBlboc class >> debugModeEnabled [
+TbBloc class >> debugModeEnabled [
 	^ DebugModeEnabled ifNil: [ false ]
 ]
 
 { #category : #debugging }
-TbBlboc class >> debugModeEnabled: aBoolean [
+TbBloc class >> debugModeEnabled: aBoolean [
 	DebugModeEnabled := aBoolean
 ]
 
 { #category : #children }
-TbBlboc class >> defaultChildrenDataStructure [
-	^ BlChildrenArray
+TbBloc class >> defaultChildrenDataStructure [
+	^ TbChildrenArray
 ]
 
 { #category : #'event handling' }
-TbBlboc class >> defaultEventHandlerRegistry [
-	^ BlHandlerAnnouncerRegistry
+TbBloc class >> defaultEventHandlerRegistry [
+	^ TbHandlerAnnouncerRegistry
 ]
 
 { #category : #assertions }
-TbBlboc class >> disableAssertions [
+TbBloc class >> disableAssertions [
 	self assertionsEnabled: false
 ]
 
 { #category : #debugging }
-TbBlboc class >> disableDebugMode [
+TbBloc class >> disableDebugMode [
 	self debugModeEnabled: false
 ]
 
 { #category : #assertions }
-TbBlboc class >> enableAssertions [
+TbBloc class >> enableAssertions [
 	self assertionsEnabled: true
 ]
 
 { #category : #debugging }
-TbBlboc class >> enableDebugMode [
+TbBloc class >> enableDebugMode [
 	self debugModeEnabled: true
 ]
 
 { #category : #testing }
-TbBlboc class >> hasSparta [
+TbBloc class >> hasSparta [
 	^ self environment includesKey: #BlSpartaRenderer
 ]
 
 { #category : #children }
-TbBlboc class >> preferableChildrenDataStructure [
+TbBloc class >> preferableChildrenDataStructure [
 	<return: #'BlChildrenCollection class'>
 
 	^ PreferableChildrenDataStructure ifNil: [ self defaultChildrenDataStructure ]
 ]
 
 { #category : #children }
-TbBlboc class >> preferableChildrenDataStructure: anChildrenCollectionClass [
+TbBloc class >> preferableChildrenDataStructure: anChildrenCollectionClass [
 	PreferableChildrenDataStructure := anChildrenCollectionClass
 ]
 
 { #category : #'event handling' }
-TbBlboc class >> preferableEventHandlerRegistry [
+TbBloc class >> preferableEventHandlerRegistry [
 	<return: #'BlHandlerRegistry class'>
 
 	^ PreferableEventHandlerRegistry ifNil: [ self defaultEventHandlerRegistry ]
 ]
 
 { #category : #'event handling' }
-TbBlboc class >> preferableEventHandlerRegistry: anEventHandlerRegistryClass [
+TbBloc class >> preferableEventHandlerRegistry: anEventHandlerRegistryClass [
 	PreferableEventHandlerRegistry := anEventHandlerRegistryClass
 ]
 
 { #category : #accessing }
-TbBlboc class >> preferableHostClass [
-	^ PreferableHostClass ifNil: [ BlHost defaultHostClass ]
+TbBloc class >> preferableHostClass [
+	^ PreferableHostClass ifNil: [ TbHost defaultHostClass ]
 ]
 
 { #category : #accessing }
-TbBlboc class >> preferableHostClass: aHostClass [
+TbBloc class >> preferableHostClass: aHostClass [
 	
 	PreferableHostClass := aHostClass.
 
 	"change preferable universe host according to new setting"
-	BlUniverse default preferableHost: aHostClass new.
+	TbUniverse default preferableHost: aHostClass new.
 	SettingBrowser allSubInstances do: [ :aSettingsBrowser | aSettingsBrowser treeChanged: Announcement new ]
 ]
 
 { #category : #accessing }
-TbBlboc class >> preferableSpartaCanvas [
+TbBloc class >> preferableSpartaCanvas [
 	^ PreferableSpartaCanvasBuilder ifNil: [
 		PreferableSpartaCanvasBuilder := (self environment at: #BlSpartaRenderer) defaultCanvasBuilder class ]
 ]
 
 { #category : #accessing }
-TbBlboc class >> preferableSpartaCanvas: aBuilderClass [
+TbBloc class >> preferableSpartaCanvas: aBuilderClass [
 	PreferableSpartaCanvasBuilder := aBuilderClass.
 	
 	"change preferable universe host according to new setting"
@@ -127,12 +127,12 @@ TbBlboc class >> preferableSpartaCanvas: aBuilderClass [
 ]
 
 { #category : #settings }
-TbBlboc class >> preferencesGroup [
+TbBloc class >> preferencesGroup [
 	^ 	#appearance
 ]
 
 { #category : #settings }
-TbBlboc class >> preferencesOn: aBuilder [
+TbBloc class >> preferencesOn: aBuilder [
 	<systemsettings>
 	(aBuilder group: #Bloc)
 		label: 'Bloc';

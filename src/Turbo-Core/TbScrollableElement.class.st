@@ -73,13 +73,13 @@ TbScrollableElement >> horizontalAlignment: aBlElementAlignment [
 TbScrollableElement >> initialize [
 	super initialize.
 
-	scrollFlinger := BlScrollFlinger on: self.
+	scrollFlinger := TbScrollFlinger on: self.
 	scrollPosition := 0@0.
 	scrollState := #idle.
 	horizontalAlignment := self defaultHorizontalAlignment.
 	verticalAlignment := self defaultVerticalAlignment.
 
-	self addEventHandler: BlScrollableElementEventHandler new
+	self addEventHandler: TbScrollableElementEventHandler new
 ]
 
 { #category : #layout }

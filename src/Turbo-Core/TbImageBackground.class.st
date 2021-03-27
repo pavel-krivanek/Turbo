@@ -36,7 +36,7 @@ TbImageBackground >> image: aForm [
 		description: [ 'Image must not be nil' ].
 
 	image isNotNil
-		ifTrue: [ (BlImmutableObjectChangeError object: self) signal ].
+		ifTrue: [ (TbImmutableObjectChangeError object: self) signal ].
 		
 	image := aForm.
 	bitmap := nil

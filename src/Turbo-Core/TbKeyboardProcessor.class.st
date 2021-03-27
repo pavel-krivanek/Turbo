@@ -47,7 +47,7 @@ TbKeyboardProcessor >> handleSpaceEventProcessedEvent: anEvent [
 	(aTimeNow - previousShortcutRepeatTime) < shortcutRepeatInterval
 		ifTrue: [ ^ self ].
 	
-	aShortcutEvent := BlShortcutEvent new.
+	aShortcutEvent := TbShortcutEvent new.
 	aShortcutEvent beRepeated.
 	aShortcutEvent buffer: self buffer.
 	aShortcutEvent target: (self findTarget: anEvent).
@@ -60,7 +60,7 @@ TbKeyboardProcessor >> handleSpaceEventProcessedEvent: anEvent [
 TbKeyboardProcessor >> initialize [
 	super initialize.
 	
-	buffer := BlKeyboardBuffer new.
+	buffer := TbKeyboardBuffer new.
 	preventKeystrokes := false.
 
 	shortcutRepeatInterval := 100 milliSeconds. "how often a shortcut even should be sent while user still presses keys"
@@ -91,7 +91,7 @@ TbKeyboardProcessor >> processKeyDown: anEvent [
 	anEvent target: aTarget.
 	self fireEvent: anEvent.
 
-	aShortcutEvent := BlShortcutEvent new.
+	aShortcutEvent := TbShortcutEvent new.
 	aShortcutEvent buffer: self buffer.
 	aShortcutEvent target: aTarget.
 	self fireEvent: aShortcutEvent.
