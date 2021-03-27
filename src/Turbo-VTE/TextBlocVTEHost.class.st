@@ -33,7 +33,7 @@ TextBlocVTEHost class >> example [
 	e2 addChild: e3.
 
 	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop new 
+	universe pulseLoop: (TextBlocPulseLoop2 new 
 		universe: universe;
 		yourself).
 

@@ -52,12 +52,12 @@ SpTextBlocWindowAdapter >> initialize [
 { #category : #accessing }
 SpTextBlocWindowAdapter >> initializeSpace [
 
-	space := TextBlocSpace new.
+	space := TextBlocSpace2 new.
 	space extent: 80@25.
 	space root size: 80@25.	
 	
 	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop new 
+	universe pulseLoop: (TextBlocPulseLoop2 new 
 		universe: universe;
 		yourself).
 

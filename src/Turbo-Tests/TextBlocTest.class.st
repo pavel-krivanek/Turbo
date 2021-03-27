@@ -29,7 +29,7 @@ TextBlocTest >> setUp [
 	space extent: 50@10.
 
 	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop new 
+	universe pulseLoop: (TextBlocPulseLoop2 new 
 		universe: universe;
 		yourself).
 

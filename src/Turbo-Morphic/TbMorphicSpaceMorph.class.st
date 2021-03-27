@@ -32,7 +32,7 @@ TbMorphicSpaceMorph class >> example1 [
 	e2 addChild: e3.
 
 	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop new 
+	universe pulseLoop: (TextBlocPulseLoop2 new 
 		universe: universe;
 		yourself).
 
@@ -74,7 +74,7 @@ TbMorphicSpaceMorph class >> example2 [
 	e2 addChild: e3.
 
 	universe := BlUniverse new.
-	universe pulseLoop: (TextBlocPulseLoop new 
+	universe pulseLoop: (TextBlocPulseLoop2 new 
 		universe: universe;
 		yourself).
 
