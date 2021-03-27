@@ -44,7 +44,7 @@ TbChildrenRope >> do: aBlock [
 TbChildrenRope >> initialize [
 	super initialize.
 	
-	rope := BlCollectionRope collection: #() 
+	rope := TbCollectionRope collection: #() 
 ]
 
 { #category : #accessing }

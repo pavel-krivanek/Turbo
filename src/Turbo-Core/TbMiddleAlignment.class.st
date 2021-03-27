@@ -10,10 +10,10 @@ Class {
 
 { #category : #factory }
 TbMiddleAlignment class >> horizontal [
-	^ BlHorizontalAlignment center
+	^ TbHorizontalAlignment center
 ]
 
 { #category : #factory }
 TbMiddleAlignment class >> vertical [
-	^ BlVerticalAlignment center
+	^ TbVerticalAlignment center
 ]

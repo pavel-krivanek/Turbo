@@ -66,27 +66,27 @@ TbScalableElement >> contentElement: anElement [
 TbScalableElement >> defaultScaleStrategy [
 	<return: #BlScalableStrategy>
 
-	^ BlScalableFitAllStrategy new
+	^ TbScalableFitAllStrategy new
 ]
 
 { #category : #'api - scaling' }
 TbScalableElement >> fitAll [
-	self scaleStrategy: BlScalableFitAllStrategy new
+	self scaleStrategy: TbScalableFitAllStrategy new
 ]
 
 { #category : #'api - scaling' }
 TbScalableElement >> fitHeight [
-	self scaleStrategy: BlScalableFitHeightStrategy new
+	self scaleStrategy: TbScalableFitHeightStrategy new
 ]
 
 { #category : #'api - scaling' }
 TbScalableElement >> fitWidth [
-	self scaleStrategy: BlScalableFitWidthStrategy new
+	self scaleStrategy: TbScalableFitWidthStrategy new
 ]
 
 { #category : #'api - scaling' }
 TbScalableElement >> fixed: aNumber [
-	self scaleStrategy: (BlScalableFixedStrategy zoom: aNumber)
+	self scaleStrategy: (TbScalableFixedStrategy zoom: aNumber)
 ]
 
 { #category : #testing }
@@ -106,7 +106,7 @@ TbScalableElement >> initialize [
 
 { #category : #'api - scaling' }
 TbScalableElement >> maxScale: aNumber [
-	self scaleStrategy: ((BlScalableMaxDecorator on: self scaleStrategy) maxScale: aNumber)
+	self scaleStrategy: ((TbScalableMaxDecorator on: self scaleStrategy) maxScale: aNumber)
 ]
 
 { #category : #layout }
@@ -116,7 +116,7 @@ TbScalableElement >> measureMatching: anExtentMeasurementSpec [
 	aTransformedBounds := self contentElement transformation inverseTransformBounds: self measuredBounds bounds.
 
 	widthSpec := self contentElement constraints horizontal resizer isMatchParent
-		ifTrue: [ BlMeasurementSpec exact: aTransformedBounds width ]
+		ifTrue: [ TbMeasurementSpec exact: aTransformedBounds width ]
 		ifFalse: [ 
 			self layout
 				measurementSpecFor: anExtentMeasurementSpec widthSpec
@@ -124,7 +124,7 @@ TbScalableElement >> measureMatching: anExtentMeasurementSpec [
 				resizer: self contentElement constraints horizontal resizer ].
 			
 	heightSpec := self contentElement constraints vertical resizer isMatchParent
-		ifTrue: [ BlMeasurementSpec exact: aTransformedBounds height ]
+		ifTrue: [ TbMeasurementSpec exact: aTransformedBounds height ]
 		ifFalse: [
 			self layout
 				measurementSpecFor: anExtentMeasurementSpec heightSpec
@@ -154,7 +154,7 @@ TbScalableElement >> measureScale [
 
 { #category : #'api - scaling' }
 TbScalableElement >> minScale: aNumber [
-	self scaleStrategy: ((BlScalableMinDecorator on: self scaleStrategy) minScale: aNumber)
+	self scaleStrategy: ((TbScalableMinDecorator on: self scaleStrategy) minScale: aNumber)
 ]
 
 { #category : #'hooks - children' }
@@ -177,7 +177,7 @@ TbScalableElement >> onLayout: aBounds [
 	self hasContentElement
 		ifFalse: [ ^ self ].
 
-	aContentBounds := BlBounds origin: 0 @ 0 extent: self contentElement measuredExtent.
+	aContentBounds := TbBounds origin: 0 @ 0 extent: self contentElement measuredExtent.
 	aContentBounds translateBy: (self measuredExtent - aContentBounds extent) / 2.0.
 	
 	self contentElement applyLayoutIn: aContentBounds

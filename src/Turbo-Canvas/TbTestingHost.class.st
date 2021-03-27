@@ -37,7 +37,7 @@ TbTestingHost >> createHostSpaceFor: aSpace [
 
 	| aHostSpace|
 
-	aHostSpace := TextBlocTestingHostSpace new. 
+	aHostSpace := TbTestingHostSpace new. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
 	aHostSpace createDisplayMatrix. "maybe not the best place here"

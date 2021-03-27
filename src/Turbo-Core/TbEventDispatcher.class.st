@@ -10,7 +10,7 @@ Class {
 TbEventDispatcher >> dispatchEvent: anEvent [
 	<return: #BlEvent>
 
-	^ self dispatchEvent: anEvent next: BlEventDispatcherChain empty
+	^ self dispatchEvent: anEvent next: TbEventDispatcherChain empty
 ]
 
 { #category : #'api - event managing' }

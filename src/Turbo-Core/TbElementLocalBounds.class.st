@@ -49,10 +49,10 @@ TbElementLocalBounds >> height [
 TbElementLocalBounds >> inChild: anElement [
 	<return: #BlElementBounds>
 
-	^ BlElementBoundsInChild new
+	^ TbElementBoundsInChild new
 		originalElement: self referenceElement;
 		referenceElement: anElement;
-		bounds: (anElement globalBoundsToMine: (BlBounds new left: 0 top: 0 corner: self extent) fromParent: self referenceElement);
+		bounds: (anElement globalBoundsToMine: (TbBounds new left: 0 top: 0 corner: self extent) fromParent: self referenceElement);
 		yourself
 ]
 
@@ -60,9 +60,9 @@ TbElementLocalBounds >> inChild: anElement [
 TbElementLocalBounds >> inLocal [
 	<return: #BlElementBounds>
 
-	^ BlElementBoundsInLocal new
+	^ TbElementBoundsInLocal new
 		referenceElement: self referenceElement;
-		bounds: (BlBounds new left: 0 top: 0 corner: self extent);
+		bounds: (TbBounds new left: 0 top: 0 corner: self extent);
 		yourself
 ]
 
@@ -70,10 +70,10 @@ TbElementLocalBounds >> inLocal [
 TbElementLocalBounds >> inParent [
 	<return: #BlElementBounds>
 	
-	^ BlElementBoundsInParent new
+	^ TbElementBoundsInParent new
 		originalElement: self referenceElement;
 		referenceElement: self referenceElement;
-		bounds: (self localBoundsToParent: (BlBounds new left: 0 top: 0 corner: self extent));
+		bounds: (self localBoundsToParent: (TbBounds new left: 0 top: 0 corner: self extent));
 		yourself
 ]
 
@@ -87,10 +87,10 @@ TbElementLocalBounds >> inParent: anElement [
 		(aParentElement hasParent and: [ aParentElement parent == anElement ])
 			ifTrue: [ subParent := aParentElement ] ].
 
-	^ BlElementBoundsInParent new
+	^ TbElementBoundsInParent new
 		originalElement: self referenceElement;
 		referenceElement: subParent;
-		bounds: (anElement localBoundsToMine: (BlBounds new left: 0 top: 0 corner: self extent) fromChild: self referenceElement);
+		bounds: (anElement localBoundsToMine: (TbBounds new left: 0 top: 0 corner: self extent) fromChild: self referenceElement);
 		yourself
 ]
 
@@ -98,9 +98,9 @@ TbElementLocalBounds >> inParent: anElement [
 TbElementLocalBounds >> inSpace [
 	<return: #BlElementBounds>
 	
-	^ BlElementBoundsInSpace new
+	^ TbElementBoundsInSpace new
 		referenceElement: self referenceElement;
-		bounds: (self localBoundsToSpace: (BlBounds new left: 0 top: 0 corner: self extent));
+		bounds: (self localBoundsToSpace: (TbBounds new left: 0 top: 0 corner: self extent));
 		yourself
 ]
 

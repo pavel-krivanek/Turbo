@@ -6,22 +6,22 @@ Class {
 
 { #category : #factory }
 TbEasing class >> bounceIn [
-	^ BlEasingBounceIn default
+	^ TbEasingBounceIn default
 ]
 
 { #category : #factory }
 TbEasing class >> bounceInOut [
-	^ BlEasingBounceInOut default
+	^ TbEasingBounceInOut default
 ]
 
 { #category : #factory }
 TbEasing class >> bounceOut [
-	^ BlEasingBounceOut default
+	^ TbEasingBounceOut default
 ]
 
 { #category : #factory }
 TbEasing class >> linear [
-	^ BlLinearInterpolator default
+	^ TbLinearInterpolator default
 ]
 
 { #category : #interpolation }

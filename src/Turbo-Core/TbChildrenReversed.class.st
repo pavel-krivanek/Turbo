@@ -34,7 +34,7 @@ TbChildrenReversed >> name [
 
 { #category : #'children - subsets' }
 TbChildrenReversed >> reversed [
-	^ BlChildrenArray from: subsetArray
+	^ TbChildrenArray from: subsetArray
 ]
 
 { #category : #initialization }

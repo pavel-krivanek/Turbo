@@ -70,8 +70,8 @@ TbGridLayoutInterval >> min [
 TbGridLayoutInterval >> min: aMinValue max: aMaxValue [
 	"Construct a new interval"
 
-	min ifNotNil: [ (BlImmutableObjectChangeError object: self) signal ].
-	max ifNotNil: [ (BlImmutableObjectChangeError object: self) signal ].
+	min ifNotNil: [ (TbImmutableObjectChangeError object: self) signal ].
+	max ifNotNil: [ (TbImmutableObjectChangeError object: self) signal ].
 
 	min := aMinValue.
 	max := aMaxValue

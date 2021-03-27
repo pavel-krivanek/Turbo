@@ -59,19 +59,19 @@ TbDragboard >> hasLocalData [
 { #category : #'as yet unclassified' }
 TbDragboard >> initialize [
 	super initialize.
-	space := BlWeakRef new.
+	space := TbWeakRef new.
 ]
 
 { #category : #accessing }
 TbDragboard >> localData [
 	"data shared between multiple spaces"
 
-	^ BlLocalClipboard clipData
+	^ TbLocalClipboard clipData
 ]
 
 { #category : #accessing }
 TbDragboard >> localData: anObject [
-	BlLocalClipboard clipData: anObject
+	TbLocalClipboard clipData: anObject
 ]
 
 { #category : #accessing }

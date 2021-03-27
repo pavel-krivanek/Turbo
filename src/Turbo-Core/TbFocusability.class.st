@@ -13,17 +13,17 @@ Class {
 
 { #category : #accessing }
 TbFocusability class >> after [
-	^ after ifNil: [ after := BlFocusabilityAfter new ]
+	^ after ifNil: [ after := TbFocusabilityAfter new ]
 ]
 
 { #category : #accessing }
 TbFocusability class >> before [
-	^ before ifNil: [ before := BlFocusabilityBefore new ]
+	^ before ifNil: [ before := TbFocusabilityBefore new ]
 ]
 
 { #category : #accessing }
 TbFocusability class >> block [
-	^ block ifNil: [ block := BlFocusabilityBlock new ]
+	^ block ifNil: [ block := TbFocusabilityBlock new ]
 ]
 
 { #category : #cleanup }

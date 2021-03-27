@@ -16,15 +16,15 @@ Class {
 { #category : #'instance creation' }
 TbExtentMeasurementSpec class >> exact: anExtent [
 	^ self new
-		widthSpec: (BlMeasurementSpec exact: anExtent x);
-		heightSpec: (BlMeasurementSpec exact: anExtent y)
+		widthSpec: (TbMeasurementSpec exact: anExtent x);
+		heightSpec: (TbMeasurementSpec exact: anExtent y)
 ]
 
 { #category : #'instance creation' }
 TbExtentMeasurementSpec class >> unspecified [
 	^ self new
-		widthSpec: BlMeasurementSpec unspecified;
-		heightSpec: BlMeasurementSpec unspecified
+		widthSpec: TbMeasurementSpec unspecified;
+		heightSpec: TbMeasurementSpec unspecified
 ]
 
 { #category : #comparing }

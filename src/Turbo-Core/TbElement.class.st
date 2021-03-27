@@ -401,7 +401,7 @@ TbElement >> asElement [
 TbElement >> asPannableElement [
 	| pannable |
 	self removeFromParent.
-	pannable := BlPannableElement new.
+	pannable := TbPannableElement new.
 	pannable constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
@@ -414,7 +414,7 @@ TbElement >> asScalableElement [
 	| aScalableElement |
 	
 	self removeFromParent.
-	aScalableElement := BlScalableElement new.
+	aScalableElement := TbScalableElement new.
 	aScalableElement constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
@@ -427,7 +427,7 @@ TbElement >> asScalableElement [
 TbElement >> asScrollableElement [
 	| scrollable |
 	self removeFromParent.
-	scrollable := BlScrollableElement new.
+	scrollable := TbScrollableElement new.
 	scrollable constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
@@ -614,7 +614,7 @@ TbElement >> centerRotateByDegrees: anAngle [
 
 	self transform
 		inherit;
-		rotateBy: anAngle axis: BlVector zAxis;
+		rotateBy: anAngle axis: TbVector zAxis;
 		apply
 ]
 
@@ -627,7 +627,7 @@ TbElement >> centerRotateByRadians: anAngle [
 
 	self transform
 		inherit;
-		rotateBy: anAngle radiansToDegrees axis: BlVector zAxis;
+		rotateBy: anAngle radiansToDegrees axis: TbVector zAxis;
 		apply
 ]
 
@@ -740,10 +740,10 @@ TbElement >> computeLayout [
 				ifTrue: [ self space extent ]
 				ifFalse: [ 800 @ 600 ].
 			
-			widthSpec := BlMeasurementSpec new beAtMost: maxExtent x.
-			heightSpec := BlMeasurementSpec new beAtMost: maxExtent y.
+			widthSpec := TbMeasurementSpec new beAtMost: maxExtent x.
+			heightSpec := TbMeasurementSpec new beAtMost: maxExtent y.
 
-			self measure: (BlExtentMeasurementSpec new
+			self measure: (TbExtentMeasurementSpec new
 				widthSpec: (self layout
 					measurementSpecFor: widthSpec
 					usedSize:  0
@@ -868,14 +868,14 @@ TbElement >> defaultBorder [
 	"Return an instance of BlBorder that should be my default border"
 	<return: #BlBorder>
 
-	^ BlBorder empty
+	^ TbBorder empty
 ]
 
 { #category : #initialization }
 TbElement >> defaultElevation [
 	<return: #BlElevation>
 
-	^ BlRelativeElevation zero
+	^ TbRelativeElevation zero
 ]
 
 { #category : #initialization }
@@ -890,17 +890,17 @@ TbElement >> defaultErrorHandler [
 TbElement >> defaultFocusability [
 	<return: #BlFocusability>
 
-	^ BlFocusability before
+	^ TbFocusability before
 ]
 
 { #category : #initialization }
 TbElement >> defaultGeometry [
-	^ BlRectangle new
+	^ TbRectangle new
 ]
 
 { #category : #initialization }
 TbElement >> defaultGeometryResizer [
-	^ BlGeometryResizer match
+	^ TbGeometryResizer match
 ]
 
 { #category : #initialization }
@@ -910,7 +910,7 @@ TbElement >> defaultLayout [
 
 { #category : #initialization }
 TbElement >> defaultOutskirts [
-	^ BlOutskirts inside
+	^ TbOutskirts inside
 ]
 
 { #category : #initialization }
@@ -918,14 +918,14 @@ TbElement >> defaultTransformation [
 	"Return an instance of BlTransformation that plays a role of my default transformation"
 	<return: #BlTransformation>
 
-	^ BlElementLocalTransformation new
+	^ TbElementLocalTransformation new
 ]
 
 { #category : #initialization }
 TbElement >> defaultVisibility [
 	<return: #BlVisibility>
 
-	^ BlVisibility visible
+	^ TbVisibility visible
 ]
 
 { #category : #'api - tasks' }
@@ -958,7 +958,7 @@ TbElement >> dispatchAddedToParent [
 	"Sent after I was added to another element as direct child.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
 
-	self dispatchEvent: BlElementAddedToParentEvent new.
+	self dispatchEvent: TbElementAddedToParentEvent new.
 	self onAddedToParent.
 	self dispatchAddedToSuperParent: self
 ]
@@ -977,7 +977,7 @@ TbElement >> dispatchAddedToSuperParent: anElement [
 	"Sent after I or one of my parents was added to another element as a child.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
 
-	self dispatchEvent: (BlElementAddedToSuperParentEvent new addedElement: anElement).
+	self dispatchEvent: (TbElementAddedToSuperParentEvent new addedElement: anElement).
 	self onAddedToSuperParent: anElement.
 
 	self childrenDo: [ :aChildElement | aChildElement dispatchAddedToSuperParent: anElement ]
@@ -1028,7 +1028,7 @@ TbElement >> dispatchRemovedFromParent: aParentElement [
 	"Sent after I was removed from my parent and is not longer its direct child.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
 
-	self dispatchEvent: (BlElementRemovedEvent target: self).
+	self dispatchEvent: (TbElementRemovedEvent target: self).
 	self onRemovedFromParent: aParentElement
 ]
 
@@ -1106,7 +1106,7 @@ TbElement >> effect: anEffect [
 
 { #category : #'geometry bounds' }
 TbElement >> effectBounds [
-	^ (self effectBounds: BlBounds new) asRectangle
+	^ (self effectBounds: TbBounds new) asRectangle
 ]
 
 { #category : #'geometry bounds' }
@@ -1117,10 +1117,10 @@ TbElement >> effectBounds: aSpartaRectangle [
 { #category : #'accessing properties' }
 TbElement >> effectProperty [
 	^ effect
-		ifNil: [ effect := BlObjectProperty
+		ifNil: [ effect := TbObjectProperty
 				on: self
 				named: #effect
-				default: (BlNullEffect on: self) ]
+				default: (TbNullEffect on: self) ]
 ]
 
 { #category : #'api - look' }
@@ -1241,7 +1241,7 @@ TbElement >> focusability: aFocusability [
 { #category : #'accessing properties' }
 TbElement >> focusabilityProperty [
 	^ focusability ifNil:
-			[ focusability := BlFocusabilityProperty 
+			[ focusability := TbFocusabilityProperty 
 				on: self 
 				named: #focusability 
 				default: self defaultFocusability ]
@@ -1270,7 +1270,7 @@ TbElement >> focused: aBoolean [
 
 { #category : #'geometry bounds' }
 TbElement >> focusedBounds [
-	^ (self focusedBounds: BlBounds new) asRectangle
+	^ (self focusedBounds: TbBounds new) asRectangle
 ]
 
 { #category : #'geometry bounds' }
@@ -1807,7 +1807,7 @@ TbElement >> layout: aBlLayout [
 
 	layout := aBlLayout.
 
-	self dispatchEvent: (BlElementLayoutChangedEvent new).
+	self dispatchEvent: (TbElementLayoutChangedEvent new).
 	self requestLayout
 ]
 
@@ -2274,7 +2274,7 @@ TbElement >> notifyExtentChanged [
 	"Notify element event listeners that my extent changed.
 	Custom event handlers should subscribe to BlElementExtentChangedEvent"
 	
-	self dispatchEvent: (BlElementExtentChangedEvent target: self)
+	self dispatchEvent: (TbElementExtentChangedEvent target: self)
 ]
 
 { #category : #'geometry hooks' }
@@ -2282,7 +2282,7 @@ TbElement >> notifyPositionChanged [
 	"Notify element event listeners that my position within a parent changed.
 	Custom event handlers should subscribe to BlElementPositionChangedEvent"
 	
-	self dispatchEvent: (BlElementPositionChangedEvent target: self)
+	self dispatchEvent: (TbElementPositionChangedEvent target: self)
 ]
 
 { #category : #'geometry hooks' }
@@ -2290,7 +2290,7 @@ TbElement >> notifyPositionInSpaceChanged [
 	"Notify element event listeners that my position in space coordinates changed.
 	Custom event handlers should subscribe to BlElementPositionInSpaceChangedEvent"
 	
-	self dispatchEvent: (BlElementPositionInSpaceChangedEvent target: self)
+	self dispatchEvent: (TbElementPositionInSpaceChangedEvent target: self)
 ]
 
 { #category : #'hooks - children' }
@@ -2557,7 +2557,7 @@ TbElement >> parentPointToLocal: aPoint [
 
 { #category : #'accessing properties' }
 TbElement >> parentProperty [
-	^ parent ifNil: [ parent := BlObjectProperty on: self named: #parent ]
+	^ parent ifNil: [ parent := TbObjectProperty on: self named: #parent ]
 ]
 
 { #category : #'geometry position' }
@@ -2946,7 +2946,7 @@ TbElement >> requestParentLayout [
 
 { #category : #initialization }
 TbElement >> resetChildrenArray [
-	children := Bloc preferableChildrenDataStructure new
+	children := TbBloc preferableChildrenDataStructure new
 ]
 
 { #category : #'geometry transform' }
@@ -3281,7 +3281,7 @@ TbElement >> visibility: aVisibility [
 { #category : #'accessing properties' }
 TbElement >> visibilityProperty [
 	^ visibility ifNil:
-			[ visibility := BlVisibilityProperty 
+			[ visibility := TbVisibilityProperty 
 				on: self 
 				named: #visibility 
 				default: self defaultVisibility ]
@@ -3294,8 +3294,8 @@ TbElement >> visualBounds [
 	is never rendered outside of the element's geometry.
 	Note: When there is no sparta canvas available, return geometry bounds"
 	
-	^ Bloc hasSparta
-		ifTrue: [ self visualBoundsOn: (Bloc preferableSpartaCanvas offscreen) ]
+	^ TbBloc hasSparta
+		ifTrue: [ self visualBoundsOn: (TbBloc preferableSpartaCanvas offscreen) ]
 		ifFalse: [ self geometryBounds ]
 ]
 
@@ -3312,7 +3312,7 @@ TbElement >> visualBoundsOn: aCanvas [
 	as geometry bounds, otherwise visual bounds are larger than geometry ones"
 	<return: #Rectangle>
 	
-	^ (self visualBounds: BlBounds new on: aCanvas) asRectangle
+	^ (self visualBounds: TbBounds new on: aCanvas) asRectangle
 ]
 
 { #category : #'event handling' }
@@ -3370,5 +3370,5 @@ TbElement >> withAllParentsDo: aBlock [
 
 { #category : #accessing }
 TbElement >> zIndex: aNumber [
-	self elevation: (BlRelativeElevation elevation: aNumber)
+	self elevation: (TbRelativeElevation elevation: aNumber)
 ]

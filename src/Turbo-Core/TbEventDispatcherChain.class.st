@@ -18,7 +18,7 @@ Class {
 TbEventDispatcherChain class >> empty [
 	<return: #BlEventDispatcherChain>
 	
-	^ BlEventDispatcherEmptyChain uniqueInstance
+	^ TbEventDispatcherEmptyChain uniqueInstance
 ]
 
 { #category : #'instance creation' }

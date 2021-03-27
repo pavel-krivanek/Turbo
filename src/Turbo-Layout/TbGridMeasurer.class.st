@@ -59,13 +59,13 @@ TbGridMeasurer >> improvedMeasureChild: aChildElement parentSpec: anExtentSpec [
 		ifTrue: [ self
 			measureChild: aChildElement
 			parentSpec: anExtentSpec
-			widthResizer:(BlLayoutResizer exact: childSize)
+			widthResizer:(TbLayoutResizer exact: childSize)
 			heightResizer: aChildElement constraints vertical resizer ]
 		ifFalse: [ self
 			measureChild: aChildElement
 			parentSpec: anExtentSpec
 			widthResizer: aChildElement constraints horizontal resizer
-			heightResizer: (BlLayoutResizer exact: childSize) ]
+			heightResizer: (TbLayoutResizer exact: childSize) ]
 ]
 
 { #category : #accessing }

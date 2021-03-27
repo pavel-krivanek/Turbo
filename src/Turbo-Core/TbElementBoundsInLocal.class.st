@@ -8,7 +8,7 @@ Class {
 TbElementBoundsInLocal >> inParent [
 	<return: #BlElementBounds>
 
-	^ BlElementBoundsInParent new
+	^ TbElementBoundsInParent new
 		originalElement: self referenceElement;
 		referenceElement: self referenceElement;
 		bounds: (self localBoundsToParent: self bounds copy);
@@ -19,7 +19,7 @@ TbElementBoundsInLocal >> inParent [
 TbElementBoundsInLocal >> inSpace [
 	<return: #BlElementBounds>
 
-	^ BlElementBoundsInSpace new
+	^ TbElementBoundsInSpace new
 		referenceElement: self referenceElement;
 		bounds: (self localBoundsToSpace: self bounds copy);
 		yourself

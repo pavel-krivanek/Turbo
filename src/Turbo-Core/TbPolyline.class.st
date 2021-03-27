@@ -27,7 +27,7 @@ TbPolyline class >> vertices: aCollection [
 TbPolyline >> asElement [
 	^ super asElement
 		background: Color transparent;
-		outskirts: BlOutskirts centered
+		outskirts: TbOutskirts centered
 ]
 
 { #category : #'geometry testing' }

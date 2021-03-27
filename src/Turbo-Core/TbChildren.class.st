@@ -31,7 +31,7 @@ Class {
 TbChildren >> accountedByLayout [
 	<return: #BlChildren>
 	
-	^ BlChildrenAccountedByLayout on: self
+	^ TbChildrenAccountedByLayout on: self
 ]
 
 { #category : #'children - accessing' }
@@ -202,7 +202,7 @@ TbChildren >> ifEmpty: aBlock [
 TbChildren >> ignoredByLayout [
 	<return: #BlChildren>
 	
-	^ BlChildrenIgnoredByLayout on: self
+	^ TbChildrenIgnoredByLayout on: self
 ]
 
 { #category : #'children - accessing' }
@@ -295,7 +295,7 @@ TbChildren >> reject: aBlock [
 TbChildren >> reversed [
 	<return: #BlChildren>
 	
-	^ BlChildrenReversed on: self
+	^ TbChildrenReversed on: self
 ]
 
 { #category : #'children - accessing' }
@@ -339,7 +339,7 @@ TbChildren >> size [
 TbChildren >> sortedByElevation [
 	<return: #BlChildren>
 
-	^ BlChildrenSortedByElevation on: self
+	^ TbChildrenSortedByElevation on: self
 ]
 
 { #category : #private }

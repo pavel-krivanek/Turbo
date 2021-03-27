@@ -20,7 +20,7 @@ TbNCursesHost >> createHostSpaceFor: aSpace [
 
 	| aHostSpace|
 
-	aHostSpace := TextBlocNCursesHostSpace new. 
+	aHostSpace := TbNCursesHostSpace new. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
 	aHostSpace withTextBlocRenderer.

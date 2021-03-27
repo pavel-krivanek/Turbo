@@ -17,8 +17,8 @@ TbGridOrientation class >> horizontal [
 TbGridOrientation class >> initialize [
 	super initialize.
 	
-	HORIZONTAL := BlGridHorizontalOrientation new.
-	VERTICAL := BlGridVerticalOrientation new.
+	HORIZONTAL := TbGridHorizontalOrientation new.
+	VERTICAL := TbGridVerticalOrientation new.
 ]
 
 { #category : #factory }

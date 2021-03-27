@@ -4,7 +4,7 @@ Extension { #name : #TbElement }
 TbElement >> asPannableElement [
 	| pannable |
 	self removeFromParent.
-	pannable := BlPannableElement new.
+	pannable := TbPannableElement new.
 	pannable constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
@@ -17,7 +17,7 @@ TbElement >> asScalableElement [
 	| aScalableElement |
 	
 	self removeFromParent.
-	aScalableElement := BlScalableElement new.
+	aScalableElement := TbScalableElement new.
 	aScalableElement constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
@@ -30,7 +30,7 @@ TbElement >> asScalableElement [
 TbElement >> asScrollableElement [
 	| scrollable |
 	self removeFromParent.
-	scrollable := BlScrollableElement new.
+	scrollable := TbScrollableElement new.
 	scrollable constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].

@@ -81,7 +81,7 @@ TbGridLayoutSpec class >> start: aStart size: aSize [
 	^ self
 		start: aStart
 		size: aSize
-		alignment: BlGridAlignment undefined
+		alignment: TbGridAlignment undefined
 ]
 
 { #category : #'instance creation' }
@@ -101,7 +101,7 @@ TbGridLayoutSpec class >> start: aStart size: aSize alignment: anAlignment weigh
 
 	 ^ self basicNew
 		setAlignment: anAlignment
-		span: (BlGridLayoutInterval min: aStart max: aStart + aSize)
+		span: (TbGridLayoutInterval min: aStart max: aStart + aSize)
 		startDefined: aStart ~= UNDEFINED
 		weight: aWeight
 ]
@@ -128,15 +128,15 @@ TbGridLayoutSpec >> = anObject [
 TbGridLayoutSpec >> absoluteAlignment: isHorizontal [
 	<return: #BlGridAlignment>
 
-	(self alignment = BlGridAlignment undefined)
+	(self alignment = TbGridAlignment undefined)
 		ifFalse: [ ^ self alignment ].
 	
 	self hasWeight
 		ifFalse: [ ^ isHorizontal
-			ifTrue: [ BlGridAlignment start ]
-			ifFalse: [ BlGridAlignment baseline ] ].
+			ifTrue: [ TbGridAlignment start ]
+			ifFalse: [ TbGridAlignment baseline ] ].
 		
-	^ BlGridAlignment fill
+	^ TbGridAlignment fill
 ]
 
 { #category : #accessing }
@@ -183,9 +183,9 @@ TbGridLayoutSpec >> copyWithWeight: newWeight [
 TbGridLayoutSpec >> flexibility [
 	<return: #BlGridFlexibility>
 
-	^ (self alignment = BlGridAlignment undefined or: [ self hasWeight ])
-		ifTrue: [ BlGridLayoutBounds inflexible ]
-		ifFalse: [ BlGridLayoutBounds canStretch ]
+	^ (self alignment = TbGridAlignment undefined or: [ self hasWeight ])
+		ifTrue: [ TbGridLayoutBounds inflexible ]
+		ifFalse: [ TbGridLayoutBounds canStretch ]
 ]
 
 { #category : #testing }

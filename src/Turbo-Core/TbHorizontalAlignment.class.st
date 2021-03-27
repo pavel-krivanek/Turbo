@@ -23,11 +23,11 @@ TbHorizontalAlignment class >> directed: aBlLayoutDirection [
 TbHorizontalAlignment class >> initialize [
 	super initialize.
 	
-	left := BlLeftAlignment new.
-	right := BlRightAlignment new.
-	center := BlHorizontalCenterAlignment new.
-	start := BlHorizontalStartAlignment new.
-	end := BlHorizontalEndAlignment new.
+	left := TbLeftAlignment new.
+	right := TbRightAlignment new.
+	center := TbHorizontalCenterAlignment new.
+	start := TbHorizontalStartAlignment new.
+	end := TbHorizontalEndAlignment new.
 ]
 
 { #category : #factory }
@@ -42,7 +42,7 @@ TbHorizontalAlignment class >> leftToRight [
 
 { #category : #factory }
 TbHorizontalAlignment class >> null [
-	^ BlElementAlignment null horizontal
+	^ TbElementAlignment null horizontal
 ]
 
 { #category : #factory }
@@ -57,7 +57,7 @@ TbHorizontalAlignment class >> rightToLeft [
 
 { #category : #composition }
 TbHorizontalAlignment >> + aVerticalAlignment [
-	^ BlCompositeAlignment horizontal: self vertical: aVerticalAlignment
+	^ TbCompositeAlignment horizontal: self vertical: aVerticalAlignment
 ]
 
 { #category : #factory }

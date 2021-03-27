@@ -6,15 +6,15 @@ Class {
 
 { #category : #alignment }
 TbGridLayoutConstraintsHorizontal >> alignCenter [
-	self specAlignment: BlGridAlignment center
+	self specAlignment: TbGridAlignment center
 ]
 
 { #category : #alignment }
 TbGridLayoutConstraintsHorizontal >> alignLeft [
-	self specAlignment: BlGridAlignment left
+	self specAlignment: TbGridAlignment left
 ]
 
 { #category : #alignment }
 TbGridLayoutConstraintsHorizontal >> alignRight [
-	self specAlignment: BlGridAlignment right
+	self specAlignment: TbGridAlignment right
 ]

@@ -31,25 +31,25 @@ TbBoundsCache >> boundsInParent [
 	self deprecated: 'Use `element bounds inParent` instead'.
 
 	^ boundsInParent ifNil: [
-		boundsInParent := (self owner boundsInParent: BlBounds new) asRectangle ]
+		boundsInParent := (self owner boundsInParent: TbBounds new) asRectangle ]
 ]
 
 { #category : #accessing }
 TbBoundsCache >> boundsInSpace [
 	^ boundsInSpace ifNil: [
-		boundsInSpace := (self owner boundsInSpace: BlBounds new) asRectangle ]
+		boundsInSpace := (self owner boundsInSpace: TbBounds new) asRectangle ]
 ]
 
 { #category : #accessing }
 TbBoundsCache >> geometryBounds [
 	^ geometryBounds ifNil: [
-		geometryBounds := (self owner geometryBounds: BlBounds new) asRectangle ]
+		geometryBounds := (self owner geometryBounds: TbBounds new) asRectangle ]
 ]
 
 { #category : #accessing }
 TbBoundsCache >> geometryBoundsInSpace [
 	^ geometryBoundsInSpace
-		ifNil: [ geometryBoundsInSpace := (self owner geometryBoundsInSpace: BlBounds new) asRectangle ]
+		ifNil: [ geometryBoundsInSpace := (self owner geometryBoundsInSpace: TbBounds new) asRectangle ]
 ]
 
 { #category : #invalidation }
@@ -87,5 +87,5 @@ TbBoundsCache >> owner: anElement [
 { #category : #accessing }
 TbBoundsCache >> transformedBounds [
 	^ transformedBounds ifNil: [
-		transformedBounds := (self owner transformedBounds: BlBounds new) asRectangle ]
+		transformedBounds := (self owner transformedBounds: TbBounds new) asRectangle ]
 ]

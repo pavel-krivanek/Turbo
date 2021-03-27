@@ -34,12 +34,12 @@ TbScrollableElement >> defaultHorizontalAlignment [
 	so to not deal with nils use null object"
 	<return: #BlNullAlignment>
 	
-	^ BlElementAlignment null horizontal
+	^ TbElementAlignment null horizontal
 ]
 
 { #category : #initialization }
 TbScrollableElement >> defaultLayout [
-	^ BlFrameLayout new
+	^ TbFrameLayout new
 ]
 
 { #category : #initialization }
@@ -48,7 +48,7 @@ TbScrollableElement >> defaultVerticalAlignment [
 	so to not deal with nils use null object"
 	<return: #BlNullAlignment>
 	
-	^ BlElementAlignment null vertical
+	^ TbElementAlignment null vertical
 ]
 
 { #category : #scrolling }

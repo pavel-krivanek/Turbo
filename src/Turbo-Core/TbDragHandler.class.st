@@ -37,5 +37,5 @@ TbDragHandler >> dragStartEvent: anEvent [
 TbDragHandler >> initialize [
 	super initialize.
 
-	delegate := BlDragDelegate new
+	delegate := TbDragDelegate new
 ]

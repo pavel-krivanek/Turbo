@@ -33,7 +33,7 @@ Class {
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> a [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey a)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey a)
 ]
 
 { #category : #'keys - modifiers' }
@@ -51,33 +51,33 @@ TbKeyCombinationBuilder >> alt [
 
 { #category : #'keys - navigation' }
 TbKeyCombinationBuilder >> arrowDown [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey arrowDown)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowDown)
 ]
 
 { #category : #'keys - navigation' }
 TbKeyCombinationBuilder >> arrowLeft [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey arrowLeft)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowLeft)
 ]
 
 { #category : #'keys - navigation' }
 TbKeyCombinationBuilder >> arrowRight [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey arrowRight)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowRight)
 ]
 
 { #category : #'keys - navigation' }
 TbKeyCombinationBuilder >> arrowUp [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey arrowUp)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowUp)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> b [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey b)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey b)
 ]
 
 { #category : #'keys - special' }
 TbKeyCombinationBuilder >> backspace [
 	combination
-		with: (BlSingleKeyCombination new key: BlKeyboardKey backspace)
+		with: (TbSingleKeyCombination new key: TbKeyboardKey backspace)
 ]
 
 { #category : #builder }
@@ -87,12 +87,12 @@ TbKeyCombinationBuilder >> build [
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> c [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey c)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey c)
 ]
 
 { #category : #builder }
 TbKeyCombinationBuilder >> cnf [
-	converter := BlKeyCombinationConverterCNF new
+	converter := TbKeyCombinationConverterCNF new
 ]
 
 { #category : #'keys - modifiers' }
@@ -110,59 +110,59 @@ TbKeyCombinationBuilder >> control [
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> d [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey d)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey d)
 ]
 
 { #category : #'keys - special' }
 TbKeyCombinationBuilder >> delete [
 	combination
-		with: (BlSingleKeyCombination new key: BlKeyboardKey delete)
+		with: (TbSingleKeyCombination new key: TbKeyboardKey delete)
 ]
 
 { #category : #builder }
 TbKeyCombinationBuilder >> dnf [
-	converter := BlKeyCombinationConverterDNF new
+	converter := TbKeyCombinationConverterDNF new
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> e [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey e)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey e)
 ]
 
 { #category : #'keys - special' }
 TbKeyCombinationBuilder >> escape [
 	combination
-		with: (BlSingleKeyCombination new key: BlKeyboardKey escape)
+		with: (TbSingleKeyCombination new key: TbKeyboardKey escape)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> f [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey f)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey f)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> g [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey g)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey g)
 ]
 
 { #category : #initialization }
 TbKeyCombinationBuilder >> initialize [
 	super initialize.
 	
-	combination := BlCompulsoryCombination new.
-	converter := BlKeyCombinationConverterCNF new
+	combination := TbCompulsoryCombination new.
+	converter := TbKeyCombinationConverterCNF new
 ]
 
 { #category : #accessing }
 TbKeyCombinationBuilder >> key: aKey [
 
 	combination
-		with: (BlSingleKeyCombination new key: aKey)
+		with: (TbSingleKeyCombination new key: aKey)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> m [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey m)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey m)
 ]
 
 { #category : #'keys - modifiers' }
@@ -180,12 +180,12 @@ TbKeyCombinationBuilder >> meta [
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> n [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey n)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey n)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> p [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey p)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey p)
 ]
 
 { #category : #'keys - modifiers' }
@@ -200,18 +200,18 @@ TbKeyCombinationBuilder >> primary [
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> r [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey r)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey r)
 ]
 
 { #category : #'keys - special' }
 TbKeyCombinationBuilder >> return [
 	combination
-		with: (BlSingleKeyCombination new key: BlKeyboardKey return)
+		with: (TbSingleKeyCombination new key: TbKeyboardKey return)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> s [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey s)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey s)
 ]
 
 { #category : #'keys - modifiers' }
@@ -240,7 +240,7 @@ TbKeyCombinationBuilder >> shift [
 { #category : #'keys - special' }
 TbKeyCombinationBuilder >> tab [
 	combination
-		with: (BlSingleKeyCombination new key: BlKeyboardKey tab)
+		with: (TbSingleKeyCombination new key: TbKeyboardKey tab)
 ]
 
 { #category : #private }

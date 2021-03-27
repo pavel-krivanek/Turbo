@@ -69,12 +69,12 @@ TbDirectEventDispatcher >> addEventHandler: aHandler [
 
 { #category : #initialization }
 TbDirectEventDispatcher >> defaultFilterRegistry [
-	^ Bloc preferableEventHandlerRegistry new
+	^ TbBloc preferableEventHandlerRegistry new
 ]
 
 { #category : #initialization }
 TbDirectEventDispatcher >> defaultHandlerRegistry [
-	^ Bloc preferableEventHandlerRegistry new
+	^ TbBloc preferableEventHandlerRegistry new
 ]
 
 { #category : #'api - event managing' }
@@ -135,7 +135,7 @@ TbDirectEventDispatcher >> initialize [
 	not visible to users, think of it as implementation detail"
 	filters := nil. "BlHandlerRegistry"
 	handlers := nil. "BlHandlerRegistry"
-	shortcutHandler := BlShortcutHandler new
+	shortcutHandler := TbShortcutHandler new
 ]
 
 { #category : #'api - accessing' }

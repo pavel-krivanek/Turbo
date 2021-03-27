@@ -15,7 +15,7 @@ Class {
 TbErrorHandler >> convertToHandledError: anError in: anElement [
 	| aHandledError |
 
-	aHandledError := BlHandledError new.
+	aHandledError := TbHandledError new.
 	aHandledError error: anError freeze.
 	aHandledError errorHandler: self.
 	aHandledError element: anElement.

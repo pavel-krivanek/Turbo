@@ -12,7 +12,7 @@ Class {
 
 { #category : #factory }
 TbGridAlignment class >> baseline [
-	^ BlGridBaselineAlignment uniqueInstance
+	^ TbGridBaselineAlignment uniqueInstance
 ]
 
 { #category : #factory }
@@ -22,7 +22,7 @@ TbGridAlignment class >> bottom [
 
 { #category : #factory }
 TbGridAlignment class >> center [
-	^ BlGridCenterAlignment uniqueInstance
+	^ TbGridCenterAlignment uniqueInstance
 ]
 
 { #category : #cleanup }
@@ -39,12 +39,12 @@ TbGridAlignment class >> end [
 
 { #category : #factory }
 TbGridAlignment class >> fill [
-	^ BlGridFillAlignment uniqueInstance
+	^ TbGridFillAlignment uniqueInstance
 ]
 
 { #category : #factory }
 TbGridAlignment class >> leading [
-	^ BlGridLeadingAlignment uniqueInstance
+	^ TbGridLeadingAlignment uniqueInstance
 ]
 
 { #category : #factory }
@@ -69,12 +69,12 @@ TbGridAlignment class >> top [
 
 { #category : #factory }
 TbGridAlignment class >> trailing [
-	^ BlGridTrailingAlignment uniqueInstance
+	^ TbGridTrailingAlignment uniqueInstance
 ]
 
 { #category : #factory }
 TbGridAlignment class >> undefined [
-	^ BlGridUndefinedAlignment uniqueInstance
+	^ TbGridUndefinedAlignment uniqueInstance
 ]
 
 { #category : #accessing }
@@ -103,7 +103,7 @@ TbGridAlignment >> alignmentValue: anElement viewSize: viewSize [
 
 { #category : #accessing }
 TbGridAlignment >> bounds [
-	^ BlGridLayoutBounds new
+	^ TbGridLayoutBounds new
 ]
 
 { #category : #alignment }

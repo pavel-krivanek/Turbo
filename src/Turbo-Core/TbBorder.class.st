@@ -27,7 +27,7 @@ Class {
 
 { #category : #'instance creation' }
 TbBorder class >> builder [
-	^ BlBorderBuilder new
+	^ TbBorderBuilder new
 ]
 
 { #category : #cleanup }
@@ -39,7 +39,7 @@ TbBorder class >> cleanUp [
 
 { #category : #accessing }
 TbBorder class >> empty [
-	^ empty ifNil: [ empty := self paint: BlPaint transparent width: 0 ]
+	^ empty ifNil: [ empty := self paint: TbPaint transparent width: 0 ]
 ]
 
 { #category : #'instance creation' }

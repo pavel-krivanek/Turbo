@@ -21,12 +21,12 @@ Class {
 
 { #category : #factory }
 TbReflectionTransformation class >> horizontal [
-	^ self new reflection: (BlVector x: -1 y: 1)
+	^ self new reflection: (TbVector x: -1 y: 1)
 ]
 
 { #category : #factory }
 TbReflectionTransformation class >> vertical [
-	^ self new reflection: (BlVector x: 1 y: -1)
+	^ self new reflection: (TbVector x: 1 y: -1)
 ]
 
 { #category : #testing }

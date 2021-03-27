@@ -6,7 +6,7 @@ Class {
 
 { #category : #composition }
 TbNullVerticalAlignment >> + aHorizontalAlignment [
-	^ BlCompositeAlignment horizontal: aHorizontalAlignment vertical: self
+	^ TbCompositeAlignment horizontal: aHorizontalAlignment vertical: self
 ]
 
 { #category : #translation }

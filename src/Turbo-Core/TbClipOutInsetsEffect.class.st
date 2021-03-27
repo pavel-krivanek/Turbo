@@ -11,7 +11,7 @@ Class {
 TbClipOutInsetsEffect >> initialize [
 	super initialize.
 	
-	insets := BlInsets empty
+	insets := TbInsets empty
 ]
 
 { #category : #accessing }

@@ -25,9 +25,9 @@ TbFocusFinder >> bestCandidateBounds [
 TbFocusFinder >> initialize [
 	super initialize.
 	
-	bestCandidateBounds := BlBounds new.
-	temporaryBounds := BlBounds new.
-	focusedBounds := BlBounds new
+	bestCandidateBounds := TbBounds new.
+	temporaryBounds := TbBounds new.
+	focusedBounds := TbBounds new
 ]
 
 { #category : #'private - focus' }

@@ -21,12 +21,12 @@ TbTopAlignment class >> rightToLeft [
 
 { #category : #factory }
 TbTopAlignment >> inverted [
-	^ BlElementAlignment horizontal start
+	^ TbElementAlignment horizontal start
 ]
 
 { #category : #factory }
 TbTopAlignment >> swap [
-	^ BlElementAlignment bottom
+	^ TbElementAlignment bottom
 ]
 
 { #category : #translation }

@@ -6,15 +6,15 @@ Class {
 
 { #category : #alignment }
 TbGridLayoutConstraintsVertical >> alignBottom [
-	self specAlignment: BlGridAlignment bottom
+	self specAlignment: TbGridAlignment bottom
 ]
 
 { #category : #alignment }
 TbGridLayoutConstraintsVertical >> alignCenter [
-	self specAlignment: BlGridAlignment center
+	self specAlignment: TbGridAlignment center
 ]
 
 { #category : #alignment }
 TbGridLayoutConstraintsVertical >> alignTop [
-	self specAlignment: BlGridAlignment top
+	self specAlignment: TbGridAlignment top
 ]

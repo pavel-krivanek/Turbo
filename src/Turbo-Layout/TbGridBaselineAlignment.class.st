@@ -11,7 +11,7 @@ TbGridBaselineAlignment >> alignmentValue: anElement viewSize: viewSize [
 
 { #category : #accessing }
 TbGridBaselineAlignment >> bounds [
-	^ BlGridLayoutBaselineBounds new
+	^ TbGridLayoutBaselineBounds new
 ]
 
 { #category : #alignment }

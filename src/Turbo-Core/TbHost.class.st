@@ -52,7 +52,7 @@ TbHost class >> pickHost [
 	<return: #BlHost>
 	
 	"If setting is not set dispatches to back to me returning #defaultHostClass"
-	^ Bloc preferableHostClass new
+	^ TbBloc preferableHostClass new
 ]
 
 { #category : #'driver selection' }

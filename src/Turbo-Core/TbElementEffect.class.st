@@ -33,7 +33,7 @@ TbElementEffect >> computeBounds: aBlBounds [
 
 { #category : #geometry }
 TbElementEffect >> effectBounds [
-	^ (self effectBounds: BlBounds new) asRectangle
+	^ (self effectBounds: TbBounds new) asRectangle
 ]
 
 { #category : #geometry }

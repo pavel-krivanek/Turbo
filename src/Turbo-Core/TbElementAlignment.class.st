@@ -52,12 +52,12 @@ TbElementAlignment class >> horizontal [
 TbElementAlignment class >> initialize [
 	super initialize.
 	
-	start := BlStartAlignment new.
-	middle := BlMiddleAlignment new.
-	end := BlEndAlignment new.
-	null := BlNullAlignment new.
-	horizontal := BlHorizontalAlignment new.
-	vertical := BlVerticalAlignment new
+	start := TbStartAlignment new.
+	middle := TbMiddleAlignment new.
+	end := TbEndAlignment new.
+	null := TbNullAlignment new.
+	horizontal := TbHorizontalAlignment new.
+	vertical := TbVerticalAlignment new
 ]
 
 { #category : #factory }

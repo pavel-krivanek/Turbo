@@ -16,7 +16,7 @@ TbElementAbsoluteTransformation class >> matrix: aBlMatrix [
 TbElementAbsoluteTransformation >> initialize [
 	super initialize.
 	
-	matrix := BlMatrix2D new
+	matrix := TbMatrix2D new
 ]
 
 { #category : #invalidation }

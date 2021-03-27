@@ -51,7 +51,7 @@ TbOverlayElement >> detach [
 TbOverlayElement >> initialize [
 	super initialize.
 	
-	overlayListener := BlOverlayListener for: self.
+	overlayListener := TbOverlayListener for: self.
 	self constraintsDo: [ :c | c ignoreByLayout ].
 	self preventMouseEvents
 ]

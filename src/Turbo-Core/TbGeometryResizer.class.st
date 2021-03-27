@@ -19,7 +19,7 @@ TbGeometryResizer class >> exact: anExtent [
 	anExtent must not be nil"
 	<return: #BlGeometryResizer>
 	
-	^ BlGeomExactResizer extent: anExtent
+	^ TbGeomExactResizer extent: anExtent
 ]
 
 { #category : #'instance creation' }
@@ -27,7 +27,7 @@ TbGeometryResizer class >> match [
 	"Return an instance of resizer that makes geometry be as big as owner element"
 	<return: #BlGeometryResizer>
 
-	^ BlGeomMatchResizer uniqueInstance
+	^ TbGeomMatchResizer uniqueInstance
 ]
 
 { #category : #resizing }

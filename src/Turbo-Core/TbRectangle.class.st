@@ -31,14 +31,14 @@ TbRectangle class >> cornerRadius: aNumber [
 
 	^ self basicNew
 		initialize;
-		initializeWith: (BlCornerRadii radius: aNumber)
+		initializeWith: (TbCornerRadii radius: aNumber)
 ]
 
 { #category : #factory }
 TbRectangle class >> new [
 	^ self basicNew
 		initialize;
-		initializeWith: BlCornerRadii empty
+		initializeWith: TbCornerRadii empty
 ]
 
 { #category : #'geometry testing' }

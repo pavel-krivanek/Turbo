@@ -10,17 +10,17 @@ Class {
 
 { #category : #alignment }
 TbIgnoredLayoutConstraintsVertical >> alignBottom [
-	alignment := BlElementAlignment vertical end
+	alignment := TbElementAlignment vertical end
 ]
 
 { #category : #alignment }
 TbIgnoredLayoutConstraintsVertical >> alignCenter [
-	alignment := BlElementAlignment vertical center
+	alignment := TbElementAlignment vertical center
 ]
 
 { #category : #alignment }
 TbIgnoredLayoutConstraintsVertical >> alignTop [
-	alignment := BlElementAlignment vertical start
+	alignment := TbElementAlignment vertical start
 ]
 
 { #category : #accessing }
@@ -32,7 +32,7 @@ TbIgnoredLayoutConstraintsVertical >> alignment [
 TbIgnoredLayoutConstraintsVertical >> initialize [
 	super initialize.
 	
-	alignment := BlElementAlignment vertical null.
+	alignment := TbElementAlignment vertical null.
 	weight := 1.0
 ]
 

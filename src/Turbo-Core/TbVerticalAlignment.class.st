@@ -33,9 +33,9 @@ TbVerticalAlignment class >> end [
 TbVerticalAlignment class >> initialize [
 	super initialize.
 	
-	top := BlTopAlignment new.
-	center := BlVerticalCenterAlignment new.
-	bottom := BlBottomAlignment new
+	top := TbTopAlignment new.
+	center := TbVerticalCenterAlignment new.
+	bottom := TbBottomAlignment new
 ]
 
 { #category : #factory }
@@ -45,7 +45,7 @@ TbVerticalAlignment class >> leftToRight [
 
 { #category : #factory }
 TbVerticalAlignment class >> null [
-	^ BlElementAlignment null vertical
+	^ TbElementAlignment null vertical
 ]
 
 { #category : #factory }
@@ -65,7 +65,7 @@ TbVerticalAlignment class >> top [
 
 { #category : #composition }
 TbVerticalAlignment >> + aHorizontalAlignment [
-	^ BlCompositeAlignment horizontal: aHorizontalAlignment vertical: self
+	^ TbCompositeAlignment horizontal: aHorizontalAlignment vertical: self
 ]
 
 { #category : #factory }

@@ -37,7 +37,7 @@ TbPannableElement >> initialize [
 	
 	self alignCenter.
 	
-	zoomableElement := BlZoomableElement new.
+	zoomableElement := TbZoomableElement new.
 	self addChild: zoomableElement
 ]
 

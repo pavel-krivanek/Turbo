@@ -21,7 +21,7 @@ TbTranslationTransformation class >> translation: aVector [
 { #category : #'instance creation' }
 TbTranslationTransformation class >> x: aX y: aY z: aZ [
 	^ self new
-		translation: (BlVector x: aX y: aY z: aZ)
+		translation: (TbVector x: aX y: aY z: aZ)
 ]
 
 { #category : #initialization }

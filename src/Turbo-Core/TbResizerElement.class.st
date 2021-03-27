@@ -50,7 +50,7 @@ TbResizerElement >> bottomRight [
 
 { #category : #initialization }
 TbResizerElement >> defaultLayout [
-	^ BlFrameLayout new
+	^ TbFrameLayout new
 ]
 
 { #category : #initialization }
@@ -58,14 +58,14 @@ TbResizerElement >> initialize [
 	| topLeftResizer topCenterResizer topRightResizer middleLeftResizer middleRightListener bottomLeftListener bottomCenterResizer bottomRightListener |
 	super initialize.
 	
-	self border: (BlBorder paint: (Color blue alpha: 0.1) width: 5).
+	self border: (TbBorder paint: (Color blue alpha: 0.1) width: 5).
 	
 	topLeft := self newHandle.
 	topLeft constraintsDo: [ :c |
 		c frame horizontal alignLeft.
 		c frame vertical alignTop ].
 	
-	topLeftResizer := BlResizerTopLeftListener new.
+	topLeftResizer := TbResizerTopLeftListener new.
 	topLeft addEventHandler: topLeftResizer.
 	
 	topCenter := self newHandle.
@@ -73,7 +73,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignCenter.
 		c frame vertical alignTop ].
 	
-	topCenterResizer := BlResizerTopListener new.
+	topCenterResizer := TbResizerTopListener new.
 	topCenter addEventHandler: topCenterResizer.
 	
 	topRight := self newHandle.
@@ -81,7 +81,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignRight.
 		c frame vertical alignTop ].
 	
-	topRightResizer := BlResizerTopRightListener new.
+	topRightResizer := TbResizerTopRightListener new.
 	topRight addEventHandler: topRightResizer.
 	
 	middleLeft := self newHandle.
@@ -89,7 +89,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignLeft.
 		c frame vertical alignCenter ].
 	
-	middleLeftResizer := BlResizerLeftListener new.
+	middleLeftResizer := TbResizerLeftListener new.
 	middleLeft addEventHandler: middleLeftResizer.
 	
 	middleRight := self newHandle.
@@ -97,7 +97,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignRight.
 		c frame vertical alignCenter ].
 	
-	middleRightListener := BlResizerRightListener new.
+	middleRightListener := TbResizerRightListener new.
 	middleRight addEventHandler: middleRightListener.
 	
 	bottomLeft := self newHandle.
@@ -105,7 +105,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignLeft.
 		c frame vertical alignBottom ].
 	
-	bottomLeftListener := BlResizerBottomLeftListener new.
+	bottomLeftListener := TbResizerBottomLeftListener new.
 	bottomLeft addEventHandler: bottomLeftListener.
 	
 	bottomCenter := self newHandle.
@@ -113,7 +113,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignCenter.
 		c frame vertical alignBottom ].
 	
-	bottomCenterResizer := BlResizerBottomListener new.
+	bottomCenterResizer := TbResizerBottomListener new.
 	bottomCenter addEventHandler: bottomCenterResizer.
 	
 	bottomRight := self newHandle.
@@ -121,7 +121,7 @@ TbResizerElement >> initialize [
 		c frame horizontal alignRight.
 		c frame vertical alignBottom ].
 
-	bottomRightListener := BlResizerBottomRightListener new.
+	bottomRightListener := TbResizerBottomRightListener new.
 	bottomRight addEventHandler: bottomRightListener.
 	
 	resizerListeners := { topLeftResizer . topCenterResizer . topRightResizer . middleLeftResizer . middleRightListener . bottomLeftListener . bottomCenterResizer . bottomRightListener }.
@@ -149,10 +149,10 @@ TbResizerElement >> middleRight [
 
 { #category : #'instance creation' }
 TbResizerElement >> newHandle [
-	^ BlElement new
+	^ TbElement new
 		opacity: 0.5;
 		background: (Color white);
-		border: (BlBorder paint: Color gray width: 1);
+		border: (TbBorder paint: Color gray width: 1);
 		size: 6@6
 ]
 

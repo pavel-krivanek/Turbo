@@ -50,8 +50,8 @@ TbElementChanges >> extentChange: anOldExtent to: aNewExtent [
 TbElementChanges >> initialize [
 	super initialize.
 	
-	extentChange := BlElementExtentChange new.
-	positionChange := BlElementPositionChange new
+	extentChange := TbElementExtentChange new.
+	positionChange := TbElementPositionChange new
 ]
 
 { #category : #testing }

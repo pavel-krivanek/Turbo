@@ -25,12 +25,12 @@ TbRightAlignment class >> rightToLeft [
 
 { #category : #factory }
 TbRightAlignment >> inverted [
-	^ BlElementAlignment vertical end
+	^ TbElementAlignment vertical end
 ]
 
 { #category : #factory }
 TbRightAlignment >> swap [
-	^ BlElementAlignment left
+	^ TbElementAlignment left
 ]
 
 { #category : #translation }

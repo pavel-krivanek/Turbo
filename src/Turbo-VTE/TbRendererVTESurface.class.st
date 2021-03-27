@@ -53,7 +53,7 @@ TbRendererVTESurface >> hostSpace: aHostSpace [
 { #category : #initialization }
 TbRendererVTESurface >> initializeOn: aHostRenderer [
 
-	eventHandler := TextBlocVTEEventHandler new.
+	eventHandler := TbVTEEventHandler new.
 	eventHandler surface: self. 
 
 	aHostRenderer initializeForForm: self.

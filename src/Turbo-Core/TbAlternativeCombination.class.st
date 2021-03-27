@@ -59,7 +59,7 @@ TbAlternativeCombination >> isAlternative [
 
 { #category : #adding }
 TbAlternativeCombination >> key: aKey [
-	self with: (BlSingleKeyCombination key: aKey)
+	self with: (TbSingleKeyCombination key: aKey)
 ]
 
 { #category : #'key matching' }

@@ -22,8 +22,8 @@ TbGridAlignmentMode class >> alignMargins [
 TbGridAlignmentMode class >> initialize [
 	super initialize.
 	
-	ALIGN_MARGINS := BlGridAlignMarginsMode new.
-	ALIGN_BOUNDS := BlGridAlignBoundsMode new
+	ALIGN_MARGINS := TbGridAlignMarginsMode new.
+	ALIGN_BOUNDS := TbGridAlignBoundsMode new
 ]
 
 { #category : #comparing }

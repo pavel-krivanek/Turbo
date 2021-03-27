@@ -18,7 +18,7 @@ TbRendererTerminalSurface >> at: aPoint put: aCharacter textColor: textColor bac
 
 	| term |
 	
-	term := TextBlocVT100 stdout.
+	term := TbVT100 stdout.
 
 	term moveAt: aPoint.
 	

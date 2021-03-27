@@ -20,10 +20,10 @@ TbGeometry >> asElement [
 	geometry to me. Subclasses may be converted to more specific elements"
 	<return: #BlElement>
 
-	^ BlElement new
+	^ TbElement new
 		size: self extent;
 		background: (Color gray alpha: 0.4);
-		border: (BlBorder builder paint: Color gray; width: 2; build);
+		border: (TbBorder builder paint: Color gray; width: 2; build);
 		geometry: self
 ]
 
@@ -36,7 +36,7 @@ TbGeometry >> containsPoint: aPoint in: aBlElement [
 	^ self
 		containsPoint: aPoint
 		in: aBlElement
-		on: Bloc preferableSpartaCanvas offscreen
+		on: TbBloc preferableSpartaCanvas offscreen
 ]
 
 { #category : #'geometry testing' }
@@ -78,7 +78,7 @@ TbGeometry >> geometryBounds [
 	Override geometryBounds: to customize computation"
 	<return: #Rectangle>
 
-	^ (self geometryBounds: BlBounds new) asRectangle
+	^ (self geometryBounds: TbBounds new) asRectangle
 ]
 
 { #category : #'geometry bounds' }
@@ -97,7 +97,7 @@ TbGeometry >> initialize [
 	super initialize.
 	
 	extent := 0@0.
-	pathCache := BlPathCache on: self
+	pathCache := TbPathCache on: self
 ]
 
 { #category : #geometry }

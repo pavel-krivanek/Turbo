@@ -10,17 +10,17 @@ Class {
 
 { #category : #alignment }
 TbFrameLayoutConstraintsVertical >> alignBottom [
-	alignment := BlElementAlignment vertical end
+	alignment := TbElementAlignment vertical end
 ]
 
 { #category : #alignment }
 TbFrameLayoutConstraintsVertical >> alignCenter [
-	alignment := BlElementAlignment vertical center
+	alignment := TbElementAlignment vertical center
 ]
 
 { #category : #alignment }
 TbFrameLayoutConstraintsVertical >> alignTop [
-	alignment := BlElementAlignment vertical start
+	alignment := TbElementAlignment vertical start
 ]
 
 { #category : #accessing }
@@ -37,7 +37,7 @@ TbFrameLayoutConstraintsVertical >> alignment: aBlElementAlignment [
 TbFrameLayoutConstraintsVertical >> initialize [
 	super initialize.
 	
-	alignment := BlElementAlignment vertical null.
+	alignment := TbElementAlignment vertical null.
 	weight := 1.0
 ]
 

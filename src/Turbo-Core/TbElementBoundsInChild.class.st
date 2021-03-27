@@ -14,7 +14,7 @@ TbElementBoundsInChild >> inParent [
 	self referenceElement hasParent
 		ifFalse: [ ^ self ].
 
-	^ BlElementBoundsInParent new
+	^ TbElementBoundsInParent new
 		originalElement: self originalElement;
 		referenceElement: self referenceElement;
 		bounds: (self referenceElement localBoundsToParent: self bounds copy);
@@ -25,7 +25,7 @@ TbElementBoundsInChild >> inParent [
 TbElementBoundsInChild >> inSpace [
 	<return: #BlElementBounds>
 
-	^ BlElementBoundsInSpace new
+	^ TbElementBoundsInSpace new
 		referenceElement: self referenceElement;
 		bounds: (self localBoundsToSpace: self bounds copy);
 		yourself

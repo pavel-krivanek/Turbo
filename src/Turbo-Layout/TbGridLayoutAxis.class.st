@@ -282,13 +282,13 @@ TbGridLayoutAxis >> createArcs [
 			0 to: (self count - 1) do: [ :i |
 				self
 					includeIn: mins
-					span: (BlGridLayoutInterval min: i max: i + 1)
-					size: (BlGridMutableInteger value: 0) ] ].
+					span: (TbGridLayoutInterval min: i max: i + 1)
+					size: (TbGridMutableInteger value: 0) ] ].
 	
 	"Add the container constraints. Use the version of include that allows duplicate entries in case a child spans the entire grid."
 	n := self count.
-	self includeIn: mins span: (BlGridLayoutInterval min: 0 max: n) size: parentMin ignoreIfPresent: false.
-	self includeIn: maxs span: (BlGridLayoutInterval min: n max: 0) size: parentMax ignoreIfPresent: false.
+	self includeIn: mins span: (TbGridLayoutInterval min: 0 max: n) size: parentMin ignoreIfPresent: false.
+	self includeIn: maxs span: (TbGridLayoutInterval min: n max: 0) size: parentMax ignoreIfPresent: false.
 	
 	"sort"
 	sMins := self topologicalSort: mins.
@@ -308,7 +308,7 @@ TbGridLayoutAxis >> createGroupBounds [
 		spec := (childConstraints at: index) spec.
 		bounds := (spec absoluteAlignment: self horizontal) bounds.
 		assocs add: (spec -> bounds) ].
-	^ BlGridPackedMap fromAssociations: assocs
+	^ TbGridPackedMap fromAssociations: assocs
 ]
 
 { #category : #'computing links' }
@@ -322,9 +322,9 @@ TbGridLayoutAxis >> createLinks: isMin [
 		span := isMin
 			ifTrue: [ spec span ]
 			ifFalse: [ spec span inversed ].
-		theLinks add: (span -> BlGridMutableInteger new) ].
+		theLinks add: (span -> TbGridMutableInteger new) ].
 
-	^ BlGridPackedMap fromAssociations: theLinks
+	^ TbGridPackedMap fromAssociations: theLinks
 ]
 
 { #category : #initialization }
@@ -459,7 +459,7 @@ TbGridLayoutAxis >> includeIn: theArcs span: aSpan size: aSize ignoreIfPresent: 
 		and: [ theArcs anySatisfy: [ :arc | arc span = aSpan ] ])
 			ifTrue: [ ^ self ].
 
-	theArcs add: (BlGridLayoutArc span: aSpan value: aSize )
+	theArcs add: (TbGridLayoutArc span: aSpan value: aSize )
 ]
 
 { #category : #'computing locations' }
@@ -503,8 +503,8 @@ TbGridLayoutAxis >> initialize [
 	
 	orderPreserved := self defaultOrderPreserved.
 
-	parentMin := BlGridMutableInteger value: 0.
-	parentMax := BlGridMutableInteger value: SmallInteger minVal
+	parentMin := TbGridMutableInteger value: 0.
+	parentMax := TbGridMutableInteger value: SmallInteger minVal
 ]
 
 { #category : #invalidate }

@@ -15,7 +15,7 @@ Class {
 TbDragItem >> createPreview [
 	<return: #BlElement>
 	
-	^ BlElement new
+	^ TbElement new
 		size: 20@20;
 		background: Color blue
 ]

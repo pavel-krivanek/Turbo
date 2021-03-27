@@ -48,7 +48,7 @@ TbCompositeAlignment >> inverted [
 
 { #category : #factory }
 TbCompositeAlignment >> leftToRight [
-	direction := BlLayoutDirection leftToRight
+	direction := TbLayoutDirection leftToRight
 ]
 
 { #category : #printing }
@@ -65,7 +65,7 @@ TbCompositeAlignment >> printOn: aStream [
 
 { #category : #factory }
 TbCompositeAlignment >> rightToLeft [
-	direction := BlLayoutDirection rightToLeft
+	direction := TbLayoutDirection rightToLeft
 ]
 
 { #category : #factory }

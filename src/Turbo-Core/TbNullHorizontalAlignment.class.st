@@ -17,8 +17,8 @@ TbNullHorizontalAlignment class >> directed: aBlLayoutDirection [
 TbNullHorizontalAlignment class >> initialize [
 	super initialize.
 	
-	rightToLeft := BlNullRightAlignment new.
-	leftToRight := BlNullLeftAlignment new
+	rightToLeft := TbNullRightAlignment new.
+	leftToRight := TbNullLeftAlignment new
 ]
 
 { #category : #factory }
@@ -33,7 +33,7 @@ TbNullHorizontalAlignment class >> rightToLeft [
 
 { #category : #composition }
 TbNullHorizontalAlignment >> + aVerticalAlignment [
-	^ BlCompositeAlignment horizontal: self vertical: aVerticalAlignment
+	^ TbCompositeAlignment horizontal: self vertical: aVerticalAlignment
 ]
 
 { #category : #factory }

@@ -83,9 +83,9 @@ TbElementChange >> name [
 { #category : #'instance creation' }
 TbElementChange >> newChangeValue: anObject [
 
-	^ Bloc debugModeEnabled
-		ifTrue: [ BlElementChangeRecordWithContext new changedValue: anObject; context: thisContext copyStack ]
-		ifFalse: [ BlElementChangeRecord new changedValue: anObject ]
+	^ TbBloc debugModeEnabled
+		ifTrue: [ TbElementChangeRecordWithContext new changedValue: anObject; context: thisContext copyStack ]
+		ifFalse: [ TbElementChangeRecord new changedValue: anObject ]
 ]
 
 { #category : #recording }

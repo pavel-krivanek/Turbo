@@ -30,5 +30,5 @@ TbEventDispatcherEmptyChain >> dispatchEvent: anEvent [
 
 { #category : #'api - adding' }
 TbEventDispatcherEmptyChain >> withNext: aBlEventDispatcher [
-	^ BlEventDispatcherChain with: aBlEventDispatcher
+	^ TbEventDispatcherChain with: aBlEventDispatcher
 ]

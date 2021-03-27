@@ -21,10 +21,10 @@ TbHorizontalEndAlignment class >> rightToLeft [
 
 { #category : #factory }
 TbHorizontalEndAlignment >> inverted [
-	^ BlElementAlignment vertical end
+	^ TbElementAlignment vertical end
 ]
 
 { #category : #factory }
 TbHorizontalEndAlignment >> swap [
-	^ BlElementAlignment horizontal start
+	^ TbElementAlignment horizontal start
 ]

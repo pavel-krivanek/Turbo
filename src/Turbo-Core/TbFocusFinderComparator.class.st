@@ -31,8 +31,8 @@ TbFocusFinderComparator >> bounds: aBlBounds of: anElement [
 TbFocusFinderComparator >> initialize [
 	super initialize.
 	
-	firstBounds := BlBounds new.
-	secondBounds := BlBorder new
+	firstBounds := TbBounds new.
+	secondBounds := TbBorder new
 ]
 
 { #category : #testing }

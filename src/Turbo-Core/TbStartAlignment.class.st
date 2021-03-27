@@ -6,10 +6,10 @@ Class {
 
 { #category : #factory }
 TbStartAlignment class >> horizontal [
-	^ BlHorizontalAlignment start
+	^ TbHorizontalAlignment start
 ]
 
 { #category : #factory }
 TbStartAlignment class >> vertical [
-	^ BlVerticalAlignment top
+	^ TbVerticalAlignment top
 ]

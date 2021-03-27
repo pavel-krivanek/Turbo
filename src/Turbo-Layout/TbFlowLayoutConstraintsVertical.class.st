@@ -9,17 +9,17 @@ Class {
 
 { #category : #alignment }
 TbFlowLayoutConstraintsVertical >> alignBottom [
-	alignment := BlElementAlignment vertical end
+	alignment := TbElementAlignment vertical end
 ]
 
 { #category : #alignment }
 TbFlowLayoutConstraintsVertical >> alignCenter [
-	alignment := BlElementAlignment vertical center
+	alignment := TbElementAlignment vertical center
 ]
 
 { #category : #alignment }
 TbFlowLayoutConstraintsVertical >> alignTop [
-	alignment := BlElementAlignment vertical start
+	alignment := TbElementAlignment vertical start
 ]
 
 { #category : #accessing }
@@ -31,5 +31,5 @@ TbFlowLayoutConstraintsVertical >> alignment [
 TbFlowLayoutConstraintsVertical >> initialize [
 	super initialize.
 	
-	alignment := BlElementAlignment start vertical
+	alignment := TbElementAlignment start vertical
 ]

@@ -19,12 +19,12 @@ Class {
 
 { #category : #accessing }
 TbGridLayoutBounds class >> canStretch [
-	^ BlGridFlexibility canStretch
+	^ TbGridFlexibility canStretch
 ]
 
 { #category : #accessing }
 TbGridLayoutBounds class >> inflexible [
-	^ BlGridFlexibility inflexible
+	^ TbGridFlexibility inflexible
 ]
 
 { #category : #accessing }

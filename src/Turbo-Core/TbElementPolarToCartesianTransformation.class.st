@@ -39,7 +39,7 @@ TbElementPolarToCartesianTransformation >> computeMatrix [
 	cartesianX := polarR * polarPhi degreesToRadians cos.
 	cartesianY := polarR * polarPhi degreesToRadians sin negated.
 
-	matrix translateBy: (BlVector x: cartesianX - polarR y: cartesianY - polarPhi )
+	matrix translateBy: (TbVector x: cartesianX - polarR y: cartesianY - polarPhi )
 
 	"matrix := BlMatrix2D new
 		sx: self owner position y cos;
@@ -86,5 +86,5 @@ TbElementPolarToCartesianTransformation >> isIdentity [
 TbElementPolarToCartesianTransformation >> owner: anElement [
 	super owner: anElement.
 	
-	anElement when: BlElementPositionChange do: [ self invalidateMatrix ]
+	anElement when: TbElementPositionChange do: [ self invalidateMatrix ]
 ]

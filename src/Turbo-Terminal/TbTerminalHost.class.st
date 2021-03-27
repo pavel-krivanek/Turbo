@@ -20,7 +20,7 @@ TbTerminalHost >> createHostSpaceFor: aSpace [
 
 	| aHostSpace|
 
-	aHostSpace := TextBlocTerminalHostSpace new. 
+	aHostSpace := TbTerminalHostSpace new. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
 	aHostSpace withTextBlocRenderer.

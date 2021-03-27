@@ -12,8 +12,8 @@ Class {
 TbNullAlignment class >> initialize [
 	super initialize.
 	
-	vertical := BlNullVerticalAlignment new.
-	horizontal := BlNullHorizontalAlignment new.
+	vertical := TbNullVerticalAlignment new.
+	horizontal := TbNullHorizontalAlignment new.
 ]
 
 { #category : #factory }

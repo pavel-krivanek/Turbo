@@ -56,7 +56,7 @@ TbCompulsoryCombination >> isCompulsory [
 
 { #category : #adding }
 TbCompulsoryCombination >> key: aKey [
-	self with: (BlSingleKeyCombination key: aKey)
+	self with: (TbSingleKeyCombination key: aKey)
 ]
 
 { #category : #'key matching' }

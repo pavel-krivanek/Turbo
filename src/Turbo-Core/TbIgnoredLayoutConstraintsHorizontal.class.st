@@ -10,17 +10,17 @@ Class {
 
 { #category : #alignment }
 TbIgnoredLayoutConstraintsHorizontal >> alignCenter [
-	alignment := BlElementAlignment horizontal center
+	alignment := TbElementAlignment horizontal center
 ]
 
 { #category : #alignment }
 TbIgnoredLayoutConstraintsHorizontal >> alignLeft [
-	alignment := BlElementAlignment horizontal start
+	alignment := TbElementAlignment horizontal start
 ]
 
 { #category : #alignment }
 TbIgnoredLayoutConstraintsHorizontal >> alignRight [
-	alignment := BlElementAlignment horizontal end
+	alignment := TbElementAlignment horizontal end
 ]
 
 { #category : #accessing }
@@ -32,7 +32,7 @@ TbIgnoredLayoutConstraintsHorizontal >> alignment [
 TbIgnoredLayoutConstraintsHorizontal >> initialize [
 	super initialize.
 	
-	alignment := BlElementAlignment horizontal null.
+	alignment := TbElementAlignment horizontal null.
 	weight := 1.0
 ]
 

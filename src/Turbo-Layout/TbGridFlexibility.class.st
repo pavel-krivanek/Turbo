@@ -9,7 +9,7 @@ Class {
 
 { #category : #factory }
 TbGridFlexibility class >> canStretch [
-	^ BlGridCanStretch uniqueInstance
+	^ TbGridCanStretch uniqueInstance
 ]
 
 { #category : #cleanup }
@@ -21,7 +21,7 @@ TbGridFlexibility class >> cleanUp [
 
 { #category : #factory }
 TbGridFlexibility class >> inflexible [
-	^ BlGridInflexible uniqueInstance
+	^ TbGridInflexible uniqueInstance
 ]
 
 { #category : #accessing }

@@ -29,7 +29,7 @@ TbElementTransformation >> inSpace [
 		aMatrix multiplyBy: anElement transformation matrix.
 		aMatrix translateBy: anElement position ].
 	
-	^ BlElementAbsoluteTransformation matrix: aMatrix
+	^ TbElementAbsoluteTransformation matrix: aMatrix
 ]
 
 { #category : #invalidation }

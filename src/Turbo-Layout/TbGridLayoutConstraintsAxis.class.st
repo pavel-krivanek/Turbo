@@ -16,7 +16,7 @@ TbGridLayoutConstraintsAxis >> alignCenter [
 TbGridLayoutConstraintsAxis >> defaultSpec [
 	<return: #BlGridLayoutSpec>
 
-	^ BlGridLayoutSpec undefined
+	^ TbGridLayoutSpec undefined
 ]
 
 { #category : #initialization }
@@ -36,7 +36,7 @@ TbGridLayoutConstraintsAxis >> span: aNumber [
 	self assert: aNumber isNotNil.
 	self assert: aNumber >= 0.
 
-	self specSpan: (BlGridLayoutInterval min: self spec span min max: self spec span min + aNumber)
+	self specSpan: (TbGridLayoutInterval min: self spec span min max: self spec span min + aNumber)
 ]
 
 { #category : #private }

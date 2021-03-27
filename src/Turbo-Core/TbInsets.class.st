@@ -123,7 +123,7 @@ TbInsets class >> top: t right: r bottom: b left: l [
 
 { #category : #converting }
 TbInsets >> + anInsets [
-	^ BlInsets
+	^ TbInsets
 		top: top + anInsets top
 		right: right + anInsets right
 		bottom: bottom + anInsets bottom
@@ -132,7 +132,7 @@ TbInsets >> + anInsets [
 
 { #category : #converting }
 TbInsets >> - anInsets [
-	^ BlInsets
+	^ TbInsets
 		top: (top - anInsets top max: 0)
 		right: (right - anInsets right max: 0)
 		bottom: (bottom - anInsets bottom max: 0)

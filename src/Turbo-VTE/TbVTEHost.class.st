@@ -61,7 +61,7 @@ TbVTEHost >> createHostSpaceFor: aSpace [
 
 	| aHostSpace|
 
-	aHostSpace := TextBlocVTEHostSpace new. 
+	aHostSpace := TbVTEHostSpace new. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
 	aHostSpace withTextBlocRenderer.

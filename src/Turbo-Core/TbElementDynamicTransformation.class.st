@@ -20,7 +20,7 @@ TbElementDynamicTransformation >> computeMatrix [
 
 { #category : #initialization }
 TbElementDynamicTransformation >> defaultMatrix2D [
-	^ BlMatrix2D new
+	^ TbMatrix2D new
 ]
 
 { #category : #initialization }

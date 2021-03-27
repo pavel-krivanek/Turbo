@@ -16,7 +16,7 @@ TbElementBoundsInParent >> inChild: anElement [
 		ifTrue: [ self referenceElement parent ]
 		ifFalse: [ self referenceElement ].
 
-	^ BlElementBoundsInChild new
+	^ TbElementBoundsInChild new
 		originalElement: self originalElement;
 		referenceElement: anElement;
 		bounds: (anElement globalBoundsToMine: self bounds copy fromParent: aParentElement);
@@ -30,7 +30,7 @@ TbElementBoundsInParent >> inParent [
 	self referenceElement hasParent
 		ifFalse: [ ^ self ].
 
-	^ BlElementBoundsInParent new
+	^ TbElementBoundsInParent new
 		originalElement: self originalElement;
 		referenceElement: self referenceElement parent;
 		bounds: (self referenceElement parent localBoundsToParent: self bounds copy);

@@ -148,7 +148,7 @@ TbCanvas >> clip [
 
 { #category : #'drawing-general' }
 TbCanvas >> clipBuilder [
-	^ TextBlocClipper new
+	^ TbClipper new
 ]
 
 { #category : #accessing }
@@ -306,7 +306,7 @@ TbCanvas >> transform [
 
 { #category : #accessing }
 TbCanvas >> transformationBuilder [
-	^ TextBlocTransformationBuilder2 new
+	^ TbTransformationBuilder2 new
 ]
 
 { #category : #accessing }

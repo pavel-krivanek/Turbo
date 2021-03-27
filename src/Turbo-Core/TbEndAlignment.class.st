@@ -6,10 +6,10 @@ Class {
 
 { #category : #factory }
 TbEndAlignment class >> horizontal [
-	^ BlHorizontalAlignment end
+	^ TbHorizontalAlignment end
 ]
 
 { #category : #factory }
 TbEndAlignment class >> vertical [
-	^ BlVerticalAlignment bottom
+	^ TbVerticalAlignment bottom
 ]

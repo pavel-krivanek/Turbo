@@ -21,7 +21,7 @@ TbHorizontalCenterAlignment class >> rightToLeft [
 
 { #category : #factory }
 TbHorizontalCenterAlignment >> inverted [
-	^ BlElementAlignment vertical center
+	^ TbElementAlignment vertical center
 ]
 
 { #category : #factory }

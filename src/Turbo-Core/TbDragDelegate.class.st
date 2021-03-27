@@ -16,17 +16,17 @@ TbDragDelegate >> cancel: aPoint [
 	"Cancel drag and animate previews"	
 	| aCancelAnimation |
 
-	aCancelAnimation := BlParallelAnimation with: (self items collect: [ :aDragItem |
+	aCancelAnimation := TbParallelAnimation with: (self items collect: [ :aDragItem |
 		| aPreviewBounds aSourceBounds aPreviewElement |
 		aPreviewElement := aDragItem previewElement.
 		
 		aPreviewBounds := aPreviewElement bounds inSpace.
 		aSourceBounds := aDragItem sourceElement bounds inSpace.
 		
-		BlNumberTransition new
+		TbNumberTransition new
 			from: (aPreviewBounds position);
 			to: (aSourceBounds center - (aPreviewBounds extent / 2.0));
-			easing: (BlDecelerateInterpolator factor: 2);
+			easing: (TbDecelerateInterpolator factor: 2);
 			duration: 500 milliSeconds;
 			onStepDo: [ :aPosition | aPreviewElement relocate: aPosition ];
 			onFinishedDo: [ aPreviewElement removeFromParent ].

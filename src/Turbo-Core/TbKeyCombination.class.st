@@ -41,7 +41,7 @@ TbKeyCombination class >> backspace [
 
 { #category : #accessing }
 TbKeyCombination class >> builder [
-	^ BlKeyCombinationBuilder new
+	^ TbKeyCombinationBuilder new
 ]
 
 { #category : #'instance creation' }

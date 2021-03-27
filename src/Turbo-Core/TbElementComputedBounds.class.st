@@ -57,7 +57,7 @@ TbElementComputedBounds >> extent [
 TbElementComputedBounds >> inChild: anElement [
 	<return: #BlElementBounds>
 
-	^ BlElementBoundsInChild new
+	^ TbElementBoundsInChild new
 		originalElement: self originalElement;
 		referenceElement: anElement;
 		bounds: (anElement globalBoundsToMine: self bounds copy fromParent: self referenceElement);
@@ -94,7 +94,7 @@ TbElementComputedBounds >> inParent: anElement [
 		(aParentElement hasParent and: [ aParentElement parent == anElement ])
 			ifTrue: [ subParent := aParentElement ] ].
 
-	^ BlElementBoundsInParent new
+	^ TbElementBoundsInParent new
 		originalElement: self referenceElement;
 		referenceElement: subParent;
 		bounds: (anElement localBoundsToMine: self bounds copy fromChild: self referenceElement);

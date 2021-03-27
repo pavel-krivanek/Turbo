@@ -19,7 +19,7 @@ TbMorphicHost >> createHostSpaceFor: aSpace [
 	| aWindow aHostSpace|
 
 	aWindow := self createMorphicWindowFor: aSpace.
-	aHostSpace := TextBlocMorphicHostSpace new. 
+	aHostSpace := TbMorphicHostSpace new. 
 	aHostSpace morphicWindow: aWindow. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
@@ -37,7 +37,7 @@ TbMorphicHost >> createMorphicWindowFor: aSpace [
 	I do not create any strong or weak references to provided space"
 	| aWindow |
 
-	aWindow := TextBlocMorphicWindow new.
+	aWindow := TbMorphicWindow new.
 	aWindow spaceExtent: aSpace extent * self characterExtent.
 	"aWindow borderless: aSpace borderless."
 
