@@ -397,7 +397,7 @@ TbElement >> asElement [
 	^ self 
 ]
 
-{ #category : #'*Bloc-Utilities - Pannable' }
+{ #category : #utilities }
 TbElement >> asPannableElement [
 	| pannable |
 	self removeFromParent.
@@ -409,7 +409,7 @@ TbElement >> asPannableElement [
 	^ pannable
 ]
 
-{ #category : #'*Bloc-Utilities - Pannable' }
+{ #category : #utilities }
 TbElement >> asScalableElement [
 	| aScalableElement |
 	
@@ -423,7 +423,7 @@ TbElement >> asScalableElement [
 	^ aScalableElement
 ]
 
-{ #category : #'*Bloc-Utilities - Scrolling' }
+{ #category : #utilities }
 TbElement >> asScrollableElement [
 	| scrollable |
 	self removeFromParent.
