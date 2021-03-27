@@ -48,7 +48,7 @@ TbRay >> initialize [
 	super initialize.
 	
 	point := 0@0.
-	vector := BlVector x: 0 y: 0.
+	vector := TbVector x: 0 y: 0.
 ]
 
 { #category : #'api - accessing' }

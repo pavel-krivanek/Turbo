@@ -49,7 +49,7 @@ TbMouseUpEvent >> asClickEvent [
 
 { #category : #converting }
 TbMouseUpEvent >> asDoubleClickEvent [
-	^ BlDoubleClickEvent new
+	^ TbDoubleClickEvent new
 		copyFrom: self;
 		yourself
 ]

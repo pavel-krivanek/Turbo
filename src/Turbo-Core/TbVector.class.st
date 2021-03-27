@@ -57,12 +57,12 @@ TbVector class >> one [
 
 { #category : #'instance creation' }
 TbVector class >> x: aX y: aY [
-	^ BlVector2D new x: aX y: aY
+	^ TbVector2D new x: aX y: aY
 ]
 
 { #category : #'instance creation' }
 TbVector class >> x: aX y: aY z: aZ [
-	^ BlVector3D new x: aX y: aY z: aZ
+	^ TbVector3D new x: aX y: aY z: aZ
 ]
 
 { #category : #'instance creation' }

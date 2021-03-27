@@ -26,7 +26,7 @@ Class {
 
 { #category : #'predefined instances' }
 TbStrokeLineCap class >> butt [
-	^ butt ifNil: [ butt := BlStrokeLineButtCap new ]
+	^ butt ifNil: [ butt := TbStrokeLineButtCap new ]
 ]
 
 { #category : #accessing }
@@ -44,18 +44,18 @@ TbStrokeLineCap class >> cleanUp [
 
 { #category : #'predefined instances' }
 TbStrokeLineCap class >> round [
-	^ round ifNil: [ round := BlStrokeLineRoundCap new ]
+	^ round ifNil: [ round := TbStrokeLineRoundCap new ]
 ]
 
 { #category : #'predefined instances' }
 TbStrokeLineCap class >> square [
-	^ square ifNil: [ square := BlStrokeLineSquareCap new ]
+	^ square ifNil: [ square := TbStrokeLineSquareCap new ]
 ]
 
 { #category : #printing }
 TbStrokeLineCap >> printOn: aStream [
 
-	self class ~= BlStrokeLineCap
+	self class ~= TbStrokeLineCap
 		ifTrue: [ aStream nextPutAll: self class capName ]
 		ifFalse: [ aStream nextPutAll: 'Line Cap' ]
 ]

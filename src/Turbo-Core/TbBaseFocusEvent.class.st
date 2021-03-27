@@ -6,14 +6,14 @@ Class {
 
 { #category : #converting }
 TbBaseFocusEvent >> asBlurEvent [
-	^ BlBlurEvent new
+	^ TbBlurEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #converting }
 TbBaseFocusEvent >> asFocusInEvent [
-	^ BlFocusInEvent new
+	^ TbFocusInEvent new
 		copyFrom: self;
 		canBePropagated: false;
 		yourself
@@ -21,7 +21,7 @@ TbBaseFocusEvent >> asFocusInEvent [
 
 { #category : #converting }
 TbBaseFocusEvent >> asFocusOutEvent [
-	^ BlFocusOutEvent new
+	^ TbFocusOutEvent new
 		copyFrom: self;
 		canBePropagated: false;
 		yourself

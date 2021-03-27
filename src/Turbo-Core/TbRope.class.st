@@ -21,12 +21,12 @@ Class {
 
 { #category : #types }
 TbRope class >> attributeRope [
-	^ BlAttributeRope
+	^ TbAttributeRope
 ]
 
 { #category : #types }
 TbRope class >> collectionRope [
-	^ BlCollectionRope
+	^ TbCollectionRope
 ]
 
 { #category : #accessing }
@@ -87,12 +87,12 @@ TbRope class >> concatenate: aLeftRope and: aRightRope [
 
 { #category : #types }
 TbRope class >> concatenationRope [
-	^ BlConcatenationRope
+	^ TbConcatenationRope
 ]
 
 { #category : #types }
 TbRope class >> subRope [
-	^ BlSubRope
+	^ TbSubRope
 ]
 
 { #category : #'rope - accessing' }

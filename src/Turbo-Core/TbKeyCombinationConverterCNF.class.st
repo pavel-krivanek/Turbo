@@ -24,14 +24,14 @@ TbKeyCombinationConverterCNF >> visitAlternative: aBlAlternativeCombination [
 		ifTrue: [ ^ combinations first ].
 
 	pairedCompulsories := combinations pairsCollect: [ :left :right |
-		BlCompulsoryCombination new withAll: (left combinations collect: [ :eachLeft |
+		TbCompulsoryCombination new withAll: (left combinations collect: [ :eachLeft |
 			right combinations collect: [ :eachRight |
-				BlAlternativeCombination new withAll: { eachLeft . eachRight } ] ]) flattened ].
+				TbAlternativeCombination new withAll: { eachLeft . eachRight } ] ]) flattened ].
 	
 	combinations size = 2
 		ifTrue: [ ^ pairedCompulsories first ].
 	
-	alternative := BlAlternativeCombination new.
+	alternative := TbAlternativeCombination new.
 	alternative withAll: pairedCompulsories. 
 	combinations size odd
 		ifTrue: [ alternative with: combinations last ].	

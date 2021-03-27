@@ -40,13 +40,13 @@ TbPropertyBinding >> from: aFromProperty to: aToProperty bidirectional: isBidire
 	from := aFromProperty.
 	to := aToProperty.
 	
-	fromListener := BlOnChangeListener do: [ :v | to value: v ].
+	fromListener := TbOnChangeListener do: [ :v | to value: v ].
 	from addChangeListener: fromListener.
 
 	isBidirectional
 		ifFalse: [ ^ self ].
 
-	toListener := BlOnChangeListener do: [ :v | from value: v ].
+	toListener := TbOnChangeListener do: [ :v | from value: v ].
 	to addChangeListener: toListener
 ]
 

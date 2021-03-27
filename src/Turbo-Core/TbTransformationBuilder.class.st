@@ -33,7 +33,7 @@ TbTransformationBuilder >> apply [
 	"Replace element's transformation chain with our new one that we just have built"
 	| anElementTransformation |
 
-	anElementTransformation := BlElementLocalTransformation with: transformation.
+	anElementTransformation := TbElementLocalTransformation with: transformation.
 	target transformation: anElementTransformation
 ]
 
@@ -57,12 +57,12 @@ TbTransformationBuilder >> element: anObject [
 
 { #category : #transformations }
 TbTransformationBuilder >> flipX [
-	transformation addTransformation: (BlReflectionTransformation vertical origin: origin)
+	transformation addTransformation: (TbReflectionTransformation vertical origin: origin)
 ]
 
 { #category : #transformations }
 TbTransformationBuilder >> flipY [
-	transformation addTransformation: (BlReflectionTransformation horizontal origin: origin)
+	transformation addTransformation: (TbReflectionTransformation horizontal origin: origin)
 ]
 
 { #category : #transformations }
@@ -84,7 +84,7 @@ TbTransformationBuilder >> initialize [
 { #category : #transformations }
 TbTransformationBuilder >> matrix: aMatrix [
 	"Note: matrix transformation is not influenced by origin (it is always top left corner or 0@0)"
-	transformation addTransformation: ((BlMatrixTransformation matrix: aMatrix) origin: BlAffineTransformationTopLeftOrigin new)
+	transformation addTransformation: ((TbMatrixTransformation matrix: aMatrix) origin: TbAffineTransformationTopLeftOrigin new)
 ]
 
 { #category : #transformations }
@@ -97,19 +97,19 @@ TbTransformationBuilder >> origin: anAffineTransformationOrigin [
 
 { #category : #transformations }
 TbTransformationBuilder >> rotateBy: aDegreesAngle [
-	transformation addTransformation: (BlRotationTransformation new angle: aDegreesAngle; axis: BlVector zAxis; origin: origin)
+	transformation addTransformation: (TbRotationTransformation new angle: aDegreesAngle; axis: TbVector zAxis; origin: origin)
 ]
 
 { #category : #transformations }
 TbTransformationBuilder >> rotateBy: aDegreesAngle around: aVector [
-	transformation addTransformation: (BlRotationTransformation new angle: aDegreesAngle; axis: aVector; origin: origin)
+	transformation addTransformation: (TbRotationTransformation new angle: aDegreesAngle; axis: aVector; origin: origin)
 ]
 
 { #category : #transformations }
 TbTransformationBuilder >> scaleBy: aVector [
 	"Append a scaling transformation by a given vector"
 
-	transformation addTransformation: ((BlScalingTransformation scale: aVector asScale3D) origin: origin)
+	transformation addTransformation: ((TbScalingTransformation scale: aVector asScale3D) origin: origin)
 ]
 
 { #category : #transformations }
@@ -147,5 +147,5 @@ TbTransformationBuilder >> target: anObject [
 TbTransformationBuilder >> translateBy: aVector [
 	"Append a translation transformation by a given vector"
 	
-	transformation addTransformation: ((BlTranslationTransformation translation: aVector asTranslate3D) origin: origin)
+	transformation addTransformation: ((TbTranslationTransformation translation: aVector asTranslate3D) origin: origin)
 ]

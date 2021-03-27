@@ -67,7 +67,7 @@ TbTransformAnimation >> initStart [
 	isAbsolute
 		ifFalse: [
 			| aCompositeTransformation |
-			aCompositeTransformation := BlElementCompositeTransformation new.
+			aCompositeTransformation := TbElementCompositeTransformation new.
 			aCompositeTransformation add: self target transformation.
 			aCompositeTransformation add: transformation.
 			transformation := aCompositeTransformation ].
@@ -87,7 +87,7 @@ TbTransformAnimation >> initialize [
 	super initialize.
 	
 	isAbsolute := false.
-	transformation := BlElementLocalTransformation new
+	transformation := TbElementLocalTransformation new
 ]
 
 { #category : #builder }
@@ -112,5 +112,5 @@ TbTransformAnimation >> valueForStep: aDelta [
 	
 	"we should recompute destination matrix every step because transformation origins may have changed"
 	toMatrix := transformation invalidateMatrix matrix.
-	^ BlElementAbsoluteTransformation matrix: (fromMatrix interpolate: aDelta to: toMatrix)
+	^ TbElementAbsoluteTransformation matrix: (fromMatrix interpolate: aDelta to: toMatrix)
 ]

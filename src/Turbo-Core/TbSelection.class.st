@@ -21,17 +21,17 @@ TbSelection class >> cleanUp [
 
 { #category : #'instance creation' }
 TbSelection class >> empty [
-	^ empty ifNil: [ empty := BlEmptySelection new ]
+	^ empty ifNil: [ empty := TbEmptySelection new ]
 ]
 
 { #category : #'instance creation' }
 TbSelection class >> from: aFromIndex to: aToIndex [
-	^ BlMonotoneSelection from: aFromIndex to: aToIndex
+	^ TbMonotoneSelection from: aFromIndex to: aToIndex
 ]
 
 { #category : #arithmetic }
 TbSelection >> + aTextSelection [
-	^ BlMultipleSelection withAll: { self . aTextSelection }
+	^ TbMultipleSelection withAll: { self . aTextSelection }
 ]
 
 { #category : #accessing }

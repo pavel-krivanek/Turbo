@@ -17,8 +17,8 @@ Class {
 TbStrokeStyle class >> dashed [
 	<gtExample>
 	^ self new
-		lineCap: BlStrokeLineCap butt;
-		lineJoin: BlStrokeLineJoin miter;
+		lineCap: TbStrokeLineCap butt;
+		lineJoin: TbStrokeLineJoin miter;
 		miterLimit: 4.0;
 		dashArray: #(6 4.2);
 		dashOffset: 0
@@ -28,8 +28,8 @@ TbStrokeStyle class >> dashed [
 TbStrokeStyle class >> default [
 	<gtExample>
 	^ self new
-		lineCap: BlStrokeLineCap butt;
-		lineJoin: BlStrokeLineJoin miter;
+		lineCap: TbStrokeLineCap butt;
+		lineJoin: TbStrokeLineJoin miter;
 		miterLimit: 4.0;
 		dashArray: #();
 		dashOffset: 0

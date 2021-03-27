@@ -198,7 +198,7 @@ TbCollectionRope >> isLeaf [
 
 { #category : #'rope - enumeration' }
 TbCollectionRope >> iterator: aStart to: anEnd [
-	^ BlCollectionRopeIterator rope: self from: aStart to: anEnd
+	^ TbCollectionRopeIterator rope: self from: aStart to: anEnd
 ]
 
 { #category : #private }

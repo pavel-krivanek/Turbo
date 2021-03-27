@@ -18,7 +18,7 @@ TbBackgroundResizer class >> exact: anExtent [
 	anExtent must not be nil"
 	<return: #BlBackgroundResizer>
 	
-	^ BlBackgroundExactResizer extent: anExtent
+	^ TbBackgroundExactResizer extent: anExtent
 ]
 
 { #category : #'instance creation' }
@@ -26,5 +26,5 @@ TbBackgroundResizer class >> match [
 	"Return an instance of resizer that makes background be as big as owner element"
 	<return: #BlBackgroundResizer>
 
-	^ BlBackgroundMatchResizer uniqueInstance
+	^ TbBackgroundMatchResizer uniqueInstance
 ]

@@ -54,7 +54,7 @@ TbTerminalHostSpace >> lock [
 { #category : #'instance creation' }
 TbTerminalHostSpace >> newSurface [
 
-	^ TextBlocRendererTerminalSurface new
+	^ TbRendererTerminalSurface new
 ]
 
 { #category : #'host space - displaying' }
@@ -149,6 +149,6 @@ TbTerminalHostSpace >> windowExtent: anExtent [
 { #category : #'as yet unclassified' }
 TbTerminalHostSpace >> withTextBlocRenderer [
 
-	renderer := TextBlocRenderer new.
+	renderer := TbRenderer new.
 	renderer initializeHostSpace: self.
 ]

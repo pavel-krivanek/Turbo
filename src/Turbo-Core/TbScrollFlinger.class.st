@@ -67,7 +67,7 @@ TbScrollFlinger >> computeScrollDurationFor: aVelocityPoint distance: aDeltaPoin
 
 { #category : #initialization }
 TbScrollFlinger >> createScrollerFor: anInterpolator [
-	^ BlOvershootingScroller interpolator: interpolator
+	^ TbOvershootingScroller interpolator: interpolator
 ]
 
 { #category : #initialization }
@@ -77,7 +77,7 @@ TbScrollFlinger >> createState [
 
 { #category : #initialization }
 TbScrollFlinger >> defaultInterpolator [
-	^ BlQuinticInterpolator default
+	^ TbQuinticInterpolator default
 ]
 
 { #category : #'private - scheduling' }
@@ -341,7 +341,7 @@ TbScrollFlinger >> runLayoutScrollWith: aState [
 TbScrollFlinger >> runOverscrollOn: anOverScroller with: aState [
 	| aVelocity aVelocityX aVelocityY |
 	
-	self scrollable overScrollMode ~= BlOverScrollMode never
+	self scrollable overScrollMode ~= TbOverScrollMode never
 		ifTrue: [ self scrollable considerReleasingGlowsOnScroll: aState dX @ aState dY ].
 	
 	"Should not overscroll if distances in both directions are zero"
@@ -370,7 +370,7 @@ TbScrollFlinger >> runOverscrollOn: anOverScroller with: aState [
 					ifFalse: [ 0 ] ] ].
 	
 	"Overscroll happened, make sure glows are notified"
-	(self scrollable overScrollMode ~= BlOverScrollMode never)
+	(self scrollable overScrollMode ~= TbOverScrollMode never)
 		ifTrue: [ self scrollable absorbGlows: aVelocityX @ aVelocityY ].
 	
 	"Check if we need to finish scrolling"

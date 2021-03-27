@@ -222,7 +222,7 @@ TbKeyCombination >> matches: aKeyboardBuffer [
 TbKeyCombination >> or: anotherKeyCombination [
 	<return: #BlKeyCombination>
 
-	^ BlAlternativeCombination new
+	^ TbAlternativeCombination new
 		with: self;
 		with: anotherKeyCombination
 ]

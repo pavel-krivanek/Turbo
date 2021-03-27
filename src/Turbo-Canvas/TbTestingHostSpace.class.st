@@ -84,7 +84,7 @@ TbTestingHostSpace >> lock [
 { #category : #'instance creation' }
 TbTestingHostSpace >> newSurface [
 
-	^ TextBlocRendererTestingSurface new
+	^ TbRendererTestingSurface new
 ]
 
 { #category : #'host space - displaying' }
@@ -173,6 +173,6 @@ TbTestingHostSpace >> windowExtent: anExtent [
 { #category : #'as yet unclassified' }
 TbTestingHostSpace >> withTextBlocRenderer [
 
-	renderer := TextBlocRenderer new.
+	renderer := TbRenderer new.
 	renderer initializeHostSpace: self.
 ]

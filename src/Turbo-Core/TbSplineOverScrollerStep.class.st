@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 TbSplineOverScrollerStep class >> ballistic [
-	^ ballistic ifNil: [ ballistic := BlSplineOverScrollerBallisticStep new ]
+	^ ballistic ifNil: [ ballistic := TbSplineOverScrollerBallisticStep new ]
 ]
 
 { #category : #cleanup }
@@ -25,12 +25,12 @@ TbSplineOverScrollerStep class >> cleanUp [
 
 { #category : #accessing }
 TbSplineOverScrollerStep class >> cubic [
-	^ cubic ifNil: [ cubic := BlSplineOverScrollerCubicStep new ]
+	^ cubic ifNil: [ cubic := TbSplineOverScrollerCubicStep new ]
 ]
 
 { #category : #accessing }
 TbSplineOverScrollerStep class >> spline [
-	^ spline ifNil: [ spline := BlSplineOverScrollerSplineStep new ]
+	^ spline ifNil: [ spline := TbSplineOverScrollerSplineStep new ]
 ]
 
 { #category : #comparing }

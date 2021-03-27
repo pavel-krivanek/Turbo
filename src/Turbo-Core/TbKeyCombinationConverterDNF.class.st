@@ -11,7 +11,7 @@ Class {
 TbKeyCombinationConverterDNF >> visitAlternative: aBlAlternativeCombination [
 	| alternative |
 
-	alternative := BlAlternativeCombination new.
+	alternative := TbAlternativeCombination new.
 
 	aBlAlternativeCombination combinations do: [ :aCombination |
 		alternative withAll: (aCombination accept: self) combinations ].
@@ -36,14 +36,14 @@ TbKeyCombinationConverterDNF >> visitCompulsory: aBlCompulsoryCombination [
 		ifTrue: [ ^ combinations first ].
 
 	pairedAlternatives := combinations pairsCollect: [ :left :right |
-		BlAlternativeCombination new withAll: (left combinations collect: [ :eachLeft |
+		TbAlternativeCombination new withAll: (left combinations collect: [ :eachLeft |
 			right combinations collect: [ :eachRight |
-				BlCompulsoryCombination new withAll: { eachLeft . eachRight } ] ]) flattened ].
+				TbCompulsoryCombination new withAll: { eachLeft . eachRight } ] ]) flattened ].
 	
 	combinations size = 2
 		ifTrue: [ ^ pairedAlternatives first ].
 	
-	compulsory := BlCompulsoryCombination new.
+	compulsory := TbCompulsoryCombination new.
 	compulsory withAll: pairedAlternatives. 
 	combinations size odd
 		ifTrue: [ compulsory with: combinations last ].	
@@ -53,5 +53,5 @@ TbKeyCombinationConverterDNF >> visitCompulsory: aBlCompulsoryCombination [
 
 { #category : #visiting }
 TbKeyCombinationConverterDNF >> visitKey: aBlKeyCodeCombination [
-	^ BlAlternativeCombination new with: aBlKeyCodeCombination
+	^ TbAlternativeCombination new with: aBlKeyCodeCombination
 ]

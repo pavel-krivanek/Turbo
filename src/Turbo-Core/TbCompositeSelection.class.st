@@ -51,7 +51,7 @@ TbCompositeSelection >> deselect: aSelection [
 TbCompositeSelection >> deselect: aFromIndex to: aToIndex [
 	"Remove a monotone selection within provided indices"
 	
-	self remove: (BlSelection from: aFromIndex to: aToIndex)
+	self remove: (TbSelection from: aFromIndex to: aToIndex)
 ]
 
 { #category : #'api - enumerating' }
@@ -81,7 +81,7 @@ TbCompositeSelection >> hash [
 TbCompositeSelection >> initialize [
 	super initialize.
 	
-	selections := BlSelectionTree new
+	selections := TbSelectionTree new
 ]
 
 { #category : #'api - testing' }
@@ -106,7 +106,7 @@ TbCompositeSelection >> remove: aMonotoneTextSelection [
 
 { #category : #'private - adding / removing' }
 TbCompositeSelection >> removeAll [
-	selections := BlSelectionTree new
+	selections := TbSelectionTree new
 ]
 
 { #category : #'api - enumerating' }
@@ -127,7 +127,7 @@ TbCompositeSelection >> select: aSelection [
 TbCompositeSelection >> select: aFromIndex to: aToIndex [
 	"Add a new monotone selection merging it with existing ones within provided indices"
 	
-	self add: (BlSelection from: aFromIndex to: aToIndex)
+	self add: (TbSelection from: aFromIndex to: aToIndex)
 ]
 
 { #category : #accessing }

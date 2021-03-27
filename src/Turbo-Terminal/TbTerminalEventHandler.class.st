@@ -37,12 +37,12 @@ TbTerminalEventHandler >> convertButtonFromMouseButtonEvent: aMorphicEvent [
 TbTerminalEventHandler >> convertButtonFromMouseEvent: aMorphicEvent [
 
 	aMorphicEvent redButtonPressed
-		ifTrue: [ ^ BlMouseEvent primaryButton ].
+		ifTrue: [ ^ TbMouseEvent primaryButton ].
 	aMorphicEvent blueButtonPressed
-		ifTrue: [ ^ BlMouseEvent middleButton ].
+		ifTrue: [ ^ TbMouseEvent middleButton ].
 	aMorphicEvent yellowButtonPressed
-		ifTrue: [ ^ BlMouseEvent secondaryButton ].
-		
+		ifTrue: [ ^ TbMouseEvent secondaryButton ].
+	
 	^ aMorphicEvent buttons
 ]
 
@@ -55,7 +55,7 @@ TbTerminalEventHandler >> convertKeyModifiersFromEvent: aMorphicEvent [
 	alt := aMorphicEvent altKeyPressed.
 	cmd := aMorphicEvent commandKeyPressed.
 	
-	^ BlKeyModifiers shift: shift ctrl: ctrl alt: alt cmd: cmd
+	^ TbKeyModifiers shift: shift ctrl: ctrl alt: alt cmd: cmd
 ]
 
 { #category : #'event handling' }
@@ -104,7 +104,7 @@ TbTerminalEventHandler >> handleKeyDown: aMorphicEvent [
 TbTerminalEventHandler >> handleKeyUp: aMorphicEvent [
 	| aBlEvent |
 		
-	aBlEvent := BlKeyUpEvent new
+	aBlEvent := TbKeyUpEvent new
 		key: aMorphicEvent key;
 		scanCode: aMorphicEvent scanCode;
 		
@@ -120,7 +120,7 @@ TbTerminalEventHandler >> handleKeyUp: aMorphicEvent [
 TbTerminalEventHandler >> handleKeystroke: aMorphicEvent [
 	| aBlEvent |
 		
-	aBlEvent := BlKeystrokeEvent new
+	aBlEvent := TbKeystrokeEvent new
 		char: aMorphicEvent keyCharacter;
 		scanCode: aMorphicEvent scanCode;
 		
@@ -184,7 +184,7 @@ TbTerminalEventHandler >> handleMouseUp: anEvent [
 
 	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
-		aBlEvent := BlMouseUpEvent new
+		aBlEvent := TbMouseUpEvent new
 			position: (self transform: (aMorphicEvent position));
 			screenPosition: (self transform: ((self globalMousePositionForEvent: aMorphicEvent)));
 			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);

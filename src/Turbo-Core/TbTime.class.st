@@ -15,17 +15,17 @@ Class {
 
 { #category : #'instance creation' }
 TbTime class >> fastForwarded [
-	^ BlFastForwardedTime new
+	^ TbFastForwardedTime new
 ]
 
 { #category : #'instance creation' }
 TbTime class >> real [
-	^ BlRealTime new
+	^ TbRealTime new
 ]
 
 { #category : #'instance creation' }
 TbTime class >> simulated [
-	^ BlSimulatedTime new
+	^ TbSimulatedTime new
 ]
 
 { #category : #'private - time' }

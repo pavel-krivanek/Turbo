@@ -158,11 +158,11 @@ TbSplineOverScrollerFlingMode >> updateOn: aSplineOverScroller [
 
 	aDistance := 0.0.
 	
-	aSplineOverScroller currentStep = BlSplineOverScrollerStep spline
+	aSplineOverScroller currentStep = TbSplineOverScrollerStep spline
 		ifTrue: [ aDistance := aSplineOverScroller updateSpline: aDeltaTime ].
-	aSplineOverScroller currentStep = BlSplineOverScrollerStep ballistic
+	aSplineOverScroller currentStep = TbSplineOverScrollerStep ballistic
 		ifTrue: [ aDistance := aSplineOverScroller updateBallistic: aDeltaTime ].
-	aSplineOverScroller currentStep = BlSplineOverScrollerStep cubic
+	aSplineOverScroller currentStep = TbSplineOverScrollerStep cubic
 		ifTrue: [ aDistance := aSplineOverScroller updateCubic: aDeltaTime ].
 	
 	"Distance must be rounded and position converted to integer to prevent fractional locations"

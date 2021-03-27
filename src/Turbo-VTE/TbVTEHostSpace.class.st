@@ -54,7 +54,7 @@ TbVTEHostSpace >> lock [
 { #category : #'instance creation' }
 TbVTEHostSpace >> newSurface [
 
-	^ TextBlocRendererVTESurface new
+	^ TbRendererVTESurface new
 ]
 
 { #category : #'host space - displaying' }
@@ -149,6 +149,6 @@ TbVTEHostSpace >> windowExtent: anExtent [
 { #category : #'as yet unclassified' }
 TbVTEHostSpace >> withTextBlocRenderer [
 
-	renderer := TextBlocRenderer new.
+	renderer := TbRenderer new.
 	renderer initializeHostSpace: self.
 ]

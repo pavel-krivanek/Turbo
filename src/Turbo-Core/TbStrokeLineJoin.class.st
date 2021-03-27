@@ -44,18 +44,18 @@ TbStrokeLineJoin class >> joinName [
 
 { #category : #'predefined instances' }
 TbStrokeLineJoin class >> miter [
-	^ miter ifNil: [ miter := BlStrokeLineMiterJoin new ]
+	^ miter ifNil: [ miter := TbStrokeLineMiterJoin new ]
 ]
 
 { #category : #'predefined instances' }
 TbStrokeLineJoin class >> round [
-	^ round ifNil: [ round := BlStrokeLineRoundJoin new ]
+	^ round ifNil: [ round := TbStrokeLineRoundJoin new ]
 ]
 
 { #category : #printing }
 TbStrokeLineJoin >> printOn: aStream [
 
-	self class ~= BlStrokeLineJoin
+	self class ~= TbStrokeLineJoin
 		ifTrue: [ aStream nextPutAll: self class joinName ]
 		ifFalse: [ aStream nextPutAll: 'Line Join' ]
 ]

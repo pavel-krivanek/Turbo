@@ -56,7 +56,7 @@ TbAnimation >> initialize [
 	super initialize.
 	
 	duration := 1 second.	"configurable"
-	easing := BlEasing linear
+	easing := TbEasing linear
 ]
 
 { #category : #pulse }

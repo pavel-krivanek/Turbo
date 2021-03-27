@@ -11,7 +11,7 @@ Class {
 TbBasicTest >> setUp [
 
 	super setUp.
-	element := TextBlocHelloElement new.
+	element := TbHelloElement new.
 	space root addChild: element.
 	
 	self firePulse.

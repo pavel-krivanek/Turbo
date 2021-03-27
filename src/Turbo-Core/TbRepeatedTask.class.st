@@ -60,7 +60,7 @@ TbRepeatedTask >> initialize [
 	super initialize.
 	
 	delay := 500 milliSeconds.
-	time := BlTime real.
+	time := TbTime real.
 	isRunning := true
 ]
 

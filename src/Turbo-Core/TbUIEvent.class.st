@@ -23,7 +23,7 @@ TbUIEvent >> button: anObject [
 { #category : #initialization }
 TbUIEvent >> initialize [
 	super initialize.
-	modifiers := BlKeyModifiers new.
+	modifiers := TbKeyModifiers new.
 ]
 
 { #category : #'api - geometry' }

@@ -167,7 +167,7 @@ TbSubRope >> isScoped [
 
 { #category : #'rope - enumeration' }
 TbSubRope >> iterator: aStart to: anEnd [
-	^ BlSubRopeIterator rope: self from: aStart to: anEnd
+	^ TbSubRopeIterator rope: self from: aStart to: anEnd
 ]
 
 { #category : #accessing }

@@ -47,7 +47,7 @@ TbMouseEvent >> anyButtonPressed [
 { #category : #converting }
 TbMouseEvent >> asDragEndEvent [
 	
-	^ BlDragEndEvent new
+	^ TbDragEndEvent new
 		copyFrom: self;
 		yourself
 ]
@@ -56,14 +56,14 @@ TbMouseEvent >> asDragEndEvent [
 TbMouseEvent >> asDragEnterEvent [
 	"Convert the receiver into a mouse move"
 
-	^ BlDragEnterEvent new
+	^ TbDragEnterEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #converting }
 TbMouseEvent >> asDragEvent [
-	^ BlDragEvent new
+	^ TbDragEvent new
 		copyFrom: self;
 		yourself
 ]
@@ -72,14 +72,14 @@ TbMouseEvent >> asDragEvent [
 TbMouseEvent >> asDragLeaveEvent [
 	"Convert the receiver into a mouse move"
 
-	^ BlDragLeaveEvent new
+	^ TbDragLeaveEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #converting }
 TbMouseEvent >> asDragOverEvent [
-	^ BlDragOverEvent new
+	^ TbDragOverEvent new
 		copyFrom: self;
 		yourself
 ]
@@ -88,42 +88,42 @@ TbMouseEvent >> asDragOverEvent [
 TbMouseEvent >> asDragStartEvent [
 	"Convert the receiver into a mouse move"
 
-	^ BlDragStartEvent new
+	^ TbDragStartEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #converting }
 TbMouseEvent >> asDropEvent [
-	^ BlDropEvent new
+	^ TbDropEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #testing }
 TbMouseEvent >> asMouseEnterEvent [
-	^ BlMouseEnterEvent new
+	^ TbMouseEnterEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #testing }
 TbMouseEvent >> asMouseLeaveEvent [
-	^ BlMouseLeaveEvent new
+	^ TbMouseLeaveEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #testing }
 TbMouseEvent >> asMouseOutEvent [
-	^ BlMouseOutEvent new
+	^ TbMouseOutEvent new
 		copyFrom: self;
 		yourself
 ]
 
 { #category : #testing }
 TbMouseEvent >> asMouseOverEvent [
-	^ BlMouseOverEvent new
+	^ TbMouseOverEvent new
 		copyFrom: self;
 		yourself
 ]

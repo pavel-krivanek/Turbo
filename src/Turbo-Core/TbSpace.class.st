@@ -75,8 +75,8 @@ TbSpace class >> simulateClickOn: anElement [
 	"we simulate a click with a sequence of low level mouse down/up events"
 	self
 		simulateEvents: {
-			BlMouseDownEvent primary position: aPosition.
-			BlMouseUpEvent primary position: aPosition }
+			TbMouseDownEvent primary position: aPosition.
+			TbMouseUpEvent primary position: aPosition }
 		on: anElement
 ]
 
@@ -90,8 +90,8 @@ TbSpace class >> simulateClickOutside: anElement [
 	"we simulate a click with a sequence of low level mouse down/up events"
 	self
 		simulateEvents: {
-			BlMouseDownEvent primary position: aPosition.
-			BlMouseUpEvent primary position: aPosition }
+			TbMouseDownEvent primary position: aPosition.
+			TbMouseUpEvent primary position: aPosition }
 		on: anElement
 ]
 
@@ -105,14 +105,14 @@ TbSpace class >> simulateDragOn: anElement by: aBlVector [
 	anElement topMostParent forceLayout.
 	aPosition := anElement bounds inSpace center.
 	
-	aDelta := (anElement localBoundsToGlobal: (BlBounds origin: 0@0 extent: aBlVector)) extent.
+	aDelta := (anElement localBoundsToGlobal: (TbBounds origin: 0@0 extent: aBlVector)) extent.
 	
 	"we simulate a click with a sequence of low level mouse down/up events"
 	self
 		simulateEvents: {
-			BlMouseDownEvent primary position: aPosition.
-			BlMouseMoveEvent primary position: aPosition + aDelta.
-			BlMouseUpEvent primary position: aPosition + aDelta }
+			TbMouseDownEvent primary position: aPosition.
+			TbMouseMoveEvent primary position: aPosition + aDelta.
+			TbMouseUpEvent primary position: aPosition + aDelta }
 		on: anElement
 ]
 
@@ -168,7 +168,7 @@ TbSpace class >> simulateMouseDownOn: anElement [
 	aPosition := anElement bounds inSpace center.
 
 	self
-		simulateEvents: { BlMouseDownEvent primary position: aPosition }
+		simulateEvents: { TbMouseDownEvent primary position: aPosition }
 		on: anElement
 ]
 
@@ -182,7 +182,7 @@ TbSpace class >> simulateMouseMoveInside: anElement [
 	aPosition := anElement bounds inSpace bounds atRandom.
 
 	self
-		simulateEvents: { BlMouseMoveEvent primary position: aPosition }
+		simulateEvents: { TbMouseMoveEvent primary position: aPosition }
 		on: anElement
 ]
 
@@ -194,7 +194,7 @@ TbSpace class >> simulateMouseMoveOutside: anElement [
 	"we never know if an element was already layered out"
 	aPosition := self locationOutside: anElement.
 	self
-		simulateEvents: { BlMouseMoveEvent primary position: aPosition }
+		simulateEvents: { TbMouseMoveEvent primary position: aPosition }
 		on: anElement
 ]
 
@@ -208,7 +208,7 @@ TbSpace class >> simulateMouseUpOn: anElement [
 	aPosition := anElement bounds inSpace center.
 
 	self
-		simulateEvents: { BlMouseUpEvent primary position: aPosition }
+		simulateEvents: { TbMouseUpEvent primary position: aPosition }
 		on: anElement
 ]
 
@@ -221,7 +221,7 @@ TbSpace >> addChild: anElement [
 
 { #category : #'change reporting' }
 TbSpace >> beDirtyArea [
-	self makeDirty: (BlBounds origin: 0 @ 0 extent: self extent)
+	self makeDirty: (TbBounds origin: 0 @ 0 extent: self extent)
 ]
 
 { #category : #'window - properties' }
@@ -255,7 +255,7 @@ TbSpace >> clearDirtyAreas [
 { #category : #displaying }
 TbSpace >> close [
 	"Delegate closing work to the Universe"
-	BlUniverse default closeSpaceWindow: self
+	TbUniverse default closeSpaceWindow: self
 ]
 
 { #category : #'cursor managing' }
@@ -274,7 +274,7 @@ TbSpace >> currentCursor: aCursor [
 
 { #category : #initialization }
 TbSpace >> defaultEventDispatcher [
-	^ BlDirectEventDispatcher on: self
+	^ TbDirectEventDispatcher on: self
 ]
 
 { #category : #initialization }
@@ -284,7 +284,7 @@ TbSpace >> defaultEventListener [
 
 { #category : #initialization }
 TbSpace >> defaultEventRecorder [
-	^ BlEmptyEventRecorder new
+	^ TbEmptyEventRecorder new
 ]
 
 { #category : #'change reporting' }
@@ -294,7 +294,7 @@ TbSpace >> defaultExtent [
 
 { #category : #initialization }
 TbSpace >> defaultRoot [
-	^ BlElement new
+	^ TbElement new
 		background: self defaultRootBackground;
 		labeled: self defaultRootLabel;
 		yourself
@@ -421,15 +421,15 @@ TbSpace >> doUpdateLayout: anElement [
 	"Perform layout of a given element (e.g. root or glass)"
 
 	"first we measure.."
-	anElement measure: (BlExtentMeasurementSpec new
+	anElement measure: (TbExtentMeasurementSpec new
 		widthSpec: (anElement layout
-			measurementSpecFor: (BlMeasurementSpec new beExact: self width)
+			measurementSpecFor: (TbMeasurementSpec new beExact: self width)
 			usedSize:  0
-			resizer: BlLayoutResizer matchParent);
+			resizer: TbLayoutResizer matchParent);
 		heightSpec: (anElement layout
-			measurementSpecFor: (BlMeasurementSpec new beExact: self height)
+			measurementSpecFor: (TbMeasurementSpec new beExact: self height)
 			usedSize:  0
-			resizer: BlLayoutResizer matchParent)).
+			resizer: TbLayoutResizer matchParent)).
 
 	"...then we layout in measured during previous step bounds"
 	anElement applyLayoutIn: anElement measuredBounds asRectangle.
@@ -543,7 +543,7 @@ TbSpace >> focused: aBoolean [
 
 { #category : #'accessing properties' }
 TbSpace >> focusedProperty [
-	^ focused ifNil: [ focused := BlObjectProperty on: self named: #focused default: false ]
+	^ focused ifNil: [ focused := TbObjectProperty on: self named: #focused default: false ]
 ]
 
 { #category : #accessing }
@@ -675,7 +675,7 @@ TbSpace >> hostSpaceChanged [
 
 { #category : #'accessing properties' }
 TbSpace >> hostSpaceProperty [
-	^ hostSpace ifNil: [ hostSpace := BlObjectProperty on: self named: #hostSpace ]
+	^ hostSpace ifNil: [ hostSpace := TbObjectProperty on: self named: #hostSpace ]
 ]
 
 { #category : #initialization }
@@ -823,7 +823,7 @@ TbSpace >> mouseProcessor: aMouseProcessor [
 
 { #category : #'dragboard managing' }
 TbSpace >> newDragboard [
-	self dragboard: (BlDragboard space: self).
+	self dragboard: (TbDragboard space: self).
 	^ self dragboard
 ]
 
@@ -911,8 +911,8 @@ TbSpace >> requestNextPulse [
 	
 	"By the contract next pulse can be only requested if universe is running.
 	It is done to not create pulse loop when it is actually not needed (for example during testing)"
-	BlUniverse default isRunning
-		ifTrue: [ BlUniverse default requestNextPulse ]
+	TbUniverse default isRunning
+		ifTrue: [ TbUniverse default requestNextPulse ]
 ]
 
 { #category : #'window - properties' }
@@ -1015,7 +1015,7 @@ TbSpace >> show [
 	"Open me in a window and show it to the user"
 
 	"delegate showing work to the Universe"
-	BlUniverse default showSpaceWindow: self.
+	TbUniverse default showSpaceWindow: self.
 	
 	"Notify root element that it is now visible to the user"
 	root dispatchAddedToSceneGraph.
@@ -1060,7 +1060,7 @@ TbSpace >> title: aString [
 { #category : #'accessing properties' }
 TbSpace >> titleProperty [
 	^ title ifNil: [
-		title := BlDelegateProperty
+		title := TbDelegateProperty
 			on: self
 			named: #title
 			delegateTo: self hostSpaceProperty ]

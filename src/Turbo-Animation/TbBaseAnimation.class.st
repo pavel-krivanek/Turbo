@@ -173,12 +173,12 @@ TbBaseAnimation >> initialize [
 	super initialize.
 	
 	actionHandlers := OrderedCollection new.
-	eventDispatcher := BlDirectEventDispatcher on: self.
+	eventDispatcher := TbDirectEventDispatcher on: self.
 	
 	delay := 0 milliSeconds. "configurable"
 	loop := 1. "configurable"
 	
-	time := BlTime real.
+	time := TbTime real.
 
 	self reset.
 	
@@ -260,7 +260,7 @@ TbBaseAnimation >> nextLoopStartTime [
 
 { #category : #'private - notifying' }
 TbBaseAnimation >> notifyLoopDone [
-	self dispatchEvent: BlAnimationLoopDoneEvent new
+	self dispatchEvent: TbAnimationLoopDoneEvent new
 ]
 
 { #category : #'private - notifying' }
@@ -282,7 +282,7 @@ TbBaseAnimation >> onFinished [
 
 { #category : #'action  handling' }
 TbBaseAnimation >> onFinishedDo: aBlock [
-	self addOnFinishedHandler: (BlOnActionHandler do: aBlock)
+	self addOnFinishedHandler: (TbOnActionHandler do: aBlock)
 ]
 
 { #category : #hooks }
@@ -297,7 +297,7 @@ TbBaseAnimation >> onLoopDone [
 
 { #category : #'action  handling' }
 TbBaseAnimation >> onStep [
-	self fireEvent: (BlAnimationStepEvent new progress: progress)
+	self fireEvent: (TbAnimationStepEvent new progress: progress)
 ]
 
 { #category : #accessing }

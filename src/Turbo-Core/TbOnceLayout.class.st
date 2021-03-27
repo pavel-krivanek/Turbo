@@ -35,7 +35,7 @@ TbOnceLayout >> initialize [
 	super initialize.
 
 	isStopped := false.
-	layout := BlBasicLayout new
+	layout := TbBasicLayout new
 ]
 
 { #category : #accessing }

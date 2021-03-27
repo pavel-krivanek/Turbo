@@ -40,9 +40,9 @@ TbKeyCombinationBuilder >> a [
 TbKeyCombinationBuilder >> alt [
 	| alt |
 
-	alt := BlAlternativeCombination new
-		key: BlKeyboardKey altLeft;
-		key: BlKeyboardKey altRight;
+	alt := TbAlternativeCombination new
+		key: TbKeyboardKey altLeft;
+		key: TbKeyboardKey altRight;
 		yourself.
 
 	combination
@@ -99,9 +99,9 @@ TbKeyCombinationBuilder >> cnf [
 TbKeyCombinationBuilder >> control [
 	| control |
 
-	control := BlAlternativeCombination new
-		key: BlKeyboardKey controlLeft;
-		key: BlKeyboardKey controlRight;
+	control := TbAlternativeCombination new
+		key: TbKeyboardKey controlLeft;
+		key: TbKeyboardKey controlRight;
 		yourself.
 
 	combination
@@ -169,9 +169,9 @@ TbKeyCombinationBuilder >> m [
 TbKeyCombinationBuilder >> meta [
 	| meta |
 
-	meta := BlAlternativeCombination new
-		key: BlKeyboardKey metaLeft;
-		key: BlKeyboardKey metaRight;
+	meta := TbAlternativeCombination new
+		key: TbKeyboardKey metaLeft;
+		key: TbKeyboardKey metaRight;
 		yourself.
 
 	combination
@@ -228,9 +228,9 @@ TbKeyCombinationBuilder >> secondary [
 TbKeyCombinationBuilder >> shift [
 	| shift |
 
-	shift := BlAlternativeCombination new
-		key: BlKeyboardKey shiftLeft;
-		key: BlKeyboardKey shiftRight;
+	shift := TbAlternativeCombination new
+		key: TbKeyboardKey shiftLeft;
+		key: TbKeyboardKey shiftRight;
 		yourself.
 		
 	combination

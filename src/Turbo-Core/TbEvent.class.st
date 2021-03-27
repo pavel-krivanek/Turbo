@@ -36,7 +36,7 @@ TbEvent class >> fireEvent: anEvent target: anEventTarget [
 	anEvent target = anEventTarget
 		ifFalse: [ theEvent := anEvent newCopyFor: anEventTarget].
 
-	aDispatcherChain := anEventTarget buildEventDispatchChain: BlEventDispatcherChain empty.
+	aDispatcherChain := anEventTarget buildEventDispatchChain: TbEventDispatcherChain empty.
 	^ aDispatcherChain dispatchEvent: theEvent
 ]
 
@@ -47,7 +47,7 @@ TbEvent >> arrivedTarget: aTBlEventTarget [
 		description: [ 'Target must not be nil' ].
 
 	currentTarget := aTBlEventTarget.	
-	self traversedTargets add: (BlEventTraversalTargetStep new target: currentTarget)
+	self traversedTargets add: (TbEventTraversalTargetStep new target: currentTarget)
 ]
 
 { #category : #'private - steps' }
@@ -77,7 +77,7 @@ TbEvent >> capturingTarget: aTBlEventTarget [
 		description: [ 'Target must not be nil' ].
 
 	currentTarget := aTBlEventTarget.	
-	self traversedTargets add: (BlEventTraversalCapturingStep new target: currentTarget)
+	self traversedTargets add: (TbEventTraversalCapturingStep new target: currentTarget)
 ]
 
 { #category : #testing }
@@ -112,7 +112,7 @@ TbEvent >> currentTarget: anEventTarget [
 
 { #category : #firing }
 TbEvent >> fire [
-	BlEvent fireEvent: self
+	TbEvent fireEvent: self
 ]
 
 { #category : #'private - steps' }
@@ -122,7 +122,7 @@ TbEvent >> forwardingTarget: aTBlEventTarget [
 		description: [ 'Target must not be nil' ].
 
 	currentTarget := aTBlEventTarget.	
-	self traversedTargets add: (BlEventTraversalForwardingStep new target: currentTarget)
+	self traversedTargets add: (TbEventTraversalForwardingStep new target: currentTarget)
 ]
 
 { #category : #testing }

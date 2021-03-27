@@ -35,14 +35,14 @@ TbBackground class >> builder [
 TbBackground class >> image: aForm [
 	<return: #BlBackground>
 	
-	^ BlImageBackground image: aForm
+	^ TbImageBackground image: aForm
 ]
 
 { #category : #'instance creation' }
 TbBackground class >> paint: aColorOrBlPaint [
 	<return: #BlBackground>
 
-	^ BlPaintBackground paint: aColorOrBlPaint
+	^ TbPaintBackground paint: aColorOrBlPaint
 ]
 
 { #category : #'instance creation' }
@@ -50,7 +50,7 @@ TbBackground class >> transparent [
 	"Return a completely transparent background"
 	<return: #BlBackground>
 	
-	^ BlTransparentBackground uniqueInstance
+	^ TbTransparentBackground uniqueInstance
 ]
 
 { #category : #converting }

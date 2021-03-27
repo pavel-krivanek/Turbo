@@ -22,7 +22,7 @@ TbPaint class >> transparent [
 
 { #category : #converting }
 TbPaint >> asBlBackground [
-	^ BlBackground paint: self
+	^ TbBackground paint: self
 ]
 
 { #category : #converting }

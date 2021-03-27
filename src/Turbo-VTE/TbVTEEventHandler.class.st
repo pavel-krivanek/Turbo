@@ -38,11 +38,11 @@ TbVTEEventHandler >> convertButtonFromMouseButtonEvent: aMorphicEvent [
 TbVTEEventHandler >> convertButtonFromMouseEvent: aMorphicEvent [
 
 	aMorphicEvent redButtonPressed
-		ifTrue: [ ^ BlMouseEvent primaryButton ].
+		ifTrue: [ ^ TbMouseEvent primaryButton ].
 	aMorphicEvent blueButtonPressed
-		ifTrue: [ ^ BlMouseEvent middleButton ].
+		ifTrue: [ ^ TbMouseEvent middleButton ].
 	aMorphicEvent yellowButtonPressed
-		ifTrue: [ ^ BlMouseEvent secondaryButton ].
+		ifTrue: [ ^ TbMouseEvent secondaryButton ].
 		
 	^ aMorphicEvent buttons
 ]
@@ -56,7 +56,7 @@ TbVTEEventHandler >> convertKeyModifiersFromEvent: aMorphicEvent [
 	alt := aMorphicEvent altKeyPressed.
 	cmd := aMorphicEvent commandKeyPressed.
 	
-	^ BlKeyModifiers shift: shift ctrl: ctrl alt: alt cmd: cmd
+	^ TbKeyModifiers shift: shift ctrl: ctrl alt: alt cmd: cmd
 ]
 
 { #category : #'event handling' }
@@ -105,7 +105,7 @@ TbVTEEventHandler >> handleKeyDown: aMorphicEvent [
 TbVTEEventHandler >> handleKeyUp: aMorphicEvent [
 	| aBlEvent |
 		
-	aBlEvent := BlKeyUpEvent new
+	aBlEvent := TbKeyUpEvent new
 		key: aMorphicEvent key;
 		scanCode: aMorphicEvent scanCode;
 		
@@ -121,7 +121,7 @@ TbVTEEventHandler >> handleKeyUp: aMorphicEvent [
 TbVTEEventHandler >> handleKeystroke: aMorphicEvent [
 	| aBlEvent |
 		
-	aBlEvent := BlKeystrokeEvent new
+	aBlEvent := TbKeystrokeEvent new
 		char: aMorphicEvent keyCharacter;
 		scanCode: aMorphicEvent scanCode;
 		
@@ -138,7 +138,7 @@ TbVTEEventHandler >> handleMouseDown: anEvent [
 
 	| aBlEvent |
 
-	aBlEvent := BlMouseDownEvent  new
+	aBlEvent := TbMouseDownEvent  new
 		position: (self transformPoint: anEvent position);
 		"delta: aMorphicEvent position - (self window pointToSpace: aMorphicEvent startPoint);
 		screenPosition: (self convertPosition: anEvent position);
@@ -178,7 +178,7 @@ TbVTEEventHandler >> handleMouseMove: anEvent [
 
 	| aBlEvent |
 
-	aBlEvent := BlMouseMoveEvent new
+	aBlEvent := TbMouseMoveEvent new
 		position: (self transformPoint: anEvent position);
 		"delta: aMorphicEvent position - (self window pointToSpace: aMorphicEvent startPoint);
 		screenPosition: (self convertPosition: anEvent position);
@@ -199,7 +199,7 @@ TbVTEEventHandler >> handleMouseUp: anEvent [
 
 	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
-		aBlEvent := BlMouseUpEvent new
+		aBlEvent := TbMouseUpEvent new
 			position: (self transform: (aMorphicEvent position));
 			screenPosition: (self transform: ((self globalMousePositionForEvent: aMorphicEvent)));
 			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);

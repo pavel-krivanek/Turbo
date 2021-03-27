@@ -114,7 +114,7 @@ TbSelectionTree >> insert: aMonotoneTextSelection [
 		ifTrue: [ ^ self ].
 	
 	self hasRoot
-		ifFalse: [ root := (BlSelectionNode selection: aMonotoneTextSelection) parent: self. ^ self ].
+		ifFalse: [ root := (TbSelectionNode selection: aMonotoneTextSelection) parent: self. ^ self ].
 		
 	theNeighbours := self findOverlappingNeighbours: aMonotoneTextSelection.
 	theNeighbours
@@ -125,8 +125,8 @@ TbSelectionTree >> insert: aMonotoneTextSelection [
 	
 	theNeighbours reverseDo: #delete.
 	self hasRoot
-		ifFalse: [ root := (BlSelectionNode selection: (BlSelection from: newFrom to: newTo)) parent: self. ^ self ].
-	self root insert: (BlSelection from: newFrom to: newTo)
+		ifFalse: [ root := (TbSelectionNode selection: (TbSelection from: newFrom to: newTo)) parent: self. ^ self ].
+	self root insert: (TbSelection from: newFrom to: newTo)
 ]
 
 { #category : #'tree - testing' }

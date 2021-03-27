@@ -221,7 +221,7 @@ TbConcatenationRope >> isLeaf [
 
 { #category : #'rope - enumeration' }
 TbConcatenationRope >> iterator: aStart to: anEnd [
-	^ BlConcatenationRopeIterator rope: self from: aStart to: anEnd
+	^ TbConcatenationRopeIterator rope: self from: aStart to: anEnd
 ]
 
 { #category : #accessing }

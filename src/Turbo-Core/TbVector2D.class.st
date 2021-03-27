@@ -37,7 +37,7 @@ TbVector2D >> + anotherVector [
 TbVector2D >> , aNumber [
 	<return: #BlVector>
 
-	^ BlVector3D x: self x y: self y z: aNumber
+	^ TbVector3D x: self x y: self y z: aNumber
 ]
 
 { #category : #arithmetic }
@@ -74,7 +74,7 @@ TbVector2D >> adaptToNumber: aNumber andSend: aSelector [
 	"If I am involved in arithmetic with an Integer, convert it to a Vector of the same dimension"
 	<return: #BlVector>
 
-	^ (BlVector x: aNumber y: aNumber) perform: aSelector with: self
+	^ (TbVector x: aNumber y: aNumber) perform: aSelector with: self
 ]
 
 { #category : #converting }
@@ -164,7 +164,7 @@ TbVector2D >> length [
 TbVector2D >> negated [
 	<return: #BlVector>
 
-	^ BlVector
+	^ TbVector
 		x: self x negated
 		y: self y negated
 ]
@@ -216,7 +216,7 @@ TbVector2D >> scalarMultiplicate2D: aVector2D [
 	"Perform a scalar multiplication of a given 2D vector by me"
 	<return: #BlVector>
 
-	^ BlVector
+	^ TbVector
 		x: aVector2D x * self x
 		y: aVector2D y * self y
 ]

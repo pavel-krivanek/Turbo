@@ -25,7 +25,7 @@ TbRenderer >> initializeForForm: aFormSurface [
 	canvasExtent := aFormSurface canvasExtent.
 
 	scaleFactor := aFormSurface scaleFactor.
-"	textBlocCanvas := TextBlocCanvas on: aFormSurface.
+"	textBlocCanvas := TbCanvas on: aFormSurface.
 
 
 ]

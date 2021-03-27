@@ -25,7 +25,7 @@ TbElementDynamicTransformation >> defaultMatrix2D [
 
 { #category : #initialization }
 TbElementDynamicTransformation >> defaultMatrix3D [
-	^ BlMatrix3D new
+	^ TbMatrix3D new
 ]
 
 { #category : #private }

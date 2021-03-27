@@ -17,12 +17,12 @@ Class {
 
 { #category : #initialization }
 TbTransformation >> defaultMatrix2D [
-	^ BlMatrix2D new
+	^ TbMatrix2D new
 ]
 
 { #category : #initialization }
 TbTransformation >> defaultMatrix3D [
-	^ BlMatrix3D new
+	^ TbMatrix3D new
 ]
 
 { #category : #private }

@@ -244,7 +244,7 @@ TbAttributeRope >> isLeaf [
 
 { #category : #'rope - enumeration' }
 TbAttributeRope >> iterator: aStart to: anEnd [
-	^ BlAttributeRopeIterator rope: self from: aStart to: anEnd
+	^ TbAttributeRopeIterator rope: self from: aStart to: anEnd
 ]
 
 { #category : #accessing }

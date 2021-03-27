@@ -34,17 +34,17 @@ TbVisibility class >> cleanUp [
 
 { #category : #visibilities }
 TbVisibility class >> gone [
-	^ gone ifNil: [ gone := BlVisibilityGone new ]
+	^ gone ifNil: [ gone := TbVisibilityGone new ]
 ]
 
 { #category : #visibilities }
 TbVisibility class >> hidden [
-	^ hidden ifNil: [ hidden := BlVisibilityHidden new ]
+	^ hidden ifNil: [ hidden := TbVisibilityHidden new ]
 ]
 
 { #category : #visibilities }
 TbVisibility class >> visible [
-	^ visible ifNil: [ BlVisibilityVisible new ]
+	^ visible ifNil: [ TbVisibilityVisible new ]
 ]
 
 { #category : #comparing }

@@ -22,7 +22,7 @@ TbPoint4D class >> x: aX y: aY z: aZ w: aW [
 TbPoint4D >> asPoint2D [
 	<return: #BlPoint2D>
 
-	^ BlPoint2D x: (self x asFloat / self w) y: (self y asFloat / self w)
+	^ TbPoint2D x: (self x asFloat / self w) y: (self y asFloat / self w)
 ]
 
 { #category : #initialization }

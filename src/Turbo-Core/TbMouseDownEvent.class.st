@@ -42,7 +42,7 @@ TbMouseDownEvent class >> secondary [
 
 { #category : #converting }
 TbMouseDownEvent >> asMouseStillDownEvent [
-	^ BlMouseStillDownEvent new
+	^ TbMouseStillDownEvent new
 		copyFrom: self;
 		yourself
 ]

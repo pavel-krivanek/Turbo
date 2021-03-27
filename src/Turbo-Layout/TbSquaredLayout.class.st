@@ -33,7 +33,7 @@ TbSquaredLayout >> beTight [
 TbSquaredLayout >> initialize [
 	super initialize.
 	
-	layout := BlBasicLayout new.
+	layout := TbBasicLayout new.
 	isTight := false "be loose by default"
 ]
 

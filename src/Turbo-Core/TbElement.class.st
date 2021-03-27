@@ -159,7 +159,7 @@ TbElement >> addChild: anElement at: anIndex [
 		description: [ 'Can not add nil element' ].
 
 	anElement hasParent
-		ifTrue: [ (BlAlreadyAddedAsChildError element: anElement) signal ].	
+		ifTrue: [ (TbAlreadyAddedAsChildError element: anElement) signal ].	
 	
 	self
 		assert: [ anElement hasParent not ]
@@ -486,7 +486,7 @@ TbElement >> background: aBlBackground [
 
 	background := aBlBackground asBlBackground.
 	self updateBackground.
-	self dispatchEvent: (BlElementBackgroundChangedEvent target: self).
+	self dispatchEvent: (TbElementBackgroundChangedEvent target: self).
 	self invalidate
 ]
 
@@ -855,12 +855,12 @@ TbElement >> defaultBackground [
 	Note: it may be any object that implements #asBlBackground"
 	<return: #BlBackground>
 
-	^ BlBackground transparent
+	^ TbBackground transparent
 ]
 
 { #category : #initialization }
 TbElement >> defaultBackgroundResizer [
-	^ BlBackgroundResizer match
+	^ TbBackgroundResizer match
 ]
 
 { #category : #initialization }
@@ -905,7 +905,7 @@ TbElement >> defaultGeometryResizer [
 
 { #category : #initialization }
 TbElement >> defaultLayout [
-	^ BlBasicLayout new
+	^ TbBasicLayout new
 ]
 
 { #category : #initialization }
@@ -2972,7 +2972,7 @@ TbElement >> rotateByDegrees: angle axis: aVector [
 
 	self transform
 		inherit;
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
 		rotateBy: angle axis: aVector;
 		apply
 ]
@@ -3000,8 +3000,8 @@ TbElement >> rotateByDegrees: angle center: aPoint [
 
 	self transform
 		inherit;
-		origin: (BlAffineTransformationPositionOrigin position: aPoint);
-		rotateBy: angle axis: BlVector zAxis;
+		origin: (TbAffineTransformationPositionOrigin position: aPoint);
+		rotateBy: angle axis: TbVector zAxis;
 		apply
 ]
 
@@ -3032,8 +3032,8 @@ TbElement >> scaleBy: aVector [
 
 	self transform
 		inherit;
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (BlVector x: aVector asPoint x y: aVector asPoint y z: 1);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		scaleBy: (TbVector x: aVector asPoint x y: aVector asPoint y z: 1);
 		apply
 ]
 
@@ -3045,8 +3045,8 @@ TbElement >> scaleTo: aFactorPoint [
 		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
 
 	self transform
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (BlVector x: aFactorPoint asPoint x y: aFactorPoint asPoint y z: 1);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		scaleBy: (TbVector x: aFactorPoint asPoint x y: aFactorPoint asPoint y z: 1);
 		apply
 ]
 
@@ -3058,8 +3058,8 @@ TbElement >> scaleX: factor [
 		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
 
 	self transform
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (BlVector x: factor y: 1 z: 1);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		scaleBy: (TbVector x: factor y: 1 z: 1);
 		apply
 ]
 
@@ -3071,8 +3071,8 @@ TbElement >> scaleX: fx Y: fy [
 		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
 
 	self transform
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (BlVector x: fx y: fy z: 1);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		scaleBy: (TbVector x: fx y: fy z: 1);
 		apply
 ]
 
@@ -3084,8 +3084,8 @@ TbElement >> scaleY: factor [
 		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
 
 	self transform
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (BlVector x: 1 y: factor z: 1);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		scaleBy: (TbVector x: 1 y: factor z: 1);
 		apply
 ]
 
@@ -3217,8 +3217,8 @@ TbElement >> translateBy: aDelta [
 
 	self transform
 		inherit;
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		translateBy: (BlVector x: aDelta asPoint x y: aDelta asPoint y z: 0);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		translateBy: (TbVector x: aDelta asPoint x y: aDelta asPoint y z: 0);
 		apply
 ]
 
@@ -3230,8 +3230,8 @@ TbElement >> translateTo: aPoint [
 		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
 
 	self transform
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		translateBy: (BlVector x: aPoint asPoint x y: aPoint asPoint y z: 0);
+		origin: (TbAffineTransformationPositionOrigin position: 0@0);
+		translateBy: (TbVector x: aPoint asPoint x y: aPoint asPoint y z: 0);
 		apply
 ]
 
