@@ -19,7 +19,7 @@ BaselineOfTurbo >> baseline: spec [
 
 		spec
 	    	baseline: 'Spec-VTE'
-	    	with: [ spec repository: 'github://estebanlm/Spec-VTE.git' ].
+	    	with: [ spec repository: 'github://estebanlm/Spec-VTE' ].
 
 		spec
 	    	baseline: 'Units'
