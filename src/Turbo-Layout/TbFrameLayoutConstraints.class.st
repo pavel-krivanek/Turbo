@@ -11,10 +11,10 @@ TbFrameLayoutConstraints >> alignment [
 
 { #category : #initialization }
 TbFrameLayoutConstraints >> defaultHorizontal [
-	^ BlFrameLayoutConstraintsHorizontal new
+	^ TbFrameLayoutConstraintsHorizontal new
 ]
 
 { #category : #initialization }
 TbFrameLayoutConstraints >> defaultVertical [
-	^ BlFrameLayoutConstraintsVertical new
+	^ TbFrameLayoutConstraintsVertical new
 ]

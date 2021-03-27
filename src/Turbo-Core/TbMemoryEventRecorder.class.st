@@ -22,7 +22,7 @@ TbMemoryEventRecorder >> initialize [
 	super initialize.
 
 	events := OrderedCollection new.
-	time := BlTime real
+	time := TbTime real
 ]
 
 { #category : #'api - recording' }

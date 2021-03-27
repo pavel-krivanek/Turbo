@@ -11,5 +11,5 @@ Class {
 
 { #category : #accessing }
 TbOverScrollMode class >> never [
-	^ never ifNil: [ never := BlOverScrollNeverMode new ]
+	^ never ifNil: [ never := TbOverScrollNeverMode new ]
 ]

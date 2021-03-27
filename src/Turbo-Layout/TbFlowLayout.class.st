@@ -42,12 +42,12 @@ TbFlowLayout >> defaultHorizontalAlignment [
 	so to not deal with nils use null object"
 	<return: #BlNullAlignment>
 	
-	^ BlElementAlignment start horizontal
+	^ TbElementAlignment start horizontal
 ]
 
 { #category : #initialization }
 TbFlowLayout >> defaultOrientation [
-	^ BlLayoutOrientation horizontal
+	^ TbLayoutOrientation horizontal
 ]
 
 { #category : #initialization }
@@ -56,12 +56,12 @@ TbFlowLayout >> defaultVerticalAlignment [
 	so to not deal with nils use null object"
 	<return: #BlNullAlignment>
 	
-	^ BlElementAlignment start vertical
+	^ TbElementAlignment start vertical
 ]
 
 { #category : #accessing }
 TbFlowLayout >> horizontal [
-	orientation := BlLayoutOrientation horizontal.
+	orientation := TbLayoutOrientation horizontal.
 	measurer beHorizontal
 ]
 
@@ -110,7 +110,7 @@ TbFlowLayout >> orientation: aLayoutOrientation [
 
 { #category : #accessing }
 TbFlowLayout >> vertical [
-	orientation := BlLayoutOrientation vertical.
+	orientation := TbLayoutOrientation vertical.
 	measurer beVertical
 ]
 

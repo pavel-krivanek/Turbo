@@ -87,7 +87,7 @@ TbMatrix >> rotateBy: aNumber [
 	
 	self
 		rotateByDegrees: aNumber
-		around: BlVector zAxis
+		around: TbVector zAxis
 ]
 
 { #category : #'matrix - transformations' }

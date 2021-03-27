@@ -25,7 +25,7 @@ Class {
 TbMeasurementMode class >> atMost [
 	<return: #BlMeasurementMode>
 
-	^ atMost ifNil: [ atMost := BlMeasurementAtMostMode new ]
+	^ atMost ifNil: [ atMost := TbMeasurementAtMostMode new ]
 ]
 
 { #category : #cleanup }
@@ -41,14 +41,14 @@ TbMeasurementMode class >> cleanUp [
 TbMeasurementMode class >> exact [
 	<return: #BlMeasurementMode>
 	
-	^ exact ifNil: [ exact := BlMeasurementExactMode new ]
+	^ exact ifNil: [ exact := TbMeasurementExactMode new ]
 ]
 
 { #category : #accessing }
 TbMeasurementMode class >> unspecified [
 	<return: #BlMeasurementMode>
 	
-	^ unspecified ifNil: [ unspecified := BlMeasurementUnspecifiedMode new ]
+	^ unspecified ifNil: [ unspecified := TbMeasurementUnspecifiedMode new ]
 ]
 
 { #category : #comparing }

@@ -22,7 +22,7 @@ TbColorPaint class >> transparent [
 	"Return an instance of a paint with transparent color"
 	<return: #BlColorPaint>
 	
-	^ BlTransparentPaint uniqueInstance
+	^ TbTransparentPaint uniqueInstance
 ]
 
 { #category : #comparing }

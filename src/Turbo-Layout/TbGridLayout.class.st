@@ -55,7 +55,7 @@ Class {
 
 { #category : #constraints }
 TbGridLayout class >> constraints [
-	^ BlGridLayoutConstraints new
+	^ TbGridLayoutConstraints new
 ]
 
 { #category : #factory }
@@ -74,12 +74,12 @@ TbGridLayout class >> vertical [
 
 { #category : #accessing }
 TbGridLayout >> alignBounds [
-	alignment := BlGridAlignmentMode alignBounds
+	alignment := TbGridAlignmentMode alignBounds
 ]
 
 { #category : #accessing }
 TbGridLayout >> alignMargins [
-	alignment := BlGridAlignmentMode alignMargins
+	alignment := TbGridAlignmentMode alignMargins
 ]
 
 { #category : #accessing }
@@ -104,7 +104,7 @@ TbGridLayout >> columnCount: aNumber [
 
 { #category : #initialization }
 TbGridLayout >> defaultAlignment [
-	^ BlGridAlignmentMode alignMargins
+	^ TbGridAlignmentMode alignMargins
 ]
 
 { #category : #initialization }
@@ -114,12 +114,12 @@ TbGridLayout >> defaultCellSpacing [
 
 { #category : #initialization }
 TbGridLayout >> defaultOrientation [
-	^ BlGridOrientation horizontal
+	^ TbGridOrientation horizontal
 ]
 
 { #category : #accessing }
 TbGridLayout >> horizontal [
-	orientation := BlGridOrientation horizontal.
+	orientation := TbGridOrientation horizontal.
 	impl invalidateStructure
 ]
 
@@ -131,7 +131,7 @@ TbGridLayout >> initialize [
 	orientation := self defaultOrientation.
 	alignment := self defaultAlignment.
 
-	impl := BlGridLayoutImpl on: self
+	impl := TbGridLayoutImpl on: self
 ]
 
 { #category : #layout }
@@ -144,7 +144,7 @@ TbGridLayout >> layout: anElement in: aRectangle [
 TbGridLayout >> measure: anElement with: anExtentSpec [
 	impl measure: anElement with: anExtentSpec.
 
-	self measureIgnored: anElement with: (BlExtentMeasurementSpec exact: anElement measuredExtent)
+	self measureIgnored: anElement with: (TbExtentMeasurementSpec exact: anElement measuredExtent)
 ]
 
 { #category : #accessing }
@@ -159,6 +159,6 @@ TbGridLayout >> rowCount: aNumber [
 
 { #category : #accessing }
 TbGridLayout >> vertical [
-	orientation := BlGridOrientation vertical.
+	orientation := TbGridOrientation vertical.
 	impl invalidateStructure
 ]

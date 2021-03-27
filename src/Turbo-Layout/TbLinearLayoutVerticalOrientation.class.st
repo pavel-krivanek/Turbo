@@ -31,7 +31,7 @@ TbLinearLayoutVerticalOrientation >> extentBreadth: breadth lengthSpec: length [
 
 { #category : #orientation }
 TbLinearLayoutVerticalOrientation >> extentSpecBreadth: breadthSpec lengthSpec: lengthSpec [
-	^ BlExtentMeasurementSpec new
+	^ TbExtentMeasurementSpec new
 		widthSpec: breadthSpec;
 		heightSpec: lengthSpec
 ]

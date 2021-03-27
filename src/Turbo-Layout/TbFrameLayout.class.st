@@ -57,7 +57,7 @@ Class {
 
 { #category : #constraints }
 TbFrameLayout class >> constraints [
-	^ BlFrameLayoutConstraints new
+	^ TbFrameLayoutConstraints new
 ]
 
 { #category : #'api - alignment' }
@@ -136,7 +136,7 @@ TbFrameLayout >> measureChild: aChildElement of: anElement with: anExtentSpec wi
 			| weight width |
 			weight := (aChildElement constraints frame horizontal weight max: 0).
 			width := ((aParentWidth - anElement insets width - aChildElement outsets width) * weight) max: 0.
-			childWidthMeasureSpec := BlMeasurementSpec exact: width ]
+			childWidthMeasureSpec := TbMeasurementSpec exact: width ]
 		ifFalse: [ 
 			childWidthMeasureSpec := self
 				measurementSpecFor: anExtentSpec widthSpec
@@ -148,7 +148,7 @@ TbFrameLayout >> measureChild: aChildElement of: anElement with: anExtentSpec wi
 			| weight height |
 			weight := (aChildElement constraints frame vertical weight max: 0).
 			height := ((aParentHeight - anElement insets height - aChildElement outsets height) * weight) max: 0.
-			childHeightMeasureSpec := BlMeasurementSpec exact: height ]
+			childHeightMeasureSpec := TbMeasurementSpec exact: height ]
 		ifFalse: [ 
 			childHeightMeasureSpec := self
 				measurementSpecFor: anExtentSpec heightSpec

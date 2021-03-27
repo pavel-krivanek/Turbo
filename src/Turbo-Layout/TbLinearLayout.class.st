@@ -16,7 +16,7 @@ Class {
 
 { #category : #constraints }
 TbLinearLayout class >> constraints [
-	^ BlLinearLayoutConstraints new
+	^ TbLinearLayoutConstraints new
 ]
 
 { #category : #factory }
@@ -48,14 +48,14 @@ TbLinearLayout >> alignment [
 TbLinearLayout >> beHorizontal [
 	"Change my orientation to horizontal"
 	
-	self orientation: BlLinearLayoutHorizontalOrientation new
+	self orientation: TbLinearLayoutHorizontalOrientation new
 ]
 
 { #category : #orientation }
 TbLinearLayout >> beVertical [
 	"Change my orientation to vertical"
 	
-	self orientation: BlLinearLayoutVerticalOrientation new
+	self orientation: TbLinearLayoutVerticalOrientation new
 ]
 
 { #category : #accessing }
@@ -76,7 +76,7 @@ TbLinearLayout >> defaultHorizontalAlignment [
 	so to not deal with nils use null object"
 	<return: #BlNullAlignment>
 	
-	^ BlElementAlignment null horizontal
+	^ TbElementAlignment null horizontal
 ]
 
 { #category : #initialization }
@@ -86,7 +86,7 @@ TbLinearLayout >> defaultOrientation [
 	is used by defualt"
 	<return: #BlLinearLayoutHorizontalOrientation>
 	
-	^ BlLinearLayoutHorizontalOrientation new
+	^ TbLinearLayoutHorizontalOrientation new
 ]
 
 { #category : #initialization }
@@ -95,7 +95,7 @@ TbLinearLayout >> defaultVerticalAlignment [
 	so to not deal with nils use null object"
 	<return: #BlNullAlignment>
 	
-	^ BlElementAlignment null vertical
+	^ TbElementAlignment null vertical
 ]
 
 { #category : #initialization }
@@ -152,8 +152,8 @@ TbLinearLayout >> measure: anElement with: anExtentSpec [
 	"I measure a new extent of myself and my children"
 	
 	aMeasurer := self orientation isHorizontal
-		ifTrue: [ BlLinearLayoutHorizontalMeasurer new ]
-		ifFalse: [ BlLinearLayoutVerticalMeasurer new ].
+		ifTrue: [ TbLinearLayoutHorizontalMeasurer new ]
+		ifFalse: [ TbLinearLayoutVerticalMeasurer new ].
 		
 	aMeasurer
 		initializeWith: anElement
@@ -163,7 +163,7 @@ TbLinearLayout >> measure: anElement with: anExtentSpec [
 	
 	aMeasurer measure.
 	
-	self measureIgnored: anElement with: (BlExtentMeasurementSpec exact: anElement measuredExtent)
+	self measureIgnored: anElement with: (TbExtentMeasurementSpec exact: anElement measuredExtent)
 ]
 
 { #category : #accessing }

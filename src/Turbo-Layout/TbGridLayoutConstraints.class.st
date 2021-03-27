@@ -14,12 +14,12 @@ TbGridLayoutConstraints >> columnSpec [
 
 { #category : #'initialize-release' }
 TbGridLayoutConstraints >> defaultHorizontal [
-	^ BlGridLayoutConstraintsHorizontal new
+	^ TbGridLayoutConstraintsHorizontal new
 ]
 
 { #category : #'initialize-release' }
 TbGridLayoutConstraints >> defaultVertical [
-	^ BlGridLayoutConstraintsVertical new
+	^ TbGridLayoutConstraintsVertical new
 ]
 
 { #category : #'as yet unclassified' }

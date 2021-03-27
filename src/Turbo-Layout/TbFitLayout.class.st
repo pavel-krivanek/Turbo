@@ -15,14 +15,14 @@ TbFitLayout >> boundingBox: anElement [
 	| aBoundingBox |
 
 	anElement children isEmpty
-		ifTrue: [ ^ BlBounds new asRectangle ].
+		ifTrue: [ ^ TbBounds new asRectangle ].
 
 	aBoundingBox := nil.
 	self
 		layeredChildren: anElement
 		do: [ :aChild |
 			aBoundingBox
-				ifNil: [ aBoundingBox := BlBounds fromRectangle: aChild measuredBounds bounds ]
+				ifNil: [ aBoundingBox := TbBounds fromRectangle: aChild measuredBounds bounds ]
 				ifNotNil: [ aBoundingBox merge: aChild measuredBounds bounds ] ].
 
 	^ aBoundingBox expanded asRectangle

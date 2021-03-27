@@ -76,7 +76,7 @@ TbMatrix2D >> decomposition [
 	row1x := self shx.
 	row1y := self sy.
 	
-	translate := BlVector x: self x y: self y.
+	translate := TbVector x: self x y: self y.
 	scaleX := ((row0x * row0x) + (row0y * row0y)) sqrt.
 	scaleY := ((row1x * row1x) + (row1y * row1y)) sqrt.
 	
@@ -122,9 +122,9 @@ TbMatrix2D >> decomposition [
 	"Convert into degrees because our rotation functions expect it."
 	angle := angle radiansToDegrees.
 	
-	^ BlMatrixDecomposition2D new
+	^ TbMatrixDecomposition2D new
 		translation: translate;
-		scale: (BlVector x: scaleX y: scaleY);
+		scale: (TbVector x: scaleX y: scaleY);
 		angle: angle;
 		matrix: matrix
 ]
@@ -173,7 +173,7 @@ TbMatrix2D >> inverse [
 	
 	determinant := self determinant.
 	determinant isZero
-		ifTrue: [ BlSingularMatrixError signal: 'Matrix is singular and can not be inverted!' ].
+		ifTrue: [ TbSingularMatrixError signal: 'Matrix is singular and can not be inverted!' ].
 		
 	inverseDeterminant := 1.0 / determinant.
 	

@@ -49,7 +49,7 @@ TbMeasurementSpec >> = anotherObject [
 
 { #category : #composition }
 TbMeasurementSpec >> @ heightMeasurementSpec [
-	^ BlExtentMeasurementSpec new
+	^ TbExtentMeasurementSpec new
 		widthSpec: self;
 		heightSpec: heightMeasurementSpec
 ]
@@ -58,14 +58,14 @@ TbMeasurementSpec >> @ heightMeasurementSpec [
 TbMeasurementSpec >> beAtMost: aNumber [
 	self
 		size: aNumber;
-		mode: BlMeasurementMode atMost
+		mode: TbMeasurementMode atMost
 ]
 
 { #category : #converting }
 TbMeasurementSpec >> beExact: aNumber [
 	self
 		size: aNumber;
-		mode: BlMeasurementMode exact
+		mode: TbMeasurementMode exact
 ]
 
 { #category : #converting }
@@ -77,7 +77,7 @@ TbMeasurementSpec >> beUnspecified [
 TbMeasurementSpec >> beUnspecified: aNumber [
 	self
 		size: aNumber;
-		mode: BlMeasurementMode unspecified
+		mode: TbMeasurementMode unspecified
 ]
 
 { #category : #comparing }

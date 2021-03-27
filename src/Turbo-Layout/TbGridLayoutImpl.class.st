@@ -24,7 +24,7 @@ TbGridLayoutImpl class >> on: aGridLayout [
 { #category : #'private utilities' }
 TbGridLayoutImpl >> adjust: aMeasurementSpec by: delta [
 
-	^ BlMeasurementSpec new
+	^ TbMeasurementSpec new
 		size: (aMeasurementSpec size ifNotNil: [ :size | size + delta ]);
 		mode: aMeasurementSpec mode
 ]
@@ -115,7 +115,7 @@ TbGridLayoutImpl >> constraintsHashCode: anElement [
 
 { #category : #initialization }
 TbGridLayoutImpl >> defaultMeasurer [
-	^ BlGridMeasurer new
+	^ TbGridMeasurer new
 ]
 
 { #category : #'private utilities' }
@@ -151,8 +151,8 @@ TbGridLayoutImpl >> fits: anArray from: fromIndex to: toIndex with: value [
 TbGridLayoutImpl >> initialize [
 	super initialize.
 
-	verticalAxis := BlGridLayoutAxis new horizontal: false.
-	horizontalAxis := BlGridLayoutAxis new horizontal: true.
+	verticalAxis := TbGridLayoutAxis new horizontal: false.
+	horizontalAxis := TbGridLayoutAxis new horizontal: true.
 	measurer := self defaultMeasurer
 ]
 
@@ -315,8 +315,8 @@ TbGridLayoutImpl >> setGroup: child row: row span: rowSpan col: col span: colSpa
 	| childConstraints |
 
 	childConstraints := child constraints grid.
-	childConstraints vertical specSpan: (BlGridLayoutInterval min: row max: row + rowSpan).
-	childConstraints horizontal specSpan: (BlGridLayoutInterval min: col max: col + colSpan)
+	childConstraints vertical specSpan: (TbGridLayoutInterval min: row max: row + rowSpan).
+	childConstraints horizontal specSpan: (TbGridLayoutInterval min: col max: col + colSpan)
 ]
 
 { #category : #private }

@@ -68,7 +68,7 @@ TbOnceLayout >> layout: anElement in: aRectangle [
 { #category : #measure }
 TbOnceLayout >> measure: anElement with: anExtentSpec [
 	self isStopped
-		ifTrue: [ ^ super measure: anElement with: (BlExtentMeasurementSpec exact: measuredExtent) ].
+		ifTrue: [ ^ super measure: anElement with: (TbExtentMeasurementSpec exact: measuredExtent) ].
 	self layout measure: anElement with: anExtentSpec
 ]
 

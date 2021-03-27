@@ -43,7 +43,7 @@ TbKeyCombinationConverterCNF >> visitAlternative: aBlAlternativeCombination [
 TbKeyCombinationConverterCNF >> visitCompulsory: aBlCompulsoryCombination [
 	| compulsory |
 
-	compulsory := BlCompulsoryCombination new.
+	compulsory := TbCompulsoryCombination new.
 
 	aBlCompulsoryCombination combinations do: [ :aCombination |
 		compulsory withAll: (aCombination accept: self) combinations ].
@@ -53,5 +53,5 @@ TbKeyCombinationConverterCNF >> visitCompulsory: aBlCompulsoryCombination [
 
 { #category : #visiting }
 TbKeyCombinationConverterCNF >> visitKey: aBlKeyCodeCombination [
-	^ BlCompulsoryCombination new with: aBlKeyCodeCombination
+	^ TbCompulsoryCombination new with: aBlKeyCodeCombination
 ]

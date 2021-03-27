@@ -18,8 +18,8 @@ Class {
 TbLayoutDirection class >> initialize [
 	super initialize.
 	
-	leftToRight := BlLayoutLeftToRight new.
-	rightToLeft := BlLayoutRightToLeft new
+	leftToRight := TbLayoutLeftToRight new.
+	rightToLeft := TbLayoutRightToLeft new
 ]
 
 { #category : #factory }

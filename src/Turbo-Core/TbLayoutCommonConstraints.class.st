@@ -85,12 +85,12 @@ TbLayoutCommonConstraints >> at: aLayoutClass [
 
 { #category : #initialization }
 TbLayoutCommonConstraints >> defaultHorizontal [
-	^ BlLayoutCommonConstraintsAxis new
+	^ TbLayoutCommonConstraintsAxis new
 ]
 
 { #category : #initialization }
 TbLayoutCommonConstraints >> defaultVertical [
-	^ BlLayoutCommonConstraintsAxis new
+	^ TbLayoutCommonConstraintsAxis new
 ]
 
 { #category : #'api - constraints' }
@@ -104,7 +104,7 @@ TbLayoutCommonConstraints >> ignoreByLayout [
 
 { #category : #'api - layouts' }
 TbLayoutCommonConstraints >> ignored [
-	^ self at: BlIgnoredLayout
+	^ self at: TbIgnoredLayout
 ]
 
 { #category : #testing }
@@ -119,8 +119,8 @@ TbLayoutCommonConstraints >> ignoredByLayout [
 TbLayoutCommonConstraints >> initialize [
 	super initialize.
 	
-	margin := BlInsets empty.
-	padding := BlInsets empty.
+	margin := TbInsets empty.
+	padding := TbInsets empty.
 
 	maxHeight := Float infinity.
 	maxWidth := Float infinity.

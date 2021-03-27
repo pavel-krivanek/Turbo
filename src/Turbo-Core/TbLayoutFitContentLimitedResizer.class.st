@@ -34,7 +34,7 @@ TbLayoutFitContentLimitedResizer >> measurementAtMostWith: aNumber [
 	"Child wants to determine its own size. It can't be bigger than us."
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec new beAtMost: aNumber
+	^ TbMeasurementSpec new beAtMost: aNumber
 ]
 
 { #category : #'double dispatching' }
@@ -42,12 +42,12 @@ TbLayoutFitContentLimitedResizer >> measurementExactlyWith: aNumber [
 	"Child wants to determine its own size. It can't be bigger than us."
 	<return: #BlMeasurementSpec>
 
-   ^ BlMeasurementSpec new beAtMost: aNumber
+   ^ TbMeasurementSpec new beAtMost: aNumber
 ]
 
 { #category : #'double dispatching' }
 TbLayoutFitContentLimitedResizer >> measurementUnspecifiedWith: aNumber [
-	^ BlMeasurementSpec unspecified
+	^ TbMeasurementSpec unspecified
 ]
 
 { #category : #printing }

@@ -280,7 +280,7 @@ TbLinearLayoutMeasurer >> uniformMeasure [
 	"Pretend that the linear layout has an exact size. This is the measured height of ourselves.
 	The measured height should be the max height of the children, changed to accommodate the heightMeasureSpec from the parent"
 	
-	uniformMeasureSpec := BlMeasurementSpec exact: (orientation measuredBreadth: parent).
+	uniformMeasureSpec := TbMeasurementSpec exact: (orientation measuredBreadth: parent).
 	
 	self nodes
 		select: [ :aNode | aNode breadthResizer isMatchParent ]
@@ -288,7 +288,7 @@ TbLinearLayoutMeasurer >> uniformMeasure [
 			| oldResizer |
 			"Temporarily force children to reuse their old measured width"
 			oldResizer := aNode lengthResizer.
-			aNode lengthResizer: (BlLayoutResizer exact: aNode measuredLength).
+			aNode lengthResizer: (TbLayoutResizer exact: aNode measuredLength).
 			
 			"Remeasure with new dimensions"
 			orientation 

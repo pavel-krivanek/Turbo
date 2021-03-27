@@ -34,7 +34,7 @@ TbLayoutFitContentResizer >> measurementAtMostWith: aNumber [
 	"Child wants to determine its own size. It may be bigger than us."
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec unspecified
+	^ TbMeasurementSpec unspecified
 ]
 
 { #category : #'double dispatching' }
@@ -42,7 +42,7 @@ TbLayoutFitContentResizer >> measurementExactlyWith: aNumber [
 	"Child wants to determine its own size. It may be bigger than us."
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec unspecified
+	^ TbMeasurementSpec unspecified
 ]
 
 { #category : #'double dispatching' }
@@ -50,7 +50,7 @@ TbLayoutFitContentResizer >> measurementUnspecifiedWith: aNumber [
 	"Child wants to determine its own size.... find out how big it should be"
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec unspecified: aNumber
+	^ TbMeasurementSpec unspecified: aNumber
 ]
 
 { #category : #printing }

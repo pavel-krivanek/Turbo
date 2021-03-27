@@ -34,7 +34,7 @@ TbLayoutMatchParentResizer >> measurementAtMostWith: aNumber [
 	"Child wants to be our size, but our size is not fixed. Constrain child to not be bigger than us."
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec new beAtMost: aNumber
+	^ TbMeasurementSpec new beAtMost: aNumber
 ]
 
 { #category : #'double dispatching' }
@@ -42,7 +42,7 @@ TbLayoutMatchParentResizer >> measurementExactlyWith: aNumber [
 	"Parent has imposed an exact size on us, child wants to be our size. So be it."
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec new beExact: aNumber
+	^ TbMeasurementSpec new beExact: aNumber
 ]
 
 { #category : #'double dispatching' }
@@ -50,7 +50,7 @@ TbLayoutMatchParentResizer >> measurementUnspecifiedWith: aNumber [
 	"Child wants to be our size... find out how big it should be"
 	<return: #BlMeasurementSpec>
 
-	^ BlMeasurementSpec unspecified: aNumber
+	^ TbMeasurementSpec unspecified: aNumber
 ]
 
 { #category : #printing }

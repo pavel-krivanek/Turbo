@@ -54,7 +54,7 @@ TbNCursesHostSpace >> lock [
 { #category : #'instance creation' }
 TbNCursesHostSpace >> newSurface [
 
-	^ TextBlocRendererNCursesSurface new
+	^ TbRendererNCursesSurface new
 ]
 
 { #category : #'host space - displaying' }
@@ -149,6 +149,6 @@ TbNCursesHostSpace >> windowExtent: anExtent [
 { #category : #'as yet unclassified' }
 TbNCursesHostSpace >> withTextBlocRenderer [
 
-	renderer := TextBlocRenderer new.
+	renderer := TbRenderer new.
 	renderer initializeHostSpace: self.
 ]

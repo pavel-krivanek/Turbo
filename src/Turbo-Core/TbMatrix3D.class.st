@@ -452,7 +452,7 @@ TbMatrix3D >> transformPoint2D: aPoint2D [
 	aY := (aPoint2D x * shy0) + (aPoint2D y * sy) + y.
 	aW := (aPoint2D x * wx) + (aPoint2D y * wy) + w.
 
-	^ BlPoint2D
+	^ TbPoint2D
 		x: aX asFloat / aW
 		y: aY asFloat / aW
 ]
@@ -467,7 +467,7 @@ TbMatrix3D >> transformPoint3D: aPoint3D [
 	aZ := (aPoint3D x * shz0) + (aPoint3D y * shz1) + (aPoint3D z * sz) + z.
 	aW := (aPoint3D x * wx) + (aPoint3D y * wy) + (aPoint3D z * wz) + w.
 
-	^ BlPoint3D
+	^ TbPoint3D
 		x: aX asFloat / aW
 		y: aY asFloat / aW
 		z: aZ asFloat / aW
@@ -483,7 +483,7 @@ TbMatrix3D >> transformPoint4D: aPoint4D [
 	aZ := (aPoint4D x * shz0) + (aPoint4D y * shz1) + (aPoint4D z * sz) + (aPoint4D w * z).
 	aW := (aPoint4D x * wx) + (aPoint4D y * wy) + (aPoint4D z * wz) + (aPoint4D w * w).
 
-	^ BlPoint4D
+	^ TbPoint4D
 		x: aX
 		y: aY
 		z: aZ

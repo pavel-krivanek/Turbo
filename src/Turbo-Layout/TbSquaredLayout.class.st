@@ -80,5 +80,5 @@ TbSquaredLayout >> measure: anElement with: anExtentSpec [
 		ifTrue: [ ^ self ].
 
 	"and finally re-measure everything with squared extent"
-	self layout measure: anElement with: (BlExtentMeasurementSpec exact: anExtent)
+	self layout measure: anElement with: (TbExtentMeasurementSpec exact: anExtent)
 ]

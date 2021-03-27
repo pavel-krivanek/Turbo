@@ -53,7 +53,7 @@ TbObservableProperty >> bindOn: aProperty [
 TbObservableProperty >> bindOn: aProperty bidirectional: aBoolean [
 
 	self unbind.
-	binding := BlPropertyBinding from: aProperty to: self bidirectional: aBoolean
+	binding := TbPropertyBinding from: aProperty to: self bidirectional: aBoolean
 ]
 
 { #category : #accessing }
@@ -111,7 +111,7 @@ TbObservableProperty >> notifyValueChanged [
 
 { #category : #'change management' }
 TbObservableProperty >> onChangedDo: aBlock [
-	self addChangeListener: (BlOnChangeListener do: aBlock)
+	self addChangeListener: (TbOnChangeListener do: aBlock)
 ]
 
 { #category : #accessing }

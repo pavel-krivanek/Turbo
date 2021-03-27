@@ -7,15 +7,15 @@ TbLayoutCommonConstraints >> flow [
 
 { #category : #'*Turbo-Layout' }
 TbLayoutCommonConstraints >> frame [
-	^ self at: BlFrameLayout
+	^ self at: TbFrameLayout
 ]
 
 { #category : #'*Turbo-Layout' }
 TbLayoutCommonConstraints >> grid [
-	^ self at: BlGridLayout
+	^ self at: TbGridLayout
 ]
 
 { #category : #'*Turbo-Layout' }
 TbLayoutCommonConstraints >> linear [
-	^ self at: BlLinearLayout
+	^ self at:TbLinearLayout
 ]

@@ -47,7 +47,7 @@ TbMiscProperties >> focused: anObject [
 { #category : #accessing }
 TbMiscProperties >> focusedProperty [
 	^ focused
-		ifNil: [ focused := BlObjectProperty
+		ifNil: [ focused := TbObjectProperty
 				on: self
 				named: #focused
 				default: false ]

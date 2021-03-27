@@ -13,20 +13,20 @@ Class {
 
 { #category : #accessing }
 TbMouseButton class >> code: aNumber [
-	^ BlMouseOtherButton code: aNumber
+	^ TbMouseOtherButton code: aNumber
 ]
 
 { #category : #accessing }
 TbMouseButton class >> middle [
-	^ BlMouseMiddleButton uniqueInstance
+	^ TbMouseMiddleButton uniqueInstance
 ]
 
 { #category : #accessing }
 TbMouseButton class >> primary [
-	^ BlMousePrimaryButton uniqueInstance
+	^ TbMousePrimaryButton uniqueInstance
 ]
 
 { #category : #accessing }
 TbMouseButton class >> secondary [
-	^ BlMouseSecondaryButton uniqueInstance
+	^ TbMouseSecondaryButton uniqueInstance
 ]

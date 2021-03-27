@@ -66,7 +66,7 @@ TbMorphicHostSpace >> morphicWindow: aWindow [
 { #category : #'instance creation' }
 TbMorphicHostSpace >> newSurface [
 
-	^ TextBlocRendererMorphicFormSurface new
+	^ TbRendererMorphicFormSurface new
 ]
 
 { #category : #'host space - displaying' }
@@ -161,6 +161,6 @@ TbMorphicHostSpace >> windowExtent: anExtent [
 { #category : #'as yet unclassified' }
 TbMorphicHostSpace >> withTextBlocRenderer [
 
-	renderer := TextBlocRenderer new.
+	renderer := TbRenderer new.
 	renderer initializeHostSpace: self.
 ]

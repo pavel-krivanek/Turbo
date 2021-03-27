@@ -255,15 +255,15 @@ TbKeyCombinationBuilder >> toNormalForm: aKeyCombination [
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> v [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey v)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey v)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> w [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey w)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey w)
 ]
 
 { #category : #'keys - letters' }
 TbKeyCombinationBuilder >> x [
-	combination with: (BlSingleKeyCombination new key: BlKeyboardKey x)
+	combination with: (TbSingleKeyCombination new key: TbKeyboardKey x)
 ]

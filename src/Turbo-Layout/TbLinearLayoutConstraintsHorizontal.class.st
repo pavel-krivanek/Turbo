@@ -9,17 +9,17 @@ Class {
 
 { #category : #alignment }
 TbLinearLayoutConstraintsHorizontal >> alignCenter [
-	alignment := BlElementAlignment horizontal center
+	alignment := TbElementAlignment horizontal center
 ]
 
 { #category : #alignment }
 TbLinearLayoutConstraintsHorizontal >> alignLeft [
-	alignment := BlElementAlignment horizontal start
+	alignment := TbElementAlignment horizontal start
 ]
 
 { #category : #alignment }
 TbLinearLayoutConstraintsHorizontal >> alignRight [
-	alignment := BlElementAlignment horizontal end
+	alignment := TbElementAlignment horizontal end
 ]
 
 { #category : #accessing }
@@ -36,5 +36,5 @@ TbLinearLayoutConstraintsHorizontal >> alignment: aBlElementAlignment [
 TbLinearLayoutConstraintsHorizontal >> initialize [
 	super initialize.
 	
-	alignment := BlElementAlignment null horizontal
+	alignment := TbElementAlignment null horizontal
 ]

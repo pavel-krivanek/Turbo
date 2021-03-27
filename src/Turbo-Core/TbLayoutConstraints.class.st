@@ -21,12 +21,12 @@ Class {
 
 { #category : #initialization }
 TbLayoutConstraints >> defaultHorizontal [
-	^ BlLayoutConstraintsAxis new
+	^ TbLayoutConstraintsAxis new
 ]
 
 { #category : #initialization }
 TbLayoutConstraints >> defaultVertical [
-	^ BlLayoutConstraintsAxis new
+	^ TbLayoutConstraintsAxis new
 ]
 
 { #category : #accessing }

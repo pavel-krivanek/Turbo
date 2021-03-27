@@ -44,7 +44,7 @@ TbMatrixDecomposition2D >> composition [
 	<return: #BlMatrix2D>
 	| composedMatrix |
 	
-	composedMatrix := BlMatrix2D new.
+	composedMatrix := TbMatrix2D new.
 	composedMatrix sx: (matrix at: 1 at: 1).
 	composedMatrix shy: (matrix at: 1 at: 2).
 	composedMatrix shx: (matrix at: 2 at: 1).
@@ -55,7 +55,7 @@ TbMatrixDecomposition2D >> composition [
 	composedMatrix y: (translation x * composedMatrix shy) + (translation y * composedMatrix sy).
 	
 	"rotate matrix"
-	composedMatrix := (BlMatrix2D rotation: angle degreesToRadians) multiplyBy: (composedMatrix).
+	composedMatrix := (TbMatrix2D rotation: angle degreesToRadians) multiplyBy: (composedMatrix).
 
 	"Scale matrix."
 	composedMatrix sx: composedMatrix sx * scale x.
@@ -100,7 +100,7 @@ TbMatrixDecomposition2D >> interpolate: aFactor to: anotherDecomposition [
 	
 	"Interpolate all values."
 	aTranslation := self translation + ((anotherDecomposition translation - self translation) * aFactor).
-	aScale := self scale + ((anotherDecomposition scale - (BlVector x: aScaleX y: aScaleY)) * aFactor).
+	aScale := self scale + ((anotherDecomposition scale - (TbVector x: aScaleX y: aScaleY)) * aFactor).
 	anAngle := anAngle + ((anOtherAngle - anAngle) * aFactor).
 	aMatrix := self matrix
 		with: anotherDecomposition matrix

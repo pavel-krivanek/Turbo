@@ -69,7 +69,7 @@ TbOvershootingScroller >> defaultDuration [
 TbOvershootingScroller >> defaultEventDispatcher [
 	"Return class of event dispatcher.
 	Instantiation happens in initialize"
-	^ BlDirectEventDispatcher
+	^ TbDirectEventDispatcher
 ]
 
 { #category : #initialization }
@@ -79,7 +79,7 @@ TbOvershootingScroller >> defaultFlyweel [
 
 { #category : #initialization }
 TbOvershootingScroller >> defaultInterpolator [
-	^ BlViscousFluidInterpolator default
+	^ TbViscousFluidInterpolator default
 ]
 
 { #category : #initialization }
@@ -193,7 +193,7 @@ TbOvershootingScroller >> friction: aNumber [
 TbOvershootingScroller >> initialize [
 	super initialize.
 	
-	time := BlTime real.
+	time := TbTime real.
 	interpolator := self defaultInterpolator.
 	scrollerX := self defaultSplineScroller time: time.
 	scrollerY := self defaultSplineScroller time: time.
@@ -272,7 +272,7 @@ TbOvershootingScroller >> notifyHorizontalEdgeReached: aStartPosition final: aFi
 
 { #category : #'private - notifying' }
 TbOvershootingScroller >> notifyRun: isFinished [
-	self dispatchEvent: (BlOvershootingScrollerRunEvent new isFinished: isFinished)
+	self dispatchEvent: (TbOvershootingScrollerRunEvent new isFinished: isFinished)
 ]
 
 { #category : #'private - notifying' }
@@ -401,5 +401,5 @@ TbOvershootingScroller >> velocity [
 	"Return a velocity vector where each component represents a velocity along each axis"
 	<return: #BlVector>
 	
-	^ BlVector x: scrollerX currentVelocity y: scrollerY currentVelocity
+	^ TbVector x: scrollerX currentVelocity y: scrollerY currentVelocity
 ]

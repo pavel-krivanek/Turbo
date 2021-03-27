@@ -14,12 +14,12 @@ TbLinearLayoutConstraints >> alignment [
 
 { #category : #initialization }
 TbLinearLayoutConstraints >> defaultHorizontal [
-	^ BlLinearLayoutConstraintsHorizontal new
+	^ TbLinearLayoutConstraintsHorizontal new
 ]
 
 { #category : #initialization }
 TbLinearLayoutConstraints >> defaultVertical [
-	^ BlLinearLayoutConstraintsVertical new
+	^ TbLinearLayoutConstraintsVertical new
 ]
 
 { #category : #initialization }

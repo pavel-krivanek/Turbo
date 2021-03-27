@@ -9,29 +9,29 @@ Class {
 
 { #category : #resizing }
 TbLayoutCommonConstraintsAxis >> exact: aNumber [
-	self resizer: (BlLayoutResizer exact: aNumber)
+	self resizer: (TbLayoutResizer exact: aNumber)
 ]
 
 { #category : #resizing }
 TbLayoutCommonConstraintsAxis >> fitContent [
-	self resizer: BlLayoutResizer fitContent
+	self resizer: TbLayoutResizer fitContent
 ]
 
 { #category : #resizing }
 TbLayoutCommonConstraintsAxis >> fitContentLimited [
-	self resizer: BlLayoutResizer fitContentLimited
+	self resizer: TbLayoutResizer fitContentLimited
 ]
 
 { #category : #initialization }
 TbLayoutCommonConstraintsAxis >> initialize [
 	super initialize.
 	
-	resizer := BlLayoutResizer exact: 50
+	resizer := TbLayoutResizer exact: 50
 ]
 
 { #category : #resizing }
 TbLayoutCommonConstraintsAxis >> matchParent [
-	self resizer: BlLayoutResizer matchParent
+	self resizer: TbLayoutResizer matchParent
 ]
 
 { #category : #accessing }

@@ -131,10 +131,10 @@ TbKeyModifiers >> isPrimaryModifier [
 	
 	aPrimaryModifier := OSPlatform current primaryModifier.
 
-	(self isCmd and: [ (aPrimaryModifier includes: BlKeyboardKey metaLeft) or: [ (aPrimaryModifier includes: BlKeyboardKey metaRight) ] ])
+	(self isCmd and: [ (aPrimaryModifier includes: TbKeyboardKey metaLeft) or: [ (aPrimaryModifier includes: TbKeyboardKey metaRight) ] ])
 		ifTrue: [ ^ true ].
 		
-	(self isCtrl and: [ (aPrimaryModifier includes: BlKeyboardKey controlLeft) or: [ (aPrimaryModifier includes: BlKeyboardKey controlRight) ] ])
+	(self isCtrl and: [ (aPrimaryModifier includes: TbKeyboardKey controlLeft) or: [ (aPrimaryModifier includes: TbKeyboardKey controlRight) ] ])
 		ifTrue: [ ^ true ].
 
 	^ false

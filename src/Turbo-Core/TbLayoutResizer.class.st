@@ -8,22 +8,22 @@ Class {
 
 { #category : #'instance creation' }
 TbLayoutResizer class >> exact: aNumber [
-	^ BlLayoutExactResizer size: aNumber
+	^ TbLayoutExactResizer size: aNumber
 ]
 
 { #category : #'instance creation' }
 TbLayoutResizer class >> fitContent [
-	^ BlLayoutFitContentResizer uniqueInstance
+	^ TbLayoutFitContentResizer uniqueInstance
 ]
 
 { #category : #'instance creation' }
 TbLayoutResizer class >> fitContentLimited [
-	^ BlLayoutFitContentLimitedResizer uniqueInstance
+	^ TbLayoutFitContentLimitedResizer uniqueInstance
 ]
 
 { #category : #'instance creation' }
 TbLayoutResizer class >> matchParent [
-	^ BlLayoutMatchParentResizer uniqueInstance
+	^ TbLayoutMatchParentResizer uniqueInstance
 ]
 
 { #category : #comparing }

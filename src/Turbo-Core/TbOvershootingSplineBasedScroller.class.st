@@ -232,7 +232,7 @@ TbOvershootingSplineBasedScroller >> fling: aVelocity start: aStart min: aMin ma
 	(self isCubic and: [ self isFinished not and: [ self currentVelocity isZero not and: [ aVelocity sign ~~ self startVelocity sign ] ] ])
 		ifTrue: [ ^ self ].
 		
-	self mode: (BlSplineOverScrollerFlingMode new
+	self mode: (TbSplineOverScrollerFlingMode new
 		velocity: aVelocity;
 		startPosition: aStart;
 		minPosition: aMin;
@@ -265,12 +265,12 @@ TbOvershootingSplineBasedScroller >> inflexion [
 TbOvershootingSplineBasedScroller >> initialize [
 	super initialize.
 
-	time := BlTime real.
+	time := TbTime real.
 	
 	currentPosition := 0.0.
 	currentVelocity := 0.0.
 	currentStep := Spline.
-	mode := BlSplineOverScrollerNoneMode new.
+	mode := TbSplineOverScrollerNoneMode new.
 	
 	splineDistance := 0.0.
 	splineDuration := 0 milliSeconds.
@@ -367,7 +367,7 @@ TbOvershootingSplineBasedScroller >> onEdgeReached [
 	"overshot distance must not contain fractional numbers"
 	overshotDistance := self truncated: aDistance.
 	
-	currentStep := BlSplineOverScrollerStep ballistic.
+	currentStep := TbSplineOverScrollerStep ballistic.
 	finalPosition := startPosition + (self truncated: (startVelocity > 0
 		ifTrue: [ aDistance ]
 		ifFalse: [ aDistance negated ])).
@@ -585,7 +585,7 @@ TbOvershootingSplineBasedScroller >> startPosition: aNumber [
 { #category : #'api - scrolling' }
 TbOvershootingSplineBasedScroller >> startScrollBy: aDistance from: aStartPosition during: aDuration interpolator: anInterpolator [
 	
-	self mode: (BlSplineOverScrollerScrollMode new
+	self mode: (TbSplineOverScrollerScrollMode new
 		distance: aDistance;
 		startPosition: aStartPosition;
 		duration: aDuration;
@@ -644,17 +644,17 @@ TbOvershootingSplineBasedScroller >> startVelocity: aNumber [
 
 { #category : #'private - steps' }
 TbOvershootingSplineBasedScroller >> switchToBallistic [
-	currentStep := BlSplineOverScrollerStep ballistic
+	currentStep := TbSplineOverScrollerStep ballistic
 ]
 
 { #category : #'private - steps' }
 TbOvershootingSplineBasedScroller >> switchToCubic [
-	currentStep := BlSplineOverScrollerStep cubic
+	currentStep := TbSplineOverScrollerStep cubic
 ]
 
 { #category : #'private - steps' }
 TbOvershootingSplineBasedScroller >> switchToSpline [
-	currentStep := BlSplineOverScrollerStep spline
+	currentStep := TbSplineOverScrollerStep spline
 ]
 
 { #category : #accessing }

@@ -23,8 +23,8 @@ TbLayoutOrientation class >> horizontal [
 TbLayoutOrientation class >> initialize [
 	super initialize.
 	
-	horizontal := BlLayoutHorizontal new.
-	vertical := BlLayoutVertical new
+	horizontal := TbLayoutHorizontal new.
+	vertical := TbLayoutVertical new
 ]
 
 { #category : #factory }

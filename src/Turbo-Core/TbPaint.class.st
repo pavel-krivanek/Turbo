@@ -17,7 +17,7 @@ TbPaint class >> transparent [
 	"Return a completely transparent paint"
 	<return: #BlPaint>
 	
-	^ BlColorPaint transparent
+	^ TbColorPaint transparent
 ]
 
 { #category : #converting }

@@ -31,11 +31,11 @@ TbNCursesEventHandler >> convertButtonFromMouseButtonEvent: aMorphicEvent [
 TbNCursesEventHandler >> convertButtonFromMouseEvent: aMorphicEvent [
 
 	aMorphicEvent redButtonPressed
-		ifTrue: [ ^ BlMouseEvent primaryButton ].
+		ifTrue: [ ^ TbMouseEvent primaryButton ].
 	aMorphicEvent blueButtonPressed
-		ifTrue: [ ^ BlMouseEvent middleButton ].
+		ifTrue: [ ^ TbMouseEvent middleButton ].
 	aMorphicEvent yellowButtonPressed
-		ifTrue: [ ^ BlMouseEvent secondaryButton ].
+		ifTrue: [ ^ TbMouseEvent secondaryButton ].
 		
 	^ aMorphicEvent buttons
 ]
@@ -49,7 +49,7 @@ TbNCursesEventHandler >> convertKeyModifiersFromEvent: aMorphicEvent [
 	alt := aMorphicEvent altKeyPressed.
 	cmd := aMorphicEvent commandKeyPressed.
 	
-	^ BlKeyModifiers shift: shift ctrl: ctrl alt: alt cmd: cmd
+	^ TbKeyModifiers shift: shift ctrl: ctrl alt: alt cmd: cmd
 ]
 
 { #category : #'event handling' }
@@ -98,7 +98,7 @@ TbNCursesEventHandler >> handleKeyDown: aMorphicEvent [
 TbNCursesEventHandler >> handleKeyUp: aMorphicEvent [
 	| aBlEvent |
 		
-	aBlEvent := BlKeyUpEvent new
+	aBlEvent := TbKeyUpEvent new
 		key: aMorphicEvent key;
 		scanCode: aMorphicEvent scanCode;
 		
@@ -114,7 +114,7 @@ TbNCursesEventHandler >> handleKeyUp: aMorphicEvent [
 TbNCursesEventHandler >> handleKeystroke: aMorphicEvent [
 	| aBlEvent |
 		
-	aBlEvent := BlKeystrokeEvent new
+	aBlEvent := TbKeystrokeEvent new
 		char: aMorphicEvent keyCharacter;
 		scanCode: aMorphicEvent scanCode;
 		

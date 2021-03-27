@@ -65,7 +65,7 @@ TbLayout >> align: aChildElement vertical: aBlAlignment [
 TbLayout >> defaultDirection [
 	<return: #BlLayoutDirection>
 
-	^ BlLayoutDirection leftToRight
+	^ TbLayoutDirection leftToRight
 ]
 
 { #category : #direction }
@@ -146,7 +146,7 @@ TbLayout >> layoutIgnored: anElement [
 
 { #category : #direction }
 TbLayout >> leftToRight [
-	direction := BlLayoutDirection leftToRight
+	direction := TbLayoutDirection leftToRight
 ]
 
 { #category : #measure }
@@ -180,7 +180,7 @@ TbLayout >> measureChild: anElement parentSpec: parentSpec widthUsed: widthUsed 
 	used width and height can contain margin and/or padding.
 	@see BlElement>>#measurementSpecFor:usedSize:resizing: for more info"
 
-	anElement measure: (BlExtentMeasurementSpec new
+	anElement measure: (TbExtentMeasurementSpec new
 		widthSpec: (self
 			measurementSpecFor: parentSpec widthSpec
 			usedSize: widthUsed
@@ -323,7 +323,7 @@ TbLayout >> requestingLayout: aBoolean [
 
 { #category : #direction }
 TbLayout >> rightToLeft [
-	direction := BlLayoutDirection rightToLeft
+	direction := TbLayoutDirection rightToLeft
 ]
 
 { #category : #protected }

@@ -41,7 +41,7 @@ TbLinearLayoutHorizontalMeasurer >> measureExactUsingExcessSpace: aNode [
 	The following defeats the optimization mentioned above.
 	Allow the child to use as much space as it wants because we can shrink things later (and re-measure)."
 	self isBaselineAligned
-		ifTrue: [ aNode measure: BlExtentMeasurementSpec unspecified ]
+		ifTrue: [ aNode measure: TbExtentMeasurementSpec unspecified ]
 		ifFalse: [ skippedMeasure := true ]
 ]
 
