@@ -95,23 +95,20 @@ TbVTEHost class >> example2 [
 	space host createHostSpaceFor: space.
 	space hostSpace show.
 	
-	
 	moved := e2.
 	clickHandler := TbEventHandler
 		on: TbMouseDownEvent
 		do: [ :evt |
-				animation := TbTransformAnimation new.
-	animation transform
-		translateBy: (evt position - moved position );
-		rotateBy: 0;
-		apply.
-	animation absolute.
-	animation duration: 200 milliSeconds.
-	moved addAnimation: animation.
-			
+			animation := TbTransformAnimation new.
+			animation transform
+				translateBy: (evt position - moved position );
+				rotateBy: 0;
+				apply.
+			animation absolute.
+			animation duration: 200 milliSeconds.
+			moved addAnimation: animation.
 			].
 	space root addEventHandler: clickHandler.
-
 	
 	universe start.
 	space dispatchEvent: (TbSpaceShownEvent new space: universe).
