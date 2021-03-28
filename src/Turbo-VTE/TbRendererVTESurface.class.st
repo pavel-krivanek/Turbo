@@ -82,7 +82,7 @@ TbRendererVTESurface >> initializeResourcesOn: aHostRenderer [
 	presenter eventHandler whenMouseDownDo: [ :anEvent |
 		eventHandler handleMouseDown: anEvent ].
 
-	self initializeOn: aHostRenderer
+	aHostRenderer initializeForForm: self.
 	
 ]
 
