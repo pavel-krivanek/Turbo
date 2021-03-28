@@ -69,6 +69,7 @@ TbVTEEventHandler >> convertMousePosition: anEvent andDo: aBlock [
 
 { #category : #accessing }
 TbVTEEventHandler >> enqueue: aBlEvent [
+
 	self hostSpace enqueueEvent: aBlEvent
 ]
 
@@ -160,7 +161,7 @@ TbVTEEventHandler >> handleMouseDown: anEvent [
 			yourself.
 		self enqueue: aBlEvent ]."
 	
-	window takeKeyboardFocus
+	"window takeKeyboardFocus"
 ]
 
 { #category : #'event handling' }
@@ -197,7 +198,19 @@ TbVTEEventHandler >> handleMouseOver: anEvent [
 { #category : #'event handling' }
 TbVTEEventHandler >> handleMouseUp: anEvent [
 
-	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
+	| aBlEvent |
+
+	aBlEvent := TbMouseUpEvent  new
+		position: (self transformPoint: anEvent position);
+		"delta: aMorphicEvent position - (self window pointToSpace: aMorphicEvent startPoint);
+		screenPosition: (self convertPosition: anEvent position);
+		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);"
+		timestamp: DateAndTime now
+		yourself.
+		
+	self enqueue: aBlEvent 
+
+"	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
 		aBlEvent := TbMouseUpEvent new
 			position: (self transform: (aMorphicEvent position));
@@ -208,7 +221,7 @@ TbVTEEventHandler >> handleMouseUp: anEvent [
 			yourself.
 		self enqueue: aBlEvent ].
 	
-	window takeKeyboardFocus.
+	window takeKeyboardFocus."
 ]
 
 { #category : #'event handling' }

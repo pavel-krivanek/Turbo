@@ -73,16 +73,21 @@ TbRendererVTESurface >> initializeResourcesOn: aHostRenderer [
 	app := SpApplication new.
 	app useBackend: #Gtk. 
 	presenter := VteTerminalPresenter newApplication: app.
-	  	
-	presenter openWithSpec.
-
+	presenter beNotEditable. 	
+	
 	presenter eventHandler whenMouseMoveDo: [ :anEvent |
 		eventHandler handleMouseMove: anEvent  ].
 	
 	presenter eventHandler whenMouseDownDo: [ :anEvent |
 		eventHandler handleMouseDown: anEvent ].
 
+	presenter eventHandler whenMouseUpDo: [ :anEvent |
+		eventHandler handleMouseUp: anEvent ].
+
 	aHostRenderer initializeForForm: self.
+	
+	presenter openWithSpec.
+
 	
 ]
 

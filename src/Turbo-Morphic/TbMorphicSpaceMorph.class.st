@@ -89,7 +89,7 @@ TbMorphicSpaceMorph class >> example2 [
 	moved := e2.
 	clickHandler := TbEventHandler
 		on: TbClickEvent
-		do: [ :evt |
+		do: [ :evt | 
 				animation := TbTransformAnimation new.
 	animation transform
 		translateBy: (evt position - moved position );
