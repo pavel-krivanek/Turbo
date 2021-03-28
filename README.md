@@ -9,3 +9,12 @@ Metacello new
   repository: 'github://pavel-krivanek/Turbo';
   load.
 ```
+
+or with VTE (+Gtk)
+
+```smalltalk
+Metacello new
+  baseline: 'TurboWithVte';
+  repository: 'github://pavel-krivanek/Turbo';
+  load.
+```
