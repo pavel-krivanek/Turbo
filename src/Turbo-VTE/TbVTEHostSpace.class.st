@@ -74,13 +74,7 @@ TbVTEHostSpace >> prepareToRender: aBlSpace onFormSurface: aBlHostRendererFormSu
 TbVTEHostSpace >> render: aSpace [
 	"Render a given abstract space on an underlying window or visual area"
 
-	| aForm |
 	self renderer render: aSpace.
-	aForm := self renderer surface form.
-"	morphicWindow spaceForm form copy: (0@0 extent: aForm extent) from: 0@0 in: aForm rule: Form over.
-	morphicWindow spaceForm changed."
-	
-
 ]
 
 { #category : #'host space - accessing' }

@@ -37,12 +37,6 @@ TbRendererVTESurface >> charSize [
 			asIntegerPoint ]
 ]
 
-{ #category : #rendering }
-TbRendererVTESurface >> form [
-
-	^ form
-]
-
 { #category : #initialization }
 TbRendererVTESurface >> hostSpace: aHostSpace [ 
 
@@ -75,7 +69,7 @@ TbRendererVTESurface >> initializeResourcesOn: aHostRenderer [
 	
 	app := SpApplication new.
 	app useBackend: #Gtk. 
-	presenter := VteTerminalPresenter newApplication: app.
+	presenter := TbVTEPresenter newApplication: app.
 	presenter beNotEditable. 	
 	
 	presenter eventHandler whenMouseMoveDo: [ :anEvent |
