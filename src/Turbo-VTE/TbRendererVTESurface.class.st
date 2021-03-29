@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'presenter',
 		'charSize',
-		'eventHandler'
+		'eventHandler',
+		'initialized'
 	],
 	#category : #'Turbo-VTE'
 }
@@ -69,6 +70,8 @@ TbRendererVTESurface >> initializeResourcesOn: aHostRenderer [
 "
 
 		| app | 
+		
+	initialized ifNotNil: [ ^ self ].
 	
 	app := SpApplication new.
 	app useBackend: #Gtk. 
@@ -88,6 +91,7 @@ TbRendererVTESurface >> initializeResourcesOn: aHostRenderer [
 	
 	presenter openWithSpec.
 
+	initialized := true.
 	
 ]
 
