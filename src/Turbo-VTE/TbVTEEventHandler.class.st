@@ -87,33 +87,33 @@ TbVTEEventHandler >> handleDropMorph: anEvent [
 ]
 
 { #category : #'event handling' }
-TbVTEEventHandler >> handleKeyDown: aMorphicEvent [
+TbVTEEventHandler >> handleKeyDown: anEvent [
 	| aBlEvent |
 
 	aBlEvent := TbKeyDownEvent new
-		key: aMorphicEvent key;
-		scanCode: aMorphicEvent scanCode;
+		key: anEvent key;
+		"scanCode: anEvent scanCode;"
 		
-		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
-		timestamp: DateAndTime now;
-		position: aMorphicEvent position;
-		screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
+		"modifiers: (self convertKeyModifiersFromEvent: anEvent);"
+		timestamp: DateAndTime now";
+		position: anEvent position;
+		screenPosition: (self globalMousePositionForEvent: anEvent)".
 
 	self enqueue: aBlEvent
 ]
 
 { #category : #'event handling' }
-TbVTEEventHandler >> handleKeyUp: aMorphicEvent [
+TbVTEEventHandler >> handleKeyUp: aMorphicEvent [ 
 	| aBlEvent |
 		
 	aBlEvent := TbKeyUpEvent new
 		key: aMorphicEvent key;
-		scanCode: aMorphicEvent scanCode;
-		
-		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
-		timestamp: DateAndTime now;
-		position: aMorphicEvent position;
-		screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
+"		scanCode: aMorphicEvent scanCode;
+"		
+"		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);"
+		timestamp: DateAndTime now
+"		position: aMorphicEvent position;
+		screenPosition: (self globalMousePositionForEvent: aMorphicEvent)".
 
 	self enqueue: aBlEvent
 ]

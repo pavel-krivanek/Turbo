@@ -81,6 +81,12 @@ TbRendererVTESurface >> initializeResourcesOn: aHostRenderer [
 	presenter eventHandler whenMouseUpDo: [ :anEvent |
 		eventHandler handleMouseUp: anEvent ].
 
+	presenter eventHandler whenKeyDownDo: [ :anEvent |
+		eventHandler handleKeyDown: anEvent ].
+
+	presenter eventHandler whenKeyUpDo: [ :anEvent |
+		eventHandler handleKeyUp: anEvent ].
+
 	aHostRenderer initializeForForm: self.
 	
 	presenter openWithSpec.
