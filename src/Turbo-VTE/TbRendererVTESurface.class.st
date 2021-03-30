@@ -23,6 +23,8 @@ TbRendererVTESurface >> at: aPoint put: aCharacter textColor: textColor backgrou
 		presenter 
 			saveCursor;
 			cursorPosition: aPoint;
+			backgroundColor: backgroundColor;
+			foregroundColor: textColor;
 			feed: aCharacter asString;
 			restoreCursor ]
 ]
