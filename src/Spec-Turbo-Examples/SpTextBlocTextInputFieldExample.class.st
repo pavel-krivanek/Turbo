@@ -9,8 +9,8 @@ Class {
 	#category : #'Spec-Turbo-Examples'
 }
 
-{ #category : #specs }
-SpTextBlocTextInputFieldExample class >> defaultSpec [
+{ #category : #layout }
+SpTextBlocTextInputFieldExample class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		add: #field1;
