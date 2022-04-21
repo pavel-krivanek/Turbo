@@ -21,8 +21,8 @@ Class {
 	#category : #'Spec-Turbo-Examples'
 }
 
-{ #category : #specs }
-SpTextBlocButtonDemo class >> defaultSpec [
+{ #category : #layout }
+SpTextBlocButtonDemo class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		add: #button1;

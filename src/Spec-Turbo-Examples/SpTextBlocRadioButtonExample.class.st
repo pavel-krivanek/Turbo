@@ -11,8 +11,8 @@ Class {
 	#category : #'Spec-Turbo-Examples'
 }
 
-{ #category : #specs }
-SpTextBlocRadioButtonExample class >> defaultSpec [
+{ #category : #layout }
+SpTextBlocRadioButtonExample class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		add: #button1;

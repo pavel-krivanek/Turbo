@@ -10,8 +10,8 @@ Class {
 	#category : #'Spec-Turbo-Examples'
 }
 
-{ #category : #specs }
-SpTextBlocCheckBoxExample class >> defaultSpec [
+{ #category : #layout }
+SpTextBlocCheckBoxExample class >> defaultLayout [
 
 	^ SpBoxLayout newVertical
 		add: #checkBox1;

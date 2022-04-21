@@ -5,15 +5,14 @@ Class {
 }
 
 { #category : #specs }
-SpTextPresenterExample class >> open [ 
+SpTextPresenterExample class >> open [
 
 	<script>
-	
 	| app aPresenter |
 	app := SpApplication new.
 	app useBackend: #TextBloc.
 
 	aPresenter := self newApplication: app.
 
-	aPresenter openWithSpec.
+	aPresenter open
 ]

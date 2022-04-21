@@ -21,14 +21,14 @@ SpTextBlocBoxAdapter >> addConstraits: constraints toChild: childWidget [
 
 { #category : #adding }
 SpTextBlocBoxAdapter >> basicAdd: aPresenter constraints: constraints to: aWidget [
-	| childWidget |
 
-	childWidget := aPresenter buildWithSpec: constraints spec.
-		
-	childWidget constraintsDo: [ :c |
-		c horizontal matchParent .
+	| childWidget |
+	childWidget := aPresenter buildWithSelector: constraints spec.
+
+	childWidget constraintsDo: [ :c | 
+		c horizontal matchParent.
 		c vertical matchParent ].
-	
+
 	self widget addChild: childWidget.
 
 	^ aWidget

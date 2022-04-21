@@ -18,8 +18,9 @@ SpTextBlocWindowAdapter >> addContent: aView toWindow: aSpecWindow [
 
 { #category : #accessing }
 SpTextBlocWindowAdapter >> addPresenterIn: widgetToBuild withSpecLayout: aSpec [
+
 	self
-		addContent: (self model presenter buildWithSpecLayout: aSpec)
+		addContent: (self model presenter buildWithLayout: aSpec)
 		toWindow: widgetToBuild
 ]
 
@@ -84,6 +85,12 @@ SpTextBlocWindowAdapter >> isDisplayed [
 SpTextBlocWindowAdapter >> open [
 
 
+]
+
+{ #category : #accessing }
+SpTextBlocWindowAdapter >> openWithDeferredAction: aBlock [
+
+	aBlock value
 ]
 
 { #category : #accessing }

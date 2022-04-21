@@ -15,3 +15,9 @@ SpTextBlocBackend >> adapterBindingsClass [
 
 	^ SpTextBlocAdapterBindings
 ]
+
+{ #category : #private }
+SpTextBlocBackend >> defaultConfigurationFor: anApplication [
+
+	^ SpMockConfiguration new
+]
