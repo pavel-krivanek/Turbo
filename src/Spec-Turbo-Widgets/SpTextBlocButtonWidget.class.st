@@ -104,6 +104,8 @@ SpTextBlocButtonWidget >> initialize [
 
 	pressed := false.
 	
+	self size: 23@4.
+	
 
 ]
 

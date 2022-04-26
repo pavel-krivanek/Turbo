@@ -6,12 +6,20 @@ Class {
 
 { #category : #adding }
 SpTextBlocLayoutAdapter >> add: aPresenter constraints: constraints [
- 
-	self widgetDo: [ :gtkWidget | 
-		self 
-			basicAdd: aPresenter 
+
+	aPresenter owner: self model. 
+	self widgetDo: [ :aWidget | | childWidget |
+		childWidget := self 
+			basicAdd: aPresenter
 			constraints: constraints 
-			to: gtkWidget ]
+			to: aWidget.
+		self addWidgetAlignment: constraints to: childWidget.]
+]
+
+{ #category : #adding }
+SpTextBlocLayoutAdapter >> addWidgetAlignment: constraints to: gtkWidget [
+
+ 
 ]
 
 { #category : #adding }
@@ -20,7 +28,6 @@ SpTextBlocLayoutAdapter >> basicAdd: aPresenter constraints: constraints to: aPa
 	| childWidget | 
 
 	childWidget := aPresenter buildWithSpec: constraints spec.
-	aPanel layout: TbFlowLayout new horizontal.
 	aPanel addChild: childWidget.
 
 	^ aPanel

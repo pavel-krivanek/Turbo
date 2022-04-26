@@ -20,16 +20,23 @@ SpTextBlocBoxAdapter >> addConstraits: constraints toChild: childWidget [
 ]
 
 { #category : #adding }
+SpTextBlocBoxAdapter >> addWidgetAlignment: constraints to: gtkWidget [
+
+
+]
+
+{ #category : #adding }
 SpTextBlocBoxAdapter >> basicAdd: aPresenter constraints: constraints to: aWidget [
 
 	| childWidget |
 	childWidget := aPresenter buildWithSelector: constraints spec.
 
 	childWidget constraintsDo: [ :c | 
-		c horizontal matchParent.
-		c vertical matchParent ].
+		"c horizontal matchParent."
+	"	c horizontal matchParent .
+		c vertical matchParent" ].
 
-	self widget addChild: childWidget.
+	aWidget addChild: childWidget.
 
 	^ aWidget
 ]
@@ -37,6 +44,7 @@ SpTextBlocBoxAdapter >> basicAdd: aPresenter constraints: constraints to: aWidge
 { #category : #adding }
 SpTextBlocBoxAdapter >> buildWidget [
 	"We defer this until layout: (because then I will know what I have to create)"
+
 	
 	^ nil
 ]
@@ -44,6 +52,14 @@ SpTextBlocBoxAdapter >> buildWidget [
 { #category : #adding }
 SpTextBlocBoxAdapter >> layout: aLayout [
 
+	| directionLayout |
+	
+	directionLayout := aLayout isHorizontal
+		ifTrue: [ TbFlowLayout new horizontal ]
+		ifFalse: [ TbFlowLayout new vertical ].
+		
+	"directionLayout := TbGridLayout new columnCount: 1."
+		
 	"build of widget was differed up to here (to know what is the direction)"
 "	widget := aLayout direction newWidgetOn: self.
 	widget 
@@ -55,9 +71,9 @@ SpTextBlocBoxAdapter >> layout: aLayout [
 	widget constraintsDo: [ :c |
 			c horizontal matchParent .
 			c vertical matchParent ].
-	widget layout: (TbGridLayout new columnCount: 1) vertical.
-	widget layout cellSpacing: (self convert: aLayout spacing).
-
+	widget layout: directionLayout.
+"	widget layout cellSpacing: (self convert: aLayout spacing).
+"
 ]
 
 { #category : #adding }

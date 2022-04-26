@@ -4,14 +4,14 @@ Class {
 	#category : #'Spec-Turbo-Widgets'
 }
 
-{ #category : #'instance creation' }
+{ #category : #'as yet unclassified' }
 SpTextBlocBoxWidget class >> newHorizontal [
 
 	^ self new
 ]
 
-{ #category : #'instance creation' }
+{ #category : #'as yet unclassified' }
 SpTextBlocBoxWidget class >> newVertical [
 
-	^ self new
+	^ self new 
 ]
