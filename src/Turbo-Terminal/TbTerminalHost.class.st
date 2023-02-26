@@ -23,7 +23,7 @@ TbTerminalHost >> createHostSpaceFor: aSpace [
 	aHostSpace := TbTerminalHostSpace new. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
-	aHostSpace withTextBlocRenderer.
+	aHostSpace withTurboRenderer.
 
 	aSpace hostSpace: aHostSpace.	
 ]

@@ -120,7 +120,7 @@ TbTerminalHostSpace >> title [
 	"Return window's title as a string"
 	<return: #String>
 
-	^ 'TextBloc'
+	^ 'Turbo'
 ]
 
 { #category : #'window - properties' }
@@ -147,7 +147,7 @@ TbTerminalHostSpace >> windowExtent: anExtent [
 ]
 
 { #category : #'as yet unclassified' }
-TbTerminalHostSpace >> withTextBlocRenderer [
+TbTerminalHostSpace >> withTurboRenderer [
 
 	renderer := TbRenderer new.
 	renderer initializeHostSpace: self.

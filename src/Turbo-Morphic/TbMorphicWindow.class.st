@@ -1,16 +1,16 @@
 "
-element := TextBlocHelloElement new.
+element := TurboHelloElement new.
 
 space := BlSpace new.
 space extent: 50@50.
 space root addChild: element.
 
 universe := BlUniverse new.
-universe pulseLoop: (TextBlocPulseLoop new 
+universe pulseLoop: (TurboPulseLoop new 
 	universe: universe;
 	yourself).
 
-host := TextBlocMorphicHost new.
+host := TurboMorphicHost new.
 space host: host.
 universe spaceManager addSpace: space.
 

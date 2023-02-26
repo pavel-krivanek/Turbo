@@ -10,7 +10,7 @@ universe pulseLoop: (CustomPulseLoop new
 	universe: universe;
 	yourself).
 
-host := TextBlocTestingHost new.
+host := TurboTestingHost new.
 space host: host.
 universe spaceManager addSpace: space.
 
@@ -41,7 +41,7 @@ TbTestingHost >> createHostSpaceFor: aSpace [
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
 	aHostSpace createDisplayMatrix. "maybe not the best place here"
-	aHostSpace withTextBlocRenderer.
+	aHostSpace withTurboRenderer.
 
 	aSpace hostSpace: aHostSpace.
 	
