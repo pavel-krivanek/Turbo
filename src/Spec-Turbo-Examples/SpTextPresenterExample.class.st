@@ -10,7 +10,7 @@ SpTextPresenterExample class >> open [
 	<script>
 	| app aPresenter |
 	app := SpApplication new.
-	app useBackend: #TextBloc.
+	app useBackend: #Turbo.
 
 	aPresenter := self newApplication: app.
 

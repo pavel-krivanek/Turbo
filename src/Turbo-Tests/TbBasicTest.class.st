@@ -23,5 +23,5 @@ TbBasicTest >> setUp [
 TbBasicTest >> testContent [
 
 	self firePulse.
-	self assert: (self content beginsWith: 'Hello TextBloc')
+	self assert: (self content beginsWith: 'Hello Turbo')
 ]

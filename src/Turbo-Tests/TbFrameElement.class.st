@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-TbFrameElement >> drawOnTextBlocCanvas2: aCanvas [
+TbFrameElement >> drawOnTurboCanvas2: aCanvas [
 
 	| extent |
 	
@@ -33,7 +33,7 @@ TbFrameElement >> drawOnTextBlocCanvas2: aCanvas [
 ]
 
 { #category : #'as yet unclassified' }
-TbFrameElement >> drawOnTextBlocCanvas: aCanvas [
+TbFrameElement >> drawOnTurboCanvas: aCanvas [
 
 	| extent |
 	

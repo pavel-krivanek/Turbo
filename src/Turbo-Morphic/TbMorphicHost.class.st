@@ -23,7 +23,7 @@ TbMorphicHost >> createHostSpaceFor: aSpace [
 	aHostSpace morphicWindow: aWindow. 
 	aHostSpace host: self.
 	aHostSpace space: aSpace.
-	aHostSpace withTextBlocRenderer.
+	aHostSpace withTurboRenderer.
 
 	aSpace hostSpace: aHostSpace.
 	

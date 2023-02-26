@@ -138,7 +138,7 @@ TbCanvas >> clip [
 	canvas clip
 		pop.
 	"
-	<return: #TextBlocClipper>
+	<return: #TurboClipper>
 
 	^ self clipBuilder
 		reset;
@@ -185,7 +185,7 @@ TbCanvas >> fillRectangle: aRectangle with: aString [
 
 { #category : #'drawing-general' }
 TbCanvas >> fullDraw: anObject [
-	^ anObject fullDrawOnTextBlocCanvas: self
+	^ anObject fullDrawOnTurboCanvas: self
 ]
 
 { #category : #colors }

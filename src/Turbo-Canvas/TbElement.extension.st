@@ -1,7 +1,7 @@
 Extension { #name : #TbElement }
 
 { #category : #'*Turbo-Canvas' }
-TbElement >> drawChildrenOnTextBlocCanvas: aCanvas [
+TbElement >> drawChildrenOnTurboCanvas: aCanvas [
 
 	"If there are not children no need to draw and clip"
 	self hasChildren
@@ -11,11 +11,11 @@ TbElement >> drawChildrenOnTextBlocCanvas: aCanvas [
 		when: [ self clipChildren ]
 		by: [ "self geometry pathOnSpartaCanvas: aCanvas" ]
 		during: [ self children sortedByElevation
-			do: [ :anElement | anElement fullDrawOnTextBlocCanvas: aCanvas ] ]
+			do: [ :anElement | anElement fullDrawOnTurboCanvas: aCanvas ] ]
 ]
 
 { #category : #'*Turbo-Canvas' }
-TbElement >> drawOnTextBlocCanvas: aCanvas [
+TbElement >> drawOnTurboCanvas: aCanvas [
 
 "
 	| isBackgroundTransparent isBorderTransparent areBothTransparent areBothVisible |
@@ -45,7 +45,7 @@ TbElement >> drawOnTextBlocCanvas: aCanvas [
 ]
 
 { #category : #'*Turbo-Canvas' }
-TbElement >> fullDrawOnTextBlocCanvas: aCanvas [
+TbElement >> fullDrawOnTurboCanvas: aCanvas [
 	| anEffectBounds |
 
 	"We do not draw transparent elements at all"
@@ -70,7 +70,7 @@ TbElement >> fullDrawOnTextBlocCanvas: aCanvas [
 			when: [ self clipChildren ]
 			by: [ (self visualBounds: TbBounds new on: aTransformedCanvas) merge: anEffectBounds ]
 			during: [
-				self drawOnTextBlocCanvas: aTransformedCanvas.
-				self drawChildrenOnTextBlocCanvas: aTransformedCanvas ] ] 
+				self drawOnTurboCanvas: aTransformedCanvas.
+				self drawChildrenOnTurboCanvas: aTransformedCanvas ] ] 
 	
 ]
