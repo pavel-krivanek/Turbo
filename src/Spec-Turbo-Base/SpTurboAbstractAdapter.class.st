@@ -13,7 +13,7 @@ SpTurboAbstractAdapter class >> adaptingName [
 
 	"remove 'SpTurbo' part and *in general*, I will have the adapting name"
 
-	^ (self name allButFirst: 10) asSymbol
+	^ (self name allButFirst: 7) asSymbol
 ]
 
 { #category : #accessing }
