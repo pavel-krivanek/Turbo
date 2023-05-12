@@ -16,6 +16,12 @@ TbTest >> content [
 ]
 
 { #category : #running }
+TbTest >> extent [ 
+
+	^ 50@10
+]
+
+{ #category : #running }
 TbTest >> firePulse [
 
 	universe pulseLoop firePulse.
@@ -26,7 +32,7 @@ TbTest >> firePulse [
 TbTest >> setUp [
 
 	space := TbSpace new.
-	space extent: 50@10.
+	space extent: self extent.
 
 	universe := TbUniverse new.
 	universe pulseLoop: (TbPulseLoop2 new 
