@@ -9,7 +9,8 @@ Class {
 		'renderer',
 		'space',
 		'eventFetcher',
-		'mutex'
+		'mutex',
+		'windowExtent'
 	],
 	#category : #'Turbo-Canvas-Testing'
 }
@@ -161,12 +162,13 @@ TbTestingHostSpace >> windowExtent [
 	on high dpi (retina) screens"
 	<return: #Point>
 
-	^ 310@200 "TODO"
+	^ windowExtent ifNil: [ 310@200 ]
 ]
 
 { #category : #'host space - accessing' }
 TbTestingHostSpace >> windowExtent: anExtent [	
 	
+	windowExtent := anExtent
 	
 ]
 

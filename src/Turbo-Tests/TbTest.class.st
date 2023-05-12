@@ -44,6 +44,8 @@ TbTest >> setUp [
 	universe spaceManager addSpace: space.
 
 	space host createHostSpaceFor: space.
+	space hostSpace windowExtent: self extent.
+
 	space hostSpace show.
 
 	space dispatchEvent: (TbSpaceShownEvent new space: universe).
