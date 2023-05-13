@@ -101,7 +101,7 @@ TbPulseLoop >> loopProcess [
 
 { #category : #'loop process' }
 TbPulseLoop >> processId [
-	^ 'Bloc Main Loop'
+	^ 'Turbo Main Loop'
 ]
 
 { #category : #accessing }

@@ -130,6 +130,66 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenter [
 ]
 
 { #category : #accessing }
+TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenterLeft [
+
+	^ '
+..................................................
+*---------------------*...........................
+|                     |...........................
+|                     |...........................
+*---------------------*...........................
+*------------------*..............................
+|                  |..............................
+| Hello Turbo      |..............................
+|                  |..............................
+|                  |..............................
+*------------------*..............................
+..................................................
+..................................................
+' allButFirst
+]
+
+{ #category : #accessing }
+TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenterRight [
+
+	^ '
+..................................................
+...........................*---------------------*
+...........................|                     |
+...........................|                     |
+...........................*---------------------*
+...........................*------------------*...
+...........................|                  |...
+...........................| Hello Turbo      |...
+...........................|                  |...
+...........................|                  |...
+...........................*------------------*...
+..................................................
+..................................................
+' allButFirst
+]
+
+{ #category : #accessing }
+TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopCenter [
+
+	^ '
+.............*---------------------*..............
+.............|                     |..............
+.............|                     |..............
+.............*---------------------*..............
+.............*------------------*.................
+.............|                  |.................
+.............| Hello Turbo      |.................
+.............|                  |.................
+.............|                  |.................
+.............*------------------*.................
+..................................................
+..................................................
+..................................................
+' allButFirst
+]
+
+{ #category : #accessing }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopLeft [
 
 	^ '
@@ -220,6 +280,48 @@ TbFlowLayoutTest >> testContentTwoChildrenVertical [
 ]
 
 { #category : #accessing }
+TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomCenter [
+	
+	space root layout: TbFlowLayout new vertical.
+	space root layout alignBottomCenter.
+	space root addChild: e1.
+	space root addChild: e2.
+	e2 addChild: e3.
+
+	self firePulse.
+	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalBottomCenter.
+
+]
+
+{ #category : #accessing }
+TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomLeft [
+	
+	space root layout: TbFlowLayout new vertical.
+	space root layout alignBottomLeft.
+	space root addChild: e1.
+	space root addChild: e2.
+	e2 addChild: e3.
+
+	self firePulse.
+	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalBottomLeft.
+
+]
+
+{ #category : #accessing }
+TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomRight [
+	
+	space root layout: TbFlowLayout new vertical.
+	space root layout alignBottomRight.
+	space root addChild: e1.
+	space root addChild: e2.
+	e2 addChild: e3.
+
+	self firePulse.
+	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalBottomRight.
+
+]
+
+{ #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenter [
 	
 	space root layout: TbFlowLayout new vertical.
@@ -234,44 +336,45 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenter [
 ]
 
 { #category : #accessing }
-TbFlowLayoutTest >> testContentTwoChildrenVerticalTopBottomCenter [
+TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterLeft [
 	
 	space root layout: TbFlowLayout new vertical.
-	space root layout alignBottomCenter.
+	space root layout alignCenterLeft.
 	space root addChild: e1.
 	space root addChild: e2.
 	e2 addChild: e3.
 
 	self firePulse.
-	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalBottomCenter.
+	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalCenterLeft.
 
 ]
 
 { #category : #accessing }
-TbFlowLayoutTest >> testContentTwoChildrenVerticalTopBottomLeft [
+TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterRight [
 	
 	space root layout: TbFlowLayout new vertical.
-	space root layout alignBottomLeft.
+	space root layout alignCenterRight.
 	space root addChild: e1.
 	space root addChild: e2.
 	e2 addChild: e3.
 
 	self firePulse.
-	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalBottomLeft.
+	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalCenterRight.
 
 ]
 
 { #category : #accessing }
-TbFlowLayoutTest >> testContentTwoChildrenVerticalTopBottomRight [
+TbFlowLayoutTest >> testContentTwoChildrenVerticalTopCenter [
 	
 	space root layout: TbFlowLayout new vertical.
-	space root layout alignBottomRight.
+	space root layout alignTopCenter.
 	space root addChild: e1.
 	space root addChild: e2.
 	e2 addChild: e3.
 
 	self firePulse.
-	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalBottomRight.
+
+	self assert: self content equals: self expectedContentTestContentTwoChildrenVerticalTopCenter.
 
 ]
 
