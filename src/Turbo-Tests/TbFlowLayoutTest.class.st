@@ -254,7 +254,7 @@ TbFlowLayoutTest >> setUp [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenHorizontal [
 	
-	space root layout: TbFlowLayout new horizontal.
+	space root layout: TbFlowLayout horizontal.
 	space root relocate: 2@2.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -262,13 +262,15 @@ TbFlowLayoutTest >> testContentTwoChildrenHorizontal [
 
 	self firePulse.
 	self assert: self content equals: self expectedContentTestContentTwoChildrenHorizontal.
+	
+	self assert: space root layout orientation isHorizontal
 
 ]
 
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVertical [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root relocate: 2@2.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -282,7 +284,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVertical [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomCenter [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignBottomCenter.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -296,7 +298,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomCenter [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomLeft [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignBottomLeft.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -310,7 +312,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomLeft [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomRight [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignBottomRight.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -324,7 +326,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomRight [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenter [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignCenter.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -338,7 +340,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenter [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterLeft [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignCenterLeft.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -352,7 +354,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterLeft [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterRight [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignCenterRight.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -366,7 +368,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterRight [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalTopCenter [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignTopCenter.
 	space root addChild: e1.
 	space root addChild: e2.
@@ -381,7 +383,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalTopCenter [
 { #category : #accessing }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalTopLeftCenter [
 	
-	space root layout: TbFlowLayout new vertical.
+	space root layout: TbFlowLayout vertical.
 	space root layout alignTopLeft.
 	space root addChild: e1.
 	space root addChild: e2.

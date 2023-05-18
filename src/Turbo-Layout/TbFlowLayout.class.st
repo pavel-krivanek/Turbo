@@ -67,6 +67,8 @@ TbFlowLayout >> horizontal [
 
 { #category : #accessing }
 TbFlowLayout >> horizontalAlignment [
+
+	<ignoreForCoverage>
 	^ horizontalAlignment
 ]
 
@@ -99,6 +101,7 @@ TbFlowLayout >> measure: anElement with: anExtentSpec [
 
 { #category : #accessing }
 TbFlowLayout >> orientation [
+	<ignoreForCoverage>
 	^ orientation
 ]
 
@@ -116,6 +119,8 @@ TbFlowLayout >> vertical [
 
 { #category : #accessing }
 TbFlowLayout >> verticalAlignment [
+
+	<ignoreForCoverage>
 	^ verticalAlignment
 ]
 
