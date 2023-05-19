@@ -35,7 +35,7 @@ SpTurboRadioButtonWidget >> clickBlock: anObject [
 
 { #category : #initialization }
 SpTurboRadioButtonWidget >> drawOnTurboCanvas: aCanvas [
-
+		
 	aCanvas pushAttributes.
 		
 	aCanvas at: 1@1 write: '(', self radioButtonText, ') ', self label.
@@ -57,7 +57,9 @@ SpTurboRadioButtonWidget >> initialize [
 		 self onMouseUp: evt ].
 	self addEventHandlerOn: TbKeystrokeEvent do: [ :evt |
 		self onKeystroke: evt ].
-			
+	
+	self size: 23@2.
+		
 
 
 

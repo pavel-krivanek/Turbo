@@ -26,19 +26,25 @@ SpTurboBoxAdapter >> addWidgetAlignment: constraints to: gtkWidget [
 ]
 
 { #category : #adding }
-SpTurboBoxAdapter >> basicAdd: aPresenter constraints: constraints to: aWidget [
+SpTurboBoxAdapter >> basicAdd: aPresenter constraints: constraints to: asWidget [
 
 	| childWidget |
 	childWidget := aPresenter buildWithSelector: constraints spec.
+	constraints isPlacedAtStart
+		ifTrue: [ 
+			asWidget
+				packStart: childWidget
+				expand: constraints isExpand
+				fill: constraints isFill
+				padding: constraints padding ]
+		ifFalse: [ 
+			asWidget
+				reversePackEnd: childWidget
+				expand: constraints isExpand
+				fill: constraints isFill
+				padding: constraints padding ].
 
-	childWidget constraintsDo: [ :c | 
-		"c horizontal matchParent."
-	"	c horizontal matchParent .
-		c vertical matchParent" ].
-
-	aWidget addChild: childWidget.
-
-	^ aWidget
+	^ asWidget
 ]
 
 { #category : #adding }

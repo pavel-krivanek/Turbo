@@ -7,6 +7,14 @@ Class {
 	#category : #'Turbo-Morphic'
 }
 
+{ #category : #cleaning }
+TbMorphicHost class >> clean [ 
+
+	<script>
+
+	Process allSubInstances select: [ :each | each name = 'Turbo Main Loop' ] thenDo: [ :each | each terminate ]
+]
+
 { #category : #initialization }
 TbMorphicHost >> characterExtent [
 
