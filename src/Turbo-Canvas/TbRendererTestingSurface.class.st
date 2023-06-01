@@ -16,14 +16,18 @@ TbRendererTestingSurface class >> supportedBy: aClass [
 { #category : #rendering }
 TbRendererTestingSurface >> at: aPoint put: aCharacter [
  
-	(displayMatrix at: aPoint y) at: aPoint x put: aCharacter.
+	| line | 
+	aPoint y > displayMatrix size ifTrue: [ ^ self ].
+	line := displayMatrix at: aPoint y.
+	aPoint x <= line size ifTrue: [ 
+		line at: aPoint x put: aCharacter ]
 	
 ]
 
 { #category : #rendering }
 TbRendererTestingSurface >> at: aPoint put: aCharacter textColor: textColor backgroundColor: backgroundColor attributes: attributes [
 
-	^ self at: aPoint put: aCharacter 
+	^ self at: aPoint asIntegerPoint put: aCharacter 
 ]
 
 { #category : #initialization }

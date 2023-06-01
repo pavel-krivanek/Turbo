@@ -259,7 +259,7 @@ TbFlowLayoutTest >> testContentTwoChildrenHorizontal [
 	space root addChild: e1.
 	space root addChild: e2.
 	e2 addChild: e3.
-
+	
 	self firePulse.
 	self assert: self content equals: self expectedContentTestContentTwoChildrenHorizontal.
 	

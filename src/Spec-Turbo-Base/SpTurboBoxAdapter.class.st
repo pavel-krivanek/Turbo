@@ -61,8 +61,8 @@ SpTurboBoxAdapter >> layout: aLayout [
 	| directionLayout |
 	
 	directionLayout := aLayout isHorizontal
-		ifTrue: [ TbFlowLayout new horizontal ]
-		ifFalse: [ TbFlowLayout new vertical ].
+		ifTrue: [ TbLinearLayout horizontal ]
+		ifFalse: [ TbLinearLayout vertical ].
 		
 	"directionLayout := TbGridLayout new columnCount: 1."
 		

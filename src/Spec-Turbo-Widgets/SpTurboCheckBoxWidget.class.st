@@ -66,7 +66,7 @@ SpTurboCheckBoxWidget >> initialize [
 	self addEventHandlerOn: TbKeystrokeEvent do: [ :evt |
 		self onKeystroke: evt ].
 	
-	self size: 23@1.
+	self size: 23@2.
 		
 
 

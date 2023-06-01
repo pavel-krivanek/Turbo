@@ -19,19 +19,23 @@ SpTurboBoxWidget class >> newVertical [
 { #category : #'as yet unclassified' }
 SpTurboBoxWidget >> initializeHorizontal [
 
-	self layout: TbFlowLayout horizontal.
+	self layout: TbLinearLayout horizontal
 ]
 
 { #category : #'as yet unclassified' }
 SpTurboBoxWidget >> initializeVertical [ 
 
-	self layout: TbFlowLayout vertical.
+	self layout: TbLinearLayout vertical.
+
 ]
 
 { #category : #'as yet unclassified' }
 SpTurboBoxWidget >> packStart: child expand: expand fill: fill padding: padding [ 
 
 	self addChild: child.
+	child constraintsDo: [ :c |
+      c horizontal matchParent.
+      c vertical matchParent ].
 
 	^ child
 ]

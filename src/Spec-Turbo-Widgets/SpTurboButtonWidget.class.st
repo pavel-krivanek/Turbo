@@ -104,7 +104,7 @@ SpTurboButtonWidget >> initialize [
 
 	pressed := false.
 	
-	self size: 23@4.
+	self size: 12@4.
 	
 
 ]
