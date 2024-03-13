@@ -40,7 +40,7 @@ TbCanvas >> at: aPoint write: aString [
 	pos := aPoint.
 	
 	transformationStack do: [ :each |
-		pos := (each transform: pos) asIntegerPoint ].
+		pos := (each transform: pos) rounded ].
 	
 	aString do: [ :e | 
 		surface at: pos put: e textColor: textColor backgroundColor: backgroundColor attributes: attributes copy.
