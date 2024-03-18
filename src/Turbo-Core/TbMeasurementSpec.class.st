@@ -122,6 +122,7 @@ TbMeasurementSpec >> size [
 
 { #category : #accessing }
 TbMeasurementSpec >> size: aNumber [
+
 	size := aNumber
 ]
 

@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 SpTurboWindowAdapter >> addContent: aView toWindow: aSpecWindow [
 
-	self space root addChild: aView.
+	self widget addChild: aView.
 
 ]
 
@@ -21,8 +21,7 @@ SpTurboWindowAdapter >> addPresenterIn: widgetToBuild withSpecLayout: aSpec [
 
 { #category : #accessing }
 SpTurboWindowAdapter >> buildWidget [
-
-	^ SpStubWindowView new
+	^ SpTurboWindowWidget new
 ]
 
 { #category : #accessing }
@@ -59,12 +58,13 @@ SpTurboWindowAdapter >> newWidget [
 { #category : #accessing }
 SpTurboWindowAdapter >> open [
 
-
 ]
 
 { #category : #accessing }
 SpTurboWindowAdapter >> openWithDeferredAction: aBlock [
 
+	self space root addChild: self widget.
+	
 	aBlock value
 ]
 

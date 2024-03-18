@@ -20,7 +20,7 @@ SpTurboWidget >> drawFrameOn: aCanvas [
 	
 	extent := self bounds.
 	
-		self hasFocus ifTrue: [ 
+	self hasFocus ifTrue: [ 
 		
 		aCanvas at: 1@1 write: '╔', (String withAll: ((1 to: (extent width-2)) collect: [ :e | $═ ])) asString, '╗'.
 		2 to: extent height - 1 do: [ :y |
@@ -44,7 +44,8 @@ SpTurboWidget >> drawFrameOn: aCanvas [
 { #category : #'as yet unclassified' }
 SpTurboWidget >> drawOnTurboCanvas: aCanvas [
 
-	self drawFrameOn: aCanvas.
+	"aCanvas  fillRectangle: (self bounds insetBy: 1) with: 'x' "
+	"self drawFrameOn: aCanvas."
 	
 
 ]

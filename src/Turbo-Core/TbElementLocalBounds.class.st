@@ -11,7 +11,7 @@ Class {
 { #category : #converting }
 TbElementLocalBounds >> asRectangle [
 	<return: #Rectangle>
-	
+
 	 ^ self position extent: self extent
 ]
 
@@ -37,6 +37,7 @@ TbElementLocalBounds >> extent [
 
 { #category : #accessing }
 TbElementLocalBounds >> extent: anObject [
+
 	extent := anObject
 ]
 
