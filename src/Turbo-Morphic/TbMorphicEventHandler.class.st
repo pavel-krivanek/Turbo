@@ -56,8 +56,10 @@ TbMorphicEventHandler >> convertKeyModifiersFromEvent: aMorphicEvent [
 TbMorphicEventHandler >> convertMousePosition: anEvent andDo: aBlock [
 
 	"changes event position to be relative to the panelRect, not to the world"
-	anEvent setPosition: (self window pointToSpace: anEvent position).
-	aBlock value: anEvent
+	| transformed |
+	transformed := anEvent copy.
+	transformed setPosition: (self window pointToSpace: anEvent position).
+	aBlock value: transformed
 ]
 
 { #category : #accessing }
@@ -79,51 +81,57 @@ TbMorphicEventHandler >> handleDropMorph: anEvent [
 ]
 
 { #category : #'event handling' }
-TbMorphicEventHandler >> handleKeyDown: aMorphicEvent [
+TbMorphicEventHandler >> handleKeyDown: anEvent [
 	| aBlEvent |
 
-	aBlEvent := TbKeyDownEvent new
-		key: aMorphicEvent key;
-		scanCode: aMorphicEvent scanCode;
-		
-		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
-		timestamp: DateAndTime now;
-		position: aMorphicEvent position;
-		screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
+	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
+		aBlEvent := TbKeyDownEvent new
+			key: aMorphicEvent key;
+			scanCode: aMorphicEvent scanCode;
+			
+			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
+			timestamp: DateAndTime now;
+			position: (self transform: aMorphicEvent position);
+			screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
 
-	self enqueue: aBlEvent
+		self enqueue: aBlEvent
+	]
 ]
 
 { #category : #'event handling' }
-TbMorphicEventHandler >> handleKeyUp: aMorphicEvent [
+TbMorphicEventHandler >> handleKeyUp: anEvent [
 	| aBlEvent |
-		
-	aBlEvent := TbKeyUpEvent new
-		key: aMorphicEvent key;
-		scanCode: aMorphicEvent scanCode;
-		
-		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
-		timestamp: DateAndTime now;
-		position: aMorphicEvent position;
-		screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
-
-	self enqueue: aBlEvent
-]
-
-{ #category : #'event handling' }
-TbMorphicEventHandler >> handleKeystroke: aMorphicEvent [
-	| aBlEvent |
-		
-	aBlEvent := TbKeystrokeEvent new
-		char: aMorphicEvent keyCharacter;
-		scanCode: aMorphicEvent scanCode;
-		
-		modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
-		timestamp: DateAndTime now;
-		position: aMorphicEvent position;
-		screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
 	
-	self enqueue: aBlEvent
+	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
+		aBlEvent := TbKeyUpEvent new
+			key: aMorphicEvent key;
+			scanCode: aMorphicEvent scanCode;
+			
+			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
+			timestamp: DateAndTime now;
+			position: (self transform: aMorphicEvent position);
+			screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
+
+		self enqueue: aBlEvent
+	]
+]
+
+{ #category : #'event handling' }
+TbMorphicEventHandler >> handleKeystroke: anEvent [
+	| aBlEvent |
+		
+	self convertMousePosition: anEvent andDo: [ :aMorphicEvent |
+		aBlEvent := TbKeystrokeEvent new
+			char: aMorphicEvent keyCharacter;
+			scanCode: aMorphicEvent scanCode;
+			
+			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
+			timestamp: DateAndTime now;
+			position: (self transform: aMorphicEvent position);
+			screenPosition: (self globalMousePositionForEvent: aMorphicEvent).
+		
+		self enqueue: aBlEvent 
+	]
 ]
 
 { #category : #'event handling' }
@@ -155,13 +163,14 @@ TbMorphicEventHandler >> handleMouseLeave: anEvent [
 
 { #category : #'event handling' }
 TbMorphicEventHandler >> handleMouseMove: anEvent [
+
 	self convertMousePosition: anEvent andDo: [ :aMorphicEvent | 
 		| aBlEvent |
 
 		aBlEvent := TbMouseMoveEvent new
-			position: aMorphicEvent position;
-			delta: aMorphicEvent position - (self window pointToSpace: aMorphicEvent startPoint);
-			screenPosition: (self globalMousePositionForEvent: aMorphicEvent);
+			position: (self transform:aMorphicEvent position) ;
+			delta: (self transform: (aMorphicEvent position - (self window pointToSpace: aMorphicEvent startPoint)));
+			screenPosition: (self transform: (self globalMousePositionForEvent: aMorphicEvent));
 			modifiers: (self convertKeyModifiersFromEvent: aMorphicEvent);
 			timestamp: DateAndTime now
 			yourself.
