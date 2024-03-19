@@ -62,7 +62,6 @@ TbUIEvent >> position [
 { #category : #accessing }
 TbUIEvent >> position: anObject [
 
-anObject x > 80 ifTrue: [ self halt. ].
 	position := anObject
 ]
 

@@ -29,7 +29,13 @@ SpTurboWindowWidget >> defaultLayout [
 { #category : #'as yet unclassified' }
 SpTurboWindowWidget >> drawOnTurboCanvas: aCanvas [
 
-	self drawFrameOn: aCanvas
+	self drawFrameOn: aCanvas.
+	aCanvas at: 2@1 write: '[▓]'.
+	aCanvas at: 6@1 write: self adapter model title asString.
+	aCanvas at: (self bounds width-4)@1 write: '[x]'.
+	aCanvas at: (self bounds width-8)@1 write: '[^]'.
+	aCanvas at: (self bounds width-12)@1 write: '[-]'.
+	
 ]
 
 { #category : #'as yet unclassified' }
@@ -52,7 +58,7 @@ SpTurboWindowWidget >> initialize [
 				dragDelta := evt position-self position.
 				evt consumed: true
 			 ].
-	].
+		].
 	
 	self addEventHandlerOn: TbDragEvent do: [ :evt |
 		dragMode = #move ifTrue: [ 

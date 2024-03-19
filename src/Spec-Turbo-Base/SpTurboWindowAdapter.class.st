@@ -21,7 +21,7 @@ SpTurboWindowAdapter >> addPresenterIn: widgetToBuild withSpecLayout: aSpec [
 
 { #category : #accessing }
 SpTurboWindowAdapter >> buildWidget [
-	^ SpTurboWindowWidget new
+	^ SpTurboWindowWidget new adapter: self
 ]
 
 { #category : #accessing }
@@ -51,7 +51,7 @@ SpTurboWindowAdapter >> isDisplayed [
 { #category : #accessing }
 SpTurboWindowAdapter >> newWidget [ 
 
-	^ SpTurboWindowWidget new.
+	^ SpTurboWindowWidget new adapter: self
 
 ]
 

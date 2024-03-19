@@ -2,10 +2,23 @@ Class {
 	#name : #SpTurboWidget,
 	#superclass : #TbElement,
 	#instVars : [
-		'enabled'
+		'enabled',
+		'adapter'
 	],
 	#category : #'Spec-Turbo-Widgets'
 }
+
+{ #category : #accessing }
+SpTurboWidget >> adapter [
+
+	^ adapter
+]
+
+{ #category : #accessing }
+SpTurboWidget >> adapter: anObject [
+
+	adapter := anObject
+]
 
 { #category : #'as yet unclassified' }
 SpTurboWidget >> bindKeyCombination: aShortcut toAction: aBlock [
