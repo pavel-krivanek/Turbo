@@ -19,6 +19,12 @@ SpTurboWindowWidget >> clipChildren [ ^ true
 ]
 
 { #category : #'as yet unclassified' }
+SpTurboWindowWidget >> close [ 
+
+ self removeFromParent 
+]
+
+{ #category : #'as yet unclassified' }
 SpTurboWindowWidget >> defaultLayout [
 	^ TbBasicLayoutWithPadding new
 		topLeftPadding: 1@1;
@@ -67,6 +73,10 @@ SpTurboWindowWidget >> initialize [
 		dragMode = #resize ifTrue: [ 
 			self size: (evt position-bounds topLeft).
 			evt consumed: true ].		].
+			
+	self addEventHandlerOn: TbClickEvent do: [ :evt | 
+		evt position = (self position + ((self bounds width-4)@0)) ifTrue: [ self close ]
+		]
 ]
 
 { #category : #'as yet unclassified' }

@@ -18,7 +18,7 @@ SpTurboGridAdapter >> basicAdd: aPresenter constraints: constraints to: aWidget 
 	self widget layout columnCount: columns; rowCount: rows.
 
 
-	childWidget := aPresenter buildWithSpec: constraints spec.
+	childWidget := aPresenter buildWithSelector: constraints spec.
 		
 	childWidget constraintsDo: [ :c |
 		c horizontal matchParent .
