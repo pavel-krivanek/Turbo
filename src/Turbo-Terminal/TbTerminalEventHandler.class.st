@@ -146,7 +146,7 @@ TbTerminalEventHandler >> handleMouseDown: anEvent [
 			yourself.
 		self enqueue: aBlEvent ].
 	
-	window takeKeyboardFocus
+
 ]
 
 { #category : #'event handling' }
@@ -193,7 +193,6 @@ TbTerminalEventHandler >> handleMouseUp: anEvent [
 			yourself.
 		self enqueue: aBlEvent ].
 	
-	window takeKeyboardFocus.
 ]
 
 { #category : #'event handling' }

@@ -70,6 +70,12 @@ TbTerminalHostSpace >> prepareToRender: aBlSpace onFormSurface: aBlHostRendererF
 	self renderer prepareToRender: aBlSpace
 ]
 
+{ #category : #events }
+TbTerminalHostSpace >> preprocessEvents [
+	
+	TbTerminalEventHandler new pulse
+]
+
 { #category : #'host space - rendering' }
 TbTerminalHostSpace >> render: aSpace [
 	"Render a given abstract space on an underlying window or visual area"

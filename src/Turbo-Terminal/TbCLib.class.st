@@ -9,6 +9,8 @@ Class {
 
 { #category : #'instance creation' }
 TbCLib class >> compile [
+
+	<script>
 	|cmd arch st fp libfile ofile|
 	fp := self mksource.
 	ofile := fp parent / 'textBlocCLib.o'.
@@ -50,6 +52,8 @@ TbCLib class >> source [
 #include <stdlib.h>
 #include <termios.h>
 #include <unistd.h>
+#include <sys/select.h>
+#include <sys/time.h>
 
 struct termios orig_termios;
 
@@ -64,6 +68,35 @@ void enableRawMode() {
   raw.c_lflag &= ~(ECHO | ICANON);
   tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
+
+char *peekCharacterNonBlocking() {
+    fd_set set;
+    struct timeval timeout;
+
+    // Initialize the file descriptor set
+    FD_ZERO(&set);
+    FD_SET(STDIN_FILENO, &set);
+
+    // Set timeout to 0, making select non-blocking
+    timeout.tv_sec = 0;
+    timeout.tv_usec = 0;
+
+    // See if there''s input available
+    if (select(STDIN_FILENO + 1, &set, NULL, NULL, &timeout) == 1) {
+        int ch = getchar();
+        ungetc(ch, stdin); // Put the character back
+
+        // Allocate memory for one char and null terminator
+        char *result = malloc(2 * sizeof(char));
+        if (result != NULL) {
+            result[0] = ch;
+            result[1] = ''\0'';
+            return result;
+        }
+    }
+
+    return NULL; // No character available or memory allocation failed
+}
 '
 ]
 
@@ -75,6 +108,11 @@ TbCLib >> disableRawMode [
 { #category : #'accessing platform' }
 TbCLib >> enableRawMode [
 	^ self ffiCall: #(void enableRawMode()) 
+]
+
+{ #category : #'accessing platform' }
+TbCLib >> peekCharacterNonBlocking [
+	^ self ffiCall: #(char* peekCharacterNonBlocking()) 
 ]
 
 { #category : #'accessing platform' }

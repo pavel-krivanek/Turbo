@@ -850,6 +850,8 @@ TbSpace >> position: aPoint [
 TbSpace >> processEvents [
 	"Process events enqueued by host space and dispatch them to the scene graph"
 
+	self hostSpace preprocessEvents.
+
 	self
 		assert: [ self hasHostSpace ]
 		description: [ 'Events can only be processed if I have a host space' ].

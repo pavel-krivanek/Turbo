@@ -33,6 +33,12 @@ SpTurboBackend >> ensureSpaceFor: anApplication [
 ]
 
 { #category : #private }
+SpTurboBackend >> newHost [ 
+
+	^ TbMorphicHost new
+]
+
+{ #category : #private }
 SpTurboBackend >> newSpace [
 
 	| space universe host |
@@ -46,7 +52,7 @@ SpTurboBackend >> newSpace [
 		universe: universe;
 		yourself).
 
-	host := TbMorphicHost new.
+	host := self newHost.
 	space host: host.
 	universe spaceManager addSpace: space.
 

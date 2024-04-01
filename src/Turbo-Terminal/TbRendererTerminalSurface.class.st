@@ -22,7 +22,7 @@ TbRendererTerminalSurface >> at: aPoint put: aCharacter textColor: textColor bac
 
 	term moveAt: aPoint.
 	
-	Stdio stdout nextPutAll: aCharacter asString.
+	Stdio stdout nextPutAll: aCharacter asString utf8Encoded.
 	Stdio stdout flush.
 ]
 

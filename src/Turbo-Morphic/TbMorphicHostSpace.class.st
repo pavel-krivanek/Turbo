@@ -82,6 +82,12 @@ TbMorphicHostSpace >> prepareToRender: aBlSpace onFormSurface: aBlHostRendererFo
 	self renderer prepareToRender: aBlSpace
 ]
 
+{ #category : #events }
+TbMorphicHostSpace >> preprocessEvents [
+
+	
+]
+
 { #category : #'host space - rendering' }
 TbMorphicHostSpace >> render: aSpace [
 	"Render a given abstract space on an underlying window or visual area"
