@@ -77,7 +77,7 @@ TbGridLayoutTest >> testContentConstraintsHorizontal [
       c vertical matchParent ].
 	
 	self firePulse.
-	self content inspect.
+	"self content inspect."
 	self assert: self content equals: self expectedContentConstraintsHorizontal.
 
 ]
