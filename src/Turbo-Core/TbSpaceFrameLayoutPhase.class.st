@@ -1,20 +1,22 @@
 Class {
-	#name : #TbSpaceFrameLayoutPhase,
-	#superclass : #TbSpaceFramePhase,
-	#category : #'Turbo-Core-Space-Frame'
+	#name : 'TbSpaceFrameLayoutPhase',
+	#superclass : 'TbSpaceFramePhase',
+	#category : 'Turbo-Core-Space-Frame',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Frame'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFrameLayoutPhase >> isLayoutPhase [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFrameLayoutPhase >> name [
 	^ 'Layout'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 TbSpaceFrameLayoutPhase >> runOn: aSpace [
 	aSpace
 		dispatchTimeEvent: TbSpaceLayoutEndEvent

@@ -1,10 +1,12 @@
 Class {
-	#name : #TbMouseUpEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseUpEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseUpEvent class >> button: aMouseButton [
 	"Create a sample button up event for a given button for testing purposes"
 	<return: #BlMouseUpEvent>
@@ -16,7 +18,7 @@ TbMouseUpEvent class >> button: aMouseButton [
 		timestamp: DateAndTime now
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseUpEvent class >> middle [
 	"Create a sample middle button up event for testing purposes"
 	<return: #BlMouseUpEvent>
@@ -24,7 +26,7 @@ TbMouseUpEvent class >> middle [
 	^ self button: TbMouseButton middle
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseUpEvent class >> primary [
 	"Create a sample primary button up event for testing purposes"
 	<return: #BlMouseUpEvent>
@@ -32,7 +34,7 @@ TbMouseUpEvent class >> primary [
 	^ self button: TbMouseButton primary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseUpEvent class >> secondary [
 	"Create a sample secondary button up event for testing purposes"
 	<return: #BlMouseUpEvent>
@@ -40,26 +42,26 @@ TbMouseUpEvent class >> secondary [
 	^ self button: TbMouseButton secondary
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseUpEvent >> asClickEvent [
 	^ TbClickEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseUpEvent >> asDoubleClickEvent [
 	^ TbDoubleClickEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseUpEvent >> isMouseUp [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseUpEvent >> sendTo: anObject [
 	anObject mouseUpEvent: self
 ]

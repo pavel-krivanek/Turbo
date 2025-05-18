@@ -20,17 +20,19 @@ form destroySurface.
 
 "
 Class {
-	#name : #TbExternalForm,
-	#superclass : #Form,
+	#name : 'TbExternalForm',
+	#superclass : 'Form',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'pointer'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 TbExternalForm >> allocateSpace [
 	"Convenient way to allocate space for the pixels.  This isn't done by default, because it is common to use a pointer obtained from elsewhere."
 	| addr |
@@ -39,12 +41,12 @@ TbExternalForm >> allocateSpace [
 	self setManualSurfacePointer: addr.
 ]
 
-{ #category : #'external resource management' }
+{ #category : 'external resource management' }
 TbExternalForm >> autoRelease [
 	^ self class finalizationRegistry add: self
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 TbExternalForm >> destroySurface [
 	"Users must call this explicitly when this object is no longer needed; otherwise, resource-leakage will occur in the SurfacePlugin"
 
@@ -55,45 +57,45 @@ TbExternalForm >> destroySurface [
 			do: [ "Surface is already destroyed" ] ]
 ]
 
-{ #category : #finalization }
+{ #category : 'finalization' }
 TbExternalForm >> finalize [
 	super finalize.
 	
 	self destroySurface
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbExternalForm >> initialize [
 	super initialize.
 	
 	pointer := nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbExternalForm >> isNull [
 	^ pointer isNil or: [ pointer isNull ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbExternalForm >> pointer [
 	^pointer
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 TbExternalForm >> primCreateManualSurfaceWidth: width height: height rowPitch: rowPitch depth: depth isMSB: isMSB [
 	<primitive: 'primitiveCreateManualSurface' module: 'SqueakFFIPrims'>
 	self primitiveFailed
 
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 TbExternalForm >> primDestroyManualSurface: surfaceID [
 	<primitive: 'primitiveDestroyManualSurface' module: 'SqueakFFIPrims'>
 	self primitiveFailed
 
 ]
 
-{ #category : #primitives }
+{ #category : 'primitives' }
 TbExternalForm >> primManualSurface: surfaceID setPointer: pointer [
 	"The 'surfaceID' is a handle returned by #primitiveCreateManualSurface from SurfacePlugin. The pointer is a 32-bit unsigned integer that SurfacePlugin casts to a void*."
 	<primitive: 'primitiveSetManualSurfacePointer' module: 'SqueakFFIPrims'>
@@ -101,7 +103,7 @@ TbExternalForm >> primManualSurface: surfaceID setPointer: pointer [
 
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 TbExternalForm >> setExtent: extent depth: bitsPerPixel [
 	bits ifNotNil: [self error: 'bits are already set'].
 	bitsPerPixel == 32 ifFalse: [self error: 'only 32 bits for now'.  "see 'rowPitch' below"].
@@ -118,13 +120,13 @@ TbExternalForm >> setExtent: extent depth: bitsPerPixel [
 		isMSB: true.
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 TbExternalForm >> setExtent: extent depth: bitsPerPixel bits: pointer [
 	self setExtent: extent depth: bitsPerPixel.
 	self setManualSurfacePointer: pointer.
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 TbExternalForm >> setManualSurfacePointer: newPointer [ "ExternalStructure, ExternalAddress, or nil"
 	"Set the memory-location of the image data.  It is OK to set a NULL pointer;
 	 in this case, any attempt to BitBlt to or from the form will result in a primitive-failure."
@@ -142,7 +144,7 @@ TbExternalForm >> setManualSurfacePointer: newPointer [ "ExternalStructure, Exte
 	self primManualSurface: bits setPointer: pointer getHandle asInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbExternalForm >> stride [
 	| bitsPerPixel stride|
 	bitsPerPixel := self depth.

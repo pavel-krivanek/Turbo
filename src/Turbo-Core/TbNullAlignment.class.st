@@ -3,12 +3,14 @@ I represent null alignment which is default one.
 See BlLayoutAlignment for more info.
 "
 Class {
-	#name : #TbNullAlignment,
-	#superclass : #TbElementAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbNullAlignment',
+	#superclass : 'TbElementAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbNullAlignment class >> initialize [
 	super initialize.
 	
@@ -16,42 +18,42 @@ TbNullAlignment class >> initialize [
 	horizontal := TbNullHorizontalAlignment new.
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullAlignment >> directed: aBlLayoutDirection [
 	^ self
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullAlignment >> horizontal [
 	^ self class horizontal
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbNullAlignment >> ifNotNull: aBlock [
 	"nothing"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbNullAlignment >> ifNull: aBlock [
 	aBlock value
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullAlignment >> leftToRight [
 	^ self
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullAlignment >> oriented: aBlLayoutOrientation [
 	^ self
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullAlignment >> rightToLeft [
 	^ self
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullAlignment >> vertical [
 	^ self class vertical
 ]

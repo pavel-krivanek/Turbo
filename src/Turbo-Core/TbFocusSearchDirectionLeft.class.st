@@ -1,10 +1,12 @@
 Class {
-	#name : #TbFocusSearchDirectionLeft,
-	#superclass : #TbFocusSearchDirectionAbsolute,
-	#category : #'Turbo-Core-Utilities - Focus'
+	#name : 'TbFocusSearchDirectionLeft',
+	#superclass : 'TbFocusSearchDirectionAbsolute',
+	#category : 'Turbo-Core-Utilities - Focus',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Focus'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionLeft >> beamsOverlap: aBlBounds and: anotherBlBounds [
 	"	
 	Beams overlap:
@@ -39,7 +41,7 @@ TbFocusSearchDirectionLeft >> beamsOverlap: aBlBounds and: anotherBlBounds [
 		and: [ anotherBlBounds top <= aBlBounds bottom ]
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TbFocusSearchDirectionLeft >> initFocusedBounds: aFocusedBounds root: aFocusRootElement [
 	aFocusedBounds
 		left: aFocusRootElement width
@@ -48,7 +50,7 @@ TbFocusSearchDirectionLeft >> initFocusedBounds: aFocusedBounds root: aFocusRoot
 		bottom: aFocusRootElement height
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionLeft >> is: aDestinationBlBounds candidate: aSourceBlBounds [
 	"Return if destination bounds are located (at least partially) in direction
 	of a given source bounds depending on my direction type, false otherwise"
@@ -59,7 +61,7 @@ TbFocusSearchDirectionLeft >> is: aDestinationBlBounds candidate: aSourceBlBound
 			and: [ aSourceBlBounds left > aDestinationBlBounds left ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionLeft >> is: aDestinationBlBounds inDirection: aSourceBlBounds [
 	"In case of left direction destination bounds must be located to left from source"
 	<return: #Boolean>
@@ -67,7 +69,7 @@ TbFocusSearchDirectionLeft >> is: aDestinationBlBounds inDirection: aSourceBlBou
 	^ aSourceBlBounds left >= aDestinationBlBounds right
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionLeft >> isHorizontal [
 	"Return true if direction is horizontal, false otherwise"
 	<return: #Boolean>
@@ -75,7 +77,7 @@ TbFocusSearchDirectionLeft >> isHorizontal [
 	^ true
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionLeft >> majorAxisDistance: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a major axis depending on the type of direction
 	from the furthers source bounds' edge to the nearest edge of the destination bounds"
@@ -84,7 +86,7 @@ TbFocusSearchDirectionLeft >> majorAxisDistance: aDestinationBlBounds and: aSour
 	^ aSourceBlBounds left - aDestinationBlBounds right
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionLeft >> majorAxisDistanceToFarEdge: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a major axis depending on the type of direction
 	from the furthers source bounds' edge to the far edge of the destination bounds"
@@ -93,7 +95,7 @@ TbFocusSearchDirectionLeft >> majorAxisDistanceToFarEdge: aDestinationBlBounds a
 	^ aSourceBlBounds left - aDestinationBlBounds left
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionLeft >> minorAxisDistance: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a minor axis depending on the type of direction
 	from source bounds to the nearest edge of the destination bounds"
@@ -103,7 +105,7 @@ TbFocusSearchDirectionLeft >> minorAxisDistance: aDestinationBlBounds and: aSour
 		- ((aDestinationBlBounds top + aDestinationBlBounds height) / 2.0)) abs
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionLeft >> offsetCandidateBounds: aCandidateBounds according: aFocusedBounds [
 	"Offsets a given candidate bounds according to provided focused bounds based on direction type"
 

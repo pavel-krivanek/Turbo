@@ -2,17 +2,19 @@
 I a special type of rope used to represent a sub rope for the case when rebuilding the whole binary tree does not make since, so I just decorate an original rope limiting its access by using an offset and allowed length
 "
 Class {
-	#name : #TbSubRope,
-	#superclass : #TbRope,
+	#name : 'TbSubRope',
+	#superclass : 'TbRope',
 	#instVars : [
 		'rope',
 		'offset',
 		'length'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSubRope class >> combineScoped: aLeftRope and: aRightRope [
 	^ self
 		rope: aLeftRope rope
@@ -20,14 +22,14 @@ TbSubRope class >> combineScoped: aLeftRope and: aRightRope [
 		length: aLeftRope size + aRightRope size
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSubRope class >> rope: aRope offset: anOffset length: aLength [
 	^ self new
 		rope: aRope offset: anOffset length: aLength;
 		yourself
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbSubRope >> at: anIndex [
 	anIndex > length
 		ifTrue: [ self error: 'Sub rope index out of bounds: ', anIndex asString ].
@@ -35,7 +37,7 @@ TbSubRope >> at: anIndex [
 	^ rope at: offset + anIndex
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbSubRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	"See BlRope>>#attributes:from:to: for the detailed explanation on start and end indices"
 	<return: #BlRope>
@@ -63,12 +65,12 @@ TbSubRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	^  (self from: 0 to: aStart) append: (anAttributeRope append: (self from: anEnd to: self size))
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbSubRope >> children [
 	^ { rope }
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbSubRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	<return: #BlRope>
 	| anClearedRope |
@@ -78,7 +80,7 @@ TbSubRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	^ anClearedRope from: offset to: offset + length
 ]
 
-{ #category : #'rope - deleting' }
+{ #category : 'rope - deleting' }
 TbSubRope >> delete: aStart to: anEnd [
 	<return: #BlRope>
 	| afterDeletion |
@@ -97,14 +99,14 @@ TbSubRope >> delete: aStart to: anEnd [
 		to: offset + length - (anEnd - aStart)
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbSubRope >> depth [
 	<return: #Number>
 
 	^ rope depth
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbSubRope >> empty [
 	"I delegate creation to the rope which I constrain"
 	<return: #BlRope>
@@ -112,14 +114,14 @@ TbSubRope >> empty [
 	^ self rope empty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSubRope >> end [
 	<return: #Number>
 
 	^ self start + self size
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbSubRope >> from: aStart to: anEnd [
 	<return: #BlRope>
 	self assertAccessFrom: aStart to: anEnd.
@@ -136,12 +138,12 @@ TbSubRope >> from: aStart to: anEnd [
 		length: anEnd - aStart
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbSubRope >> from: aStart to: anEnd do: aBlock [
 	self rope from: aStart + offset to: anEnd + offset do: aBlock
 ]
 
-{ #category : #'rope - inserting' }
+{ #category : 'rope - inserting' }
 TbSubRope >> insertItems: aCollection at: anIndex [
 	<return: #BlRope>
 	| afterInsertion |
@@ -151,40 +153,40 @@ TbSubRope >> insertItems: aCollection at: anIndex [
 	^ afterInsertion from: offset to: offset + length + aCollection size
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbSubRope >> isLeaf [
 	<return: #Boolean>
 
 	^ false
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbSubRope >> isScoped [
 	<return: #Boolean>
 
 	^ true
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbSubRope >> iterator: aStart to: anEnd [
 	^ TbSubRopeIterator rope: self from: aStart to: anEnd
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSubRope >> offset [
 	<return: #Number>
 
 	^ offset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSubRope >> rope [
 	<return: #BlRope>
 
 	^ rope
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSubRope >> rope: aRope offset: anOffset length: aLength [
 
 	anOffset < 0
@@ -199,14 +201,14 @@ TbSubRope >> rope: aRope offset: anOffset length: aLength [
 	length := aLength
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbSubRope >> size [
 	<return: #Number>
 
 	^ length
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSubRope >> start [
 	<return: #Number>
 	

@@ -19,32 +19,34 @@ BlAlternativeCombination new
 	yourself
 "
 Class {
-	#name : #TbAlternativeCombination,
-	#superclass : #TbKeyCombination,
+	#name : 'TbAlternativeCombination',
+	#superclass : 'TbKeyCombination',
 	#instVars : [
 		'combinations'
 	],
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbAlternativeCombination >> accept: aKeyCombinationVisitor [
 	^ aKeyCombinationVisitor visitAlternative: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAlternativeCombination >> combinations [
 	<return: #SequenceableCollection of: #BlKeyCombination>
 
 	^ combinations
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbAlternativeCombination >> includes: aKey [
 	^ self combinations anySatisfy: [ :aCombination | aCombination includes: aKey ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbAlternativeCombination >> initialize [
 	super initialize.
 	
@@ -52,17 +54,17 @@ TbAlternativeCombination >> initialize [
 	combinations := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbAlternativeCombination >> isAlternative [
 	^ true
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbAlternativeCombination >> key: aKey [
 	self with: (TbSingleKeyCombination key: aKey)
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbAlternativeCombination >> match: aKeyboardBuffer [
 	<return: #Number>
 	
@@ -71,7 +73,7 @@ TbAlternativeCombination >> match: aKeyboardBuffer [
 		into: [ :max :aCombination | max max: (aCombination match: aKeyboardBuffer) ]
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbAlternativeCombination >> matches: aKeyboardBuffer [
 	<return: #Boolean>
 
@@ -79,14 +81,14 @@ TbAlternativeCombination >> matches: aKeyboardBuffer [
 		anySatisfy: [ :aCombination | aCombination matches: aKeyboardBuffer ]
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TbAlternativeCombination >> or: anotherKeyCombination [
 	<return: #BlKeyCombination>
 
 	^ self with: anotherKeyCombination
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbAlternativeCombination >> printOn: aStream [
 	
 	aStream nextPut: $(.
@@ -98,14 +100,14 @@ TbAlternativeCombination >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbAlternativeCombination >> with: aCombination [
 	aCombination isAlternative
 		ifTrue: [ self combinations addAll: aCombination combinations ]
 		ifFalse: [ self combinations add: aCombination ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbAlternativeCombination >> withAll: aCollectionOfCombinations [
 	self combinations addAll: aCollectionOfCombinations
 ]

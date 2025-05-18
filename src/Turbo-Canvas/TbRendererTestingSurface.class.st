@@ -1,19 +1,21 @@
 Class {
-	#name : #TbRendererTestingSurface,
-	#superclass : #TbHostRendererSurface,
+	#name : 'TbRendererTestingSurface',
+	#superclass : 'TbHostRendererSurface',
 	#instVars : [
 		'displayMatrix'
 	],
-	#category : #'Turbo-Canvas-Testing'
+	#category : 'Turbo-Canvas-Testing',
+	#package : 'Turbo-Canvas',
+	#tag : 'Testing'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbRendererTestingSurface class >> supportedBy: aClass [ 
 	
 	^ false
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbRendererTestingSurface >> at: aPoint put: aCharacter [
  
 	| line | 
@@ -24,19 +26,19 @@ TbRendererTestingSurface >> at: aPoint put: aCharacter [
 	
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbRendererTestingSurface >> at: aPoint put: aCharacter textColor: textColor backgroundColor: backgroundColor attributes: attributes [
 
 	^ self at: aPoint asIntegerPoint put: aCharacter 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRendererTestingSurface >> displayMatrix [
 
 	^ displayMatrix
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRendererTestingSurface >> initializeOn: anObject [
 
 	anObject initializeForForm: self
@@ -44,7 +46,7 @@ TbRendererTestingSurface >> initializeOn: anObject [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRendererTestingSurface >> initializeResourcesOn: aHostRenderer [
 
 	| hostMatrix |
@@ -57,14 +59,14 @@ TbRendererTestingSurface >> initializeResourcesOn: aHostRenderer [
 	self initializeOn: aHostRenderer
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbRendererTestingSurface >> prepareToRender: aSpace [
 	"Dispatch preparation to render through host space based on surface type"
 	
 	self hostSpace prepareToRender: aSpace onFormSurface: self
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbRendererTestingSurface >> renderFor: aSpace [
 	"Dispatch render process through host space based on surface type"
 	

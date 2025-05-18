@@ -3,12 +3,14 @@ I am the concrete class for writable observable properties.
 I am not specialized and i can be used as a generic value holder.
 "
 Class {
-	#name : #TbObjectProperty,
-	#superclass : #TbObservableProperty,
-	#category : #'Turbo-Core-Property'
+	#name : 'TbObjectProperty',
+	#superclass : 'TbObservableProperty',
+	#category : 'Turbo-Core-Property',
+	#package : 'Turbo-Core',
+	#tag : 'Property'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbObjectProperty class >> on: anOwner named: aSymbol default: aValue [
 	^ self new
 		name: aSymbol;
@@ -17,13 +19,13 @@ TbObjectProperty class >> on: anOwner named: aSymbol default: aValue [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbObjectProperty >> initialize [
 	super initialize.
 	isValid := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObjectProperty >> value: anObject [
 	self rawValue = anObject ifTrue: [ ^ self ].
 	self invalidateDuring: [ 

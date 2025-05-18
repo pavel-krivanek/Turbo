@@ -1,10 +1,12 @@
 Class {
-	#name : #TbElementBoundsInLocal,
-	#superclass : #TbElementComputedBounds,
-	#category : #'Turbo-Core-Basic-Bounds'
+	#name : 'TbElementBoundsInLocal',
+	#superclass : 'TbElementComputedBounds',
+	#category : 'Turbo-Core-Basic-Bounds',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Bounds'
 }
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBoundsInLocal >> inParent [
 	<return: #BlElementBounds>
 
@@ -15,7 +17,7 @@ TbElementBoundsInLocal >> inParent [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBoundsInLocal >> inSpace [
 	<return: #BlElementBounds>
 

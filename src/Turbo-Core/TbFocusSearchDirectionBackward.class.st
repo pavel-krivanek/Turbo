@@ -1,10 +1,12 @@
 Class {
-	#name : #TbFocusSearchDirectionBackward,
-	#superclass : #TbFocusSearchDirectionRelative,
-	#category : #'Turbo-Core-Utilities - Focus'
+	#name : 'TbFocusSearchDirectionBackward',
+	#superclass : 'TbFocusSearchDirectionRelative',
+	#category : 'Turbo-Core-Utilities - Focus',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Focus'
 }
 
-{ #category : #focus }
+{ #category : 'focus' }
 TbFocusSearchDirectionBackward >> initFocusedBounds: aFocusedBounds root: aFocusRootElement [
 
 	aFocusRootElement layout isRightToLeft

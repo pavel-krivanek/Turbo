@@ -5,22 +5,24 @@ ${example:BlChildrenSubsetExamples>>#accountedByLayoutChildrenFromElement}$
 
 "
 Class {
-	#name : #TbChildrenAccountedByLayout,
-	#superclass : #TbChildrenSubset,
-	#category : #'Turbo-Core-Basic-Children'
+	#name : 'TbChildrenAccountedByLayout',
+	#superclass : 'TbChildrenSubset',
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'children - subsets' }
+{ #category : 'children - subsets' }
 TbChildrenAccountedByLayout >> accountedByLayout [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenAccountedByLayout >> name [
 	^ 'Accounted by layout'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenAccountedByLayout >> subsetFrom: aBlChildren [
 	^ aBlChildren select: [ :anElement |
 		anElement constraints ignoredByLayout not

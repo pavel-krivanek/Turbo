@@ -7,29 +7,31 @@ Taking elevation into account forces us to have a separate composition rendering
 Note: Elevation is not influenced by transformation matrix!
 "
 Class {
-	#name : #TbElevation,
-	#superclass : #Object,
+	#name : 'TbElevation',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'elevation'
 	],
-	#category : #'Turbo-Core-Basic-Properties'
+	#category : 'Turbo-Core-Basic-Properties',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Properties'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbElevation class >> elevation: aNumber [
 	^ self new elevation: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElevation >> elevation [
 	<return: #Number>
 
 	^ elevation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElevation >> elevation: aNumber [
 	self
 		assert: [ elevation isNil ]
@@ -38,7 +40,7 @@ TbElevation >> elevation: aNumber [
 	elevation := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElevation >> relatedTo: aNumber [
 	"Compute and return a resulting elevation related to the elevation represented as a number"
 	<return: #Number>

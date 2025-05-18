@@ -7,15 +7,17 @@ Internally I maintain one single ${class:LinkedList}$ instance. When children ar
 Examples are provided by the class ${class:BlChildrenLinkedListExamples}$
 "
 Class {
-	#name : #TbChildrenLinkedList,
-	#superclass : #TbChildrenCollection,
+	#name : 'TbChildrenLinkedList',
+	#superclass : 'TbChildrenCollection',
 	#instVars : [
 		'list'
 	],
-	#category : #'Turbo-Core-Basic-Children'
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenLinkedList >> add: aChild at: anIndex [
 	"Adds aChild at a given index moving existing children to the right"
 	| aLinkAt |
@@ -29,12 +31,12 @@ TbChildrenLinkedList >> add: aChild at: anIndex [
 	list add: aChild afterLink: aLinkAt
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenLinkedList >> addAll: aSequenceableCollection [
 	list addAll: aSequenceableCollection
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenLinkedList >> at: anIndex [
 	"Return an element at a given index"
 	<return: #BlElement>
@@ -42,29 +44,29 @@ TbChildrenLinkedList >> at: anIndex [
 	^ list at: anIndex
 ]
 
-{ #category : #'children - enumerating' }
+{ #category : 'children - enumerating' }
 TbChildrenLinkedList >> do: aBlock [
 	list do: aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenLinkedList >> initialize [
 	super initialize.
 	
 	list := LinkedList new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenLinkedList >> name [
 	^ 'Children linked list'
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenLinkedList >> removeAll: aCollectionOfBlElement [
 	list removeAll: aCollectionOfBlElement
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenLinkedList >> removeAt: anIndex [
 	| aLinkAt |
 
@@ -72,7 +74,7 @@ TbChildrenLinkedList >> removeAt: anIndex [
 	list removeLink: aLinkAt
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenLinkedList >> size [
 	<return: #Number>
 

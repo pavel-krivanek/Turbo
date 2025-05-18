@@ -1,6 +1,6 @@
 Class {
-	#name : #TbKeyboardProcessor,
-	#superclass : #TbBaseEventProcessor,
+	#name : 'TbKeyboardProcessor',
+	#superclass : 'TbBaseEventProcessor',
 	#instVars : [
 		'buffer',
 		'preventKeystrokes',
@@ -9,17 +9,19 @@ Class {
 		'previousShortcutTime',
 		'previousShortcutRepeatTime'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardProcessor >> buffer [
 	<return: #BlKeyboardBuffer>
 
 	^ buffer
 ]
 
-{ #category : #'target detection' }
+{ #category : 'target detection' }
 TbKeyboardProcessor >> findTarget: anEvent [
 	"Find and return an appropriate element target for a given keyboard event.
 	By default a keyboard event target is currently focused element if exists
@@ -32,7 +34,7 @@ TbKeyboardProcessor >> findTarget: anEvent [
 		ifFalse: [ self space root ]
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbKeyboardProcessor >> handleSpaceEventProcessedEvent: anEvent [
 	| aShortcutEvent aTimeNow |
 	
@@ -56,7 +58,7 @@ TbKeyboardProcessor >> handleSpaceEventProcessedEvent: anEvent [
 	previousShortcutRepeatTime := self space time now
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbKeyboardProcessor >> initialize [
 	super initialize.
 	
@@ -70,7 +72,7 @@ TbKeyboardProcessor >> initialize [
 	previousShortcutRepeatTime := DateAndTime now. "when the last repeated shortcut was sent"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyboardProcessor >> keystrokesAllowed [
 	"Return true if keystrokes are allowed, false otherwise"
 	<return: #Boolean>
@@ -78,7 +80,7 @@ TbKeyboardProcessor >> keystrokesAllowed [
 	^ preventKeystrokes not
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbKeyboardProcessor >> processKeyDown: anEvent [
 	| aTarget aShortcutEvent |
 
@@ -100,7 +102,7 @@ TbKeyboardProcessor >> processKeyDown: anEvent [
 	preventKeystrokes := aShortcutEvent isConsumed
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbKeyboardProcessor >> processKeyUp: anEvent [
 	| aTarget |
 
@@ -114,7 +116,7 @@ TbKeyboardProcessor >> processKeyUp: anEvent [
 	self fireEvent: anEvent
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbKeyboardProcessor >> processKeystroke: anEvent [
 	| aTarget |
 	
@@ -126,7 +128,7 @@ TbKeyboardProcessor >> processKeystroke: anEvent [
 	self fireEvent: anEvent.
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbKeyboardProcessor >> processTextInput: anEvent [
 	| aTarget |
 	

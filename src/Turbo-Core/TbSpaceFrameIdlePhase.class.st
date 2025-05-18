@@ -1,20 +1,22 @@
 Class {
-	#name : #TbSpaceFrameIdlePhase,
-	#superclass : #TbSpaceFramePhase,
-	#category : #'Turbo-Core-Space-Frame'
+	#name : 'TbSpaceFrameIdlePhase',
+	#superclass : 'TbSpaceFramePhase',
+	#category : 'Turbo-Core-Space-Frame',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Frame'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFrameIdlePhase >> isIdlePhase [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFrameIdlePhase >> name [
 	^ 'Idle'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 TbSpaceFrameIdlePhase >> runOn: aSpace [
 	
 ]

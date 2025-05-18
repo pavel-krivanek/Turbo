@@ -7,17 +7,19 @@ This means that mouse leave is fired when the pointer has exited the element and
 https://developer.mozilla.org/en-US/docs/Web/Events/mouseleave
 "
 Class {
-	#name : #TbMouseLeaveEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseLeaveEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseLeaveEvent >> isMouseLeave [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseLeaveEvent >> sendTo: anObject [
 	anObject mouseLeaveEvent: self
 ]

@@ -4,12 +4,14 @@ The event is propagating back up through the target's ancestors in reverse order
 This is known as bubbling, and occurs only if BlEvent>>#canBePropagated is true. Event listeners registered for this phase are triggered during this process.
 "
 Class {
-	#name : #TbEventTraversalBubblingStep,
-	#superclass : #TbEventTraversalStep,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbEventTraversalBubblingStep',
+	#superclass : 'TbEventTraversalStep',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventTraversalBubblingStep >> type [
 	<return: #String>
 	

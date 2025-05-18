@@ -8,27 +8,29 @@ I optimize the method ${method:BlChildrenArray>>#asArray}$ to directly return th
 Examples are provided by the class ${class:BlChildrenArrayExamples}$
 "
 Class {
-	#name : #TbChildrenArray,
-	#superclass : #TbChildrenCollection,
+	#name : 'TbChildrenArray',
+	#superclass : 'TbChildrenCollection',
 	#instVars : [
 		'array'
 	],
-	#category : #'Turbo-Core-Basic-Children'
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbChildrenArray class >> from: anArrayOfChildren [
 	^ self new initializeFrom: anArrayOfChildren
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenArray >> add: aChild at: anIndex [
 	"Adds aChild at a given index moving existing children to the right"
 
 	array := array copyReplaceFrom: anIndex to: anIndex - 1 with: { aChild }
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenArray >> addAll: aSequenceableCollection [
 	"Add all the elements from the given collection to the children array.
 	If the user passed an array and our current array is empty, we just replace 
@@ -39,7 +41,7 @@ TbChildrenArray >> addAll: aSequenceableCollection [
 		ifFalse: [ array, aSequenceableCollection ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbChildrenArray >> asArray [
 	"Directly return the internal array used to store children.
 	This avoids creating an extra array, as this operation can be called many times.
@@ -48,7 +50,7 @@ TbChildrenArray >> asArray [
 	^ array
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenArray >> at: anIndex [
 	"Return an element at a given index"
 	<return: #BlElement>
@@ -56,39 +58,39 @@ TbChildrenArray >> at: anIndex [
 	^ array at: anIndex
 ]
 
-{ #category : #'children - enumerating' }
+{ #category : 'children - enumerating' }
 TbChildrenArray >> do: aBlock [
 	array do: aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenArray >> initialize [
 	super initialize.
 	
 	array := #()
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenArray >> initializeFrom: anArrayOfChildren [
 	array := anArrayOfChildren asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenArray >> name [
 	^ 'Children array'
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenArray >> removeAll: aCollectionOfBlElement [
 	array := array copyWithoutAll: aCollectionOfBlElement
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenArray >> removeAt: anIndex [
 	array := array copyReplaceFrom: anIndex to: anIndex with: #()
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenArray >> size [
 	<return: #Number>
 

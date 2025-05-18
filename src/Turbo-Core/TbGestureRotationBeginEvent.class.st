@@ -1,10 +1,12 @@
 Class {
-	#name : #TbGestureRotationBeginEvent,
-	#superclass : #TbGestureBaseRotationEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureRotationBeginEvent',
+	#superclass : 'TbGestureBaseRotationEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbGestureRotationBeginEvent >> sendTo: anObject [
 	anObject gestureRotationBeginEvent: self
 ]

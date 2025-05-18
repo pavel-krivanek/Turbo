@@ -1,14 +1,16 @@
 Class {
-	#name : #TbDelegateProperty,
-	#superclass : #TbObjectProperty,
+	#name : 'TbDelegateProperty',
+	#superclass : 'TbObjectProperty',
 	#instVars : [
 		'property',
 		'delegationBlock'
 	],
-	#category : #'Turbo-Core-Property'
+	#category : 'Turbo-Core-Property',
+	#package : 'Turbo-Core',
+	#tag : 'Property'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbDelegateProperty class >> on: anOwner named: aSymbol delegateTo: aProperty [ 
 	^ self new
 		name: aSymbol;
@@ -17,7 +19,7 @@ TbDelegateProperty class >> on: anOwner named: aSymbol delegateTo: aProperty [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbDelegateProperty class >> on: anOwner named: aSymbol delegateTo: aProperty do: aDelegationBlock [
 	^ self new
 		name: aSymbol;
@@ -27,19 +29,19 @@ TbDelegateProperty class >> on: anOwner named: aSymbol delegateTo: aProperty do:
 		yourself
 ]
 
-{ #category : #delegation }
+{ #category : 'delegation' }
 TbDelegateProperty >> delegateTo: aProperty [
 	aProperty addChangeListener: self.
 	property := aProperty.
 	
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbDelegateProperty >> do: aDelegationBlock [
 	delegationBlock := aDelegationBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelegateProperty >> initialize [
 	super initialize.
 	delegationBlock := [ :p :v | 
@@ -47,12 +49,12 @@ TbDelegateProperty >> initialize [
 			p perform: self name asMutator with: v ] ]
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbDelegateProperty >> invalidated [
 	property value ifNotNil: [ :o | delegationBlock value: o value: self rawValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelegateProperty >> valueChanged: anObject [
 	anObject ifNil:[^ self].
 	delegationBlock value: anObject value: self rawValue

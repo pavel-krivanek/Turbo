@@ -1,28 +1,30 @@
 Class {
-	#name : #TbFocusTransferEvent,
-	#superclass : #TbBaseFocusEvent,
+	#name : 'TbFocusTransferEvent',
+	#superclass : 'TbBaseFocusEvent',
 	#instVars : [
 		'transfer'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusTransferEvent >> hasTransfer [
 	^ transfer isNotNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusTransferEvent >> isFocusTransfer [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbFocusTransferEvent >> sendTo: anObject [
 	anObject focusTransferEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusTransferEvent >> transfer [
 	self
 		assert: [ self hasTransfer ]
@@ -31,7 +33,7 @@ TbFocusTransferEvent >> transfer [
 	^ transfer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusTransferEvent >> transfer: anObject [
 	transfer := anObject
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #TbBoundsCache,
-	#superclass : #Object,
+	#name : 'TbBoundsCache',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -12,21 +12,23 @@ Class {
 		'geometryBoundsInSpace',
 		'boundsInParent'
 	],
-	#category : #'Turbo-Core-Basic-Support'
+	#category : 'Turbo-Core-Basic-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Support'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbBoundsCache class >> on: anElement [
 	^ self new owner: anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> boundsInLocal [
 	^ boundsInLocal ifNil: [
 		boundsInLocal := (self owner boundsInLocal: TbBounds new) asRectangle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> boundsInParent [
 	self deprecated: 'Use `element bounds inParent` instead'.
 
@@ -34,25 +36,25 @@ TbBoundsCache >> boundsInParent [
 		boundsInParent := (self owner boundsInParent: TbBounds new) asRectangle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> boundsInSpace [
 	^ boundsInSpace ifNil: [
 		boundsInSpace := (self owner boundsInSpace: TbBounds new) asRectangle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> geometryBounds [
 	^ geometryBounds ifNil: [
 		geometryBounds := (self owner geometryBounds: TbBounds new) asRectangle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> geometryBoundsInSpace [
 	^ geometryBoundsInSpace
 		ifNil: [ geometryBoundsInSpace := (self owner geometryBoundsInSpace: TbBounds new) asRectangle ]
 ]
 
-{ #category : #invalidation }
+{ #category : 'invalidation' }
 TbBoundsCache >> invalidateBoundsInLocal [
 	"Bounds properties in local coordinates change than and only than when extent changes"
 
@@ -62,7 +64,7 @@ TbBoundsCache >> invalidateBoundsInLocal [
 	self invalidateBoundsInSpace
 ]
 
-{ #category : #invalidation }
+{ #category : 'invalidation' }
 TbBoundsCache >> invalidateBoundsInSpace [
 
 	boundsInSpace := nil.
@@ -74,17 +76,17 @@ TbBoundsCache >> invalidateBoundsInSpace [
 		anElement boundsCache invalidateBoundsInSpace ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> owner [
 	^ owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> owner: anElement [
 	owner := anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBoundsCache >> transformedBounds [
 	^ transformedBounds ifNil: [
 		transformedBounds := (self owner transformedBounds: TbBounds new) asRectangle ]

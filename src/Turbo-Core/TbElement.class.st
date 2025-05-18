@@ -51,8 +51,8 @@ Every element is responsible for drawing itself. At the same time, every element
 See ${class:BlGeometryVisualAndLayoutBoundsExamples}$ for concrete details.
 "
 Class {
-	#name : #TbElement,
-	#superclass : #Object,
+	#name : 'TbElement',
+	#superclass : 'Object',
 	#traits : 'TTbTransformable + TTbEventTarget + TTbDebug',
 	#classTraits : 'TTbTransformable classTrait + TTbEventTarget classTrait + TTbDebug classTrait',
 	#instVars : [
@@ -88,17 +88,19 @@ Class {
 	#classInstVars : [
 		'invalidateBounds'
 	],
-	#category : #'Turbo-Core-Basic'
+	#category : 'Turbo-Core-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Basic'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbElement class >> cleanUp [
 	super cleanUp.
 	
 	invalidateBounds := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement class >> invalidationBounds [
 	"Return a temporary bounds used by various #invalidate methods.
 	It is a shared singleton to minimize object creation.
@@ -112,14 +114,14 @@ TbElement class >> invalidationBounds [
 	^ invalidateBounds ifNil: [ invalidateBounds := TbBounds new ]
 ]
 
-{ #category : #'api - animations' }
+{ #category : 'api - animations' }
 TbElement >> addAnimation: aBlBaseAnimation [
 
 	aBlBaseAnimation target: self.
 	self enqueueTask: aBlBaseAnimation
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChild: anElement [
 	"Add anElement as my last direct child and request layout update.
 	anElement must not be a direct child of any other element!
@@ -128,7 +130,7 @@ TbElement >> addChild: anElement [
 	self addChild: anElement at: self childrenCount + 1
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChild: anElement as: aContainerName [
 	"Add a given element to my children and make it a named container, so that
 	we could add children in that container"
@@ -148,7 +150,7 @@ TbElement >> addChild: anElement as: aContainerName [
 	self addChild: anElement
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChild: anElement at: anIndex [
 	"Add anElement at an index moving other children to the right.
 	anElement must not be a direct child of any other element!
@@ -183,7 +185,7 @@ TbElement >> addChild: anElement at: anIndex [
 	anElement requestLayout.
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChild: anElement at: anIndex as: aContainerName [
 	"Add a given element to my children at an index moving other children to the right and make it a named container,
 	so that we could add children in that container"
@@ -203,7 +205,7 @@ TbElement >> addChild: anElement at: anIndex as: aContainerName [
 	self addChild: anElement at: anIndex
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChild: anElement in: aContainerName [
 	"Add a given element to a named container that must already exist"
 
@@ -213,7 +215,7 @@ TbElement >> addChild: anElement in: aContainerName [
 		ifNone: [ self error: 'Container named ', aContainerName asString, ' is not found!' ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChild: anElement in: aContainerName as: aChildContainerName [
 	"Add a given element to a named container that must already exist
 	and mark the added child as container too"
@@ -224,7 +226,7 @@ TbElement >> addChild: anElement in: aContainerName as: aChildContainerName [
 		ifNone: [ self error: 'Container named #', aContainerName asString, ' does not exist' ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChildFirst: anElement [
 	"Add anElement as my first direct child and request layout update.
 	anElement must not be a direct child of any other element!
@@ -233,7 +235,7 @@ TbElement >> addChildFirst: anElement [
 	self addChild: anElement at: 1
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChildFirst: anElement as: aContainerName [
 	"Add a given element as my first child and make it a named container, so that
 	we could add children in that container"
@@ -242,7 +244,7 @@ TbElement >> addChildFirst: anElement as: aContainerName [
 	self addChildFirst: anElement
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChildren: aListOfElements [
 	"Add elements from aListOfElements as my rearmost(last) direct children and
 	request layout update.
@@ -271,7 +273,7 @@ TbElement >> addChildren: aListOfElements [
 	aListOfElements do: [ :anElement | anElement requestLayout ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> addChildren: aListOfElements in: aContainerName [
 	"Add given elements to a named container that must already exist"
 
@@ -281,7 +283,7 @@ TbElement >> addChildren: aListOfElements in: aContainerName [
 		ifNone: [ self error: 'Container named ', aContainerName asString, ' is not found!' ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> allChildrenBreadthFirstDetect: aBlock ifFound: ifFoundBlock [
 	^ self 
 		allChildrenBreadthFirstDetect: aBlock 
@@ -289,7 +291,7 @@ TbElement >> allChildrenBreadthFirstDetect: aBlock ifFound: ifFoundBlock [
 		ifNone: [ nil ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> allChildrenBreadthFirstDetect: aBlock ifFound: ifFoundBlock ifNone: ifNoneBlock [
 	self allChildrenBreadthFirstDo: [ :aChild |
 		(aBlock value: aChild)
@@ -297,13 +299,13 @@ TbElement >> allChildrenBreadthFirstDetect: aBlock ifFound: ifFoundBlock ifNone:
 	^ ifNoneBlock value
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> allChildrenBreadthFirstDo: aBlock [ 
 	self childrenDo: aBlock.
 	self childrenDo: [ :each | each allChildrenBreadthFirstDo: aBlock ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> allChildrenBreadthFirstSelect: aBlock [ 
 	| selectedChildren |
 	selectedChildren := OrderedCollection new.
@@ -312,7 +314,7 @@ TbElement >> allChildrenBreadthFirstSelect: aBlock [
 	^ selectedChildren
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> allParentsDetect: aBlock ifFound: ifFoundBlock ifNone: ifNoneBlock [
 	self allParentsDo: [ :aParent | 
 		(aBlock value: aParent)
@@ -320,7 +322,7 @@ TbElement >> allParentsDetect: aBlock ifFound: ifFoundBlock ifNone: ifNoneBlock 
 	^ ifNoneBlock value
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> allParentsDo: aBlock [
 	"Evaluate a block with my every parent as an argument starting from my direct parent
 	up to the top most parent (excluding myself).
@@ -330,14 +332,14 @@ TbElement >> allParentsDo: aBlock [
 	self parent withAllParentsDo: aBlock
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> allowChildrenMouseEvents [
 	"Allow my children to receive mouse events"
 
 	shouldChildrenHandleMouseEvents := true
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> allowMouseEvents [
 	"Allow *me* to handle mouse events.
 	It does not influence the ability of the children to handle events, hence I am a local property"
@@ -345,7 +347,7 @@ TbElement >> allowMouseEvents [
 	shouldHandleMouseEvents := true
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> applyLayoutIn: aBlBounds [
 	self errorHandler
 		with: self
@@ -353,7 +355,7 @@ TbElement >> applyLayoutIn: aBlBounds [
 		failed: [ self applyLayoutThatFailedIn: aBlBounds ]
 ]
 
-{ #category : #'private - layout' }
+{ #category : 'private - layout' }
 TbElement >> applyLayoutSafelyIn: aRectangle [
 	"Layout me and my children within aRectangle in my local coordinates.
 	Note: aRectangle may be a temporary or mutable rectangle, so you must not
@@ -383,7 +385,7 @@ TbElement >> applyLayoutSafelyIn: aRectangle [
 	self layout requestingLayout: false
 ]
 
-{ #category : #'private - layout' }
+{ #category : 'private - layout' }
 TbElement >> applyLayoutThatFailedIn: aRectangle [
 	"Perform fallback safe action when layout computation failed"
 
@@ -392,12 +394,12 @@ TbElement >> applyLayoutThatFailedIn: aRectangle [
 	self layout requestingLayout: false
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbElement >> asElement [
 	^ self 
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 TbElement >> asPannableElement [
 	| pannable |
 	self removeFromParent.
@@ -409,7 +411,7 @@ TbElement >> asPannableElement [
 	^ pannable
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 TbElement >> asScalableElement [
 	| aScalableElement |
 	
@@ -423,7 +425,7 @@ TbElement >> asScalableElement [
 	^ aScalableElement
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 TbElement >> asScrollableElement [
 	| scrollable |
 	self removeFromParent.
@@ -435,7 +437,7 @@ TbElement >> asScrollableElement [
 	^ scrollable
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> attachChild: anElement [
 	"Attaches previously detached element as my last direct child.
 	@see #attachChild:at: for more info"
@@ -443,7 +445,7 @@ TbElement >> attachChild: anElement [
 	self attachChild: anElement at: self childrenCount + 1
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> attachChild: anElement at: anIndex [
 	"Attaches an element making it my direct child. Attaching an element assigns me as the parent
 	and puts an element in the list of children so that it can be retrieved by `children at:`.
@@ -462,7 +464,7 @@ TbElement >> attachChild: anElement at: anIndex [
 	self children add: anElement at: anIndex
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> background [
 	"Return my current background.
 	Background can not be nil"
@@ -471,7 +473,7 @@ TbElement >> background [
 	^ background
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> background: aBlBackground [
 	"Change my background to a given one.
 	Color and Form can be used as background - they will be converted to appropriate background object.
@@ -490,19 +492,19 @@ TbElement >> background: aBlBackground [
 	self invalidate
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> backgroundResizer [
 	<return: #BlBackgroundResizer>
 
 	^ backgroundResizer
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> backgroundResizer: aBackgroundResizer [
 	 backgroundResizer := aBackgroundResizer
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> baselineOffset [
 	"Return the offset of the element's text baseline from the element's top boundary.
 	If I don't not support baseline alignment, BlElement>>#supportsBaseline return false"
@@ -511,14 +513,14 @@ TbElement >> baselineOffset [
 	^ 0
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> border [
 	<return: #BlBorder>
 
 	^ border
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> border: aBlBorder [
 	"Change my border and invalidate me"
 	<event: #TbElementBorderChangedEvent>
@@ -533,26 +535,26 @@ TbElement >> border: aBlBorder [
 	self invalidate
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> bounds [
 	<return: #BlElementBounds>
 
 	^ bounds
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> boundsCache [
 	^ boundsCache
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInLocal [
 	<return: #Rectangle>
 
 	^ self bounds inLocal asRectangle
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInLocal: aBounds [
 	"I load my local bounds in the given mutable bounds and return it.
 	I do not rely on cache and always provide actual bounds.
@@ -565,14 +567,14 @@ TbElement >> boundsInLocal: aBounds [
 	^ self bounds boundsInLocal: aBounds
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInParent [
 	self deprecated: 'Use `element bounds inParent` instead'.
 
 	^ self bounds inParent asRectangle
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInParent: aBounds [
 	<return: #BlBounds>
 	
@@ -581,12 +583,12 @@ TbElement >> boundsInParent: aBounds [
 	^ self localBoundsToParent: (self boundsInLocal: aBounds)
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInSpace [
 	^ boundsCache boundsInSpace
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInSpace: aBounds [
 	"I load my bounds in space in a given mutable rectangle and return provided one.
 	I do not rely on cache and always provide actual bounds.
@@ -598,14 +600,14 @@ TbElement >> boundsInSpace: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> boundsInWindow [
 	^ self isAttachedToSceneGraph
 		ifTrue: [ boundsCache boundsInSpace scaleBy: self space windowScale ]
 		ifFalse: [ boundsCache boundsInSpace ]
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> centerRotateByDegrees: anAngle [ 
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -618,7 +620,7 @@ TbElement >> centerRotateByDegrees: anAngle [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> centerRotateByRadians: anAngle [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -631,19 +633,19 @@ TbElement >> centerRotateByRadians: anAngle [
 		apply
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbElement >> changed [
 	self error: 'Never use me, instead invalidate only what is needed'
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> changes [
 	<return: #BlElementChanges>
 	
 	^ changes
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> childIndexOf: anElement [
 	"Answer the index of the first occurrence of anElement within the  
 	receiver. If the receiver does not contain anElement, answer 0."
@@ -652,7 +654,7 @@ TbElement >> childIndexOf: anElement [
 	^ self children indexOf: anElement
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> childNamed: aChildName [
 	<return: #BlElement>
 
@@ -662,7 +664,7 @@ TbElement >> childNamed: aChildName [
 		ifNone: [ self error: 'Children container named ', aChildName asString, ' does not exist' ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> childNamed: aContainerName ifFound: ifFoundBlock ifNone: ifNoneBlock [
 	<return: #Object>
 
@@ -674,7 +676,7 @@ TbElement >> childNamed: aContainerName ifFound: ifFoundBlock ifNone: ifNoneBloc
 	^ ifNoneBlock value
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> children [
 	"Return an array of all my direct children.
 	children can not be nil"
@@ -683,11 +685,11 @@ TbElement >> children [
 	^ children
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> childrenChanged [
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> childrenCount [
 	"Return amount of my direct children"
 	<return: #Number>
@@ -695,7 +697,7 @@ TbElement >> childrenCount [
 	^ children size
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> childrenDo: aBlock [
 	"Evaluate aBlock with each of my direct children as argument.
 	aBlock can not be nil.
@@ -706,17 +708,17 @@ TbElement >> childrenDo: aBlock [
 	self children do: aBlock
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> clipChildren [
 	^ misc clipChildren
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> clipChildren: anObject [
 	misc clipChildren: anObject
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> commitChanges [
 	"Commit all accumulated element changes since previous commit"
 
@@ -724,7 +726,7 @@ TbElement >> commitChanges [
 	self childrenDo: [ :anElement | anElement commitChanges ]
 ]
 
-{ #category : #'private - layout' }
+{ #category : 'private - layout' }
 TbElement >> computeLayout [
 	"Private! Never use me outside of #forceLayout"
 	| relayoutCounter maxRelayoutCount |
@@ -761,7 +763,7 @@ TbElement >> computeLayout [
 			relayoutCounter := relayoutCounter + 1 ]
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> constraints [
 	"Return layout constraints object which is used by the layout strategy.
 	constraints can not be nil.
@@ -772,7 +774,7 @@ TbElement >> constraints [
 	^ constraints
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> constraints: aLayoutConstraints [
 	"Set new layout constraints and request layout update.
 	aLayoutConstraints must not be nil"
@@ -789,7 +791,7 @@ TbElement >> constraints: aLayoutConstraints [
 	self requestLayout
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> constraintsDo: aBlock [
 	"Perform aBlock with my constraints as argument.
 	Note: After evaluation I request a layout update!
@@ -802,14 +804,14 @@ TbElement >> constraintsDo: aBlock [
 	self requestLayout
 ]
 
-{ #category : #'geometry testing' }
+{ #category : 'geometry testing' }
 TbElement >> containsGlobalPoint: aPoint [
 	(self geometryBoundsInSpace containsPoint: aPoint)
 		ifFalse: [ ^ false ].
 	^ self containsPoint: (self globalPointToLocal: aPoint)
 ]
 
-{ #category : #'geometry testing' }
+{ #category : 'geometry testing' }
 TbElement >> containsPoint: aPoint [
 	<return: #Boolean>
 
@@ -819,7 +821,7 @@ TbElement >> containsPoint: aPoint [
 	^ self geometry containsPoint: aPoint in: self
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbElement >> copy [
 	"Visual elements can not be copied.
 	The reason for that is unpredictable amount of conflicting copying behaviours.
@@ -833,7 +835,7 @@ TbElement >> copy [
 	self shouldNotImplement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> debug: aBoolean [
 	"When set to true I will render various debug information
 	on top of the element, default is false"
@@ -842,14 +844,14 @@ TbElement >> debug: aBoolean [
 	self invalidate
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbElement >> deepCopy [
 	"See method comment of #copy"
 
 	self shouldNotImplement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultBackground [
 	"Return an object that should be used as element's background by default.
 	Note: it may be any object that implements #asBlBackground"
@@ -858,12 +860,12 @@ TbElement >> defaultBackground [
 	^ TbBackground transparent
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultBackgroundResizer [
 	^ TbBackgroundResizer match
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultBorder [
 	"Return an instance of BlBorder that should be my default border"
 	<return: #BlBorder>
@@ -871,14 +873,14 @@ TbElement >> defaultBorder [
 	^ TbBorder empty
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultElevation [
 	<return: #BlElevation>
 
 	^ TbRelativeElevation zero
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultErrorHandler [
 	^ TbCompositeErrorHandler withAll: { 
 		TbDrawingErrorHandler new.
@@ -886,34 +888,34 @@ TbElement >> defaultErrorHandler [
 	}
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultFocusability [
-	<return: #BlFocusability>
+	<return: #TbFocusability>
 
 	^ TbFocusability before
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultGeometry [
 	^ TbRectangle new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultGeometryResizer [
 	^ TbGeometryResizer match
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultLayout [
 	^ TbBasicLayout new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultOutskirts [
 	^ TbOutskirts inside
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultTransformation [
 	"Return an instance of BlTransformation that plays a role of my default transformation"
 	<return: #BlTransformation>
@@ -921,14 +923,14 @@ TbElement >> defaultTransformation [
 	^ TbElementLocalTransformation new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> defaultVisibility [
 	<return: #BlVisibility>
 
 	^ TbVisibility visible
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbElement >> dequeueTask: aBlTask [
 
 	self isAttachedToSceneGraph
@@ -936,7 +938,7 @@ TbElement >> dequeueTask: aBlTask [
 		ifFalse: [ self taskQueue dequeue: aBlTask ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> detachChild: anElement [
 	"Detaches anElement from myself. Detaching an element should be followed either by attachChild: or removeDetachedChild:
 	Detachment should only be temporary; reattachment or removal should happen within the same drawing cycle as detachment.
@@ -953,7 +955,7 @@ TbElement >> detachChild: anElement [
 	self children remove: anElement
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchAddedToParent [
 	"Sent after I was added to another element as direct child.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
@@ -963,7 +965,7 @@ TbElement >> dispatchAddedToParent [
 	self dispatchAddedToSuperParent: self
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchAddedToSceneGraph [
 	"Sent after any of my parents or I was added to scene graph.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
@@ -972,7 +974,7 @@ TbElement >> dispatchAddedToSceneGraph [
 	self childrenDo: [ :anElement | anElement dispatchAddedToSceneGraph ]
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchAddedToSuperParent: anElement [
 	"Sent after I or one of my parents was added to another element as a child.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
@@ -983,7 +985,7 @@ TbElement >> dispatchAddedToSuperParent: anElement [
 	self childrenDo: [ :aChildElement | aChildElement dispatchAddedToSuperParent: anElement ]
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchChildAdded: anElement [
 	
 	"First send hook to myself"
@@ -997,7 +999,7 @@ TbElement >> dispatchChildAdded: anElement [
 		ifTrue: [ anElement dispatchAddedToSceneGraph ].
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchChildRemoved: anElement [
 
 	"First send hook to myself"
@@ -1011,7 +1013,7 @@ TbElement >> dispatchChildRemoved: anElement [
 		ifTrue: [ anElement dispatchRemovedFromSceneGraph ].
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> dispatchLayoutDone [
 	"Is sent when layout is done.
 	Normally I am triggered by the space as soon as layout process is completed.
@@ -1023,7 +1025,7 @@ TbElement >> dispatchLayoutDone [
 	self children do: [ :aChildElement | aChildElement dispatchLayoutDone ]
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchRemovedFromParent: aParentElement [
 	"Sent after I was removed from my parent and is not longer its direct child.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
@@ -1032,7 +1034,7 @@ TbElement >> dispatchRemovedFromParent: aParentElement [
 	self onRemovedFromParent: aParentElement
 ]
 
-{ #category : #'children dispatching' }
+{ #category : 'children dispatching' }
 TbElement >> dispatchRemovedFromSceneGraph [
 	"Sent after any of my parents or I was removed from scene graph.
 	I dispatch or fire all necessary events, clean internal caches and send a corresponding hooks"
@@ -1041,7 +1043,7 @@ TbElement >> dispatchRemovedFromSceneGraph [
 	self childrenDo: [ :anElement | anElement dispatchRemovedFromSceneGraph ]
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> distanceTo: aPoint [
 	"Compute the euclidian distance from my closest edge to a provided point both given in my parent coordinates"
 	<return: #Number>
@@ -1053,7 +1055,7 @@ TbElement >> distanceTo: aPoint [
 	^ aClampedPoint distanceTo: aPoint
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> distanceToX: aPoint [
 	"Compute the horizontal distance from my closest edge to a provided x coorinate of a point both given in my parent coordinates"
 	<return: #Number>
@@ -1065,7 +1067,7 @@ TbElement >> distanceToX: aPoint [
 	^ (aClampedCoordinate - aPoint x) abs
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> distanceToY: aPoint [
 	"Compute the vertical distance from my closest edge to a provided y coorinate of a point both given in my parent coordinates"
 	<return: #Number>
@@ -1077,7 +1079,7 @@ TbElement >> distanceToY: aPoint [
 	^ (aClampedCoordinate - aPoint y) abs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> effect [
 	"Return currently applied effect.
 	Note: I return an instance of BlNullEffect when there is no effect applied.
@@ -1087,7 +1089,7 @@ TbElement >> effect [
 	^ self effectProperty value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> effect: anEffect [
 	"Change my effect to a given one requesting draw area invalidations.
 	anEffect must not be nil"
@@ -1104,17 +1106,17 @@ TbElement >> effect: anEffect [
 	self invalidate
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> effectBounds [
 	^ (self effectBounds: TbBounds new) asRectangle
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> effectBounds: aSpartaRectangle [
 	^ self effect effectBounds: aSpartaRectangle
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbElement >> effectProperty [
 	^ effect
 		ifNil: [ effect := TbObjectProperty
@@ -1123,19 +1125,19 @@ TbElement >> effectProperty [
 				default: (TbNullEffect on: self) ]
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> elevation [
 	<return: #BlElevation>
 
 	^ elevation
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> elevation: aBlElevation [
 	elevation := aBlElevation
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbElement >> enqueueTask: aBlTask [
 	aBlTask onEnqueuedInElement: self.
 	self isAttachedToSceneGraph
@@ -1143,14 +1145,14 @@ TbElement >> enqueueTask: aBlTask [
 		ifFalse: [ self taskQueue enqueue: aBlTask ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> errorHandler [
 	<return: #BlErrorHandler>
 
 	^ errorHandler
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TbElement >> eventDispatcher [
 	"Return an object responsible for event dispatching"
 	<return: #BlDirectEventDispatcher>
@@ -1158,7 +1160,7 @@ TbElement >> eventDispatcher [
 	^ eventDispatcher
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> extent [
 	"Return my extent as it was computed during previous layout pass.
 	Extent is a point with `x` component representing my width
@@ -1168,7 +1170,7 @@ TbElement >> extent [
 	^ self bounds extent
 ]
 
-{ #category : #'geometry extent' }
+{ #category : 'geometry extent' }
 TbElement >> extent: aPoint [ 
 	self 
 		deprecated: 'Use size: instead'
@@ -1177,7 +1179,7 @@ TbElement >> extent: aPoint [
 	^ self size: aPoint 
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> findMouseEventTargetAt: aPoint [
 	"Return the deepest child element among all my children or myself that may be a target for mouse event at provided location.
 	The coordinate point is given in space coordinates.
@@ -1208,7 +1210,7 @@ TbElement >> findMouseEventTargetAt: aPoint [
 		ifFalse: [ nil ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> firstCommonParent: anElement ifFound: aFoundBlock ifNone: aNoneBlock [
 	"Find the first common parent of a receiver and a given element.
 	Evaluate aFoundBlock with that parent if there is one and aNoneBlock otherwise"
@@ -1226,19 +1228,19 @@ TbElement >> firstCommonParent: anElement ifFound: aFoundBlock ifNone: aNoneBloc
 	^ aNoneBlock value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> focusability [
-	<return: #BlFocusability>
+	<return: #TbFocusability>
 
 	^ self focusabilityProperty value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> focusability: aFocusability [
 	self focusabilityProperty value: aFocusability
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbElement >> focusabilityProperty [
 	^ focusability ifNil:
 			[ focusability := TbFocusabilityProperty 
@@ -1247,7 +1249,7 @@ TbElement >> focusabilityProperty [
 				default: self defaultFocusability ]
 ]
 
-{ #category : #'focus accessing' }
+{ #category : 'focus accessing' }
 TbElement >> focusables: anOrderedCollection along: aBlFocusSearchDirection [
 	"Add focusable elements that are descendants of this element (possibly including me) to anOrderedCollection
 	depending on my focusability strategy"
@@ -1258,22 +1260,22 @@ TbElement >> focusables: anOrderedCollection along: aBlFocusSearchDirection [
 		of: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> focused [
 	^ misc focused
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> focused: aBoolean [
 	misc focused: aBoolean
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> focusedBounds [
 	^ (self focusedBounds: TbBounds new) asRectangle
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> focusedBounds: aBlBounds [
 	"Store my focused area in the given bounds and return it. Focused area
 	is used to search next focusable element. By default focused bounds property
@@ -1284,7 +1286,7 @@ TbElement >> focusedBounds: aBlBounds [
 	^ self boundsInLocal: aBlBounds
 ]
 
-{ #category : #'focus accessing' }
+{ #category : 'focus accessing' }
 TbElement >> focusedChild [
 	"Return my direct child that is focused or contains a focused child, if any. The child may have or contain focus.
 	I may return nil of there is no such child"
@@ -1295,7 +1297,7 @@ TbElement >> focusedChild [
 		ifNone: [ nil ]
 ]
 
-{ #category : #'layout utilities' }
+{ #category : 'layout utilities' }
 TbElement >> forceLayout [
 	"Do not use me, I am a private / debug utility method to force layout computation.
 	The main usage of this method is for testing purposes where we want to update layout
@@ -1308,7 +1310,7 @@ TbElement >> forceLayout [
 		ifFalse: [ self topMostParent computeLayout ]
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> geometry [
 	"Return my geometry used to clip/fill/stroke me and to clip my children during rendering.
 	geometry can not be nil."
@@ -1317,7 +1319,7 @@ TbElement >> geometry [
 	^ geometry
 ]
 
-{ #category : #'api - look' }
+{ #category : 'api - look' }
 TbElement >> geometry: aBlGeometry [
 
 	"invalidate before changing geometry"
@@ -1337,12 +1339,12 @@ TbElement >> geometry: aBlGeometry [
 	self requestLayout
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> geometryBounds [
 	^ boundsCache geometryBounds
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> geometryBounds: aBounds [
 	"I load my geometry bounds in a given mutable rectangle and return provided one.
 	By default it is nothing else than a rectangle with origin point set to
@@ -1354,7 +1356,7 @@ TbElement >> geometryBounds: aBounds [
 	^ self geometry geometryBounds: aBounds
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> geometryBoundsInSpace [
 	"Return bounds of my geometry in space coordinates.
 	Note, that geometry bounds may differ from #boundsInSpace for the case of non-trivial geometry.
@@ -1365,7 +1367,7 @@ TbElement >> geometryBoundsInSpace [
 	^ boundsCache geometryBoundsInSpace
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> geometryBoundsInSpace: aSpartaRectangle [
 	
 	self geometryBounds: aSpartaRectangle.
@@ -1373,19 +1375,19 @@ TbElement >> geometryBoundsInSpace: aSpartaRectangle [
 	^ aSpartaRectangle
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> geometryResizer [
 	<return: #BlGeometryResizer>
 
 	^ geometryResizer
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbElement >> geometryResizer: aGeometryResizer [
 	 geometryResizer := aGeometryResizer
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> globalBoundsToLocal: aBounds [
 	"In-place transform bounds from global space coordinates to local coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -1407,7 +1409,7 @@ TbElement >> globalBoundsToLocal: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> globalBoundsToMine: aBlBounds fromParent: aParentElement [
 	"In-place transform provided bounds from coordinate system of a given parent
 	to my local coordinates and return a result"
@@ -1435,7 +1437,7 @@ TbElement >> globalBoundsToMine: aBlBounds fromParent: aParentElement [
 	^ aBlBounds
 ]
 
-{ #category : #'geometry position convertion' }
+{ #category : 'geometry position convertion' }
 TbElement >> globalPointToLocal: aPoint [
 	"Transform a given point from the coordinates of my root most parent to my local coordinates"
 	<return: #Point>
@@ -1448,7 +1450,7 @@ TbElement >> globalPointToLocal: aPoint [
 	^ self parentPointToLocal: pt
 ]
 
-{ #category : #'geometry position convertion' }
+{ #category : 'geometry position convertion' }
 TbElement >> globalPointToParent: aPoint [
 	"Transform a given point from the coordinates of my root most parent to my parent's coordinates"
 	<return: #Point>
@@ -1458,7 +1460,7 @@ TbElement >> globalPointToParent: aPoint [
 		ifFalse: [ aPoint ]
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> globalScale [
 	"Return a scale factor from "
 	<return: #Number>
@@ -1473,19 +1475,19 @@ TbElement >> globalScale [
 	^ (aGlobalOrigin distanceTo: aGlobalCorner) / (anOrigin distanceTo: aCorner)
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElement >> gtDisplayOn: aStream [
 	^ aStream nextPutAll: misc label
 ]
 
-{ #category : #'children testing' }
+{ #category : 'children testing' }
 TbElement >> hasChild: anElement [
 	<return: #Boolean>
 	
 	^ anElement parent == self
 ]
 
-{ #category : #'children testing' }
+{ #category : 'children testing' }
 TbElement >> hasChildren [
 	"Return true if I have at least one direct child,
 	false otherwise"
@@ -1494,7 +1496,7 @@ TbElement >> hasChildren [
 	^ self children isEmpty not
 ]
 
-{ #category : #'focus testing' }
+{ #category : 'focus testing' }
 TbElement >> hasFocus [
 	"Return true if I have or contain a focused element, false otherwise"
 	<return: #Boolean>
@@ -1503,7 +1505,7 @@ TbElement >> hasFocus [
 		self children anySatisfy: [ :anElement | anElement hasFocus ] ]
 ]
 
-{ #category : #'focus testing' }
+{ #category : 'focus testing' }
 TbElement >> hasFocusable [
 	"Returns true if I am focusable or if I contain a reachable child for which #hasFocusable returns true,
 	false otherwise"
@@ -1513,7 +1515,7 @@ TbElement >> hasFocusable [
 		self children anySatisfy: [ :anElement | anElement hasFocusable ] ]
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TbElement >> hasNextEventTarget [
 	"Return true if this event target has a logical successor within a dispatch chain.
 	For example, in case of visual components next event target is a parent, meaning
@@ -1524,14 +1526,14 @@ TbElement >> hasNextEventTarget [
 	^ self hasParent
 ]
 
-{ #category : #'children testing' }
+{ #category : 'children testing' }
 TbElement >> hasOwner [
 	<return: #Boolean>
 
 	^ self hasParent
 ]
 
-{ #category : #'children testing' }
+{ #category : 'children testing' }
 TbElement >> hasParent [
 	"Return true if I have a parent, otherwise false.
 	Being added as direct child to other element does not necessary
@@ -1541,7 +1543,7 @@ TbElement >> hasParent [
 	^ self parent isNotNil
 ]
 
-{ #category : #'children testing' }
+{ #category : 'children testing' }
 TbElement >> hasParent: anElement [
 	"Return true if I have a given element in my parent chain, false otherwise"
 	<return: #Boolean>
@@ -1553,12 +1555,12 @@ TbElement >> hasParent: anElement [
 	^ false
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> height [
 	^ self extent y
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> height: aNumber [
 	<event: #BlElementExtentChangedEvent>
 	| aLayoutConstraints |
@@ -1572,7 +1574,7 @@ TbElement >> height: aNumber [
 		c vertical exact: aNumber ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> initialize [
 	super initialize.
 
@@ -1606,12 +1608,12 @@ TbElement >> initialize [
 	errorHandler := self defaultErrorHandler.
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> insets [
 	^ self padding
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> invalidRect: aSpartaRectangle [
 	"Invalidate a dirty rectangle of the display.
 	aSpartaRectangle must be given in my own coordinates"
@@ -1619,7 +1621,7 @@ TbElement >> invalidRect: aSpartaRectangle [
 	self invalidRect: aSpartaRectangle from: self
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> invalidRect: aBlBounds from: anElement [
 	"Translate dirty reports from an Element.
 	A rectangle is given in my own coordinates"
@@ -1635,7 +1637,7 @@ TbElement >> invalidRect: aBlBounds from: anElement [
 		ifFalse: [ self space invalidRect: aBlBounds from: anElement ]
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> invalidate [
 	"I mark my bounds as damaged area that should be redrawn on next rendering pass.
 	Note, that #invalidate might be sent frequently, so keep implementation simple and performant.
@@ -1655,7 +1657,7 @@ TbElement >> invalidate [
 
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> invalidateInParent [
 	| aBlBounds |
 
@@ -1669,7 +1671,7 @@ TbElement >> invalidateInParent [
 		ifFalse: [ self space invalidRect: aBlBounds from: self ]
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> invalidationBounds: aBounds [
 	"I compute and load damaged area in my local coordinates that would be invalidated
 	if #invalidate would be sent to me"
@@ -1692,7 +1694,7 @@ TbElement >> invalidationBounds: aBounds [
 	^ anInvalidationBounds
 ]
 
-{ #category : #'children testing' }
+{ #category : 'children testing' }
 TbElement >> isAttachedToSceneGraph [
 	"Return true if I am inside of a scene graph, e.g. I have a space's root element
 	as my top-most parent, false otherwise"
@@ -1704,7 +1706,7 @@ TbElement >> isAttachedToSceneGraph [
 	^ self space isNotNil
 ]
 
-{ #category : #'focus testing' }
+{ #category : 'focus testing' }
 TbElement >> isFocusable [
 	"Return true if I am able to take focus, false otherwise"
 	<return: #Boolean>
@@ -1712,7 +1714,7 @@ TbElement >> isFocusable [
 	^ self isVisible and: [ self shouldHandleMouseEvents ]
 ]
 
-{ #category : #'focus testing' }
+{ #category : 'focus testing' }
 TbElement >> isFocused [
 	"Returns true if I have focus, false otherwise"
 	<return: #Boolean>
@@ -1720,7 +1722,7 @@ TbElement >> isFocused [
 	^ self focused
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> isLayoutRequested [
 	"Indicates whether or not this elements's layout will be requested during the next hierarchy layout pass.
 	Return true if the layout will be forced during next layout pass, false otherwise"
@@ -1729,7 +1731,7 @@ TbElement >> isLayoutRequested [
 	^ self layout requestingLayout
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> isManaged [
 	self 
 		deprecated: 'Use "constraints ignoredByLayout not" instead'
@@ -1739,7 +1741,7 @@ TbElement >> isManaged [
 	^ self constraints ignoredByLayout not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElement >> isOpaque [
 	"Return true if I am completely opaque (my opacity is 1)"
 	<return: #Boolean>
@@ -1747,7 +1749,7 @@ TbElement >> isOpaque [
 	^ self opacity = 1.0
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElement >> isRoot [
 	"Return true if I am a root element of a space, false otherwise"
 	<return: #Boolean>
@@ -1755,7 +1757,7 @@ TbElement >> isRoot [
 	^ self isAttachedToSceneGraph and: [ self space root = self ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElement >> isTranslucent [
 	"Return true if I am semi-transparent (opacity is 0 < opacity < 1)"
 	<return: #Boolean>
@@ -1763,7 +1765,7 @@ TbElement >> isTranslucent [
 	^ self opacity > 0 and: [ self opacity < 1 ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElement >> isTransparent [
 	"Return true if I am completely transparent (my opacity is 0)"
 	<return: #Boolean>
@@ -1771,7 +1773,7 @@ TbElement >> isTransparent [
 	^ self opacity isZero
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElement >> isVisible [
 	"Return true if I should be visible, false otherwise.
 	Note, that I am not the same as isTransparent/isOpaque, those
@@ -1782,19 +1784,19 @@ TbElement >> isVisible [
 	^ self visibility isVisible
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> labeled: aString [
 	misc label: aString
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> layout [
 	<return: #BlLayout>
 
 	^ layout
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> layout: aBlLayout [
 	"Change my current layout to a given one.
 	After the layout change I request the layout recomputation.
@@ -1811,7 +1813,7 @@ TbElement >> layout: aBlLayout [
 	self requestLayout
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> layoutDo: aBlock [
 	"Perform aBlock with my layout as argument.
 	Nite: After evaluation I request a layout update.
@@ -1824,7 +1826,7 @@ TbElement >> layoutDo: aBlock [
 	self requestLayout
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> localBoundsToGlobal: aBounds [
 	"In-place transform bounds from local coordinates to global space coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -1846,7 +1848,7 @@ TbElement >> localBoundsToGlobal: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> localBoundsToMine: aBlBounds fromChild: anElement [
 	"In-place transform provided bounds from coordinate system of a given descendant element
 	to my local coordinates and return a result"
@@ -1870,7 +1872,7 @@ TbElement >> localBoundsToMine: aBlBounds fromChild: anElement [
 	^ aBlBounds
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> localBoundsToParent: aBounds [
 	"In-place transform bounds from local coordinates to my parent's coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -1888,7 +1890,7 @@ TbElement >> localBoundsToParent: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> localBoundsToWindow: aBounds [
 	"In-place transform bounds from local coordinates to device window coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -1910,7 +1912,7 @@ TbElement >> localBoundsToWindow: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'geometry position convertion' }
+{ #category : 'geometry position convertion' }
 TbElement >> localPointToGlobal: aPoint [
 	"Transform a given point from my local coordinates to the coordinates of the root most parent"
 	<return: #Point>
@@ -1922,7 +1924,7 @@ TbElement >> localPointToGlobal: aPoint [
 		ifFalse: [ pt ]
 ]
 
-{ #category : #'geometry position convertion' }
+{ #category : 'geometry position convertion' }
 TbElement >> localPointToParent: aPoint [
 	"Transforma a given point from my local coordinates to local coordinates of my parent.
 	Since this transfortmation does not actually involve my parent, it can be performed
@@ -1936,14 +1938,14 @@ TbElement >> localPointToParent: aPoint [
 	^ pt translateBy: self position
 ]
 
-{ #category : #'focus requesting' }
+{ #category : 'focus requesting' }
 TbElement >> looseFocus [
 	self isAttachedToSceneGraph
 		ifTrue: [ self looseFocus: self ]
 		ifFalse: [ self focused: false ]
 ]
 
-{ #category : #'focus requesting' }
+{ #category : 'focus requesting' }
 TbElement >> looseFocus: aChildElement [
 	"Propagate focus loose up in the scene graph with an original
 	element that looses focus"
@@ -1957,7 +1959,7 @@ TbElement >> looseFocus: aChildElement [
 		ifFalse: [ self space looseFocusFor: aChildElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> managed [
 	self 
 		deprecated: 'Use "constraints ignoredByLayout not" instead'
@@ -1967,7 +1969,7 @@ TbElement >> managed [
 	^ self isManaged
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> managed: aBoolean [
 	"If false is provided, then the element is not subject to the parent's layout"
 	self 
@@ -1981,7 +1983,7 @@ TbElement >> managed: aBoolean [
 			ifFalse: [ c ignoreByLayout ] ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> managedChildren [
 	"Return an array of all my direct managed children.
 	Managed children are taken into account during layout process.
@@ -1995,7 +1997,7 @@ TbElement >> managedChildren [
 	^ self children accountedByLayout
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> managedChildrenDo: aBlock [
    "Evaluate aBlock with each of my direct managed children as argument.
 	aBlock can not be nil.
@@ -2010,7 +2012,7 @@ TbElement >> managedChildrenDo: aBlock [
 	^ self children accountedByLayout do: aBlock
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> margin [
 	"Return my current margin - a space outside around my bounds.
 	Layouts that support margin may want to expand children such that there is a space gap around them"
@@ -2019,7 +2021,7 @@ TbElement >> margin [
 	^ self constraints margin
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> margin: aBlInsets [	
 	self
 		assert: [ aBlInsets isNotNil ]
@@ -2028,7 +2030,7 @@ TbElement >> margin: aBlInsets [
 	self constraintsDo: [ :c | c margin: aBlInsets ]
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> maxExtent [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2038,7 +2040,7 @@ TbElement >> maxExtent [
 	^ self maxWidth @ self maxHeight
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> maxExtent: aPoint [
 	self 
 		deprecated: 'Use #constraintsDo: instead'
@@ -2049,7 +2051,7 @@ TbElement >> maxExtent: aPoint [
 	self  maxHeight: aPoint y
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> maxHeight [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2059,7 +2061,7 @@ TbElement >> maxHeight [
 	^ self constraints maxHeight
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> maxHeight: aNumber [
 	self 
 		deprecated: 'Use #constraintsDo: instead'
@@ -2069,7 +2071,7 @@ TbElement >> maxHeight: aNumber [
 	self constraints maxHeight: aNumber
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> maxWidth [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2079,7 +2081,7 @@ TbElement >> maxWidth [
 	^ self constraints maxWidth
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> maxWidth: aNumber [
 	
 	self 
@@ -2090,7 +2092,7 @@ TbElement >> maxWidth: aNumber [
 	self constraints maxWidth: aNumber
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> measure: anExtentMeasurementSpec [
 	self errorHandler
 		with: self
@@ -2098,7 +2100,7 @@ TbElement >> measure: anExtentMeasurementSpec [
 		failed: [ self measureThatFailed: anExtentMeasurementSpec ]
 ]
 
-{ #category : #'private - layout' }
+{ #category : 'private - layout' }
 TbElement >> measureSafely: anExtentMeasurementSpec [
 	"Measure my extent based on extent specifications represented by anExtentMeasurementSpec.
 	Subclasses should not override me, instead override onMeasure:
@@ -2129,7 +2131,7 @@ TbElement >> measureSafely: anExtentMeasurementSpec [
 	
 ]
 
-{ #category : #'private - layout' }
+{ #category : 'private - layout' }
 TbElement >> measureThatFailed: anExtentMeasurementSpec [
 	
 	self layout
@@ -2137,7 +2139,7 @@ TbElement >> measureThatFailed: anExtentMeasurementSpec [
 		previousMeasurementSpec: anExtentMeasurementSpec
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> measuredBounds [
 	"Return my measured bounds where origin is my current position
 	and extent is measured extent.
@@ -2147,7 +2149,7 @@ TbElement >> measuredBounds [
 	^ measuredBounds
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> measuredExtent [
 	"Return my measured extent used during layout by layout strategies.
 	It is being computed during measuring step.
@@ -2158,7 +2160,7 @@ TbElement >> measuredExtent [
 	^ self measuredBounds extent
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> measuredExtent: anExtent [
 	"Set newly measured extent.
 	@see BlElement>>#measuredExtent for more info
@@ -2170,7 +2172,7 @@ TbElement >> measuredExtent: anExtent [
 	self measuredBounds extent: anExtent
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> measuredHeight [
 	"Return my measured height.
 	@see BlElement>>#measuredExtent for more info"
@@ -2179,7 +2181,7 @@ TbElement >> measuredHeight [
 	^ self measuredBounds height
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> measuredWidth [
 	"Return my measured width.
 	@see BlElement>>#measuredExtent for more info"
@@ -2188,7 +2190,7 @@ TbElement >> measuredWidth [
 	^ self measuredBounds width
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> minExtent [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2198,7 +2200,7 @@ TbElement >> minExtent [
 	^ self minWidth @ self minHeight
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> minExtent: aPoint [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2209,7 +2211,7 @@ TbElement >> minExtent: aPoint [
 	self  minHeight: aPoint y
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> minHeight [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2219,7 +2221,7 @@ TbElement >> minHeight [
 	^ self constraints minHeight
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> minHeight: aNumber [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2229,7 +2231,7 @@ TbElement >> minHeight: aNumber [
 	 self constraints minHeight:  aNumber
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> minWidth [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2239,7 +2241,7 @@ TbElement >> minWidth [
 	^  self constraints minWidth
 ]
 
-{ #category : #'layout constraints' }
+{ #category : 'layout constraints' }
 TbElement >> minWidth: aNumber [
 	self 
 		deprecated: 'Use #constraints instead'
@@ -2249,17 +2251,17 @@ TbElement >> minWidth: aNumber [
 	self constraints minWidth: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> mouseCursor [
 	^ mouseCursor 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> mouseCursor: aCursor [
 	mouseCursor := aCursor
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TbElement >> nextEventTarget [
 	"Return next event target that should be contained in dispatch chain.
 	Bloc elements build a composition tree, so we want my parent plays a role of the next
@@ -2269,7 +2271,7 @@ TbElement >> nextEventTarget [
 	^ self parent
 ]
 
-{ #category : #'geometry hooks' }
+{ #category : 'geometry hooks' }
 TbElement >> notifyExtentChanged [
 	"Notify element event listeners that my extent changed.
 	Custom event handlers should subscribe to BlElementExtentChangedEvent"
@@ -2277,7 +2279,7 @@ TbElement >> notifyExtentChanged [
 	self dispatchEvent: (TbElementExtentChangedEvent target: self)
 ]
 
-{ #category : #'geometry hooks' }
+{ #category : 'geometry hooks' }
 TbElement >> notifyPositionChanged [
 	"Notify element event listeners that my position within a parent changed.
 	Custom event handlers should subscribe to BlElementPositionChangedEvent"
@@ -2285,7 +2287,7 @@ TbElement >> notifyPositionChanged [
 	self dispatchEvent: (TbElementPositionChangedEvent target: self)
 ]
 
-{ #category : #'geometry hooks' }
+{ #category : 'geometry hooks' }
 TbElement >> notifyPositionInSpaceChanged [
 	"Notify element event listeners that my position in space coordinates changed.
 	Custom event handlers should subscribe to BlElementPositionInSpaceChangedEvent"
@@ -2293,14 +2295,14 @@ TbElement >> notifyPositionInSpaceChanged [
 	self dispatchEvent: (TbElementPositionInSpaceChangedEvent target: self)
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onAddedToParent [
 	"I am sent after I am added to other element which is my direct parent now.
 	You can access my parent by sending #parent to myself.
 	Note: Always send onAddedToParent to super class if you override me!"
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onAddedToSceneGraph [
 	"Sent after one of my parents or I was added to scene graph, e.g. root element.
 	At this point #isAttachedToSceneGraph results in true.
@@ -2312,26 +2314,26 @@ TbElement >> onAddedToSceneGraph [
 	self space enqueueTasksFrom: self taskQueue
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onAddedToSuperParent: aParentElement [
 	"I am sent after I or any of my parents is added to other element as a child.
 	You can access my parent by sending #parent to myself.
 	Note: Always send onAddedToSuperParent: to super class if you override me!"
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onChildAdded: anElement [
 	"I am sent after anElement was added to me as my direct child.
 	Note: Always send onChildAdded: to super class if you override me!"
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onChildRemoved: anElement [
 	"I am sent after anElement was ramoved from me and is no longer my direct child.
 	Note: Always send onChildRemoved: to super class if you override me!"
 ]
 
-{ #category : #'hooks - geometry' }
+{ #category : 'hooks - geometry' }
 TbElement >> onExtentChanged [
 	"Is sent when my extent changed"
 
@@ -2350,7 +2352,7 @@ TbElement >> onExtentChanged [
 	self notifyExtentChanged
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> onLayout: aBounds [
 	"I am sent then and only then when my extent changed as the result of a layout"
 	"By default let layout strategy do the layouting job.
@@ -2361,14 +2363,14 @@ TbElement >> onLayout: aBounds [
 	self layout layout: self in: aBounds
 ]
 
-{ #category : #'hooks - layout' }
+{ #category : 'hooks - layout' }
 TbElement >> onLayoutDone [
 	"Is sent after layout is completely computed.
 	All layout changes done within this hook will be performed during the next frame.
 	Note: I am sent before the drawing process"
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> onMeasure: anExtentMeasurementSpec [
 	"By default let layout strategy do the measuring job.
 	If needed override this method to do some additional
@@ -2377,7 +2379,7 @@ TbElement >> onMeasure: anExtentMeasurementSpec [
 	self layout measure: self with: anExtentMeasurementSpec
 ]
 
-{ #category : #'hooks - geometry' }
+{ #category : 'hooks - geometry' }
 TbElement >> onPositionChanged [
 	"Is sent when my position changed within a parent"
 	
@@ -2385,7 +2387,7 @@ TbElement >> onPositionChanged [
 	self notifyPositionChanged
 ]
 
-{ #category : #'hooks - geometry' }
+{ #category : 'hooks - geometry' }
 TbElement >> onPositionInSpaceChanged [
 	"Is sent when my position in space changed because I or any of my parents moved.
 	Override me to perform additional actions, always send #onPositionInSpaceChanged super.
@@ -2394,14 +2396,14 @@ TbElement >> onPositionInSpaceChanged [
 	self notifyPositionInSpaceChanged
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onRemovedFromParent: aParentElement [
 	"I am sent after I was removed from my parent.
 	At this point sending #parent to myself will result in nil.
 	Note: Always send onRemovedFromParent to super class if you override me!"
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbElement >> onRemovedFromSceneGraph [
 	"Sent after one of my parents or I was removed from scene graph, e.g. root element.
 	At this point #isAttachedToSceneGraph results in false.
@@ -2410,21 +2412,21 @@ TbElement >> onRemovedFromSceneGraph [
 	space := nil
 ]
 
-{ #category : #'hooks - geometry' }
+{ #category : 'hooks - geometry' }
 TbElement >> onTransformationChanged [
 	"Is sent when my transformation changed"
 	
 	self onTransformationInSpaceChanged
 ]
 
-{ #category : #'hooks - geometry' }
+{ #category : 'hooks - geometry' }
 TbElement >> onTransformationInSpaceChanged [
 	"Is sent when my transformation in space changed, it may be that my own transformation changed or of my parent"
 	
 	self children do: [ :eachChild | eachChild onTransformationInSpaceChanged ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> opacity [
 	"Return my transparency degree.
 	@see BlElement>>#opacity: for more information"
@@ -2433,7 +2435,7 @@ TbElement >> opacity [
 	^ opacity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> opacity: aNumber [
 	"Set my opacity and request invalidation. Opacity is a visual property independent
 	from visibility, which also influences layout and event handling. Transparent elements
@@ -2464,17 +2466,17 @@ TbElement >> opacity: aNumber [
 	self invalidate
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> outsets [
 	^ self margin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> outskirts [
 	^ outskirts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> outskirts: aBlOutskirts [
 	"Change my outskirts - the way the border is interpreted.
 	See BlOutskirts for more information"
@@ -2491,14 +2493,14 @@ TbElement >> outskirts: aBlOutskirts [
 	self invalidate
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> owner [
 	<return: #BlElement>
 
 	^ self parent
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> padding [
 	"Return my current padding - a space inside of me around my content.
 	Layouts that support padding may want to offset children such that they are within my bounds inset by padding"
@@ -2507,7 +2509,7 @@ TbElement >> padding [
 	^ self constraints padding
 ]
 
-{ #category : #'api - layout' }
+{ #category : 'api - layout' }
 TbElement >> padding: aBlInsets [
 	self
 		assert: [ aBlInsets isNotNil ]
@@ -2516,17 +2518,17 @@ TbElement >> padding: aBlInsets [
 	self constraintsDo: [ :c | c padding: aBlInsets ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> parent [
 	^ self parentProperty value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> parent: aNode [
 	self parentProperty value: aNode
 ]
 
-{ #category : #'geometry bounds convertion' }
+{ #category : 'geometry bounds convertion' }
 TbElement >> parentBoundsToLocal: aBounds [
 	"In-place transform bounds from my parent's coordinates to local coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -2544,7 +2546,7 @@ TbElement >> parentBoundsToLocal: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'geometry position convertion' }
+{ #category : 'geometry position convertion' }
 TbElement >> parentPointToLocal: aPoint [
 	"Transform a given point from parent to my local coordinates"
 	<return: #Point>
@@ -2555,19 +2557,19 @@ TbElement >> parentPointToLocal: aPoint [
 	^ aLocalPoint
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbElement >> parentProperty [
 	^ parent ifNil: [ parent := TbObjectProperty on: self named: #parent ]
 ]
 
-{ #category : #'geometry position' }
+{ #category : 'geometry position' }
 TbElement >> position [
 	<return: #Point>
 
 	^ self bounds position
 ]
 
-{ #category : #'geometry position' }
+{ #category : 'geometry position' }
 TbElement >> position: aPoint [ 
 	self 
 		deprecated: 'Use relocate: instead'
@@ -2576,7 +2578,7 @@ TbElement >> position: aPoint [
 	^ self relocate: aPoint 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> position: aPosition extent: anExtent [
 	"I do a hard work of changing element's position and extent.
 	This action must be very optimized in the sense of invalidation.
@@ -2636,7 +2638,7 @@ TbElement >> position: aPosition extent: anExtent [
 		boundsCache invalidateBoundsInLocal ]
 ]
 
-{ #category : #'geometry position' }
+{ #category : 'geometry position' }
 TbElement >> positionInSpace [
 	"Return my position in space coordinates.
 	Note: If I don't have a parent I return position that was previously set by #relocate:"
@@ -2645,14 +2647,14 @@ TbElement >> positionInSpace [
 	^ self localPointToGlobal: 0@0
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> preventChildrenMouseEvents [
 	"Prevent my children from receiving mouse events"
 
 	shouldChildrenHandleMouseEvents := false
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> preventMeAndChildrenMouseEvents [
 	"Prevent me and my children from receiving mouse events"
 
@@ -2660,7 +2662,7 @@ TbElement >> preventMeAndChildrenMouseEvents [
 	shouldChildrenHandleMouseEvents := false
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> preventMouseEvents [
 	"Prevent *me* from handling mouse events.
 	It does not influence the ability of the children to handle events, hence I am a local property"
@@ -2668,7 +2670,7 @@ TbElement >> preventMouseEvents [
 	shouldHandleMouseEvents := false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElement >> printOn: aStream [
 	aStream
 		nextPutAll: misc label;
@@ -2676,7 +2678,7 @@ TbElement >> printOn: aStream [
 		store: self identityHash
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> relocate: aPoint [
 	"Request position change in parent coordinates that will happen on the next frame or next layout pass triggered by #forceLayout.
 
@@ -2700,7 +2702,7 @@ TbElement >> relocate: aPoint [
 	self requestParentLayout
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChild: anElement [
 	"Request layout and redraw an area occupied by anElement.
 	As result anElement sends BlElementRemovedEvent
@@ -2722,7 +2724,7 @@ TbElement >> removeChild: anElement [
 	self childrenChanged
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChild: anElement in: aContainerName [
 	self
 		childNamed: aContainerName
@@ -2730,7 +2732,7 @@ TbElement >> removeChild: anElement in: aContainerName [
 		ifNone: [ self error: 'Container named ', aContainerName asString, ' is not found!' ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChildAt: anIndex [
 	"Remove my direct child at a specified index.
 	Request layout and redraw an area occupied by anElement.
@@ -2753,7 +2755,7 @@ TbElement >> removeChildAt: anIndex [
 	self childrenChanged.
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChildNamed: aContainerName [
 	self
 		childNamed: aContainerName
@@ -2761,7 +2763,7 @@ TbElement >> removeChildNamed: aContainerName [
 		ifNone: [ "do nothing, no need to raise an exception" ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChildren [
 	| oldChildren |
 	"Remove all my direct children, request layout update and redraw."
@@ -2789,7 +2791,7 @@ TbElement >> removeChildren [
 	self childrenChanged
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChildren: aListOfElements [
 	"Remove all elements listed in aListOfElements from my direct children.
 	All elements must be my direct children.
@@ -2813,7 +2815,7 @@ TbElement >> removeChildren: aListOfElements [
 	self childrenChanged
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeChildrenIn: aContainerName [
 	self
 		childNamed: aContainerName
@@ -2821,7 +2823,7 @@ TbElement >> removeChildrenIn: aContainerName [
 		ifNone: [ self error: 'Container named ', aContainerName asString, ' is not found!' ]
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeDetachedChild: anElement [
 	"Finish the removal of a detached child. I will dispatch the remove event and notify the hierarchy changes.
 	I am intended to be lightweight and make no assumptions about whether the parent or child should be redrawn.
@@ -2833,7 +2835,7 @@ TbElement >> removeDetachedChild: anElement [
 	self dispatchChildRemoved: anElement
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> removeFromParent [
 	"Remove me from parent if I have one"
 
@@ -2843,7 +2845,7 @@ TbElement >> removeFromParent [
 	self parent removeChild: self
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> replaceChild: aChildElement with: anotherElement [
 	"Relace a given child relement with another element preserving the children order.
 	Request layout and redraw an area occupied by anElement.
@@ -2861,7 +2863,7 @@ TbElement >> replaceChild: aChildElement with: anotherElement [
 	self addChild: anotherElement at: aChildIndex
 ]
 
-{ #category : #'children add/remove' }
+{ #category : 'children add/remove' }
 TbElement >> replaceChild: aChildElement with: anotherElement as: aSymbol [
 	"Relace a given child relement with another element preserving the children order.
 	Request layout and redraw an area occupied by anElement.
@@ -2880,7 +2882,7 @@ TbElement >> replaceChild: aChildElement with: anotherElement as: aSymbol [
 	self addChild: anotherElement at: aChildIndex as: aSymbol
 ]
 
-{ #category : #'focus requesting' }
+{ #category : 'focus requesting' }
 TbElement >> requestFocus [
 	"Request a focus for this element.
 	If I am not added to the scene graph mark me as focused in order to re-try focus
@@ -2891,7 +2893,7 @@ TbElement >> requestFocus [
 		ifFalse: [ self focused: true ]
 ]
 
-{ #category : #'focus requesting' }
+{ #category : 'focus requesting' }
 TbElement >> requestFocus: aChildElement [
 	"Propagate focus request up in the scene graph with an original
 	element that requested focus"
@@ -2905,7 +2907,7 @@ TbElement >> requestFocus: aChildElement [
 		ifFalse: [ self space requestFocusFor: aChildElement ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> requestLayout [
 	"Request invalidation of layout on next space pulse
 	@see #requestLayout: for more information"
@@ -2913,7 +2915,7 @@ TbElement >> requestLayout [
 	self requestLayout: self
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> requestLayout: anElement [
 	"Request invalidation of layout on next space pulse originally
 	emitted by a given element.
@@ -2933,7 +2935,7 @@ TbElement >> requestLayout: anElement [
 			ifNotNil: [ :aSpace | aSpace requestNextPulse ] ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> requestParentLayout [
 	"Request invalidation of my parent's (if I have one) layout on next space pulse"
 	
@@ -2944,12 +2946,12 @@ TbElement >> requestParentLayout [
 	self parent requestLayout
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElement >> resetChildrenArray [
 	children := TbBloc preferableChildrenDataStructure new
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> rotateByDegrees: anAngle [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -2963,7 +2965,7 @@ TbElement >> rotateByDegrees: anAngle [
 		apply"
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> rotateByDegrees: angle axis: aVector [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -2977,7 +2979,7 @@ TbElement >> rotateByDegrees: angle axis: aVector [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> rotateByDegrees: angle axis: aVector around: anOrigin [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -2991,7 +2993,7 @@ TbElement >> rotateByDegrees: angle axis: aVector around: anOrigin [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> rotateByDegrees: angle center: aPoint [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3005,7 +3007,7 @@ TbElement >> rotateByDegrees: angle center: aPoint [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> rotateByRadians: anAngle [ 
 	self 
 		deprecated: 'Use rotateByDegrees: instead'
@@ -3014,7 +3016,7 @@ TbElement >> rotateByRadians: anAngle [
 	^ self rotateByDegrees: anAngle radiansToDegrees
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> rotateByRadians: angle center: aPoint [ 
 	self 
 		deprecated: 'Use rotateByDegrees:center: instead'
@@ -3023,7 +3025,7 @@ TbElement >> rotateByRadians: angle center: aPoint [
 	^ self rotateByDegrees: angle radiansToDegrees center: aPoint 
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> scaleBy: aVector [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3037,7 +3039,7 @@ TbElement >> scaleBy: aVector [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> scaleTo: aFactorPoint [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3050,7 +3052,7 @@ TbElement >> scaleTo: aFactorPoint [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> scaleX: factor [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3063,7 +3065,7 @@ TbElement >> scaleX: factor [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> scaleX: fx Y: fy [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3076,7 +3078,7 @@ TbElement >> scaleX: fx Y: fy [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> scaleY: factor [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3089,7 +3091,7 @@ TbElement >> scaleY: factor [
 		apply
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> shouldChildrenHandleMouseEvents [
 	"Return true if my children are allowed to handle mouse events.
 	Preventing my children from handling mouse event does not stop me from handling them"
@@ -3098,7 +3100,7 @@ TbElement >> shouldChildrenHandleMouseEvents [
 	^ shouldChildrenHandleMouseEvents
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> shouldHandleMouseEvents [
 	"Return true if I am allowed to handle mouse events.
 	Preventing me from handling mouse event does not stop my children from doing so"
@@ -3107,7 +3109,7 @@ TbElement >> shouldHandleMouseEvents [
 	^ shouldHandleMouseEvents
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> size: aPoint [
 	<event: #BlElementExtentChangedEvent>
 	| aLayoutConstraints |
@@ -3124,7 +3126,7 @@ TbElement >> size: aPoint [
 		c vertical exact: aPoint y ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> space [
 	"Return space to which I belong. Direct reference boosts performance.
 	Each element has a reference to the current space which is set at demand."
@@ -3135,7 +3137,7 @@ TbElement >> space [
 	^ space
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> space: aSpace [
 	"Set space to be accessed directly from my multiple methods.
 	Update the space reference for my children.
@@ -3145,7 +3147,7 @@ TbElement >> space: aSpace [
 	self childrenDo: [ :each | each space: aSpace ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbElement >> supportsBaseline [
 	"Return true if I support baseline alignment"
 	<return: #Boolean>
@@ -3153,14 +3155,14 @@ TbElement >> supportsBaseline [
 	^ false
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbElement >> taskQueue [
 	<return: #BlTaskQueue>
 	
 	^ taskQueue
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> topMostParent [
 	"Return a topmot parent in a scene graph.
 	A topmost parent is an element that does not have a parent by its own"
@@ -3171,12 +3173,12 @@ TbElement >> topMostParent [
 		ifFalse: [ self ]
 ]
 
-{ #category : #'focus requesting' }
+{ #category : 'focus requesting' }
 TbElement >> transferFocus [
 	self space transferFocusTo: self
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbElement >> transformation [
 	"Return an object that represents a description of my transformation.
 	It can either be a local transformation being a composition of affine transformations or
@@ -3186,7 +3188,7 @@ TbElement >> transformation [
 	^ transformation
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbElement >> transformation: anElementTransformation [
 
 	self invalidate.
@@ -3197,18 +3199,18 @@ TbElement >> transformation: anElementTransformation [
 	self onTransformationChanged
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> transformedBounds [
 	^ boundsCache transformedBounds
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> transformedBounds: aSpartaRectangle [
 
 	^ transformation transformBounds: (self boundsInLocal: aSpartaRectangle)
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> translateBy: aDelta [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3222,7 +3224,7 @@ TbElement >> translateBy: aDelta [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> translateTo: aPoint [
 	self 
 		deprecated: 'Use Transformation Builder instead'
@@ -3235,23 +3237,23 @@ TbElement >> translateTo: aPoint [
 		apply
 ]
 
-{ #category : #'geometry transform' }
+{ #category : 'geometry transform' }
 TbElement >> translateX: xFactor Y: yFactor [
 	self deprecated: 'Use translateBy: aBlPoint'.
 	self translateBy: xFactor @ yFactor
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> updateBackground [
 	self backgroundResizer adapt: self background to: self
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbElement >> updateGeometry [
 	self geometryResizer adapt: self geometry to: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> userData [
 	"Returns a Dictionary that holds application dependent and temporary objects.
 	Be careful to limit the use of such facility and prefer clean instance variables when it is possible to define them."
@@ -3263,22 +3265,22 @@ TbElement >> userData [
 	^ misc userData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> userData: aDictionary [
 	misc userData: aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> visibility [
 	^ self visibilityProperty value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> visibility: aVisibility [	
 	self visibilityProperty value: aVisibility
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbElement >> visibilityProperty [
 	^ visibility ifNil:
 			[ visibility := TbVisibilityProperty 
@@ -3287,7 +3289,7 @@ TbElement >> visibilityProperty [
 				default: self defaultVisibility ]
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> visualBounds [
 	"Visual bounds represent a high precision area of rendered geometry, including border.
 	By default, visual bounds of `inside` outskits equal to geometry bounds since border
@@ -3299,12 +3301,12 @@ TbElement >> visualBounds [
 		ifFalse: [ self geometryBounds ]
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> visualBounds: aBlBounds on: aCanvas [
 	^ self geometry strokedBounds: aBlBounds of: self on: aCanvas
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElement >> visualBoundsOn: aCanvas [
 	"Return my visual bounds as a Rectangle.
 	Visual bounds only take border and geometry into account.
@@ -3315,7 +3317,7 @@ TbElement >> visualBoundsOn: aCanvas [
 	^ (self visualBounds: TbBounds new on: aCanvas) asRectangle
 ]
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 TbElement >> wantsMouseEventAt: aPoint [
 	"Return true if I can be picked as target for mouse event at given location specified in space coordinates.
 	By default elements can handle mouse events if they are visible and not transparent for mouse events"
@@ -3324,12 +3326,12 @@ TbElement >> wantsMouseEventAt: aPoint [
 	^ self isVisible and: [ self containsGlobalPoint: aPoint ]
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> width [
 	^ self extent x
 ]
 
-{ #category : #'api - bounds' }
+{ #category : 'api - bounds' }
 TbElement >> width: aNumber [
 	<event: #BlElementExtentChangedEvent>
 	| aLayoutConstraints |
@@ -3343,7 +3345,7 @@ TbElement >> width: aNumber [
 		c horizontal exact: aNumber ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> withAllChildrenBreadthFirst [
 	| all |
 	all := OrderedCollection with: self.
@@ -3351,7 +3353,7 @@ TbElement >> withAllChildrenBreadthFirst [
 	^ all
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> withAllParents [
 	"Return a collection of all parents including myself starting with me and ending with the top most parent"
 	<return: #Array of: #BlElement>
@@ -3359,7 +3361,7 @@ TbElement >> withAllParents [
 	^ Array streamContents: [ :aStream | self withAllParentsDo: [ :eachParent | aStream nextPut: eachParent ] ]
 ]
 
-{ #category : #'children accessing' }
+{ #category : 'children accessing' }
 TbElement >> withAllParentsDo: aBlock [
 	"Evaluate a block with me and all my parents as an argument starting from me
 	up to the top most parent"
@@ -3368,7 +3370,7 @@ TbElement >> withAllParentsDo: aBlock [
 	self allParentsDo: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElement >> zIndex: aNumber [
 	self elevation: (TbRelativeElevation elevation: aNumber)
 ]

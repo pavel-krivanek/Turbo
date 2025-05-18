@@ -12,22 +12,24 @@ space show
 ]]]
 "
 Class {
-	#name : #TbSpaceClosedEvent,
-	#superclass : #TbSpaceEvent,
+	#name : 'TbSpaceClosedEvent',
+	#superclass : 'TbSpaceEvent',
 	#instVars : [
 		'space'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceClosedEvent >> space [
 	<return: #TbSpace>
 
 	^ space
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceClosedEvent >> space: aSpace [
 	space := aSpace
 ]

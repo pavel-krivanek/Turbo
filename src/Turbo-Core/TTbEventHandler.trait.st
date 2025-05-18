@@ -2,25 +2,27 @@
 I define an API of an abstract event handler
 "
 Trait {
-	#name : #TTbEventHandler,
-	#category : #'Turbo-Core-Events-Handling'
+	#name : 'TTbEventHandler',
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #events }
+{ #category : 'events' }
 TTbEventHandler >> handleEvent: anEvent [
 	"Handle a given event or dispatch it using #sendTo:"
 
 	self explicitRequirement
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TTbEventHandler >> hasOwner [
 	<return: #Boolean>
 
 	^ false
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 TTbEventHandler >> wantsEvent: anEvent [
 	"Return true if I am interested in a given event and want to handle it,
 	false otherwise"

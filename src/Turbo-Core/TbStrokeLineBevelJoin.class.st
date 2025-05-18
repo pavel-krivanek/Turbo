@@ -4,12 +4,14 @@ Cuts the outside edge off where a circle the diameter of the stroke intersects t
 See BlStrokeLineJoin for other types
 "
 Class {
-	#name : #TbStrokeLineBevelJoin,
-	#superclass : #TbStrokeLineJoin,
-	#category : #'Turbo-Core-Paint-Support'
+	#name : 'TbStrokeLineBevelJoin',
+	#superclass : 'TbStrokeLineJoin',
+	#category : 'Turbo-Core-Paint-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Paint-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeLineBevelJoin class >> joinName [
 	^ 'Bevel'
 ]

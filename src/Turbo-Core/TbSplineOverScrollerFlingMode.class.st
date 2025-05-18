@@ -1,6 +1,6 @@
 Class {
-	#name : #TbSplineOverScrollerFlingMode,
-	#superclass : #TbSplineOverScrollerMode,
+	#name : 'TbSplineOverScrollerFlingMode',
+	#superclass : 'TbSplineOverScrollerMode',
 	#instVars : [
 		'velocity',
 		'startPosition',
@@ -8,10 +8,12 @@ Class {
 		'maxPosition',
 		'overshotDistance'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerFlingMode >> continueOn: aSplineOverScroller [
 	| aResult |
 	
@@ -22,7 +24,7 @@ TbSplineOverScrollerFlingMode >> continueOn: aSplineOverScroller [
 	^ true
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSplineOverScrollerFlingMode >> initializeOn: aSplineOverScroller [
 	| aTotalDistance |
 		
@@ -98,47 +100,47 @@ TbSplineOverScrollerFlingMode >> initializeOn: aSplineOverScroller [
 			aSplineOverScroller finalPosition: self maxPosition ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> maxPosition [
 	^ maxPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> maxPosition: anObject [
 	maxPosition := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> minPosition [
 	^ minPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> minPosition: anObject [
 	minPosition := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> overshotDistance [
 	^ overshotDistance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> overshotDistance: anObject [
 	overshotDistance := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> startPosition [
 	^ startPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> startPosition: anObject [
 	startPosition := anObject
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerFlingMode >> updateOn: aSplineOverScroller [
 	"Update the current position and velocity for current time.
 	Returns true if update has been done and false if animation duration has been reached."
@@ -171,12 +173,12 @@ TbSplineOverScrollerFlingMode >> updateOn: aSplineOverScroller [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> velocity [
 	^ velocity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerFlingMode >> velocity: anObject [
 	velocity := anObject
 ]

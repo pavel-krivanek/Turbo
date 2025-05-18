@@ -13,24 +13,26 @@ Example:
 ]]]
 "
 Class {
-	#name : #TbOnceLayout,
-	#superclass : #TbBasicLayout,
+	#name : 'TbOnceLayout',
+	#superclass : 'TbBasicLayout',
 	#instVars : [
 		'layout',
 		'isStopped',
 		'measuredExtent'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbOnceLayout class >> on: aBlLayout [
 	<return: #BlLayoutOnce>
 
 	^ self new layout: aBlLayout
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbOnceLayout >> initialize [
 	super initialize.
 
@@ -38,41 +40,41 @@ TbOnceLayout >> initialize [
 	layout := TbBasicLayout new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOnceLayout >> isStopped [
 	^ isStopped
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOnceLayout >> isStopped: aBoolean [
 	isStopped := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOnceLayout >> layout [
 	^ layout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOnceLayout >> layout: aBlLayout [
 	layout := aBlLayout
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbOnceLayout >> layout: anElement in: aRectangle [
 	self isStopped
 		ifTrue: [ ^ super layout: anElement in: aRectangle ].
 	self layout layout: anElement in: aRectangle
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbOnceLayout >> measure: anElement with: anExtentSpec [
 	self isStopped
 		ifTrue: [ ^ super measure: anElement with: (TbExtentMeasurementSpec exact: measuredExtent) ].
 	self layout measure: anElement with: anExtentSpec
 ]
 
-{ #category : #'hooks - layout' }
+{ #category : 'hooks - layout' }
 TbOnceLayout >> onLayoutDone: anElement [
 	super onLayoutDone: anElement.
 	

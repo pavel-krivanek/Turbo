@@ -2,22 +2,24 @@
 I am a concrete horizontal orientation
 "
 Class {
-	#name : #TbLayoutHorizontal,
-	#superclass : #TbLayoutOrientation,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbLayoutHorizontal',
+	#superclass : 'TbLayoutOrientation',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutHorizontal >> isHorizontal [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutHorizontal >> isVertical [
 	^ false
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbLayoutHorizontal >> of: anObject [
 	^ anObject horizontal
 ]

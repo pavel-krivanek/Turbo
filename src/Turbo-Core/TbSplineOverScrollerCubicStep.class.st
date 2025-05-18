@@ -1,10 +1,12 @@
 Class {
-	#name : #TbSplineOverScrollerCubicStep,
-	#superclass : #TbSplineOverScrollerStep,
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#name : 'TbSplineOverScrollerCubicStep',
+	#superclass : 'TbSplineOverScrollerStep',
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbSplineOverScrollerCubicStep >> onFinished: aSplineOverScroller [
 	"Cubic means no spring back, simply finish"
 	<return: #Boolean>

@@ -1,10 +1,11 @@
 Class {
-	#name : #TbHelloElement,
-	#superclass : #TbElement,
-	#category : #'Turbo-Tests'
+	#name : 'TbHelloElement',
+	#superclass : 'TbElement',
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbHelloElement >> drawOnTurboCanvas: aCanvas [
 
 	| message | 

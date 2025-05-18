@@ -1,28 +1,30 @@
 Class {
-	#name : #TbElementLocalBounds,
-	#superclass : #TbElementBounds,
+	#name : 'TbElementLocalBounds',
+	#superclass : 'TbElementBounds',
 	#instVars : [
 		'extent',
 		'position'
 	],
-	#category : #'Turbo-Core-Basic-Bounds'
+	#category : 'Turbo-Core-Basic-Bounds',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Bounds'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbElementLocalBounds >> asRectangle [
 	<return: #Rectangle>
 
 	 ^ self position extent: self extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> bounds [
 	<return: #BlBounds>
 
 	^ TbBounds origin: self position extent: self extent
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementLocalBounds >> center [
 	"Return a point representing a geometrical center of this bounds"
 	<return: #Point>
@@ -30,23 +32,23 @@ TbElementLocalBounds >> center [
 	^ self position + (self extent / 2.0)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> extent [
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> extent: anObject [
 
 	extent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> height [
 	^ self extent y
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementLocalBounds >> inChild: anElement [
 	<return: #BlElementBounds>
 
@@ -57,7 +59,7 @@ TbElementLocalBounds >> inChild: anElement [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementLocalBounds >> inLocal [
 	<return: #BlElementBounds>
 
@@ -67,7 +69,7 @@ TbElementLocalBounds >> inLocal [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementLocalBounds >> inParent [
 	<return: #BlElementBounds>
 	
@@ -78,7 +80,7 @@ TbElementLocalBounds >> inParent [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementLocalBounds >> inParent: anElement [
 	<return: #BlElementBounds>
 	| subParent |
@@ -95,7 +97,7 @@ TbElementLocalBounds >> inParent: anElement [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementLocalBounds >> inSpace [
 	<return: #BlElementBounds>
 	
@@ -105,7 +107,7 @@ TbElementLocalBounds >> inSpace [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementLocalBounds >> initialize [
 	super initialize.
 
@@ -113,7 +115,7 @@ TbElementLocalBounds >> initialize [
 	extent := 0@0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> position [
 	"Return bounds position (an origin) as a Point"
 	<return: #Point>
@@ -121,19 +123,19 @@ TbElementLocalBounds >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementLocalBounds >> transformed [
 	<return: #BlElementBounds>
 
 	^ self inLocal transformed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalBounds >> width [
 	^ self extent x
 ]

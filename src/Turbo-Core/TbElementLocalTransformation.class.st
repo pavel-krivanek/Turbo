@@ -4,40 +4,42 @@ I represent a local element's transformation defined by a composition of affine 
 Transformation matrix is computed lazily up-on request for #matrix.
 "
 Class {
-	#name : #TbElementLocalTransformation,
-	#superclass : #TbElementDynamicTransformation,
+	#name : 'TbElementLocalTransformation',
+	#superclass : 'TbElementDynamicTransformation',
 	#instVars : [
 		'transformation'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbElementLocalTransformation class >> with: anAfineTransformation [
 	^ self basicNew
 		initializeWith: anAfineTransformation
 ]
 
-{ #category : #computation }
+{ #category : 'computation' }
 TbElementLocalTransformation >> computeMatrix [
 	transformation multiplyOn: matrix in: owner
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementLocalTransformation >> initialize [
 	super initialize.
 	
 	transformation := TbAffineCompositeTransformation new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementLocalTransformation >> initializeWith: aTransformation [
 	super initialize.
 
 	transformation := aTransformation
 ]
 
-{ #category : #invalidation }
+{ #category : 'invalidation' }
 TbElementLocalTransformation >> invalidateMatrix [
 	"Matrix is computed out of affine transformation composition
 	which may contain transformations that depend on element's properties
@@ -47,7 +49,7 @@ TbElementLocalTransformation >> invalidateMatrix [
 	matrix := nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementLocalTransformation >> is2D [
 	"Return true if my current transformation is in 2D space, false otherwise"
 	<return: #Boolean>
@@ -55,7 +57,7 @@ TbElementLocalTransformation >> is2D [
 	^ self transformation is2D
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementLocalTransformation >> is3D [
 	"Return true if my current transformation is in 3D space, false otherwise"
 	<return: #Boolean>
@@ -63,7 +65,7 @@ TbElementLocalTransformation >> is3D [
 	^ self transformation is3D
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementLocalTransformation >> isIdentity [
 	"Return true if I represent an identity transformation, false otherwise"
 	<return: #Boolean>
@@ -71,14 +73,14 @@ TbElementLocalTransformation >> isIdentity [
 	^ self transformation isIdentity
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbElementLocalTransformation >> postCopy [
 	super postCopy.
 
 	transformation := transformation copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementLocalTransformation >> transformation [
 	<return: #BlAffineCompositeTransformation>
 

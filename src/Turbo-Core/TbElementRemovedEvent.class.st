@@ -17,12 +17,14 @@ parent removeChild: child
 ]]]
 "
 Class {
-	#name : #TbElementRemovedEvent,
-	#superclass : #TbElementEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbElementRemovedEvent',
+	#superclass : 'TbElementEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbElementRemovedEvent >> sendTo: anObject [
 	anObject elementRemoved: self
 ]

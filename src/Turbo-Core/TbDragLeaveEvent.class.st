@@ -1,10 +1,12 @@
 Class {
-	#name : #TbDragLeaveEvent,
-	#superclass : #TbBaseDragEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbDragLeaveEvent',
+	#superclass : 'TbBaseDragEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbDragLeaveEvent >> sendTo: anObject [
 	anObject dragLeaveEvent: self
 ]

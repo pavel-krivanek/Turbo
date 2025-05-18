@@ -1,6 +1,6 @@
-Extension { #name : #Unit }
+Extension { #name : 'Unit' }
 
-{ #category : #'*Turbo-Canvas' }
+{ #category : '*Turbo-Canvas' }
 Unit class >> character [
 
 	^ NamedUnit named: 'character'

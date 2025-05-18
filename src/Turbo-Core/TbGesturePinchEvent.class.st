@@ -2,27 +2,29 @@
 Is sent periodically during the pinch gesture.
 "
 Class {
-	#name : #TbGesturePinchEvent,
-	#superclass : #TbGestureBasePinchEvent,
+	#name : 'TbGesturePinchEvent',
+	#superclass : 'TbGestureBasePinchEvent',
 	#instVars : [
 		'distance'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGesturePinchEvent >> distance [
 	<return: #Number>
 
 	^ distance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGesturePinchEvent >> distance: aNumber [
 	distance := aNumber
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbGesturePinchEvent >> sendTo: anObject [
 	anObject gesturePinchEvent: self
 ]

@@ -4,30 +4,32 @@ I am an event that it is fired when the user types some text.
 I usually represent a single character, but I can be composed of multiples code points, specially for complex writing systems as Chinese.
 "
 Class {
-	#name : #TbTextInputEvent,
-	#superclass : #TbUIEvent,
+	#name : 'TbTextInputEvent',
+	#superclass : 'TbUIEvent',
 	#instVars : [
 		'text'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbTextInputEvent >> isTextInput [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbTextInputEvent >> sendTo: anObject [
 	anObject textInputEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTextInputEvent >> text [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTextInputEvent >> text: anObject [
 	text := anObject
 ]

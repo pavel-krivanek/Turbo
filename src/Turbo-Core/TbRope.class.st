@@ -12,29 +12,31 @@ https://en.wikipedia.org/wiki/Rope_(data_structure)
 
 "
 Class {
-	#name : #TbRope,
-	#superclass : #Object,
+	#name : 'TbRope',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #types }
+{ #category : 'types' }
 TbRope class >> attributeRope [
 	^ TbAttributeRope
 ]
 
-{ #category : #types }
+{ #category : 'types' }
 TbRope class >> collectionRope [
 	^ TbCollectionRope
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRope class >> combineLength [
 	^ 32
 ]
 
-{ #category : #rope }
+{ #category : 'rope' }
 TbRope class >> concatenate: aLeftRope and: aRightRope [
 	| totalSize |
 	
@@ -85,23 +87,23 @@ TbRope class >> concatenate: aLeftRope and: aRightRope [
 		right: aRightRope
 ]
 
-{ #category : #types }
+{ #category : 'types' }
 TbRope class >> concatenationRope [
 	^ TbConcatenationRope
 ]
 
-{ #category : #types }
+{ #category : 'types' }
 TbRope class >> subRope [
 	^ TbSubRope
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> allChildrenBreadthFirstDo: aBlock [ 
 	self children do: aBlock.
 	self children do: [ :eachRope | eachRope allChildrenBreadthFirstDo: aBlock ]
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> append: aRope [
 	"Create and return a new rope by append a given rope to the of end of me"
 	<return: #BlRope>
@@ -109,12 +111,12 @@ TbRope >> append: aRope [
 	^ self class concatenate: self and: aRope
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbRope >> asString [
 	^ self printStringLimitedTo: Float infinity
 ]
 
-{ #category : #'private - asserting' }
+{ #category : 'private - asserting' }
 TbRope >> assertAccessFrom: aStartIndex to: anEndIndex [
 	"I am an index invariant; I make sure that rope operation that require
 	access by index do not go out of rope bounds"
@@ -129,7 +131,7 @@ TbRope >> assertAccessFrom: aStartIndex to: anEndIndex [
 		ifFalse: [ self error: 'End index must be less or equal than the rope size' ]
 ]
 
-{ #category : #'private - asserting' }
+{ #category : 'private - asserting' }
 TbRope >> assertIndexForInsert: anIndex [
 	"I am an insertion index invariant; I make sure that insertion operations
 	do not go out of rope bounds"
@@ -138,7 +140,7 @@ TbRope >> assertIndexForInsert: anIndex [
 		ifTrue: [ self error: 'Insert index ', anIndex asString, ' is out of bounds' ]
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> at: anIndex [
 	"Return an item at an given index"
 	<return: #Object>
@@ -146,12 +148,12 @@ TbRope >> at: anIndex [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbRope >> attributes: anAttributesCollection [
 	^ self attributes: anAttributesCollection from: 0 to: self size
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	"Apply a given collection of attributes on the interval specified by aStart and anEnd indices.
 	aStart and anEnd are given in `cursor` coordinates. For example, assume we have the following text:
@@ -166,7 +168,7 @@ TbRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> children [
 	"Return a collection of ropes that are my children"
 	<return: #Collection of: #BlRope>
@@ -174,24 +176,24 @@ TbRope >> children [
 	^ {  }
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbRope >> clearAttributes: aStart to: anEnd [
 	"Clear all attributes"
 
 	^ self clearAttributes: aStart to: anEnd if: [ :each | true ]
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - deleting' }
+{ #category : 'rope - deleting' }
 TbRope >> delete: aStart to: anEnd [
 	self subclassResponsibility
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> depth [
 	"Return the max tree height of this rope (composition depth)"
 	<return: #Number>
@@ -199,12 +201,12 @@ TbRope >> depth [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbRope >> do: aBlock [
 	self from: 0 to: self size do: aBlock
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbRope >> empty [
 	"Create and return an empty version of this rope"
 	<return: #BlRope>
@@ -212,19 +214,19 @@ TbRope >> empty [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> from: aStart to: anEnd [
 	<return: #BlRope>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbRope >> from: aStart to: anEnd do: aBlock [
 	self subclassResponsibility
 ]
 
-{ #category : #'rope - inserting' }
+{ #category : 'rope - inserting' }
 TbRope >> insert: aRope at: anIndex [
 	"Insert aRope after anIndex"
 	anIndex = 0
@@ -239,7 +241,7 @@ TbRope >> insert: aRope at: anIndex [
 	^ ((self from: 1 to: anIndex) append: aRope) append: (self from: anIndex + 1 to: self size)
 ]
 
-{ #category : #'rope - inserting' }
+{ #category : 'rope - inserting' }
 TbRope >> insertItems: aCollection at: anIndex [
 	"Insert a given collection of items at a provided index.
 	anIndex is given in `cursor` coordinates. For example, assume we have the following collection of characters:
@@ -253,7 +255,7 @@ TbRope >> insertItems: aCollection at: anIndex [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbRope >> isAttributed [
 	"Return true if I am an attributed rope"
 	<return: #Boolean>
@@ -261,12 +263,12 @@ TbRope >> isAttributed [
 	^ false
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbRope >> isConcatenation [
 	^ false
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbRope >> isEmpty [
 	"Return true if rope is empty, false otherwise"
 	<return: #Boolean>
@@ -274,12 +276,12 @@ TbRope >> isEmpty [
 	^ self size isZero
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbRope >> isLeaf [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbRope >> isNotEmpty [
 	"Return true if rope is not empty, false otherwise"
 	<return: #Boolean>
@@ -287,24 +289,24 @@ TbRope >> isNotEmpty [
 	^ self isEmpty not
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbRope >> isScoped [
 	<return: #Boolean>
 	
 	^ false
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbRope >> iterator [
 	^ self iterator: 0 to: self size
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbRope >> iterator: aStart to: anEnd [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> last [
 	"Return the last item in the rope"
 	<return: #Object>
@@ -312,7 +314,7 @@ TbRope >> last [
 	^ self at: self size
 ]
 
-{ #category : #'rope - printing' }
+{ #category : 'rope - printing' }
 TbRope >> printOn: aStream [
 	
 	self do: [ :anItem | anItem isCharacter
@@ -320,24 +322,24 @@ TbRope >> printOn: aStream [
 		ifFalse: [ aStream nextPutAll: anItem asString ] ]
 ]
 
-{ #category : #'rope - streaming' }
+{ #category : 'rope - streaming' }
 TbRope >> putOn: aStream [
 	self putOn: aStream from: 0 to: self size
 ]
 
-{ #category : #'rope - streaming' }
+{ #category : 'rope - streaming' }
 TbRope >> putOn: aStream from: aStart to: anEnd [
 	self from: aStart to: anEnd do: [ :anItem | aStream nextPut: anItem ]
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> size [
 	<return: #Number>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbRope >> withAllChildrenBreadthFirst [
 	| all |
 	all := OrderedCollection with: self.

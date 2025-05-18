@@ -11,45 +11,47 @@ Example:
 	BlReflectionTransformation vertical - creates a reflection in X axis
 "
 Class {
-	#name : #TbReflectionTransformation,
-	#superclass : #TbAffineTransformation,
+	#name : 'TbReflectionTransformation',
+	#superclass : 'TbAffineTransformation',
 	#instVars : [
 		'reflection'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbReflectionTransformation class >> horizontal [
 	^ self new reflection: (TbVector x: -1 y: 1)
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbReflectionTransformation class >> vertical [
 	^ self new reflection: (TbVector x: 1 y: -1)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbReflectionTransformation >> is2D [
 	<return: #Boolean>
 
 	^ true
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbReflectionTransformation >> multiplyOn: aBlMatrix [
 
 	aBlMatrix reflectBy: self reflection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbReflectionTransformation >> reflection [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ reflection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbReflectionTransformation >> reflection: aVector [
 	reflection := aVector asBlocVector
 ]

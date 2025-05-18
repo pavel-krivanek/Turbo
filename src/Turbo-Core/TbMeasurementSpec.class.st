@@ -1,24 +1,26 @@
 Class {
-	#name : #TbMeasurementSpec,
-	#superclass : #Object,
+	#name : 'TbMeasurementSpec',
+	#superclass : 'Object',
 	#instVars : [
 		'size',
 		'mode'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMeasurementSpec class >> atMost: aNumber [
 	^ self new beAtMost: aNumber
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMeasurementSpec class >> exact: aNumber [
 	^ self new beExact: aNumber
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMeasurementSpec class >> size: aSize mode: aMode [
 	^ self new
 		size: aSize;
@@ -26,17 +28,17 @@ TbMeasurementSpec class >> size: aSize mode: aMode [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMeasurementSpec class >> unspecified [
 	^ self unspecified: 0
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMeasurementSpec class >> unspecified: aNumber [
 	^ self new beUnspecified: aNumber
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMeasurementSpec >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
@@ -47,86 +49,86 @@ TbMeasurementSpec >> = anotherObject [
 		and: [ anotherObject mode = mode ]
 ]
 
-{ #category : #composition }
+{ #category : 'composition' }
 TbMeasurementSpec >> @ heightMeasurementSpec [
 	^ TbExtentMeasurementSpec new
 		widthSpec: self;
 		heightSpec: heightMeasurementSpec
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMeasurementSpec >> beAtMost: aNumber [
 	self
 		size: aNumber;
 		mode: TbMeasurementMode atMost
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMeasurementSpec >> beExact: aNumber [
 	self
 		size: aNumber;
 		mode: TbMeasurementMode exact
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMeasurementSpec >> beUnspecified [
 	self beUnspecified: 0
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMeasurementSpec >> beUnspecified: aNumber [
 	self
 		size: aNumber;
 		mode: TbMeasurementMode unspecified
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMeasurementSpec >> hash [
 	^ size hash bitXor: mode hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementSpec >> isAtMost [
 	^ self mode isAtMost
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementSpec >> isExact [
 	^ self mode isExact
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementSpec >> isUnspecified [
 	^ self mode isUnspecified
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementSpec >> mode [
 	^ mode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementSpec >> mode: aMeasurementSpec [
 	mode := aMeasurementSpec
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbMeasurementSpec >> printOn: aStream [
 	self mode printOn: aStream size: self size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementSpec >> size [
 	^ size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementSpec >> size: aNumber [
 
 	size := aNumber
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementSpec >> sizeFor: aNumber [
 	^ self mode size: aNumber with: size
 ]

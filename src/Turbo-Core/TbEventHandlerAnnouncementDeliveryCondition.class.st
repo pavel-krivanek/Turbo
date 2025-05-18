@@ -1,23 +1,25 @@
 Class {
-	#name : #TbEventHandlerAnnouncementDeliveryCondition,
-	#superclass : #Object,
+	#name : 'TbEventHandlerAnnouncementDeliveryCondition',
+	#superclass : 'Object',
 	#instVars : [
 		'eventHandler'
 	],
-	#category : #'Turbo-Core-Events-Handling'
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventHandlerAnnouncementDeliveryCondition >> eventHandler [
 	^ eventHandler
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventHandlerAnnouncementDeliveryCondition >> eventHandler: anObject [
 	eventHandler := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEventHandlerAnnouncementDeliveryCondition >> handlesAnnouncement: anEvent [
 	^ self eventHandler wantsEvent: anEvent
 ]

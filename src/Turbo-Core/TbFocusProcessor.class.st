@@ -1,14 +1,16 @@
 Class {
-	#name : #TbFocusProcessor,
-	#superclass : #TbBaseEventProcessor,
+	#name : 'TbFocusProcessor',
+	#superclass : 'TbBaseEventProcessor',
 	#instVars : [
 		'focusOwner',
 		'focusChain'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbFocusProcessor >> fireBlurEvent: anElement [
 	"Create and send blur event that doesn't bubble, perform simple direct dispatch to the given target element"
 	self
@@ -16,7 +18,7 @@ TbFocusProcessor >> fireBlurEvent: anElement [
 		target: anElement
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbFocusProcessor >> fireFocusEvent: anElement [
 	"Send focus event that doesn't bubble, perform simple direct dispatch to the target"
 	
@@ -25,21 +27,21 @@ TbFocusProcessor >> fireFocusEvent: anElement [
 		target: anElement
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbFocusProcessor >> fireFocusInEvent: anElement [
 	"Send focusIn event that should bubble"
 
 	self fireEvent: (self newFocusInEvent target: anElement)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbFocusProcessor >> fireFocusOutEvent: anElement [
 	"Send focusOut event that should bubble"
 
 	self fireEvent: (self newFocusOutEvent target: anElement)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbFocusProcessor >> fireFocusTransferEvent: anElement from: aPreviousFocusedElement [
 	"Send focus event that doesn't bubble, perform simple direct dispatch to the target"
 	self
@@ -49,17 +51,17 @@ TbFocusProcessor >> fireFocusTransferEvent: anElement from: aPreviousFocusedElem
 		target: anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusProcessor >> focusOwner [
 	^ focusOwner
 ]
 
-{ #category : #'focus - processing' }
+{ #category : 'focus - processing' }
 TbFocusProcessor >> handleMouseDown: anEvent [
 	"Clicking outside does not mean focus should be lost"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusProcessor >> hasFocusOwner [
 	"Return true if there is an element holding focus, false otherwise.
 	When there are no elements interested in focus it is given to the root element.
@@ -69,7 +71,7 @@ TbFocusProcessor >> hasFocusOwner [
 	^ focusOwner isNotNil
 ]
 
-{ #category : #'focus - requesting' }
+{ #category : 'focus - requesting' }
 TbFocusProcessor >> looseFor: anElement [
 	| evt |
 	focusOwner ~= anElement
@@ -84,7 +86,7 @@ TbFocusProcessor >> looseFor: anElement [
 	focusOwner := nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFocusProcessor >> newBlurEvent [
 	"Create, initialize and return a blur event that should be sent to the element
 	that just lost its focus"
@@ -94,7 +96,7 @@ TbFocusProcessor >> newBlurEvent [
 		canBePropagated: false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFocusProcessor >> newFocusEvent [
 	"Create, initialize and return a focus event that should be sent to the element
 	after it gets focus"
@@ -104,7 +106,7 @@ TbFocusProcessor >> newFocusEvent [
 		canBePropagated: false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFocusProcessor >> newFocusInEvent [
 	"Create, initialize and return a focus-in event that should be sent
 	as a part of focus processing"
@@ -113,7 +115,7 @@ TbFocusProcessor >> newFocusInEvent [
 	^ TbFocusInEvent new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFocusProcessor >> newFocusOutEvent [
 	"Create, initialize and return a focus-out event that should be sent
 	as a part of blur processing"
@@ -122,7 +124,7 @@ TbFocusProcessor >> newFocusOutEvent [
 	^ TbFocusOutEvent new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFocusProcessor >> newFocusTransferEvent [
 	"Create, initialize and return a focus transfer event that should be sent to the element
 	before performing a focus transfer"
@@ -131,7 +133,7 @@ TbFocusProcessor >> newFocusTransferEvent [
 	^ TbFocusTransferEvent new
 ]
 
-{ #category : #'focus - processing' }
+{ #category : 'focus - processing' }
 TbFocusProcessor >> processBlur: anElement [
 	self
 		assert: [ self hasFocusOwner ]
@@ -143,7 +145,7 @@ TbFocusProcessor >> processBlur: anElement [
 	self fireBlurEvent: anElement
 ]
 
-{ #category : #'focus - processing' }
+{ #category : 'focus - processing' }
 TbFocusProcessor >> processFocus: anElement [
 	self
 		assert: [ anElement isNotNil ]
@@ -164,7 +166,7 @@ TbFocusProcessor >> processFocus: anElement [
 	self fireFocusEvent: anElement
 ]
 
-{ #category : #'focus - processing' }
+{ #category : 'focus - processing' }
 TbFocusProcessor >> processTransfer: anElement [
 	self
 		assert: [ anElement isNotNil ]
@@ -179,19 +181,19 @@ TbFocusProcessor >> processTransfer: anElement [
 	self fireFocusTransferEvent: anElement from: focusOwner
 ]
 
-{ #category : #'focus - processing' }
+{ #category : 'focus - processing' }
 TbFocusProcessor >> processWindowFocusIn: anEvent [
 
 	self space grabFocus
 ]
 
-{ #category : #'focus - processing' }
+{ #category : 'focus - processing' }
 TbFocusProcessor >> processWindowFocusOut: anEvent [
 
 	self space ungrabFocus
 ]
 
-{ #category : #'focus - requesting' }
+{ #category : 'focus - requesting' }
 TbFocusProcessor >> requestFor: anElement [
 	self
 		assert: [ anElement isNotNil ]
@@ -210,7 +212,7 @@ TbFocusProcessor >> requestFor: anElement [
 	self processFocus: anElement
 ]
 
-{ #category : #'focus - requesting' }
+{ #category : 'focus - requesting' }
 TbFocusProcessor >> transferTo: anElement [
 	self
 		assert: [ anElement isNotNil ]

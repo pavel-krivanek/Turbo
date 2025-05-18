@@ -4,8 +4,8 @@ I manage a list of change listener and i notify it when my value changes.
 My subclasses can define a specific behavior during invalidation.
 "
 Class {
-	#name : #TbObservableProperty,
-	#superclass : #Object,
+	#name : 'TbObservableProperty',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -16,17 +16,19 @@ Class {
 		'isValid',
 		'binding'
 	],
-	#category : #'Turbo-Core-Property'
+	#category : 'Turbo-Core-Property',
+	#package : 'Turbo-Core',
+	#tag : 'Property'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbObservableProperty class >> on: anOwner [
 	^ self new
 		owner: anOwner;
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbObservableProperty class >> on: anOwner named: aSymbol [
 	^ self new
 		name: aSymbol;
@@ -34,7 +36,7 @@ TbObservableProperty class >> on: anOwner named: aSymbol [
 		yourself
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbObservableProperty >> addChangeListener: aListener [
 
 	self
@@ -44,35 +46,35 @@ TbObservableProperty >> addChangeListener: aListener [
 	changeListeners := changeListeners copyWith: aListener
 ]
 
-{ #category : #binding }
+{ #category : 'binding' }
 TbObservableProperty >> bindOn: aProperty [
 	self bindOn: aProperty bidirectional: false
 ]
 
-{ #category : #binding }
+{ #category : 'binding' }
 TbObservableProperty >> bindOn: aProperty bidirectional: aBoolean [
 
 	self unbind.
 	binding := TbPropertyBinding from: aProperty to: self bidirectional: aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObservableProperty >> defaultName [
 	self subclassResponsibility  
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbObservableProperty >> hasChangeListeners [
 	^ changeListeners isNotEmpty
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbObservableProperty >> initialize [
 	super initialize.
 	changeListeners := #()
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbObservableProperty >> invalidateDuring: aBlock [
 	"Make sure that the change propagation is not active while executing the parameter."
 	isValid ifFalse: [ ^ self ].
@@ -80,22 +82,22 @@ TbObservableProperty >> invalidateDuring: aBlock [
 	aBlock ensure: [ isValid := true ]
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbObservableProperty >> invalidated [
 	"nothing here. Hook for subclasses"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObservableProperty >> name [
 	^ name ifNil: [ name := self defaultName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObservableProperty >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbObservableProperty >> notifyValueChanged [
 	| theListeners aValue |
 	self invalidated.
@@ -109,22 +111,22 @@ TbObservableProperty >> notifyValueChanged [
 	theListeners do: [ :cl | cl valueChanged: aValue ]
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbObservableProperty >> onChangedDo: aBlock [
 	self addChangeListener: (TbOnChangeListener do: aBlock)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObservableProperty >> owner [
 	^ owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObservableProperty >> owner: anObject [
 	owner := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbObservableProperty >> printOn: aStream [
 	aStream
 		nextPutAll: self className;
@@ -136,22 +138,22 @@ TbObservableProperty >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbObservableProperty >> rawValue [
 	^ rawValue
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbObservableProperty >> rawValue: anObject [
 	rawValue := anObject
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbObservableProperty >> removeAllChangeListeners [
 	changeListeners := #()
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbObservableProperty >> removeChangeListener: aListener [
 	"Remove the argument from the list of listeners"
 
@@ -162,13 +164,13 @@ TbObservableProperty >> removeChangeListener: aListener [
 	changeListeners := changeListeners copyWithout: aListener
 ]
 
-{ #category : #binding }
+{ #category : 'binding' }
 TbObservableProperty >> unbind [
 	binding ifNotNil: #unbind.
 	binding := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbObservableProperty >> value [
 	^ self rawValue
 ]

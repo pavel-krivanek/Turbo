@@ -2,12 +2,14 @@
 I transform composite key combination formula into a CNF (https://en.wikipedia.org/wiki/Conjunctive_normal_form)
 "
 Class {
-	#name : #TbKeyCombinationConverterCNF,
-	#superclass : #TbKeyCombinationVisitor,
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#name : 'TbKeyCombinationConverterCNF',
+	#superclass : 'TbKeyCombinationVisitor',
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationConverterCNF >> visitAlternative: aBlAlternativeCombination [
 	| combinations pairedCompulsories alternative |
 
@@ -39,7 +41,7 @@ TbKeyCombinationConverterCNF >> visitAlternative: aBlAlternativeCombination [
 	^ alternative accept: self.
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationConverterCNF >> visitCompulsory: aBlCompulsoryCombination [
 	| compulsory |
 
@@ -51,7 +53,7 @@ TbKeyCombinationConverterCNF >> visitCompulsory: aBlCompulsoryCombination [
 	^ compulsory
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationConverterCNF >> visitKey: aBlKeyCodeCombination [
 	^ TbCompulsoryCombination new with: aBlKeyCodeCombination
 ]

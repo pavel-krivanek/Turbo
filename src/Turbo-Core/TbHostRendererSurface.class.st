@@ -2,18 +2,20 @@
 I am a mediator between host space and host renderer
 "
 Class {
-	#name : #TbHostRendererSurface,
-	#superclass : #Object,
+	#name : 'TbHostRendererSurface',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'hostSpace',
 		'hostRenderer'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererSurface class >> allSurfaces [
 	"Return a collection of all possible surfaces"
 	<return: #Collection of: #'BlHostRendererSurface class'>
@@ -21,7 +23,7 @@ TbHostRendererSurface class >> allSurfaces [
 	^ self allSubclasses
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbHostRendererSurface class >> supportedBy: anObject [
 	"Return true if a given object supports this surface, false otherwise"
 	<return: #Boolean>
@@ -29,7 +31,7 @@ TbHostRendererSurface class >> supportedBy: anObject [
 	^ self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbHostRendererSurface >> canvasExtent [
 	"Return current canvas extent in pixels as a Point.
 	Note, that canvas extent is different from windowExtent
@@ -39,7 +41,7 @@ TbHostRendererSurface >> canvasExtent [
 	^ self hostSpace canvasExtent
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbHostRendererSurface >> extent [
 	"Return an actual extent of the underlying surface.
 	Note: between frames #extent may be different from canvas or window extents because
@@ -49,27 +51,27 @@ TbHostRendererSurface >> extent [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererSurface >> hostRenderer [
 	^ hostRenderer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererSurface >> hostRenderer: anObject [
 	hostRenderer := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererSurface >> hostSpace [
 	^ hostSpace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererSurface >> hostSpace: anObject [
 	hostSpace := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHostRendererSurface >> initializeOn: anObject [
 	"Initialize a given object to work with this surface.
 	must be implemented by subclasses"
@@ -77,7 +79,7 @@ TbHostRendererSurface >> initializeOn: anObject [
 	self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHostRendererSurface >> initializeResourcesOn: aHostRenderer [
 	"Initialize me and host renderer depending on surface type.
 	must be implemented by subclasses"
@@ -85,26 +87,26 @@ TbHostRendererSurface >> initializeResourcesOn: aHostRenderer [
 	self subclassResponsibility
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbHostRendererSurface >> prepareToRender: aSpace [
 	"Dispatch preparation to render through host space based on surface type"
 	
 	self subclassResponsibility
 ]
 
-{ #category : #presenting }
+{ #category : 'presenting' }
 TbHostRendererSurface >> presentAreas: aCollectionOfRectangles [
 	self subclassResponsibility
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbHostRendererSurface >> renderFor: aSpace [
 	"Dispatch render process through host space based on surface type"
 	
 	self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbHostRendererSurface >> scaleFactor [
 	"Return a scaling factor from space to window coordinates.
 	On high dpi (retina) displays scaling factor is > 1"
@@ -113,7 +115,7 @@ TbHostRendererSurface >> scaleFactor [
 	^ self hostSpace scaleFactor
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbHostRendererSurface >> windowExtent [
 	"Return current window extent in pixels as a Point.
 	Note, that window extent is different from canvasExtent

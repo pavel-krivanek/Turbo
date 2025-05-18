@@ -2,15 +2,17 @@
 I am an extended version of a scalable element with zoom support
 "
 Class {
-	#name : #TbZoomableElement,
-	#superclass : #TbScalableElement,
+	#name : 'TbZoomableElement',
+	#superclass : 'TbScalableElement',
 	#instVars : [
 		'zoomLevel'
 	],
-	#category : #'Turbo-Core-Utilities - Scalable'
+	#category : 'Turbo-Core-Utilities - Scalable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scalable'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbZoomableElement >> computeZoomLevel [
 	"Compute zoom level based on the extent of a content element and its scale transformation"
 	<return: #Number>
@@ -24,7 +26,7 @@ TbZoomableElement >> computeZoomLevel [
 	^ (self contentElement bounds transformed extent / self contentElement extent) min
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbZoomableElement >> hasZoomLevel [
 	"Return true if zoom level is user-defined, otherwise false"
 	<return: #Boolean>
@@ -32,7 +34,7 @@ TbZoomableElement >> hasZoomLevel [
 	^ zoomLevel isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbZoomableElement >> initialize [
 	super initialize.
 	
@@ -40,12 +42,12 @@ TbZoomableElement >> initialize [
 	self fitAll
 ]
 
-{ #category : #zooming }
+{ #category : 'zooming' }
 TbZoomableElement >> zoomIn [
 	self zoomLevel: self zoomLevel + self zoomStep
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbZoomableElement >> zoomLevel [
 	<return: #Number>
 
@@ -54,7 +56,7 @@ TbZoomableElement >> zoomLevel [
 		ifFalse: [ self computeZoomLevel ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbZoomableElement >> zoomLevel: aNumber [
 	zoomLevel := aNumber.
 	self fixed: zoomLevel.
@@ -63,12 +65,12 @@ TbZoomableElement >> zoomLevel: aNumber [
 		c vertical fitContent ]
 ]
 
-{ #category : #zooming }
+{ #category : 'zooming' }
 TbZoomableElement >> zoomOut [
 	self zoomLevel: self zoomLevel - self zoomStep
 ]
 
-{ #category : #zooming }
+{ #category : 'zooming' }
 TbZoomableElement >> zoomReset [
 	zoomLevel := nil.
 	self fitAll.
@@ -77,7 +79,7 @@ TbZoomableElement >> zoomReset [
 		c vertical matchParent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbZoomableElement >> zoomStep [
 	^ 0.1
 ]

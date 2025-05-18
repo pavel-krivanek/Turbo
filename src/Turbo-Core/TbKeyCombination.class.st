@@ -7,54 +7,56 @@ I have support of Visitor pattern. See ===BlKeyCombinationVisitor===
 See ===BlKeyCombinationExamples=== for related examples.
 "
 Class {
-	#name : #TbKeyCombination,
-	#superclass : #Object,
+	#name : 'TbKeyCombination',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> arrowDown [
 	^ self builder arrowDown build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> arrowLeft [
 	^ self builder arrowLeft build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> arrowRight [
 	^ self builder arrowRight build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> arrowUp [
 	^ self builder arrowUp build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> backspace [
 	^ self builder backspace build
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyCombination class >> builder [
 	^ TbKeyCombinationBuilder new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> delete [
 	^ self builder delete build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> escape [
 	^ self builder escape build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryA [
 	"primary (Command/Control) + A"
 	<return: #BlKeyCombination>
@@ -62,7 +64,7 @@ TbKeyCombination class >> primaryA [
 	^ self builder primary a build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryB [
 	"primary (Command/Control) + B"
 	<return: #BlKeyCombination>
@@ -70,7 +72,7 @@ TbKeyCombination class >> primaryB [
 	^ self builder primary b build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryC [
 	"primary (Command/Control) + C"
 	<return: #BlKeyCombination>
@@ -78,7 +80,7 @@ TbKeyCombination class >> primaryC [
 	^ self builder primary c build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryD [
 	"primary (Command/Control) + D"
 	<return: #BlKeyCombination>
@@ -86,7 +88,7 @@ TbKeyCombination class >> primaryD [
 	^ self builder primary d build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryE [
 	"primary (Command/Control) + E"
 	<return: #BlKeyCombination>
@@ -94,7 +96,7 @@ TbKeyCombination class >> primaryE [
 	^ self builder primary e build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryF [
 	"primary (Command/Control) + F"
 	<return: #BlKeyCombination>
@@ -102,7 +104,7 @@ TbKeyCombination class >> primaryF [
 	^ self builder primary f build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryG [
 	"primary (Command/Control) + G"
 	<return: #BlKeyCombination>
@@ -110,7 +112,7 @@ TbKeyCombination class >> primaryG [
 	^ self builder primary g build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryM [
 	"primary (Command/Control) + M"
 	<return: #BlKeyCombination>
@@ -118,7 +120,7 @@ TbKeyCombination class >> primaryM [
 	^ self builder primary m build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryN [
 	"primary (Command/Control) + N"
 	<return: #BlKeyCombination>
@@ -126,7 +128,7 @@ TbKeyCombination class >> primaryN [
 	^ self builder primary n build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryP [
 	"primary (Command/Control) + P"
 	<return: #BlKeyCombination>
@@ -134,7 +136,7 @@ TbKeyCombination class >> primaryP [
 	^ self builder primary p build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryR [
 	"primary (Command/Control) + R"
 	<return: #BlKeyCombination>
@@ -142,7 +144,7 @@ TbKeyCombination class >> primaryR [
 	^ self builder primary r build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryS [
 	"primary (Command/Control) + S"
 	<return: #BlKeyCombination>
@@ -150,7 +152,7 @@ TbKeyCombination class >> primaryS [
 	^ self builder primary s build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryShiftF [
 	"primary (Command/Control) + Shift + F"
 	<return: #BlKeyCombination>
@@ -158,7 +160,7 @@ TbKeyCombination class >> primaryShiftF [
 	^ self builder primary shift f build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryV [
 	"primary (Command/Control) + V"
 	<return: #BlKeyCombination>
@@ -166,7 +168,7 @@ TbKeyCombination class >> primaryV [
 	^ self builder primary v build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> primaryX [
 	"primary (Command/Control) + X"
 	<return: #BlKeyCombination>
@@ -174,51 +176,51 @@ TbKeyCombination class >> primaryX [
 	^ self builder primary x build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> return [
 	^ self builder return build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbKeyCombination class >> tab [
 	^ self builder tab build
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombination >> accept: aKeyCombinationVisitor [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbKeyCombination >> includes: aKey [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyCombination >> isAlternative [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyCombination >> isCompulsory [
 	^ false
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbKeyCombination >> match: aKeyboardBuffer [
 	<return: #Number>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbKeyCombination >> matches: aKeyboardBuffer [
 	<return: #Boolean>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TbKeyCombination >> or: anotherKeyCombination [
 	<return: #BlKeyCombination>
 

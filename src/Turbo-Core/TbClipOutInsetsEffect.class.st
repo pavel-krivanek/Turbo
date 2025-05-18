@@ -1,27 +1,29 @@
 Class {
-	#name : #TbClipOutInsetsEffect,
-	#superclass : #TbClipOutEffect,
+	#name : 'TbClipOutInsetsEffect',
+	#superclass : 'TbClipOutEffect',
 	#instVars : [
 		'insets'
 	],
-	#category : #'Turbo-Core-Effect'
+	#category : 'Turbo-Core-Effect',
+	#package : 'Turbo-Core',
+	#tag : 'Effect'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbClipOutInsetsEffect >> initialize [
 	super initialize.
 	
 	insets := TbInsets empty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbClipOutInsetsEffect >> insets [
 	<return: #BlInsets>
 
 	^ insets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbClipOutInsetsEffect >> insets: aBlInsets [
 	insets := aBlInsets
 ]

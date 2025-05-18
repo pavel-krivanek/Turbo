@@ -9,8 +9,8 @@ BlBorder builder
 	build
 "
 Class {
-	#name : #TbBorder,
-	#superclass : #Object,
+	#name : 'TbBorder',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -22,32 +22,34 @@ Class {
 	#classInstVars : [
 		'empty'
 	],
-	#category : #'Turbo-Core-Basic-Border'
+	#category : 'Turbo-Core-Basic-Border',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Border'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBorder class >> builder [
 	^ TbBorderBuilder new
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbBorder class >> cleanUp [
 	super cleanUp.
 	
 	empty := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder class >> empty [
 	^ empty ifNil: [ empty := self paint: TbPaint transparent width: 0 ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBorder class >> new [
 	self error: 'Use one of the builder methods'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBorder class >> paint: aPaint [
 
 	^ self builder
@@ -55,7 +57,7 @@ TbBorder class >> paint: aPaint [
 		build
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBorder class >> paint: aPaint width: aNumber [
 
 	^ self builder
@@ -64,7 +66,7 @@ TbBorder class >> paint: aPaint width: aNumber [
 		build
 ]
 
-{ #category : #copy }
+{ #category : 'copy' }
 TbBorder >> copyWithOpacity: aNumber [
 	self
 		assert: [ aNumber isNotNil ]
@@ -79,7 +81,7 @@ TbBorder >> copyWithOpacity: aNumber [
 		yourself
 ]
 
-{ #category : #copy }
+{ #category : 'copy' }
 TbBorder >> copyWithPaint: aPaint [
 
 	self
@@ -95,7 +97,7 @@ TbBorder >> copyWithPaint: aPaint [
 		yourself
 ]
 
-{ #category : #copy }
+{ #category : 'copy' }
 TbBorder >> copyWithStyle: aStrokeStyle [
 
 	self
@@ -111,7 +113,7 @@ TbBorder >> copyWithStyle: aStrokeStyle [
 		yourself
 ]
 
-{ #category : #copy }
+{ #category : 'copy' }
 TbBorder >> copyWithWidth: aWidth [
 
 	self
@@ -127,7 +129,7 @@ TbBorder >> copyWithWidth: aWidth [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBorder >> isTransparent [
 	"Return true if I am is transparent and should not be rendered,
 	false otherwise"
@@ -136,7 +138,7 @@ TbBorder >> isTransparent [
 	^ width isZero
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBorder >> isVisible [
 	"Return true if I am visible and should be rendered, false otherwise.
 	Note: Non-zero border with transparent paint is still needs to be rendered,
@@ -146,14 +148,14 @@ TbBorder >> isVisible [
 	^ width isZero not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> opacity [
 	<return: #Number>
 
 	^ opacity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> opacity: aNumber [
 	self
 		assert: [ aNumber isNotNil ]
@@ -168,14 +170,14 @@ TbBorder >> opacity: aNumber [
 	opacity := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> paint [
 	<return: #BlPaint>
 
 	^ paint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> paint: aBlPaint [
 	self
 		assert: [ aBlPaint isNotNil ]
@@ -187,14 +189,14 @@ TbBorder >> paint: aBlPaint [
 	paint := aBlPaint asBlPaint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> style [
 	<return: #BlStrokeStyle>
 
 	^ style
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> style: aBlStrokeStyle [
 	self
 		assert: [ aBlStrokeStyle isNotNil ]
@@ -206,14 +208,14 @@ TbBorder >> style: aBlStrokeStyle [
 	style := aBlStrokeStyle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> width [
 	<return: #Number>
 
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorder >> width: aNumber [
 	self
 		assert: [ aNumber isNotNil ]

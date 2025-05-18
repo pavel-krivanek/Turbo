@@ -1,6 +1,6 @@
 Class {
-	#name : #TbLayoutExactResizer,
-	#superclass : #TbLayoutResizer,
+	#name : 'TbLayoutExactResizer',
+	#superclass : 'TbLayoutResizer',
 	#instVars : [
 		'size'
 	],
@@ -9,10 +9,12 @@ Class {
 		'fifty',
 		'hundred'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbLayoutExactResizer class >> cleanUp [
 	super cleanUp.
 	
@@ -21,17 +23,17 @@ TbLayoutExactResizer class >> cleanUp [
 	hundred := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutExactResizer class >> fifty [
 	^ fifty ifNil: [ fifty := self new size: 50 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutExactResizer class >> hundred [
 	^ hundred ifNil: [ hundred := self new size: 100 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutExactResizer class >> size: aNumber [
 	aNumber isZero
 		ifTrue: [ ^ self zero ].
@@ -47,12 +49,12 @@ TbLayoutExactResizer class >> size: aNumber [
 		yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutExactResizer class >> zero [
 	^ zero ifNil: [ zero := self new size: 0 ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbLayoutExactResizer >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -61,22 +63,22 @@ TbLayoutExactResizer >> = anObject [
 	^ self size = anObject size
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbLayoutExactResizer >> hash [
 	^ super hash bitXor: self size hash
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TbLayoutExactResizer >> ifExact: aBlock [
 	^ aBlock cull: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutExactResizer >> isExact [
 	^ true
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 TbLayoutExactResizer >> measurementAtMostWith: aNumber [
 	"Parent has imposed a maximum size on us. Child wants a specific size... so be it"
 	<return: #BlMeasurementSpec>
@@ -84,7 +86,7 @@ TbLayoutExactResizer >> measurementAtMostWith: aNumber [
 	^ TbMeasurementSpec exact: self size
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 TbLayoutExactResizer >> measurementExactlyWith: aNumber [
 	"Parent has imposed an exact size on us"
 	<return: #BlMeasurementSpec>
@@ -92,7 +94,7 @@ TbLayoutExactResizer >> measurementExactlyWith: aNumber [
 	^ TbMeasurementSpec exact: self size
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 TbLayoutExactResizer >> measurementUnspecifiedWith: aNumber [
 	"Child wants a specific size... let it have it"
 	<return: #BlMeasurementSpec>
@@ -100,19 +102,19 @@ TbLayoutExactResizer >> measurementUnspecifiedWith: aNumber [
 	^ TbMeasurementSpec exact: self size
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbLayoutExactResizer >> printOn: aStream [
 	aStream
 		nextPutAll: 'Exact ';
 		nextPutAll: self size asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutExactResizer >> size [
 	^ size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutExactResizer >> size: aNumber [
 	self
 		assert: [ size isNil ]

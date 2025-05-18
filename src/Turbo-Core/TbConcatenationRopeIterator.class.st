@@ -2,16 +2,18 @@
 I am a special iterator used to iterate over concatenation rope
 "
 Class {
-	#name : #TbConcatenationRopeIterator,
-	#superclass : #TbRopeIterator,
+	#name : 'TbConcatenationRopeIterator',
+	#superclass : 'TbRopeIterator',
 	#instVars : [
 		'position',
 		'currentIterator'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #'private - asserting' }
+{ #category : 'private - asserting' }
 TbConcatenationRopeIterator >> assertInvariant [
 
 	"I am a position invariant; I make sure that iterator operations do not go out of bounds"
@@ -23,14 +25,14 @@ TbConcatenationRopeIterator >> assertInvariant [
 		ifFalse: [ self error: 'Position must always be less or equal than end' ]
 ]
 
-{ #category : #'iterator - attributes' }
+{ #category : 'iterator - attributes' }
 TbConcatenationRopeIterator >> attributes [
 	<return: #Collection of: #Objects>
 	
 	^ currentIterator attributes
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> backwardIteratorAt: aPosition [
 	<return: #BlRopeIterator>
 
@@ -39,14 +41,14 @@ TbConcatenationRopeIterator >> backwardIteratorAt: aPosition [
 		isForward: false
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> currentIterator [
 	<return: #BlRopeIterator>
 	
 	^ currentIterator
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> forwardIteratorAt: aPosition [
 	<return: #BlRopeIterator>
 
@@ -55,7 +57,7 @@ TbConcatenationRopeIterator >> forwardIteratorAt: aPosition [
 		isForward: true
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbConcatenationRopeIterator >> hasNext [
 	<return: #Boolean>
 	self assertInvariant.
@@ -63,7 +65,7 @@ TbConcatenationRopeIterator >> hasNext [
 	^ position < end
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbConcatenationRopeIterator >> hasPrevious [
 	<return: #Boolean>
 	self assertInvariant.
@@ -71,12 +73,12 @@ TbConcatenationRopeIterator >> hasPrevious [
 	^ position > start
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> moveBackward [
 	self moveBackward: 1
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> moveBackward: aNumber [
 	"!!! I do not alter the position of the sub-iterator, it must be done right before calling me"
 
@@ -94,12 +96,12 @@ TbConcatenationRopeIterator >> moveBackward: aNumber [
 		ifFalse: [ currentIterator := self backwardIteratorAt: position ]
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> moveForward [
 	self moveForward: 1
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> moveForward: aNumber [
 	"!!! I do not alter the position of the sub-iterator, it must be done right before calling me"
 
@@ -117,7 +119,7 @@ TbConcatenationRopeIterator >> moveForward: aNumber [
 		ifTrue: [ currentIterator := self forwardIteratorAt: position ]
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbConcatenationRopeIterator >> next [
 	<return: #Object>
 	| anItem |
@@ -134,7 +136,7 @@ TbConcatenationRopeIterator >> next [
 	^ anItem
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbConcatenationRopeIterator >> nextSpan [
 	<return: #BlRope>
 	| theAttributes aStart anEnd |
@@ -155,7 +157,7 @@ TbConcatenationRopeIterator >> nextSpan [
 	^ rope from: aStart to: anEnd
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbConcatenationRopeIterator >> peek [
 	<return: #Object>
 	
@@ -168,7 +170,7 @@ TbConcatenationRopeIterator >> peek [
 	^ currentIterator peek
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbConcatenationRopeIterator >> peer [
 	<return: #Object>
 	
@@ -181,14 +183,14 @@ TbConcatenationRopeIterator >> peer [
 	^ currentIterator peer
 ]
 
-{ #category : #'iterator - accessing' }
+{ #category : 'iterator - accessing' }
 TbConcatenationRopeIterator >> position [
 	<return: #Number>
 
 	^ position
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbConcatenationRopeIterator >> previous [
 	<return: #Object>
 	| anItem |
@@ -205,7 +207,7 @@ TbConcatenationRopeIterator >> previous [
 	^ anItem
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbConcatenationRopeIterator >> rope: aRope from: aStart to: anEnd [
 	super rope: aRope from: aStart to: anEnd.
 
@@ -213,7 +215,7 @@ TbConcatenationRopeIterator >> rope: aRope from: aStart to: anEnd [
 	currentIterator := self forwardIteratorAt: aStart
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbConcatenationRopeIterator >> skip: aNumber [
 	| newPosition |
 	
@@ -237,7 +239,7 @@ TbConcatenationRopeIterator >> skip: aNumber [
 				ifFalse: [ self backwardIteratorAt: position ] ]
 ]
 
-{ #category : #'private - enumeration' }
+{ #category : 'private - enumeration' }
 TbConcatenationRopeIterator >> subIteratorAt: aPosition isForward: isForward [
 	<return: #BlRopeIterator>
 	| aCurrentRope aCurrentPosition aCurrentEnd |

@@ -1,41 +1,43 @@
 Class {
-	#name : #TbElementChangeRecord,
-	#superclass : #Object,
+	#name : 'TbElementChangeRecord',
+	#superclass : 'Object',
 	#instVars : [
 		'changedValue',
 		'wasNotified'
 	],
-	#category : #'Turbo-Core-Basic-Changes'
+	#category : 'Turbo-Core-Basic-Changes',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Changes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChangeRecord >> beNotified [
 	wasNotified := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChangeRecord >> changedValue [
 	^ changedValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChangeRecord >> changedValue: anObject [
 	changedValue := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementChangeRecord >> gtDisplayOn: aStream [
 	self changedValue gtDisplayOn: aStream
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementChangeRecord >> initialize [
 	super initialize.
 	
 	wasNotified := false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementChangeRecord >> printOn: aStream [
 	
 	self changedValue printOn: aStream.
@@ -44,7 +46,7 @@ TbElementChangeRecord >> printOn: aStream [
 		ifTrue: [ aStream nextPutAll: ' => Notified' ].
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementChangeRecord >> wasNotified [
 	<return: #Boolean>
 

@@ -1,10 +1,12 @@
 Class {
-	#name : #TbTaskErrorHandler,
-	#superclass : #TbSingleErrorHandler,
-	#category : #'Turbo-Core-Basic-Errors'
+	#name : 'TbTaskErrorHandler',
+	#superclass : 'TbSingleErrorHandler',
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbTaskErrorHandler >> matches: aFramePhase [
 	^ aFramePhase isTaskPhase
 ]

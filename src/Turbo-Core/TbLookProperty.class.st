@@ -1,14 +1,16 @@
 Class {
-	#name : #TbLookProperty,
-	#superclass : #TbObjectProperty,
+	#name : 'TbLookProperty',
+	#superclass : 'TbObjectProperty',
 	#instVars : [
 		'invalidateBlock',
 		'whenBlock'
 	],
-	#category : #'Turbo-Core-Property'
+	#category : 'Turbo-Core-Property',
+	#package : 'Turbo-Core',
+	#tag : 'Property'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbLookProperty class >> on: anOwner named: aSymbol default: aValue invalidated: anInvalidatedBlock when: aWhenBlock [
 	^ self new
 		name: aSymbol;
@@ -19,7 +21,7 @@ TbLookProperty class >> on: anOwner named: aSymbol default: aValue invalidated: 
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLookProperty >> initialize [
 	super initialize.
 	
@@ -27,18 +29,18 @@ TbLookProperty >> initialize [
 	whenBlock := [ true ]
 ]
 
-{ #category : #'change management' }
+{ #category : 'change management' }
 TbLookProperty >> invalidated [
 	(whenBlock cull: self owner)
 		ifTrue: [ invalidateBlock cull: self owner ]
 ]
 
-{ #category : #scripting }
+{ #category : 'scripting' }
 TbLookProperty >> invalidated: aBlock [
 	invalidateBlock := aBlock
 ]
 
-{ #category : #scripting }
+{ #category : 'scripting' }
 TbLookProperty >> when: aBlock [
 	whenBlock := aBlock
 ]

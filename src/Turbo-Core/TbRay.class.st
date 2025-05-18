@@ -4,18 +4,20 @@ A ray is a line with an endpoint that extends infinitely in one direction.
 I consist of a starting ===#point=== and a direction ===#vector===
 "
 Class {
-	#name : #TbRay,
-	#superclass : #Object,
+	#name : 'TbRay',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'point',
 		'vector'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbRay class >> from: aPoint directed: aBlVector [
 	<return: #BlRay>
 
@@ -24,7 +26,7 @@ TbRay class >> from: aPoint directed: aBlVector [
 		vector: aBlVector
 ]
 
-{ #category : #'api - vector functions' }
+{ #category : 'api - vector functions' }
 TbRay >> distanceTo: aPoint [
 	"The distance (or perpendicular distance) from a point to a line is the shortest distance from a fixed point to any point on a fixed infinite line in Euclidean geometry. It is the length of the line segment which joins the point to the line and is perpendicular to the line.
 	(https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line)
@@ -43,7 +45,7 @@ TbRay >> distanceTo: aPoint [
 	^ ((self vector y * aPoint x) - (self vector x * aPoint y) + (self point y * (self point x + self vector x)) - (self point x * (self point y + self vector y))) abs / self vector length
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRay >> initialize [
 	super initialize.
 	
@@ -51,19 +53,19 @@ TbRay >> initialize [
 	vector := TbVector x: 0 y: 0.
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbRay >> point [
 	<return: #Point>
 
 	^ point
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbRay >> point: aPoint [
 	point := aPoint
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbRay >> printOn: aStream [
 	aStream
 		print: self point;
@@ -71,7 +73,7 @@ TbRay >> printOn: aStream [
 		print: self vector
 ]
 
-{ #category : #'api - vector functions' }
+{ #category : 'api - vector functions' }
 TbRay >> projection: aPoint [
 	"Return a projection of a given point on this ray"
 	<return: #Point>
@@ -103,14 +105,14 @@ TbRay >> projection: aPoint [
 	^ self point + (((aPoint - self point) asBlocVector dotProduct: aNormalizedDirection) * aNormalizedDirection)
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbRay >> vector [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ vector
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbRay >> vector: aBlVector [
 	vector := aBlVector
 ]

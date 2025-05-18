@@ -1,25 +1,27 @@
 Class {
-	#name : #TbHorizontalAlignment,
-	#superclass : #TbElementAlignment,
+	#name : 'TbHorizontalAlignment',
+	#superclass : 'TbElementAlignment',
 	#classInstVars : [
 		'center',
 		'left',
 		'right'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> center [
 	^ center
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> directed: aBlLayoutDirection [
 	^ aBlLayoutDirection of: self
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbHorizontalAlignment class >> initialize [
 	super initialize.
 	
@@ -30,67 +32,67 @@ TbHorizontalAlignment class >> initialize [
 	end := TbHorizontalEndAlignment new.
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> left [
 	^ left
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> leftToRight [
 	^ self subclassResponsibility
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> null [
 	^ TbElementAlignment null horizontal
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> right [
 	^ right
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment class >> rightToLeft [
 	^ self subclassResponsibility
 ]
 
-{ #category : #composition }
+{ #category : 'composition' }
 TbHorizontalAlignment >> + aVerticalAlignment [
 	^ TbCompositeAlignment horizontal: self vertical: aVerticalAlignment
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> center [
 	^ self class center
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> directed: aBlLayoutDirection [
 	^ self class directed: aBlLayoutDirection
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> end [
 	^ self class end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> leftToRight [
 	^ self class leftToRight
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> null [
 	^ self class null
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> rightToLeft [
 	^ self class rightToLeft
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalAlignment >> start [
 	^ self class start
 ]

@@ -3,25 +3,27 @@ I am an exact geometry resizer.
 I make sure that geometry has a concrete size independent from its owner element
 "
 Class {
-	#name : #TbGeomExactResizer,
-	#superclass : #TbGeometryResizer,
+	#name : 'TbGeomExactResizer',
+	#superclass : 'TbGeometryResizer',
 	#instVars : [
 		'extent'
 	],
-	#category : #'Turbo-Core-Basic-Support'
+	#category : 'Turbo-Core-Basic-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Support'
 }
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbGeomExactResizer >> adapt: aGeometry to: anElement [
 	aGeometry matchExtent: self extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGeomExactResizer >> extent [
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGeomExactResizer >> extent: aPoint [
 	extent := aPoint
 ]

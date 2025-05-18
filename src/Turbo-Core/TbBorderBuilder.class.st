@@ -7,8 +7,8 @@ BlBorder builder
 	build
 "
 Class {
-	#name : #TbBorderBuilder,
-	#superclass : #Object,
+	#name : 'TbBorderBuilder',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -21,10 +21,12 @@ Class {
 		'dashOffset',
 		'opacity'
 	],
-	#category : #'Turbo-Core-Basic-Border'
+	#category : 'Turbo-Core-Basic-Border',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Border'
 }
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbBorderBuilder >> build [
 	^ TbBorder basicNew
 		initialize;
@@ -35,7 +37,7 @@ TbBorderBuilder >> build [
 		yourself
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbBorderBuilder >> buildStyle [
 	^ TbStrokeStyle new
 		lineCap: self lineCap;
@@ -45,84 +47,84 @@ TbBorderBuilder >> buildStyle [
 		dashOffset: self dashOffset
 ]
 
-{ #category : #styles }
+{ #category : 'styles' }
 TbBorderBuilder >> capRound [
 	self lineCap: TbStrokeLineCap round
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> dashArray [
 	^ dashArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> dashArray: anObject [
 	dashArray := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> dashOffset [
 	^ dashOffset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> dashOffset: anObject [
 	dashOffset := anObject
 ]
 
-{ #category : #styles }
+{ #category : 'styles' }
 TbBorderBuilder >> dashed [
 	dashOffset := 0.
 	dashArray := #(6 4.2)
 ]
 
-{ #category : #styles }
+{ #category : 'styles' }
 TbBorderBuilder >> dashedSmall [
 	dashOffset := 0.
 	dashArray := #(3 2)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultDashArray [
 	^ #()
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultDashOffset [
 	^ 0.0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultLineCap [
 	^ TbStrokeLineCap butt
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultLineJoin [
 	^ TbStrokeLineJoin miter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultMiterLimit [
 	^ 4.0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultOpacity [
 	^ 1.0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultPaint [
 	^ TbPaint transparent 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> defaultWidth [
 	^ 1.0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBorderBuilder >> initialize [
 	super initialize.
 	
@@ -136,77 +138,77 @@ TbBorderBuilder >> initialize [
 	opacity := self defaultOpacity
 ]
 
-{ #category : #styles }
+{ #category : 'styles' }
 TbBorderBuilder >> joinRound [
 	self lineJoin: TbStrokeLineJoin round
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> lineCap [
 	<return: #BlStrokeLineCap>
 
 	^ lineCap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> lineCap: aBlStrokeLineCap [
 	lineCap := aBlStrokeLineCap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> lineJoin [
 	<return: #BlStrokeLineJoin>
 
 	^ lineJoin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> lineJoin: aBlStrokeLineJoin [
 	lineJoin := aBlStrokeLineJoin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> miterLimit [
 	^ miterLimit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> miterLimit: anObject [
 	miterLimit := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> opacity [
 	^ opacity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> opacity: anObject [
 	opacity := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> paint [
 	^ paint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> paint: anObject [
 	paint := anObject
 ]
 
-{ #category : #styles }
+{ #category : 'styles' }
 TbBorderBuilder >> solid [
 	dashOffset := 0.0.
 	dashArray := #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> width [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBorderBuilder >> width: anObject [
 	width := anObject
 ]

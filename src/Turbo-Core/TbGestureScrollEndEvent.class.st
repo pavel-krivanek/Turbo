@@ -1,10 +1,12 @@
 Class {
-	#name : #TbGestureScrollEndEvent,
-	#superclass : #TbGestureBaseScrollEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureScrollEndEvent',
+	#superclass : 'TbGestureBaseScrollEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbGestureScrollEndEvent >> sendTo: anObject [
 	anObject gestureScrollEndEvent: self
 ]

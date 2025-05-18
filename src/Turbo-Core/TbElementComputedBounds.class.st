@@ -2,41 +2,43 @@
 I am a special type of element bounds with an ability to be in-place converted between coordinate systems (local <-> parent <-> global <-> window)
 "
 Class {
-	#name : #TbElementComputedBounds,
-	#superclass : #TbElementBounds,
+	#name : 'TbElementComputedBounds',
+	#superclass : 'TbElementBounds',
 	#instVars : [
 		'bounds'
 	],
-	#category : #'Turbo-Core-Basic-Bounds'
+	#category : 'Turbo-Core-Basic-Bounds',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Bounds'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbElementComputedBounds >> asRectangle [
 	<return: #Rectangle>
 	
 	 ^ self bounds asRectangle
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 TbElementComputedBounds >> assertNotOriginal [
 	self
 		assert: [ self referenceElement bounds ~~ self ]
 		description: [ 'Can not modify original reference element bounds' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementComputedBounds >> bounds [
 	<return: #BlBounds>
 
 	^ bounds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementComputedBounds >> bounds: aBlBounds [
 	bounds := aBlBounds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementComputedBounds >> center [
 	"Return a point representing a geometrical center of this bounds.
 	I am an optimised version that benefits by optimisations of underlying bounds object"
@@ -45,7 +47,7 @@ TbElementComputedBounds >> center [
 	^ self bounds center
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementComputedBounds >> extent [
 	"Return extent of current bounds"
 	<return: #Point>
@@ -53,7 +55,7 @@ TbElementComputedBounds >> extent [
 	^ self bounds extent
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementComputedBounds >> inChild: anElement [
 	<return: #BlElementBounds>
 
@@ -64,12 +66,12 @@ TbElementComputedBounds >> inChild: anElement [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementComputedBounds >> inLocal [
 	^ self
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementComputedBounds >> inParent [
 	self assertNotOriginal.
 	
@@ -84,7 +86,7 @@ TbElementComputedBounds >> inParent [
 	referenceElement := self referenceElement parent
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementComputedBounds >> inParent: anElement [
 	<return: #BlElementBounds>
 	| subParent |
@@ -101,7 +103,7 @@ TbElementComputedBounds >> inParent: anElement [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementComputedBounds >> inSpace [
 	self assertNotOriginal.
 	
@@ -116,7 +118,7 @@ TbElementComputedBounds >> inSpace [
 	referenceElement := self referenceElement topMostParent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementComputedBounds >> position [
 	"Return bounds position (an origin) as a Point"
 	<return: #Point>
@@ -124,7 +126,7 @@ TbElementComputedBounds >> position [
 	^ self bounds origin
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementComputedBounds >> transformed [
 	self assertNotOriginal.
 	

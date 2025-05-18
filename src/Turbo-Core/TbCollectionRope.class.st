@@ -3,20 +3,22 @@ I am a special rope that is able to hold arbitrary items in a collection data st
 My recommended maximum length (size) is defined in BrRope class>>#combineLength
 "
 Class {
-	#name : #TbCollectionRope,
-	#superclass : #TbRope,
+	#name : 'TbCollectionRope',
+	#superclass : 'TbRope',
 	#instVars : [
 		'collection'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCollectionRope class >> collection: aCollection [
 	^ self new collection: aCollection
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCollectionRope class >> from: aLeftRope and: aRightRope [
 	self
 		assert: aLeftRope species = self collectionRope
@@ -31,7 +33,7 @@ TbCollectionRope class >> from: aLeftRope and: aRightRope [
 		aRightRope do: [ :eachItem | aStream nextPut: eachItem ] ])
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbCollectionRope >> at: anIndex [
 	"Return an item at a given index"
 	<return: #Object>
@@ -39,7 +41,7 @@ TbCollectionRope >> at: anIndex [
 	^ collection at: anIndex
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbCollectionRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	"See BlRope>>#attributes:from:to: for the detailed explanation on start and end indices"
 	<return: #BlRope>
@@ -67,19 +69,19 @@ TbCollectionRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	^  (self from: 0 to: aStart) append: (anAttributeRope append: (self from: anEnd to: self size))
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbCollectionRope >> children [
 	<return: #Collection of: #BlRope>
 
 	^ { }
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbCollectionRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCollectionRope >> collection [
 	"Return a collection behind this rope"
 	<return: #SequenceableCollection of: #Object>
@@ -87,12 +89,12 @@ TbCollectionRope >> collection [
 	^ collection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCollectionRope >> collection: aCollection [
 	collection := aCollection
 ]
 
-{ #category : #'rope - deleting' }
+{ #category : 'rope - deleting' }
 TbCollectionRope >> delete: aStart to: anEnd [
 	<return: #BlRope>
 	| newCollection |
@@ -117,7 +119,7 @@ TbCollectionRope >> delete: aStart to: anEnd [
 	^ self class collection: newCollection
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbCollectionRope >> depth [
 	"Return the max tree height of this rope (composition depth).
 	Collection rope is a leaf in a composition tree => depth is always 1"
@@ -126,12 +128,12 @@ TbCollectionRope >> depth [
 	^ 1
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbCollectionRope >> do: aBlock [
 	collection do: aBlock
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbCollectionRope >> empty [
 	"Return an empty collection rope"
 	<return: #BlRope>
@@ -139,7 +141,7 @@ TbCollectionRope >> empty [
 	^ self class collection: (collection species new: 0)
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbCollectionRope >> from: aStart to: anEnd [
 	| aNewLegnth |
 	self assertAccessFrom: aStart to: anEnd.
@@ -155,7 +157,7 @@ TbCollectionRope >> from: aStart to: anEnd [
 		ifFalse: [ self class subRope rope: self offset: aStart length: aNewLegnth ]
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbCollectionRope >> from: aStart to: anEnd do: aBlock [
 
 	aStart + 1
@@ -164,7 +166,7 @@ TbCollectionRope >> from: aStart to: anEnd do: aBlock [
 		do: [ :anIndex | aBlock value: (collection at: anIndex) ]
 ]
 
-{ #category : #'rope - inserting' }
+{ #category : 'rope - inserting' }
 TbCollectionRope >> insertItems: aCollection at: anIndex [
 	| anInsertionRope |
 	self assertIndexForInsert: anIndex.
@@ -187,7 +189,7 @@ TbCollectionRope >> insertItems: aCollection at: anIndex [
 	^ (self from: 0 to: anIndex) append: (anInsertionRope append: (self from: anIndex to: self size))
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbCollectionRope >> isLeaf [
 	"Collection rope can not contain other ropes (even if my collection consists of ropes,
 	we don't count them and don't take into account such case)"
@@ -196,12 +198,12 @@ TbCollectionRope >> isLeaf [
 	^ true
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbCollectionRope >> iterator: aStart to: anEnd [
 	^ TbCollectionRopeIterator rope: self from: aStart to: anEnd
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbCollectionRope >> merge: aCollection at: anIndex [
 	| newCollection |
 	newCollection := anIndex = 0
@@ -229,7 +231,7 @@ TbCollectionRope >> merge: aCollection at: anIndex [
 	^ self class collectionRope collection: newCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbCollectionRope >> mergeSplit: aCollection at: anIndex [
 	| leftArray rightArray middle totalSize leftAmountBeforeIndex leftAmountFromCollection leftAmountAfterIndex rightAmountBeforeIndex alreadyFilledAmount alreadyFilledAmountFromCollection rightAmountFromCollection rightAmountAfterIndex |
 	
@@ -302,7 +304,7 @@ TbCollectionRope >> mergeSplit: aCollection at: anIndex [
 		and: (self class collectionRope collection: rightArray)
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbCollectionRope >> size [
 	"Return the amount of items in this rope, which is equal to the size of an underlying collection"
 	<return: #Number>

@@ -1,6 +1,6 @@
-Extension { #name : #MacOSXPlatform }
+Extension { #name : 'MacOSXPlatform' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 MacOSXPlatform >> blocKeyFor: aKeyValue in: aKeyTable [
 	<return: #BlKeyboardKey>
 

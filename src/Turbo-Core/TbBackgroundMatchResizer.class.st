@@ -1,20 +1,22 @@
 Class {
-	#name : #TbBackgroundMatchResizer,
-	#superclass : #TbBackgroundResizer,
+	#name : 'TbBackgroundMatchResizer',
+	#superclass : 'TbBackgroundResizer',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbBackgroundMatchResizer class >> cleanUp [
 	super cleanUp.
 	
 	uniqueInstance := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBackgroundMatchResizer class >> uniqueInstance [
 	"Return unique instance of match resizer.
 	Note: match resizer is stateless so it is preferable to share
@@ -24,7 +26,7 @@ TbBackgroundMatchResizer class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbBackgroundMatchResizer >> adapt: aBackground to: anElement [
 	aBackground matchExtent: anElement extent
 ]

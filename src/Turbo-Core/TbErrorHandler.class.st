@@ -4,14 +4,16 @@ I am responsible for error handling that occur in the ${class:BlElement}$
 
 "
 Class {
-	#name : #TbErrorHandler,
-	#superclass : #Object,
+	#name : 'TbErrorHandler',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Basic-Errors'
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 TbErrorHandler >> convertToHandledError: anError in: anElement [
 	| aHandledError |
 
@@ -24,21 +26,21 @@ TbErrorHandler >> convertToHandledError: anError in: anElement [
 	^ aHandledError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbErrorHandler >> errors [
 	<return: #Collection of: #BlHandledError>
 
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbErrorHandler >> errorsForPhase: aFramePhase [
 	<return: #Collection of: #TbSpaceFramePhase>
 
 	^ self errors select: [ :aHandledError | aHandledError framePhase = aFramePhase ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbErrorHandler >> framePhaseOf: anElement [
 	<return: #TbSpaceFramePhase>
 
@@ -47,7 +49,7 @@ TbErrorHandler >> framePhaseOf: anElement [
 		ifFalse: [ TbSpaceFrameUnknownPhase new ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbErrorHandler >> handleCriticalError: aHandledError [
 	"Handle an error that no one know how to handle.
 	I stop the space and crash the system"
@@ -56,7 +58,7 @@ TbErrorHandler >> handleCriticalError: aHandledError [
 	[ aHandledError error debug ] fork
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbErrorHandler >> handleError: anError in: anElement [
 	"Handle a given error that comes from a provided visual element"
 	| aHandledError |
@@ -67,40 +69,40 @@ TbErrorHandler >> handleError: anError in: anElement [
 	self processError: aHandledError
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbErrorHandler >> hasError [
 	<return: #Boolean>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbErrorHandler >> matches: aFramePhase [
 	<return: #Boolean>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbErrorHandler >> processError: aHandledError [
 	self subclassResponsibility
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbErrorHandler >> registerError: aHandledError [
 	"Register a given handled error for further debugging"
 
 	self subclassResponsibility
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbErrorHandler >> with: anElement do: aBlock [
 	"Evaluate a given block while handling errors"
 
 	self with: anElement do: aBlock failed: [  ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbErrorHandler >> with: anElement do: aBlock failed: aFailBlock [
 	"Evaluate a given block while handling errors"
 

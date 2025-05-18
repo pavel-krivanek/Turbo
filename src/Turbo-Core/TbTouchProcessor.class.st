@@ -1,14 +1,16 @@
 Class {
-	#name : #TbTouchProcessor,
-	#superclass : #TbBaseEventProcessor,
+	#name : 'TbTouchProcessor',
+	#superclass : 'TbBaseEventProcessor',
 	#instVars : [
 		'previousTouchDownEvent',
 		'pressedPointers'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'api - touch down' }
+{ #category : 'api - touch down' }
 TbTouchProcessor >> handleTouchDown: aTouchDownEvent [
 	| aTargetElement |
 
@@ -34,7 +36,7 @@ TbTouchProcessor >> handleTouchDown: aTouchDownEvent [
 	previousTouchDownEvent := aTouchDownEvent
 ]
 
-{ #category : #'api - touch move' }
+{ #category : 'api - touch move' }
 TbTouchProcessor >> handleTouchMove: aTouchEvent [
 	| aTargetElement |
 	
@@ -49,7 +51,7 @@ TbTouchProcessor >> handleTouchMove: aTouchEvent [
 	self processTouchMove: aTouchEvent
 ]
 
-{ #category : #'api - touch up' }
+{ #category : 'api - touch up' }
 TbTouchProcessor >> handleTouchUp: aTouchEvent [
 	| aTargetElement aPointerIndex |
 
@@ -66,7 +68,7 @@ TbTouchProcessor >> handleTouchUp: aTouchEvent [
 	self processTouchUp: aTouchEvent
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTouchProcessor >> initialize [
 	super initialize.
 
@@ -74,12 +76,12 @@ TbTouchProcessor >> initialize [
 	pressedPointers := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTouchProcessor >> pressedPointers [
 	^ pressedPointers
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbTouchProcessor >> processPicking: aTouchEvent [
 	<return: #BlElement>
 	| aTargetElement |
@@ -90,7 +92,7 @@ TbTouchProcessor >> processPicking: aTouchEvent [
 	^ aTargetElement
 ]
 
-{ #category : #'api - touch move' }
+{ #category : 'api - touch move' }
 TbTouchProcessor >> processTouchMove: aTouchMoveEvent [
 	self fireEvent: aTouchMoveEvent.
 
@@ -98,7 +100,7 @@ TbTouchProcessor >> processTouchMove: aTouchMoveEvent [
 	self updateCursorFrom: aTouchMoveEvent target
 ]
 
-{ #category : #'api - touch up' }
+{ #category : 'api - touch up' }
 TbTouchProcessor >> processTouchUp: aTouchUpEvent [
 	
 	self fireEvent: aTouchUpEvent.
@@ -106,7 +108,7 @@ TbTouchProcessor >> processTouchUp: aTouchUpEvent [
 	self updateCursorFrom: aTouchUpEvent target
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbTouchProcessor >> updateCursorFrom: aTarget [
 	| t |
 	t := aTarget.

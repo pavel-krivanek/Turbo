@@ -1,14 +1,16 @@
 Class {
-	#name : #TbSlideHandler,
-	#superclass : #TbElementEventListener,
+	#name : 'TbSlideHandler',
+	#superclass : 'TbElementEventListener',
 	#instVars : [
 		'originalPosition',
 		'dragStartPosition'
 	],
-	#category : #'Turbo-Core-Utilities - Drag&Drop'
+	#category : 'Turbo-Core-Utilities - Drag&Drop',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drag&Drop'
 }
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbSlideHandler >> dragEvent: anEvent [
 	| aSlideDelta |
 	anEvent consumed: true.
@@ -19,7 +21,7 @@ TbSlideHandler >> dragEvent: anEvent [
 	dragStartPosition := anEvent localPosition.
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbSlideHandler >> dragStartEvent: anEvent [
 	anEvent consumed: true.
 

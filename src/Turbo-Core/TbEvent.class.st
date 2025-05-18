@@ -2,8 +2,8 @@
 The specific announcement superclass for the context of Bloc.
 "
 Class {
-	#name : #TbEvent,
-	#superclass : #Announcement,
+	#name : 'TbEvent',
+	#superclass : 'Announcement',
 	#instVars : [
 		'target',
 		'source',
@@ -13,17 +13,19 @@ Class {
 		'consumed',
 		'traversedTargets'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TbEvent class >> fireEvent: anEvent [
 	<return: #BlEvent>
 
 	^ self fireEvent: anEvent target: anEvent target
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TbEvent class >> fireEvent: anEvent target: anEventTarget [
 	<return: #BlEvent>
 	| theEvent aDispatcherChain |
@@ -40,7 +42,7 @@ TbEvent class >> fireEvent: anEvent target: anEventTarget [
 	^ aDispatcherChain dispatchEvent: theEvent
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbEvent >> arrivedTarget: aTBlEventTarget [
 	self
 		assert: [ aTBlEventTarget isNotNil ]
@@ -50,7 +52,7 @@ TbEvent >> arrivedTarget: aTBlEventTarget [
 	self traversedTargets add: (TbEventTraversalTargetStep new target: currentTarget)
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbEvent >> bubblingTarget: aTBlEventTarget [
 	self
 		assert: [ aTBlEventTarget isNotNil ]
@@ -60,17 +62,17 @@ TbEvent >> bubblingTarget: aTBlEventTarget [
 	self traversedTargets add: (TbEventTraversalBubblingStep new target: currentTarget)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> canBePropagated [
 	^ canBePropagated ifNil: [ canBePropagated := true ]
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEvent >> canBePropagated: anObject [
 	canBePropagated := anObject
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbEvent >> capturingTarget: aTBlEventTarget [
 	self
 		assert: [ aTBlEventTarget isNotNil ]
@@ -80,12 +82,12 @@ TbEvent >> capturingTarget: aTBlEventTarget [
 	self traversedTargets add: (TbEventTraversalCapturingStep new target: currentTarget)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> consumed: aBoolean [
 	consumed := aBoolean
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbEvent >> copyFrom: anEvent [
 	super copyFrom: anEvent.
 
@@ -96,7 +98,7 @@ TbEvent >> copyFrom: anEvent [
 	consumed := false
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbEvent >> currentTarget [
 	"Identifies the current target for the event, as the event traverses the scene graph.
 	It always refers to the element to which the event handler has been attached, as opposed to #arget which identifies the element on which the event occurred."
@@ -105,17 +107,17 @@ TbEvent >> currentTarget [
 	^ currentTarget
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbEvent >> currentTarget: anEventTarget [
 	currentTarget := anEventTarget
 ]
 
-{ #category : #firing }
+{ #category : 'firing' }
 TbEvent >> fire [
 	TbEvent fireEvent: self
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbEvent >> forwardingTarget: aTBlEventTarget [
 	self
 		assert: [ aTBlEventTarget isNotNil ]
@@ -125,131 +127,131 @@ TbEvent >> forwardingTarget: aTBlEventTarget [
 	self traversedTargets add: (TbEventTraversalForwardingStep new target: currentTarget)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> hasSource [
 	<return: #Boolean>
 	
 	^ source isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbEvent >> initialize [
 	super initialize.
 	
 	traversedTargets := LinkedList new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isBaseDrag [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isBaseFocus [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isBlur [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isClick [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isConsumed [
 	^ consumed ifNil: [ consumed := false ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isDoubleClick [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isDrag [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isFocus [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isFocusIn [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isFocusOut [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isFocusTransfer [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isGesture [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isKeyboard [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isMouse [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isMouseDown [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isMouseEnter [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isMouseLeave [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isMouseMove [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isMouseUp [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isSpaceEvent [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isTextInput [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEvent >> isTouch [
 	^ false
 ]
 
-{ #category : #firing }
+{ #category : 'firing' }
 TbEvent >> newCopyFor: aTarget [
 	^ self class new
 		copyFrom: self;
@@ -257,19 +259,19 @@ TbEvent >> newCopyFor: aTarget [
 		yourself
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbEvent >> postCopy [
 	super postCopy.
 	
 	traversedTargets := traversedTargets copy
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbEvent >> sendTo: anObject [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEvent >> source [
 	"Return an event target that plays a role of a source of this event"
 	<return: #BlEventTarget>
@@ -281,7 +283,7 @@ TbEvent >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEvent >> source: aBlEventTarget [
 	
 	self
@@ -291,7 +293,7 @@ TbEvent >> source: aBlEventTarget [
 	source := aBlEventTarget
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbEvent >> target [
 	"Return a reference to the object that dispatched the event.
 	It is different from #currentTarget when the event handler is called during the bubbling or capturing phase of the event."
@@ -300,12 +302,12 @@ TbEvent >> target [
 	^ target
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEvent >> target: aTBlEventTarget [
 	target := aTBlEventTarget
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbEvent >> timestamp [
 	"Returns the time at which the event was created."
 	<return: #DateAndTime>
@@ -313,7 +315,7 @@ TbEvent >> timestamp [
 	^ timestamp
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEvent >> timestamp: aDateAndTime [
 
 	self
@@ -323,7 +325,7 @@ TbEvent >> timestamp: aDateAndTime [
 	timestamp := aDateAndTime
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbEvent >> traversedTargets [
 	^ traversedTargets
 ]

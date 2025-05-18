@@ -12,8 +12,8 @@ Evaluate to see a visual preview:
 === BlStrokeLineCap new inspect ===
 "
 Class {
-	#name : #TbStrokeLineCap,
-	#superclass : #Object,
+	#name : 'TbStrokeLineCap',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#classInstVars : [
@@ -21,20 +21,22 @@ Class {
 		'round',
 		'square'
 	],
-	#category : #'Turbo-Core-Paint-Support'
+	#category : 'Turbo-Core-Paint-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Paint-Support'
 }
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbStrokeLineCap class >> butt [
 	^ butt ifNil: [ butt := TbStrokeLineButtCap new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeLineCap class >> capName [
 	^ self subclassResponsibility
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbStrokeLineCap class >> cleanUp [
 	<script: 'self cleanUp'>
 	super cleanUp.
@@ -42,17 +44,17 @@ TbStrokeLineCap class >> cleanUp [
 	square := round := butt := nil
 ]
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbStrokeLineCap class >> round [
 	^ round ifNil: [ round := TbStrokeLineRoundCap new ]
 ]
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbStrokeLineCap class >> square [
 	^ square ifNil: [ square := TbStrokeLineSquareCap new ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbStrokeLineCap >> printOn: aStream [
 
 	self class ~= TbStrokeLineCap

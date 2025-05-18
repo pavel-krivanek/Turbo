@@ -16,36 +16,38 @@ Background can be instantiated and composed directly or with the help of ==BlBac
 See ==BlBackgroundBuilder== for the related example
 "
 Class {
-	#name : #TbBackground,
-	#superclass : #Object,
+	#name : 'TbBackground',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'opacity'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbBackground class >> builder [
 	^ TbCompositeBackgroundBuilder new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBackground class >> image: aForm [
 	<return: #BlBackground>
 	
 	^ TbImageBackground image: aForm
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBackground class >> paint: aColorOrBlPaint [
 	<return: #BlBackground>
 
 	^ TbPaintBackground paint: aColorOrBlPaint
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBackground class >> transparent [
 	"Return a completely transparent background"
 	<return: #BlBackground>
@@ -53,12 +55,12 @@ TbBackground class >> transparent [
 	^ TbTransparentBackground uniqueInstance
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbBackground >> asBlBackground [
 	^ self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBackground >> defaultOpacity [
 	"By default background is completely opaque"
 	<return: #Number>
@@ -66,7 +68,7 @@ TbBackground >> defaultOpacity [
 	^ 1.0
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBackground >> isTransparent [
 	"Return true if background is transparent and should not be rendered, false otherwise"
 	<return: #Boolean>
@@ -74,7 +76,7 @@ TbBackground >> isTransparent [
 	^ self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbBackground >> matchExtent: anExtent [
 	"Resize background to match given extent.
 	Used to adapt image or gradient backgrounds to the element's extent"
@@ -82,14 +84,14 @@ TbBackground >> matchExtent: anExtent [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBackground >> opacity [
 	<return: #Number>
 
 	^ opacity ifNil: [ self defaultOpacity ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBackground >> opacity: aNumber [
 	self
 		assert: [ aNumber isNotNil ]

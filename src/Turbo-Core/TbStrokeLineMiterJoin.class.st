@@ -5,12 +5,14 @@ This is the initial value.
 See BlStrokeLineJoin for other types
 "
 Class {
-	#name : #TbStrokeLineMiterJoin,
-	#superclass : #TbStrokeLineJoin,
-	#category : #'Turbo-Core-Paint-Support'
+	#name : 'TbStrokeLineMiterJoin',
+	#superclass : 'TbStrokeLineJoin',
+	#category : 'Turbo-Core-Paint-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Paint-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeLineMiterJoin class >> joinName [
 	^ 'Miter'
 ]

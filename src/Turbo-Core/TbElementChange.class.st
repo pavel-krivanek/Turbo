@@ -4,8 +4,8 @@ I represent a single element property change.
 I log all changes in a linked list in order to simplify debugging process
 "
 Class {
-	#name : #TbElementChange,
-	#superclass : #Object,
+	#name : 'TbElementChange',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -13,10 +13,12 @@ Class {
 		'hasActiveChanges',
 		'previousValue'
 	],
-	#category : #'Turbo-Core-Basic-Changes'
+	#category : 'Turbo-Core-Basic-Changes',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Changes'
 }
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 TbElementChange >> commitChange: anNewValue on: anElement [
 	"Send an event letting element's event handlers know that a property changed.
 	Should be done once"
@@ -24,7 +26,7 @@ TbElementChange >> commitChange: anNewValue on: anElement [
 	self subclassResponsibility
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 TbElementChange >> commitOn: anElement [
 	"Commit changes done to the given element if there are any"
 	| lastValue |
@@ -43,7 +45,7 @@ TbElementChange >> commitOn: anElement [
 	hasActiveChanges := false
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbElementChange >> compare: aNewValue with: anOldValue [
 	"Return true if new value is equal (or close to) to new value"
 	<return: #Boolean>
@@ -51,12 +53,12 @@ TbElementChange >> compare: aNewValue with: anOldValue [
 	^ self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementChange >> gtDisplayOn: aStream [
 	aStream nextPutAll: self name
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementChange >> hasActiveChanges [
 	"Return true if there are any uncomitted changes, false otherwise"
 	<return: #Boolean>
@@ -64,7 +66,7 @@ TbElementChange >> hasActiveChanges [
 	^ hasActiveChanges
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementChange >> initialize [
 	super initialize.
 	
@@ -72,7 +74,7 @@ TbElementChange >> initialize [
 	hasActiveChanges := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChange >> name [
 	"Return a change name, eg. `Position` or `Extent` to be used in various tools extensions"
 	<return: #String>
@@ -80,7 +82,7 @@ TbElementChange >> name [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbElementChange >> newChangeValue: anObject [
 
 	^ TbBloc debugModeEnabled
@@ -88,7 +90,7 @@ TbElementChange >> newChangeValue: anObject [
 		ifFalse: [ TbElementChangeRecord new changedValue: anObject ]
 ]
 
-{ #category : #recording }
+{ #category : 'recording' }
 TbElementChange >> old: anOldValue new: aNewValue [
 	self
 		assert: [ records isEmpty or: [ records last changedValue = anOldValue ] ]
@@ -104,7 +106,7 @@ TbElementChange >> old: anOldValue new: aNewValue [
 	hasActiveChanges := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChange >> previousValue [
 	"Return last comitted value or nil if it does not exist"
 	<return: #Object or: nil>
@@ -112,12 +114,12 @@ TbElementChange >> previousValue [
 	^ previousValue
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementChange >> printOn: aStream [
 	aStream nextPutAll: self name, ' (older values on top)'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChange >> records [
 	"Return a collection of all change records.
 	It is not guaranteed that records collection contains

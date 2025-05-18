@@ -5,12 +5,14 @@ This is the initial value.
 See BlStrokeLineCap for other types
 "
 Class {
-	#name : #TbStrokeLineButtCap,
-	#superclass : #TbStrokeLineCap,
-	#category : #'Turbo-Core-Paint-Support'
+	#name : 'TbStrokeLineButtCap',
+	#superclass : 'TbStrokeLineCap',
+	#category : 'Turbo-Core-Paint-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Paint-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeLineButtCap class >> capName [
 	^ 'Butt'
 ]

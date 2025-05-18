@@ -6,7 +6,9 @@ Purposes/real world use cases:
  - zoom in
 "
 Class {
-	#name : #TbGestureBasePinchEvent,
-	#superclass : #TbGestureEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureBasePinchEvent',
+	#superclass : 'TbGestureEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }

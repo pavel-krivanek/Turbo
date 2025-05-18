@@ -1,6 +1,6 @@
-Extension { #name : #Cursor }
+Extension { #name : 'Cursor' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Cursor >> isSystemCursor [
 	^ true
 ]

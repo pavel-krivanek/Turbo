@@ -1,32 +1,34 @@
 Class {
-	#name : #TbUIEvent,
-	#superclass : #TbEvent,
+	#name : 'TbUIEvent',
+	#superclass : 'TbEvent',
 	#instVars : [
 		'position',
 		'screenPosition',
 		'modifiers',
 		'button'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUIEvent >> button [
 	^ button
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUIEvent >> button: anObject [
 	button := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbUIEvent >> initialize [
 	super initialize.
 	modifiers := TbKeyModifiers new.
 ]
 
-{ #category : #'api - geometry' }
+{ #category : 'api - geometry' }
 TbUIEvent >> localPosition [
 	"Return an event position in local coordinates of a #currentTarget"
 	<return: #Point>
@@ -34,19 +36,19 @@ TbUIEvent >> localPosition [
 	^ self currentTarget globalPointToLocal: self position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUIEvent >> modifiers [
 	<return: #BlKeyModifiers>
 
 	^ modifiers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUIEvent >> modifiers: aBlKeyModifiers [
 	 modifiers := aBlKeyModifiers
 ]
 
-{ #category : #'api - geometry' }
+{ #category : 'api - geometry' }
 TbUIEvent >> parentPosition [
 	"Return an event position in parent coordinates of a #currentTarget"
 	<return: #Point>
@@ -54,18 +56,18 @@ TbUIEvent >> parentPosition [
 	^ self currentTarget globalPointToParent: self position
 ]
 
-{ #category : #'api - geometry' }
+{ #category : 'api - geometry' }
 TbUIEvent >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUIEvent >> position: anObject [
 
 	position := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbUIEvent >> printOn: aStream [
 	aStream 
 		nextPutAll: self class name;
@@ -81,12 +83,12 @@ TbUIEvent >> printOn: aStream [
 		nextPut:$)
 ]
 
-{ #category : #'api - geometry' }
+{ #category : 'api - geometry' }
 TbUIEvent >> screenPosition [
 	^ screenPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUIEvent >> screenPosition: anObject [
 	screenPosition := anObject
 ]

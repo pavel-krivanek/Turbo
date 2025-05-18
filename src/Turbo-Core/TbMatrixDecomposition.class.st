@@ -15,19 +15,21 @@ For example in case of 2D matrix they are:
 	- quaternion
 "
 Class {
-	#name : #TbMatrixDecomposition,
-	#superclass : #Object,
-	#category : #'Turbo-Core-Basic-Math'
+	#name : 'TbMatrixDecomposition',
+	#superclass : 'Object',
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMatrixDecomposition >> asDictionary [
 	<return: #Dictionary>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrixDecomposition >> composition [
 	"Compose and return a matrix for this decomposition"
 	<return: #BlMatrix>
@@ -35,7 +37,7 @@ TbMatrixDecomposition >> composition [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrixDecomposition >> interpolate: aFactor to: anotherDecomposition [
 	<return: #BlMatrixDecomposition>
 

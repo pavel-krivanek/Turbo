@@ -6,7 +6,9 @@ Purposes/real world use cases:
  - to select and then drag or move (app icons)
 "
 Class {
-	#name : #TbGestureHoldEvent,
-	#superclass : #TbGestureEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureHoldEvent',
+	#superclass : 'TbGestureEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }

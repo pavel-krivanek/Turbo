@@ -1,10 +1,12 @@
 Class {
-	#name : #TbFocusabilityAfter,
-	#superclass : #TbFocusability,
-	#category : #'Turbo-Core-Basic-Properties'
+	#name : 'TbFocusabilityAfter',
+	#superclass : 'TbFocusability',
+	#category : 'Turbo-Core-Basic-Properties',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Properties'
 }
 
-{ #category : #focus }
+{ #category : 'focus' }
 TbFocusabilityAfter >> focusables: anOrderedCollection along: aBlFocusSearchDirection of: anElement [
 	"We always add visible children and skip anElement itself if there are focusable descendants"
 	| focusablesCount |

@@ -2,16 +2,18 @@
 I represent a model object and embody a drag preview and item provider
 "
 Class {
-	#name : #TbDragItem,
-	#superclass : #Object,
+	#name : 'TbDragItem',
+	#superclass : 'Object',
 	#instVars : [
 		'sourceElement',
 		'previewElement'
 	],
-	#category : #'Turbo-Core-Utilities - Drag&Drop'
+	#category : 'Turbo-Core-Utilities - Drag&Drop',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drag&Drop'
 }
 
-{ #category : #'instace creation' }
+{ #category : 'instace creation' }
 TbDragItem >> createPreview [
 	<return: #BlElement>
 	
@@ -20,22 +22,22 @@ TbDragItem >> createPreview [
 		background: Color blue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragItem >> previewElement [
 	^ previewElement ifNil: [ previewElement := self createPreview ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragItem >> previewElement: anObject [
 	previewElement := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragItem >> sourceElement [
 	^ sourceElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragItem >> sourceElement: anObject [
 	sourceElement := anObject
 ]

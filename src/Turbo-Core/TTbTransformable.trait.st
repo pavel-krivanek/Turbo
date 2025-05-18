@@ -2,18 +2,20 @@
 I define an interface that transformable objects should implement in order to support affine transformations
 "
 Trait {
-	#name : #TTbTransformable,
-	#category : #'Turbo-Core-Basic-Transformations'
+	#name : 'TTbTransformable',
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TTbTransformable >> transform [
 	<return: #BlTransformationBuilder>
 	
 	^ TbTransformationBuilder on: self
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TTbTransformable >> transformDo: aBlock [
 	| aTransformationBuilder |
 
@@ -22,7 +24,7 @@ TTbTransformable >> transformDo: aBlock [
 	aTransformationBuilder apply
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TTbTransformable >> transformation [
 	"Return an object that represents a description of my transformation.
 	It can either be a local transformation being a composition of affine transformations or
@@ -32,7 +34,7 @@ TTbTransformable >> transformation [
 	^ self explicitRequirement
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TTbTransformable >> transformation: anElementTransformation [
 	self explicitRequirement
 ]

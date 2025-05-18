@@ -1,30 +1,32 @@
 Class {
-	#name : #TbDragHandler,
-	#superclass : #TbElementEventListener,
+	#name : 'TbDragHandler',
+	#superclass : 'TbElementEventListener',
 	#instVars : [
 		'delegate'
 	],
-	#category : #'Turbo-Core-Utilities - Drag&Drop'
+	#category : 'Turbo-Core-Utilities - Drag&Drop',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drag&Drop'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragHandler >> delegate [
 	<return: #BlDragDelegate>
 
 	^ delegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragHandler >> delegate: aBlDragDelegate [
 	delegate := aBlDragDelegate
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbDragHandler >> dragEndEvent: anEvent [
 	anEvent currentTarget space dispatchEvent: (TbSpaceDragCancelEvent new delegate: delegate; position: anEvent position)
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbDragHandler >> dragStartEvent: anEvent [
 	anEvent consumed: true.
 
@@ -33,7 +35,7 @@ TbDragHandler >> dragStartEvent: anEvent [
 	anEvent currentTarget space dispatchEvent: (TbSpaceDragLiftEvent new delegate: delegate; position: anEvent position)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDragHandler >> initialize [
 	super initialize.
 

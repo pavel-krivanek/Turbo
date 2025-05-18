@@ -1,13 +1,13 @@
-Extension { #name : #UnixPlatform }
+Extension { #name : 'UnixPlatform' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 UnixPlatform >> blocKeyFor: aKeyValue in: aKeyTable [
 	<return: #BlKeyboardKey>
 
 	^ aKeyTable valueForUnixPlatform: aKeyValue
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 UnixPlatform >> primaryModifier [
 	^ TbAlternativeCombination new
 		key: TbKeyboardKey controlLeft;
@@ -15,7 +15,7 @@ UnixPlatform >> primaryModifier [
 		yourself
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 UnixPlatform >> secondaryModifier [
 	^ TbAlternativeCombination new
 		key: TbKeyboardKey altLeft;

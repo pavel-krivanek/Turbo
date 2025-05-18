@@ -2,8 +2,8 @@
 I am a chain of BlEventDispatcher
 "
 Class {
-	#name : #TbEventDispatcherChain,
-	#superclass : #Object,
+	#name : 'TbEventDispatcherChain',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -11,22 +11,24 @@ Class {
 		'previous',
 		'dispatcher'
 	],
-	#category : #'Turbo-Core-Events-Handling'
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbEventDispatcherChain class >> empty [
 	<return: #BlEventDispatcherChain>
 	
 	^ TbEventDispatcherEmptyChain uniqueInstance
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbEventDispatcherChain class >> with: aBlEventDispatcher [
 	^ self new initializeWith: aBlEventDispatcher
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbEventDispatcherChain >> dispatchEvent: anEvent [
 	"Dispatch a given event through the whole dispatcher chain"
 	| aPreviousChain |
@@ -38,7 +40,7 @@ TbEventDispatcherChain >> dispatchEvent: anEvent [
 	^ self dispatcher dispatchEvent: anEvent next: aPreviousChain
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> dispatcher [
 	<return: #BlEventDispatcher>
 
@@ -49,35 +51,35 @@ TbEventDispatcherChain >> dispatcher [
 	^ dispatcher
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbEventDispatcherChain >> first [
 	^ self hasPrevious
 		ifTrue: [ self previous first ]
 		ifFalse: [ self ]
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 TbEventDispatcherChain >> hasDispatcher [
 	<return: #Boolean>
 	
 	^ dispatcher isNotNil
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 TbEventDispatcherChain >> hasNext [
 	<return: #Boolean>
 	
 	^ next isNotNil
 ]
 
-{ #category : #'private - testing' }
+{ #category : 'private - testing' }
 TbEventDispatcherChain >> hasPrevious [
 	<return: #Boolean>
 	
 	^ previous isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbEventDispatcherChain >> initializeWith: aBlEventDispatcher [
 
 	self
@@ -91,7 +93,7 @@ TbEventDispatcherChain >> initializeWith: aBlEventDispatcher [
 	next := nil
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> next [
 	<return: #BlEventDispatcherChain>
 	
@@ -102,7 +104,7 @@ TbEventDispatcherChain >> next [
 	^ next
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> next: aBlEventDispatcherChain [
 	self
 		assert: [ self hasNext not ]
@@ -111,7 +113,7 @@ TbEventDispatcherChain >> next: aBlEventDispatcherChain [
 	next := aBlEventDispatcherChain
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> previous [
 	<return: #BlEventDispatcherChain>
 	
@@ -122,7 +124,7 @@ TbEventDispatcherChain >> previous [
 	^ previous
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> previous: aBlEventDispatcherChain [
 	self
 		assert: [ self hasPrevious not ]
@@ -131,7 +133,7 @@ TbEventDispatcherChain >> previous: aBlEventDispatcherChain [
 	previous := aBlEventDispatcherChain
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> withAllNext [
 	<return: #SequenceableCollection of: #BlEventDispatcherChain>
 
@@ -144,7 +146,7 @@ TbEventDispatcherChain >> withAllNext [
 			aChain := aChain next ] ]
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbEventDispatcherChain >> withAllPrevious [
 	<return: #SequenceableCollection of: #BlEventDispatcherChain>
 
@@ -157,7 +159,7 @@ TbEventDispatcherChain >> withAllPrevious [
 			aChain := aChain previous ] ]
 ]
 
-{ #category : #'api - adding' }
+{ #category : 'api - adding' }
 TbEventDispatcherChain >> withNext: aBlEventDispatcher [
 	| aNextChain |
 

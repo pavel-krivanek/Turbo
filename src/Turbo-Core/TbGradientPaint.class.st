@@ -1,13 +1,15 @@
 Class {
-	#name : #TbGradientPaint,
-	#superclass : #TbPaint,
+	#name : 'TbGradientPaint',
+	#superclass : 'TbPaint',
 	#instVars : [
 		'stops'
 	],
-	#category : #'Turbo-Core-Paint'
+	#category : 'Turbo-Core-Paint',
+	#package : 'Turbo-Core',
+	#tag : 'Paint'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGradientPaint >> from: aStartColor to: anEndColor [
 	"A convenience method to create a gradient consisting out of 2 colors"
 	
@@ -17,12 +19,12 @@ TbGradientPaint >> from: aStartColor to: anEndColor [
 	}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGradientPaint >> stops [
 	^ stops
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGradientPaint >> stops: anArray [
 	stops := anArray
 ]

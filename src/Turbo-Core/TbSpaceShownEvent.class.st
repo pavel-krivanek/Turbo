@@ -15,20 +15,22 @@ Note:
 Behaves as SDL_WINDOWEVENT_SHOWN
 "
 Class {
-	#name : #TbSpaceShownEvent,
-	#superclass : #TbSpaceEvent,
+	#name : 'TbSpaceShownEvent',
+	#superclass : 'TbSpaceEvent',
 	#instVars : [
 		'space'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceShownEvent >> space [
 	^ space
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceShownEvent >> space: anObject [
 	space := anObject
 ]

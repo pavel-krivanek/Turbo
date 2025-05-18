@@ -1,23 +1,25 @@
 Class {
-	#name : #TbBackgroundExactResizer,
-	#superclass : #TbBackgroundResizer,
+	#name : 'TbBackgroundExactResizer',
+	#superclass : 'TbBackgroundResizer',
 	#instVars : [
 		'extent'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbBackgroundExactResizer >> adapt: aBackground to: anElement [
 	aBackground matchExtent: self extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBackgroundExactResizer >> extent [
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBackgroundExactResizer >> extent: anObject [
 	extent := anObject
 ]

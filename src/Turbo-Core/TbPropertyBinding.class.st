@@ -1,40 +1,42 @@
 Class {
-	#name : #TbPropertyBinding,
-	#superclass : #Object,
+	#name : 'TbPropertyBinding',
+	#superclass : 'Object',
 	#instVars : [
 		'from',
 		'to',
 		'fromListener',
 		'toListener'
 	],
-	#category : #'Turbo-Core-Property'
+	#category : 'Turbo-Core-Property',
+	#package : 'Turbo-Core',
+	#tag : 'Property'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbPropertyBinding class >> from: aFromProperty to: aToProperty [
 	^ self new
 		from: aFromProperty to: aToProperty;
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbPropertyBinding class >> from: aFromProperty to: aToProperty bidirectional: aBoolean [
 	^ self new
 		from: aFromProperty to: aToProperty bidirectional: aBoolean;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPropertyBinding >> from [
 	^ from
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPropertyBinding >> from: aFromProperty to: aToProperty [
 	self from: aFromProperty to: aToProperty bidirectional: false
 ]
 
-{ #category : #'bind/unbind' }
+{ #category : 'bind/unbind' }
 TbPropertyBinding >> from: aFromProperty to: aToProperty bidirectional: isBidirectional [
 	
 	from := aFromProperty.
@@ -50,12 +52,12 @@ TbPropertyBinding >> from: aFromProperty to: aToProperty bidirectional: isBidire
 	to addChangeListener: toListener
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPropertyBinding >> to [
 	^ to
 ]
 
-{ #category : #'bind/unbind' }
+{ #category : 'bind/unbind' }
 TbPropertyBinding >> unbind [
 	toListener ifNotNil: [ to removeChangeListener: toListener ].
 	fromListener ifNotNil: [ from removeChangeListener: fromListener ].

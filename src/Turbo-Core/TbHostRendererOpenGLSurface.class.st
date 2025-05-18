@@ -4,21 +4,23 @@ I represent an OpenGL surface to be used by host renderer and host space.
 When used, rendering happens using OpenGL context and than can be displayed in a native window
 "
 Class {
-	#name : #TbHostRendererOpenGLSurface,
-	#superclass : #TbHostRendererSurface,
+	#name : 'TbHostRendererOpenGLSurface',
+	#superclass : 'TbHostRendererSurface',
 	#instVars : [
 		'context',
 		'extent'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererOpenGLSurface class >> priority [
 	^ 10
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbHostRendererOpenGLSurface class >> supportedBy: anObject [
 	"Return true if a given object supports OpenGL surface, false otherwise"
 	<return: #Boolean>
@@ -26,32 +28,32 @@ TbHostRendererOpenGLSurface class >> supportedBy: anObject [
 	^ anObject supportsOpenGLSurface
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererOpenGLSurface >> context [
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererOpenGLSurface >> context: anObject [
 	context := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererOpenGLSurface >> extent [
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererOpenGLSurface >> extent: anObject [
 	extent := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHostRendererOpenGLSurface >> initializeOn: anObject [	
 	anObject initializeForOpenGL: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHostRendererOpenGLSurface >> initializeResourcesOn: aHostRenderer [
 	"Initialize me and host renderer depending on surface type.
 	must be implemented by subclasses"
@@ -59,19 +61,19 @@ TbHostRendererOpenGLSurface >> initializeResourcesOn: aHostRenderer [
 	self initializeOn: aHostRenderer
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbHostRendererOpenGLSurface >> prepareToRender: aSpace [
 	"Dispatch preparation to render through host space based on surface type"
 	
 	self hostSpace prepareToRender: aSpace onOpenGLSurface: self
 ]
 
-{ #category : #presenting }
+{ #category : 'presenting' }
 TbHostRendererOpenGLSurface >> presentAreas: aCollectionOfRectangles [
 	hostSpace presentOpenGLSurface: self areas: aCollectionOfRectangles
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbHostRendererOpenGLSurface >> renderFor: aSpace [
 	"Dispatch render process through host space based on surface type"
 	

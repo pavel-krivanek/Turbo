@@ -1,21 +1,23 @@
 Class {
-	#name : #TbTaskQueue,
-	#superclass : #Object,
+	#name : 'TbTaskQueue',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'tasks',
 		'lock'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 TbTaskQueue >> critical: aBlock [
 	^ lock critical: aBlock
 ]
 
-{ #category : #'api - enqueue' }
+{ #category : 'api - enqueue' }
 TbTaskQueue >> dequeue: aBlTask [	
 	self
 		assert: [ aBlTask isNotNil ]
@@ -24,7 +26,7 @@ TbTaskQueue >> dequeue: aBlTask [
 	lock critical: [ tasks := tasks copyWithout: aBlTask ]
 ]
 
-{ #category : #'api - enqueue' }
+{ #category : 'api - enqueue' }
 TbTaskQueue >> enqueue: aBlTask [	
 	self
 		assert: [ aBlTask isNotNil ]
@@ -38,7 +40,7 @@ TbTaskQueue >> enqueue: aBlTask [
 		tasks := tasks copyWith: aBlTask ]
 ]
 
-{ #category : #'api - enqueue' }
+{ #category : 'api - enqueue' }
 TbTaskQueue >> enqueueAll: aCollectionOfBlTask [	
 	self
 		assert: [ aCollectionOfBlTask isNotNil ]
@@ -52,7 +54,7 @@ TbTaskQueue >> enqueueAll: aCollectionOfBlTask [
 		tasks := tasks, aCollectionOfBlTask ]
 ]
 
-{ #category : #'api - enqueue' }
+{ #category : 'api - enqueue' }
 TbTaskQueue >> enqueueFrom: aBlTaskQueue [
 	self
 		assert: [ aBlTaskQueue isNotNil ]
@@ -63,7 +65,7 @@ TbTaskQueue >> enqueueFrom: aBlTaskQueue [
 		aBlTaskQueue flush ]
 ]
 
-{ #category : #'api - enqueue' }
+{ #category : 'api - enqueue' }
 TbTaskQueue >> flush [
 	^ lock critical: [
 		| theTasks |
@@ -72,7 +74,7 @@ TbTaskQueue >> flush [
 		theTasks ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTaskQueue >> initialize [
 	super initialize.
 	
@@ -80,7 +82,7 @@ TbTaskQueue >> initialize [
 	lock := Monitor new
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbTaskQueue >> run [
 	| theTasks |
 	
@@ -94,7 +96,7 @@ TbTaskQueue >> run [
 	theTasks do: [ :aTask | aTask run ]
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbTaskQueue >> tasks [
 	"Return a new collection instance holding all my tasks"
 	| theTasks |

@@ -4,22 +4,24 @@ I represent a pixel buffer surface to be used by host renderer and host space.
 When used, rendering happens in a pixel buffer and than can be displayed in a native window
 "
 Class {
-	#name : #TbHostRendererBufferSurface,
-	#superclass : #TbHostRendererSurface,
+	#name : 'TbHostRendererBufferSurface',
+	#superclass : 'TbHostRendererSurface',
 	#instVars : [
 		'stride',
 		'buffer',
 		'extent'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererBufferSurface class >> priority [
 	^ 20
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbHostRendererBufferSurface class >> supportedBy: anObject [
 	"Return true if a given object supports buffer surface, false otherwise"
 	<return: #Boolean>
@@ -27,17 +29,17 @@ TbHostRendererBufferSurface class >> supportedBy: anObject [
 	^ anObject supportsBufferSurface
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererBufferSurface >> buffer [
 	^ buffer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererBufferSurface >> buffer: aPixelBuffer [
 	buffer := aPixelBuffer
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbHostRendererBufferSurface >> extent [
 	"Return actual extent of the underlying surface.
 	Note: it may be different from canvas or window extents"
@@ -46,46 +48,46 @@ TbHostRendererBufferSurface >> extent [
 	^ extent
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbHostRendererBufferSurface >> extent: aPoint [
 	extent := aPoint
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHostRendererBufferSurface >> initializeOn: anObject [
 	anObject initializeForBuffer: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHostRendererBufferSurface >> initializeResourcesOn: aHostRenderer [
 	self initializeOn: aHostRenderer
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbHostRendererBufferSurface >> prepareToRender: aSpace [
 	"Dispatch preparation to render through host space based on surface type"
 	
 	self hostSpace prepareToRender: aSpace onBufferSurface: self
 ]
 
-{ #category : #presenting }
+{ #category : 'presenting' }
 TbHostRendererBufferSurface >> presentAreas: aCollectionOfRectangles [
 	hostSpace presentBufferSurface: self areas: aCollectionOfRectangles
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 TbHostRendererBufferSurface >> renderFor: aSpace [
 	"Dispatch render process through host space based on surface type"
 	
 	self hostSpace render: aSpace onBufferSurface: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererBufferSurface >> stride [
 	^ stride
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHostRendererBufferSurface >> stride: aNumber [
 	stride := aNumber
 ]

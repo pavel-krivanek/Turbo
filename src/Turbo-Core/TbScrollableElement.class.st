@@ -1,6 +1,6 @@
 Class {
-	#name : #TbScrollableElement,
-	#superclass : #TbElement,
+	#name : 'TbScrollableElement',
+	#superclass : 'TbElement',
 	#traits : 'TTbScrollable + TTbAlignable',
 	#classTraits : 'TTbScrollable classTrait + TTbAlignable classTrait',
 	#instVars : [
@@ -11,15 +11,17 @@ Class {
 		'horizontalAlignment',
 		'verticalAlignment'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling'
+	#category : 'Turbo-Core-Utilities - Scrolling',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling'
 }
 
-{ #category : #conversion }
+{ #category : 'conversion' }
 TbScrollableElement >> asScrollableElement [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollableElement >> contentElement [
 	self 
 		deprecated: 'Use contentElement instead'
@@ -28,7 +30,7 @@ TbScrollableElement >> contentElement [
 	^ self contentElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollableElement >> defaultHorizontalAlignment [
 	"By default alignment should not influence on layout process,
 	so to not deal with nils use null object"
@@ -37,12 +39,12 @@ TbScrollableElement >> defaultHorizontalAlignment [
 	^ TbElementAlignment null horizontal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollableElement >> defaultLayout [
 	^ TbFrameLayout new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollableElement >> defaultVerticalAlignment [
 	"By default alignment should not influence on layout process,
 	so to not deal with nils use null object"
@@ -51,25 +53,25 @@ TbScrollableElement >> defaultVerticalAlignment [
 	^ TbElementAlignment null vertical
 ]
 
-{ #category : #scrolling }
+{ #category : 'scrolling' }
 TbScrollableElement >> flingBy: aVelocityPoint [
 	self scrollFlinger flingBy: aVelocityPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollableElement >> horizontalAlignment [
 	<return: #BlElementAlignment>
 
 	^ horizontalAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollableElement >> horizontalAlignment: aBlElementAlignment [
 	horizontalAlignment := aBlElementAlignment.
 	self requestLayout
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollableElement >> initialize [
 	super initialize.
 
@@ -82,7 +84,7 @@ TbScrollableElement >> initialize [
 	self addEventHandler: TbScrollableElementEventHandler new
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScrollableElement >> layoutApplyAlignment [
 	| aContent |
 	
@@ -103,7 +105,7 @@ TbScrollableElement >> layoutApplyAlignment [
 	aContent measuredBounds position: scrollPosition
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScrollableElement >> layoutClampPosition [
 	| aCurrentPositionX aContent aMinPositionX aMaxPositionX aNewClampedPositionX aCurrentPositionY aMinPositionY aMaxPositionY aNewClampedPositionY |
 	
@@ -123,7 +125,7 @@ TbScrollableElement >> layoutClampPosition [
 	aContent measuredBounds position: scrollPosition.
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScrollableElement >> layoutFixGap [
 	| aContent aGapX aGapY |
 	
@@ -146,7 +148,7 @@ TbScrollableElement >> layoutFixGap [
 	aContent measuredBounds position: scrollPosition
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScrollableElement >> onLayout: aBounds [
 	self scrollFlinger isIdle
 		ifFalse: [ ^ super onLayout: aBounds ].
@@ -163,7 +165,7 @@ TbScrollableElement >> onLayout: aBounds [
 	super onLayout: aBounds
 ]
 
-{ #category : #scrolling }
+{ #category : 'scrolling' }
 TbScrollableElement >> scrollBy: aPoint [
 	"Instant scroll by the given amount of pixels along either axis.
 	Return true if a scroll happens."
@@ -208,14 +210,14 @@ TbScrollableElement >> scrollBy: aPoint [
 	^ ((dX isZero not) or: [ dY isZero not ])
 ]
 
-{ #category : #'api - scrolling accessing' }
+{ #category : 'api - scrolling accessing' }
 TbScrollableElement >> scrollFlinger [
 	<return: #BlScrollFlinger>
 
 	^ scrollFlinger
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollableElement >> scrollHorizontallyBy: aNumber [
 	"Scroll horizontally by aNumber and return the distance traveled.
 	The default implementation does nothing and returns 0."
@@ -229,35 +231,35 @@ TbScrollableElement >> scrollHorizontallyBy: aNumber [
 	^ aNumber
 ]
 
-{ #category : #'api - scrolling geometry' }
+{ #category : 'api - scrolling geometry' }
 TbScrollableElement >> scrollMaximum [
 	<return: #Point>
 	
 	^ 0@0
 ]
 
-{ #category : #'api - scrolling geometry' }
+{ #category : 'api - scrolling geometry' }
 TbScrollableElement >> scrollMinimum [
 	<return: #Point>
 	
 	^ (self extent - self scrolledElement extent) min: 0@0
 ]
 
-{ #category : #'api - scrolling geometry' }
+{ #category : 'api - scrolling geometry' }
 TbScrollableElement >> scrollOvershot [
 	<return: #Point>
 	
 	^ self extent / 2.0
 ]
 
-{ #category : #'api - scrolling geometry' }
+{ #category : 'api - scrolling geometry' }
 TbScrollableElement >> scrollPosition [
 	<return: #Point>
 	
 	^ scrollPosition
 ]
 
-{ #category : #'private - scrolling accessing' }
+{ #category : 'private - scrolling accessing' }
 TbScrollableElement >> scrollState [
 	"Return the current scrolling state"
 	<return: #Symbol>
@@ -265,14 +267,14 @@ TbScrollableElement >> scrollState [
 	^ scrollState
 ]
 
-{ #category : #'private - scrolling accessing' }
+{ #category : 'private - scrolling accessing' }
 TbScrollableElement >> scrollState: aScrollState [
 	"Internal! Never set me directly"
 	
 	scrollState := aScrollState
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollableElement >> scrollVerticallyBy: aNumber [
 	"Scroll vertically by aNumber and return the distance traveled.
 	The default implementation does nothing and returns 0."
@@ -286,14 +288,14 @@ TbScrollableElement >> scrollVerticallyBy: aNumber [
 	^ aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollableElement >> scrolledElement [
 	<return: #BlElement>
 
 	^ self children first
 ]
 
-{ #category : #scrolling }
+{ #category : 'scrolling' }
 TbScrollableElement >> smoothScrollBy: aPoint [
 	"Animate a scroll by the given amount of pixels along either axis"
 	| dX dY |
@@ -311,14 +313,14 @@ TbScrollableElement >> smoothScrollBy: aPoint [
 		ifFalse: [ scrollFlinger smoothScrollBy: dX @ dY ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollableElement >> verticalAlignment [
 	<return: #BlElementAlignment>
 	
 	^ verticalAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollableElement >> verticalAlignment: aBlElementAlignment [
 	verticalAlignment := aBlElementAlignment.
 	self requestLayout

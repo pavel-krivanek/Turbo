@@ -15,18 +15,20 @@ I know my currentPhase which is one of the registered phases.
 The list of default phases is initialized in ${method:BlSpaceFrame>>#initializePhases}$
 "
 Class {
-	#name : #TbSpaceFrame,
-	#superclass : #Object,
+	#name : 'TbSpaceFrame',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'phases',
 		'currentPhaseLink'
 	],
-	#category : #'Turbo-Core-Space-Frame'
+	#category : 'Turbo-Core-Space-Frame',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Frame'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbSpaceFrame >> addPhase: aFramePhase [
 	self
 		assert: [ aFramePhase isNotNil ]
@@ -35,12 +37,12 @@ TbSpaceFrame >> addPhase: aFramePhase [
 	self phases add: aFramePhase
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbSpaceFrame >> addPhases: aCollectonOfPhases [
 	aCollectonOfPhases do: [ :aFramePhase | self addPhase: aFramePhase ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFrame >> currentPhase [
 	<return: #TbSpaceFramePhase>
 
@@ -51,14 +53,14 @@ TbSpaceFrame >> currentPhase [
 	^ currentPhaseLink value
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFrame >> hasNextPhase [
 	<return: #Boolean>
 
 	^ currentPhaseLink nextLink isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpaceFrame >> initialize [
 	super initialize.
 
@@ -67,7 +69,7 @@ TbSpaceFrame >> initialize [
 	currentPhaseLink := phases firstLink
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpaceFrame >> initializePhases [
 	self addPhases: { 
 		TbSpaceFrameIdlePhase new.
@@ -77,7 +79,7 @@ TbSpaceFrame >> initializePhases [
 		TbSpaceFrameDrawingPhase new }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFrame >> nextPhase [
 	"Return the next frame after the current one"
 	<return: #TbSpaceFramePhase>
@@ -85,7 +87,7 @@ TbSpaceFrame >> nextPhase [
 	^ self nextPhaseLink value
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbSpaceFrame >> nextPhaseLink [
 	"Return the link with a next frame after the current one"
 	<return: #Link>
@@ -95,7 +97,7 @@ TbSpaceFrame >> nextPhaseLink [
 		ifFalse: [ phases firstLink ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFrame >> phases [
 	"Return a collection of all phases"
 	<return: #Collection of: #TbSpaceFramePhase>
@@ -103,12 +105,12 @@ TbSpaceFrame >> phases [
 	^ phases
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbSpaceFrame >> runCurrentPhaseOn: aSpace [
 	self currentPhase runOn: aSpace
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbSpaceFrame >> runOn: aSpace [
 
 	self runCurrentPhaseOn: aSpace.
@@ -121,7 +123,7 @@ TbSpaceFrame >> runOn: aSpace [
 	self switchToNextPhase
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbSpaceFrame >> switchToNextPhase [
 	"Switch to the next phase"
 

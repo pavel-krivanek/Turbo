@@ -2,20 +2,22 @@
 I am sent by an element with applied Resizer Listener after the resizing target was resized
 "
 Class {
-	#name : #TbResizerResizedEvent,
-	#superclass : #TbEvent,
+	#name : 'TbResizerResizedEvent',
+	#superclass : 'TbEvent',
 	#instVars : [
 		'extent'
 	],
-	#category : #'Turbo-Core-Utilities - Resizable'
+	#category : 'Turbo-Core-Utilities - Resizable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Resizable'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbResizerResizedEvent >> extent [
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbResizerResizedEvent >> extent: aPoint [
 	extent := aPoint
 ]

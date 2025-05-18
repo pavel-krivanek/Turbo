@@ -4,30 +4,32 @@ I represent a measurement specification of element's width and height.
 I am used by Layouts
 "
 Class {
-	#name : #TbExtentMeasurementSpec,
-	#superclass : #Object,
+	#name : 'TbExtentMeasurementSpec',
+	#superclass : 'Object',
 	#instVars : [
 		'widthSpec',
 		'heightSpec'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbExtentMeasurementSpec class >> exact: anExtent [
 	^ self new
 		widthSpec: (TbMeasurementSpec exact: anExtent x);
 		heightSpec: (TbMeasurementSpec exact: anExtent y)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbExtentMeasurementSpec class >> unspecified [
 	^ self new
 		widthSpec: TbMeasurementSpec unspecified;
 		heightSpec: TbMeasurementSpec unspecified
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbExtentMeasurementSpec >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
@@ -38,27 +40,27 @@ TbExtentMeasurementSpec >> = anotherObject [
 		and: [ anotherObject heightSpec = heightSpec ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbExtentMeasurementSpec >> hash [
 	^ heightSpec hash bitXor: widthSpec hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbExtentMeasurementSpec >> heightSpec [
 	^ heightSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbExtentMeasurementSpec >> heightSpec: anObject [
 	heightSpec := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbExtentMeasurementSpec >> isExact [
 	^ self widthSpec isExact and: [ self heightSpec isExact ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbExtentMeasurementSpec >> printOn: aStream [
 	aStream nextPutAll: 'width: ('.
 	aStream nextPutAll: (self widthSpec asString).
@@ -67,7 +69,7 @@ TbExtentMeasurementSpec >> printOn: aStream [
 	aStream nextPutAll: ')'.
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbExtentMeasurementSpec >> sizeFor: anExtent [
 	|width height|
 	width := self widthSpec sizeFor: anExtent x.
@@ -75,13 +77,13 @@ TbExtentMeasurementSpec >> sizeFor: anExtent [
 	^ width@height
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbExtentMeasurementSpec >> widthSpec [
 	<return: #BlMeasurementSpec>
 	^ widthSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbExtentMeasurementSpec >> widthSpec: anObject [
 	widthSpec := anObject
 ]

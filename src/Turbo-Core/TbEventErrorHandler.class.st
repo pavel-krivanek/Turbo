@@ -1,10 +1,12 @@
 Class {
-	#name : #TbEventErrorHandler,
-	#superclass : #TbSingleErrorHandler,
-	#category : #'Turbo-Core-Basic-Errors'
+	#name : 'TbEventErrorHandler',
+	#superclass : 'TbSingleErrorHandler',
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbEventErrorHandler >> matches: aFramePhase [
 	^ aFramePhase isEventPhase
 ]

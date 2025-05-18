@@ -8,17 +8,19 @@ With deep hierarchies, the amount of mouse enter events sent can be quite huge a
 https://developer.mozilla.org/en-US/docs/Web/Events/mouseenter
 "
 Class {
-	#name : #TbMouseEnterEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseEnterEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEnterEvent >> isMouseEnter [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseEnterEvent >> sendTo: anObject [
 	anObject mouseEnterEvent: self
 ]

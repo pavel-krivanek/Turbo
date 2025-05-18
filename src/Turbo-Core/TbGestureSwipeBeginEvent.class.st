@@ -1,10 +1,12 @@
 Class {
-	#name : #TbGestureSwipeBeginEvent,
-	#superclass : #TbGestureBaseSwipeEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureSwipeBeginEvent',
+	#superclass : 'TbGestureBaseSwipeEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbGestureSwipeBeginEvent >> sendTo: anObject [
 	anObject gestureSwipeBeginEvent: self
 ]

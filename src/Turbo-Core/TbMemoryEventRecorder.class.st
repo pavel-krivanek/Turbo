@@ -2,22 +2,24 @@
 I record events in a collection
 "
 Class {
-	#name : #TbMemoryEventRecorder,
-	#superclass : #TbSpaceEventRecorder,
+	#name : 'TbMemoryEventRecorder',
+	#superclass : 'TbSpaceEventRecorder',
 	#instVars : [
 		'events',
 		'time',
 		'pulseTimestamp'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMemoryEventRecorder >> events [
 	^ events
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMemoryEventRecorder >> initialize [
 	super initialize.
 
@@ -25,14 +27,14 @@ TbMemoryEventRecorder >> initialize [
 	time := TbTime real
 ]
 
-{ #category : #'api - recording' }
+{ #category : 'api - recording' }
 TbMemoryEventRecorder >> onPulse [
 	super onPulse.
 	
 	pulseTimestamp := self time now
 ]
 
-{ #category : #'api - recording' }
+{ #category : 'api - recording' }
 TbMemoryEventRecorder >> record: anEvent [
 	| aCopiedEvent |
 	
@@ -43,7 +45,7 @@ TbMemoryEventRecorder >> record: anEvent [
 	self events add: aCopiedEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMemoryEventRecorder >> time [
 	^ time
 ]

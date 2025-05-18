@@ -1,23 +1,25 @@
 Class {
-	#name : #TbKeyUpEvent,
-	#superclass : #TbKeyboardEvent,
+	#name : 'TbKeyUpEvent',
+	#superclass : 'TbKeyboardEvent',
 	#instVars : [
 		'key'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'key - accessing' }
+{ #category : 'key - accessing' }
 TbKeyUpEvent >> key [
 	^ key
 ]
 
-{ #category : #'key - accessing' }
+{ #category : 'key - accessing' }
 TbKeyUpEvent >> key: anObject [
 	key := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbKeyUpEvent >> printOn: aStream [
 	aStream 
 		nextPutAll: self class name;
@@ -35,7 +37,7 @@ TbKeyUpEvent >> printOn: aStream [
 		nextPut:$)
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbKeyUpEvent >> sendTo: anObject [
 	anObject keyUpEvent: self
 ]

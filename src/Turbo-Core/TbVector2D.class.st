@@ -8,47 +8,49 @@ Instance creation:
 	vector := (2, 3)
 "
 Class {
-	#name : #TbVector2D,
-	#superclass : #TbVector,
+	#name : 'TbVector2D',
+	#superclass : 'TbVector',
 	#instVars : [
 		'x',
 		'y'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> * aScalar [
 	"Multiplicate me by a given scalar (it can be a number, point, or vector)"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ aScalar scalarMultiplicate2D: self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> + anotherVector [
 	"Perform an addition of a given vector and me"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ anotherVector add2D: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector2D >> , aNumber [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ TbVector3D x: self x y: self y z: aNumber
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> - anotherVector [
 	"Perform a subtraction of a given vector from me and return a resulting vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ anotherVector subtract2D: self
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> / aVector [
 	| vector |
 	vector := aVector asBlocVector.
@@ -58,7 +60,7 @@ TbVector2D >> / aVector [
 		y: self y / vector y
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVector2D >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -69,15 +71,15 @@ TbVector2D >> = anObject [
 		and: [ self y = anObject y ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector2D >> adaptToNumber: aNumber andSend: aSelector [
 	"If I am involved in arithmetic with an Integer, convert it to a Vector of the same dimension"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ (TbVector x: aNumber y: aNumber) perform: aSelector with: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector2D >> adaptToPoint: aPoint andSend: aSelector [
 	"If I am involved in arithmetic with an Point, convert me to a point and perform that operation"
 	<return: #Point>
@@ -85,20 +87,20 @@ TbVector2D >> adaptToPoint: aPoint andSend: aSelector [
 	^ aPoint perform: aSelector with: self asPoint
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> add2D: aVector2D [
 	"Add me to a given 2D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self class
 		x: aVector2D x + self x
 		y: aVector2D y + self y
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> add3D: aVector3D [
 	"Add me to a given 3D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self class
 		x: aVector3D x + self x
@@ -106,13 +108,13 @@ TbVector2D >> add3D: aVector3D [
 		z: aVector3D z
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector2D >> asPoint [
 	<return: #Point>
 	^ x @ y
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector2D >> asScale3D [
 	"Return a 3D vector representing a scale factor"
 	<return: #BlVector3D>
@@ -120,7 +122,7 @@ TbVector2D >> asScale3D [
 	^ (self , 1)
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector2D >> asTranslate3D [
 	"Return a 3D vector representing a translation vector"
 	<return: #BlVector3D>
@@ -128,57 +130,57 @@ TbVector2D >> asTranslate3D [
 	^ (self , 0)
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVector2D >> closeTo: anotherVector [
 	^ (self x closeTo: anotherVector x)
 		and: [ self y closeTo: anotherVector y ]
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> dotProduct2D: anotherVector [
 	<return: #Number>
 
 	^ (self x * anotherVector x) + (self y * anotherVector y)
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> dotProduct: anotherVector [
 	<return: #Number>
 
 	^ anotherVector dotProduct2D: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVector2D >> hash [
 	^ self x hash bitXor: self y hash
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector2D >> length [
 	<return: #Number>
 	
 	^ ((self x * self x) + (self y * self y)) sqrt
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector2D >> negated [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ TbVector
 		x: self x negated
 		y: self y negated
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector2D >> normal [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self asPoint normal asBlocVector
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector2D >> normalized [
-	<return: #BlVector>
+	<return: #TbVector>
 	| aLength |
 	
 	aLength := self length.
@@ -191,7 +193,7 @@ TbVector2D >> normalized [
 		y: self y / aLength
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbVector2D >> printOn: aStream [
 	aStream
 		nextPut: $(;
@@ -201,7 +203,7 @@ TbVector2D >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector2D >> rotateBy: anAngleInRadians about: aCenterPoint [ 
 	"Even though Point.theta is measured CW, this rotates with the more conventional CCW interpretateion of angle."
 	| p r theta |
@@ -211,35 +213,35 @@ TbVector2D >> rotateBy: anAngleInRadians about: aCenterPoint [
 	self x: (aCenterPoint x asFloat + (r * theta cos)) y: (aCenterPoint y asFloat - (r * theta sin))
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> scalarMultiplicate2D: aVector2D [
 	"Perform a scalar multiplication of a given 2D vector by me"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ TbVector
 		x: aVector2D x * self x
 		y: aVector2D y * self y
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> sign [
 	^ self class x: self x sign y: self y sign
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> subtract2D: aVector2D [
 	"Substruct me from a given 2D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self class
 		x: aVector2D x - self x
 		y: aVector2D y - self y
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector2D >> subtract3D: aVector3D [
 	"Substruct me from a given 3D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self class
 		x: aVector3D x - self x
@@ -247,20 +249,20 @@ TbVector2D >> subtract3D: aVector3D [
 		z: aVector3D z
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbVector2D >> x [
 	<return: #Number>
 
 	^ x
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbVector2D >> x: aX y: aY [
 	x := aX.
 	y := aY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbVector2D >> y [
 	<return: #Number>
 

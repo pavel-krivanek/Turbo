@@ -1,48 +1,50 @@
 Class {
-	#name : #TbCompositeErrorHandler,
-	#superclass : #TbErrorHandler,
+	#name : 'TbCompositeErrorHandler',
+	#superclass : 'TbErrorHandler',
 	#instVars : [
 		'errors',
 		'errorHandlers'
 	],
-	#category : #'Turbo-Core-Basic-Errors'
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCompositeErrorHandler class >> withAll: aCollectionOfErrorHandlers [
 	^ self new addErrorHandlers: aCollectionOfErrorHandlers
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbCompositeErrorHandler >> addErrorHandler: anErrorHandler [
 	self errorHandlers add: anErrorHandler
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbCompositeErrorHandler >> addErrorHandlers: aCollectionOfErrorHandlers [
 	self errorHandlers addAll: aCollectionOfErrorHandlers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompositeErrorHandler >> errorHandlers [
 	<return: #Collection of: #BlErrorHandler>
 
 	^ errorHandlers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompositeErrorHandler >> errors [
 	^ errors
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbCompositeErrorHandler >> hasError [
 	<return: #Boolean>
 
 	^ self errors isNotEmpty
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCompositeErrorHandler >> initialize [
 	super initialize.
 
@@ -50,12 +52,12 @@ TbCompositeErrorHandler >> initialize [
 	errors := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbCompositeErrorHandler >> matches: aFramePhase [
 	^ self errorHandlers anySatisfy: [ :anErrorHandler | anErrorHandler matches: aFramePhase ]
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbCompositeErrorHandler >> processError: aHandledError [
 	self errorHandlers
 		detect: [ :anErrorHandler | anErrorHandler matches: aHandledError framePhase ]
@@ -63,7 +65,7 @@ TbCompositeErrorHandler >> processError: aHandledError [
 		ifNone: [ self handleCriticalError: aHandledError ]
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbCompositeErrorHandler >> registerError: aHandledError [
 	self errors add: aHandledError
 ]

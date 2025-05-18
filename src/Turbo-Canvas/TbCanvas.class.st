@@ -1,6 +1,6 @@
 Class {
-	#name : #TbCanvas,
-	#superclass : #Object,
+	#name : 'TbCanvas',
+	#superclass : 'Object',
 	#instVars : [
 		'surface',
 		'transformationStack',
@@ -11,10 +11,11 @@ Class {
 		'attributes',
 		'attributesStack'
 	],
-	#category : #'Turbo-Canvas'
+	#category : 'Turbo-Canvas',
+	#package : 'Turbo-Canvas'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCanvas class >> initialize [
 
 	NamedUnit
@@ -24,7 +25,7 @@ TbCanvas class >> initialize [
 		value: (16 units: Unit pixel).
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCanvas class >> on: aSurface [
 
 	^ self new 
@@ -32,7 +33,7 @@ TbCanvas class >> on: aSurface [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> at: aPoint write: aString [
 
 	| pos| 
@@ -47,7 +48,7 @@ TbCanvas >> at: aPoint write: aString [
 		pos := pos + (1@0) ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> attributes [
 
 "normal        normal display (no highlight)
@@ -63,62 +64,62 @@ TbCanvas >> attributes [
 	^ attributes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> attributes: anObject [
 	attributes := anObject asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> attributesStack [
 
 	^ attributesStack ifNil: [ attributesStack := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> backgroundColor [
 	^ backgroundColor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> backgroundColor: anObject [
 	backgroundColor := anObject
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> blackBackground [
 
 	backgroundColor := Color black.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> blackText [
 
 	textColor := Color black.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> blueBackground [
 
 	backgroundColor := Color r: 0.0 g: 0.0 b: 0.659 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> blueText [
 
 	textColor := Color r: 0.0 g: 0.0 b: 0.659 alpha: 1.0.
 	
 ]
 
-{ #category : #attributes }
+{ #category : 'attributes' }
 TbCanvas >> bold [
 
 	attributes add: #bold
 ]
 
-{ #category : #'drawing-general' }
+{ #category : 'drawing-general' }
 TbCanvas >> clip [
 	"Perform a clipping.
 	User gets a clipper object responsible for clipping.
@@ -146,36 +147,36 @@ TbCanvas >> clip [
 		yourself
 ]
 
-{ #category : #'drawing-general' }
+{ #category : 'drawing-general' }
 TbCanvas >> clipBuilder [
 	^ TbClipper new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> currentTransformation [
 	^ currentTransformation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> currentTransformation: anObject [
 	currentTransformation := anObject
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> cyanBackground [
 
 	backgroundColor := Color r: 0.0 g: 0.659 b: 0.659 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> cyanText [
 
 	textColor := Color cyan.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> fillRectangle: aRectangle with: aString [
 
 	aRectangle top to: aRectangle bottom do: [ :y |
@@ -183,26 +184,26 @@ TbCanvas >> fillRectangle: aRectangle with: aString [
 			self at: x@y write: aString  ] ]
 ]
 
-{ #category : #'drawing-general' }
+{ #category : 'drawing-general' }
 TbCanvas >> fullDraw: anObject [
 	^ anObject fullDrawOnTurboCanvas: self
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> greenBackground [
 
 	backgroundColor := Color r: 0.0 g: 0.659 b: 0.0 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> greenText [
 
 	textColor := Color r: 0.0 g: 0.659 b: 0.0 alpha: 1.0.
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCanvas >> initialize [
 	super initialize.
 	
@@ -215,21 +216,21 @@ TbCanvas >> initialize [
 	attributes := Set new
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> magentaBackground [
 
 	backgroundColor := Color magenta.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> magentaText [
 
 	textColor := Color r: 0.659 g: 0.0 b: 0.659 alpha: 1.0.
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> popAttributes [
 
 	| anArray |
@@ -243,59 +244,59 @@ TbCanvas >> popAttributes [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCanvas >> popTransform [
 
 	^ transformationStack pop
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> pushAttributes [
 
 	self attributesStack add: { attributes copy. backgroundColor. textColor }
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCanvas >> pushTransform: aSpartaMatrix [
 
 	transformationStack push: aSpartaMatrix
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> redBackground [
 
 	backgroundColor := Color r: 0.659 g: 0.0 b: 0.0 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> redText [
 
 	textColor := Color r: 0.659 g: 0.0 b: 0.0 alpha: 1.0.
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> surface [
 	^ surface
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> surface: anObject [
 	surface := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> textColor [
 	^ textColor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> textColor: anObject [
 	textColor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> transform [
 
 	^ self transformationBuilder
@@ -304,38 +305,38 @@ TbCanvas >> transform [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> transformationBuilder [
 	^ TbTransformationBuilder2 new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCanvas >> transformationStack [
 	^ transformationStack
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> whiteBackground [
 
 	backgroundColor := Color r: 0.659 g: 0.659 b: 0.659 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> whiteText [
 
 	textColor := Color r: 0.659 g: 0.659 b: 0.659 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> yellowBackground [
 
 	backgroundColor := Color r: 0.659 g: 0.659 b: 0.0 alpha: 1.0.
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 TbCanvas >> yellowText [
 
 	textColor := Color r: 0.659 g: 0.659 b: 0.0 alpha: 1.0.

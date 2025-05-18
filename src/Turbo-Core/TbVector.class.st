@@ -22,8 +22,8 @@ Create a 3D vector:
 	(10, 20, 30)
 "
 Class {
-	#name : #TbVector,
-	#superclass : #Object,
+	#name : 'TbVector',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#classInstVars : [
@@ -33,10 +33,12 @@ Class {
 		'zero',
 		'one'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbVector class >> cleanUp [
 	super cleanUp.
 	
@@ -47,109 +49,109 @@ TbVector class >> cleanUp [
 	one := nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> one [
 	"Return a vector with all components being ones"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ one ifNil: [ one := self x: 1 y: 1 z: 1 ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> x: aX y: aY [
 	^ TbVector2D new x: aX y: aY
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> x: aX y: aY z: aZ [
 	^ TbVector3D new x: aX y: aY z: aZ
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> xAxis [
 	"Return a vector that corresponds to x-axis"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ xAxis ifNil: [ xAxis := self x: 1 y: 0 z: 0 ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> yAxis [
 	"Return a vector that corresponds to y-axis"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ yAxis ifNil: [ yAxis := self x: 0 y: 1 z: 0 ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> zAxis [
 	"Return a vector that corresponds to z-axis"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ zAxis ifNil: [ zAxis := self x: 0 y: 0 z: 1 ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbVector class >> zero [
 	"Return a vector of zero length"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ zero ifNil: [ zero := self x: 0 y: 0 z: 0 ]
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> * aScalar [
 	"Multiplicate me by a given scalar (it can be a number, point, or vector)"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> + anotherVector [
 	"Perform an addition of a given vector and me"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> - anotherVector [
 	"Perform a subtraction of a given vector from me and return a resulting vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVector >> = anObject [
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> add2D: aVector2D [
 	"Add me to a given 2D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> add3D: aVector3D [
 	"Add me to a given 3D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector >> asBlocVector [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector >> asScale3D [
 	"Return a 3D vector representing a scale factor"
 	<return: #BlVector3D>
@@ -157,7 +159,7 @@ TbVector >> asScale3D [
 	^ self subclassResponsibility
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbVector >> asTranslate3D [
 	"Return a 3D vector representing a translation vector"
 	<return: #BlVector3D>
@@ -165,111 +167,111 @@ TbVector >> asTranslate3D [
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> dotProduct2D: anotherVector [
 	<return: #Number>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> dotProduct: anotherVector [
 	<return: #Number>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVector >> hash [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVector >> isParallel: aBlVector [
 	<return: #Boolean>
 
 	^ (self dotProduct: aBlVector) abs closeTo: 1
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVector >> isZero [
 	<return: #Boolean>
 	
 	^ self length isZero
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector >> length [
 	<return: #Number>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector >> negated [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector >> normal [
 	"Find a unit vector rotated clockwise. For the zero length vector return (-1, 0)"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector >> normalized [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector >> rotateBy: anAngleInRadians [
 	self rotateBy: anAngleInRadians about: 0@0
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbVector >> rotateBy: anAngleInRadians about: aCenterPoint [ 
 	self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> scalarMultiplicate2D: aVector2D [
 	"Perform a scalar multiplication of a given 2D vector by me"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> scalarMultiplicate3D: aVector3D [
 	"Perform a scalar multiplication of a given 3D vector by me"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> sign [
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> subtract2D: aVector2D [
 	"Substruct me from a given 2D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbVector >> subtract3D: aVector3D [
 	"Substruct me from a given 3D vector"
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ self subclassResponsibility
 ]

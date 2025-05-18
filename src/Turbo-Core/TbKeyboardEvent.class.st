@@ -1,24 +1,26 @@
 Class {
-	#name : #TbKeyboardEvent,
-	#superclass : #TbUIEvent,
+	#name : 'TbKeyboardEvent',
+	#superclass : 'TbUIEvent',
 	#instVars : [
 		'scanCode',
 		'repeat'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> button [
 	self shouldNotImplement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> button: anObject [
 	self shouldNotImplement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> charCode [
 	self 
 		deprecated: 'Use charCode instead'
@@ -27,7 +29,7 @@ TbKeyboardEvent >> charCode [
 	self halt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> charCode: anObject [ 
 	self 
 		deprecated: 'Use charCode: instead'
@@ -36,18 +38,18 @@ TbKeyboardEvent >> charCode: anObject [
 	self halt
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbKeyboardEvent >> initialize [
 	super initialize.
 	repeat := 0.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyboardEvent >> isKeyboard [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> keyValue [
 	self 
 		deprecated: 'Use keyValue instead'
@@ -56,7 +58,7 @@ TbKeyboardEvent >> keyValue [
 	self halt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> keyValue: anObject [ 
 	self 
 		deprecated: 'Use key: instead'
@@ -65,17 +67,17 @@ TbKeyboardEvent >> keyValue: anObject [
 	self halt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> repeat [
 	^ repeat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardEvent >> repeat: anObject [
 	repeat := anObject
 ]
 
-{ #category : #'key - accessing' }
+{ #category : 'key - accessing' }
 TbKeyboardEvent >> scanCode [
 	"A scancode (or scan code) is the data that most computer keyboards send to a computer to report which keys have been pressed.
 	A number, or sequence of numbers, is assigned to each key on the keyboard.
@@ -85,7 +87,7 @@ TbKeyboardEvent >> scanCode [
 	^ scanCode
 ]
 
-{ #category : #'key - accessing' }
+{ #category : 'key - accessing' }
 TbKeyboardEvent >> scanCode: anObject [
 	scanCode := anObject
 ]

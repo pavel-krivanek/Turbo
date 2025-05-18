@@ -1,20 +1,22 @@
 Class {
-	#name : #TbSpaceFrameDrawingPhase,
-	#superclass : #TbSpaceFramePhase,
-	#category : #'Turbo-Core-Space-Frame'
+	#name : 'TbSpaceFrameDrawingPhase',
+	#superclass : 'TbSpaceFramePhase',
+	#category : 'Turbo-Core-Space-Frame',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Frame'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFrameDrawingPhase >> isDrawingPhase [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFrameDrawingPhase >> name [
 	^ 'Drawing'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 TbSpaceFrameDrawingPhase >> runOn: aSpace [
 	aSpace
 		dispatchTimeEvent: TbSpaceRenderEndEvent

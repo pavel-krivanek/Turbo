@@ -1,10 +1,12 @@
 Class {
-	#name : #TbFocusabilityBefore,
-	#superclass : #TbFocusability,
-	#category : #'Turbo-Core-Basic-Properties'
+	#name : 'TbFocusabilityBefore',
+	#superclass : 'TbFocusability',
+	#category : 'Turbo-Core-Basic-Properties',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Properties'
 }
 
-{ #category : #focus }
+{ #category : 'focus' }
 TbFocusabilityBefore >> focusables: anOrderedCollection along: aBlFocusSearchDirection of: anElement [
 	"anElement should get focus before descendants"
 

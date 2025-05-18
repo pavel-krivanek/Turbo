@@ -1,15 +1,16 @@
 Class {
-	#name : #TbGridLayoutTest,
-	#superclass : #TbTest,
+	#name : 'TbGridLayoutTest',
+	#superclass : 'TbTest',
 	#instVars : [
 		'e1',
 		'e2',
 		'e3'
 	],
-	#category : #'Turbo-Tests'
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutTest >> expectedContentConstraintsHorizontal [
 
 	^ '
@@ -26,7 +27,7 @@ TbGridLayoutTest >> expectedContentConstraintsHorizontal [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutTest >> expectedContentConstraintsHorizontal2 [
 
 	^ '
@@ -43,7 +44,7 @@ TbGridLayoutTest >> expectedContentConstraintsHorizontal2 [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutTest >> setUp [
 
 	super setUp.
@@ -59,7 +60,7 @@ TbGridLayoutTest >> setUp [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutTest >> testContentConstraintsHorizontal [
 	
 	space root layout: (TbGridLayout horizontal rowCount: 1).
@@ -81,7 +82,7 @@ TbGridLayoutTest >> testContentConstraintsHorizontal [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutTest >> testContentConstraintsHorizontal2 [
 	
 	space root layout: (TbLinearLayout new).

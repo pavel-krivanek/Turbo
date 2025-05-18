@@ -3,16 +3,18 @@ I am a special type of rope that can contain a set of attributes.
 I am able to add attributes to any type of rope by decorating it with attribute rope, it means that I am not a leaf rope
 "
 Class {
-	#name : #TbAttributeRope,
-	#superclass : #TbRope,
+	#name : 'TbAttributeRope',
+	#superclass : 'TbRope',
 	#instVars : [
 		'attributes',
 		'rope'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbAttributeRope class >> attributes: anAttributeCollection rope: aRope [
 	| aMergedCollection aMergedRope |
 	
@@ -29,7 +31,7 @@ TbAttributeRope class >> attributes: anAttributeCollection rope: aRope [
 		yourself
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 TbAttributeRope class >> combineAttributed: aLeftAttributeRope and: aRightAttributeRope [
 	<return: #BlRope>
 
@@ -38,7 +40,7 @@ TbAttributeRope class >> combineAttributed: aLeftAttributeRope and: aRightAttrib
 		rope: (self concatenate: aLeftAttributeRope rope and: aRightAttributeRope rope)
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 TbAttributeRope class >> mergeAttributes: aCollectionOfAttributes and: anotherCollectionOfAttributes [
 	"Merge two collection of attributes letting anotherCollectionOfAttributes to override
 	attributes from aCollectionOfAttributes based on its type"
@@ -56,7 +58,7 @@ TbAttributeRope class >> mergeAttributes: aCollectionOfAttributes and: anotherCo
 	^ Array streamContents: [ :aStream | anOrderedDictionary keys reverseDo: [ :anObject | aStream nextPut: anObject ] ]
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 TbAttributeRope class >> removeDuplicates: aCollection [
 	"Remove duplicates from a given collection preserving the original order"
 	<return: #Collection of: #Object>
@@ -71,19 +73,19 @@ TbAttributeRope class >> removeDuplicates: aCollection [
 	^ Array streamContents: [ :aStream | anOrderedDictionary keys reverseDo: [ :anObject | aStream nextPut: anObject ] ]
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbAttributeRope >> at: anIndex [
 	^ rope at: anIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAttributeRope >> attributes [
 	<return: #Collection of: #Object>
 
 	^ attributes
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbAttributeRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	| anAttributeRope |
 	self assertAccessFrom: aStart to: anEnd.
@@ -112,7 +114,7 @@ TbAttributeRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	^ (self from: 0 to: aStart) append: (anAttributeRope append: (self from: anEnd to: self size))
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbAttributeRope >> attributes: theAttributes rope: aRope [
 
 	(theAttributes isKindOf: HashedCollection)
@@ -122,12 +124,12 @@ TbAttributeRope >> attributes: theAttributes rope: aRope [
 	rope := aRope
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbAttributeRope >> children [
 	^ { rope }
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbAttributeRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	| aSubRope aClearedRope preservedAttributes  |
 	self assertAccessFrom: aStart to: anEnd.
@@ -159,7 +161,7 @@ TbAttributeRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	^ (self from: 0 to: aStart) append: (aClearedRope append: (self from: anEnd to: self size))
 ]
 
-{ #category : #'rope - deleting' }
+{ #category : 'rope - deleting' }
 TbAttributeRope >> delete: aStart to: anEnd [
 	<return: #BlRope>
 	self assertAccessFrom: aStart to: anEnd.
@@ -172,17 +174,17 @@ TbAttributeRope >> delete: aStart to: anEnd [
 		rope: (rope delete: aStart to: anEnd)
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbAttributeRope >> depth [
 	^ rope depth
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbAttributeRope >> do: aBlock [
 	self rope do: aBlock
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbAttributeRope >> empty [
 	"Create and return an empty version of this rope"
 	<return: #BlRope>
@@ -192,7 +194,7 @@ TbAttributeRope >> empty [
 		rope: self rope empty
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbAttributeRope >> from: aStart to: anEnd [
 	<return: #BlRope>
 
@@ -209,12 +211,12 @@ TbAttributeRope >> from: aStart to: anEnd [
 		rope: (rope from: aStart to: anEnd)
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbAttributeRope >> from: aStart to: anEnd do: aBlock [
 	self rope from: aStart to: anEnd do: aBlock
 ]
 
-{ #category : #'rope - inserting' }
+{ #category : 'rope - inserting' }
 TbAttributeRope >> insertItems: aCollection at: anIndex [
 
 	^ self class attributeRope
@@ -222,14 +224,14 @@ TbAttributeRope >> insertItems: aCollection at: anIndex [
 		rope: (rope insertItems: aCollection at: anIndex)
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbAttributeRope >> isAttributed [
 	<return: #Boolean>
 	
 	^ true
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbAttributeRope >> isEmpty [
 	"Attribute rope is empty then and only then when attributes and underlying rope are empty"
 	<return: #Boolean>
@@ -237,22 +239,22 @@ TbAttributeRope >> isEmpty [
 	^ self attributes isEmpty and: [ self rope isEmpty ]
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbAttributeRope >> isLeaf [
 	^ false
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbAttributeRope >> iterator: aStart to: anEnd [
 	^ TbAttributeRopeIterator rope: self from: aStart to: anEnd
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAttributeRope >> rope [
 	^ rope
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbAttributeRope >> size [
 	^ rope size
 ]

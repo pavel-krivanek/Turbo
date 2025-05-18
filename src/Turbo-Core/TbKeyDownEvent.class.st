@@ -1,23 +1,25 @@
 Class {
-	#name : #TbKeyDownEvent,
-	#superclass : #TbKeyboardEvent,
+	#name : 'TbKeyDownEvent',
+	#superclass : 'TbKeyboardEvent',
 	#instVars : [
 		'key'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'key - accessing' }
+{ #category : 'key - accessing' }
 TbKeyDownEvent >> key [
 	^ key
 ]
 
-{ #category : #'key - accessing' }
+{ #category : 'key - accessing' }
 TbKeyDownEvent >> key: anObject [
 	key := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbKeyDownEvent >> printOn: aStream [
 	aStream 
 		nextPutAll: self class name;
@@ -35,7 +37,7 @@ TbKeyDownEvent >> printOn: aStream [
 		nextPut:$)
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbKeyDownEvent >> sendTo: anObject [
 	anObject keyDownEvent: self
 ]

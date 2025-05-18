@@ -3,17 +3,19 @@ I am the abstract class for event queue management.
 
 "
 Class {
-	#name : #TbHostEventFetcher,
-	#superclass : #Object,
+	#name : 'TbHostEventFetcher',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'eventQueue'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbHostEventFetcher >> enqueueEvent: aBlEvent [
 	"Enqueue a given Bloc Event in the event queue.
 	Do not use me directly, instead rely on #enqueueEvent: from HostSpace"
@@ -21,7 +23,7 @@ TbHostEventFetcher >> enqueueEvent: aBlEvent [
 	eventQueue nextPut: aBlEvent
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbHostEventFetcher >> fetchedEventsDo: aBlock [
 	"Flush event queue and evaluate a given block with every queued event as argument"
 	| theEvents |
@@ -31,7 +33,7 @@ TbHostEventFetcher >> fetchedEventsDo: aBlock [
 	theEvents do: aBlock
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbHostEventFetcher >> initialize [
 	super initialize.
 

@@ -1,6 +1,6 @@
 Class {
-	#name : #TbTestingHostSpace,
-	#superclass : #Object,
+	#name : 'TbTestingHostSpace',
+	#superclass : 'Object',
 	#traits : 'TTbHostSpace',
 	#classTraits : 'TTbHostSpace classTrait',
 	#instVars : [
@@ -12,17 +12,19 @@ Class {
 		'mutex',
 		'windowExtent'
 	],
-	#category : #'Turbo-Canvas-Testing'
+	#category : 'Turbo-Canvas-Testing',
+	#package : 'Turbo-Canvas',
+	#tag : 'Testing'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTestingHostSpace >> content [
 
 	^ String streamContents: [ :s |
 		displayMatrix do: [ :line | s nextPutAll: line; cr ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHostSpace >> createDisplayMatrix [
 
 	displayMatrix := (1 to: space height) collect: [ :y |
@@ -31,19 +33,19 @@ TbTestingHostSpace >> createDisplayMatrix [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHostSpace >> displayMatrix [
 
 	^ displayMatrix
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTestingHostSpace >> displaySurface: aSurface [
 
 	displayMatrix := aSurface displayMatrix.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTestingHostSpace >> eventFetcher [
 	"Return event fetcher used to enqueue events that should be
 	processed in the beginning of every frame"
@@ -52,7 +54,7 @@ TbTestingHostSpace >> eventFetcher [
 	^ eventFetcher
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> host [
 	"Return a host that was used to create this host space"
 	<return: #BlHost>
@@ -60,14 +62,14 @@ TbTestingHostSpace >> host [
 	^ host
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> host: aBlHost [
 	"Assign a host that was used to create this host space"
 	
 	host := aBlHost
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHostSpace >> initialize [
 	super initialize.
 
@@ -77,23 +79,23 @@ TbTestingHostSpace >> initialize [
 
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> lock [
 	^ mutex
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTestingHostSpace >> newSurface [
 
 	^ TbRendererTestingSurface new
 ]
 
-{ #category : #'host space - displaying' }
+{ #category : 'host space - displaying' }
 TbTestingHostSpace >> open [
 	self show
 ]
 
-{ #category : #'host space - rendering' }
+{ #category : 'host space - rendering' }
 TbTestingHostSpace >> prepareToRender: aBlSpace onFormSurface: aBlHostRendererFormSurface [
 	"Prepare host space to a given space on a Form surface.
 	By default dispatch directly to the renderer"
@@ -101,7 +103,11 @@ TbTestingHostSpace >> prepareToRender: aBlSpace onFormSurface: aBlHostRendererFo
 	self renderer prepareToRender: aBlSpace
 ]
 
-{ #category : #'host space - rendering' }
+{ #category : 'as yet unclassified' }
+TbTestingHostSpace >> preprocessEvents [
+]
+
+{ #category : 'host space - rendering' }
 TbTestingHostSpace >> render: aSpace [
 	"Render a given abstract space on an underlying window or visual area"
 
@@ -111,7 +117,7 @@ TbTestingHostSpace >> render: aSpace [
 
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> renderer [
 	"Return host renderer used to render spaces"
 	<return: #TBlHostRenderer>
@@ -119,13 +125,13 @@ TbTestingHostSpace >> renderer [
 	^ renderer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTestingHostSpace >> show [
 	
 	^ displayMatrix
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> space [
 	"Return a space I am assigned to"
 	<return: #TbSpace>
@@ -133,14 +139,14 @@ TbTestingHostSpace >> space [
 	^ space
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> space: aSpace [
 	"Assign me to a given space"
 
 	space := aSpace
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbTestingHostSpace >> title [
 	"Return window's title as a string"
 	<return: #String>
@@ -148,14 +154,14 @@ TbTestingHostSpace >> title [
 	^ 'Turbo'
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbTestingHostSpace >> title: aString [
 	"Change window's title"
 
 	"ignore for now, TODO"
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> windowExtent [
 	"Return the window size in screen coordinates.
 	This size may differ from the size in pixels of underlying surface 
@@ -165,14 +171,14 @@ TbTestingHostSpace >> windowExtent [
 	^ windowExtent ifNil: [ 310@200 ]
 ]
 
-{ #category : #'host space - accessing' }
+{ #category : 'host space - accessing' }
 TbTestingHostSpace >> windowExtent: anExtent [	
 	
 	windowExtent := anExtent
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTestingHostSpace >> withTurboRenderer [
 
 	renderer := TbRenderer new.

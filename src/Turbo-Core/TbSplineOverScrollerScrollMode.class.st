@@ -1,16 +1,18 @@
 Class {
-	#name : #TbSplineOverScrollerScrollMode,
-	#superclass : #TbSplineOverScrollerMode,
+	#name : 'TbSplineOverScrollerScrollMode',
+	#superclass : 'TbSplineOverScrollerMode',
 	#instVars : [
 		'interpolator',
 		'startPosition',
 		'distance',
 		'duration'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerScrollMode >> continueOn: aSplineOverScroller [
 	"Simple scroll mode does not need to continue, animation can be finished"
 	<return: #Boolean>
@@ -18,24 +20,24 @@ TbSplineOverScrollerScrollMode >> continueOn: aSplineOverScroller [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> distance [
 	^ distance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> distance: anObject [
 	distance := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> duration [
 	<return: #Duration>
 
 	^ duration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> duration: aDuration [
 
 	self
@@ -45,7 +47,7 @@ TbSplineOverScrollerScrollMode >> duration: aDuration [
 	duration := aDuration
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSplineOverScrollerScrollMode >> initializeOn: aSplineOverScroller [
 	aSplineOverScroller isFinished: false.
 	
@@ -63,27 +65,27 @@ TbSplineOverScrollerScrollMode >> initializeOn: aSplineOverScroller [
 	aSplineOverScroller startVelocity: 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> interpolator [
 	^ interpolator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> interpolator: anObject [
 	interpolator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> startPosition [
 	^ startPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerScrollMode >> startPosition: anObject [
 	startPosition := anObject
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerScrollMode >> updateOn: aSplineOverScroller [
 	<return: #Boolean>
 	| aCurrentTime anElapsedTime aDuration |

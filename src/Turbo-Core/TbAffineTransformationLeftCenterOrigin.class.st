@@ -2,12 +2,14 @@
 I am a relative transformation origin which is attached to the left center of an element.
 "
 Class {
-	#name : #TbAffineTransformationLeftCenterOrigin,
-	#superclass : #TbAffineTransformationOrigin,
-	#category : #'Turbo-Core-Basic-Transformations'
+	#name : 'TbAffineTransformationLeftCenterOrigin',
+	#superclass : 'TbAffineTransformationOrigin',
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #math }
+{ #category : 'math' }
 TbAffineTransformationLeftCenterOrigin >> originIn: anElement [
 	"@see Method comment BlAffineTransformationOrigin>>#originIn:"
 	<return: #Point or: #BlPoint3D>

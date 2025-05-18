@@ -1,19 +1,21 @@
 Class {
-	#name : #TbSplineOverScrollerMode,
-	#superclass : #Object,
+	#name : 'TbSplineOverScrollerMode',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerMode >> continueOn: aSplineOverScroller [
 	<return: #Boolean>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerMode >> finishOn: aSplineOverScroller [
 	"Finish animation and finalize scroller state"
 
@@ -23,7 +25,7 @@ TbSplineOverScrollerMode >> finishOn: aSplineOverScroller [
 	aSplineOverScroller updateTime: nil.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbSplineOverScrollerMode >> gtInspectorGraphIn: aComposite [
 	<gtInspectorPresentationOrder: 10>
 
@@ -64,12 +66,12 @@ TbSplineOverScrollerMode >> gtInspectorGraphIn: aComposite [
 			aPlotter root ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSplineOverScrollerMode >> initializeOn: aSplineOverScroller [
 	self subclassResponsibility
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerMode >> updateOn: aSplineOverScroller [
 	<return: #Boolean>
 

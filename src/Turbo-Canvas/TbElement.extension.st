@@ -1,6 +1,6 @@
-Extension { #name : #TbElement }
+Extension { #name : 'TbElement' }
 
-{ #category : #'*Turbo-Canvas' }
+{ #category : '*Turbo-Canvas' }
 TbElement >> drawChildrenOnTurboCanvas: aCanvas [
 
 	"If there are not children no need to draw and clip"
@@ -14,7 +14,7 @@ TbElement >> drawChildrenOnTurboCanvas: aCanvas [
 			do: [ :anElement | anElement fullDrawOnTurboCanvas: aCanvas ] ]
 ]
 
-{ #category : #'*Turbo-Canvas' }
+{ #category : '*Turbo-Canvas' }
 TbElement >> drawOnTurboCanvas: aCanvas [
 
 "
@@ -44,7 +44,7 @@ TbElement >> drawOnTurboCanvas: aCanvas [
 						onSpartaCanvas: aCanvas ] ]"
 ]
 
-{ #category : #'*Turbo-Canvas' }
+{ #category : '*Turbo-Canvas' }
 TbElement >> fullDrawOnTurboCanvas: aCanvas [
 	| anEffectBounds |
 

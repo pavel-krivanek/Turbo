@@ -1,26 +1,28 @@
 Class {
-	#name : #TbBasicLayoutWithPadding,
-	#superclass : #TbBasicLayout,
+	#name : 'TbBasicLayoutWithPadding',
+	#superclass : 'TbBasicLayout',
 	#instVars : [
 		'topLeftPadding',
 		'bottomRightPadding'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBasicLayoutWithPadding >> bottomRightPadding [
 
 	^ bottomRightPadding
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBasicLayoutWithPadding >> bottomRightPadding: anObject [
 
 	bottomRightPadding := anObject
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbBasicLayoutWithPadding >> initialize [ 
 
 	super initialize.
@@ -28,7 +30,7 @@ TbBasicLayoutWithPadding >> initialize [
 	bottomRightPadding := 0@0.
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbBasicLayoutWithPadding >> layout: anElement in: aRectangle [
 
 	anElement children accountedByLayout do: [ :child |
@@ -37,19 +39,19 @@ TbBasicLayoutWithPadding >> layout: anElement in: aRectangle [
 	self layoutIgnored: anElement
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbBasicLayoutWithPadding >> measureChild: anElement parentSpec: parentSpec widthUsed: widthUsed heightUsed: heightUsed [
 
 	^ super measureChild: anElement parentSpec: parentSpec widthUsed: widthUsed + (topLeftPadding x + bottomRightPadding x) heightUsed: heightUsed + (topLeftPadding y + bottomRightPadding y)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBasicLayoutWithPadding >> topLeftPadding [
 
 	^ topLeftPadding
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBasicLayoutWithPadding >> topLeftPadding: anObject [
 
 	topLeftPadding := anObject

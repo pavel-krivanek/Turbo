@@ -4,8 +4,8 @@ I represent a single node within interval tree ===BlTextSelectionTree===.
 I am a binary node with ===selection=== playing a role of a key (lowest value) and value. Additionally I cache the highest interval value of a subtree including my own interval.
 "
 Class {
-	#name : #TbSelectionNode,
-	#superclass : #Object,
+	#name : 'TbSelectionNode',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -15,15 +15,17 @@ Class {
 		'high',
 		'parent'
 	],
-	#category : #'Turbo-Core-Utilities - Selection'
+	#category : 'Turbo-Core-Utilities - Selection',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Selection'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSelectionNode class >> selection: aMonotoneTextSelection [
 	^ self new selection: aMonotoneTextSelection
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSelectionNode >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -51,7 +53,7 @@ TbSelectionNode >> = anObject [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> children [
 	"Return a collection of children selection nodes"
 	<return: #Array of: #BlSelectionNode>
@@ -63,7 +65,7 @@ TbSelectionNode >> children [
 			ifTrue: [ aStream nextPut: self right ] ]
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionNode >> contains: anIndex [
 	"Return true if this selection interval includes a given index, false otherwise"
 	<return: #Boolean>
@@ -83,14 +85,14 @@ TbSelectionNode >> contains: anIndex [
 	^ false
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSelectionNode >> createNode: aSelection [
 	^ (self class selection: aSelection)
 		parent: self;
 		yourself
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionNode >> delete [
 	"Delete me from the tree"
 
@@ -108,7 +110,7 @@ TbSelectionNode >> delete [
 					ifFalse: [ self deleteInParent ] ] ]
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionNode >> deleteInParent [
 	"Delete me from the parent"
 	self
@@ -129,7 +131,7 @@ TbSelectionNode >> deleteInParent [
 	parent := nil
 ]
 
-{ #category : #'tree - enumerating' }
+{ #category : 'tree - enumerating' }
 TbSelectionNode >> do: aBlock [
 	self hasLeft
 		ifTrue: [ self left do: aBlock ].
@@ -140,7 +142,7 @@ TbSelectionNode >> do: aBlock [
 		ifTrue: [ self right do: aBlock ]
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionNode >> findMax [
 	"Return a minimum node in a subtree"
 	<return: #BltextSelectionNode>
@@ -152,7 +154,7 @@ TbSelectionNode >> findMax [
 	^ aCurrentNode
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionNode >> findMin [
 	"Return a minimum node in a subtree"
 	<return: #BltextSelectionNode>
@@ -164,27 +166,27 @@ TbSelectionNode >> findMin [
 	^ aCurrentNode
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionNode >> hasLeft [
 	^ left isNotNil
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionNode >> hasParent [
 	^ parent isNotNil
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionNode >> hasRight [
 	^ right isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> high [
 	^ high
 ]
 
-{ #category : #'tree - inserting' }
+{ #category : 'tree - inserting' }
 TbSelectionNode >> insert: aMonotoneTextSelection [
 
 	aMonotoneTextSelection < self selection
@@ -199,12 +201,12 @@ TbSelectionNode >> insert: aMonotoneTextSelection [
 	high := high max: ((left ifNil: [ 0 ] ifNotNil: #high) max: (right ifNil: [ 0 ] ifNotNil: #high))
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionNode >> isRoot [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> left [
 	self
 		assert: [ left isNotNil ]
@@ -213,7 +215,7 @@ TbSelectionNode >> left [
 	^ left
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> left: aTextSelectionNode [
 	self
 		assert: [ aTextSelectionNode isNotNil ]
@@ -222,7 +224,7 @@ TbSelectionNode >> left: aTextSelectionNode [
 	left := aTextSelectionNode
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionNode >> overlapping: aMonotoneTextSelection in: aStream [
 	
 	(left isNotNil and: [ aMonotoneTextSelection from <= left high ])
@@ -235,7 +237,7 @@ TbSelectionNode >> overlapping: aMonotoneTextSelection in: aStream [
 		ifTrue: [ right overlapping: aMonotoneTextSelection in: aStream ]
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionNode >> overlappingNeighbours: aMonotoneTextSelection in: aStream [
 	
 	(left isNotNil and: [ aMonotoneTextSelection from <= (left high + 1) ])
@@ -248,7 +250,7 @@ TbSelectionNode >> overlappingNeighbours: aMonotoneTextSelection in: aStream [
 		ifTrue: [ right overlappingNeighbours: aMonotoneTextSelection in: aStream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> parent [
 	self
 		assert: [ parent isNotNil ]
@@ -257,12 +259,12 @@ TbSelectionNode >> parent [
 	^ parent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> parent: aBlSelectionNode [
 	parent := aBlSelectionNode
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbSelectionNode >> printOn: aStream [
 
 	self hasLeft ifTrue: [ self left printOn: aStream ].
@@ -270,17 +272,17 @@ TbSelectionNode >> printOn: aStream [
 	self hasRight ifTrue: [ self right printOn: aStream ].
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionNode >> removeLeft [
 	left := nil
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionNode >> removeRight [
 	right := nil
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionNode >> replaceInParent: aTextSelectionNode [
 	"Replace me in a parent with a given node"
 	
@@ -303,7 +305,7 @@ TbSelectionNode >> replaceInParent: aTextSelectionNode [
 	parent := nil
 ]
 
-{ #category : #'tree - enumerating' }
+{ #category : 'tree - enumerating' }
 TbSelectionNode >> reverseDo: aBlock [
 
 	self hasRight
@@ -315,7 +317,7 @@ TbSelectionNode >> reverseDo: aBlock [
 		ifTrue: [ self left reverseDo: aBlock ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> right [
 	self
 		assert: [ right isNotNil ]
@@ -324,7 +326,7 @@ TbSelectionNode >> right [
 	^ right
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> right: aTextSelectionNode [
 	self
 		assert: [ aTextSelectionNode isNotNil ]
@@ -333,12 +335,12 @@ TbSelectionNode >> right: aTextSelectionNode [
 	right := aTextSelectionNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionNode >> selection [
 	^ selection
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSelectionNode >> selection: aMonotoneTextSelection [
 	selection := aMonotoneTextSelection.
 	high := selection to

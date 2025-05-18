@@ -24,12 +24,14 @@ container
 ]]]
 "
 Class {
-	#name : #TbElementPolarToCartesianTransformation,
-	#superclass : #TbElementDynamicTransformation,
-	#category : #'Turbo-Core-Basic-Transformations'
+	#name : 'TbElementPolarToCartesianTransformation',
+	#superclass : 'TbElementDynamicTransformation',
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #computation }
+{ #category : 'computation' }
 TbElementPolarToCartesianTransformation >> computeMatrix [
 	| polarR polarPhi cartesianX cartesianY |
 
@@ -48,7 +50,7 @@ TbElementPolarToCartesianTransformation >> computeMatrix [
 		shy: self owner position y sin"
 ]
 
-{ #category : #invalidation }
+{ #category : 'invalidation' }
 TbElementPolarToCartesianTransformation >> invalidateMatrix [
 	"Matrix is computed out of affine transformation composition
 	which may contain transformations that depend on element's properties
@@ -58,7 +60,7 @@ TbElementPolarToCartesianTransformation >> invalidateMatrix [
 	matrix := nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementPolarToCartesianTransformation >> is2D [
 	"Return true if my current transformation is in 2D space, false otherwise"
 	<return: #Boolean>
@@ -66,7 +68,7 @@ TbElementPolarToCartesianTransformation >> is2D [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementPolarToCartesianTransformation >> is3D [
 	"Return true if my current transformation is in 3D space, false otherwise"
 	<return: #Boolean>
@@ -74,7 +76,7 @@ TbElementPolarToCartesianTransformation >> is3D [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementPolarToCartesianTransformation >> isIdentity [
 	"Return true if I represent an identity transformation, false otherwise"
 	<return: #Boolean>
@@ -82,7 +84,7 @@ TbElementPolarToCartesianTransformation >> isIdentity [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementPolarToCartesianTransformation >> owner: anElement [
 	super owner: anElement.
 	

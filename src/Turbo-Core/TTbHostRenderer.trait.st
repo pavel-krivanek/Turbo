@@ -2,16 +2,18 @@
 I define the public API that host renderers must provide.
 "
 Trait {
-	#name : #TTbHostRenderer,
-	#category : #'Turbo-Core-Universe'
+	#name : 'TTbHostRenderer',
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'renderer - rendering' }
+{ #category : 'renderer - rendering' }
 TTbHostRenderer >> doRender: aSpace [
 	self explicitRequirement
 ]
 
-{ #category : #'renderer - rendering' }
+{ #category : 'renderer - rendering' }
 TTbHostRenderer >> finishedRender: aSpace [
 	"Perform neccessary actions after rendering is complete.
 	By default I clear dirty areas of a given space"
@@ -19,7 +21,7 @@ TTbHostRenderer >> finishedRender: aSpace [
 	aSpace clearDirtyAreas
 ]
 
-{ #category : #'renderer - testing' }
+{ #category : 'renderer - testing' }
 TTbHostRenderer >> hasResized [
 	"Return true if host space resized since previous frame, otherwise false"
 	<return: #Boolean>
@@ -27,43 +29,43 @@ TTbHostRenderer >> hasResized [
 	^ self explicitRequirement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TTbHostRenderer >> initializeForBuffer: aBufferSurface [
 	"Asks renderer to initialize itself to be used together with a pixel buffer surface"
 
 	self explicitRequirement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TTbHostRenderer >> initializeForForm: aFormSurface [
 	"Asks renderer to initialize itself to be used together with a form surface"
 
 	self explicitRequirement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TTbHostRenderer >> initializeForOpenGL: anOpenGLSurface [
 	"Asks renderer to initialize itself to be used together with an OpenGL surface"
 
 	self explicitRequirement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TTbHostRenderer >> initializeHostSpace: aBlHostSpace [
 	self explicitRequirement
 ]
 
-{ #category : #'renderer - rendering' }
+{ #category : 'renderer - rendering' }
 TTbHostRenderer >> prepareToRender: aSpace [
 	self explicitRequirement
 ]
 
-{ #category : #'renderer - rendering' }
+{ #category : 'renderer - rendering' }
 TTbHostRenderer >> presentAreas: aCollection [
 	self surface presentAreas: aCollection
 ]
 
-{ #category : #'renderer - rendering' }
+{ #category : 'renderer - rendering' }
 TTbHostRenderer >> render: aSpace [
 	"Render a given space according to its dirty areas.
 	Note: if there are no dirty areas nothing will happen, including window or canvas update"
@@ -76,7 +78,7 @@ TTbHostRenderer >> render: aSpace [
 		ensure: [ self finishedRender: aSpace ]
 ]
 
-{ #category : #'renderer - testing' }
+{ #category : 'renderer - testing' }
 TTbHostRenderer >> renderNeeded: aSpace [
 	"Return true if I need to render a given space.
 	By default I check if there are any dirty areas, if there are none - no need to render"
@@ -85,7 +87,7 @@ TTbHostRenderer >> renderNeeded: aSpace [
 	^ aSpace dirtyAreas notEmpty
 ]
 
-{ #category : #'renderer - testing' }
+{ #category : 'renderer - testing' }
 TTbHostRenderer >> supportsBufferSurface [
 	"Return true if this renderer can work with buffer surface, false otherwise"
 	<return: #Boolean>
@@ -93,7 +95,7 @@ TTbHostRenderer >> supportsBufferSurface [
 	^ self explicitRequirement
 ]
 
-{ #category : #'renderer - testing' }
+{ #category : 'renderer - testing' }
 TTbHostRenderer >> supportsFormSurface [
 	"Return true if this renderer can work with form surface, false otherwise"
 	<return: #Boolean>
@@ -101,7 +103,7 @@ TTbHostRenderer >> supportsFormSurface [
 	^ self explicitRequirement
 ]
 
-{ #category : #'renderer - testing' }
+{ #category : 'renderer - testing' }
 TTbHostRenderer >> supportsOpenGLSurface [
 	"Return true if this renderer can work with OpenGL surface, false otherwise"
 	<return: #Boolean>
@@ -109,12 +111,12 @@ TTbHostRenderer >> supportsOpenGLSurface [
 	^ self explicitRequirement
 ]
 
-{ #category : #'renderer - accessing' }
+{ #category : 'renderer - accessing' }
 TTbHostRenderer >> surface [
 	^ self explicitRequirement
 ]
 
-{ #category : #'renderer - accessing' }
+{ #category : 'renderer - accessing' }
 TTbHostRenderer >> surface: aRendererSurface [
 	self explicitRequirement
 ]

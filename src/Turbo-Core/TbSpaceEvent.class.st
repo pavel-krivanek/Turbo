@@ -1,25 +1,27 @@
 Class {
-	#name : #TbSpaceEvent,
-	#superclass : #TbEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbSpaceEvent',
+	#superclass : 'TbEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceEvent >> isSpaceCloseRequest [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceEvent >> isSpaceEvent [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceEvent >> isSpaceResizedEvent [
 	^ false
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbSpaceEvent >> sendTo: anObject [
 	anObject spaceEvent: self
 ]

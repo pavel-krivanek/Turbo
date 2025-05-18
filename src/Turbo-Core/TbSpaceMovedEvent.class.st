@@ -1,23 +1,25 @@
 Class {
-	#name : #TbSpaceMovedEvent,
-	#superclass : #TbSpaceEvent,
+	#name : 'TbSpaceMovedEvent',
+	#superclass : 'TbSpaceEvent',
 	#instVars : [
 		'position'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceMovedEvent >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceMovedEvent >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbSpaceMovedEvent >> sendTo: anObject [
 	anObject spaceMovedEvent: self
 ]

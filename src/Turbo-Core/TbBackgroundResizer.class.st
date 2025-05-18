@@ -5,14 +5,16 @@ My main responsibility is to adapt background to element's size.
 My subclasses must implement adapt:to:
 "
 Class {
-	#name : #TbBackgroundResizer,
-	#superclass : #Object,
+	#name : 'TbBackgroundResizer',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBackgroundResizer class >> exact: anExtent [
 	"Return an instance of exact background resizer for a given extent as a point.
 	anExtent must not be nil"
@@ -21,7 +23,7 @@ TbBackgroundResizer class >> exact: anExtent [
 	^ TbBackgroundExactResizer extent: anExtent
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBackgroundResizer class >> match [
 	"Return an instance of resizer that makes background be as big as owner element"
 	<return: #BlBackgroundResizer>

@@ -1,15 +1,17 @@
 Class {
-	#name : #TbDropShadowEffect,
-	#superclass : #TbElementEffect,
+	#name : 'TbDropShadowEffect',
+	#superclass : 'TbElementEffect',
 	#instVars : [
 		'color',
 		'width',
 		'offset'
 	],
-	#category : #'Turbo-Core-Effect'
+	#category : 'Turbo-Core-Effect',
+	#package : 'Turbo-Core',
+	#tag : 'Effect'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbDropShadowEffect class >> color: aColor width: aNumber offset: anOffset [
 	^ self basicNew
 		initializeColor: aColor
@@ -17,14 +19,14 @@ TbDropShadowEffect class >> color: aColor width: aNumber offset: anOffset [
 		offset: anOffset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDropShadowEffect >> color [
 	<return: #Color>
 
 	^ color
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbDropShadowEffect >> computeBounds: aSpartaRectangle [
 	| aLeft aTop aRight aBottom |
 
@@ -40,7 +42,7 @@ TbDropShadowEffect >> computeBounds: aSpartaRectangle [
 		bottom: aBottom
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbDropShadowEffect >> copyWithColor: aColor [
 	<return: #BlDropShadowEffect>
 
@@ -50,7 +52,7 @@ TbDropShadowEffect >> copyWithColor: aColor [
 		offset: self offset
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbDropShadowEffect >> copyWithOffset: aPoint [
 	<return: #BlDropShadowEffect>
 
@@ -60,7 +62,7 @@ TbDropShadowEffect >> copyWithOffset: aPoint [
 		offset: aPoint
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbDropShadowEffect >> copyWithWidth: aNumber [
 	<return: #BlDropShadowEffect>
 
@@ -70,7 +72,7 @@ TbDropShadowEffect >> copyWithWidth: aNumber [
 		offset: self offset
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDropShadowEffect >> initialize [
 	super initialize.
 
@@ -80,7 +82,7 @@ TbDropShadowEffect >> initialize [
 		offset: 0@0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDropShadowEffect >> initializeColor: aColor width: aWidth offset: aPoint [
 	self
 		assert: [ color isNil ]
@@ -99,14 +101,14 @@ TbDropShadowEffect >> initializeColor: aColor width: aWidth offset: aPoint [
 	offset := aPoint asPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDropShadowEffect >> offset [
 	<return: #Point>
 
 	^ offset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDropShadowEffect >> width [
 	<return: #Number>
 

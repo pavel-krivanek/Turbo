@@ -21,17 +21,19 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #TbSpaceManager,
-	#superclass : #Object,
+	#name : 'TbSpaceManager',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'spaces'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbSpaceManager >> addSpace: aSpace [
 
 	self
@@ -41,7 +43,7 @@ TbSpaceManager >> addSpace: aSpace [
 	spaces := spaces copyWith: aSpace
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceManager >> hasSpace: aSpace [
 	"Return true if a given space is registered, false otherwise"
 	<return: #Boolean>
@@ -49,7 +51,7 @@ TbSpaceManager >> hasSpace: aSpace [
 	^ self spaces includes: aSpace
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceManager >> hasSpaces [
 	"Return true if there are registered spaces, false otherwise"
 	<return: #Boolean>
@@ -57,19 +59,19 @@ TbSpaceManager >> hasSpaces [
 	^ self spaces isNotEmpty
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpaceManager >> initialize [
 	super initialize.
 
 	spaces := #()
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpaceManager >> pulse [
 	spaces do: [ :aSpace | aSpace pulse ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbSpaceManager >> removeSpace: aSpace [
 
 	self
@@ -79,7 +81,7 @@ TbSpaceManager >> removeSpace: aSpace [
 	spaces := spaces copyWithout: aSpace
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceManager >> spaces [
 	"Return a collection of all existing spaces"
 	<return: #Array>

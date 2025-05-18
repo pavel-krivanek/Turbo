@@ -3,29 +3,31 @@ I represent a concrete implementation of ""at most"" measurement mode.
 For more information see class comment of BlMeasurementMode
 "
 Class {
-	#name : #TbMeasurementAtMostMode,
-	#superclass : #TbMeasurementMode,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbMeasurementAtMostMode',
+	#superclass : 'TbMeasurementMode',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementAtMostMode >> isAtMost [
 	^ true
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementAtMostMode >> measurement: aResizing with: aNumber [
 	<return: #BlMeasurementSpec>
 	
 	^ aResizing measurementAtMostWith: aNumber
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbMeasurementAtMostMode >> printOn: aStream [
 	aStream nextPutAll: 'At most'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbMeasurementAtMostMode >> printOn: aStream size: aNumber [
 
 	self printOn: aStream.	
@@ -33,7 +35,7 @@ TbMeasurementAtMostMode >> printOn: aStream size: aNumber [
 	aStream nextPutAll: aNumber asString
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementAtMostMode >> size: aNumber with: aSpecSize [
 	<return: #Number>
 	

@@ -6,22 +6,24 @@ ${example:BlChildrenSubsetExamples>>#sortedByElevationFromElement}$
 
 "
 Class {
-	#name : #TbChildrenSortedByElevation,
-	#superclass : #TbChildrenSubset,
-	#category : #'Turbo-Core-Basic-Children'
+	#name : 'TbChildrenSortedByElevation',
+	#superclass : 'TbChildrenSubset',
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenSortedByElevation >> name [
 	^ 'Sorted by elevation'
 ]
 
-{ #category : #'children - subsets' }
+{ #category : 'children - subsets' }
 TbChildrenSortedByElevation >> sortedByElevation [
 	^ self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenSortedByElevation >> subsetFrom: aBlChildren [
 	"Perform the sort when the instance is created."
 	^ aBlChildren asArray sorted: [ :a :b | 

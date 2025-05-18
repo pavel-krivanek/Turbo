@@ -1,16 +1,18 @@
 Class {
-	#name : #TbSpace2,
-	#superclass : #TbSpace,
-	#category : #'Turbo-Canvas-Testing'
+	#name : 'TbSpace2',
+	#superclass : 'TbSpace',
+	#category : 'Turbo-Canvas-Testing',
+	#package : 'Turbo-Canvas',
+	#tag : 'Testing'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace2 >> extent [ 
 
 	^  extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace2 >> extent: anObject [
 
 

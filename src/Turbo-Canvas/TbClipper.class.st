@@ -1,31 +1,32 @@
 Class {
-	#name : #TbClipper,
-	#superclass : #TbAbstractBuilder,
-	#category : #'Turbo-Canvas'
+	#name : 'TbClipper',
+	#superclass : 'TbAbstractBuilder',
+	#category : 'Turbo-Canvas',
+	#package : 'Turbo-Canvas'
 }
 
-{ #category : #clipping }
+{ #category : 'clipping' }
 TbClipper >> by: aPath during: aBlock [
 
 	self push: aPath.
 	aBlock ensure: [ self pop ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbClipper >> containsGlobal: aRectangle [
 	<return: #Boolean>
 
 	^ self globalBounds intersects: aRectangle
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbClipper >> containsLocal: aRectangle [
 	<return: #Boolean>
 
 	^ self localBounds intersects: aRectangle
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbClipper >> globalBounds [
 	| aTransformation aBounds |
 	
@@ -35,7 +36,7 @@ TbClipper >> globalBounds [
 	^ aBounds
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbClipper >> localBounds [
 
 	^ Rectangle new.
@@ -63,27 +64,27 @@ TbClipper >> localBounds [
 
 ]
 
-{ #category : #clipping }
+{ #category : 'clipping' }
 TbClipper >> pop [
 
 ]
 
-{ #category : #clipping }
+{ #category : 'clipping' }
 TbClipper >> push: aSpartaPath [
 	"aSpartaPath spartaClipOn: canvas with: self"
 ]
 
-{ #category : #clipping }
+{ #category : 'clipping' }
 TbClipper >> pushPath: aSpartaPath [
 
 ]
 
-{ #category : #clipping }
+{ #category : 'clipping' }
 TbClipper >> pushRectangle: aRectangle [
 
 ]
 
-{ #category : #clipping }
+{ #category : 'clipping' }
 TbClipper >> when: aWhenBlock by: aPathBlock during: aBlock [
 	"Clip canvas by a given path only if when block evaluates to true"
 

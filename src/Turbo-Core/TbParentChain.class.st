@@ -1,10 +1,12 @@
 Class {
-	#name : #TbParentChain,
-	#superclass : #DoubleLinkedList,
-	#category : #'Turbo-Core-Space-Support'
+	#name : 'TbParentChain',
+	#superclass : 'DoubleLinkedList',
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbParentChain class >> of: anElement [
 	| aChain |
 	

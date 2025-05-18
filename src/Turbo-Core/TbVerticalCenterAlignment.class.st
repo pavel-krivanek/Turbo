@@ -1,35 +1,37 @@
 Class {
-	#name : #TbVerticalCenterAlignment,
-	#superclass : #TbVerticalAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbVerticalCenterAlignment',
+	#superclass : 'TbVerticalAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbVerticalCenterAlignment class >> initialize [
 	super initialize
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbVerticalCenterAlignment class >> leftToRight [
 	^ self center
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbVerticalCenterAlignment class >> rightToLeft [
 	^ self center
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbVerticalCenterAlignment >> inverted [
 	^ TbElementAlignment horizontal center
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbVerticalCenterAlignment >> swap [
 	^ self
 ]
 
-{ #category : #translation }
+{ #category : 'translation' }
 TbVerticalCenterAlignment >> translationOf: aBounds in: aContainerBounds [
 	<return: #Point>
 	

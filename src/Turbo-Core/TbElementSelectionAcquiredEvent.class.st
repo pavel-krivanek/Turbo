@@ -4,15 +4,17 @@ Is sent when element gets inside of mouse selection rectangle or when the overla
 Text containing elements should react on this event and select a corresponding portion of text within selection rectangle
 "
 Class {
-	#name : #TbElementSelectionAcquiredEvent,
-	#superclass : #TbElementEvent,
+	#name : 'TbElementSelectionAcquiredEvent',
+	#superclass : 'TbElementEvent',
 	#instVars : [
 		'bounds'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementSelectionAcquiredEvent >> bounds [
 	"Return intersection between current selection rectangle and target's bounds.
 	Note: for performance reasons we reuse the same bounds object for all events of this type!
@@ -22,12 +24,12 @@ TbElementSelectionAcquiredEvent >> bounds [
 	^ bounds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementSelectionAcquiredEvent >> bounds: aBlBounds [
 	bounds := aBlBounds
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbElementSelectionAcquiredEvent >> sendTo: anObject [
 	anObject selectionAcquiredEvent: self
 ]

@@ -30,8 +30,8 @@ Internal Representation and Key Implementation Points.
 	name:		<Object>
 "
 Class {
-	#name : #TbShortcut,
-	#superclass : #Object,
+	#name : 'TbShortcut',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -40,15 +40,17 @@ Class {
 		'combination',
 		'action'
 	],
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> action [
 	^ action
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> action: anObject [
 	self
 		assert: [ anObject isNotNil ]
@@ -57,47 +59,47 @@ TbShortcut >> action: anObject [
 	action := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> combination [
 	^ combination
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> combination: anObject [
 	combination := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> description [
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> description: anObject [
 	description := anObject
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbShortcut >> match: anEventBuffer [
 	^ self combination match: anEventBuffer
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbShortcut >> matches: anKeyboardBuffer [
 	^ self combination matches: anKeyboardBuffer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcut >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbShortcut >> printOn: aStream [
 	super printOn: aStream.
 	aStream nextPut: $(.

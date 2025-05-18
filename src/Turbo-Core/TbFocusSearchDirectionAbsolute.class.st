@@ -1,10 +1,12 @@
 Class {
-	#name : #TbFocusSearchDirectionAbsolute,
-	#superclass : #TbFocusSearchDirection,
-	#category : #'Turbo-Core-Utilities - Focus'
+	#name : 'TbFocusSearchDirectionAbsolute',
+	#superclass : 'TbFocusSearchDirection',
+	#category : 'Turbo-Core-Utilities - Focus',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Focus'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionAbsolute >> beam: aFirstBlBounds beats: aSecondBlBounds in: aSourceBlBounds [
 	"Return true if first bounds are better then second bounds based on
 	wether they are in the beam of source bounds, false otherwise"
@@ -34,14 +36,14 @@ TbFocusSearchDirectionAbsolute >> beam: aFirstBlBounds beats: aSecondBlBounds in
 		< (self majorAxisDistanceToFarEdgeNormalized: aSecondBlBounds and: aSourceBlBounds)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionAbsolute >> beamsOverlap: aBlBounds and: anotherBlBounds [
 	<return: #Boolean>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionAbsolute >> is: aDestinationBlBounds candidate: aSourceBlBounds [
 	"Return if destination bounds are located (at least partially) in direction
 	of a given source bounds depending on my direction type, false otherwise"
@@ -50,7 +52,7 @@ TbFocusSearchDirectionAbsolute >> is: aDestinationBlBounds candidate: aSourceBlB
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionAbsolute >> is: aDestinationBlBounds inDirection: aSourceBlBounds [
 	"Return true if aDestinationBlBounds is located in direction of a provided source bounds
 	according to my destination type, false otherwise"
@@ -59,7 +61,7 @@ TbFocusSearchDirectionAbsolute >> is: aDestinationBlBounds inDirection: aSourceB
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionAbsolute >> isBetterCandidate: aFirstBlBounds then: aSecondBlBounds in: aSourceBlBounds [
 	"Return true if first bounds is a better candidate then seconds bounds for focus search
 	in this direction from a source bounds, false otherwise"
@@ -91,7 +93,7 @@ TbFocusSearchDirectionAbsolute >> isBetterCandidate: aFirstBlBounds then: aSecon
 				and: (self minorAxisDistance: aSecondBlBounds and: aSourceBlBounds))
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusSearchDirectionAbsolute >> isHorizontal [
 	"Return true if direction is horizontal, false otherwise"
 	<return: #Boolean>
@@ -99,7 +101,7 @@ TbFocusSearchDirectionAbsolute >> isHorizontal [
 	^ self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> majorAxisDistance: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a major axis depending on the type of direction
 	from the furthers source bounds' edge to the nearest edge of the destination bounds"
@@ -108,7 +110,7 @@ TbFocusSearchDirectionAbsolute >> majorAxisDistance: aDestinationBlBounds and: a
 	^ self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> majorAxisDistanceNormalized: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a major axis depending on the type of direction
 	from the furthers source bounds' edge to the nearest edge of the destination bounds
@@ -118,7 +120,7 @@ TbFocusSearchDirectionAbsolute >> majorAxisDistanceNormalized: aDestinationBlBou
 	^ 0 max: (self majorAxisDistance: aDestinationBlBounds and: aSourceBlBounds)
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> majorAxisDistanceToFarEdge: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a major axis depending on the type of direction
 	from the furthers source bounds' edge to the far edge of the destination bounds"
@@ -127,7 +129,7 @@ TbFocusSearchDirectionAbsolute >> majorAxisDistanceToFarEdge: aDestinationBlBoun
 	^ self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> majorAxisDistanceToFarEdgeNormalized: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a major axis depending on the type of direction
 	from the furthers source bounds' edge to the far edge of the destination bounds
@@ -138,7 +140,7 @@ TbFocusSearchDirectionAbsolute >> majorAxisDistanceToFarEdgeNormalized: aDestina
 	^ 1 max: (self majorAxisDistanceToFarEdge: aDestinationBlBounds and: aSourceBlBounds)
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> minorAxisDistance: aDestinationBlBounds and: aSourceBlBounds [
 	"Return the distance along a minor axis depending on the type of direction
 	from source bounds to the nearest edge of the destination bounds"
@@ -147,7 +149,7 @@ TbFocusSearchDirectionAbsolute >> minorAxisDistance: aDestinationBlBounds and: a
 	^ self subclassResponsibility
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TbFocusSearchDirectionAbsolute >> nextFocus: aFocusedElement in: aCollectionOfElements within: aFocusRootElement from: aFocusedBounds finder: aFocusFinder [
 	<return: #BlElement or: nil>
 	| bestCandidateBounds tempBounds closestElement |
@@ -175,14 +177,14 @@ TbFocusSearchDirectionAbsolute >> nextFocus: aFocusedElement in: aCollectionOfEl
 	^ closestElement
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> offsetCandidateBounds: aCandidateBounds according: aFocusedBounds [
 	"Offsets a given candidate bounds according to provided focused bounds based on direction type"
 
 	self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFocusSearchDirectionAbsolute >> weightedDistance: aMajorAxisDistance and: aMinorAxisDistance [
 	"Compute and return a resulting weighted final distance according to
 	the distance along major and minor axes.

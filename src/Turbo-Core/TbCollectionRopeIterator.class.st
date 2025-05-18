@@ -2,15 +2,17 @@
 I am a special iterator used to iterate over collection rope
 "
 Class {
-	#name : #TbCollectionRopeIterator,
-	#superclass : #TbRopeIterator,
+	#name : 'TbCollectionRopeIterator',
+	#superclass : 'TbRopeIterator',
 	#instVars : [
 		'position'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #'private - asserting' }
+{ #category : 'private - asserting' }
 TbCollectionRopeIterator >> assertInvariant [
 	"I am a position invariant; I make sure that iterator operations do not go out of bounds"
 
@@ -21,12 +23,12 @@ TbCollectionRopeIterator >> assertInvariant [
 		ifFalse: [ self error: 'Position must always be less or equal than end' ].
 ]
 
-{ #category : #'iterator - attributes' }
+{ #category : 'iterator - attributes' }
 TbCollectionRopeIterator >> attributes [
 	^ #()
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbCollectionRopeIterator >> hasNext [
 	<return: #Boolean>
 	self assertInvariant.
@@ -34,7 +36,7 @@ TbCollectionRopeIterator >> hasNext [
 	^ position < end
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbCollectionRopeIterator >> hasPrevious [
 	<return: #Boolean>
 	self assertInvariant.
@@ -42,7 +44,7 @@ TbCollectionRopeIterator >> hasPrevious [
 	^ position > start
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbCollectionRopeIterator >> next [
 	<return: #Object>
 	
@@ -52,7 +54,7 @@ TbCollectionRopeIterator >> next [
 	^ rope at: (position := position + 1)
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbCollectionRopeIterator >> nextSpan [
 	<return: #BlRope>
 	| aSpan |
@@ -66,7 +68,7 @@ TbCollectionRopeIterator >> nextSpan [
 	^ aSpan
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbCollectionRopeIterator >> peek [
 	<return: #Object>
 
@@ -76,7 +78,7 @@ TbCollectionRopeIterator >> peek [
 	^ rope at: position + 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbCollectionRopeIterator >> peer [
 	<return: #Object>
 
@@ -86,14 +88,14 @@ TbCollectionRopeIterator >> peer [
 	^ rope at: position
 ]
 
-{ #category : #'iterator - accessing' }
+{ #category : 'iterator - accessing' }
 TbCollectionRopeIterator >> position [
 	<return: #Number>
 
 	^ position
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbCollectionRopeIterator >> previous [
 	<return: #Object>
 	| anItem |
@@ -107,7 +109,7 @@ TbCollectionRopeIterator >> previous [
 	^ anItem
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCollectionRopeIterator >> rope: aRope from: aStart to: anEnd [
 	super rope: aRope from: aStart to: anEnd.
 
@@ -115,7 +117,7 @@ TbCollectionRopeIterator >> rope: aRope from: aStart to: anEnd [
 	self assertInvariant
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbCollectionRopeIterator >> skip: aNumber [
 	| newPosition |
 	

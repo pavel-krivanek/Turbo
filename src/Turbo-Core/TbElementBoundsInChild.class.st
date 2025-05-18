@@ -1,13 +1,15 @@
 Class {
-	#name : #TbElementBoundsInChild,
-	#superclass : #TbElementComputedBounds,
+	#name : 'TbElementBoundsInChild',
+	#superclass : 'TbElementComputedBounds',
 	#instVars : [
 		'originalElement'
 	],
-	#category : #'Turbo-Core-Basic-Bounds'
+	#category : 'Turbo-Core-Basic-Bounds',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Bounds'
 }
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBoundsInChild >> inParent [
 	<return: #BlElementBoundsInParent>
 
@@ -21,7 +23,7 @@ TbElementBoundsInChild >> inParent [
 		yourself
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBoundsInChild >> inSpace [
 	<return: #BlElementBounds>
 
@@ -31,14 +33,14 @@ TbElementBoundsInChild >> inSpace [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBoundsInChild >> originalElement [
 	<return: #BlElement>
 
 	^ originalElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBoundsInChild >> originalElement: anElement [
 	originalElement := anElement
 ]

@@ -1,10 +1,11 @@
 Class {
-	#name : #TbFrameElement,
-	#superclass : #TbElement,
-	#category : #'Turbo-Tests'
+	#name : 'TbFrameElement',
+	#superclass : 'TbElement',
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbFrameElement >> drawOnTurboCanvas2: aCanvas [
 
 	| extent |
@@ -32,7 +33,7 @@ TbFrameElement >> drawOnTurboCanvas2: aCanvas [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbFrameElement >> drawOnTurboCanvas: aCanvas [
 
 	| extent |

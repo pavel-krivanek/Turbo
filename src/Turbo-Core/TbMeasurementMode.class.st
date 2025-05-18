@@ -11,24 +11,26 @@ My main methods are
  - sizeFor: aNumber. find out the final value for the size of element based on provided possible size with single dispatching to my subclasses
 "
 Class {
-	#name : #TbMeasurementMode,
-	#superclass : #Object,
+	#name : 'TbMeasurementMode',
+	#superclass : 'Object',
 	#classInstVars : [
 		'atMost',
 		'exact',
 		'unspecified'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementMode class >> atMost [
 	<return: #BlMeasurementMode>
 
 	^ atMost ifNil: [ atMost := TbMeasurementAtMostMode new ]
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbMeasurementMode class >> cleanUp [
 	super cleanUp.
 	
@@ -37,61 +39,61 @@ TbMeasurementMode class >> cleanUp [
 	unspecified := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementMode class >> exact [
 	<return: #BlMeasurementMode>
 	
 	^ exact ifNil: [ exact := TbMeasurementExactMode new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMeasurementMode class >> unspecified [
 	<return: #BlMeasurementMode>
 	
 	^ unspecified ifNil: [ unspecified := TbMeasurementUnspecifiedMode new ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMeasurementMode >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
 	^ anotherObject class == self class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMeasurementMode >> hash [
 	^ self class hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementMode >> isAtMost [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementMode >> isExact [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementMode >> isUnspecified [
 	^ false
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementMode >> measurement: aResizing with: aNumber [
 	<return: #BlMeasurementSpec>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbMeasurementMode >> printOn: aStream size: aNumber [
 	"Prints measurement mode with taking a given size into account"
 	self subclassResponsibility
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementMode >> size: aNumber with: aSpecSize [
 	<return: #aNumber>
 	

@@ -4,8 +4,8 @@ I am an overlay that provides the mechanism of resizing a referenceElement. I ha
 Users might want to specify that I should ==preventMouseEvents== in order to still allow the user to interact with the ==referenceElement== even when I am active.
 "
 Class {
-	#name : #TbResizerElement,
-	#superclass : #TbOverlayElement,
+	#name : 'TbResizerElement',
+	#superclass : 'TbOverlayElement',
 	#instVars : [
 		'topLeft',
 		'topCenter',
@@ -17,43 +17,45 @@ Class {
 		'bottomRight',
 		'resizerListeners'
 	],
-	#category : #'Turbo-Core-Utilities - Resizable'
+	#category : 'Turbo-Core-Utilities - Resizable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Resizable'
 }
 
-{ #category : #'api - attaching / detaching' }
+{ #category : 'api - attaching / detaching' }
 TbResizerElement >> attachTo: anElement [
 	super attachTo: anElement.
 
 	resizerListeners do: [ :aResizerListener | aResizerListener resizeTarget: anElement ] 
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> bottomCenter [
 	<return: #BlElement>
 
 	^ bottomCenter
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> bottomLeft [
 	<return: #BlElement>
 
 	^ bottomLeft
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> bottomRight [
 	<return: #BlElement>
 
 	^ bottomRight
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbResizerElement >> defaultLayout [
 	^ TbFrameLayout new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbResizerElement >> initialize [
 	| topLeftResizer topCenterResizer topRightResizer middleLeftResizer middleRightListener bottomLeftListener bottomCenterResizer bottomRightListener |
 	super initialize.
@@ -133,21 +135,21 @@ TbResizerElement >> initialize [
 	}
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> middleLeft [
 	<return: #BlElement>
 
 	^ middleLeft
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> middleRight [
 	<return: #BlElement>
 
 	^ middleRight
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbResizerElement >> newHandle [
 	^ TbElement new
 		opacity: 0.5;
@@ -156,21 +158,21 @@ TbResizerElement >> newHandle [
 		size: 6@6
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> topCenter [
 	<return: #BlElement>
 
 	^ topCenter
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> topLeft [
 	<return: #BlElement>
 
 	^ topLeft
 ]
 
-{ #category : #'api - accessing handles' }
+{ #category : 'api - accessing handles' }
 TbResizerElement >> topRight [
 	<return: #BlElement>
 

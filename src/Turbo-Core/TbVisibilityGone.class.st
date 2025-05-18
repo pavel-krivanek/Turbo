@@ -3,17 +3,19 @@ I am a concrete visibility type - ""gone"".
 Once set, element should not be rendered and should not participate in layout (should not take space)
 "
 Class {
-	#name : #TbVisibilityGone,
-	#superclass : #TbVisibility,
-	#category : #'Turbo-Core-Basic-Properties'
+	#name : 'TbVisibilityGone',
+	#superclass : 'TbVisibility',
+	#category : 'Turbo-Core-Basic-Properties',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Properties'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibilityGone >> isGone [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibilityGone >> isHidden [
 	^ true
 ]

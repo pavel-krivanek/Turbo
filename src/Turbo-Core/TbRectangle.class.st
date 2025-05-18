@@ -10,15 +10,17 @@ In order to explicitely create a rectangle use extent:
 	BlRectangle extent: 50@30 ""create a rectangle with width 50 and height 30""
 "
 Class {
-	#name : #TbRectangle,
-	#superclass : #TbGeometry,
+	#name : 'TbRectangle',
+	#superclass : 'TbGeometry',
 	#instVars : [
 		'cornerRadii'
 	],
-	#category : #'Turbo-Core-Basic'
+	#category : 'Turbo-Core-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Basic'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRectangle class >> cornerRadius: aNumber [
 	"Change the radii of all corners to a given number.
 	aNumber must not be nil.
@@ -34,14 +36,14 @@ TbRectangle class >> cornerRadius: aNumber [
 		initializeWith: (TbCornerRadii radius: aNumber)
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRectangle class >> new [
 	^ self basicNew
 		initialize;
 		initializeWith: TbCornerRadii empty
 ]
 
-{ #category : #'geometry testing' }
+{ #category : 'geometry testing' }
 TbRectangle >> containsPoint: aPoint in: aBlElement [
 	"check if aPoint is in the basic rectangle"
 	| w h isBottomSide isRightSide center radius maxRadius |
@@ -77,7 +79,7 @@ TbRectangle >> containsPoint: aPoint in: aBlElement [
 	^ (aPoint x - center x) squared + (aPoint y - center y) squared <= radius squared
 ]
 
-{ #category : #'geometry testing' }
+{ #category : 'geometry testing' }
 TbRectangle >> containsPoint: aPoint within: aBounds [
 	"check if aPoint is in the basic rectangle"
 	| w h isBottomSide isRightSide center radius maxRadius |
@@ -113,14 +115,14 @@ TbRectangle >> containsPoint: aPoint within: aBounds [
 	^ (aPoint x - center x) squared + (aPoint y - center y) squared <= radius squared
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRectangle >> cornerRadii [
 	<return: #BlCornerRadii>
 
 	^ cornerRadii
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRectangle >> initializeWith: theCornerRadii [
 
 	self
@@ -134,19 +136,19 @@ TbRectangle >> initializeWith: theCornerRadii [
 	cornerRadii := theCornerRadii
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbRectangle >> matchExtent: aPoint [
 	extent := aPoint
 ]
 
-{ #category : #'visual bounds' }
+{ #category : 'visual bounds' }
 TbRectangle >> strokedBoundsCentered: aBlBounds of: aBlElement on: aCanvas [ 
 	<return: #BlBounds>
 
 	^ (self geometryBounds: aBlBounds) expandBy: aBlElement border width / 2.0
 ]
 
-{ #category : #'visual bounds' }
+{ #category : 'visual bounds' }
 TbRectangle >> strokedBoundsOutside: aBlBounds of: aBlElement on: aCanvas [ 
 	<return: #BlBounds>
 

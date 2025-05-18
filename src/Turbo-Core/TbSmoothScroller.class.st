@@ -1,26 +1,28 @@
 Class {
-	#name : #TbSmoothScroller,
-	#superclass : #Object,
+	#name : 'TbSmoothScroller',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'isRunning',
 		'pendingInitialRun'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling'
+	#category : 'Turbo-Core-Utilities - Scrolling',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling'
 }
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbSmoothScroller >> isPendingInitialRun [
 	^ pendingInitialRun
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbSmoothScroller >> isRunning [
 	^ isRunning
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbSmoothScroller >> scrollBy: aPoint [
 	self subclassResponsibility
 ]

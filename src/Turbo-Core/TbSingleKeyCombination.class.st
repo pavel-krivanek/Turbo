@@ -28,37 +28,39 @@ Internal Representation and Key Implementation Points.
 	#match: return 1 if I match any pressed key and 0 otherwise
 "
 Class {
-	#name : #TbSingleKeyCombination,
-	#superclass : #TbKeyCombination,
+	#name : 'TbSingleKeyCombination',
+	#superclass : 'TbKeyCombination',
 	#instVars : [
 		'key'
 	],
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSingleKeyCombination class >> key: aKey [
 	^ self new key: aKey
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbSingleKeyCombination >> accept: aKeyCombinationVisitor [
 	^ aKeyCombinationVisitor visitKey: self
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbSingleKeyCombination >> includes: aKey [
 	^ self key = aKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSingleKeyCombination >> key [
 	<return: #BlKeyboardKey>
 
 	^ key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSingleKeyCombination >> key: aKey [
 	self
 		assert: [ aKey isNotNil ]
@@ -67,21 +69,21 @@ TbSingleKeyCombination >> key: aKey [
 	key := aKey
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbSingleKeyCombination >> match: aKeyboardBuffer [
 	<return: #Number>
 
 	^ (self matches: aKeyboardBuffer) asBit
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbSingleKeyCombination >> matches: aKeyboardBuffer [
 	<return: #Boolean>
 
 	^ aKeyboardBuffer isPressed: self key
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbSingleKeyCombination >> printOn: aStream [
 	aStream nextPutAll: self key name asString
 ]

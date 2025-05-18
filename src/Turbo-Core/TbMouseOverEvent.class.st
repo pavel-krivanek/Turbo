@@ -6,12 +6,14 @@ Similar to mouse enter, it differs in that it bubbles and that it is sent when t
 https://developer.mozilla.org/en-US/docs/Web/Events/mouseover
 "
 Class {
-	#name : #TbMouseOverEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseOverEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseOverEvent >> sendTo: anObject [
 	anObject mouseOverEvent: self
 ]

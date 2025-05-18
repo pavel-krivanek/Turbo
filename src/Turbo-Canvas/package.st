@@ -1,1 +1,1 @@
-Package { #name : #'Turbo-Canvas' }
+Package { #name : 'Turbo-Canvas' }

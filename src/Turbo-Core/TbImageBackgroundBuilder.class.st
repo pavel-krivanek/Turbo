@@ -1,32 +1,34 @@
 Class {
-	#name : #TbImageBackgroundBuilder,
-	#superclass : #TbBackgroundBuilder,
+	#name : 'TbImageBackgroundBuilder',
+	#superclass : 'TbBackgroundBuilder',
 	#instVars : [
 		'form'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #building }
+{ #category : 'building' }
 TbImageBackgroundBuilder >> build [
 	<return: #BlBackground>
 
 	^ (TbImageBackground image: self form) opacity: self opacity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImageBackgroundBuilder >> form [
 	<return: #Form>
 
 	^ form
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImageBackgroundBuilder >> form: aForm [
 	form := aForm
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImageBackgroundBuilder >> iconNamed: aSymbol [
 	self form: (Smalltalk ui icons iconNamed: aSymbol)
 ]

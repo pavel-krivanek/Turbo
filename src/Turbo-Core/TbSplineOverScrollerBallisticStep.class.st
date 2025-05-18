@@ -1,10 +1,12 @@
 Class {
-	#name : #TbSplineOverScrollerBallisticStep,
-	#superclass : #TbSplineOverScrollerStep,
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#name : 'TbSplineOverScrollerBallisticStep',
+	#superclass : 'TbSplineOverScrollerStep',
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbSplineOverScrollerBallisticStep >> onFinished: aSplineOverScroller [
 	"Scroller being in ballistic state should spring back, so we continue"
 	<return: #Boolean>

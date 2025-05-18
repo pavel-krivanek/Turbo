@@ -5,47 +5,49 @@ Corresponds to SVG rotate() function
 https://drafts.csswg.org/css-transforms/#valdef-transform-rotate
 "
 Class {
-	#name : #TbRotationTransformation,
-	#superclass : #TbAffineTransformation,
+	#name : 'TbRotationTransformation',
+	#superclass : 'TbAffineTransformation',
 	#instVars : [
 		'angle',
 		'axis'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRotationTransformation >> angle [
 	^ angle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRotationTransformation >> angle: aNumber [
 	"Set a rotation angle in degrees"
 
 	angle := aNumber
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbRotationTransformation >> asQuaternion [
 	<return: #BlQuaternion>
 
 	^ TbQuaternion x: self axis x y: self axis y z: self axis z angle: self angle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRotationTransformation >> axis [
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ axis
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRotationTransformation >> axis: aVector [
 	axis := aVector
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRotationTransformation >> initialize [
 	super initialize.
 	
@@ -53,7 +55,7 @@ TbRotationTransformation >> initialize [
 	axis := TbVector zAxis
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbRotationTransformation >> is2D [
 	"Return true if I represent a rotation in 2D space, false otherwise.
 	By definition a rotation is in 2D when rotation axis is z-Axis (it has no x or y components)"
@@ -62,7 +64,7 @@ TbRotationTransformation >> is2D [
 	^ self axis = TbVector zAxis
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbRotationTransformation >> multiplyOn: aBlMatrix [
 
 	aBlMatrix
@@ -70,7 +72,7 @@ TbRotationTransformation >> multiplyOn: aBlMatrix [
 		around: self axis
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbRotationTransformation >> printOn: aStream [
 	aStream
 		nextPutAll: 'Rotation by ';

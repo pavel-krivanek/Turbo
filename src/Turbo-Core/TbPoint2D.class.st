@@ -1,20 +1,22 @@
 Class {
-	#name : #TbPoint2D,
-	#superclass : #TbPoint,
+	#name : 'TbPoint2D',
+	#superclass : 'TbPoint',
 	#instVars : [
 		'x',
 		'y'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbPoint2D class >> x: aX y: aY [
 
 	^ self new x: aX y: aY
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPoint2D >> < aPoint [
 	"Answer whether the receiver is above and to the left of aPoint."
 	<return: #Boolean>
@@ -22,14 +24,14 @@ TbPoint2D >> < aPoint [
 	^ x < aPoint x and: [ y < aPoint y ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbPoint2D >> asPoint2D [
 	<return: #BlPoint2D>
 
 	^ self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbPoint2D >> initialize [
 	super initialize.
 	
@@ -37,28 +39,28 @@ TbPoint2D >> initialize [
 	y := 0.0
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPoint2D >> max: aBlPoint [
 	<return: #BlPoint>
 
 	^ (x max: aBlPoint x) @ (y max: aBlPoint y)
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPoint2D >> min: aBlPoint [
 	<return: #BlPoint>
 
 	^ (x min: aBlPoint x) @ (y min: aBlPoint y)
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbPoint2D >> transformedOn: aBlMatrix [
 	<return: #BlPoint>
 	
 	^ aBlMatrix transformPoint2D: self
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbPoint2D >> translateBy: aDelta [ 
 	"Answer a 2D Point translated by delta (an instance of Point)."
 	<return: #BlPoint2D>
@@ -66,28 +68,28 @@ TbPoint2D >> translateBy: aDelta [
 	^ self class x: (aDelta x + x) y: (aDelta y + y)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint2D >> x [
 	^ x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint2D >> x: anObject [
 	x := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbPoint2D >> x: aX y: aY [
 	x := aX.
 	y := aY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint2D >> y [
 	^ y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint2D >> y: anObject [
 	y := anObject
 ]

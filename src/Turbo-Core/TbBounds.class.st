@@ -3,8 +3,8 @@ I am mutable implementation of Rectangle which stores coordinates as Numbers and
 I am very usefull for chainable bounds transformations and may be transformed in-place by BlMatrix2D and BlMatrix3D
 "
 Class {
-	#name : #TbBounds,
-	#superclass : #Object,
+	#name : 'TbBounds',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -13,30 +13,32 @@ Class {
 		'right',
 		'bottom'
 	],
-	#category : #'Turbo-Core-Basic-Bounds'
+	#category : 'Turbo-Core-Basic-Bounds',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Bounds'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBounds class >> fromRectangle: aRectangle [
 	^ self new
 		rectangle: aRectangle;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBounds class >> left: aLeft top: aTop right: aRight bottom: aBottom [
 	<return: #BlBounds>
 
 	^ self new left: aLeft top: aTop right: aRight bottom: aBottom
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBounds class >> origin: anOrigin corner: aCorner [
 
 	^ self new origin: anOrigin corner: aCorner
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbBounds class >> origin: anOrigin extent: anExtent [
 
 	self
@@ -51,7 +53,7 @@ TbBounds class >> origin: anOrigin extent: anExtent [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbBounds >> = aRectangle [
 	"Answer true if the receiver's species, origin and corner match aRectangle's."
 
@@ -62,7 +64,7 @@ TbBounds >> = aRectangle [
 					and: [ left = aRectangle left ] ] ] ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbBounds >> asRectangle [
 	"Convert me to immutable Rectangle.
 	Note, that using left:right:top:bottom: is the fastest way to create
@@ -72,7 +74,7 @@ TbBounds >> asRectangle [
 	^ Rectangle left: left right: right top: top bottom: bottom
 ]
 
-{ #category : #'debug - asserting' }
+{ #category : 'debug - asserting' }
 TbBounds >> assertFinite [
 	self
 		assert: [ left < Float infinity and: [ left > Float negativeInfinity ] ]
@@ -91,7 +93,7 @@ TbBounds >> assertFinite [
 		description: [ 'Bottom must not be infinity' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> atRandom [
 	"Return a random integer point within this bounds"
 	<return: #Point>
@@ -99,19 +101,19 @@ TbBounds >> atRandom [
 	^ (self topLeft + (self width atRandom @ self height atRandom)) asIntegerPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> bottom [
 	^ bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> bottom: aNumber [
 	bottom := aNumber.
 
 	self assertFinite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> bottomCenter [
 	"Answer the point at the center of the receiver's bottom horizontal line."
 	<return: #Point>
@@ -119,7 +121,7 @@ TbBounds >> bottomCenter [
 	^ self center x @ self bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> bottomLeft [
 	"Answer the point at the left edge of the bottom horizontal line of the receiver."
 	<return: #Point>
@@ -127,7 +129,7 @@ TbBounds >> bottomLeft [
 	^ self origin x @ self corner y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> bottomRight [
 	"Answer the point at the right edge of the bottom horizontal line of the receiver."
 	<return: #Point>
@@ -135,7 +137,7 @@ TbBounds >> bottomRight [
 	^ self corner
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> bounds: aBlBounds [
 	self
 		left: aBlBounds left
@@ -144,35 +146,35 @@ TbBounds >> bounds: aBlBounds [
 		bottom: aBlBounds bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> center [
 	<return: #Point>
 
 	^ ((left / 2.0) + (right / 2.0)) @ ((top / 2.0) + (bottom / 2.0))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> centerLeft [
 	<return: #Point>
 
 	^ self left @ self center y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> centerRight [
 	<return: #Point>
 
 	^ self right @ self center y
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbBounds >> clamp: aPoint [
 	<return: #Point>
 
 	^ (aPoint min: self corner) max: self origin
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbBounds >> clockwiseEdges [
 	<return: #Collection of: #BlRay>
 
@@ -184,7 +186,7 @@ TbBounds >> clockwiseEdges [
 	}
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBounds >> closeTo: aBlBounds [
 	"Return true if I am close to the given bounds"
 	<return: #Boolean>
@@ -195,14 +197,14 @@ TbBounds >> closeTo: aBlBounds [
 				and: [ (self bottom closeTo: aBlBounds bottom) ] ] ]
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbBounds >> closestEdgeTo: aPoint [
 	<return: #BlRay>
 
 	^ self counterClockwiseEdges detectMin: [ :aRay | aRay distanceTo: aPoint ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBounds >> containedInRect: aRectangle [
 	"Answer whether a receiver is within a aRectangle"
 	<return: #Boolean>
@@ -219,7 +221,7 @@ TbBounds >> containedInRect: aRectangle [
 				aBottom >= bottom ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBounds >> containsPoint: aPoint [ 
 	"Answer whether aPoint is within the receiver."
 	<return: #Boolean>
@@ -227,7 +229,7 @@ TbBounds >> containsPoint: aPoint [
 	^ self origin <= aPoint and: [ aPoint < self corner ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBounds >> containsRect: aRectangle [
 	"Answer whether aRectangle is within the receiver"
 	<return: #Boolean>
@@ -244,12 +246,12 @@ TbBounds >> containsRect: aRectangle [
 				aBottom <= bottom ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> corner [
 	^ right @ bottom
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbBounds >> counterClockwiseEdges [
 	<return: #Collection of: #BlRay>
 	
@@ -261,7 +263,7 @@ TbBounds >> counterClockwiseEdges [
 	}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> encompass [
 	| newLeft newTop newRight newBottom |
 	
@@ -276,7 +278,7 @@ TbBounds >> encompass [
 	bottom := newBottom
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> encompass: aPoint [ 
 	"Inplace encompass me so that I contain both the receiver and aPoint."
 
@@ -288,7 +290,7 @@ TbBounds >> encompass: aPoint [
 	self assertFinite
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> expandBy: aDelta [ 
 	"Outset me by delta. Delta is a Rectangle, Point, or Number."
 
@@ -301,7 +303,7 @@ TbBounds >> expandBy: aDelta [
 				ifFalse: [ self expandByMargin: aDelta ] ] ]
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> expandByLeft: aLeft top: aTop right: aRight bottom: aBottom [
 
 	left := left - aLeft.
@@ -312,7 +314,7 @@ TbBounds >> expandByLeft: aLeft top: aTop right: aRight bottom: aBottom [
 	self assertFinite
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> expandByMargin: aMargin [ 
 
 	left := left - aMargin left.
@@ -323,7 +325,7 @@ TbBounds >> expandByMargin: aMargin [
 	self assertFinite
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> expandByNumber: aNumber [ 
 		
 	left := left - aNumber.
@@ -334,7 +336,7 @@ TbBounds >> expandByNumber: aNumber [
 	self assertFinite
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> expandByPoint: aPoint [ 
 	
 	left := left - aPoint x.
@@ -345,7 +347,7 @@ TbBounds >> expandByPoint: aPoint [
 	self assertFinite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> expanded [
 	"Transform me so that origin and corner are rounded to integers.
 	Rounding is done by upper value on origin and lower value on corner so that
@@ -357,29 +359,29 @@ TbBounds >> expanded [
 	bottom := bottom ceiling
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> extent [
 
 	^ (right - left) @ (bottom - top)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> extent: aPoint [
 	bottom := top + aPoint y.
 	right := left + aPoint x
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBounds >> hasPositiveExtent [
 	^ right > left and: [ bottom > top ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> height [
 	^ bottom - top
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> initialize [
 	super initialize.
 	
@@ -389,7 +391,7 @@ TbBounds >> initialize [
 	bottom := 0
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> intersect: aRectangle ifNone: aBlock [
 	"Answer a Rectangle that is the area in which the receiver overlaps with 
 	aRectangle. 
@@ -416,7 +418,7 @@ TbBounds >> intersect: aRectangle ifNone: aBlock [
 		bottom: newBottom
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBounds >> intersects: aRectangle [ 
 	"Answer whether aRectangle intersects the receiver anywhere"
 	<return: #Boolean>
@@ -434,19 +436,19 @@ TbBounds >> intersects: aRectangle [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> left [
 	^ left
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> left: aNumber [
 	left := aNumber.
 
 	self assertFinite
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> left: aLeft top: aTop corner: aCorner [
 	left := aLeft.
 	top := aTop.
@@ -456,7 +458,7 @@ TbBounds >> left: aLeft top: aTop corner: aCorner [
 	self assertFinite
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> left: aLeft top: aTop right: aRight bottom: aBottom [
 	left := aLeft.
 	top := aTop.
@@ -466,7 +468,7 @@ TbBounds >> left: aLeft top: aTop right: aRight bottom: aBottom [
 	self assertFinite
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbBounds >> merge: aRectangle [ 
 	"Merge provided rectangle into me.
 	aRectangle must not be nil"
@@ -512,12 +514,12 @@ TbBounds >> merge: aRectangle [
 	self assertFinite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> origin [
 	^ left @ top
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> origin: anOrigin corner: aCorner [
 	left := anOrigin x.
 	top := anOrigin y.
@@ -527,7 +529,7 @@ TbBounds >> origin: anOrigin corner: aCorner [
 	self assertFinite
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> origin: anOrigin extent: anExtent [
 	left := anOrigin x.
 	top := anOrigin y.
@@ -537,7 +539,7 @@ TbBounds >> origin: anOrigin extent: anExtent [
 	self assertFinite
 ]
 
-{ #category : #'vector functions' }
+{ #category : 'vector functions' }
 TbBounds >> outsideNormalCloseTo: aPoint [
 	<return: #BlRay>
 	| anEdge aProjection aNormal |
@@ -549,14 +551,14 @@ TbBounds >> outsideNormalCloseTo: aPoint [
 	^ TbRay from: aProjection directed: aNormal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> position [
 	<return: #Point>
 
 	^ self origin
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbBounds >> printOn: aStream [ 
 	"Refer to the comment in Object|printOn:."
 
@@ -565,7 +567,7 @@ TbBounds >> printOn: aStream [
 	self corner printOn: aStream
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbBounds >> rectangle: aRectangle [
 	self
 		left: aRectangle left
@@ -574,19 +576,19 @@ TbBounds >> rectangle: aRectangle [
 		bottom: aRectangle bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> right [
 	^ right
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> right: aNumber [
 	right := aNumber.
 
 	self assertFinite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> rightCenter [
 	"Answer the point at the center of the receiver's right vertical line."
 	<return: #Point>
@@ -594,7 +596,7 @@ TbBounds >> rightCenter [
 	^ self right @ self center y
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbBounds >> scaleBy: aFactor [
 	
 	^ aFactor isPoint
@@ -604,7 +606,7 @@ TbBounds >> scaleBy: aFactor [
 			ifFalse: [ self scaleX: aFactor x Y: aFactor y ] ]
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbBounds >> scaleX: aX Y: aY [
 
 	left := left * aX.
@@ -615,7 +617,7 @@ TbBounds >> scaleX: aX Y: aY [
 	self assertFinite
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbBounds >> storeOn: aStream [ 
 	"printed form is good for storing too"
 	
@@ -624,19 +626,19 @@ TbBounds >> storeOn: aStream [
 	aStream nextPut: $).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> top [
 	^ top
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> top: aNumber [
 	top := aNumber.
 
 	self assertFinite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> topCenter [
 	"Answer the point at the center of the receiver's top horizontal line."
 	<return: #Point>
@@ -644,7 +646,7 @@ TbBounds >> topCenter [
 	^ self center x @ self top
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> topLeft [
 	"Answer the point at the top left corner of the receiver's top horizontal line"
 	<return: #Point>
@@ -652,7 +654,7 @@ TbBounds >> topLeft [
 	^ left @ top
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> topRight [
 	"Answer the point at the top right corner of the receiver's top horizontal line."
 	<return: #Point>
@@ -660,13 +662,13 @@ TbBounds >> topRight [
 	^ self corner x @ self origin y
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbBounds >> translateBy: aPoint [
 
 	self translateX: aPoint x Y: aPoint y
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbBounds >> translateX: aX Y: aY [
 
 	left := left + aX.
@@ -677,7 +679,7 @@ TbBounds >> translateX: aX Y: aY [
 	self assertFinite
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbBounds >> width [
 	^ right - left
 ]

@@ -3,20 +3,22 @@ I represent all other mouse buttons that are not primary, middle or context.
 Nowadays there can be any number of mouse buttons, we have to support them
 "
 Class {
-	#name : #TbMouseOtherButton,
-	#superclass : #TbMouseButton,
+	#name : 'TbMouseOtherButton',
+	#superclass : 'TbMouseButton',
 	#instVars : [
 		'code'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseOtherButton class >> code: aNumber [
 	^ self new code: aNumber
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMouseOtherButton >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
@@ -25,7 +27,7 @@ TbMouseOtherButton >> = anotherObject [
 	^ anotherObject code = self code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseOtherButton >> code [
 	"Return a numerical (integer) code of this mouse button"
 	<return: #Number>
@@ -33,7 +35,7 @@ TbMouseOtherButton >> code [
 	^ code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseOtherButton >> code: aNumber [
 
 	self
@@ -43,7 +45,7 @@ TbMouseOtherButton >> code: aNumber [
 	code := aNumber
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMouseOtherButton >> hash [
 	^ self class hash bitXor: self code hash
 ]

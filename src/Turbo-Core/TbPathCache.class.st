@@ -3,8 +3,8 @@ I am responsible for caching backend specific geometry path of the element.
 Geometry path is created with the help of backend-specific path builder by BlGeometry
 "
 Class {
-	#name : #TbPathCache,
-	#superclass : #Object,
+	#name : 'TbPathCache',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -13,21 +13,23 @@ Class {
 		'geometry',
 		'geometryPath'
 	],
-	#category : #'Turbo-Core-Basic-Support'
+	#category : 'Turbo-Core-Basic-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Support'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbPathCache class >> on: aGeometry [
 	^ self new geometry: aGeometry
 ]
 
-{ #category : #'session management' }
+{ #category : 'session management' }
 TbPathCache >> checkIdentity: aCanvas [
 	canvasIdentity = aCanvas identity
 		ifFalse: [ self releaseCache ]
 ]
 
-{ #category : #'session management' }
+{ #category : 'session management' }
 TbPathCache >> checkSession [
 	session == Smalltalk session
 		ifFalse: [
@@ -35,7 +37,7 @@ TbPathCache >> checkSession [
 			self releaseCache ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPathCache >> geometry [
 	"Return a geometry whose path I cache"
 	<return: #BlGeometry>
@@ -43,7 +45,7 @@ TbPathCache >> geometry [
 	^ geometry
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPathCache >> geometry: aBlGeometry [
 	"Attach a geometry which path I should cache"
 
@@ -54,7 +56,7 @@ TbPathCache >> geometry: aBlGeometry [
 	geometry := aBlGeometry
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPathCache >> releaseCache [
 	"Release path caches requiring their fresh creation"
 

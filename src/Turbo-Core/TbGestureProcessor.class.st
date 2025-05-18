@@ -1,10 +1,12 @@
 Class {
-	#name : #TbGestureProcessor,
-	#superclass : #TbBaseEventProcessor,
-	#category : #'Turbo-Core-Space-Support'
+	#name : 'TbGestureProcessor',
+	#superclass : 'TbBaseEventProcessor',
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'api - gestures' }
+{ #category : 'api - gestures' }
 TbGestureProcessor >> handleGesture: aGestureEvent [
 	| aTargetElement |
 
@@ -13,7 +15,7 @@ TbGestureProcessor >> handleGesture: aGestureEvent [
 	self processGesture: aGestureEvent
 ]
 
-{ #category : #'api - gestures' }
+{ #category : 'api - gestures' }
 TbGestureProcessor >> processGesture: aGestureEvent [
 	self fireEvent: aGestureEvent.
 
@@ -21,7 +23,7 @@ TbGestureProcessor >> processGesture: aGestureEvent [
 	self updateCursorFrom: aGestureEvent target
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbGestureProcessor >> processPicking: aTouchEvent [
 	<return: #BlElement>
 	| aTargetElement |
@@ -32,7 +34,7 @@ TbGestureProcessor >> processPicking: aTouchEvent [
 	^ aTargetElement
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbGestureProcessor >> updateCursorFrom: aTarget [
 	| t |
 	t := aTarget.

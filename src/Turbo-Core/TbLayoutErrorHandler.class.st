@@ -1,15 +1,17 @@
 Class {
-	#name : #TbLayoutErrorHandler,
-	#superclass : #TbSingleErrorHandler,
-	#category : #'Turbo-Core-Basic-Errors'
+	#name : 'TbLayoutErrorHandler',
+	#superclass : 'TbSingleErrorHandler',
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutErrorHandler >> matches: aFramePhase [
 	^ aFramePhase isLayoutPhase
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbLayoutErrorHandler >> processError: anError [
 	anError inspect
 ]

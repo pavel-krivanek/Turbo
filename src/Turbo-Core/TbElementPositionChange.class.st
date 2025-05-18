@@ -2,12 +2,14 @@
 I represent a position change and notify a corresponding BlElementPositionChangedEvent
 "
 Class {
-	#name : #TbElementPositionChange,
-	#superclass : #TbElementChange,
-	#category : #'Turbo-Core-Basic-Changes'
+	#name : 'TbElementPositionChange',
+	#superclass : 'TbElementChange',
+	#category : 'Turbo-Core-Basic-Changes',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Changes'
 }
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 TbElementPositionChange >> commitChange: anNewValue on: anElement [
 	"Notify element event listeners that position within parent has been changed.
 	Custom event handlers should subscribe to BlElementPositionChangedEvent"
@@ -18,7 +20,7 @@ TbElementPositionChange >> commitChange: anNewValue on: anElement [
 	self notifyPositionInSpaceChanged: anElement
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbElementPositionChange >> compare: aNewValue with: anOldValue [
 	"Return true if new value is equal (or close to) to new value"
 	<return: #Boolean>
@@ -26,12 +28,12 @@ TbElementPositionChange >> compare: aNewValue with: anOldValue [
 	^ aNewValue closeTo: anOldValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementPositionChange >> name [
 	^ 'Position'
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 TbElementPositionChange >> notifyPositionInSpaceChanged: anElement [
 	
 	anElement children

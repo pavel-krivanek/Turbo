@@ -5,27 +5,29 @@ All defined shortcuts are stored in ===BlShortcutRegistry=== which can be access
 I am a part of ===BlSimpleEventDispatcher=== which is a default event dispatcher in ===BlElement===
 "
 Class {
-	#name : #TbShortcutHandler,
-	#superclass : #TbBasicEventHandler,
+	#name : 'TbShortcutHandler',
+	#superclass : 'TbBasicEventHandler',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'shortcutRegistry'
 	],
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutHandler >> addShortcut: aBlShortcut [
 	self shortcuts add: aBlShortcut
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbShortcutHandler >> eventClass [ 
  	^ TbShortcutEvent
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbShortcutHandler >> handleEvent: aShortcutEvent [
 	| matchingShortcuts |
 
@@ -46,23 +48,23 @@ TbShortcutHandler >> handleEvent: aShortcutEvent [
 			aShortcutEvent consumed: true ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbShortcutHandler >> initialize [
 	super initialize.
 	shortcutRegistry := TbShortcutRegistry new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutHandler >> shortcutRegistry [
 	^ shortcutRegistry 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutHandler >> shortcuts [
 	^ self shortcutRegistry shortcuts 
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbShortcutHandler >> wantsEvent: anEvent [
 	^ anEvent class == self eventClass or: [ anEvent class inheritsFrom: self eventClass ]
 ]

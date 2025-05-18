@@ -2,24 +2,26 @@
 I am a special type of rope that plays a role of a node in a binary tree and contains left and right branch
 "
 Class {
-	#name : #TbConcatenationRope,
-	#superclass : #TbRope,
+	#name : 'TbConcatenationRope',
+	#superclass : 'TbRope',
 	#instVars : [
 		'left',
 		'right',
 		'length'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbConcatenationRope class >> left: aLeftRope right: aRightRope [
 	^ self new
 		left: aLeftRope right: aRightRope;
 		yourself
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbConcatenationRope >> at: anIndex [
 	| leftSize |
 	
@@ -30,7 +32,7 @@ TbConcatenationRope >> at: anIndex [
 		ifFalse: [ right at: anIndex - leftSize ]
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbConcatenationRope >> attributes: anAttributesCollection from: aStart to: anEnd [
 	| leftSize newLeft newRight |
 
@@ -65,12 +67,12 @@ TbConcatenationRope >> attributes: anAttributesCollection from: aStart to: anEnd
 		and: newRight
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbConcatenationRope >> children [
 	^ { left . right }
 ]
 
-{ #category : #'rope - attributes' }
+{ #category : 'rope - attributes' }
 TbConcatenationRope >> clearAttributes: aStart to: anEnd if: aBlock [
 	| leftSize newLeft newRight |
 	
@@ -102,7 +104,7 @@ TbConcatenationRope >> clearAttributes: aStart to: anEnd if: aBlock [
 		and: newRight
 ]
 
-{ #category : #'rope - deleting' }
+{ #category : 'rope - deleting' }
 TbConcatenationRope >> delete: aStart to: anEnd [
 	self assertAccessFrom: aStart to: anEnd.
 
@@ -127,20 +129,20 @@ TbConcatenationRope >> delete: aStart to: anEnd [
 					ifFalse: [ self from: 0 to: aStart ] ] ]
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbConcatenationRope >> depth [
 	<return: #Number>
 
 	^ (left depth max: right depth) + 1
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbConcatenationRope >> do: aBlock [
 	left do: aBlock.
 	right do: aBlock
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbConcatenationRope >> empty [
 	"Create and return an empty version of this rope"
 	<return: #BlRope>
@@ -148,7 +150,7 @@ TbConcatenationRope >> empty [
 	^ self left empty
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbConcatenationRope >> from: aStart to: anEnd [
 	| leftSize |
 
@@ -169,7 +171,7 @@ TbConcatenationRope >> from: aStart to: anEnd [
 		and: (right from: 0 to: anEnd - leftSize)
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbConcatenationRope >> from: aStart to: anEnd do: aBlock [
 	| leftSize isReversed |
 	
@@ -191,7 +193,7 @@ TbConcatenationRope >> from: aStart to: anEnd do: aBlock [
 				ifTrue: [ right from: ((aStart - leftSize) max: 0) to: anEnd - leftSize do: aBlock ] ]
 ]
 
-{ #category : #'rope - inserting' }
+{ #category : 'rope - inserting' }
 TbConcatenationRope >> insertItems: aCollection at: anIndex [
 	| leftSize aNewLeft aNewRight |
 	self assertIndexForInsert: anIndex.
@@ -209,43 +211,43 @@ TbConcatenationRope >> insertItems: aCollection at: anIndex [
 	^ self class concatenate: aNewLeft and: aNewRight
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbConcatenationRope >> isConcatenation [
 	^ true
 ]
 
-{ #category : #'rope - testing' }
+{ #category : 'rope - testing' }
 TbConcatenationRope >> isLeaf [
 	^ false
 ]
 
-{ #category : #'rope - enumeration' }
+{ #category : 'rope - enumeration' }
 TbConcatenationRope >> iterator: aStart to: anEnd [
 	^ TbConcatenationRopeIterator rope: self from: aStart to: anEnd
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbConcatenationRope >> left [
 	<return: #BlRope>
 
 	^ left
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbConcatenationRope >> left: aLeftRope right: aRightRope [
 	left := aLeftRope.
 	right := aRightRope.
 	length := left size + right size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbConcatenationRope >> right [
 	<return: #BlRope>
 
 	^ right
 ]
 
-{ #category : #'rope - accessing' }
+{ #category : 'rope - accessing' }
 TbConcatenationRope >> size [
 	^ length
 ]

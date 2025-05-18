@@ -2,20 +2,22 @@
 I allow users to set a custom zoom level of content element within scalable element
 "
 Class {
-	#name : #TbScalableFixedStrategy,
-	#superclass : #TbScalableStrategy,
+	#name : 'TbScalableFixedStrategy',
+	#superclass : 'TbScalableStrategy',
 	#instVars : [
 		'zoom'
 	],
-	#category : #'Turbo-Core-Utilities - Scalable'
+	#category : 'Turbo-Core-Utilities - Scalable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scalable'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbScalableFixedStrategy class >> zoom: aNumber [
 	^ self new zoom: aNumber
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbScalableFixedStrategy >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
@@ -25,26 +27,26 @@ TbScalableFixedStrategy >> = anotherObject [
 	^ self zoom = anotherObject zoom
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbScalableFixedStrategy >> hash [
 	^ self class hash bitXor: self zoom hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScalableFixedStrategy >> initialize [
 	super initialize.
 	
 	zoom := 1.0
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbScalableFixedStrategy >> isFixed [
 	<return: #Boolean>
 	
 	^ true
 ]
 
-{ #category : #scale }
+{ #category : 'scale' }
 TbScalableFixedStrategy >> scale: aContentElement within: aScalableElement [
 	"Compute and return a scale factor of a content element within scalable element.
 	Note: I am used during measurement pass, so you must only rely on measured bounds!"
@@ -53,14 +55,14 @@ TbScalableFixedStrategy >> scale: aContentElement within: aScalableElement [
 	^ self zoom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalableFixedStrategy >> zoom [
 	<return: #Number>
 
 	^ zoom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalableFixedStrategy >> zoom: aNumber [
 	zoom := aNumber
 ]

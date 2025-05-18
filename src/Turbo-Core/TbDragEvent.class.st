@@ -1,15 +1,17 @@
 Class {
-	#name : #TbDragEvent,
-	#superclass : #TbBaseDragEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbDragEvent',
+	#superclass : 'TbBaseDragEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbDragEvent >> isDrag [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbDragEvent >> sendTo: anObject [
 	anObject dragEvent: self
 ]

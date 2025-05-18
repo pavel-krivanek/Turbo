@@ -1,35 +1,37 @@
 Class {
-	#name : #TbRadialGradientPaint,
-	#superclass : #TbGradientPaint,
+	#name : 'TbRadialGradientPaint',
+	#superclass : 'TbGradientPaint',
 	#instVars : [
 		'center',
 		'radius',
 		'focalPoint'
 	],
-	#category : #'Turbo-Core-Paint'
+	#category : 'Turbo-Core-Paint',
+	#package : 'Turbo-Core',
+	#tag : 'Paint'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRadialGradientPaint >> center [
 	^ center
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRadialGradientPaint >> center: anObject [
 	center := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRadialGradientPaint >> focalPoint [
 	^focalPoint ifNil:[focalPoint := center]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRadialGradientPaint >> focalPoint: aPoint [
 	focalPoint := aPoint
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbRadialGradientPaint >> matchExtent: anExtent [
 	
 	self center: anExtent * (self center / 100.0) asFloatPoint.
@@ -37,12 +39,12 @@ TbRadialGradientPaint >> matchExtent: anExtent [
 	self radius: (anExtent distanceTo: 0@0) * (self radius / 100.0) asFloat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRadialGradientPaint >> radius [
 	^ radius
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRadialGradientPaint >> radius: anObject [
 	radius := anObject
 ]

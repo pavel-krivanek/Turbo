@@ -7,39 +7,41 @@ Corresponds to SVG scale() function
 https://drafts.csswg.org/css-transforms/#valdef-transform-scale
 "
 Class {
-	#name : #TbScalingTransformation,
-	#superclass : #TbAffineTransformation,
+	#name : 'TbScalingTransformation',
+	#superclass : 'TbAffineTransformation',
 	#instVars : [
 		'scale'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbScalingTransformation class >> scale: aVector [
 	^ self new scale: aVector
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScalingTransformation >> initialize [
 	super initialize.
 	
 	scale := TbVector one
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbScalingTransformation >> is2D [
 	<return: #Boolean>
 
 	^ self scale z closeTo: 1
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbScalingTransformation >> multiplyOn: aBlMatrix [
 	aBlMatrix scaleBy: self scale
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbScalingTransformation >> printOn: aStream [
 	aStream
 		nextPutAll: 'Scaling by '.
@@ -47,14 +49,14 @@ TbScalingTransformation >> printOn: aStream [
 	self scale printOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalingTransformation >> scale [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ scale
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalingTransformation >> scale: aVector [
 	scale := aVector asScale3D
 ]

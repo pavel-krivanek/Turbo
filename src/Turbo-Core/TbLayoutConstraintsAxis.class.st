@@ -1,7 +1,9 @@
 Class {
-	#name : #TbLayoutConstraintsAxis,
-	#superclass : #Object,
+	#name : 'TbLayoutConstraintsAxis',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }

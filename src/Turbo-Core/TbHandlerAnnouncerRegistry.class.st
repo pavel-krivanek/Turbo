@@ -1,25 +1,27 @@
 Class {
-	#name : #TbHandlerAnnouncerRegistry,
-	#superclass : #TbHandlerRegistry,
+	#name : 'TbHandlerAnnouncerRegistry',
+	#superclass : 'TbHandlerRegistry',
 	#instVars : [
 		'announcer'
 	],
-	#category : #'Turbo-Core-Events-Handling'
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbHandlerAnnouncerRegistry class >> isSupported [
 	<return: #Boolean>
 	
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHandlerAnnouncerRegistry class >> label [
 	^ 'Announcer'
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : 'api - adding / removing' }
 TbHandlerAnnouncerRegistry >> add: aHandler [
 	"Adds a given event handler to the registry.
 	aHandler must not be nil and must not be already registered"
@@ -27,21 +29,21 @@ TbHandlerAnnouncerRegistry >> add: aHandler [
 	self announcer subscriptions add: (TbHandlerAnnouncementSubscription new subscriber: aHandler)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHandlerAnnouncerRegistry >> announcer [
 	<return: #Announcer>
 
 	^ announcer
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbHandlerAnnouncerRegistry >> dispatchEvent: anEvent [
 	"Dispatch a given event to all registered handlers that are interested in it"
 	
 	self announcer announce: anEvent
 ]
 
-{ #category : #'api - enumerating' }
+{ #category : 'api - enumerating' }
 TbHandlerAnnouncerRegistry >> do: aBlock [
 	"Evaluate aBlock with each registered handler as the argument"
 
@@ -49,7 +51,7 @@ TbHandlerAnnouncerRegistry >> do: aBlock [
 		self announcer subscriptions subscriptions do: [ :aSubscription | aBlock value: aSubscription subscriber ] ]
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbHandlerAnnouncerRegistry >> handlers [
 	"Return an immutable collection of all registered event handlers"
 	<return: #Array of: #TBlEventHandler>
@@ -57,14 +59,14 @@ TbHandlerAnnouncerRegistry >> handlers [
 	^ self subscriptions collect: #subscriber
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbHandlerAnnouncerRegistry >> initialize [
 	super initialize.
 	
 	announcer := Announcer new
 ]
 
-{ #category : #'api - enumerating' }
+{ #category : 'api - enumerating' }
 TbHandlerAnnouncerRegistry >> numberOfHandlers [
 	"Return amount of registered event handlers"
 	<return: #Number>
@@ -72,7 +74,7 @@ TbHandlerAnnouncerRegistry >> numberOfHandlers [
 	^ self announcer numberOfSubscriptions
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : 'api - adding / removing' }
 TbHandlerAnnouncerRegistry >> remove: aHandler [
 	"Remove given event handler from my registry.
 	Provided handler must not be nil and must be registered"
@@ -80,7 +82,7 @@ TbHandlerAnnouncerRegistry >> remove: aHandler [
 	self announcer subscriptions removeSubscriber: aHandler
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : 'api - adding / removing' }
 TbHandlerAnnouncerRegistry >> removeAllSuchThat: aBlock [
 	"Remove all event handlers for which aBlock returns true.
 	Return a collection of removed handlers"
@@ -97,7 +99,7 @@ TbHandlerAnnouncerRegistry >> removeAllSuchThat: aBlock [
 	^ toBeRemoved asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHandlerAnnouncerRegistry >> subscriptions [
 	<return: #Set of: #AnnouncementSubscription>
 

@@ -1,16 +1,18 @@
 Class {
-	#name : #TbPoint4D,
-	#superclass : #TbPoint,
+	#name : 'TbPoint4D',
+	#superclass : 'TbPoint',
 	#instVars : [
 		'x',
 		'y',
 		'z',
 		'w'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbPoint4D class >> x: aX y: aY z: aZ w: aW [
 
 	^ self new
@@ -18,14 +20,14 @@ TbPoint4D class >> x: aX y: aY z: aZ w: aW [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbPoint4D >> asPoint2D [
 	<return: #BlPoint2D>
 
 	^ TbPoint2D x: (self x asFloat / self w) y: (self y asFloat / self w)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbPoint4D >> initialize [
 	super initialize.
 	
@@ -35,24 +37,24 @@ TbPoint4D >> initialize [
 	w := 0.0
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbPoint4D >> transformedOn: aBlMatrix [
 	<return: #BlPoint>
 	
 	^ aBlMatrix transformPoint4D: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint4D >> w [
 	^ w
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint4D >> x [
 	^ x
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbPoint4D >> x: aX y: aY z: aZ w: aW [
 
 	x := aX.
@@ -61,12 +63,12 @@ TbPoint4D >> x: aX y: aY z: aZ w: aW [
 	w := aW
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint4D >> y [
 	^ y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPoint4D >> z [
 	^ z
 ]

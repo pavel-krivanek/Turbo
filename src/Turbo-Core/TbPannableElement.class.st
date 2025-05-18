@@ -1,29 +1,31 @@
 Class {
-	#name : #TbPannableElement,
-	#superclass : #TbScrollableElement,
+	#name : 'TbPannableElement',
+	#superclass : 'TbScrollableElement',
 	#instVars : [
 		'zoomableElement'
 	],
-	#category : #'Turbo-Core-Utilities - Pannable'
+	#category : 'Turbo-Core-Utilities - Pannable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Pannable'
 }
 
-{ #category : #conversion }
+{ #category : 'conversion' }
 TbPannableElement >> asPannableElement [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPannableElement >> contentElement [
 	^ self zoomableElement contentElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPannableElement >> contentElement: anElement [
 	self zoomableElement contentElement: anElement.
 	self zoomToFit
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbPannableElement >> hasContentElement [
 	"Return true if I have a content element, false otherwise"
 	<return: #Boolean>
@@ -31,7 +33,7 @@ TbPannableElement >> hasContentElement [
 	^ zoomableElement hasContentElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbPannableElement >> initialize [
 	super initialize.
 	
@@ -41,32 +43,32 @@ TbPannableElement >> initialize [
 	self addChild: zoomableElement
 ]
 
-{ #category : #'api - zooming' }
+{ #category : 'api - zooming' }
 TbPannableElement >> zoomIn [
 	self zoomableElement zoomIn
 ]
 
-{ #category : #'api - zooming' }
+{ #category : 'api - zooming' }
 TbPannableElement >> zoomOut [
 	self zoomableElement zoomOut
 ]
 
-{ #category : #'api - zooming' }
+{ #category : 'api - zooming' }
 TbPannableElement >> zoomTo: aZoomFactor [
 	self zoomableElement zoomLevel: aZoomFactor
 ]
 
-{ #category : #'api - zooming' }
+{ #category : 'api - zooming' }
 TbPannableElement >> zoomToActualSize [
 	self zoomTo: 1
 ]
 
-{ #category : #'api - zooming' }
+{ #category : 'api - zooming' }
 TbPannableElement >> zoomToFit [
 	self zoomableElement zoomReset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPannableElement >> zoomableElement [
 	<return: #BlZoomableElement>
 	

@@ -4,18 +4,20 @@ I am a decomposition of 2D matrix.
 https://drafts.csswg.org/css-transforms/#interpolation-of-2d-matrices
 "
 Class {
-	#name : #TbMatrixDecomposition2D,
-	#superclass : #TbMatrixDecomposition,
+	#name : 'TbMatrixDecomposition2D',
+	#superclass : 'TbMatrixDecomposition',
 	#instVars : [
 		'translation',
 		'scale',
 		'angle',
 		'matrix'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> angle [
 	"Return a decomposed rotation angle in degrees"
 	<return: #Number>
@@ -23,12 +25,12 @@ TbMatrixDecomposition2D >> angle [
 	^ angle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> angle: aNumber [
 	angle := aNumber
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMatrixDecomposition2D >> asDictionary [
 	<return: #Dictionary>
 	^ { 
@@ -39,7 +41,7 @@ TbMatrixDecomposition2D >> asDictionary [
 	} asOrderedDictionary
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrixDecomposition2D >> composition [
 	<return: #BlMatrix2D>
 	| composedMatrix |
@@ -66,7 +68,7 @@ TbMatrixDecomposition2D >> composition [
 	^ composedMatrix
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrixDecomposition2D >> interpolate: aFactor to: anotherDecomposition [
 	"Algorithm is based on https://drafts.csswg.org/css-transforms/#interpolation-of-decomposed-2d-matrix-values"
 	<return: #BlMatrixDecomposition2D>
@@ -113,38 +115,38 @@ TbMatrixDecomposition2D >> interpolate: aFactor to: anotherDecomposition [
 		matrix: aMatrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> matrix [
 	<return: #Matrix>
 
 	^ matrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> matrix: aMatrix [
 	matrix := aMatrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> scale [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ scale
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> scale: aVector [
 	scale := aVector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> translation [
-	<return: #BlVector>
+	<return: #TbVector>
 	
 	^ translation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMatrixDecomposition2D >> translation: aVector [
 	translation := aVector
 ]

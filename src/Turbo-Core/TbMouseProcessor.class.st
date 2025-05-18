@@ -6,8 +6,8 @@ For example, i generate events like click, dbl click, drag&drop, ... from mouse 
 Mouse actions are blocked during drag
 "
 Class {
-	#name : #TbMouseProcessor,
-	#superclass : #TbBaseEventProcessor,
+	#name : 'TbMouseProcessor',
+	#superclass : 'TbBaseEventProcessor',
 	#instVars : [
 		'lastEnteredTargets',
 		'lastOverTarget',
@@ -22,23 +22,25 @@ Class {
 		'dragState',
 		'previousMouseDownEvent'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'event testing' }
+{ #category : 'event testing' }
 TbMouseProcessor >> canBeClickEvent: aMouseUpEvent [
 	^ dndInProgress not
 		and: [ (previousMouseDownEvent isNotNil and: [ previousMouseDownEvent primaryButtonPressed ])
 				and: [ aMouseUpEvent target = previousMouseDownEvent target ] ]
 ]
 
-{ #category : #'event testing' }
+{ #category : 'event testing' }
 TbMouseProcessor >> canBeDblClickEvent: aMouseUpEvent [
 	^ ((self canBeClickEvent: aMouseUpEvent) and:[lastClickEvent isNotNil])
 		and: [ aMouseUpEvent timestamp - lastClickEvent timestamp < self dblClickDelay ]
 ]
 
-{ #category : #'event testing' }
+{ #category : 'event testing' }
 TbMouseProcessor >> canStartDrag: aMouseMoveEvent [
 	<return: #Boolean>
 
@@ -48,19 +50,19 @@ TbMouseProcessor >> canStartDrag: aMouseMoveEvent [
 				and: [ (aMouseMoveEvent position - previousMouseDownEvent position) r > self startDragThreshold ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseProcessor >> dblClickDelay [
 	^ 300 milliSeconds
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> fillTargetHierarchy: aTarget [
 	^ Array streamContents: [ :aStream |
 		aStream nextPut: aTarget.
 		aTarget allParentsDo: [ :aParentElement | aStream nextPut: aParentElement  ] ]
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDragEndEvent: anEvent [
 
 	self fireEvent:
@@ -72,7 +74,7 @@ TbMouseProcessor >> fireAsDragEndEvent: anEvent [
 				yourself)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDragEnterEvent: anEvent targets: aCollection [
 	aCollection
 		do: [ :t | 
@@ -86,7 +88,7 @@ TbMouseProcessor >> fireAsDragEnterEvent: anEvent targets: aCollection [
 				target: t ]
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDragEvent: anEvent [
 	self	fireEvent:
 			(anEvent asDragEvent
@@ -97,7 +99,7 @@ TbMouseProcessor >> fireAsDragEvent: anEvent [
 				yourself)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDragLeaveEvent: anEvent targets: aCollection [
 	aCollection
 		do:	[ :t | 
@@ -111,7 +113,7 @@ TbMouseProcessor >> fireAsDragLeaveEvent: anEvent targets: aCollection [
 					target: t ]
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDragOverEvent: anEvent [
 	self	fireEvent:
 			(anEvent asDragOverEvent
@@ -121,7 +123,7 @@ TbMouseProcessor >> fireAsDragOverEvent: anEvent [
 				yourself)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDragStartEvent: anEvent [
 	^ self fireEvent:
 			(anEvent asDragStartEvent
@@ -132,7 +134,7 @@ TbMouseProcessor >> fireAsDragStartEvent: anEvent [
 				yourself)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsDropEvent: anEvent [
 
 	self	fireEvent:
@@ -144,7 +146,7 @@ TbMouseProcessor >> fireAsDropEvent: anEvent [
 				yourself)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsEnterEvent: anEvent targets: aCollection [
 	aCollection
 		do:	[ :t | 
@@ -156,7 +158,7 @@ TbMouseProcessor >> fireAsEnterEvent: anEvent targets: aCollection [
 					target: t ]
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsLeaveEvent: anEvent targets: aCollection [
 	aCollection
 		do:	[ :t | 
@@ -168,17 +170,17 @@ TbMouseProcessor >> fireAsLeaveEvent: anEvent targets: aCollection [
 					target:t ]
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsMouseOutEvent: aMouseEvent [
 	self fireEvent: (aMouseEvent asMouseOutEvent target: lastOverTarget)
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsMouseOverEvent: aMouseEvent [
 	self fireEvent: aMouseEvent asMouseOverEvent 
 ]
 
-{ #category : #'event firing' }
+{ #category : 'event firing' }
 TbMouseProcessor >> fireAsMouseStillDownEvent: anEvent [
 	self fireEvent:
 			(anEvent asMouseStillDownEvent
@@ -186,13 +188,13 @@ TbMouseProcessor >> fireAsMouseStillDownEvent: anEvent [
 				yourself)
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> generateEvents [
 	(isMouseStillDown ~= 0 and: [ currentDragTarget isNil ])
 		ifTrue: [ self fireAsMouseStillDownEvent: previousMouseDownEvent ]
 ]
 
-{ #category : #'mouse down' }
+{ #category : 'mouse down' }
 TbMouseProcessor >> handleMouseDown: aMouseDownEvent [
 	| aTargetElement |
 
@@ -211,7 +213,7 @@ TbMouseProcessor >> handleMouseDown: aMouseDownEvent [
 	previousMouseDownEvent := aMouseDownEvent
 ]
 
-{ #category : #'mouse move' }
+{ #category : 'mouse move' }
 TbMouseProcessor >> handleMouseMove: aMouseMoveEvent [
 	| aTargetElement shouldTryDragStart |
 	"picking and mouse move"
@@ -240,7 +242,7 @@ TbMouseProcessor >> handleMouseMove: aMouseMoveEvent [
 			ifFalse: [ self processMouseMove: aMouseMoveEvent ] ]
 ]
 
-{ #category : #'mouse up' }
+{ #category : 'mouse up' }
 TbMouseProcessor >> handleMouseUp: aMouseUpEvent [
 	"DragEnd, Simple click and Dbl click"
 	| aTargetElement |
@@ -262,7 +264,7 @@ TbMouseProcessor >> handleMouseUp: aMouseUpEvent [
 		ifFalse: [ self processMouseUp: aMouseUpEvent ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbMouseProcessor >> initialize [
 	super initialize.
 	lastEnteredTargets := OrderedCollection new.
@@ -275,7 +277,7 @@ TbMouseProcessor >> initialize [
 	dragState := TbMouseDragState new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseProcessor >> isDragging [
 	"Return true if drag and drop is in process, false otherwise"
 	<return: #Boolean>
@@ -283,17 +285,17 @@ TbMouseProcessor >> isDragging [
 	^ dndInProgress
 ]
 
-{ #category : #'event testing' }
+{ #category : 'event testing' }
 TbMouseProcessor >> isValidDragTarget: aEvent [
 	^ (aEvent target = self space root) not
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> postProcess: aMouseEvent [
 	
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> preProcess: aMouseEvent [
 	| aTarget |
 	
@@ -307,7 +309,7 @@ TbMouseProcessor >> preProcess: aMouseEvent [
 	self updateCursorFrom: aTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseProcessor >> pressedButtons [
 	"Return a collection of currently pressed mouse buttons"
 	<return: #Collection of: #BlMouseButton>
@@ -315,7 +317,7 @@ TbMouseProcessor >> pressedButtons [
 	^ pressedButtons
 ]
 
-{ #category : #'mouse drag' }
+{ #category : 'mouse drag' }
 TbMouseProcessor >> processDragEnd: aMouseUpEvent [
 
 	self
@@ -337,7 +339,7 @@ TbMouseProcessor >> processDragEnd: aMouseUpEvent [
 			dragStartMask := 0 ]
 ]
 
-{ #category : #'mouse drag' }
+{ #category : 'mouse drag' }
 TbMouseProcessor >> processDragMove: aMouseMoveEvent [
 
 	"check drag"
@@ -353,7 +355,7 @@ TbMouseProcessor >> processDragMove: aMouseMoveEvent [
 	lastEnteredTargets := currentEnteredTargets
 ]
 
-{ #category : #'mouse move' }
+{ #category : 'mouse move' }
 TbMouseProcessor >> processMouseEnterLeaveEvent: aMouseEvent [
 	| newLeavedTargets newEnteredTargets  |
 
@@ -384,7 +386,7 @@ TbMouseProcessor >> processMouseEnterLeaveEvent: aMouseEvent [
 	lastEnteredTargets := currentEnteredTargets
 ]
 
-{ #category : #'mouse move' }
+{ #category : 'mouse move' }
 TbMouseProcessor >> processMouseMove: aMouseMoveEvent [
 	self processMouseEnterLeaveEvent: aMouseMoveEvent.
 
@@ -395,7 +397,7 @@ TbMouseProcessor >> processMouseMove: aMouseMoveEvent [
 	
 ]
 
-{ #category : #'event handling entrypoint' }
+{ #category : 'event handling entrypoint' }
 TbMouseProcessor >> processMouseScroll: aMouseScrollEvent [
 	"picking and mouse move"
 	self preProcess: aMouseScrollEvent.
@@ -403,7 +405,7 @@ TbMouseProcessor >> processMouseScroll: aMouseScrollEvent [
 	self postProcess: aMouseScrollEvent
 ]
 
-{ #category : #'mouse up' }
+{ #category : 'mouse up' }
 TbMouseProcessor >> processMouseUp: aMouseUpEvent [
 	
 	self fireEvent: aMouseUpEvent.
@@ -422,7 +424,7 @@ TbMouseProcessor >> processMouseUp: aMouseUpEvent [
 			] ]
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> processPicking: aMouseEvent [
 	<return: #BlElement>
 	| aTargetElement |
@@ -439,12 +441,12 @@ TbMouseProcessor >> processPicking: aMouseEvent [
 	^ aTargetElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseProcessor >> startDragThreshold [
 	^ 4
 ]
 
-{ #category : #'mouse drag' }
+{ #category : 'mouse drag' }
 TbMouseProcessor >> subprocessDragEnterExitEvent: aMouseEvent [
 	| newEnteredTargets newExitedTargets |
 
@@ -464,7 +466,7 @@ TbMouseProcessor >> subprocessDragEnterExitEvent: aMouseEvent [
 	self fireAsDragOverEvent: aMouseEvent
 ]
 
-{ #category : #'mouse drag' }
+{ #category : 'mouse drag' }
 TbMouseProcessor >> tryDragStart: aMouseEvent [
 	"Try to start a drag and return true if drag actually started, otherwise false"
 	<return: #Boolean>
@@ -487,7 +489,7 @@ TbMouseProcessor >> tryDragStart: aMouseEvent [
 	^ dndInProgress := aDragStartEvent isConsumed
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> updateCursorFrom: aTarget [
 	| t |
 	t := aTarget.
@@ -497,12 +499,12 @@ TbMouseProcessor >> updateCursorFrom: aTarget [
 	self space currentCursor: t mouseCursor
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> updateDragView [
 
 ]
 
-{ #category : #'event processing' }
+{ #category : 'event processing' }
 TbMouseProcessor >> updateFocusOwner: aNode [
 	
 ]

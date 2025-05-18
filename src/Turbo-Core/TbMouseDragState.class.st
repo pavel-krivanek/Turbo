@@ -1,13 +1,15 @@
 Class {
-	#name : #TbMouseDragState,
-	#superclass : #Object,
+	#name : 'TbMouseDragState',
+	#superclass : 'Object',
 	#instVars : [
 		'button'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMouseDragState >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
@@ -16,17 +18,17 @@ TbMouseDragState >> = anotherObject [
 	^ anotherObject button = self button
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseDragState >> button [
 	^ button
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseDragState >> button: anObject [
 	button := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMouseDragState >> hash [
 	^ self class hash bitXor: self button hash
 ]

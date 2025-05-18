@@ -1,6 +1,6 @@
 Class {
-	#name : #TbScrollFlinger,
-	#superclass : #TbTask,
+	#name : 'TbScrollFlinger',
+	#superclass : 'TbTask',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -13,10 +13,12 @@ Class {
 		'reSchedulePostAnimationCallback',
 		'scrollable'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling'
+	#category : 'Turbo-Core-Utilities - Scrolling',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbScrollFlinger class >> on: aTBlScrollable [
 
 	^ self basicNew
@@ -25,17 +27,17 @@ TbScrollFlinger class >> on: aTBlScrollable [
 		yourself
 ]
 
-{ #category : #'private - state' }
+{ #category : 'private - state' }
 TbScrollFlinger >> beIdle [
 	self scrollable scrollState: #idle
 ]
 
-{ #category : #'private - state' }
+{ #category : 'private - state' }
 TbScrollFlinger >> beSettling [
 	self scrollable scrollState: #settling
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbScrollFlinger >> computeScrollDurationFor: aVelocityPoint distance: aDeltaPoint [
 	<return: #Duration>
 
@@ -65,29 +67,29 @@ TbScrollFlinger >> computeScrollDurationFor: aVelocityPoint distance: aDeltaPoin
 	^ aDuration milliSeconds min: self maxScrollDuration
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollFlinger >> createScrollerFor: anInterpolator [
 	^ TbOvershootingScroller interpolator: interpolator
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollFlinger >> createState [
 	^ TbScrollFlingerState new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollFlinger >> defaultInterpolator [
 	^ TbQuinticInterpolator default
 ]
 
-{ #category : #'private - scheduling' }
+{ #category : 'private - scheduling' }
 TbScrollFlinger >> disableRunOnAnimationRequests [
 	
 	reSchedulePostAnimationCallback := false.
 	eatRunOnAnimationRequest := true
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbScrollFlinger >> distanceInfluenceForSnapDuration: aFactorNumber [
 	<return: #Number>
 	| f |
@@ -97,7 +99,7 @@ TbScrollFlinger >> distanceInfluenceForSnapDuration: aFactorNumber [
 	^ f sin
 ]
 
-{ #category : #'private - scheduling' }
+{ #category : 'private - scheduling' }
 TbScrollFlinger >> enableRunOnAnimationRequests [
 
 	eatRunOnAnimationRequest := false.
@@ -105,7 +107,7 @@ TbScrollFlinger >> enableRunOnAnimationRequests [
 		ifTrue: [ self postOnAnimation ]
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollFlinger >> flingBy: aVelocityPoint [
 	"Positive velocity means that the finger/cursor is moving down the screen, which means we want to scroll towards the top.
 	Initial velocity is given in points/second"
@@ -124,7 +126,7 @@ TbScrollFlinger >> flingBy: aVelocityPoint [
 	self postOnAnimation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollFlinger >> initialize [
 	super initialize.
 	
@@ -136,7 +138,7 @@ TbScrollFlinger >> initialize [
 	reSchedulePostAnimationCallback := false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollFlinger >> initializeWith: aTBlScrollable [
 
 	self
@@ -150,66 +152,66 @@ TbScrollFlinger >> initializeWith: aTBlScrollable [
 	scrollable := aTBlScrollable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollFlinger >> interpolator [
 	<return: #BlInterpolator>
 	
 	^ interpolator
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbScrollFlinger >> isIdle [
 	<return: #Boolean>
 
 	^ self scrollable scrollState = #idle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollFlinger >> lastFlingPosition [
 	<return: #Point>
 	
 	^ lastFlingX @ lastFlingY
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollFlinger >> maxScrollDuration [
 	<return: #Duration>
 
 	^ 2 seconds
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onEnqueued: aBlSpace [
 	super onEnqueued: aBlSpace.
 	
 	self scroller time: aBlSpace time
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onFinished [
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onInitialized [
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onLayoutScrolled [
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onNotFinished [
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onPrepareToRun [
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbScrollFlinger >> onSmoothScrolled [
 ]
 
-{ #category : #scheduling }
+{ #category : 'scheduling' }
 TbScrollFlinger >> postOnAnimation [
 
 	self
@@ -223,14 +225,14 @@ TbScrollFlinger >> postOnAnimation [
 			self scrollable enqueueTask: self ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbScrollFlinger >> pulse [
 	"To work with animation manager"
 
 	self run
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbScrollFlinger >> run [
 	| aScroller aSmoothScroller |
 		
@@ -275,7 +277,7 @@ TbScrollFlinger >> run [
 	self enableRunOnAnimationRequests
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbScrollFlinger >> runFinalizeOn: anOverScroller with: aState [
 	| fullyConsumedHorizontal fullyConsumedVertical fullyConsumedAny |
 	
@@ -300,7 +302,7 @@ TbScrollFlinger >> runFinalizeOn: anOverScroller with: aState [
 			self onNotFinished ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbScrollFlinger >> runInitOn: anOverScroller [
 	<return: #TbScrollFlingerState>
 	| aState |
@@ -322,7 +324,7 @@ TbScrollFlinger >> runInitOn: anOverScroller [
 	^ aState
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbScrollFlinger >> runLayoutScrollWith: aState [
 	"A state is an instance of TbScrollFlingerState"
 
@@ -337,7 +339,7 @@ TbScrollFlinger >> runLayoutScrollWith: aState [
 			aState overscrollY: aState dY - aState vResult ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbScrollFlinger >> runOverscrollOn: anOverScroller with: aState [
 	| aVelocity aVelocityX aVelocityY |
 	
@@ -383,7 +385,7 @@ TbScrollFlinger >> runOverscrollOn: anOverScroller with: aState [
 			ifTrue: [ anOverScroller finish ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbScrollFlinger >> runSmoothOn: aSmoothScroller with: aState [
 	| aDeltaPoint |
 
@@ -402,21 +404,21 @@ TbScrollFlinger >> runSmoothOn: aSmoothScroller with: aState [
 	aSmoothScroller scrollBy: aDeltaPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollFlinger >> scrollable [
 	<return: #TBlScrollable>
 
 	^ scrollable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScrollFlinger >> scroller [
 	<return: #BlOvershootingScroller>
 	
 	^ scroller
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollFlinger >> smoothScrollBy: aDeltaPoint [
 
 	self
@@ -424,7 +426,7 @@ TbScrollFlinger >> smoothScrollBy: aDeltaPoint [
 		velocity: 0@0
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollFlinger >> smoothScrollBy: aDeltaPoint during: aDuration [
 
 	self
@@ -433,7 +435,7 @@ TbScrollFlinger >> smoothScrollBy: aDeltaPoint during: aDuration [
 		with: self defaultInterpolator
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollFlinger >> smoothScrollBy: aDeltaPoint during: aDuration with: anInterpolator [
 
 	interpolator ~~ anInterpolator
@@ -449,7 +451,7 @@ TbScrollFlinger >> smoothScrollBy: aDeltaPoint during: aDuration with: anInterpo
 	self postOnAnimation
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollFlinger >> smoothScrollBy: aDeltaPoint velocity: aVelocityPoint [
 
 	self
@@ -457,12 +459,12 @@ TbScrollFlinger >> smoothScrollBy: aDeltaPoint velocity: aVelocityPoint [
 		during: (self computeScrollDurationFor: aVelocityPoint distance: aDeltaPoint)
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbScrollFlinger >> stop [
 	scroller finish
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbScrollFlinger >> value [
 	"To support defer:"
 	self run

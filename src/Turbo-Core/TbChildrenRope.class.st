@@ -7,27 +7,29 @@ Internally I maintain one single ${class:BlCollectionRope}$ intance. When childr
 Examples are provided by the class ${class:BlChildrenRopeExamples}$
 "
 Class {
-	#name : #TbChildrenRope,
-	#superclass : #TbChildrenCollection,
+	#name : 'TbChildrenRope',
+	#superclass : 'TbChildrenCollection',
 	#instVars : [
 		'rope'
 	],
-	#category : #'Turbo-Core-Basic-Children'
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenRope >> add: aChild at: anIndex [
 	"Adds aChild at a given index moving existing children to the right"
 
 	rope := rope insertItems: { aChild } at: anIndex - 1
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenRope >> addAll: aSequenceableCollection [
 	rope := rope insertItems: aSequenceableCollection at: rope size
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenRope >> at: anIndex [
 	"Return an element at a given index"
 	<return: #BlElement>
@@ -35,34 +37,34 @@ TbChildrenRope >> at: anIndex [
 	^ rope at: anIndex
 ]
 
-{ #category : #'children - enumerating' }
+{ #category : 'children - enumerating' }
 TbChildrenRope >> do: aBlock [
 	rope do: aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenRope >> initialize [
 	super initialize.
 	
 	rope := TbCollectionRope collection: #() 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenRope >> name [
 	^ 'Children rope'
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenRope >> removeAll: aCollectionOfBlElement [
 	aCollectionOfBlElement do: [ :aChild | self remove: aChild ]
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenRope >> removeAt: anIndex [
 	rope := rope delete: anIndex to: anIndex
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenRope >> size [
 	<return: #Number>
 

@@ -5,59 +5,61 @@ I define an api to convert element bounds from one coordinate system to other co
 Reference element always corresponds to an element which was used to compute bounds
 "
 Class {
-	#name : #TbElementBounds,
-	#superclass : #Object,
+	#name : 'TbElementBounds',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'referenceElement'
 	],
-	#category : #'Turbo-Core-Basic-Bounds'
+	#category : 'Turbo-Core-Basic-Bounds',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Bounds'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbElementBounds >> asRectangle [
 	<return: #Rectangle>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> bottom [
 	<return: #Number>
 
 	^ self bounds bottom
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> bottomCenter [
 	<return: #Point>
 
 	^ self bounds bottomCenter
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> bottomLeft [
 	<return: #Point>
 
 	^ self bounds bottomLeft
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> bottomRight [
 	<return: #Point>
 
 	^ self right @ self bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBounds >> bounds [
 	<return: #BlBounds>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #'bounds conversion' }
+{ #category : 'bounds conversion' }
 TbElementBounds >> boundsInLocal: aBlBounds [
 	"I load my local bounds in the given mutable bounds and return it.
 	I do not rely on cache and always provide actual bounds.
@@ -74,7 +76,7 @@ TbElementBounds >> boundsInLocal: aBlBounds [
 		yourself
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> center [
 	"Return a point representing a geometrical center of this bounds"
 	<return: #Point>
@@ -82,21 +84,21 @@ TbElementBounds >> center [
 	^ self bounds center
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> centerLeft [
 	<return: #Point>
 
 	^ self bounds centerLeft
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> centerRight [
 	<return: #Point>
 
 	^ self bounds centerRight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBounds >> extent [
 	"Return extent of current bounds"
 	<return: #Point>
@@ -104,63 +106,63 @@ TbElementBounds >> extent [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> height [
 	<return: #Number>
 
 	^ self extent y
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> inChild: anElement [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> inLocal [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> inParent [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> inParent: anElement [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> inSpace [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> inWindow [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> left [
 	<return: #Number>
 
 	^ self bounds left
 ]
 
-{ #category : #'bounds conversion' }
+{ #category : 'bounds conversion' }
 TbElementBounds >> localBoundsToParent: aBounds [
 	"In-place transform bounds from local coordinates to my parent's coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -178,7 +180,7 @@ TbElementBounds >> localBoundsToParent: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'bounds conversion' }
+{ #category : 'bounds conversion' }
 TbElementBounds >> localBoundsToSpace: aBounds [
 	"In-place transform bounds from local coordinates to space coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -207,7 +209,7 @@ TbElementBounds >> localBoundsToSpace: aBounds [
 	^ aBounds
 ]
 
-{ #category : #'bounds conversion' }
+{ #category : 'bounds conversion' }
 TbElementBounds >> localBoundsToTransformed: aBounds [
 	"In-place transform bounds from local coordinates to my parent's coordinates.
 	Note, that I do not return a new rectangle and instead mutate provided one,
@@ -221,7 +223,7 @@ TbElementBounds >> localBoundsToTransformed: aBounds [
 	^ aBounds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBounds >> position [
 	"Return bounds position (an origin) as a Point"
 	<return: #Point>
@@ -231,12 +233,12 @@ TbElementBounds >> position [
 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementBounds >> printOn: aStream [
 	aStream print: self asRectangle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBounds >> referenceElement [
 	"Return a reference element that defines a coordinate system in which bounds are local.
 	Reference element can not be nil"
@@ -248,54 +250,54 @@ TbElementBounds >> referenceElement [
 	^ referenceElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementBounds >> referenceElement: aBlElement [
 	referenceElement := aBlElement
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> right [
 	<return: #Number>
 
 	^ self bounds right
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> top [
 	<return: #Number>
 
 	^ self bounds top
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> topCenter [
 	<return: #Point>
 
 	^ self bounds topCenter
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> topLeft [
 	<return: #Point>
 
 	^ self bounds topLeft
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> topRight [
 	<return: #Point>
 
 	^ self bounds topRight
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbElementBounds >> transformed [
 	<return: #BlElementBounds>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'geometry - accessing' }
+{ #category : 'geometry - accessing' }
 TbElementBounds >> width [
 	<return: #Number>
 

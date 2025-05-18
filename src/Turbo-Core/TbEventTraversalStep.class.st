@@ -2,28 +2,30 @@
 I describe which phase the event flow is currently being evaluated.
 "
 Class {
-	#name : #TbEventTraversalStep,
-	#superclass : #Object,
+	#name : 'TbEventTraversalStep',
+	#superclass : 'Object',
 	#instVars : [
 		'target'
 	],
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventTraversalStep class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventTraversalStep >> dispatcher [
 	^ self target eventDispatcher
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbEventTraversalStep >> printOn: stream [
 	super printOn: stream.
 	self target ifNotNil: [ 
@@ -32,17 +34,17 @@ TbEventTraversalStep >> printOn: stream [
 		stream nextPut: $). ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventTraversalStep >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventTraversalStep >> target: anObject [
 	target := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbEventTraversalStep >> type [
 	<return: #String>
 	

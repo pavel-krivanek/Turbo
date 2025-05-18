@@ -8,17 +8,19 @@ The order of fired events:
  - Click
 "
 Class {
-	#name : #TbClickEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbClickEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbClickEvent >> isClick [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbClickEvent >> sendTo: anObject [
 	anObject clickEvent: self
 ]

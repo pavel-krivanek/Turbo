@@ -1,27 +1,29 @@
 Class {
-	#name : #TbPerspectiveTransformation,
-	#superclass : #TbAffineTransformation,
+	#name : 'TbPerspectiveTransformation',
+	#superclass : 'TbAffineTransformation',
 	#instVars : [
 		'depth'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbPerspectiveTransformation class >> depth: aNumber [
 	<return: #BlPerspectiveTransformation>
 
 	^ self new depth: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPerspectiveTransformation >> depth [
 	<return: #Number>
 
 	^ depth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPerspectiveTransformation >> depth: aNumber [
 	self
 		assert: [ aNumber > 0 ]
@@ -30,7 +32,7 @@ TbPerspectiveTransformation >> depth: aNumber [
 	depth := aNumber
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbPerspectiveTransformation >> is2D [
 	"Return true if transformation happens in x-y plane, hence 2D"
 	<return: #Boolean>
@@ -38,7 +40,7 @@ TbPerspectiveTransformation >> is2D [
 	^ false
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbPerspectiveTransformation >> multiplyOn: aBlMatrix [
 	aBlMatrix perspective: self depth
 ]

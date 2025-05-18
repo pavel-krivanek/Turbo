@@ -2,18 +2,20 @@
 I am a BlBackground builder.
 "
 Class {
-	#name : #TbCompositeBackgroundBuilder,
-	#superclass : #TbBackgroundBuilder,
+	#name : 'TbCompositeBackgroundBuilder',
+	#superclass : 'TbBackgroundBuilder',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'backgrounds',
 		'builders'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbCompositeBackgroundBuilder >> build [
 	<return: #BlBackground>
 	self
@@ -30,7 +32,7 @@ TbCompositeBackgroundBuilder >> build [
 					ifFalse: [ (TbCompositeBackground withAll: (builders collect: #build)) opacity: self opacity ] ] ]
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbCompositeBackgroundBuilder >> image [
 	| aBuilder |
 	
@@ -40,19 +42,19 @@ TbCompositeBackgroundBuilder >> image [
 	^ aBuilder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompositeBackgroundBuilder >> image: aForm [
 	builders add: (TbImageBackgroundBuilder new form: aForm)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCompositeBackgroundBuilder >> initialize [
 	super initialize.
 
 	builders := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompositeBackgroundBuilder >> opacity: aNumber [
 	"Change opacity of previously added background"
 	
@@ -63,7 +65,7 @@ TbCompositeBackgroundBuilder >> opacity: aNumber [
 	backgrounds last opacity: aNumber
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbCompositeBackgroundBuilder >> paint [
 	| aBuilder |
 	
@@ -73,7 +75,7 @@ TbCompositeBackgroundBuilder >> paint [
 	^ aBuilder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompositeBackgroundBuilder >> paint: aColorOrBlPaint [
 	builders add: (TbPaintBackgroundBuilder new paint: aColorOrBlPaint)
 ]

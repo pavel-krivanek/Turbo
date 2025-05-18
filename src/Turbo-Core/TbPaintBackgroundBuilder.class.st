@@ -1,25 +1,27 @@
 Class {
-	#name : #TbPaintBackgroundBuilder,
-	#superclass : #TbBackgroundBuilder,
+	#name : 'TbPaintBackgroundBuilder',
+	#superclass : 'TbBackgroundBuilder',
 	#instVars : [
 		'paint'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #building }
+{ #category : 'building' }
 TbPaintBackgroundBuilder >> build [
 	<return: #BlBackground>
 
 	^ (TbPaintBackground paint: self paint) opacity: self opacity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPaintBackgroundBuilder >> paint [
 	^ paint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPaintBackgroundBuilder >> paint: aBlPaint [
 	paint := aBlPaint
 ]

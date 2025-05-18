@@ -6,20 +6,22 @@ Examples are provided by the class ${class:BlPaintBackgroundExamples}$.
 
 "
 Class {
-	#name : #TbPaintBackground,
-	#superclass : #TbBackground,
+	#name : 'TbPaintBackground',
+	#superclass : 'TbBackground',
 	#instVars : [
 		'paint'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbPaintBackground class >> paint: aBlPaint [
 	^ self new paint: aBlPaint
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPaintBackground >> = anotherObject [
 	self == anotherObject
 		ifTrue: [ ^ true ].
@@ -29,12 +31,12 @@ TbPaintBackground >> = anotherObject [
 	^ anotherObject paint = self paint
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPaintBackground >> hash [
 	^ self paint hash bitXor: self class hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbPaintBackground >> isTransparent [
 	"Paint background is transparent then and only then when paint is transparent or opacity is close to 0"
 	<return: #Boolean>
@@ -42,19 +44,19 @@ TbPaintBackground >> isTransparent [
 	^ (self opacity closeTo: 0) or: [ self paint isTransparent ]
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbPaintBackground >> matchExtent: anExtent [
 	self paint matchExtent: anExtent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPaintBackground >> paint [
 	<return: #BlPaint>
 
 	^ paint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPaintBackground >> paint: aBlPaint [
 	self
 		assert: [ aBlPaint isNotNil ]

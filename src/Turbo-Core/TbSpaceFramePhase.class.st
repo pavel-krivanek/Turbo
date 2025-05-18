@@ -4,44 +4,46 @@ I represent a frame phase.
 Each phase knows about its start time and send a corresponding event once the phase is completed.
 "
 Class {
-	#name : #TbSpaceFramePhase,
-	#superclass : #Object,
-	#category : #'Turbo-Core-Space-Frame'
+	#name : 'TbSpaceFramePhase',
+	#superclass : 'Object',
+	#category : 'Turbo-Core-Space-Frame',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Frame'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFramePhase >> isDrawingPhase [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFramePhase >> isEventPhase [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFramePhase >> isIdlePhase [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFramePhase >> isLayoutPhase [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceFramePhase >> isTaskPhase [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceFramePhase >> name [
 	<return: #String>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 TbSpaceFramePhase >> runOn: aSpace [
 	self subclassResponsibility
 ]

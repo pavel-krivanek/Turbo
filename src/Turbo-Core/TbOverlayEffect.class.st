@@ -1,25 +1,27 @@
 Class {
-	#name : #TbOverlayEffect,
-	#superclass : #TbElementEffect,
+	#name : 'TbOverlayEffect',
+	#superclass : 'TbElementEffect',
 	#instVars : [
 		'paint'
 	],
-	#category : #'Turbo-Core-Effect'
+	#category : 'Turbo-Core-Effect',
+	#package : 'Turbo-Core',
+	#tag : 'Effect'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbOverlayEffect >> initialize [
 	super initialize.
 	
 	paint := Color transparent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOverlayEffect >> paint [
 	^ paint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOverlayEffect >> paint: anObject [
 	paint := anObject
 ]

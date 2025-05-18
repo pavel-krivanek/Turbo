@@ -1,18 +1,20 @@
 Class {
-	#name : #TbMouseEvent,
-	#superclass : #TbUIEvent,
+	#name : 'TbMouseEvent',
+	#superclass : 'TbUIEvent',
 	#instVars : [
 		'delta'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #constants }
+{ #category : 'constants' }
 TbMouseEvent class >> anyButton [
 	^ 7
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 TbMouseEvent class >> middleButton [
 	self 
 		deprecated: 'Use `BlMouseButton middle` instead'
@@ -21,7 +23,7 @@ TbMouseEvent class >> middleButton [
 	^ TbMouseButton middle
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 TbMouseEvent class >> primaryButton [
 	self 
 		deprecated: 'Use `BlMouseButton primary` instead'
@@ -30,7 +32,7 @@ TbMouseEvent class >> primaryButton [
 	^ TbMouseButton primary
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 TbMouseEvent class >> secondaryButton [
 	self 
 		deprecated: 'Use `BlMouseButton secondary` instead'
@@ -39,12 +41,12 @@ TbMouseEvent class >> secondaryButton [
 	^ TbMouseButton secondary
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> anyButtonPressed [
 	^ button isNotNil
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDragEndEvent [
 	
 	^ TbDragEndEvent new
@@ -52,7 +54,7 @@ TbMouseEvent >> asDragEndEvent [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDragEnterEvent [
 	"Convert the receiver into a mouse move"
 
@@ -61,14 +63,14 @@ TbMouseEvent >> asDragEnterEvent [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDragEvent [
 	^ TbDragEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDragLeaveEvent [
 	"Convert the receiver into a mouse move"
 
@@ -77,14 +79,14 @@ TbMouseEvent >> asDragLeaveEvent [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDragOverEvent [
 	^ TbDragOverEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDragStartEvent [
 	"Convert the receiver into a mouse move"
 
@@ -93,72 +95,72 @@ TbMouseEvent >> asDragStartEvent [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseEvent >> asDropEvent [
 	^ TbDropEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> asMouseEnterEvent [
 	^ TbMouseEnterEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> asMouseLeaveEvent [
 	^ TbMouseLeaveEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> asMouseOutEvent [
 	^ TbMouseOutEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> asMouseOverEvent [
 	^ TbMouseOverEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseEvent >> delta [
 	^ delta
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMouseEvent >> delta: anObject [
 	delta := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> isMouse [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> middleButtonPressed [
 	^ button = TbMouseButton middle
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> primaryButtonPressed [
 	^ button = TbMouseButton primary
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseEvent >> secondaryButtonPressed [
 	^ button = TbMouseButton secondary
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseEvent >> sendTo: anObject [
 	anObject mouseEvent: self
 ]

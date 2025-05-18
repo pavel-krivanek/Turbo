@@ -1,13 +1,14 @@
 Class {
-	#name : #TbBasicTest,
-	#superclass : #TbTest,
+	#name : 'TbBasicTest',
+	#superclass : 'TbTest',
 	#instVars : [
 		'element'
 	],
-	#category : #'Turbo-Tests'
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 TbBasicTest >> setUp [
 
 	super setUp.
@@ -19,7 +20,7 @@ TbBasicTest >> setUp [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbBasicTest >> testContent [
 
 	self firePulse.

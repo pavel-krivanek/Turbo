@@ -5,14 +5,16 @@ Paints are used for background, border, text fill or stroke.
 All paints are meant to be immutable
 "
 Class {
-	#name : #TbPaint,
-	#superclass : #Object,
+	#name : 'TbPaint',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Paint'
+	#category : 'Turbo-Core-Paint',
+	#package : 'Turbo-Core',
+	#tag : 'Paint'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbPaint class >> transparent [
 	"Return a completely transparent paint"
 	<return: #BlPaint>
@@ -20,17 +22,17 @@ TbPaint class >> transparent [
 	^ TbColorPaint transparent
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbPaint >> asBlBackground [
 	^ TbBackground paint: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbPaint >> asBlPaint [
 	^ self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbPaint >> isTransparent [
 	"Return true if I am transparent, false otherwise.
 	It is important to implement paint specific logic in subclasses.
@@ -40,7 +42,7 @@ TbPaint >> isTransparent [
 	^ false
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbPaint >> matchExtent: anExtent [
 	self subclassResponsibility
 ]

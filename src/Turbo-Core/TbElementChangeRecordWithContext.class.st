@@ -1,24 +1,26 @@
 Class {
-	#name : #TbElementChangeRecordWithContext,
-	#superclass : #TbElementChangeRecord,
+	#name : 'TbElementChangeRecordWithContext',
+	#superclass : 'TbElementChangeRecord',
 	#instVars : [
 		'context',
 		'timestamp'
 	],
-	#category : #'Turbo-Core-Basic-Changes'
+	#category : 'Turbo-Core-Basic-Changes',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Changes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChangeRecordWithContext >> context [
 	^ context
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementChangeRecordWithContext >> context: anObject [
 	context := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementChangeRecordWithContext >> gtDisplayOn: aStream [
 	super gtDisplayOn: aStream.
 	
@@ -31,14 +33,14 @@ TbElementChangeRecordWithContext >> gtDisplayOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementChangeRecordWithContext >> initialize [
 	super initialize.
 	
 	timestamp := DateAndTime now
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbElementChangeRecordWithContext >> printOn: aStream [
 	super printOn: aStream.
 	

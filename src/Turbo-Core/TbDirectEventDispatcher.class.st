@@ -10,23 +10,25 @@ BlDirectEventDispatcher on: BlElement new
 
 "
 Class {
-	#name : #TbDirectEventDispatcher,
-	#superclass : #TbEventDispatcher,
+	#name : 'TbDirectEventDispatcher',
+	#superclass : 'TbEventDispatcher',
 	#instVars : [
 		'owner',
 		'filters',
 		'handlers',
 		'shortcutHandler'
 	],
-	#category : #'Turbo-Core-Events-Handling'
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbDirectEventDispatcher class >> new [
 	self error: 'Do not create an instance of ', self name, ' using new. Please use #on: instead'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbDirectEventDispatcher class >> on: aTBlEventTarget [
 	<return: #BlDirectEventDispatcher>
 
@@ -40,7 +42,7 @@ TbDirectEventDispatcher class >> on: aTBlEventTarget [
 		yourself
 ]
 
-{ #category : #'api - adding/removing' }
+{ #category : 'api - adding/removing' }
 TbDirectEventDispatcher >> addEventFilter: aFilter [
 	"Event filters receive events before general event handlers.
 	Their main goal is to prevent some specific events from being handled by basic handlers.
@@ -55,7 +57,7 @@ TbDirectEventDispatcher >> addEventFilter: aFilter [
 	aFilter onInstalledIn: self owner
 ]
 
-{ #category : #'api - adding/removing' }
+{ #category : 'api - adding/removing' }
 TbDirectEventDispatcher >> addEventHandler: aHandler [
 	
 	"It is not very common to have event handlers so we initialize registry lazily"
@@ -67,17 +69,17 @@ TbDirectEventDispatcher >> addEventHandler: aHandler [
 	aHandler onInstalledIn: self owner
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDirectEventDispatcher >> defaultFilterRegistry [
 	^ TbBloc preferableEventHandlerRegistry new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDirectEventDispatcher >> defaultHandlerRegistry [
 	^ TbBloc preferableEventHandlerRegistry new
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbDirectEventDispatcher >> dispatchEvent: anEvent next: aBlEventDispatcherChain [
 	<return: #BlEvent>
 	
@@ -109,21 +111,21 @@ TbDirectEventDispatcher >> dispatchEvent: anEvent next: aBlEventDispatcherChain 
 	^ anEvent
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbDirectEventDispatcher >> handlersDo: aBlock [
 	"Evaulate a given block with every event handler as an argument"
 
 	handlers ifNotNil: [ :aRegistry | aRegistry handlers do: aBlock ]
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbDirectEventDispatcher >> hasHandler: anEventHandler [
 	^ handlers
 		ifNil: [ false ]
 		ifNotNil: [ handlers hasHandler: anEventHandler ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDirectEventDispatcher >> initialize [
 	super initialize.
 
@@ -138,7 +140,7 @@ TbDirectEventDispatcher >> initialize [
 	shortcutHandler := TbShortcutHandler new
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbDirectEventDispatcher >> owner [
 	<return: #TBlEventTarget>
 
@@ -149,18 +151,18 @@ TbDirectEventDispatcher >> owner [
 	^ owner
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbDirectEventDispatcher >> owner: aTBlEventTarget [
 	owner := aTBlEventTarget
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbDirectEventDispatcher >> printOn: aStream [
 	aStream nextPutAll: self type, ' event dispatcher for '.
 	self owner printOn: aStream
 ]
 
-{ #category : #'api - adding/removing' }
+{ #category : 'api - adding/removing' }
 TbDirectEventDispatcher >> removeEventFilter: aFilter [
 
 	filters remove: aFilter.
@@ -171,7 +173,7 @@ TbDirectEventDispatcher >> removeEventFilter: aFilter [
 	aFilter onUninstalledIn: self owner
 ]
 
-{ #category : #'api - adding/removing' }
+{ #category : 'api - adding/removing' }
 TbDirectEventDispatcher >> removeEventHandler: anHandler [
 	(self hasHandler: anHandler)
 		ifFalse: [ ^ self ].
@@ -186,7 +188,7 @@ TbDirectEventDispatcher >> removeEventHandler: anHandler [
 	anHandler onUninstalledIn: self owner
 ]
 
-{ #category : #'api - adding/removing' }
+{ #category : 'api - adding/removing' }
 TbDirectEventDispatcher >> removeEventHandlers [
 	"Remove all my event handlers"
 	handlers ifNil: [ ^ self ].
@@ -194,7 +196,7 @@ TbDirectEventDispatcher >> removeEventHandlers [
 	handlers do: [ :aHandler | self removeEventHandler: aHandler ]
 ]
 
-{ #category : #'api - adding/removing' }
+{ #category : 'api - adding/removing' }
 TbDirectEventDispatcher >> removeEventHandlersSuchThat: aBlock [
 	"remove all event handlers for those aBlock returns true"
 	| toBeRemoved |
@@ -208,19 +210,19 @@ TbDirectEventDispatcher >> removeEventHandlersSuchThat: aBlock [
 	toBeRemoved do: [ :aHandler | aHandler onUninstalledIn: self owner ]
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbDirectEventDispatcher >> shortcutHandler [
 	^ shortcutHandler
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbDirectEventDispatcher >> type [
 	<return: #String>
 
 	^ 'Direct'
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbDirectEventDispatcher >> wantsEvent: anEvent [
 	"Return true if there are any filters or handlers interesting in a given event,
 	false otherwise"

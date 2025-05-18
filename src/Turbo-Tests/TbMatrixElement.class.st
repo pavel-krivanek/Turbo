@@ -1,10 +1,11 @@
 Class {
-	#name : #TbMatrixElement,
-	#superclass : #TbElement,
-	#category : #'Turbo-Tests'
+	#name : 'TbMatrixElement',
+	#superclass : 'TbElement',
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbMatrixElement >> drawOnTurboCanvas: aCanvas [
 
 	aCanvas at: 1@1 write: '1234567890123456789012345678901234567890'.

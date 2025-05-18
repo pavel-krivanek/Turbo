@@ -4,22 +4,24 @@ I represent a subset of children that are ignored by layout.
 ${example:BlChildrenSubsetExamples>>#ignoredByLayoutFromElement}$
 "
 Class {
-	#name : #TbChildrenIgnoredByLayout,
-	#superclass : #TbChildrenSubset,
-	#category : #'Turbo-Core-Basic-Children'
+	#name : 'TbChildrenIgnoredByLayout',
+	#superclass : 'TbChildrenSubset',
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'children - subsets' }
+{ #category : 'children - subsets' }
 TbChildrenIgnoredByLayout >> ignoredByLayout [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenIgnoredByLayout >> name [
 	^ 'Ignored by layout'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenIgnoredByLayout >> subsetFrom: aBlChildren [
 	^ aBlChildren select: [ :anElement |
 		anElement constraints ignoredByLayout

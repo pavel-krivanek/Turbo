@@ -1,13 +1,14 @@
 Class {
-	#name : #TbPulseLoop2,
-	#superclass : #TbPulseLoop,
+	#name : 'TbPulseLoop2',
+	#superclass : 'TbPulseLoop',
 	#instVars : [
 		'universe'
 	],
-	#category : #'Turbo-Canvas'
+	#category : 'Turbo-Canvas',
+	#package : 'Turbo-Canvas'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPulseLoop2 >> firePulse [
 
 	pulseStartTime := DateAndTime now.
@@ -17,12 +18,12 @@ TbPulseLoop2 >> firePulse [
 	Processor yield
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPulseLoop2 >> universe [
 	^ universe
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPulseLoop2 >> universe: anObject [
 	universe := anObject
 ]

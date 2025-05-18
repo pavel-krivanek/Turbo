@@ -1,14 +1,16 @@
 Class {
-	#name : #TbSquare,
-	#superclass : #TbGeometry,
+	#name : 'TbSquare',
+	#superclass : 'TbGeometry',
 	#instVars : [
 		'length',
 		'origin'
 	],
-	#category : #'Turbo-Core-Basic'
+	#category : 'Turbo-Core-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Basic'
 }
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbSquare >> geometryBounds: aBounds [
 	"Load my bounds in mutable rectangle.
 	@see #geometryBounds for more info"
@@ -19,12 +21,12 @@ TbSquare >> geometryBounds: aBounds [
 		extent: (self length * 2) asPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSquare >> length [
 	^ length
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbSquare >> matchExtent: anExtent [
 	length := anExtent min / 2.0.
 	origin := (anExtent - anExtent min asPoint) / 2.0.
@@ -32,7 +34,7 @@ TbSquare >> matchExtent: anExtent [
 	self extent: anExtent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSquare >> origin [
 	^ origin
 ]

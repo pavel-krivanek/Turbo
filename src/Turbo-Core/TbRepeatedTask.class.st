@@ -1,6 +1,6 @@
 Class {
-	#name : #TbRepeatedTask,
-	#superclass : #TbTask,
+	#name : 'TbRepeatedTask',
+	#superclass : 'TbTask',
 	#instVars : [
 		'delay',
 		'element',
@@ -8,22 +8,24 @@ Class {
 		'previousRunTime',
 		'isRunning'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRepeatedTask >> delay [
 	<return: #Duration>
 
 	^ delay
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRepeatedTask >> delay: aDuration [
 	delay := aDuration
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbRepeatedTask >> dequeue [
 
 	self
@@ -33,19 +35,19 @@ TbRepeatedTask >> dequeue [
 	self element dequeueTask: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRepeatedTask >> element [
 	<return: #BlElement>
 
 	^ element
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRepeatedTask >> element: aBlElement [
 	element := aBlElement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbRepeatedTask >> enqueue [
 
 	self
@@ -55,7 +57,7 @@ TbRepeatedTask >> enqueue [
 	self element enqueueTask: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbRepeatedTask >> initialize [
 	super initialize.
 	
@@ -64,31 +66,31 @@ TbRepeatedTask >> initialize [
 	isRunning := true
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbRepeatedTask >> isRunning [
 	<return: #Boolean>
 
 	^ isRunning
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbRepeatedTask >> onEnqueued: aBlSpace [
 	super onEnqueued: aBlSpace.
 	
 	self time: aBlSpace time
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbRepeatedTask >> onEnqueuedInElement: aBlElement [
 	self element: aBlElement
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbRepeatedTask >> onRun [
 	"Override me to implement a custom action"
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbRepeatedTask >> run [
 
 	self isRunning
@@ -108,19 +110,19 @@ TbRepeatedTask >> run [
 		ifTrue: [ self enqueue ]
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbRepeatedTask >> stop [
 	isRunning := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRepeatedTask >> time [
 	<return: #BlTime>
 
 	^ time
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbRepeatedTask >> time: aBlTime [
 	time := aBlTime
 ]

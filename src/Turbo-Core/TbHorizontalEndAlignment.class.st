@@ -1,30 +1,32 @@
 Class {
-	#name : #TbHorizontalEndAlignment,
-	#superclass : #TbHorizontalAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbHorizontalEndAlignment',
+	#superclass : 'TbHorizontalAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbHorizontalEndAlignment class >> initialize [
 	super initialize.
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalEndAlignment class >> leftToRight [
 	^ self right
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalEndAlignment class >> rightToLeft [
 	^ self left
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalEndAlignment >> inverted [
 	^ TbElementAlignment vertical end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbHorizontalEndAlignment >> swap [
 	^ TbElementAlignment horizontal start
 ]

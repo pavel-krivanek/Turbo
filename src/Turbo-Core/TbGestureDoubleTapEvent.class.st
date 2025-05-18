@@ -6,7 +6,9 @@ Purposes/real world use cases:
  - to zoom in/out
 "
 Class {
-	#name : #TbGestureDoubleTapEvent,
-	#superclass : #TbGestureEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureDoubleTapEvent',
+	#superclass : 'TbGestureEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }

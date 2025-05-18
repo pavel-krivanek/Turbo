@@ -24,21 +24,23 @@ I'm a helper element that transforms its #contentElement in order to exactly #sc
 ]]]
 "
 Class {
-	#name : #TbScalableElement,
-	#superclass : #TbElement,
+	#name : 'TbScalableElement',
+	#superclass : 'TbElement',
 	#instVars : [
 		'contentElement',
 		'scaleStrategy'
 	],
-	#category : #'Turbo-Core-Utilities - Scalable'
+	#category : 'Turbo-Core-Utilities - Scalable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scalable'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbScalableElement class >> on: anElement [
 	^ self new contentElement: anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalableElement >> contentElement [
 	"Return a content element that is being scaled"
 	<return: #BlElement>
@@ -50,7 +52,7 @@ TbScalableElement >> contentElement [
 	^ contentElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalableElement >> contentElement: anElement [
 	"Specify an element that should be scaled according to my size.
 	If I already have a content element, it will be replaced with a new one.
@@ -62,34 +64,34 @@ TbScalableElement >> contentElement: anElement [
 	self addChild: anElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScalableElement >> defaultScaleStrategy [
 	<return: #BlScalableStrategy>
 
 	^ TbScalableFitAllStrategy new
 ]
 
-{ #category : #'api - scaling' }
+{ #category : 'api - scaling' }
 TbScalableElement >> fitAll [
 	self scaleStrategy: TbScalableFitAllStrategy new
 ]
 
-{ #category : #'api - scaling' }
+{ #category : 'api - scaling' }
 TbScalableElement >> fitHeight [
 	self scaleStrategy: TbScalableFitHeightStrategy new
 ]
 
-{ #category : #'api - scaling' }
+{ #category : 'api - scaling' }
 TbScalableElement >> fitWidth [
 	self scaleStrategy: TbScalableFitWidthStrategy new
 ]
 
-{ #category : #'api - scaling' }
+{ #category : 'api - scaling' }
 TbScalableElement >> fixed: aNumber [
 	self scaleStrategy: (TbScalableFixedStrategy zoom: aNumber)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbScalableElement >> hasContentElement [
 	"Return true if I have a content element, false otherwise"
 	<return: #Boolean>
@@ -97,19 +99,19 @@ TbScalableElement >> hasContentElement [
 	^ contentElement isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScalableElement >> initialize [
 	super initialize.
 
 	scaleStrategy := self defaultScaleStrategy
 ]
 
-{ #category : #'api - scaling' }
+{ #category : 'api - scaling' }
 TbScalableElement >> maxScale: aNumber [
 	self scaleStrategy: ((TbScalableMaxDecorator on: self scaleStrategy) maxScale: aNumber)
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScalableElement >> measureMatching: anExtentMeasurementSpec [
 	| widthSpec heightSpec aTransformedBounds |
 	
@@ -134,7 +136,7 @@ TbScalableElement >> measureMatching: anExtentMeasurementSpec [
 	self contentElement measure: widthSpec @ heightSpec
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScalableElement >> measureScale [
 	"Compute and return a scale factor of the content element based on the current scale strategy"
 	| aScaleFactor |
@@ -152,12 +154,12 @@ TbScalableElement >> measureScale [
 	^ aScaleFactor
 ]
 
-{ #category : #'api - scaling' }
+{ #category : 'api - scaling' }
 TbScalableElement >> minScale: aNumber [
 	self scaleStrategy: ((TbScalableMinDecorator on: self scaleStrategy) minScale: aNumber)
 ]
 
-{ #category : #'hooks - children' }
+{ #category : 'hooks - children' }
 TbScalableElement >> onChildAdded: anElement [
 	"I make sure that there is only one child"
 	super onChildAdded: anElement.
@@ -170,7 +172,7 @@ TbScalableElement >> onChildAdded: anElement [
 	contentElement := anElement
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScalableElement >> onLayout: aBounds [
 	| aContentBounds |
 
@@ -183,7 +185,7 @@ TbScalableElement >> onLayout: aBounds [
 	self contentElement applyLayoutIn: aContentBounds
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbScalableElement >> onMeasure: anExtentMeasurementSpec [
 	| aScaleFactor aTransformedExtent |
 	"First we perform a default measurement"
@@ -208,7 +210,7 @@ TbScalableElement >> onMeasure: anExtentMeasurementSpec [
 				ifTrue: [ self measureMatching: anExtentMeasurementSpec ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalableElement >> scaleStrategy [
 	"Return scale strategy used to compute scaling factor of the content element"
 	self
@@ -218,7 +220,7 @@ TbScalableElement >> scaleStrategy [
 	^ scaleStrategy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbScalableElement >> scaleStrategy: aBlScalableStrategy [
 	"Set scale strategy used to compute scaling factor of the content element.
 	Note: I request layout update"

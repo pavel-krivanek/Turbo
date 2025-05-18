@@ -10,21 +10,23 @@ container addChild: overlay.
 
 "
 Class {
-	#name : #TbOverlayElement,
-	#superclass : #TbElement,
+	#name : 'TbOverlayElement',
+	#superclass : 'TbElement',
 	#instVars : [
 		'overlayListener',
 		'referenceElement'
 	],
-	#category : #'Turbo-Core-Utilities - Overlay'
+	#category : 'Turbo-Core-Utilities - Overlay',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Overlay'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbOverlayElement class >> on: anElement [
 	^ self new attachTo: anElement
 ]
 
-{ #category : #'api - attaching / detaching' }
+{ #category : 'api - attaching / detaching' }
 TbOverlayElement >> attachTo: anElement [
 	
 	referenceElement = anElement
@@ -37,7 +39,7 @@ TbOverlayElement >> attachTo: anElement [
 	anElement addEventHandler: overlayListener
 ]
 
-{ #category : #'api - attaching / detaching' }
+{ #category : 'api - attaching / detaching' }
 TbOverlayElement >> detach [
 	
 	self isAttached
@@ -47,7 +49,7 @@ TbOverlayElement >> detach [
 	referenceElement := nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbOverlayElement >> initialize [
 	super initialize.
 	
@@ -56,7 +58,7 @@ TbOverlayElement >> initialize [
 	self preventMouseEvents
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbOverlayElement >> isAttached [
 	"Return true if I am attached to any element, false otherwise"
 	<return: #Boolean>
@@ -64,7 +66,7 @@ TbOverlayElement >> isAttached [
 	^ referenceElement isNotNil
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbOverlayElement >> measureMyBounds [
 	"I compute by position and size in relation to the reference element"
 	self
@@ -75,7 +77,7 @@ TbOverlayElement >> measureMyBounds [
 	self size: (overlayListener extentFor: referenceElement).
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbOverlayElement >> onMeasure: anExtentMeasurementSpec [
 
 	self isAttached

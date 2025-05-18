@@ -1,15 +1,17 @@
 Class {
-	#name : #TbDoubleClickEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbDoubleClickEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbDoubleClickEvent >> isDoubleClick [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbDoubleClickEvent >> sendTo: anObject [
 	anObject dblClickEvent: self
 ]

@@ -8,12 +8,14 @@ I am a just a traditional real time.
 ]]]
 "
 Class {
-	#name : #TbRealTime,
-	#superclass : #TbTime,
-	#category : #'Turbo-Core-Universe'
+	#name : 'TbRealTime',
+	#superclass : 'TbTime',
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'private - time' }
+{ #category : 'private - time' }
 TbRealTime >> currentTime [
 	"Return a 'current' date and time"
 	<return: #DateAndTime>
@@ -21,7 +23,7 @@ TbRealTime >> currentTime [
 	^ DateAndTime now
 ]
 
-{ #category : #'api - enumeration' }
+{ #category : 'api - enumeration' }
 TbRealTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 	"Evaluate a aDoBlock while aWhileBlock evaluates to true waiting a given amount of time between executions.
 	The first evaluation of a aDoBlock is instant.
@@ -42,7 +44,7 @@ TbRealTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 		(anExpectedTime - aCurrentTime) wait ]
 ]
 
-{ #category : #'api - time' }
+{ #category : 'api - time' }
 TbRealTime >> wait: aDuration [
 	"Advance clock by waiting for a given amount of time"
 

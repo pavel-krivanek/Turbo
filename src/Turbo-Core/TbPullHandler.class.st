@@ -14,21 +14,23 @@ element addEventHandler: BlPullHandler new.
 ]]]
 "
 Class {
-	#name : #TbPullHandler,
-	#superclass : #TbElementEventListener,
+	#name : 'TbPullHandler',
+	#superclass : 'TbElementEventListener',
 	#instVars : [
 		'originalPosition',
 		'dragStartPosition'
 	],
-	#category : #'Turbo-Core-Utilities - Drag&Drop'
+	#category : 'Turbo-Core-Utilities - Drag&Drop',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drag&Drop'
 }
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbPullHandler >> dragEndEvent: anEvent [
 	anEvent consumed: true
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbPullHandler >> dragEvent: anEvent [
 	| dragPosition dragDelta |
 
@@ -40,7 +42,7 @@ TbPullHandler >> dragEvent: anEvent [
 	anEvent consumed: true
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbPullHandler >> dragStartEvent: anEvent [
 	anEvent consumed: true.
 

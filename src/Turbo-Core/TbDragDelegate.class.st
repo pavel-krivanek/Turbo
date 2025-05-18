@@ -3,15 +3,17 @@ Drag delegate provides drag items when a visual element lifts.
 Drag gesture fails if there are no drag items
 "
 Class {
-	#name : #TbDragDelegate,
-	#superclass : #Object,
+	#name : 'TbDragDelegate',
+	#superclass : 'Object',
 	#instVars : [
 		'items'
 	],
-	#category : #'Turbo-Core-Utilities - Drag&Drop'
+	#category : 'Turbo-Core-Utilities - Drag&Drop',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drag&Drop'
 }
 
-{ #category : #'drag and drop' }
+{ #category : 'drag and drop' }
 TbDragDelegate >> cancel: aPoint [
 	"Cancel drag and animate previews"	
 	| aCancelAnimation |
@@ -35,21 +37,21 @@ TbDragDelegate >> cancel: aPoint [
 	aCancelAnimation start
 ]
 
-{ #category : #'drag and drop' }
+{ #category : 'drag and drop' }
 TbDragDelegate >> drag: aPoint [
 	"Drag all previews to a given point in parent coordinates of previews"
 	
 	self items do: [ :aDragItem | aDragItem previewElement relocate: aPoint ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDragDelegate >> initialize [
 	super initialize.
 
 	items := { }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragDelegate >> items [
 	"Drag gesture fails if there are no drag items"
 	<return: #SequenceableCollection of: #BlDragItem>
@@ -57,12 +59,12 @@ TbDragDelegate >> items [
 	^ items
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDragDelegate >> items: aCollectionOfDragItems [
 	items := aCollectionOfDragItems
 ]
 
-{ #category : #'drag and drop' }
+{ #category : 'drag and drop' }
 TbDragDelegate >> lift: aPoint in: anElement [
 	"Lift previews at a given point in space coordinates"
 

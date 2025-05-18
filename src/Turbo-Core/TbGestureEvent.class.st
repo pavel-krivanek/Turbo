@@ -7,12 +7,14 @@ https://developer.mozilla.org/en-US/Apps/Fundamentals/User_input_methods/Touch_G
 
 "
 Class {
-	#name : #TbGestureEvent,
-	#superclass : #TbUIEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureEvent',
+	#superclass : 'TbUIEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGestureEvent >> isGesture [
 	^ true
 ]

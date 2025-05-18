@@ -3,8 +3,8 @@ I am the logical representation of a window in Bloc regardless the current Host 
 
 "
 Class {
-	#name : #TbSpace,
-	#superclass : #Object,
+	#name : 'TbSpace',
+	#superclass : 'Object',
 	#traits : 'TTbEventTarget + TTbSpaceProperties + TTbDebug',
 	#classTraits : 'TTbEventTarget classTrait + TTbSpaceProperties classTrait + TTbDebug classTrait',
 	#instVars : [
@@ -38,10 +38,12 @@ Class {
 		'frame',
 		'gestureProcessor'
 	],
-	#category : #'Turbo-Core-Space'
+	#category : 'Turbo-Core-Space',
+	#package : 'Turbo-Core',
+	#tag : 'Space'
 }
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> locationOutside: anElement [
 	"Return a random space location outside of element bounds"	
 	| theBounds aPosition |
@@ -62,7 +64,7 @@ TbSpace class >> locationOutside: anElement [
 	^ aPosition
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateClickOn: anElement [
 	"Simulate a click event in the middle of a given element by
 	performing mouse down and mouse up events in a sequence"
@@ -80,7 +82,7 @@ TbSpace class >> simulateClickOn: anElement [
 		on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateClickOutside: anElement [
 	"Simulate a click event in outside of a given element by
 	performing mouse down and mouse up events in a sequence"
@@ -95,7 +97,7 @@ TbSpace class >> simulateClickOutside: anElement [
 		on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateDragOn: anElement by: aBlVector [
 	"Simulate a click event in the middle of a given element by
 	performing mouse down and mouse up events in a sequence"
@@ -116,7 +118,7 @@ TbSpace class >> simulateDragOn: anElement by: aBlVector [
 		on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateEvent: anEvent on: anElement [
 	"I simulate a given low level space UI event such as MouseUp/MouseDown or keyboard.
 	If you would like to simulate a higher level event you could directly fire or dispatch them
@@ -129,7 +131,7 @@ TbSpace class >> simulateEvent: anEvent on: anElement [
 	self simulateEvents: { anEvent } on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateEvents: aCollectionOfEvents on: anElement [
 	"I simulate a given sequence of low level space UI events such as MouseUp/MouseDown or keyboard.
 	If you would like to simulate a higher level event you could directly fire or dispatch them
@@ -158,7 +160,7 @@ TbSpace class >> simulateEvents: aCollectionOfEvents on: anElement [
 	
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateMouseDownOn: anElement [
 	"Simulate a mouse down event in the middle of a given element"
 	| aPosition |
@@ -172,7 +174,7 @@ TbSpace class >> simulateMouseDownOn: anElement [
 		on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateMouseMoveInside: anElement [
 	"Simulate a mouse move event at a random location within element's bounds"
 	| aPosition |
@@ -186,7 +188,7 @@ TbSpace class >> simulateMouseMoveInside: anElement [
 		on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateMouseMoveOutside: anElement [
 	"Simulate a mouse move event at a random location outside of element's bounds"
 	| aPosition |
@@ -198,7 +200,7 @@ TbSpace class >> simulateMouseMoveOutside: anElement [
 		on: anElement
 ]
 
-{ #category : #'debug - simulation' }
+{ #category : 'debug - simulation' }
 TbSpace class >> simulateMouseUpOn: anElement [
 	"Simulate a mouse up event in the middle of a given element"
 	| aPosition |
@@ -212,39 +214,39 @@ TbSpace class >> simulateMouseUpOn: anElement [
 		on: anElement
 ]
 
-{ #category : #'api - adding' }
+{ #category : 'api - adding' }
 TbSpace >> addChild: anElement [
 	"Add a given element as a direct child to the space root"
 	
 	self root addChild: anElement
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> beDirtyArea [
 	self makeDirty: (TbBounds origin: 0 @ 0 extent: self extent)
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> borderless [
 	^ self hostSpace
 		ifNotNil: [ :aHostSpace | aHostSpace borderless ]
 		ifNil: [ borderless ]
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> borderless: aBoolean [
 	borderless := aBoolean.
 	 self hostSpace ifNotNil: [ :hw | hw borderless: aBoolean ].
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TbSpace >> buildEventDispatchChain: aBlEventDispatcherChain [
 	<return: #BlEventDispatcherChain>
 
 	^ aBlEventDispatcherChain
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> clearDirtyAreas [
 	"Clear all dirty areas.
 	Default implementation simply removes all areas from the collection"
@@ -252,18 +254,18 @@ TbSpace >> clearDirtyAreas [
 	self dirtyAreas removeAll
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> close [
 	"Delegate closing work to the Universe"
 	TbUniverse default closeSpaceWindow: self
 ]
 
-{ #category : #'cursor managing' }
+{ #category : 'cursor managing' }
 TbSpace >> currentCursor [
 	^ currentCursor 
 ]
 
-{ #category : #'cursor managing' }
+{ #category : 'cursor managing' }
 TbSpace >> currentCursor: aCursor [
 
 	currentCursor ifNotNil: [ :cc | cc deactivateOn: self ].
@@ -272,27 +274,27 @@ TbSpace >> currentCursor: aCursor [
 	currentCursor activateOn: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultEventDispatcher [
 	^ TbDirectEventDispatcher on: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultEventListener [
 	^ TbSpaceEventListener space: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultEventRecorder [
 	^ TbEmptyEventRecorder new
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> defaultExtent [
 	^ 800@600
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultRoot [
 	^ TbElement new
 		background: self defaultRootBackground;
@@ -300,17 +302,17 @@ TbSpace >> defaultRoot [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultRootBackground [
 	^ Color white
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultRootLabel [
 	^ 'Root element'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultRootStyler [
 	^ self class environment
 		at: #BrRootStyler
@@ -318,12 +320,12 @@ TbSpace >> defaultRootStyler [
 		ifAbsent: [ TbNullStyler new ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> defaultTitle [
 	^ ''
 ]
 
-{ #category : #'dragboard managing' }
+{ #category : 'dragboard managing' }
 TbSpace >> deleteDragboard [
 	| d |
 	d := self dragboard.
@@ -332,7 +334,7 @@ TbSpace >> deleteDragboard [
 	^ d
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> densityDpi [
 	"Return the screen density expressed as dots-per-inch"
 	<return: #Number>
@@ -344,26 +346,26 @@ TbSpace >> densityDpi [
 	^ 96.0
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbSpace >> dequeueTask: aBlTask [
 	self taskQueue dequeue: aBlTask
 ]
 
-{ #category : #'host - accessing' }
+{ #category : 'host - accessing' }
 TbSpace >> detachHostSpace [
 	"Detach my current host space if I have one"
 
 	self hostSpaceProperty value: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> dirtyAreas [
 	<return: #SequenceableCollection of: #BlBounds>
 
 	^ dirtyAreas
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> dispatchTimeEvent: aSpaceStepEventClass during: aBlock [
 	| aStartTime |
 	
@@ -376,7 +378,7 @@ TbSpace >> dispatchTimeEvent: aSpaceStepEventClass during: aBlock [
 				yourself)
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> doLayout [
 	| layoutCounter maxLayoutCount |
 
@@ -403,20 +405,20 @@ TbSpace >> doLayout [
 		[ layoutError debug ] ensure: [ layoutError := nil ] ]
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> doUpdateFocus [
 	self focusOwner
 		ifNil: [ self initializeFocus ]
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> doUpdateLayout [
 	"Start layouting process"
 
 	self doUpdateLayout: self root
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> doUpdateLayout: anElement [
 	"Perform layout of a given element (e.g. root or glass)"
 
@@ -436,29 +438,29 @@ TbSpace >> doUpdateLayout: anElement [
 	anElement commitChanges
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> dragboard [
 	^ dragboard
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> dragboard: anObject [
 	dragboard := anObject
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbSpace >> enqueueTask: aBlTask [
 	aBlTask onEnqueued: self.
 	self taskQueue enqueue: aBlTask.
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbSpace >> enqueueTasksFrom: aTaskQueue [
 	aTaskQueue tasks do: [ :eachTask | eachTask onEnqueued: self ].	
 	self taskQueue enqueueFrom: aTaskQueue
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> ensureSession [
 	"Check current session and perform required operations if it changed since last frame"
 
@@ -470,95 +472,95 @@ TbSpace >> ensureSession [
 	self requestNextPulse
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TbSpace >> eventDispatcher [
 	^ eventDispatcher
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> eventListener [
 	^ eventListener
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> eventListener: anObject [
 	eventListener := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> eventRecorder [
 	^ eventRecorder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> eventRecorder: anEventRecorder [
 	eventRecorder := anEventRecorder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> extent [
 	<return: #Point>
 
 	^ self windowExtent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> extent: aNewExtent [
 	self windowExtent: aNewExtent
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> focusOwner [
 	^ focusOwner
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> focusOwner: anElement [
 	focusOwner := anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> focusProcessor [
 	<return: #BlFocusProcessor>
 
 	^ focusProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> focusProcessor: aFocusProcessor [
 	focusProcessor := aFocusProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> focused [
 	<return: #Boolean>
 
 	^ self focusedProperty value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> focused: aBoolean [
 	self focusedProperty value: aBoolean
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbSpace >> focusedProperty [
 	^ focused ifNil: [ focused := TbObjectProperty on: self named: #focused default: false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> frame [
 	<return: #TbSpaceFrame>
 
 	^ frame
 ]
 
-{ #category : #drawing }
+{ #category : 'drawing' }
 TbSpace >> fullDrawOn: anCanvas [
 	anCanvas fullDraw: self root
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> fullscreen [
 	"Return true if an underlying window is in fullscreen mode,
 	false otherwise"
@@ -569,7 +571,7 @@ TbSpace >> fullscreen [
 		ifNil: [ fullscreen ]
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> fullscreen: aBoolean [
 	"Switch underlying window to fullscreen if true is given
 	and exit fullscreen mode if false is given"
@@ -578,19 +580,19 @@ TbSpace >> fullscreen: aBoolean [
 	 self hostSpace ifNotNil: [ :aHostSpace | aHostSpace fullscreen: aBoolean ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> gestureProcessor [
 	<return: #BlGestureProcessor>
 
 	^ gestureProcessor
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> grabFocus [
 	self focused: true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> hasDirtyAreas [
 	"Return true if space has dirty areas and therefore needs to be rendered,
 	false otherwise"
@@ -599,7 +601,7 @@ TbSpace >> hasDirtyAreas [
 	^ self dirtyAreas isNotEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> hasHostSpace [
 	"Return true if I have a host space, false otherwise"
 	<return: #Boolean>
@@ -607,7 +609,7 @@ TbSpace >> hasHostSpace [
 	^ self hostSpace isNotNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> hasLayoutError [
 	"Return true if there was a layout error, false otherwise"
 	<return: #Boolean>
@@ -615,7 +617,7 @@ TbSpace >> hasLayoutError [
 	^ layoutError isNotNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> hasOwner [
 	"To be polymorhic with BlElement's traversal API.
 	Space does not have an owner"
@@ -624,34 +626,34 @@ TbSpace >> hasOwner [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> height [
 	<return: #Number>
 
 	^ self extent y
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> hide [
 	self hostSpace ifNotNil: [ :hw | hw hide ]
 ]
 
-{ #category : #'host - accessing' }
+{ #category : 'host - accessing' }
 TbSpace >> host [
 	^ host
 ]
 
-{ #category : #'host - accessing' }
+{ #category : 'host - accessing' }
 TbSpace >> host: aHost [
 	host := aHost
 ]
 
-{ #category : #'host - accessing' }
+{ #category : 'host - accessing' }
 TbSpace >> hostSpace [
 	^ self hostSpaceProperty value
 ]
 
-{ #category : #'host - accessing' }
+{ #category : 'host - accessing' }
 TbSpace >> hostSpace: aHostSpace [
 	"Assign a host space window that will be a source of UI events
 	and will provide a rendering surface on which I will be rendered.
@@ -665,7 +667,7 @@ TbSpace >> hostSpace: aHostSpace [
 	self hostSpaceChanged.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbSpace >> hostSpaceChanged [
 	"When host space changed we might want to adapt sizes"
 	self windowExtent: self windowExtent.
@@ -673,17 +675,17 @@ TbSpace >> hostSpaceChanged [
 	self beDirtyArea
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbSpace >> hostSpaceProperty [
 	^ hostSpace ifNil: [ hostSpace := TbObjectProperty on: self named: #hostSpace ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> initDispatcher [
 	self eventDispatcher addEventFilter: self eventListener
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpace >> initialize [
 	super initialize.
 	
@@ -723,25 +725,25 @@ TbSpace >> initialize [
 	self root space: self
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> initializeFocus [
 	self root isFocusable
 		ifTrue: [ self root requestFocus ]
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> invalidRect: aBlBounds from: anElement [
 
 	self makeDirty: aBlBounds.
 	self requestNextPulse
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> isFocused [
 	^ self focused
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> isLayoutRequested [
 	"Indicates whether or not root element's layout needs to be updated next frame"
 	<return: #Boolean>
@@ -749,32 +751,32 @@ TbSpace >> isLayoutRequested [
 	^ self root isLayoutRequested
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpace >> isVisible [
 	^ self hasHostSpace
 		ifTrue: [ self hostSpace isVisible ]
 		ifFalse: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> keyboardProcessor [
 	<return: #BlKeyboardProcessor>
 
 	^ keyboardProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> keyboardProcessor: aKeyboardProcessor [
 	keyboardProcessor := aKeyboardProcessor
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> looseFocusFor: anElement [
 			
 	self focusProcessor looseFor: anElement
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> makeDirty: aBlBounds [
 
 	self
@@ -787,47 +789,47 @@ TbSpace >> makeDirty: aBlBounds [
 		ifNotEmpty: [ :aCollection | aCollection first merge: aBlBounds ].
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> maximize [
 	self hostSpace ifNotNil: [ :hw | hw maximize ]
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> maximized [
 	self hostSpace ifNotNil: [ :hw | ^ hw maximized ].
 	^ false
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> minimize [
 	self hostSpace ifNotNil: [ :hw | hw minimize ]
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> minimized [
 	self hostSpace ifNotNil: [ :hw | ^ hw minimized ].
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> mouseProcessor [
 	<return: #BlMouseProcessor>
 
 	^ mouseProcessor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> mouseProcessor: aMouseProcessor [
 	mouseProcessor := aMouseProcessor
 ]
 
-{ #category : #'dragboard managing' }
+{ #category : 'dragboard managing' }
 TbSpace >> newDragboard [
 	self dragboard: (TbDragboard space: self).
 	^ self dragboard
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> position [
 	"Return window's position in screen coordinates"
 	<return: #Point>
@@ -837,7 +839,7 @@ TbSpace >> position [
 		ifNil: [ position ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> position: aPoint [
 	"Request to change window's position to a given point in screen corrdinates"
 
@@ -846,7 +848,7 @@ TbSpace >> position: aPoint [
 		ifFalse: [ self setPosition: aPoint ]
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> processEvents [
 	"Process events enqueued by host space and dispatch them to the scene graph"
 
@@ -864,7 +866,7 @@ TbSpace >> processEvents [
 	self mouseProcessor generateEvents
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> processPulse [
 	self ensureSession.
 
@@ -873,12 +875,12 @@ TbSpace >> processPulse [
 	nextPulseRequested := false
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> pulse [
 	self processPulse
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> pulseRequested [
 	"Return true if space pulse was requested, false otherwise"
 	<return: #Boolean>
@@ -886,7 +888,7 @@ TbSpace >> pulseRequested [
 	^ nextPulseRequested
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> render [
 	"Render this space in my host window if it is assigned, otherwise do nothing"
 
@@ -898,7 +900,7 @@ TbSpace >> render [
 		ifNotNil: [ :aHostSpace | aHostSpace render: self ]
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> requestFocusFor: anElement [
 	self
 		assert: [ anElement space = self ]
@@ -907,7 +909,7 @@ TbSpace >> requestFocusFor: anElement [
 	self focusProcessor requestFor: anElement
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TbSpace >> requestNextPulse [
 	nextPulseRequested := true.
 	
@@ -917,7 +919,7 @@ TbSpace >> requestNextPulse [
 		ifTrue: [ TbUniverse default requestNextPulse ]
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> resizable [
 	"Return true if underlying window is resizable, false otherwise"
 	<return: #Boolean>
@@ -927,7 +929,7 @@ TbSpace >> resizable [
 		ifNil: [ resizable ]
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> resizable: aBoolean [
 	"Make underlying window resizable if true is given"
 	
@@ -935,7 +937,7 @@ TbSpace >> resizable: aBoolean [
 	self hostSpace ifNotNil: [ :aHostSpace | aHostSpace resizable: aBoolean ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> root [
 	"Return my current root element.
 	root can not be nil"
@@ -948,7 +950,7 @@ TbSpace >> root [
 	^ root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> root: anElement [
 	"Make a given element my root element.
 	anElement must not be nil.
@@ -972,7 +974,7 @@ TbSpace >> root: anElement [
 	rootStyler := self defaultRootStyler
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> rootDo: aBlock [
 	"A helper method to evaluate a given block with root element an argument.
 	May be useful for scripting"
@@ -980,24 +982,24 @@ TbSpace >> rootDo: aBlock [
 	aBlock value: self root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> rootStyler [
 	^ rootStyler
 ]
 
-{ #category : #pulse }
+{ #category : 'pulse' }
 TbSpace >> runTasks [
 	"Run animations and other runnable tasks"
 
 	self taskQueue run
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> session [
 	^ session
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbSpace >> setExtent: anExtent [
 	"Actually change space and root extent to a given one"
 
@@ -1005,14 +1007,14 @@ TbSpace >> setExtent: anExtent [
 	self root requestLayout
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbSpace >> setPosition: aPoint [
 	"Actually change space, root and glass extent to a given one"
 
 	position := aPoint
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> show [
 	"Open me in a window and show it to the user"
 
@@ -1025,26 +1027,26 @@ TbSpace >> show [
 	self requestNextPulse.
 ]
 
-{ #category : #'api - tasks' }
+{ #category : 'api - tasks' }
 TbSpace >> taskQueue [
 	<return: #BlTaskQueue>
 	
 	^ tasks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> time [
 	<return: #BlTime>
 	
 	^ time
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> time: aBlTime [
 	time := aBlTime
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> title [
 	"Return window's title as a string"
 	<return: #String>
@@ -1052,14 +1054,14 @@ TbSpace >> title [
 	^ self titleProperty value
 ]
 
-{ #category : #'window - properties' }
+{ #category : 'window - properties' }
 TbSpace >> title: aString [
 	"Change window's title"
 
 	self titleProperty value: aString
 ]
 
-{ #category : #'accessing properties' }
+{ #category : 'accessing properties' }
 TbSpace >> titleProperty [
 	^ title ifNil: [
 		title := TbDelegateProperty
@@ -1068,29 +1070,29 @@ TbSpace >> titleProperty [
 			delegateTo: self hostSpaceProperty ]
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> toBack [
 	self hostSpace ifNotNil: [ :hw | hw toBack ]
 ]
 
-{ #category : #displaying }
+{ #category : 'displaying' }
 TbSpace >> toFront [
 	self hostSpace ifNotNil: [ :hw | hw toFront ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> topMostParent [
 	^ self root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> touchProcessor [
 	<return: #BlTouchProcessor>
 
 	^ touchProcessor
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> transferFocusTo: anElement [
 	self
 		assert: [ anElement space = self ]
@@ -1099,26 +1101,26 @@ TbSpace >> transferFocusTo: anElement [
 	self focusProcessor transferTo: anElement
 ]
 
-{ #category : #'focus managing' }
+{ #category : 'focus managing' }
 TbSpace >> ungrabFocus [
 	self focused: false
 ]
 
-{ #category : #'cursor managing' }
+{ #category : 'cursor managing' }
 TbSpace >> updateCursorImage: anImage [
 
 	self hostSpace ifNotNil: [ :aHostSpace |
 		aHostSpace cursor: anImage ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> width [
 	<return: #Number>
 
 	^ self extent x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> windowExtent [
 	"Return the window size in screen coordinates.
 	This size may differ from the size in pixels on high dpi (retina) screens.
@@ -1130,7 +1132,7 @@ TbSpace >> windowExtent [
 		ifNil: [ extent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> windowExtent: anExtent [
 	"Request to change a window size to aNewExtent.
 	Note, that window size may be different from renderer size on high dpi (retina) displays"
@@ -1140,7 +1142,7 @@ TbSpace >> windowExtent: anExtent [
 		ifFalse: [ self setExtent: anExtent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpace >> windowScale [
 	"Return a scaling factor from space to window coordinates.
 	On high dpi (retina) displays scaling factor is > 1"

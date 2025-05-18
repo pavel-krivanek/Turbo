@@ -1,6 +1,6 @@
 Class {
-	#name : #TbMiscProperties,
-	#superclass : #Object,
+	#name : 'TbMiscProperties',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -11,40 +11,42 @@ Class {
 		'debug',
 		'label'
 	],
-	#category : #'Turbo-Core-Basic-Support'
+	#category : 'Turbo-Core-Basic-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> clipChildren [
 	^ clipChildren
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> clipChildren: anObject [
 	clipChildren := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> debug [
 	^ debug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> debug: aBoolean [
 	debug := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> focused [
 	^ self focusedProperty value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> focused: anObject [
 	self focusedProperty value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> focusedProperty [
 	^ focused
 		ifNil: [ focused := TbObjectProperty
@@ -53,7 +55,7 @@ TbMiscProperties >> focusedProperty [
 				default: false ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMiscProperties >> initialize [
 	super initialize.
 	
@@ -63,24 +65,24 @@ TbMiscProperties >> initialize [
 	label := ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> label [
 	<return: #String>
 
 	^ label
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> label: aString [
 	label := aString asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> userData [
 	^userData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMiscProperties >> userData: aDict [
 	userData := aDict
 ]

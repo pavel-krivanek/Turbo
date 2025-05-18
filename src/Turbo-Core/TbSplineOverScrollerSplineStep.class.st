@@ -1,10 +1,12 @@
 Class {
-	#name : #TbSplineOverScrollerSplineStep,
-	#superclass : #TbSplineOverScrollerStep,
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#name : 'TbSplineOverScrollerSplineStep',
+	#superclass : 'TbSplineOverScrollerStep',
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbSplineOverScrollerSplineStep >> onFinished: aSplineOverScroller [
 	<return: #Boolean>
 	

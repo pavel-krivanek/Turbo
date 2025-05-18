@@ -1,20 +1,22 @@
 Class {
-	#name : #TbSplineOverScrollerStep,
-	#superclass : #Object,
+	#name : 'TbSplineOverScrollerStep',
+	#superclass : 'Object',
 	#classInstVars : [
 		'spline',
 		'cubic',
 		'ballistic'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerStep class >> ballistic [
 	^ ballistic ifNil: [ ballistic := TbSplineOverScrollerBallisticStep new ]
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbSplineOverScrollerStep class >> cleanUp [
 	super cleanUp.
 	
@@ -23,28 +25,28 @@ TbSplineOverScrollerStep class >> cleanUp [
 	spline := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerStep class >> cubic [
 	^ cubic ifNil: [ cubic := TbSplineOverScrollerCubicStep new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSplineOverScrollerStep class >> spline [
 	^ spline ifNil: [ spline := TbSplineOverScrollerSplineStep new ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSplineOverScrollerStep >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	^ self class = anObject class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSplineOverScrollerStep >> hash [
 	^ self class hash
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbSplineOverScrollerStep >> onFinished: aSplineOverScroller [
 	"Is sent after animation duration is reached. It does not necessarily mean that scrolling should stop,
 	for example if we overshoot the target we should to bounce back.

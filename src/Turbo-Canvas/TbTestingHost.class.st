@@ -24,15 +24,17 @@ universe pulseLoop firePulse.
 space hostSpace content
 "
 Class {
-	#name : #TbTestingHost,
-	#superclass : #TbHost,
+	#name : 'TbTestingHost',
+	#superclass : 'TbHost',
 	#instVars : [
 		'isRunning'
 	],
-	#category : #'Turbo-Canvas-Testing'
+	#category : 'Turbo-Canvas-Testing',
+	#package : 'Turbo-Canvas',
+	#tag : 'Testing'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHost >> createHostSpaceFor: aSpace [
 
 	| aHostSpace|
@@ -49,7 +51,7 @@ TbTestingHost >> createHostSpaceFor: aSpace [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHost >> destroyHostSpaceFor: aSpace [
 	"Destroys host space window of a given space.
 	Note: in most cases under 'destroy host space' we mean 'close host window' and unregister it"
@@ -57,14 +59,14 @@ TbTestingHost >> destroyHostSpaceFor: aSpace [
 	aSpace detachHostSpace
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHost >> initialize [
 	super initialize.
 	
 	isRunning := false
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHost >> isRunning [
 	"Return true if host is initialized and running"
 	<return: #Boolean>
@@ -72,12 +74,12 @@ TbTestingHost >> isRunning [
 	^ isRunning
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHost >> start [
 	isRunning := true
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTestingHost >> stop [
 	isRunning := false
 ]

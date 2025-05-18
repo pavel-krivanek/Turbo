@@ -5,17 +5,19 @@ Examples of affine transformations include translation, scaling, homothety, simi
 https://en.wikipedia.org/wiki/Affine_transformation
 "
 Class {
-	#name : #TbAffineTransformation,
-	#superclass : #Object,
+	#name : 'TbAffineTransformation',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'origin'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbAffineTransformation >> asMatrix [
 	<return: #BlMatrix>
 	| aMatrix |
@@ -28,19 +30,19 @@ TbAffineTransformation >> asMatrix [
 	^ aMatrix
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbAffineTransformation >> do: aBlock [
 	aBlock value: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbAffineTransformation >> initialize [
 	super initialize.
 	
 	origin := TbAffineTransformationCenterOrigin new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbAffineTransformation >> is2D [
 	"Return true if transformation happens in x-y plane, hence 2D"
 	<return: #Boolean>
@@ -48,7 +50,7 @@ TbAffineTransformation >> is2D [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbAffineTransformation >> is3D [
 	"Return true if transformation happens in x-y-z plane, hence 3D"
 	<return: #Boolean>
@@ -56,7 +58,7 @@ TbAffineTransformation >> is3D [
 	^ self is2D not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbAffineTransformation >> isIdentity [
 	"Return true if thiss transformation is identity"
 	<return: #Boolean>
@@ -64,12 +66,12 @@ TbAffineTransformation >> isIdentity [
 	^ false
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbAffineTransformation >> multiplyOn: aBlMatrix [
 	self subclassResponsibility
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbAffineTransformation >> multiplyOn: aBlMatrix in: aBlElement [
 	| anOriginPoint aVector |
 
@@ -81,14 +83,14 @@ TbAffineTransformation >> multiplyOn: aBlMatrix in: aBlElement [
 	aBlMatrix translateBy: aVector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAffineTransformation >> origin [
 	<return: #BlAffineTransformationOrigin>
 
 	^ origin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAffineTransformation >> origin: aBlAffineTransformationOrigin [
 	origin := aBlAffineTransformationOrigin
 ]

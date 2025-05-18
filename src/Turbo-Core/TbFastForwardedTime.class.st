@@ -10,17 +10,19 @@ I am a time with an ability to manipulate its speed, make it run faster or go sl
 ]]]
 "
 Class {
-	#name : #TbFastForwardedTime,
-	#superclass : #TbTime,
+	#name : 'TbFastForwardedTime',
+	#superclass : 'TbTime',
 	#instVars : [
 		'speed',
 		'previousRealTime',
 		'previousSpeededUpTime'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'private - time' }
+{ #category : 'private - time' }
 TbFastForwardedTime >> currentTime [
 	"Return a 'current' date and time"
 	<return: #DateAndTime>
@@ -38,7 +40,7 @@ TbFastForwardedTime >> currentTime [
 	^ aSpeededTime
 ]
 
-{ #category : #'api - enumeration' }
+{ #category : 'api - enumeration' }
 TbFastForwardedTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 	"Evaluate a aDoBlock while aWhileBlock evaluates to true waiting a given amount of time between executions.
 	The first evaluation of a aDoBlock is instant.
@@ -59,7 +61,7 @@ TbFastForwardedTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 		(anExpectedTime - aCurrentTime) wait ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFastForwardedTime >> initialize [
 	super initialize.
 	
@@ -68,19 +70,19 @@ TbFastForwardedTime >> initialize [
 	previousSpeededUpTime := previousRealTime.
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbFastForwardedTime >> speed [
 	<return: #Number>
 
 	^ speed
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbFastForwardedTime >> speed: aNumber [
 	speed := aNumber
 ]
 
-{ #category : #'api - time' }
+{ #category : 'api - time' }
 TbFastForwardedTime >> wait: aDuration [
 	"Advance clock by waiting for a given amount of time"
 

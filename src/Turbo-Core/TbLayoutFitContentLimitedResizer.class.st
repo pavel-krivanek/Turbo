@@ -1,35 +1,37 @@
 Class {
-	#name : #TbLayoutFitContentLimitedResizer,
-	#superclass : #TbLayoutResizer,
+	#name : 'TbLayoutFitContentLimitedResizer',
+	#superclass : 'TbLayoutResizer',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbLayoutFitContentLimitedResizer class >> cleanUp [
 	super cleanUp.
 	
 	uniqueInstance := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutFitContentLimitedResizer class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TbLayoutFitContentLimitedResizer >> ifFitContent: aBlock [
 	^ aBlock cull: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutFitContentLimitedResizer >> isFitContent [
 	^ true
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 TbLayoutFitContentLimitedResizer >> measurementAtMostWith: aNumber [
 	"Child wants to determine its own size. It can't be bigger than us."
 	<return: #BlMeasurementSpec>
@@ -37,7 +39,7 @@ TbLayoutFitContentLimitedResizer >> measurementAtMostWith: aNumber [
 	^ TbMeasurementSpec new beAtMost: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 TbLayoutFitContentLimitedResizer >> measurementExactlyWith: aNumber [
 	"Child wants to determine its own size. It can't be bigger than us."
 	<return: #BlMeasurementSpec>
@@ -45,12 +47,12 @@ TbLayoutFitContentLimitedResizer >> measurementExactlyWith: aNumber [
    ^ TbMeasurementSpec new beAtMost: aNumber
 ]
 
-{ #category : #'double dispatching' }
+{ #category : 'double dispatching' }
 TbLayoutFitContentLimitedResizer >> measurementUnspecifiedWith: aNumber [
 	^ TbMeasurementSpec unspecified
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbLayoutFitContentLimitedResizer >> printOn: aStream [
 	aStream nextPutAll: 'Fit content limited'
 ]

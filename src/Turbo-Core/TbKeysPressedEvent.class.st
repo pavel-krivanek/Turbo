@@ -3,25 +3,27 @@ Is sent every frame if there are pressed keys.
 Users can get access to pressed keys from provided event buffer 
 "
 Class {
-	#name : #TbKeysPressedEvent,
-	#superclass : #TbKeyboardEvent,
+	#name : 'TbKeysPressedEvent',
+	#superclass : 'TbKeyboardEvent',
 	#instVars : [
 		'buffer'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeysPressedEvent >> buffer [
 	^ buffer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeysPressedEvent >> buffer: aBlKeyboardBuffer [
 	buffer := aBlKeyboardBuffer
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbKeysPressedEvent >> sendTo: anObject [
 	anObject keysPressedEvent: self
 ]

@@ -12,12 +12,14 @@ element border: (BlBorder paint: Color blue width: 20)
 ]]]
 "
 Class {
-	#name : #TbElementBorderChangedEvent,
-	#superclass : #TbElementEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbElementBorderChangedEvent',
+	#superclass : 'TbElementEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbElementBorderChangedEvent >> sendTo: anObject [
 	anObject elementBorderChanged: self
 ]

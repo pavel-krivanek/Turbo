@@ -1,6 +1,6 @@
 Class {
-	#name : #TbFocusability,
-	#superclass : #Object,
+	#name : 'TbFocusability',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#classInstVars : [
@@ -8,25 +8,27 @@ Class {
 		'before',
 		'block'
 	],
-	#category : #'Turbo-Core-Basic-Properties'
+	#category : 'Turbo-Core-Basic-Properties',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Properties'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusability class >> after [
 	^ after ifNil: [ after := TbFocusabilityAfter new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusability class >> before [
 	^ before ifNil: [ before := TbFocusabilityBefore new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusability class >> block [
 	^ block ifNil: [ block := TbFocusabilityBlock new ]
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbFocusability class >> cleanUp [
 	super cleanUp.
 	
@@ -35,21 +37,21 @@ TbFocusability class >> cleanUp [
 	block := nil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbFocusability >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
 	^ self class = anObject class
 ]
 
-{ #category : #focus }
+{ #category : 'focus' }
 TbFocusability >> focusables: anOrderedCollection along: aBlFocusSearchDirection of: anElement [
 	"Add focusable elements that are descendants of a given element (possibly including anElement) to anOrderedCollection"
 
 	self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbFocusability >> hash [
 	^ self class hash
 ]

@@ -5,8 +5,8 @@ It is highly recommended to use iterator to enumerate ropes, since it can be don
 I support forward and reverse directions of enumeration
 "
 Class {
-	#name : #TbRopeIterator,
-	#superclass : #Object,
+	#name : 'TbRopeIterator',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -14,17 +14,19 @@ Class {
 		'start',
 		'end'
 	],
-	#category : #'Turbo-Core-DataStructure - Rope'
+	#category : 'Turbo-Core-DataStructure - Rope',
+	#package : 'Turbo-Core',
+	#tag : 'DataStructure - Rope'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbRopeIterator class >> rope: aRope from: aStart to: anEnd [
 	^ self new
 		rope: aRope from: aStart to: anEnd;
 		yourself
 ]
 
-{ #category : #'iterator - attributes' }
+{ #category : 'iterator - attributes' }
 TbRopeIterator >> attributes [
 	"Return a collection of rope attributes at the current *peek* position without duplicates"
 	<return: #Collection of: #Objects>
@@ -32,7 +34,7 @@ TbRopeIterator >> attributes [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - attributes' }
+{ #category : 'iterator - attributes' }
 TbRopeIterator >> detectAttribute: aBlock ifFound: aFoundBlock ifNone: anExceptionBlock [
 	"Evaluate aBlock with each of the receiver's elements as the argument.  
 	If some element evaluates aBlock to true, then cull this element into 
@@ -46,34 +48,34 @@ TbRopeIterator >> detectAttribute: aBlock ifFound: aFoundBlock ifNone: anExcepti
 		ifNone: anExceptionBlock
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbRopeIterator >> end [
 	<return: #Number>
 	
 	^ end
 ]
 
-{ #category : #'private - errors' }
+{ #category : 'private - errors' }
 TbRopeIterator >> errorOvershootsTheEnd [
 	self error: 'Overshoots the end of the iterator!'
 ]
 
-{ #category : #'private - errors' }
+{ #category : 'private - errors' }
 TbRopeIterator >> errorOvershootsTheStart [
 	self error: 'Reached the end of the rope iterator!'
 ]
 
-{ #category : #'private - errors' }
+{ #category : 'private - errors' }
 TbRopeIterator >> errorReachedTheEnd [
 	self error: 'Reached the end of the rope iterator!'
 ]
 
-{ #category : #'private - errors' }
+{ #category : 'private - errors' }
 TbRopeIterator >> errorReachedTheStart [
 	self error: 'Overshoots the start of the iterator!'
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbRopeIterator >> hasNext [
 	"Return true if iterator is be able to return #next item in the rope, false otherwise"
 	<return: #Boolean>
@@ -81,7 +83,7 @@ TbRopeIterator >> hasNext [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbRopeIterator >> hasPrevious [
 	"Return true if iterator is be able to return #previous item in the rope, false otherwise"
 	<return: #Boolean>
@@ -89,7 +91,7 @@ TbRopeIterator >> hasPrevious [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbRopeIterator >> isCarriageReturn: anItem [
 	"Return true of given item represents a carriage return, false otherwise"
 	<return: #Boolean>
@@ -97,7 +99,7 @@ TbRopeIterator >> isCarriageReturn: anItem [
 	^ anItem = Character cr
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbRopeIterator >> isLineDelimiter: anItem [
 	"Return true of given item represents a line delimiter symbol, false otherwise"
 	<return: #Boolean>
@@ -105,7 +107,7 @@ TbRopeIterator >> isLineDelimiter: anItem [
 	^ (self isCarriageReturn: anItem) or: [ self isLineFeed: anItem ]
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbRopeIterator >> isLineFeed: anItem [
 	"Return true of given item represents a line feed, false otherwise"
 	<return: #Boolean>
@@ -113,7 +115,7 @@ TbRopeIterator >> isLineFeed: anItem [
 	^ anItem = Character lf
 ]
 
-{ #category : #'iterator - testing' }
+{ #category : 'iterator - testing' }
 TbRopeIterator >> isNewLine: anItem [
 	"Return true of given item represents a carriage return, false otherwise"
 	<return: #Boolean>
@@ -121,7 +123,7 @@ TbRopeIterator >> isNewLine: anItem [
 	^ anItem = Character cr or: [ anItem = Character lf ]
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> next [
 	"Return next element in the rope"
 	<return: #Object>
@@ -129,7 +131,7 @@ TbRopeIterator >> next [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextLine [
 	"Return a next line without delimiters"
 	<return: #BlRope>
@@ -137,7 +139,7 @@ TbRopeIterator >> nextLine [
 	^ self nextLineIndicesDo: [ :aStart :anEnd :aLineEndWithDelimiters | self rope from: aStart to: anEnd ]
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextLineIndicesDo: anIndicesBlock [
 	" execute anIndicesBlock with 3 arguments for each line:
 		- start index of line
@@ -167,7 +169,7 @@ TbRopeIterator >> nextLineIndicesDo: anIndicesBlock [
 		value: self position
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextSegment: aBlock [
 	"Return a segment of item for those aBlock uniformly returns equal value for each consequent item"
 	<return: #BlRope>
@@ -177,7 +179,7 @@ TbRopeIterator >> nextSegment: aBlock [
 		indicesDo: [ :aStart :anEnd :anInitialValue | self rope from: aStart to: anEnd ]
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextSegment: aBlock indicesDo: anIndicesBlock [
 	"Evaluate aBlock with every item in the forward direction until aBlock returns a different value compared to the value
 	produced by evaluating aBlock with the first item in a sequence or until we run out of items to iterate over.
@@ -210,13 +212,13 @@ TbRopeIterator >> nextSegment: aBlock indicesDo: anIndicesBlock [
 		cull: initialValue
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextSpan [
 	"Return a next homogeneous subrope based on attributes"
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextSpan: aBlock [
 	"Evaluate aBlock with each attribute from each span and return a span for which aBlock returns either true or false.
 	The key here is that we can redefine what homogeneity of the span mean"
@@ -241,21 +243,21 @@ TbRopeIterator >> nextSpan: aBlock [
 	^ self rope from: aStart to: anEnd
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextWhitespace [
 	<return: #BlRope>
 
 	^ self nextSegment: [ :item | item isCharacter not or: [ item isSeparator not ] ]
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> nextWord [
 	<return: #BlRope>
 
 	^ self nextSegment: [ :item | item isCharacter and: [ item isSeparator ] ]
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> peek [
 	"Return an element at current #position without changing it.
 	(#peek item is the same that would be returned by #next).
@@ -265,7 +267,7 @@ TbRopeIterator >> peek [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> peer [
 	"Return an element before the current #position without moving the cursor.
 	(#peer item is the same that would be returned by #previous).
@@ -278,7 +280,7 @@ TbRopeIterator >> peer [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - accessing' }
+{ #category : 'iterator - accessing' }
 TbRopeIterator >> position [
 	"Return a *cursor* position.
 	
@@ -296,7 +298,7 @@ TbRopeIterator >> position [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> previous [
 	"Return previous element in the rope"
 	<return: #Object>
@@ -304,7 +306,7 @@ TbRopeIterator >> previous [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> previousSegment: aBlock indicesDo: anIndicesBlock [
 	"Evaluate aBlock with every item in the backward direction until aBlock returns a different value compared to the value
 	produced by evaluating aBlock with the first item in a sequence or until we run out of items to iterate over.
@@ -337,12 +339,12 @@ TbRopeIterator >> previousSegment: aBlock indicesDo: anIndicesBlock [
 		cull: initialValue
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbRopeIterator >> rope [
 	^ rope
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbRopeIterator >> rope: aRope from: aStart to: anEnd [
 	(aRope isNotEmpty and: [ aStart < 0 or: [ anEnd > aRope size ] ])
 		ifTrue: [ self error: 'Iterator interval out of bounds!' ].
@@ -354,7 +356,7 @@ TbRopeIterator >> rope: aRope from: aStart to: anEnd [
 	end := anEnd max: aStart.
 ]
 
-{ #category : #'iterator - attributes' }
+{ #category : 'iterator - attributes' }
 TbRopeIterator >> selectAttributes: aBlock [
 	"Evaluate aBlock with each of the receiver's elements as the argument. 
 	Collect into a new collection like the receiver, only those elements for 
@@ -364,7 +366,7 @@ TbRopeIterator >> selectAttributes: aBlock [
 	^ self attributes select: aBlock
 ]
 
-{ #category : #'iterator - enumeration' }
+{ #category : 'iterator - enumeration' }
 TbRopeIterator >> skip: aNumber [
 	"Skip given amount of items (that would be returned by #next or #prevous).
 	aNumber can be negative and positive, sign defines a direction of iteration"
@@ -372,7 +374,7 @@ TbRopeIterator >> skip: aNumber [
 	self subclassResponsibility
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbRopeIterator >> start [
 	<return: #Number>
 	

@@ -1,6 +1,6 @@
 Class {
-	#name : #TbStrokeStyle,
-	#superclass : #Object,
+	#name : 'TbStrokeStyle',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -10,10 +10,12 @@ Class {
 		'dashArray',
 		'dashOffset'
 	],
-	#category : #'Turbo-Core-Paint-Support'
+	#category : 'Turbo-Core-Paint-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Paint-Support'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbStrokeStyle class >> dashed [
 	<gtExample>
 	^ self new
@@ -24,7 +26,7 @@ TbStrokeStyle class >> dashed [
 		dashOffset: 0
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbStrokeStyle class >> default [
 	<gtExample>
 	^ self new
@@ -35,62 +37,62 @@ TbStrokeStyle class >> default [
 		dashOffset: 0
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbStrokeStyle >> copyWithLineCap: aLineCap [
 	^ self copy lineCap: aLineCap
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbStrokeStyle >> copyWithLineJoin: aLineJoin [
 	^ self copy lineJoin: aLineJoin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> dashArray [
 	^ dashArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> dashArray: anArray [
 	dashArray := anArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> dashOffset [
 	^ dashOffset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> dashOffset: aNumber [
 	dashOffset := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> lineCap [
 	^ lineCap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> lineCap: aBlStrokeLineCap [
 	lineCap := aBlStrokeLineCap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> lineJoin [
 	^ lineJoin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> lineJoin: aBlStrokeLineJoin [
 	lineJoin := aBlStrokeLineJoin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> miterLimit [
 	^ miterLimit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeStyle >> miterLimit: aNumber [
 	miterLimit := aNumber
 ]

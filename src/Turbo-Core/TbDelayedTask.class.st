@@ -1,6 +1,6 @@
 Class {
-	#name : #TbDelayedTask,
-	#superclass : #TbTask,
+	#name : 'TbDelayedTask',
+	#superclass : 'TbTask',
 	#instVars : [
 		'delay',
 		'element',
@@ -8,22 +8,24 @@ Class {
 		'isRunning',
 		'startTime'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelayedTask >> delay [
 	<return: #Duration>
 
 	^ delay
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelayedTask >> delay: aDuration [
 	delay := aDuration
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbDelayedTask >> dequeue [
 
 	self
@@ -33,19 +35,19 @@ TbDelayedTask >> dequeue [
 	self element dequeueTask: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelayedTask >> element [
 	<return: #BlElement>
 
 	^ element
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelayedTask >> element: aBlElement [
 	element := aBlElement
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbDelayedTask >> enqueue [
 
 	self
@@ -55,7 +57,7 @@ TbDelayedTask >> enqueue [
 	self element enqueueTask: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbDelayedTask >> initialize [
 	super initialize.
 	
@@ -64,14 +66,14 @@ TbDelayedTask >> initialize [
 	isRunning := true
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbDelayedTask >> isRunning [
 	<return: #Boolean>
 
 	^ isRunning
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbDelayedTask >> onEnqueued: aBlSpace [
 	super onEnqueued: aBlSpace.
 
@@ -82,17 +84,17 @@ TbDelayedTask >> onEnqueued: aBlSpace [
 		ifNil: [ startTime := self time now ]
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbDelayedTask >> onEnqueuedInElement: aBlElement [
 	self element: aBlElement
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbDelayedTask >> onRun [
 	"Override me to implement a custom action"
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbDelayedTask >> run [
 	self isRunning
 		ifFalse: [ ^ self ].
@@ -105,7 +107,7 @@ TbDelayedTask >> run [
 	self stop
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbDelayedTask >> start [
 	self
 		assert: [ element isNotNil ]
@@ -117,7 +119,7 @@ TbDelayedTask >> start [
 	self enqueue
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbDelayedTask >> stop [
 	"Stop the task by dequeuing it"
 	(element isNotNil and: [ self isRunning ])
@@ -127,14 +129,14 @@ TbDelayedTask >> stop [
 	startTime := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelayedTask >> time [
 	<return: #BlTime>
 
 	^ time
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbDelayedTask >> time: aBlTime [
 	time := aBlTime
 ]

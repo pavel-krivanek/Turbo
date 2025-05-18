@@ -11,24 +11,26 @@ element transform
 	apply
 "
 Class {
-	#name : #TbTransformationBuilder,
-	#superclass : #Object,
+	#name : 'TbTransformationBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'transformation',
 		'origin',
 		'target'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTransformationBuilder class >> on: anObject [
 	<return: #BlTransformationBuilder>
 
 	^ self new target: anObject
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> apply [
 	"Replace element's transformation chain with our new one that we just have built"
 	| anElementTransformation |
@@ -37,7 +39,7 @@ TbTransformationBuilder >> apply [
 	target transformation: anElementTransformation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTransformationBuilder >> element [
 	self 
 		deprecated: 'Use target instead'
@@ -46,7 +48,7 @@ TbTransformationBuilder >> element [
 	^ self target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTransformationBuilder >> element: anObject [ 
 	self 
 		deprecated: 'Use target: instead'
@@ -55,17 +57,17 @@ TbTransformationBuilder >> element: anObject [
 	^ self target: anObject
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> flipX [
 	transformation addTransformation: (TbReflectionTransformation vertical origin: origin)
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> flipY [
 	transformation addTransformation: (TbReflectionTransformation horizontal origin: origin)
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> inherit [
 	"Append existing element's transformations to the new transformation list"
 	
@@ -73,7 +75,7 @@ TbTransformationBuilder >> inherit [
 		do: [ :aTransformation | transformation addTransformation: aTransformation ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTransformationBuilder >> initialize [
 	super initialize.
 	
@@ -81,13 +83,13 @@ TbTransformationBuilder >> initialize [
 	origin := TbAffineTransformationCenterOrigin new
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> matrix: aMatrix [
 	"Note: matrix transformation is not influenced by origin (it is always top left corner or 0@0)"
 	transformation addTransformation: ((TbMatrixTransformation matrix: aMatrix) origin: TbAffineTransformationTopLeftOrigin new)
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> origin: anAffineTransformationOrigin [
 	"Change transformation origin for all future transformations.
 	Note: I do not change origins of already exisiting transformations"
@@ -95,24 +97,24 @@ TbTransformationBuilder >> origin: anAffineTransformationOrigin [
 	origin := anAffineTransformationOrigin
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> rotateBy: aDegreesAngle [
 	transformation addTransformation: (TbRotationTransformation new angle: aDegreesAngle; axis: TbVector zAxis; origin: origin)
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> rotateBy: aDegreesAngle around: aVector [
 	transformation addTransformation: (TbRotationTransformation new angle: aDegreesAngle; axis: aVector; origin: origin)
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> scaleBy: aVector [
 	"Append a scaling transformation by a given vector"
 
 	transformation addTransformation: ((TbScalingTransformation scale: aVector asScale3D) origin: origin)
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> scaleTo: aVector [
 	"Replace all existing scaling transformation with a single one
 	that takes place of the very first scaling transformation.
@@ -130,7 +132,7 @@ TbTransformationBuilder >> scaleTo: aVector [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTransformationBuilder >> target [
 	"Return a target object whose transformation we build"
 	<return: #Object>
@@ -138,12 +140,12 @@ TbTransformationBuilder >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTransformationBuilder >> target: anObject [
 	target := anObject
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbTransformationBuilder >> translateBy: aVector [
 	"Append a translation transformation by a given vector"
 	

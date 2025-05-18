@@ -20,23 +20,25 @@ Example:
 	build
 "
 Class {
-	#name : #TbKeyCombinationBuilder,
-	#superclass : #Object,
+	#name : 'TbKeyCombinationBuilder',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'combination',
 		'converter'
 	],
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> a [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey a)
 ]
 
-{ #category : #'keys - modifiers' }
+{ #category : 'keys - modifiers' }
 TbKeyCombinationBuilder >> alt [
 	| alt |
 
@@ -49,53 +51,53 @@ TbKeyCombinationBuilder >> alt [
 		with: alt
 ]
 
-{ #category : #'keys - navigation' }
+{ #category : 'keys - navigation' }
 TbKeyCombinationBuilder >> arrowDown [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowDown)
 ]
 
-{ #category : #'keys - navigation' }
+{ #category : 'keys - navigation' }
 TbKeyCombinationBuilder >> arrowLeft [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowLeft)
 ]
 
-{ #category : #'keys - navigation' }
+{ #category : 'keys - navigation' }
 TbKeyCombinationBuilder >> arrowRight [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowRight)
 ]
 
-{ #category : #'keys - navigation' }
+{ #category : 'keys - navigation' }
 TbKeyCombinationBuilder >> arrowUp [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey arrowUp)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> b [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey b)
 ]
 
-{ #category : #'keys - special' }
+{ #category : 'keys - special' }
 TbKeyCombinationBuilder >> backspace [
 	combination
 		with: (TbSingleKeyCombination new key: TbKeyboardKey backspace)
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbKeyCombinationBuilder >> build [
 	^ self toNormalForm: combination
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> c [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey c)
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbKeyCombinationBuilder >> cnf [
 	converter := TbKeyCombinationConverterCNF new
 ]
 
-{ #category : #'keys - modifiers' }
+{ #category : 'keys - modifiers' }
 TbKeyCombinationBuilder >> control [
 	| control |
 
@@ -108,44 +110,44 @@ TbKeyCombinationBuilder >> control [
 		with: control
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> d [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey d)
 ]
 
-{ #category : #'keys - special' }
+{ #category : 'keys - special' }
 TbKeyCombinationBuilder >> delete [
 	combination
 		with: (TbSingleKeyCombination new key: TbKeyboardKey delete)
 ]
 
-{ #category : #builder }
+{ #category : 'builder' }
 TbKeyCombinationBuilder >> dnf [
 	converter := TbKeyCombinationConverterDNF new
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> e [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey e)
 ]
 
-{ #category : #'keys - special' }
+{ #category : 'keys - special' }
 TbKeyCombinationBuilder >> escape [
 	combination
 		with: (TbSingleKeyCombination new key: TbKeyboardKey escape)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> f [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey f)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> g [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey g)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbKeyCombinationBuilder >> initialize [
 	super initialize.
 	
@@ -153,19 +155,19 @@ TbKeyCombinationBuilder >> initialize [
 	converter := TbKeyCombinationConverterCNF new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyCombinationBuilder >> key: aKey [
 
 	combination
 		with: (TbSingleKeyCombination new key: aKey)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> m [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey m)
 ]
 
-{ #category : #'keys - modifiers' }
+{ #category : 'keys - modifiers' }
 TbKeyCombinationBuilder >> meta [
 	| meta |
 
@@ -178,17 +180,17 @@ TbKeyCombinationBuilder >> meta [
 		with: meta
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> n [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey n)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> p [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey p)
 ]
 
-{ #category : #'keys - modifiers' }
+{ #category : 'keys - modifiers' }
 TbKeyCombinationBuilder >> primary [
 	"I add a primary modifier to the key combination
 	On Mac: Command (Meta).
@@ -198,23 +200,23 @@ TbKeyCombinationBuilder >> primary [
 	combination with: OSPlatform current primaryModifier
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> r [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey r)
 ]
 
-{ #category : #'keys - special' }
+{ #category : 'keys - special' }
 TbKeyCombinationBuilder >> return [
 	combination
 		with: (TbSingleKeyCombination new key: TbKeyboardKey return)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> s [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey s)
 ]
 
-{ #category : #'keys - modifiers' }
+{ #category : 'keys - modifiers' }
 TbKeyCombinationBuilder >> secondary [
 	"I add a secondary modifier to the key combination
 	On Mac: Control (Meta).
@@ -224,7 +226,7 @@ TbKeyCombinationBuilder >> secondary [
 	combination with: OSPlatform current secondaryModifier
 ]
 
-{ #category : #'keys - modifiers' }
+{ #category : 'keys - modifiers' }
 TbKeyCombinationBuilder >> shift [
 	| shift |
 
@@ -237,13 +239,13 @@ TbKeyCombinationBuilder >> shift [
 		with: shift
 ]
 
-{ #category : #'keys - special' }
+{ #category : 'keys - special' }
 TbKeyCombinationBuilder >> tab [
 	combination
 		with: (TbSingleKeyCombination new key: TbKeyboardKey tab)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbKeyCombinationBuilder >> toNormalForm: aKeyCombination [
 	"Converts a given key combination to a normal form (CNF or DNF)
 	(https://en.wikipedia.org/wiki/Conjunctive_normal_form)
@@ -253,17 +255,17 @@ TbKeyCombinationBuilder >> toNormalForm: aKeyCombination [
 	^ aKeyCombination accept: converter
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> v [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey v)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> w [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey w)
 ]
 
-{ #category : #'keys - letters' }
+{ #category : 'keys - letters' }
 TbKeyCombinationBuilder >> x [
 	combination with: (TbSingleKeyCombination new key: TbKeyboardKey x)
 ]

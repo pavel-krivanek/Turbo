@@ -9,8 +9,8 @@ My components are named according to mathematical convention:
  |  a31  a32  |                 |    x        y     |
 "
 Class {
-	#name : #TbMatrix2D,
-	#superclass : #TbMatrix,
+	#name : 'TbMatrix2D',
+	#superclass : 'TbMatrix',
 	#instVars : [
 		'x',
 		'y',
@@ -19,10 +19,12 @@ Class {
 		'sx',
 		'sy'
 	],
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMatrix2D class >> reflection: aDiagonalVector [
 	"Return a matrix which corresponds to a reflection transformation with a given diagonal"
 	<return: #BlMatrix2D>
@@ -30,7 +32,7 @@ TbMatrix2D class >> reflection: aDiagonalVector [
 	^ self new reflection: aDiagonalVector
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMatrix2D class >> rotation: anAngle [
 	"Return a matrix which corresponds to a rotation transformation by given angle"
 	<return: #BlMatrix2D>
@@ -38,7 +40,7 @@ TbMatrix2D class >> rotation: anAngle [
 	^ self new rotation: anAngle
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMatrix2D >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -54,7 +56,7 @@ TbMatrix2D >> = anObject [
 						and: [ self y = anObject y ] ] ] ] ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMatrix2D >> asMatrixCollection [
 	^ Array2D rows: 3 columns: 3 contents: {
 		sx . shx . x.
@@ -63,7 +65,7 @@ TbMatrix2D >> asMatrixCollection [
 	}
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrix2D >> decomposition [
 	"Decompose this 2D Matrix into components and return a resulting decomposition.
 	Based on https://drafts.csswg.org/css-transforms/#decomposing-a-2d-matrix"
@@ -129,7 +131,7 @@ TbMatrix2D >> decomposition [
 		matrix: matrix
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrix2D >> determinant [
 	"Compute and return my determinant"
 	<return: #Number>
@@ -137,7 +139,7 @@ TbMatrix2D >> determinant [
 	^ (sx * sy) - (shy * shx)
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbMatrix2D >> hash [
 	^ ((((self sx hash bitXor: self shy hash)
 		bitXor: self shx hash)
@@ -146,7 +148,7 @@ TbMatrix2D >> hash [
 					bitXor: self y hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMatrix2D >> initialize [
 	super initialize.
 	
@@ -158,7 +160,7 @@ TbMatrix2D >> initialize [
 	y := 0.0
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrix2D >> inverse [
 	"In-place inverse me.
 	Throw BlSingularMatrixError if matrix is singular (non-invertible or degenerate)"
@@ -185,7 +187,7 @@ TbMatrix2D >> inverse [
 	y := inverseDeterminant * f
 ]
 
-{ #category : #'matrix - mathematical functions' }
+{ #category : 'matrix - mathematical functions' }
 TbMatrix2D >> inverted [
 	"Return a new instance of matrix which is an inverse of me.
 	Throw BlSingularMatrixError if matrix is singular (non-invertible or degenerate)"
@@ -194,7 +196,7 @@ TbMatrix2D >> inverted [
 	^ self copy inverse
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMatrix2D >> is2D [
 	"Return true if matrix is 2D, false otherwise"
 	<return: #Boolean>
@@ -202,7 +204,7 @@ TbMatrix2D >> is2D [
 	^ true
 ]
 
-{ #category : #'matrix - testing' }
+{ #category : 'matrix - testing' }
 TbMatrix2D >> isIdentity [
 	"Return true if I represent an identity transformation, false otherwise"
 	<return: #Boolean>
@@ -215,7 +217,7 @@ TbMatrix2D >> isIdentity [
 						y = 0.0 ] ] ] ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMatrix2D >> matrix: aMatrix [
 	"Copy matrix values"
 	
@@ -227,7 +229,7 @@ TbMatrix2D >> matrix: aMatrix [
 	y := aMatrix y
 ]
 
-{ #category : #'matrix - transformations' }
+{ #category : 'matrix - transformations' }
 TbMatrix2D >> multiplyBy: aMatrix2D [
 	"Perform a right multiplication by a given 2D matrix"
 	| r11 r12 r21 r22 r31 r32 |
@@ -247,12 +249,12 @@ TbMatrix2D >> multiplyBy: aMatrix2D [
 	y := r32
 ]
 
-{ #category : #'matrix - transformations' }
+{ #category : 'matrix - transformations' }
 TbMatrix2D >> perspective: aDepth [
 	"2D matrix does not have a perspective components"
 ]
 
-{ #category : #'matrix - transformations' }
+{ #category : 'matrix - transformations' }
 TbMatrix2D >> reflectBy: aDiagonalVector [
 	"Apply a reflection transformation given by a diagonal vector"
 		
@@ -260,7 +262,7 @@ TbMatrix2D >> reflectBy: aDiagonalVector [
 	self multiplyBy: (self class reflection: aDiagonalVector)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMatrix2D >> reflection: aDiagonalVector [
 	"Set me to be a 2D matrix representing a reflection defined by a given diagonal"
 
@@ -272,7 +274,7 @@ TbMatrix2D >> reflection: aDiagonalVector [
 	shy := 0
 ]
 
-{ #category : #'matrix - transformations' }
+{ #category : 'matrix - transformations' }
 TbMatrix2D >> rotateByRadians: anAngle around: aBlVector [
 	"Apply a rotation transformation by a given amount of radians around a provided axis vector"
 	self
@@ -287,7 +289,7 @@ TbMatrix2D >> rotateByRadians: anAngle around: aBlVector [
 	self multiplyBy: (self class rotation: anAngle)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMatrix2D >> rotation: anAngle [
 	"Set me to be a 2D matrix representing a rotation by a given angle in radians"
 	| aSin aCos |
@@ -303,7 +305,7 @@ TbMatrix2D >> rotation: anAngle [
 	shy := aSin
 ]
 
-{ #category : #'matrix - transformations' }
+{ #category : 'matrix - transformations' }
 TbMatrix2D >> scaleBy: aBlVector [
 	| aScale3D |
 	"Apply a scaling defined by a given vector"
@@ -327,7 +329,7 @@ TbMatrix2D >> scaleBy: aBlVector [
 	y := y * aScale3D y
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> shx [
 	"Returns the X coordinate shearing element of the affine transformation matrix"
 	<return: #Number>
@@ -335,12 +337,12 @@ TbMatrix2D >> shx [
 	^ shx
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> shx: anObject [
 	shx := anObject
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> shy [
 	"Returns the Y coordinate shearing element of the affine transformation matrix"
 	<return: #Number>
@@ -348,12 +350,12 @@ TbMatrix2D >> shy [
 	^ shy
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> shy: anObject [
 	shy := anObject
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> sx [
 	"Returns the X coordinate scaling element of the affine transformation matrix"
 	<return: #Number>
@@ -361,12 +363,12 @@ TbMatrix2D >> sx [
 	^ sx
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> sx: anObject [
 	sx := anObject
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> sy [
 	"Returns the Y coordinate scaling element of the affine transformation matrix"
 	<return: #Number>
@@ -374,12 +376,12 @@ TbMatrix2D >> sy [
 	^ sy
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> sy: anObject [
 	sy := anObject
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbMatrix2D >> transformBounds: aBlBounds [
 	"In-place transform given BlBounds according to my transformation.
 	(local to global transformation)"
@@ -422,13 +424,13 @@ TbMatrix2D >> transformBounds: aBlBounds [
 	^ aBlBounds
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbMatrix2D >> transformPoint2D: aPoint2D [
 	
 	^ self transformX: aPoint2D x Y: aPoint2D y
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbMatrix2D >> transformX: aX Y: aY [
 	| newX newY |
 	
@@ -438,19 +440,19 @@ TbMatrix2D >> transformX: aX Y: aY [
 	^ newX @ newY
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbMatrix2D >> transformX: aX withY: aY [
 
 	^ (aX * sx) + (aY * shx) + x
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbMatrix2D >> transformY: aY withX: aX [
 
 	^ (aX * shy) + (aY * sy) + y
 ]
 
-{ #category : #'matrix - transformations' }
+{ #category : 'matrix - transformations' }
 TbMatrix2D >> translateBy: aBlVector [
 	"Apply a translation by a given vector"
 	| aTranslate3D |
@@ -469,7 +471,7 @@ TbMatrix2D >> translateBy: aBlVector [
 	y := y + aTranslate3D y.
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> x [
 	"Returns the X coordinate of the translation element of the affine transformation matrix"
 	<return: #Number>
@@ -477,12 +479,12 @@ TbMatrix2D >> x [
 	^ x
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> x: anObject [
 	x := anObject
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> y [
 	"Returns the Y coordinate of the translation element of the affine transformation matrix"
 	<return: #Number>
@@ -490,7 +492,7 @@ TbMatrix2D >> y [
 	^ y
 ]
 
-{ #category : #'matrix - accessing' }
+{ #category : 'matrix - accessing' }
 TbMatrix2D >> y: anObject [
 	y := anObject
 ]

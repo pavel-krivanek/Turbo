@@ -1,10 +1,12 @@
 Class {
-	#name : #TbKeyboardKeyTable,
-	#superclass : #Object,
-	#category : #'Turbo-Core-Universe'
+	#name : 'TbKeyboardKeyTable',
+	#superclass : 'Object',
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbKeyboardKeyTable >> initialize: aMapDictionary with: aMapArray [
 	aMapArray pairsDo: [ :eachCode :eachName |
 		| aName |
@@ -18,7 +20,7 @@ TbKeyboardKeyTable >> initialize: aMapDictionary with: aMapArray [
 		aMapDictionary at: eachCode put: ((TbKeyboardKey perform: aName) setValue: eachCode) ]
 ]
 
-{ #category : #'api - converting' }
+{ #category : 'api - converting' }
 TbKeyboardKeyTable >> keyFromScanCode: aScanCode [
 	<return: #BlKeyboardKey>
 

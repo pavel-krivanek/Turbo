@@ -17,49 +17,51 @@ BlCompulsoryCombination new
 	yourself
 "
 Class {
-	#name : #TbCompulsoryCombination,
-	#superclass : #TbKeyCombination,
+	#name : 'TbCompulsoryCombination',
+	#superclass : 'TbKeyCombination',
 	#instVars : [
 		'combinations'
 	],
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbCompulsoryCombination >> accept: aKeyCombinationVisitor [
 	^ aKeyCombinationVisitor visitCompulsory: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompulsoryCombination >> combinations [
 	<return: #SequenceableCollection of: #BlKeyCombination>
 	
 	^ combinations
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbCompulsoryCombination >> includes: aKey [
 	^ self combinations anySatisfy: [ :aCombination | aCombination includes: aKey ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCompulsoryCombination >> initialize [
 	super initialize.
 	
 	combinations := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbCompulsoryCombination >> isCompulsory [
 	^ true
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbCompulsoryCombination >> key: aKey [
 	self with: (TbSingleKeyCombination key: aKey)
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbCompulsoryCombination >> match: aKeyboardBuffer [
 	<return: #Number>
 
@@ -67,7 +69,7 @@ TbCompulsoryCombination >> match: aKeyboardBuffer [
 		detectSum: [ :aCombination | aCombination match: aKeyboardBuffer ]
 ]
 
-{ #category : #'key matching' }
+{ #category : 'key matching' }
 TbCompulsoryCombination >> matches: aKeyboardBuffer [
 	<return: #Boolean>
 	
@@ -77,7 +79,7 @@ TbCompulsoryCombination >> matches: aKeyboardBuffer [
 			theCombinations allSatisfy: [ :aCombination | aCombination matches: aKeyboardBuffer ] ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbCompulsoryCombination >> printOn: aStream [
 	
 	aStream nextPut: $(.
@@ -89,7 +91,7 @@ TbCompulsoryCombination >> printOn: aStream [
 	aStream nextPut: $).
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbCompulsoryCombination >> with: aCombination [
 	
 	aCombination isCompulsory
@@ -97,7 +99,7 @@ TbCompulsoryCombination >> with: aCombination [
 		ifFalse: [ self combinations add: aCombination ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbCompulsoryCombination >> withAll: aCollectionOfCombinations [
 	aCollectionOfCombinations do: [ :aCombination | self with: aCombination ]
 ]

@@ -1,13 +1,13 @@
-Extension { #name : #WinPlatform }
+Extension { #name : 'WinPlatform' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 WinPlatform >> blocKeyFor: aKeyValue in: aKeyTable [
 	<return: #BlKeyboardKey>
 
 	^ aKeyTable valueForWindowsPlatform: aKeyValue
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 WinPlatform >> primaryModifier [
 	^ TbAlternativeCombination new
 		key: TbKeyboardKey controlLeft;
@@ -15,7 +15,7 @@ WinPlatform >> primaryModifier [
 		yourself
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 WinPlatform >> secondaryModifier [
 	^ TbAlternativeCombination new
 		key: TbKeyboardKey altLeft;

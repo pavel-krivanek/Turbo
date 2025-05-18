@@ -1,35 +1,37 @@
 Class {
-	#name : #TbRelativeAlignment,
-	#superclass : #TbElementAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbRelativeAlignment',
+	#superclass : 'TbElementAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRelativeAlignment class >> horizontal [
 	^ self subclassResponsibility
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRelativeAlignment class >> oriented: aBlLayoutOrientation [
 	^ aBlLayoutOrientation of: self
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRelativeAlignment class >> vertical [
 	^ self subclassResponsibility
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRelativeAlignment >> horizontal [
 	^ self class horizontal
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRelativeAlignment >> oriented: aBlLayoutOrientation [
 	^ self class oriented: aBlLayoutOrientation
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRelativeAlignment >> vertical [
 	^ self class vertical
 ]

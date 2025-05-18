@@ -10,20 +10,22 @@ I am a simulated time that must be progressed manually by setting ===#date:=== d
 ]]]
 "
 Class {
-	#name : #TbSimulatedTime,
-	#superclass : #TbTime,
+	#name : 'TbSimulatedTime',
+	#superclass : 'TbTime',
 	#instVars : [
 		'date'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSimulatedTime class >> date: aDateAndTime [
 	^ self new date: aDateAndTime
 ]
 
-{ #category : #'private - time' }
+{ #category : 'private - time' }
 TbSimulatedTime >> currentTime [
 	"Return a 'current' date and time"
 	<return: #DateAndTime>
@@ -31,12 +33,12 @@ TbSimulatedTime >> currentTime [
 	^ date
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSimulatedTime >> date: aDateAndTime [
 	date := aDateAndTime
 ]
 
-{ #category : #'api - enumeration' }
+{ #category : 'api - enumeration' }
 TbSimulatedTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 	"Evaluate a aDoBlock while aWhileBlock evaluates to true waiting a given amount of time between executions.
 	The first evaluation of a aDoBlock is instant.
@@ -47,14 +49,14 @@ TbSimulatedTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 		self date: self now + aDuration ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSimulatedTime >> initialize [
 	super initialize.
 	
 	date := DateAndTime now
 ]
 
-{ #category : #'api - time' }
+{ #category : 'api - time' }
 TbSimulatedTime >> wait: aDuration [
 	"Advance clock by waiting for a given amount of time"
 

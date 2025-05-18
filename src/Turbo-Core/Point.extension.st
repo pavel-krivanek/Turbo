@@ -1,6 +1,6 @@
-Extension { #name : #Point }
+Extension { #name : 'Point' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> @ aNumber [
 	"Create a new 3D point with x and y represented by me and given number as z"
 	<return: #BlPoint3D>
@@ -8,12 +8,12 @@ Point >> @ aNumber [
 	^ TbPoint3D x: x y: y z: aNumber
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> asBlocVector [
 	^ TbVector x: x y: y
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> asScale3D [
 	"Return a 3D vector representing a scale factor"
 	<return: #BlVector3D>
@@ -21,7 +21,7 @@ Point >> asScale3D [
 	^ TbVector x: self x y: self y z: 1
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> asTranslate3D [
 	"Return a 3D vector representing a translation vector"
 	<return: #BlVector3D>
@@ -29,7 +29,7 @@ Point >> asTranslate3D [
 	^ TbVector x: self x y: self y z: 0
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> isPoint2D [
 	"Return true if I represent a 2D point, false otherwise"
 	<return: #Boolean>
@@ -37,7 +37,7 @@ Point >> isPoint2D [
 	^ true
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> isPoint3D [
 	"Return true if I represent a 3D point, false otherwise"
 	<return: #Boolean>
@@ -45,17 +45,17 @@ Point >> isPoint3D [
 	^ false
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> scalarMultiplicate2D: aVector2D [
 	"Perform a scalar multiplication of a given 2D vector by me"
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ TbVector
 		x: aVector2D x * self x
 		y: aVector2D y * self y
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Point >> transformedOn: aBlMatrix [
 	<return: #BlPoint>
 	

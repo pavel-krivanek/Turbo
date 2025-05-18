@@ -3,35 +3,37 @@ I represent a concrete implementation of ""unspecified"" measurement mode.
 For more information see class comment of BlMeasurementMode
 "
 Class {
-	#name : #TbMeasurementUnspecifiedMode,
-	#superclass : #TbMeasurementMode,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbMeasurementUnspecifiedMode',
+	#superclass : 'TbMeasurementMode',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMeasurementUnspecifiedMode >> isUnspecified [
 	^ true
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementUnspecifiedMode >> measurement: aResizing with: aNumber [
 	<return: #BlMeasurementSpec>
 	
 	^ aResizing measurementUnspecifiedWith: aNumber
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbMeasurementUnspecifiedMode >> printOn: aStream [
 	aStream nextPutAll: 'Unspecified'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbMeasurementUnspecifiedMode >> printOn: aStream size: aNumber [
 
 	self printOn: aStream
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbMeasurementUnspecifiedMode >> size: aNumber with: aSpecSize [
 	<return: #Number>
 	

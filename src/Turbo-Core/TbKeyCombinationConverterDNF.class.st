@@ -2,12 +2,14 @@
 I transform composite key combination formula into a DNF (https://en.wikipedia.org/wiki/Disjunctive_normal_form)
 "
 Class {
-	#name : #TbKeyCombinationConverterDNF,
-	#superclass : #TbKeyCombinationVisitor,
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#name : 'TbKeyCombinationConverterDNF',
+	#superclass : 'TbKeyCombinationVisitor',
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationConverterDNF >> visitAlternative: aBlAlternativeCombination [
 	| alternative |
 
@@ -19,7 +21,7 @@ TbKeyCombinationConverterDNF >> visitAlternative: aBlAlternativeCombination [
 	^ alternative
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationConverterDNF >> visitCompulsory: aBlCompulsoryCombination [
 	| combinations pairedAlternatives compulsory |
 	
@@ -51,7 +53,7 @@ TbKeyCombinationConverterDNF >> visitCompulsory: aBlCompulsoryCombination [
 	^ compulsory accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationConverterDNF >> visitKey: aBlKeyCodeCombination [
 	^ TbAlternativeCombination new with: aBlKeyCodeCombination
 ]

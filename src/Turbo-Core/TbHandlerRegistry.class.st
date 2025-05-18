@@ -17,28 +17,30 @@ registry dispatchEvent: BlMouseUpEvent new.
 ]]]
 "
 Class {
-	#name : #TbHandlerRegistry,
-	#superclass : #Object,
+	#name : 'TbHandlerRegistry',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Events-Handling'
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHandlerRegistry class >> availableRegistryClasses [
 	<return: #Collection of: #'BlHandlerRegistry class'>
 
 	^ self allSubclasses select: [ :aRegistryClass | aRegistryClass isSupported ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbHandlerRegistry class >> isSupported [
 	<return: #Boolean>
 	
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbHandlerRegistry class >> label [
 	"Return a name of the registry, can be used for Settings frameworks"
 	<return: #String>
@@ -46,7 +48,7 @@ TbHandlerRegistry class >> label [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : 'api - adding / removing' }
 TbHandlerRegistry >> add: aHandler [
 	"Adds a given event handler to the registry.
 	aHandler must not be nil and must not be already registered"
@@ -54,7 +56,7 @@ TbHandlerRegistry >> add: aHandler [
 	self subclassResponsibility
 ]
 
-{ #category : #'api - enumerating' }
+{ #category : 'api - enumerating' }
 TbHandlerRegistry >> anySatisfy: aBlock [
 	"Evaluate aBlock with every registered event handler.
 	If aBlock returns true for any element return true.
@@ -65,21 +67,21 @@ TbHandlerRegistry >> anySatisfy: aBlock [
 	^ false
 ]
 
-{ #category : #'api - event managing' }
+{ #category : 'api - event managing' }
 TbHandlerRegistry >> dispatchEvent: anEvent [
 	"Dispatch a given event to all registered handlers that are interested in it"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'api - enumerating' }
+{ #category : 'api - enumerating' }
 TbHandlerRegistry >> do: aBlock [
 	"Evaluate aBlock with each registered handler as the argument"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbHandlerRegistry >> handlers [
 	"Return an immutable collection of all registered event handlers"
 	<return: #Array of: #TBlEventHandler>
@@ -87,7 +89,7 @@ TbHandlerRegistry >> handlers [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbHandlerRegistry >> hasHandler: anEventHandler [
 	"Return true if a given event handler is registered, false otherwise"
 	<return: #Boolean>
@@ -95,7 +97,7 @@ TbHandlerRegistry >> hasHandler: anEventHandler [
 	^ self anySatisfy: [ :each | each = anEventHandler ]
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbHandlerRegistry >> isEmpty [
 	"Return true if registry is empty (there are no handlers), false otherwise"
 	<return: #Boolean>
@@ -103,7 +105,7 @@ TbHandlerRegistry >> isEmpty [
 	^ self numberOfHandlers isZero
 ]
 
-{ #category : #'api - enumerating' }
+{ #category : 'api - enumerating' }
 TbHandlerRegistry >> numberOfHandlers [
 	"Return amount of registered event handlers"
 	<return: #Number>
@@ -111,7 +113,7 @@ TbHandlerRegistry >> numberOfHandlers [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : 'api - adding / removing' }
 TbHandlerRegistry >> remove: aHandler [
 	"Remove given event handler from my registry.
 	Provided handler must not be nil and must be registered"
@@ -119,7 +121,7 @@ TbHandlerRegistry >> remove: aHandler [
 	self subclassResponsibility
 ]
 
-{ #category : #'api - adding / removing' }
+{ #category : 'api - adding / removing' }
 TbHandlerRegistry >> removeAllSuchThat: aBlock [
 	"Remove all event handlers for which aBlock returns true.
 	Return a collection of removed handlers"

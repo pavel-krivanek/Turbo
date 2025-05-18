@@ -1,15 +1,17 @@
 Class {
-	#name : #TbEndAlignment,
-	#superclass : #TbRelativeAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbEndAlignment',
+	#superclass : 'TbRelativeAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbEndAlignment class >> horizontal [
 	^ TbHorizontalAlignment end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbEndAlignment class >> vertical [
 	^ TbVerticalAlignment bottom
 ]

@@ -1,25 +1,27 @@
 Class {
-	#name : #TbSplineOverScrollerNoneMode,
-	#superclass : #TbSplineOverScrollerMode,
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#name : 'TbSplineOverScrollerNoneMode',
+	#superclass : 'TbSplineOverScrollerMode',
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerNoneMode >> continueOn: aSplineOverScroller [
 	<return: #Boolean>
 	
 	^ false
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerNoneMode >> finishOn: aSplineOverScroller [
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSplineOverScrollerNoneMode >> initializeOn: aSplineOverScroller [
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 TbSplineOverScrollerNoneMode >> updateOn: aSplineOverScroller [
 	<return: #Boolean>
 

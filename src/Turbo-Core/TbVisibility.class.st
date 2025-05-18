@@ -11,8 +11,8 @@ If you want to make element transparent and preserve ability to handle events se
 ==element opacity: 0==
 "
 Class {
-	#name : #TbVisibility,
-	#superclass : #Object,
+	#name : 'TbVisibility',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#classInstVars : [
@@ -20,10 +20,12 @@ Class {
 		'hidden',
 		'visible'
 	],
-	#category : #'Turbo-Core-Basic-Properties'
+	#category : 'Turbo-Core-Basic-Properties',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Properties'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbVisibility class >> cleanUp [
 	super cleanUp.
 	
@@ -32,59 +34,59 @@ TbVisibility class >> cleanUp [
 	visible := nil
 ]
 
-{ #category : #visibilities }
+{ #category : 'visibilities' }
 TbVisibility class >> gone [
 	^ gone ifNil: [ gone := TbVisibilityGone new ]
 ]
 
-{ #category : #visibilities }
+{ #category : 'visibilities' }
 TbVisibility class >> hidden [
 	^ hidden ifNil: [ hidden := TbVisibilityHidden new ]
 ]
 
-{ #category : #visibilities }
+{ #category : 'visibilities' }
 TbVisibility class >> visible [
 	^ visible ifNil: [ TbVisibilityVisible new ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVisibility >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
 	^ self class = anObject class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbVisibility >> hash [
 	^ self class hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibility >> isGone [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibility >> isHidden [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibility >> isVisible [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibility >> shouldDraw [
 	^ self isVisible
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibility >> shouldLayout [
 	^ self isVisible and: [ self isGone not ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbVisibility >> shouldMeasure [
 	^ self isVisible
 ]

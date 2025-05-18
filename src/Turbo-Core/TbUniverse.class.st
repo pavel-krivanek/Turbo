@@ -15,8 +15,8 @@ universe preferableHost: MyHost new.
 universe start.
 "
 Class {
-	#name : #TbUniverse,
-	#superclass : #Object,
+	#name : 'TbUniverse',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -32,20 +32,22 @@ Class {
 		'Default',
 		'Session'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse class >> default [
 	^ Default ifNil: [ Default := self new ]
 ]
 
-{ #category : #'deferred message' }
+{ #category : 'deferred message' }
 TbUniverse class >> defer: aBlock [
 	self default defer: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse class >> reset [
 	Default ifNotNil: [
 		[
@@ -59,20 +61,20 @@ TbUniverse class >> reset [
 	Default := nil
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> addPulseListener: anObject [
 	pulseListeners add: anObject.
 	announcer subscribe: TbPulseEvent send: #pulse to: anObject
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbUniverse >> allSpacesDo: aBlock [
 	"Evaluate a block with every space managed by space manager as argument"
 
 	self spaceManager spaces do: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> animationManager [
 	self 
 		deprecated: 'Use BlElement>>#addAnimation:'
@@ -82,11 +84,11 @@ TbUniverse >> animationManager [
 	^ nil
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 TbUniverse >> assertStopped [
 ]
 
-{ #category : #'window managing' }
+{ #category : 'window managing' }
 TbUniverse >> closeSpaceWindow: aSpace [
 
 	self
@@ -122,12 +124,12 @@ TbUniverse >> closeSpaceWindow: aSpace [
 		ifFalse: [ self stop ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbUniverse >> defaultPulseLoop [
 	^ TbPulseLoop new
 ]
 
-{ #category : #'deferred actions' }
+{ #category : 'deferred actions' }
 TbUniverse >> defer: aValuable [
 	"#defer: can be used from any thread to execute a valuable in the GUI thread
 	You can use it to update the GUI states from any other thread.
@@ -138,7 +140,7 @@ TbUniverse >> defer: aValuable [
 		ifTrue: [ self requestNextPulse ]
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> firePulse: aPulseEvent [
 	nextPulseRequested := false.
 	announcer announce: aPulseEvent.
@@ -146,12 +148,12 @@ TbUniverse >> firePulse: aPulseEvent [
 	self tryToRunDeferredActions.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> host [
 	^ preferableHost ifNil: [ TbHost pickHost ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbUniverse >> initialize [
 	super initialize.
 	announcer := Announcer new.
@@ -162,7 +164,7 @@ TbUniverse >> initialize [
 	spaceManager := TbSpaceManager new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbUniverse >> isRunning [
 	"Return true if I am running, false otherwise"
 	<return: #Boolean>
@@ -170,27 +172,27 @@ TbUniverse >> isRunning [
 	^ pulseLoop isNotNil and: [ pulseLoop isRunning ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbUniverse >> isUIProcess [
 	^ self pulseLoop isRunningInTheSameProcess
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbUniverse >> isUIProcess: aProcess [
 	^ aProcess = self pulseLoop loopProcess
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> mainLoopPriority [
 	^ self host mainLoopPriority
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> preferableHost [
 	^ preferableHost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> preferableHost: aBlHost [
 
 	self
@@ -204,22 +206,22 @@ TbUniverse >> preferableHost: aBlHost [
 	preferableHost := aBlHost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> pulseLoop [
 	^ pulseLoop
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> pulseLoop: anObject [
 	pulseLoop := anObject
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> pulseRequested [
 	^ nextPulseRequested
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> removePulseListener: anObject [
 	pulseListeners remove: anObject.
 	announcer unsubscribe: anObject.
@@ -227,7 +229,7 @@ TbUniverse >> removePulseListener: anObject [
 		ifTrue: [ self stop ]
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> requestNextPulse [
 	"Request next universe pulse You may want to request next pulse if you develop bloc extention
 	and rely on BlPulseEvent to execute some action on universe/space pulse.
@@ -245,7 +247,7 @@ TbUniverse >> requestNextPulse [
 	nextPulseRequested := true
 ]
 
-{ #category : #'window managing' }
+{ #category : 'window managing' }
 TbUniverse >> showSpaceWindow: aSpace [
 	| shouldStartTheUniverse |
 	self
@@ -283,19 +285,19 @@ TbUniverse >> showSpaceWindow: aSpace [
 	aSpace dispatchEvent: (TbSpaceShownEvent new space: self).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> spaceManager [
 	^ spaceManager
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> start [
 	self pulseLoop start.
 	self allSpacesDo: [ :aSpace | aSpace host isRunning ifFalse: [ aSpace host start ] ].
 	self requestNextPulse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbUniverse >> stop [
 
 	pulseListeners do: [ :each | each clear ].
@@ -305,7 +307,7 @@ TbUniverse >> stop [
 		ensure: [ self allSpacesDo: [ :aSpace | aSpace host isRunning ifTrue: [ aSpace host stop ] ] ]
 ]
 
-{ #category : #'pulse managing' }
+{ #category : 'pulse managing' }
 TbUniverse >> tryToRunDeferredActions [
 	| nextInQueue |
 	[ self pulseLoop timeIsUp not and: [ (nextInQueue := deferredActions nextOrNil) isNotNil ] ]
@@ -313,7 +315,7 @@ TbUniverse >> tryToRunDeferredActions [
 	deferredActions isEmpty ifFalse: [ self requestNextPulse ]
 ]
 
-{ #category : #'deferred actions' }
+{ #category : 'deferred actions' }
 TbUniverse >> undefer: aValuable [
 	"I remove previously deferred valuable from deferred actions queue if any
 	and return true if aValuable existed, false otherwise.

@@ -1,15 +1,16 @@
 Class {
-	#name : #TbFlowLayoutTest,
-	#superclass : #TbTest,
+	#name : 'TbFlowLayoutTest',
+	#superclass : 'TbTest',
 	#instVars : [
 		'e1',
 		'e2',
 		'e3'
 	],
-	#category : #'Turbo-Tests'
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenHorizontal [
 
 	^ '
@@ -29,7 +30,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenHorizontal [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVertical [
 
 	^ '
@@ -49,7 +50,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVertical [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalBottomCenter [
 
 	^ '
@@ -69,7 +70,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalBottomCenter [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalBottomLeft [
 
 	^ '
@@ -89,7 +90,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalBottomLeft [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalBottomRight [
 
 	^ '
@@ -109,7 +110,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalBottomRight [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenter [
 
 	^ '
@@ -129,7 +130,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenter [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenterLeft [
 
 	^ '
@@ -149,7 +150,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenterLeft [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenterRight [
 
 	^ '
@@ -169,7 +170,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalCenterRight [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopCenter [
 
 	^ '
@@ -189,7 +190,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopCenter [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopLeft [
 
 	^ '
@@ -209,7 +210,7 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopLeft [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopRight [
 
 	^ '
@@ -229,13 +230,13 @@ TbFlowLayoutTest >> expectedContentTestContentTwoChildrenVerticalTopRight [
 ' allButFirst
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> extent [ 
 
 	^ 50@13
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> setUp [
 
 	super setUp.
@@ -251,7 +252,7 @@ TbFlowLayoutTest >> setUp [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenHorizontal [
 	
 	space root layout: TbFlowLayout horizontal.
@@ -267,7 +268,7 @@ TbFlowLayoutTest >> testContentTwoChildrenHorizontal [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVertical [
 	
 	space root layout: TbFlowLayout vertical.
@@ -281,7 +282,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVertical [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomCenter [
 	
 	space root layout: TbFlowLayout vertical.
@@ -295,7 +296,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomCenter [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomLeft [
 	
 	space root layout: TbFlowLayout vertical.
@@ -309,7 +310,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomLeft [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomRight [
 	
 	space root layout: TbFlowLayout vertical.
@@ -323,7 +324,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalBottomRight [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenter [
 	
 	space root layout: TbFlowLayout vertical.
@@ -337,7 +338,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenter [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterLeft [
 	
 	space root layout: TbFlowLayout vertical.
@@ -351,7 +352,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterLeft [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterRight [
 	
 	space root layout: TbFlowLayout vertical.
@@ -365,7 +366,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalCenterRight [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalTopCenter [
 	
 	space root layout: TbFlowLayout vertical.
@@ -380,7 +381,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalTopCenter [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalTopLeftCenter [
 	
 	space root layout: TbFlowLayout vertical.
@@ -394,7 +395,7 @@ TbFlowLayoutTest >> testContentTwoChildrenVerticalTopLeftCenter [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutTest >> testContentTwoChildrenVerticalTopRightCenter [
 	
 	space root layout: TbFlowLayout new vertical.

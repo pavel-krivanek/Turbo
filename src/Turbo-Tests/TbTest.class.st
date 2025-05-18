@@ -1,34 +1,35 @@
 Class {
-	#name : #TbTest,
-	#superclass : #TestCase,
+	#name : 'TbTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'space',
 		'host',
 		'universe'
 	],
-	#category : #'Turbo-Tests'
+	#category : 'Turbo-Tests',
+	#package : 'Turbo-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 TbTest >> content [
 
 	^ space hostSpace content
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbTest >> extent [ 
 
 	^ 50@10
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbTest >> firePulse [
 
 	universe pulseLoop firePulse.
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TbTest >> setUp [
 
 	space := TbSpace new.

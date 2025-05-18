@@ -6,8 +6,8 @@ I define an api of a layout. Concrete implementations should focus on measure:wi
 I am used by bloc elements.
 "
 Class {
-	#name : #TbLayout,
-	#superclass : #Object,
+	#name : 'TbLayout',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -16,15 +16,17 @@ Class {
 		'direction',
 		'waitingLayout'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #constraints }
+{ #category : 'constraints' }
 TbLayout class >> constraints [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'private - alignment' }
+{ #category : 'private - alignment' }
 TbLayout >> align: anElement bounds: elementBounds in: theParentBounds with: aBlElementAlignment [
 	"I don't additionally take element margin or parent padding"
 	| aTranslation alignment |
@@ -41,7 +43,7 @@ TbLayout >> align: anElement bounds: elementBounds in: theParentBounds with: aBl
 	^ elementBounds translateBy: aTranslation
 ]
 
-{ #category : #'api - alignment' }
+{ #category : 'api - alignment' }
 TbLayout >> align: aChildElement horizontal: aBlAlignment [
 	"I should be used to dispatch children alignment configuration through layout to provide higher level uniform alignment api.	
 	Layouts that support children alignment should override me as follows:
@@ -51,7 +53,7 @@ TbLayout >> align: aChildElement horizontal: aBlAlignment [
 	"
 ]
 
-{ #category : #'api - alignment' }
+{ #category : 'api - alignment' }
 TbLayout >> align: aChildElement vertical: aBlAlignment [
 	"I should be used to dispatch children alignment configuration through layout to provide higher level uniform alignment api.	
 	Layouts that support children alignment should override me as follows:
@@ -61,24 +63,24 @@ TbLayout >> align: aChildElement vertical: aBlAlignment [
 	"
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayout >> defaultDirection [
 	<return: #BlLayoutDirection>
 
 	^ TbLayoutDirection leftToRight
 ]
 
-{ #category : #direction }
+{ #category : 'direction' }
 TbLayout >> direction [
 	^ direction
 ]
 
-{ #category : #direction }
+{ #category : 'direction' }
 TbLayout >> direction: aBlLayoutDirection [
 	direction := aBlLayoutDirection
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbLayout >> findClosestChildOf: anElement to: aPoint [
 	"Find and return the closest direct child of a given element to a provided point in the coordinate system of anElement"
 	<return: #BlElement>
@@ -86,7 +88,7 @@ TbLayout >> findClosestChildOf: anElement to: aPoint [
 	^ anElement children first
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayout >> initialize [
 	super initialize.
 	
@@ -95,7 +97,7 @@ TbLayout >> initialize [
 	direction := self defaultDirection
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 TbLayout >> layeredChildren: anElement [
 	"Return a collecton of the anElement's children that should be layered out by the layout"
 	
@@ -103,7 +105,7 @@ TbLayout >> layeredChildren: anElement [
 		self layeredChildren: anElement do: [ :aChild | aStream nextPut: aChild ] ]
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 TbLayout >> layeredChildren: anElement do: aBlock [
 	"Evaluate a given block with all children of anElement
 	that should be layered out within anElement.
@@ -114,11 +116,11 @@ TbLayout >> layeredChildren: anElement do: aBlock [
 		thenDo: aBlock
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbLayout >> layout: anElement in: aRectangle [
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbLayout >> layoutIgnored: anElement [
 	"Layout children ignored by layout so that their measured bounds
 	become actual bounds in parent"
@@ -144,12 +146,12 @@ TbLayout >> layoutIgnored: anElement [
 			aChild applyLayoutIn: (aChild margin inset: childBounds) ]
 ]
 
-{ #category : #direction }
+{ #category : 'direction' }
 TbLayout >> leftToRight [
 	direction := TbLayoutDirection leftToRight
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbLayout >> measure: anElement with: anExtentSpec [
 	"Default simple and naive implementation that does not support #fitContent resizing
 	strategy of the anElement that uses a layout with this version of measurement"
@@ -161,7 +163,7 @@ TbLayout >> measure: anElement with: anExtentSpec [
 			parentSpec: anExtentSpec ]
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLayout >> measureChild: aChildElement parentSpec: anExtentSpec [
 	"Measure a given child element allowing it to take as much space within parent
 	as it want *does not* taking child's margin and parent's padding into account.
@@ -174,7 +176,7 @@ TbLayout >> measureChild: aChildElement parentSpec: anExtentSpec [
 		heightUsed: 0
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> measureChild: anElement parentSpec: parentSpec widthUsed: widthUsed heightUsed: heightUsed [
 	"Measure anElement based on provided parent's extent measurement specification and used width and height.
 	used width and height can contain margin and/or padding.
@@ -191,7 +193,7 @@ TbLayout >> measureChild: anElement parentSpec: parentSpec widthUsed: widthUsed 
 			resizer: anElement constraints vertical resizer))
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> measureChildWithMargins: anElement parentSpec: parentSpec [
 	"Measure anElement based on provided parent's extent measurement specification
 	taking element's margin and parent's padding into account"
@@ -203,7 +205,7 @@ TbLayout >> measureChildWithMargins: anElement parentSpec: parentSpec [
 		heightUsed: 0
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> measureChildWithMargins: anElement parentSpec: parentSpec widthUsed: widthUsed heightUsed: heightUsed [
 	"Measure anElement based on provided parent's extent measurement specification and used width and height
 	taking element's margin and parent's padding into account"
@@ -215,7 +217,7 @@ TbLayout >> measureChildWithMargins: anElement parentSpec: parentSpec widthUsed:
 		heightUsed: anElement parent insets height + anElement outsets height + heightUsed
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLayout >> measureIgnored: anElement with: anExtentSpec [
 	"Measure ignore children of a given parent allowing them to take as much space as they want"
 
@@ -238,7 +240,7 @@ TbLayout >> measureIgnored: anElement with: anExtentSpec [
 				parentSpec: aWidthSpec @ aHeightSpec ]
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 TbLayout >> measuredChildren: anElement [
 	"Return a collecton of the anElement's children that should be measures by the layout"
 	
@@ -246,7 +248,7 @@ TbLayout >> measuredChildren: anElement [
 		self measuredChildren: anElement do: [ :aChild | aStream nextPut: aChild ] ]
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 TbLayout >> measuredChildren: anElement do: aBlock [
 	"Evaluate a given block with all children of anElement
 	that should be taken into account during measurement process.
@@ -257,7 +259,7 @@ TbLayout >> measuredChildren: anElement do: aBlock [
 		thenDo: aBlock
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> measurementSpecFor: parentSpec usedSize: usedSize resizer: childResizer [
 	"I determinate what measurement specification my child should have
 	based on parent's measurement spec and child's resizer property.
@@ -285,24 +287,24 @@ TbLayout >> measurementSpecFor: parentSpec usedSize: usedSize resizer: childResi
 	^ parentSpec mode measurement: childResizer with: size
 ]
 
-{ #category : #'hooks - layout' }
+{ #category : 'hooks - layout' }
 TbLayout >> onLayoutDone: anElement [
 	"Is sent after layout is completely computed.
 	All layout changes done within this hook will be performed during the next frame.
 	Note: I am sent before the drawing process"
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbLayout >> previousMeasurementSpec [
 	^ previousMeasurementSpec
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbLayout >> previousMeasurementSpec: anObject [
 	previousMeasurementSpec := anObject
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> requestingLayout [
 	"Return true if element requested layout on next space pulse, false otherwise"
 	<return: #Boolean>
@@ -310,7 +312,7 @@ TbLayout >> requestingLayout [
 	^ requestingLayout
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> requestingLayout: aBoolean [
 		
 	aBoolean
@@ -321,12 +323,12 @@ TbLayout >> requestingLayout: aBoolean [
 	requestingLayout := aBoolean
 ]
 
-{ #category : #direction }
+{ #category : 'direction' }
 TbLayout >> rightToLeft [
 	direction := TbLayoutDirection rightToLeft
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> waitingLayout [
 	"Return true if my owner element is still waiting for the start of layout pass, false otherwise"
 	<return: #Boolean>
@@ -334,7 +336,7 @@ TbLayout >> waitingLayout [
 	^ waitingLayout
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbLayout >> waitingLayout: aBoolean [
 	"Change my layout waiting state. If aBoolean is false it would mean that measurement and
 	layout pass began, true means that I still have to wait"

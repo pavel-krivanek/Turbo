@@ -1,28 +1,30 @@
 Class {
-	#name : #TbImmutableObjectChangeError,
-	#superclass : #Error,
+	#name : 'TbImmutableObjectChangeError',
+	#superclass : 'Error',
 	#instVars : [
 		'object'
 	],
-	#category : #'Turbo-Core-Basic-Errors'
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImmutableObjectChangeError class >> object: anObject [
 	^ self new object: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImmutableObjectChangeError >> description [
 	^ self object printString, ' is immutable and can not be changed'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImmutableObjectChangeError >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImmutableObjectChangeError >> object: anObject [
 	object := anObject
 ]

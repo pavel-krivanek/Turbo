@@ -2,22 +2,24 @@
 I am a composite transformation that consists of other element transformations, either absolute, local or composite
 "
 Class {
-	#name : #TbElementCompositeTransformation,
-	#superclass : #TbElementDynamicTransformation,
+	#name : 'TbElementCompositeTransformation',
+	#superclass : 'TbElementDynamicTransformation',
 	#instVars : [
 		'transformations'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbElementCompositeTransformation >> add: anElementTransformation [
 	
 	anElementTransformation owner: self owner.
 	self transformations add: anElementTransformation
 ]
 
-{ #category : #computation }
+{ #category : 'computation' }
 TbElementCompositeTransformation >> computeMatrix [	
 	self transformations
 		"when composing transformations we should perform left multiplication.
@@ -25,14 +27,14 @@ TbElementCompositeTransformation >> computeMatrix [
 		reverseDo: [ :anElementTransformation | matrix multiplyBy: anElementTransformation matrix ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementCompositeTransformation >> initialize [
 	super initialize.
 	
 	transformations := OrderedCollection new
 ]
 
-{ #category : #invalidation }
+{ #category : 'invalidation' }
 TbElementCompositeTransformation >> invalidateMatrix [
 	"Matrix is computed out of affine transformation composition
 	which may contain transformations that depend on element's properties
@@ -43,7 +45,7 @@ TbElementCompositeTransformation >> invalidateMatrix [
 	self transformations do: #invalidateMatrix
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementCompositeTransformation >> is2D [
 	"Return true if my current transformation is in 2D space, false otherwise"
 	<return: #Boolean>
@@ -51,14 +53,14 @@ TbElementCompositeTransformation >> is2D [
 	^ self transformations allSatisfy: #is2D
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementCompositeTransformation >> is3D [
 	<return: #Boolean>
 	
 	^ self transformations anySatisfy: #is3D
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementCompositeTransformation >> isIdentity [
 	"Return true if I represent an identity transformation, false otherwise"
 	<return: #Boolean>
@@ -66,7 +68,7 @@ TbElementCompositeTransformation >> isIdentity [
 	^ self transformations allSatisfy: #isIdentity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementCompositeTransformation >> matrix [
 	<return: #BlMatrix>
 
@@ -74,13 +76,13 @@ TbElementCompositeTransformation >> matrix [
 	^ matrix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementCompositeTransformation >> owner: anElement [
 	super owner: anElement.
 	self transformations do: [ :aTransformation | aTransformation owner: anElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementCompositeTransformation >> transformations [
 	^ transformations
 ]

@@ -4,8 +4,8 @@ I am an abstract listener associated with a specific resizer element (e.g., bott
 An element with applied Resizer Listener sends ==BlResizerResizedEvent== after the resizing target was resized
 "
 Class {
-	#name : #TbResizerListener,
-	#superclass : #TbElementEventListener,
+	#name : 'TbResizerListener',
+	#superclass : 'TbElementEventListener',
 	#instVars : [
 		'dragStartPosition',
 		'originalPosition',
@@ -13,15 +13,17 @@ Class {
 		'originalExtent',
 		'minimumExtent'
 	],
-	#category : #'Turbo-Core-Utilities - Resizable'
+	#category : 'Turbo-Core-Utilities - Resizable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Resizable'
 }
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbResizerListener >> dragEndEvent: anEvent [
 	anEvent consumed: true
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbResizerListener >> dragEvent: anEvent [
 	<event: #BlResizerResizedEvent>
 	| dragPosition dragDelta theBounds theOriginalBounds widthChanged heightChanged |
@@ -61,7 +63,7 @@ TbResizerListener >> dragEvent: anEvent [
 	anEvent currentTarget dispatchEvent: (TbResizerResizedEvent new extent: theBounds extent)
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbResizerListener >> dragStartEvent: anEvent [
 	anEvent consumed: true.
 
@@ -76,61 +78,61 @@ TbResizerListener >> dragStartEvent: anEvent [
 	originalPosition := self resizeTarget bounds inSpace position
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbResizerListener >> hasTarget [
 	^ resizeTarget isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbResizerListener >> initialize [
 	super initialize.
 
 	minimumExtent := 5 asPoint
 ]
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerListener >> minimumExtent [
 	<return: #Point>
 
 	^ minimumExtent
 ]
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerListener >> minimumExtent: aPoint [
 	minimumExtent := aPoint
 ]
 
-{ #category : #'mouse handlers' }
+{ #category : 'mouse handlers' }
 TbResizerListener >> mouseDownEvent: anEvent [
 	anEvent consumed: true
 ]
 
-{ #category : #'mouse handlers' }
+{ #category : 'mouse handlers' }
 TbResizerListener >> mouseEnterEvent: anEvent [
 	anEvent currentTarget mouseCursor: self resizerCursor
 ]
 
-{ #category : #'mouse handlers' }
+{ #category : 'mouse handlers' }
 TbResizerListener >> mouseLeaveEvent: anEvent [
 	anEvent currentTarget mouseCursor: nil
 ]
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerListener >> resizeBounds: aBlBounds by: aPoint [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbResizerListener >> resizeTarget [
 	^ resizeTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbResizerListener >> resizeTarget: anObject [
 	resizeTarget := anObject
 ]
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerListener >> resizeTargetBy: aDelta [
 	(aDelta isZero not)
 		ifTrue: [ ^ self resizeTarget size: aDelta ].
@@ -142,7 +144,7 @@ TbResizerListener >> resizeTargetBy: aDelta [
 		ifTrue: [ ^ self resizeTarget height: aDelta x isZero ]
 ]
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerListener >> resizerCursor [
 	<return: #Form>
 

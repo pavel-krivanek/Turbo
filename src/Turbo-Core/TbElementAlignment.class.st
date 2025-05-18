@@ -15,8 +15,8 @@ Internal Representation and Key Implementation Points.
 both element and allowed bounds should be in element's parent coordinate system
 "
 Class {
-	#name : #TbElementAlignment,
-	#superclass : #Object,
+	#name : 'TbElementAlignment',
+	#superclass : 'Object',
 	#classInstVars : [
 		'end',
 		'horizontal',
@@ -25,30 +25,32 @@ Class {
 		'start',
 		'vertical'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> bottom [
 	^ self vertical end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> center [
 	^ self middle
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> end [
 	^ end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> horizontal [
 	^ horizontal
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbElementAlignment class >> initialize [
 	super initialize.
 	
@@ -60,70 +62,70 @@ TbElementAlignment class >> initialize [
 	vertical := TbVerticalAlignment new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> left [
 	^ self horizontal class left
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> null [
 	^ null
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> right [
 	^ self horizontal class right
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> start [
 	^ start
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> top [
 	^ self vertical start
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbElementAlignment class >> vertical [
 	^ vertical
 ]
 
-{ #category : #composition }
+{ #category : 'composition' }
 TbElementAlignment >> + anElementAlignment [
 	^ self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbElementAlignment >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	^ self class = anObject class
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbElementAlignment >> hash [
 	^ self class hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementAlignment >> ifNotNull: aBlock [
 	aBlock value
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementAlignment >> ifNull: aBlock [
 	"not null"
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementAlignment >> initialize [
 	super initialize.
 	
 	
 ]
 
-{ #category : #translation }
+{ #category : 'translation' }
 TbElementAlignment >> translationOf: aBounds in: aContainerBounds [
 	^ self subclassResponsibility
 ]

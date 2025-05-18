@@ -8,28 +8,30 @@ Since some constraints are also axis dependent (horizontal or vertical) I provid
 See ===BlLayoutConstraintsAxis=== to learn more about axis-dependent constraints
 "
 Class {
-	#name : #TbLayoutConstraints,
-	#superclass : #Object,
+	#name : 'TbLayoutConstraints',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'vertical',
 		'horizontal'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutConstraints >> defaultHorizontal [
 	^ TbLayoutConstraintsAxis new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutConstraints >> defaultVertical [
 	^ TbLayoutConstraintsAxis new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutConstraints >> horizontal [
 	"Return horizontal-axis specific constraints.
 	horizontal constraints can not be nil"
@@ -38,7 +40,7 @@ TbLayoutConstraints >> horizontal [
 	^ horizontal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutConstraints >> initialize [
 	super initialize.
 	
@@ -46,7 +48,7 @@ TbLayoutConstraints >> initialize [
 	vertical := self defaultVertical
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutConstraints >> vertical [
 	"Return vertical-axis specific constraints.
 	vertical constraints can not be nil"

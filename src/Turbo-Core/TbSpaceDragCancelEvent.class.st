@@ -1,34 +1,36 @@
 Class {
-	#name : #TbSpaceDragCancelEvent,
-	#superclass : #TbSpaceEvent,
+	#name : 'TbSpaceDragCancelEvent',
+	#superclass : 'TbSpaceEvent',
 	#instVars : [
 		'delegate',
 		'position'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragCancelEvent >> delegate [
 	^ delegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragCancelEvent >> delegate: anObject [
 	delegate := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragCancelEvent >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragCancelEvent >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbSpaceDragCancelEvent >> sendTo: anObject [
 	anObject spaceDragCancel: self
 ]

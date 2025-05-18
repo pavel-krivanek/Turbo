@@ -5,21 +5,23 @@ I am used by layouts that support different orientations and by element alignmen
 I do not have any logic and can only used as orientation flag. Layouts that have orientation specific logic should impelment their own object oriented mechanism
 "
 Class {
-	#name : #TbLayoutOrientation,
-	#superclass : #Object,
+	#name : 'TbLayoutOrientation',
+	#superclass : 'Object',
 	#classVars : [
 		'horizontal',
 		'vertical'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbLayoutOrientation class >> horizontal [
 	^ horizontal
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbLayoutOrientation class >> initialize [
 	super initialize.
 	
@@ -27,22 +29,22 @@ TbLayoutOrientation class >> initialize [
 	vertical := TbLayoutVertical new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbLayoutOrientation class >> vertical [
 	^ vertical
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutOrientation >> isHorizontal [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutOrientation >> isVertical [
 	^ self subclassResponsibility
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbLayoutOrientation >> of: anObject [
 	^ self subclassResponsibility
 ]

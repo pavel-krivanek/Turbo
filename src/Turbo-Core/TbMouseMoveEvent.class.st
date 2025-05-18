@@ -4,12 +4,14 @@ The mouse move event is fired when a pointing device (usually a mouse) is moved 
 https://developer.mozilla.org/en-US/docs/Web/Events/mousemove
 "
 Class {
-	#name : #TbMouseMoveEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseMoveEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseMoveEvent class >> button: aMouseButton [
 	"Create a sample button move event"
 	<return: #BlMouseMoveEvent>
@@ -21,7 +23,7 @@ TbMouseMoveEvent class >> button: aMouseButton [
 		timestamp: DateAndTime now
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseMoveEvent class >> middle [
 	"Create a mouse move event for testing purposes"
 	<return: #BlMouseMoveEvent>
@@ -29,7 +31,7 @@ TbMouseMoveEvent class >> middle [
 	^ self button: TbMouseButton middle
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseMoveEvent class >> primary [
 	"Create a mouse move event for testing purposes"
 	<return: #BlMouseMoveEvent>
@@ -37,7 +39,7 @@ TbMouseMoveEvent class >> primary [
 	^ self button: TbMouseButton primary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseMoveEvent class >> secondary [
 	"Create a mouse move event for testing purposes"
 	<return: #BlMouseMoveEvent>
@@ -45,12 +47,12 @@ TbMouseMoveEvent class >> secondary [
 	^ self button: TbMouseButton secondary
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseMoveEvent >> isMouseMove [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseMoveEvent >> sendTo: anObject [
 	anObject mouseMoveEvent: self
 ]

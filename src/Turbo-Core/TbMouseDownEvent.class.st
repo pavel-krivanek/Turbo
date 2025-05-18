@@ -1,10 +1,12 @@
 Class {
-	#name : #TbMouseDownEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseDownEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseDownEvent class >> button: aMouseButton [
 	"Create a sample button down event for a given button for testing purposes"
 	<return: #BlMouseDownEvent>
@@ -16,7 +18,7 @@ TbMouseDownEvent class >> button: aMouseButton [
 		timestamp: DateAndTime now
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseDownEvent class >> middle [
 	"Create a sample middle button down event for testing purposes"
 	<return: #BlMouseDownEvent>
@@ -24,7 +26,7 @@ TbMouseDownEvent class >> middle [
 	^ self button: TbMouseButton middle
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseDownEvent class >> primary [
 	"Create a sample primary button down event for testing purposes"
 	<return: #BlMouseDownEvent>
@@ -32,7 +34,7 @@ TbMouseDownEvent class >> primary [
 	^ self button: TbMouseButton primary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbMouseDownEvent class >> secondary [
 	"Create a sample secondary button down event for testing purposes"
 	<return: #BlMouseDownEvent>
@@ -40,19 +42,19 @@ TbMouseDownEvent class >> secondary [
 	^ self button: TbMouseButton secondary
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbMouseDownEvent >> asMouseStillDownEvent [
 	^ TbMouseStillDownEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseDownEvent >> isMouseDown [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseDownEvent >> sendTo: anObject [
 	anObject mouseDownEvent: self
 ]

@@ -1,28 +1,30 @@
 Class {
-	#name : #TbMultipleDragHandler,
-	#superclass : #TbElementEventListener,
+	#name : 'TbMultipleDragHandler',
+	#superclass : 'TbElementEventListener',
 	#instVars : [
 		'delegate'
 	],
-	#category : #'Turbo-Core-Utilities - Drag&Drop'
+	#category : 'Turbo-Core-Utilities - Drag&Drop',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drag&Drop'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMultipleDragHandler >> delegate [
 	^ delegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbMultipleDragHandler >> delegate: anObject [
 	delegate := anObject
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbMultipleDragHandler >> dragEndEvent: anEvent [
 	anEvent currentTarget space dispatchEvent: (TbSpaceDragCancelEvent new delegate: delegate; position: anEvent position)
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbMultipleDragHandler >> dragStartEvent: anEvent [
 
 "	theDraggedItems := anEvent currentTarget childrenCount timesCollect: [  BlDragItem new ].
@@ -42,7 +44,7 @@ TbMultipleDragHandler >> dragStartEvent: anEvent [
 	anEvent currentTarget space dispatchEvent: (TbSpaceDragLiftEvent new delegate: delegate; position: anEvent position)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbMultipleDragHandler >> initialize [
 	super initialize.
 

@@ -2,32 +2,34 @@
 I am a concrete right-to-left direction
 "
 Class {
-	#name : #TbLayoutRightToLeft,
-	#superclass : #TbLayoutDirection,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbLayoutRightToLeft',
+	#superclass : 'TbLayoutDirection',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutRightToLeft >> isLeftToRight [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutRightToLeft >> isRightToLeft [
 	^ true
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbLayoutRightToLeft >> of: anObject [
 	^ anObject rightToLeft
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbLayoutRightToLeft >> with: aCollection do: aBlock [
 	aCollection reverseDo: aBlock
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbLayoutRightToLeft >> with: aCollection inject: thisValue into: binaryBlock [
 	"Reversed implementation of Collection>>#inject:into:"
 	| nextValue |

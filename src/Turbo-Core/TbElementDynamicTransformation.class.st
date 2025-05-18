@@ -5,12 +5,14 @@ It means that matrix computation is performed only when requested taking owner e
 This also means that the matrix dimension (2D or 3D) should be determined dynamically based on inner transformations
 "
 Class {
-	#name : #TbElementDynamicTransformation,
-	#superclass : #TbElementTransformation,
-	#category : #'Turbo-Core-Basic-Transformations'
+	#name : 'TbElementDynamicTransformation',
+	#superclass : 'TbElementTransformation',
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #computation }
+{ #category : 'computation' }
 TbElementDynamicTransformation >> computeMatrix [
 	"I perform a matrix computation assuming that matrix is initialized with
 	a correct type (2D or 3D) and that it is identity"
@@ -18,27 +20,27 @@ TbElementDynamicTransformation >> computeMatrix [
 	self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementDynamicTransformation >> defaultMatrix2D [
 	^ TbMatrix2D new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementDynamicTransformation >> defaultMatrix3D [
 	^ TbMatrix3D new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbElementDynamicTransformation >> ensure2D [
 	matrix := self defaultMatrix2D
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbElementDynamicTransformation >> ensure3D [
 	matrix := self defaultMatrix3D
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbElementDynamicTransformation >> ensureMatrix [
 	self hasMatrix
 		ifTrue: [ ^ self ].
@@ -48,7 +50,7 @@ TbElementDynamicTransformation >> ensureMatrix [
 	self computeMatrix
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbElementDynamicTransformation >> hasMatrix [
 	"Return true if any of 2D or 3D matrices exist, false otherwise.
 	Note: I am useful for fast exits"
@@ -57,7 +59,7 @@ TbElementDynamicTransformation >> hasMatrix [
 	^ matrix isNotNil 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementDynamicTransformation >> matrix [
 	<return: #BlMatrix>
 

@@ -4,34 +4,36 @@ I log all key press events and allow users to detect what keys are pressed at an
 I allow ===BlKeyboardProcessor=== to sent key still pressed event every frame if there is at least one pressed key
 "
 Class {
-	#name : #TbKeyboardBuffer,
-	#superclass : #Object,
+	#name : 'TbKeyboardBuffer',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'events'
 	],
-	#category : #'Turbo-Core-Space-Support'
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'adding / removing' }
+{ #category : 'adding / removing' }
 TbKeyboardBuffer >> add: anEvent [
 	events at: anEvent key put: anEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardBuffer >> eventAt: aKey [
 	<return: #TbKeyDownEvent>
 	
 	^ events at: aKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbKeyboardBuffer >> events [
 	^ events
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyboardBuffer >> hasEvent: aKey [
 	"Return true if there is a buffered event for a given key"
 	<return: #Boolean>
@@ -39,24 +41,24 @@ TbKeyboardBuffer >> hasEvent: aKey [
 	^ events includesKey: aKey
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbKeyboardBuffer >> initialize [
 	super initialize.
 	
 	events := Dictionary new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyboardBuffer >> isEmpty [
 	^ events isEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyboardBuffer >> isNotEmpty [
 	^ events isNotEmpty
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbKeyboardBuffer >> isPressed: aKey [
 	"Return true if a given key is pressed, false otherwise"
 	<return: #Boolean>
@@ -64,7 +66,7 @@ TbKeyboardBuffer >> isPressed: aKey [
 	^ self hasEvent: aKey
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbKeyboardBuffer >> printOn: aStream [
 
 	aStream nextPut: $(.
@@ -74,7 +76,7 @@ TbKeyboardBuffer >> printOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #'adding / removing' }
+{ #category : 'adding / removing' }
 TbKeyboardBuffer >> remove: anEvent [
 	events removeKey: anEvent key
 ]

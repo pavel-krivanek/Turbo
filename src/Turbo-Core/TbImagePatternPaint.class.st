@@ -1,28 +1,30 @@
 Class {
-	#name : #TbImagePatternPaint,
-	#superclass : #TbPaint,
+	#name : 'TbImagePatternPaint',
+	#superclass : 'TbPaint',
 	#instVars : [
 		'form'
 	],
-	#category : #'Turbo-Core-Paint'
+	#category : 'Turbo-Core-Paint',
+	#package : 'Turbo-Core',
+	#tag : 'Paint'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbImagePatternPaint class >> form: aForm [
 	^ self new form: aForm
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImagePatternPaint >> form [
 	^ form
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImagePatternPaint >> form: aForm [
 	form := aForm
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbImagePatternPaint >> matchExtent: anExtent [
 	"don't know what to do for the image pattern paint"
 ]

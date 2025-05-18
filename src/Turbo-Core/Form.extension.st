@@ -1,11 +1,11 @@
-Extension { #name : #Form }
+Extension { #name : 'Form' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Form >> asBlBackground [
 	^ TbBackground image: self
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Form >> asElement [
 	^ TbElement new
 		size: self extent;
@@ -13,12 +13,12 @@ Form >> asElement [
 		yourself
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Form >> asForm [
 	^ self
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Form >> isSystemCursor [
 	^ false
 ]

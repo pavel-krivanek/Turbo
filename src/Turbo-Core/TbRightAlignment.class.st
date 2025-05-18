@@ -3,37 +3,39 @@ I represent right alignment.
 See BlLayoutAlignment for more info.
 "
 Class {
-	#name : #TbRightAlignment,
-	#superclass : #TbHorizontalAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbRightAlignment',
+	#superclass : 'TbHorizontalAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbRightAlignment class >> initialize [
 	super initialize.
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRightAlignment class >> leftToRight [
 	^ self right
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRightAlignment class >> rightToLeft [
 	^ self left
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRightAlignment >> inverted [
 	^ TbElementAlignment vertical end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbRightAlignment >> swap [
 	^ TbElementAlignment left
 ]
 
-{ #category : #translation }
+{ #category : 'translation' }
 TbRightAlignment >> translationOf: aBounds in: aContainerBounds [
 	<return: #Point>
 	

@@ -4,36 +4,38 @@ I encapsulate a concept of time and play a role of a time provider for Animation
 Bloc components must not directly rely on system time or hardcode it in any place because it prevents us from simulating spaces. The use of me makes system exemplifiable
 "
 Class {
-	#name : #TbTime,
-	#superclass : #Object,
+	#name : 'TbTime',
+	#superclass : 'Object',
 	#instVars : [
 		'frozenTime',
 		'frozen'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTime class >> fastForwarded [
 	^ TbFastForwardedTime new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTime class >> real [
 	^ TbRealTime new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTime class >> simulated [
 	^ TbSimulatedTime new
 ]
 
-{ #category : #'private - time' }
+{ #category : 'private - time' }
 TbTime >> currentTime [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'api - enumeration' }
+{ #category : 'api - enumeration' }
 TbTime >> every: aDuration during: aLoopDuration do: aDoBlock [
 	| aStartTime |
 	
@@ -45,7 +47,7 @@ TbTime >> every: aDuration during: aLoopDuration do: aDoBlock [
 		do: aDoBlock
 ]
 
-{ #category : #'api - enumeration' }
+{ #category : 'api - enumeration' }
 TbTime >> every: aDuration times: aCountOfRepeats do: aDoBlock [
 	"Evaluate a aDoBlock a given amount of times waiting a provided amount of time between executions.
 	The first evaluation of a aDoBlock is instant.
@@ -59,7 +61,7 @@ TbTime >> every: aDuration times: aCountOfRepeats do: aDoBlock [
 		do: aDoBlock
 ]
 
-{ #category : #'api - enumeration' }
+{ #category : 'api - enumeration' }
 TbTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 	"Evaluate a aDoBlock while aWhileBlock evaluates to true waiting a given amount of time between executions.
 	The first evaluation of a aDoBlock is instant.
@@ -68,14 +70,14 @@ TbTime >> every: aDuration while: aWhileBlock do: aDoBlock [
 	self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTime >> initialize [
 	super initialize.
 	
 	frozen := false
 ]
 
-{ #category : #'api - time' }
+{ #category : 'api - time' }
 TbTime >> now [
 	"Return a 'current' date and time, it is not necessarily a real one"
 	<return: #DateAndTime>
@@ -85,12 +87,12 @@ TbTime >> now [
 		ifFalse: [ self currentTime ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbTime >> printOn: aStream [
 	self now printOn: aStream
 ]
 
-{ #category : #'api - time' }
+{ #category : 'api - time' }
 TbTime >> synchronized: aBlock [
 	"Make this time instance synchronized among all users.
 	During evaluation of aBlock #now will return the same time, independent of
@@ -103,7 +105,7 @@ TbTime >> synchronized: aBlock [
 		frozenTime := nil ]
 ]
 
-{ #category : #'api - time' }
+{ #category : 'api - time' }
 TbTime >> wait: aDuration [
 	"Advance clock by waiting for a given amount of time"
 

@@ -1,34 +1,36 @@
 Class {
-	#name : #TbIgnoredLayoutConstraintsVertical,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbIgnoredLayoutConstraintsVertical',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment',
 		'weight'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbIgnoredLayoutConstraintsVertical >> alignBottom [
 	alignment := TbElementAlignment vertical end
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbIgnoredLayoutConstraintsVertical >> alignCenter [
 	alignment := TbElementAlignment vertical center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbIgnoredLayoutConstraintsVertical >> alignTop [
 	alignment := TbElementAlignment vertical start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraintsVertical >> alignment [
 	^ alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbIgnoredLayoutConstraintsVertical >> initialize [
 	super initialize.
 	
@@ -36,14 +38,14 @@ TbIgnoredLayoutConstraintsVertical >> initialize [
 	weight := 1.0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraintsVertical >> weight [
 	<return: #Number>
 
 	^ weight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraintsVertical >> weight: aNumber [
 	self
 		assert: [ aNumber isNotNil ]

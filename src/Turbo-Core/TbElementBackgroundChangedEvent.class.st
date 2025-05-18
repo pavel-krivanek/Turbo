@@ -12,12 +12,14 @@ element background: Color blue
 ]]]
 "
 Class {
-	#name : #TbElementBackgroundChangedEvent,
-	#superclass : #TbElementEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbElementBackgroundChangedEvent',
+	#superclass : 'TbElementEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbElementBackgroundChangedEvent >> sendTo: anObject [
 	anObject elementBackgroundChanged: self
 ]

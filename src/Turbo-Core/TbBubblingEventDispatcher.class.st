@@ -1,10 +1,12 @@
 Class {
-	#name : #TbBubblingEventDispatcher,
-	#superclass : #TbDirectEventDispatcher,
-	#category : #'Turbo-Core-Events-Handling'
+	#name : 'TbBubblingEventDispatcher',
+	#superclass : 'TbDirectEventDispatcher',
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #dispatching }
+{ #category : 'dispatching' }
 TbBubblingEventDispatcher >> dispatchArrivedEvent: anEvent [
 	
 	anEvent arrivedTarget: self owner.
@@ -19,7 +21,7 @@ TbBubblingEventDispatcher >> dispatchArrivedEvent: anEvent [
 		ifTrue: [ shortcutHandler handleEvent: anEvent ]
 ]
 
-{ #category : #dispatching }
+{ #category : 'dispatching' }
 TbBubblingEventDispatcher >> dispatchBubblingEvent: anEvent [
 	
 	anEvent bubblingTarget: self owner.
@@ -34,7 +36,7 @@ TbBubblingEventDispatcher >> dispatchBubblingEvent: anEvent [
 		ifTrue: [ shortcutHandler handleEvent: anEvent ]
 ]
 
-{ #category : #dispatching }
+{ #category : 'dispatching' }
 TbBubblingEventDispatcher >> dispatchCapturingEvent: anEvent [
 	
 	anEvent capturingTarget: self owner.
@@ -44,7 +46,7 @@ TbBubblingEventDispatcher >> dispatchCapturingEvent: anEvent [
 		theFilters dispatchEvent: anEvent ]
 ]
 
-{ #category : #dispatching }
+{ #category : 'dispatching' }
 TbBubblingEventDispatcher >> dispatchEvent: anEvent next: aBlEventDispatcherChain [
 	<return: #BlEvent>
 	
@@ -69,7 +71,7 @@ TbBubblingEventDispatcher >> dispatchEvent: anEvent next: aBlEventDispatcherChai
 	^ anEvent
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbBubblingEventDispatcher >> type [
 	<return: #String>
 

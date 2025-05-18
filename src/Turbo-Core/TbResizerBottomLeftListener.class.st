@@ -1,10 +1,12 @@
 Class {
-	#name : #TbResizerBottomLeftListener,
-	#superclass : #TbResizerListener,
-	#category : #'Turbo-Core-Utilities - Resizable'
+	#name : 'TbResizerBottomLeftListener',
+	#superclass : 'TbResizerListener',
+	#category : 'Turbo-Core-Utilities - Resizable',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Resizable'
 }
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerBottomLeftListener >> resizeBounds: aBlBounds by: aPoint [
 	| newExtent |
 	
@@ -15,7 +17,7 @@ TbResizerBottomLeftListener >> resizeBounds: aBlBounds by: aPoint [
 		extent: newExtent
 ]
 
-{ #category : #resizer }
+{ #category : 'resizer' }
 TbResizerBottomLeftListener >> resizerCursor [
 	^ TbCursor resizeBottomLeft
 ]

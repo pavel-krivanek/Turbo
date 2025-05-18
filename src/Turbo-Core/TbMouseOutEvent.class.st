@@ -4,12 +4,14 @@ The mouse out event is fired when a pointing device (usually a mouse) is moved o
 https://developer.mozilla.org/en-US/docs/Web/Events/mouseout
 "
 Class {
-	#name : #TbMouseOutEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseOutEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseOutEvent >> sendTo: anObject [
 	anObject mouseOutEvent: self
 ]

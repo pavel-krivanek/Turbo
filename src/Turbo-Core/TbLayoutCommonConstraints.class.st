@@ -32,8 +32,8 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #TbLayoutCommonConstraints,
-	#superclass : #TbLayoutConstraints,
+	#name : 'TbLayoutCommonConstraints',
+	#superclass : 'TbLayoutConstraints',
 	#instVars : [
 		'constraints',
 		'margin',
@@ -46,17 +46,19 @@ Class {
 		'previouslyAccessedConstraints',
 		'previouslyAccessedConstraintsType'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> accountByLayout [
 	"Makes an element with this constraits be accounted by layout (not ignored)"
 
 	ignoredByLayout := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutCommonConstraints >> at: aLayoutClass [
 	"Return a layout constrait object specific for a given layout defined by its class.
 	Returned constraint can not be nil"
@@ -83,17 +85,17 @@ TbLayoutCommonConstraints >> at: aLayoutClass [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutCommonConstraints >> defaultHorizontal [
 	^ TbLayoutCommonConstraintsAxis new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutCommonConstraints >> defaultVertical [
 	^ TbLayoutCommonConstraintsAxis new
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> ignoreByLayout [
 	"Makes an element with this constraits be ignored by layout.
 	An element will still be measured but will not be taken into account
@@ -102,12 +104,12 @@ TbLayoutCommonConstraints >> ignoreByLayout [
 	ignoredByLayout := true
 ]
 
-{ #category : #'api - layouts' }
+{ #category : 'api - layouts' }
 TbLayoutCommonConstraints >> ignored [
 	^ self at: TbIgnoredLayout
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLayoutCommonConstraints >> ignoredByLayout [
 	"Return true if an element must be ignored by layout, otherwise false"
 	<return: #Boolean>
@@ -115,7 +117,7 @@ TbLayoutCommonConstraints >> ignoredByLayout [
 	^ ignoredByLayout
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutCommonConstraints >> initialize [
 	super initialize.
 	
@@ -133,7 +135,7 @@ TbLayoutCommonConstraints >> initialize [
 	constraints := nil
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> margin [
 	"Return an immutable margin property,
 	margin can not be nil"
@@ -141,7 +143,7 @@ TbLayoutCommonConstraints >> margin [
 	^ margin
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> margin: aBlMargin [
 	"Change element's margin to a BlMargin
 	aBlMargin must not be nil"
@@ -152,7 +154,7 @@ TbLayoutCommonConstraints >> margin: aBlMargin [
 	margin := aBlMargin
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> maxHeight [
 	"Return a maximal height an element can have,
 	maxHeight can not be nil,
@@ -161,7 +163,7 @@ TbLayoutCommonConstraints >> maxHeight [
 	^ maxHeight
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> maxHeight: aNumber [
 	"Set maximal height to be aNumber,
 	aNumber must not be nil
@@ -178,7 +180,7 @@ TbLayoutCommonConstraints >> maxHeight: aNumber [
 	maxHeight := aNumber
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> maxWidth [
 	"Return a maximal width an element can have,
 	maxWidth can not be nil,
@@ -187,7 +189,7 @@ TbLayoutCommonConstraints >> maxWidth [
 	^ maxWidth
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> maxWidth: aNumber [
 	"Set maximal width to be aNumber,
 	aNumber must not be nil
@@ -204,7 +206,7 @@ TbLayoutCommonConstraints >> maxWidth: aNumber [
 	maxWidth := aNumber
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> minHeight [
 	"Return a minimal height an element can have,
 	minHeight can not be nil or infinity"
@@ -212,7 +214,7 @@ TbLayoutCommonConstraints >> minHeight [
 	^ minHeight
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> minHeight: aNumber [
 	"Set minimal height to be aNumber,
 	aNumber must not be nil
@@ -234,7 +236,7 @@ TbLayoutCommonConstraints >> minHeight: aNumber [
 	minHeight := aNumber
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> minWidth [
 	"Return a minimal width an element can have,
 	minWidth can not be nil or infinity"
@@ -242,7 +244,7 @@ TbLayoutCommonConstraints >> minWidth [
 	^ minWidth
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> minWidth: aNumber [
 	"Set minimal width to be aNumber,
 	aNumber must not be nil
@@ -264,7 +266,7 @@ TbLayoutCommonConstraints >> minWidth: aNumber [
 	minWidth := aNumber
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> padding [
 	"Return an immutable padding property,
 	margin can not be nil"
@@ -273,7 +275,7 @@ TbLayoutCommonConstraints >> padding [
 	^ padding
 ]
 
-{ #category : #'api - constraints' }
+{ #category : 'api - constraints' }
 TbLayoutCommonConstraints >> padding: aBlPadding [
 	"Change element's margin to a BlMargin
 	aBlPadding must not be nil"

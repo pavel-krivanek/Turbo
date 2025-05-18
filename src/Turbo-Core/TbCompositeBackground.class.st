@@ -23,46 +23,48 @@ Opacity example:
 		} 
 "
 Class {
-	#name : #TbCompositeBackground,
-	#superclass : #TbBackground,
+	#name : 'TbCompositeBackground',
+	#superclass : 'TbBackground',
 	#instVars : [
 		'backgrounds'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCompositeBackground class >> withAll: aCollectionOfBackground [
 	^ self new withAll: aCollectionOfBackground
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCompositeBackground >> backgrounds [
 	<return: #Collection of: #BlBackground>
 
 	^ backgrounds
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCompositeBackground >> initialize [
 	super initialize.
 	
 	backgrounds := Array new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbCompositeBackground >> isTransparent [
 	<return: #Boolean>
 
 	^ (self opacity closeTo: 0.0) or: [ backgrounds allSatisfy: #isTransparent ]
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbCompositeBackground >> matchExtent: anExtent [
 	backgrounds do: [ :aBackground | aBackground matchExtent: anExtent ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbCompositeBackground >> withAll: aCollectionOfBackgrounds [
 	self
 		assert: [ aCollectionOfBackgrounds isNotNil ]

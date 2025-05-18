@@ -1,47 +1,49 @@
 Class {
-	#name : #TbLayoutCommonConstraintsAxis,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbLayoutCommonConstraintsAxis',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'resizer'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbLayoutCommonConstraintsAxis >> exact: aNumber [
 	self resizer: (TbLayoutResizer exact: aNumber)
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbLayoutCommonConstraintsAxis >> fitContent [
 	self resizer: TbLayoutResizer fitContent
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbLayoutCommonConstraintsAxis >> fitContentLimited [
 	self resizer: TbLayoutResizer fitContentLimited
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLayoutCommonConstraintsAxis >> initialize [
 	super initialize.
 	
 	resizer := TbLayoutResizer exact: 50
 ]
 
-{ #category : #resizing }
+{ #category : 'resizing' }
 TbLayoutCommonConstraintsAxis >> matchParent [
 	self resizer: TbLayoutResizer matchParent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutCommonConstraintsAxis >> resizer [
 	<return: #BlLayoutResizer>
 
 	^ resizer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLayoutCommonConstraintsAxis >> resizer: aBlLayoutResizer [
 	resizer := aBlLayoutResizer
 ]

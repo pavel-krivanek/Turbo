@@ -4,17 +4,19 @@ I handle errors happened during rendering phase.
 To not completely break the UI thread we should catch the error and prevent the element from further rendering
 "
 Class {
-	#name : #TbDrawingErrorHandler,
-	#superclass : #TbSingleErrorHandler,
-	#category : #'Turbo-Core-Basic-Errors'
+	#name : 'TbDrawingErrorHandler',
+	#superclass : 'TbSingleErrorHandler',
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbDrawingErrorHandler >> matches: aFramePhase [
 	^ aFramePhase isDrawingPhase
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbDrawingErrorHandler >> processError: aHandledError [
 	| anErrorContainer |
 	

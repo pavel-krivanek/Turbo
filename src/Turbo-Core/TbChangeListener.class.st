@@ -3,12 +3,14 @@ I am the base class to listen property changes.
 My method #valueChanged: is called when the listened value is modified.
 "
 Class {
-	#name : #TbChangeListener,
-	#superclass : #Object,
-	#category : #'Turbo-Core-Property'
+	#name : 'TbChangeListener',
+	#superclass : 'Object',
+	#category : 'Turbo-Core-Property',
+	#package : 'Turbo-Core',
+	#tag : 'Property'
 }
 
-{ #category : #changes }
+{ #category : 'changes' }
 TbChangeListener >> valueChanged: aValue [
 	
 ]

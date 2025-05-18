@@ -3,36 +3,38 @@ I implement a basic infrastructure of event management.
 Any object that needs to be able to handle events should use me.
 "
 Trait {
-	#name : #TTbEventTarget,
-	#category : #'Turbo-Core-Events-Handling'
+	#name : 'TTbEventTarget',
+	#category : 'Turbo-Core-Events-Handling',
+	#package : 'Turbo-Core',
+	#tag : 'Events-Handling'
 }
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> addEventFilter: anEventHandler [
 	self eventDispatcher addEventFilter: anEventHandler
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> addEventFilterOn: anEventClass do: aBlock [
 	self addEventFilter: (TbEventHandler on: anEventClass do: aBlock)
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> addEventHandler: anEventHandler [
 	self eventDispatcher addEventHandler: anEventHandler
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> addEventHandlerOn: anEventClass do: aBlock [
 	self addEventHandler: (TbEventHandler on: anEventClass do: aBlock)
 ]
 
-{ #category : #'shortcut management' }
+{ #category : 'shortcut management' }
 TTbEventTarget >> addShortcut: aShortcut [
 	self shortcuts add: aShortcut
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> buildEventDispatchChain: aBlEventDispatcherChain [
 	"Note: Dispatcher chain is persistent - I return a new instance"
 	<return: #BlEventDispatcherChain>
@@ -47,7 +49,7 @@ TTbEventTarget >> buildEventDispatchChain: aBlEventDispatcherChain [
 	^ aResultChain
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> dispatchEvent: anEvent [
 	"I only call my event dispatcher, so the event can be only handled by my event handlers/filters"
 
@@ -61,7 +63,7 @@ TTbEventTarget >> dispatchEvent: anEvent [
 		ifTrue: [ self eventDispatcher dispatchEvent: anEvent ]
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TTbEventTarget >> eventDispatcher [
 	"Return an object responsible for event dispatching"
 	<return: #BlDirectEventDispatcher>
@@ -69,7 +71,7 @@ TTbEventTarget >> eventDispatcher [
 	^ self explicitRequirement
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> fireEvent: anEvent [
 	"I fire provided event building an event dispatcher chain
 	(from target to the root element) and dispatch the event with it.
@@ -78,7 +80,7 @@ TTbEventTarget >> fireEvent: anEvent [
 	TbEvent fireEvent: anEvent target: self
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TTbEventTarget >> hasNextEventTarget [
 	"Return true if this event target has a logical successor within a dispatch chain.
 	For example, in case of visual components next event target is a parent, meaning
@@ -89,7 +91,7 @@ TTbEventTarget >> hasNextEventTarget [
 	^ false
 ]
 
-{ #category : #'event management accessing' }
+{ #category : 'event management accessing' }
 TTbEventTarget >> nextEventTarget [
 	"Return next event target that should be contained in dispatch chain.
 	Note: returned object must use TBlEventTarget trait!"
@@ -98,32 +100,32 @@ TTbEventTarget >> nextEventTarget [
 	self error: 'Override me if there is a next event target.'
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> removeEventFilter: anEventHandler [
 	self eventDispatcher removeEventFilter: anEventHandler
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> removeEventHandler: anEventHandler [
 	self eventDispatcher removeEventHandler: anEventHandler
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> removeEventHandlersSuchThat: aBlock [
 	self eventDispatcher removeEventHandlersSuchThat: aBlock
 ]
 
-{ #category : #'shortcut management' }
+{ #category : 'shortcut management' }
 TTbEventTarget >> removeShortcut: aShortcut [
 	self shortcuts remove: aShortcut
 ]
 
-{ #category : #'shortcut management' }
+{ #category : 'shortcut management' }
 TTbEventTarget >> shortcuts [
 	^ self eventDispatcher shortcutHandler shortcuts
 ]
 
-{ #category : #'event management' }
+{ #category : 'event management' }
 TTbEventTarget >> when: anEventClass do: aBlock [
 	self addEventHandlerOn: anEventClass do: aBlock
 ]

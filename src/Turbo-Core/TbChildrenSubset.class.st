@@ -19,40 +19,42 @@ Internally the result of ${method:BlChildrenSubset>>#subsetFrom:}$ is stored int
 To preserve the composition of iterators I hold a reference to the initial ${class:BlChildren}$ instance.
 "
 Class {
-	#name : #TbChildrenSubset,
-	#superclass : #TbChildren,
+	#name : 'TbChildrenSubset',
+	#superclass : 'TbChildren',
 	#instVars : [
 		'subsetArray',
 		'supersetChildren'
 	],
-	#category : #'Turbo-Core-Basic-Children'
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbChildrenSubset class >> on: aBlChildren [
 	^ self new initializeFrom: aBlChildren
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenSubset >> at: anIndex [
 	<return: #BlElement>
 
 	^ subsetArray at: anIndex
 ]
 
-{ #category : #'children - enumerating' }
+{ #category : 'children - enumerating' }
 TbChildrenSubset >> do: aBlock [
 	subsetArray do: aBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbChildrenSubset >> hasSuperset [
 	<return: #Boolean>
 
 	 ^ true
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenSubset >> initializeFrom: aBlChildren [
 	"Store the given aBlChildren parametre to keep track of how iterators are composed and 
 	also store the actual subset of elements on which this iterator will operate."
@@ -60,26 +62,26 @@ TbChildrenSubset >> initializeFrom: aBlChildren [
 	supersetChildren := aBlChildren
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenSubset >> name [
 	^ 'Subset'
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenSubset >> size [
 	<return: #Number>
 
 	^ subsetArray size
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenSubset >> subsetFrom: aBlChildren [
 	<return: #Array of: #BlElement>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenSubset >> superset [
 	"Return a superset of this children subset"
 	<return: #BlChildren>

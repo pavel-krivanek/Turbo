@@ -4,18 +4,20 @@ I represent an element transformation and support both 2D and 3D transformations
 For optimization purposes I use 2D matrix if 3D transformation was not requested. As soon as I'm transformed in 3D all further transformation will also happen with the help of 3D matrix.
 "
 Class {
-	#name : #TbElementTransformation,
-	#superclass : #Object,
+	#name : 'TbElementTransformation',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'owner',
 		'matrix'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementTransformation >> inSpace [
 	"Return a transformation that represents a convertion from space coordinates
 	to the local coordinates of the owner element of this transformation"
@@ -32,12 +34,12 @@ TbElementTransformation >> inSpace [
 	^ TbElementAbsoluteTransformation matrix: aMatrix
 ]
 
-{ #category : #invalidation }
+{ #category : 'invalidation' }
 TbElementTransformation >> invalidateMatrix [
 	self subclassResponsibility
 ]
 
-{ #category : #bounds }
+{ #category : 'bounds' }
 TbElementTransformation >> inverseTransformBounds: aBounds [
 	"In-place transform given BlBounds according to my transformation.
 	(global to local transformation)"
@@ -46,7 +48,7 @@ TbElementTransformation >> inverseTransformBounds: aBounds [
 	^ self matrix inverted transformBounds: aBounds
 ]
 
-{ #category : #bounds }
+{ #category : 'bounds' }
 TbElementTransformation >> inverseTransformPoint: aPoint [
 	"Apply an inversed transformation on a given point and return a result.
 	Note: Throws BlSingularMatrixError if underlying matrix is singular"
@@ -58,17 +60,17 @@ TbElementTransformation >> inverseTransformPoint: aPoint [
 	^ self matrix inverted transformPoint: aPoint
 ]
 
-{ #category : #bounds }
+{ #category : 'bounds' }
 TbElementTransformation >> invert [
 	matrix := self matrix inverted
 ]
 
-{ #category : #bounds }
+{ #category : 'bounds' }
 TbElementTransformation >> inverted [
 	^ self copy invert
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementTransformation >> is2D [
 	"Return true if my current transformation is in 2D space, false otherwise"
 	<return: #Boolean>
@@ -76,14 +78,14 @@ TbElementTransformation >> is2D [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementTransformation >> is3D [
 	<return: #Boolean>
 	
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementTransformation >> isIdentity [
 	"Return true if I represent an identity transformation, false otherwise"
 	<return: #Boolean>
@@ -91,7 +93,7 @@ TbElementTransformation >> isIdentity [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementTransformation >> isPureTranslation [
 	"Return true if the receiver specifies no rotation or scaling and represents only translation in xy 2D plane"
 	<return: #Boolean>
@@ -99,31 +101,31 @@ TbElementTransformation >> isPureTranslation [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementTransformation >> matrix [
 	<return: #BlMatrix>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementTransformation >> owner [
 	<return: #BlElement>
 	
 	^ owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbElementTransformation >> owner: anElement [
 	owner := anElement
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbElementTransformation >> postCopy [
 	matrix := matrix copy
 ]
 
-{ #category : #bounds }
+{ #category : 'bounds' }
 TbElementTransformation >> transformBounds: aBounds [
 	"In-place transform given BlBounds according to my transformation.
 	(local to global transformation)"
@@ -132,7 +134,7 @@ TbElementTransformation >> transformBounds: aBounds [
 	^ self matrix transformBounds: aBounds
 ]
 
-{ #category : #bounds }
+{ #category : 'bounds' }
 TbElementTransformation >> transformPoint: aPoint [
 	"Transform given 2D point according to my transformation and return a transformed result point.
 	(local to global transformation)"

@@ -7,27 +7,29 @@ Internally I maintain one single ${class:OrderedCollection}$ instance. When chil
 Examples are provided by the class ${class:BlChildrenOrderedCollectionExamples}$
 "
 Class {
-	#name : #TbChildrenOrderedCollection,
-	#superclass : #TbChildrenCollection,
+	#name : 'TbChildrenOrderedCollection',
+	#superclass : 'TbChildrenCollection',
 	#instVars : [
 		'collection'
 	],
-	#category : #'Turbo-Core-Basic-Children'
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenOrderedCollection >> add: aChild at: anIndex [
 	"Adds aChild at a given index moving existing children to the right"
 		
 	collection add: aChild beforeIndex: anIndex
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenOrderedCollection >> addAll: aSequenceableCollection [
 	collection addAll: aSequenceableCollection
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenOrderedCollection >> at: anIndex [
 	"Return an element at a given index"
 	<return: #BlElement>
@@ -35,34 +37,34 @@ TbChildrenOrderedCollection >> at: anIndex [
 	^ collection at: anIndex
 ]
 
-{ #category : #'children - enumerating' }
+{ #category : 'children - enumerating' }
 TbChildrenOrderedCollection >> do: aBlock [
 	collection do: aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbChildrenOrderedCollection >> initialize [
 	super initialize.
 	
 	collection := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbChildrenOrderedCollection >> name [
 	^ 'Children ordered collection'
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 TbChildrenOrderedCollection >> removeAll: aCollectionOfBlElement [
 	collection removeAll: aCollectionOfBlElement
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenOrderedCollection >> removeAt: anIndex [
 	collection removeAt: anIndex
 ]
 
-{ #category : #'children - accessing' }
+{ #category : 'children - accessing' }
 TbChildrenOrderedCollection >> size [
 	<return: #Number>
 

@@ -6,16 +6,18 @@ I log changes of various element properties during one frame.
  
 "
 Class {
-	#name : #TbElementChanges,
-	#superclass : #Object,
+	#name : 'TbElementChanges',
+	#superclass : 'Object',
 	#instVars : [
 		'extentChange',
 		'positionChange'
 	],
-	#category : #'Turbo-Core-Basic-Changes'
+	#category : 'Turbo-Core-Basic-Changes',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Changes'
 }
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 TbElementChanges >> changes [
 	"Return a collection of all changes"
 	<return: #Array of: #BlElementChange>
@@ -23,7 +25,7 @@ TbElementChanges >> changes [
 	^ { positionChange . extentChange }
 ]
 
-{ #category : #enumeration }
+{ #category : 'enumeration' }
 TbElementChanges >> changesDo: aBlock [
 	"Evaluate a given block with every existing change as an argument"
 	
@@ -31,7 +33,7 @@ TbElementChanges >> changesDo: aBlock [
 	aBlock value: extentChange
 ]
 
-{ #category : #committing }
+{ #category : 'committing' }
 TbElementChanges >> commitOn: anElement [
 	"Commit all accumulated changes done to the given element.
 	As the result, all changes are marked as comitted"
@@ -39,14 +41,14 @@ TbElementChanges >> commitOn: anElement [
 	self changesDo: [ :aChange | aChange commitOn: anElement ]
 ]
 
-{ #category : #'api - changes' }
+{ #category : 'api - changes' }
 TbElementChanges >> extentChange: anOldExtent to: aNewExtent [
 	"Log the extent change of the element"
 
 	extentChange old: anOldExtent new: aNewExtent
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbElementChanges >> initialize [
 	super initialize.
 	
@@ -54,21 +56,21 @@ TbElementChanges >> initialize [
 	positionChange := TbElementPositionChange new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementChanges >> isExtentChanged [
 	<return: #Boolean>
 
 	^ extentChange hasActiveChanges
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbElementChanges >> isPositionChanged [
 	<return: #Boolean>
 
 	^ positionChange hasActiveChanges
 ]
 
-{ #category : #'api - changes' }
+{ #category : 'api - changes' }
 TbElementChanges >> positionChange: anOldPosition to: aNewPosition [
 	"Log the position change of the element"
 

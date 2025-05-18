@@ -4,12 +4,14 @@ I am a root class of all element events that are sent by ==BlElement== as a reac
 See ==BlElementEventExamples== for related examples.
 "
 Class {
-	#name : #TbElementEvent,
-	#superclass : #TbEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbElementEvent',
+	#superclass : 'TbEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbElementEvent class >> target: aNode [
 	^ self new
 		target: aNode;

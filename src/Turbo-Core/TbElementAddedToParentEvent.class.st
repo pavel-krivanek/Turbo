@@ -16,12 +16,14 @@ parent addChild: child.
 ]]]
 "
 Class {
-	#name : #TbElementAddedToParentEvent,
-	#superclass : #TbElementEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbElementAddedToParentEvent',
+	#superclass : 'TbElementEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbElementAddedToParentEvent >> sendTo: anObject [
 	anObject elementAddedToParent: self
 ]

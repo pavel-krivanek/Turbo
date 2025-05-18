@@ -1,6 +1,6 @@
-Extension { #name : #MacOSPlatform }
+Extension { #name : 'MacOSPlatform' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 MacOSPlatform >> primaryModifier [
 	^ TbAlternativeCombination new
 		key: TbKeyboardKey metaLeft;
@@ -8,7 +8,7 @@ MacOSPlatform >> primaryModifier [
 		yourself
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 MacOSPlatform >> secondaryModifier [
 	^ TbAlternativeCombination new
 		key: TbKeyboardKey controlLeft;

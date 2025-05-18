@@ -1,34 +1,36 @@
 Class {
-	#name : #TbIgnoredLayoutConstraintsHorizontal,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbIgnoredLayoutConstraintsHorizontal',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment',
 		'weight'
 	],
-	#category : #'Turbo-Core-Layouts-Basic'
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbIgnoredLayoutConstraintsHorizontal >> alignCenter [
 	alignment := TbElementAlignment horizontal center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbIgnoredLayoutConstraintsHorizontal >> alignLeft [
 	alignment := TbElementAlignment horizontal start
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbIgnoredLayoutConstraintsHorizontal >> alignRight [
 	alignment := TbElementAlignment horizontal end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraintsHorizontal >> alignment [
 	^ alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbIgnoredLayoutConstraintsHorizontal >> initialize [
 	super initialize.
 	
@@ -36,14 +38,14 @@ TbIgnoredLayoutConstraintsHorizontal >> initialize [
 	weight := 1.0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraintsHorizontal >> weight [
 	<return: #Number>
 
 	^ weight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraintsHorizontal >> weight: aNumber [
 	self
 		assert: [ aNumber isNotNil ]

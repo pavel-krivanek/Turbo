@@ -5,46 +5,48 @@ Corresponds to SVG translate() function
 https://drafts.csswg.org/css-transforms/#valdef-transform-translate
 "
 Class {
-	#name : #TbTranslationTransformation,
-	#superclass : #TbAffineTransformation,
+	#name : 'TbTranslationTransformation',
+	#superclass : 'TbAffineTransformation',
 	#instVars : [
 		'translation'
 	],
-	#category : #'Turbo-Core-Basic-Transformations'
+	#category : 'Turbo-Core-Basic-Transformations',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Transformations'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTranslationTransformation class >> translation: aVector [
 	^ self new translation: aVector
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbTranslationTransformation class >> x: aX y: aY z: aZ [
 	^ self new
 		translation: (TbVector x: aX y: aY z: aZ)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbTranslationTransformation >> initialize [
 	super initialize.
 	
 	translation := TbVector zero
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbTranslationTransformation >> is2D [
 	<return: #Boolean>
 
 	^ self translation z isZero
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 TbTranslationTransformation >> multiplyOn: aBlMatrix [
 
 	aBlMatrix translateBy: self translation
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbTranslationTransformation >> printOn: aStream [
 	aStream
 		nextPutAll: 'Translation by '.
@@ -52,14 +54,14 @@ TbTranslationTransformation >> printOn: aStream [
 	self translation printOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTranslationTransformation >> translation [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ translation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbTranslationTransformation >> translation: aVector [
 	translation := aVector asTranslate3D
 ]

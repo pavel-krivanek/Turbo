@@ -7,21 +7,23 @@ Example:
 	result := keyCombination accept: visitor
 "
 Class {
-	#name : #TbKeyCombinationVisitor,
-	#superclass : #Object,
+	#name : 'TbKeyCombinationVisitor',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Events-KeyBinding'
+	#category : 'Turbo-Core-Events-KeyBinding',
+	#package : 'Turbo-Core',
+	#tag : 'Events-KeyBinding'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationVisitor >> visitAlternative: aBlAlternativeCombination [
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationVisitor >> visitCompulsory: aBlCompulsoryCombination [
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 TbKeyCombinationVisitor >> visitKey: aBlKeyCodeCombination [
 ]

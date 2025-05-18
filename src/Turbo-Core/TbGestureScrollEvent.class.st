@@ -1,25 +1,27 @@
 Class {
-	#name : #TbGestureScrollEvent,
-	#superclass : #TbGestureBaseScrollEvent,
+	#name : 'TbGestureScrollEvent',
+	#superclass : 'TbGestureBaseScrollEvent',
 	#instVars : [
 		'vector'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbGestureScrollEvent >> sendTo: anObject [
 	anObject gestureScrollEvent: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGestureScrollEvent >> vector [
-	<return: #BlVector>
+	<return: #TbVector>
 
 	^ vector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGestureScrollEvent >> vector: aBlVector [
 	vector := aBlVector
 ]

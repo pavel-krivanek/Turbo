@@ -1,10 +1,12 @@
 Class {
-	#name : #TbScrollableElementEventHandler,
-	#superclass : #TbElementEventListener,
-	#category : #'Turbo-Core-Utilities - Scrolling'
+	#name : 'TbScrollableElementEventHandler',
+	#superclass : 'TbElementEventListener',
+	#category : 'Turbo-Core-Utilities - Scrolling',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling'
 }
 
-{ #category : #'mouse handlers' }
+{ #category : 'mouse handlers' }
 TbScrollableElementEventHandler >> gestureScrollEvent: anEvent [
 	| aScrollHappened |
 
@@ -12,7 +14,7 @@ TbScrollableElementEventHandler >> gestureScrollEvent: anEvent [
 	anEvent consumed: aScrollHappened
 ]
 
-{ #category : #'mouse handlers' }
+{ #category : 'mouse handlers' }
 TbScrollableElementEventHandler >> scrollEvent: anEvent [
 	| aScrollHappened |
 	

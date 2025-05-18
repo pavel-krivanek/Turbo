@@ -1,34 +1,36 @@
 Class {
-	#name : #TbSpaceDragLiftEvent,
-	#superclass : #TbSpaceEvent,
+	#name : 'TbSpaceDragLiftEvent',
+	#superclass : 'TbSpaceEvent',
 	#instVars : [
 		'delegate',
 		'position'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragLiftEvent >> delegate [
 	^ delegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragLiftEvent >> delegate: anObject [
 	delegate := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragLiftEvent >> position [
 	^ position
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpaceDragLiftEvent >> position: anObject [
 	position := anObject
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbSpaceDragLiftEvent >> sendTo: anObject [
 	anObject spaceDragLift: self
 ]

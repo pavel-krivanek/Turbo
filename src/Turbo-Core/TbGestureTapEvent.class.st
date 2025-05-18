@@ -8,7 +8,9 @@ Purposes/real world use cases:
  - option menu: in touchpads using 2 fingers
 "
 Class {
-	#name : #TbGestureTapEvent,
-	#superclass : #TbGestureEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbGestureTapEvent',
+	#superclass : 'TbGestureEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }

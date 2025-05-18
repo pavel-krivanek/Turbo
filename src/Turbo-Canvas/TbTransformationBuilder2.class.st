@@ -1,16 +1,17 @@
 Class {
-	#name : #TbTransformationBuilder2,
-	#superclass : #TbAbstractBuilder,
+	#name : 'TbTransformationBuilder2',
+	#superclass : 'TbAbstractBuilder',
 	#traits : 'TTbSpartaTransformable',
 	#classTraits : 'TTbSpartaTransformable classTrait',
 	#instVars : [
 		'transformation',
 		'current'
 	],
-	#category : #'Turbo-Canvas'
+	#category : 'Turbo-Canvas',
+	#package : 'Turbo-Canvas'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> apply [
 	
 	transformation isIdentity
@@ -19,7 +20,7 @@ TbTransformationBuilder2 >> apply [
 	"self primApplyTransform: (SpartaCairoMatrix fromSpartaMatrix: transformation)"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> by: aBlElementTransform translated: aPoint during: aBlock [
 
 	| needsTransformation needsTranslation  |
@@ -41,51 +42,51 @@ TbTransformationBuilder2 >> by: aBlElementTransform translated: aPoint during: a
 		aBlock value: self canvas ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> current [
 	
 	^ current
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> during: aBlock [
 	self push.
 	[ aBlock cull: self ] ensure: [
 		self pop ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> initialize [
 
 	super initialize.
 	current := TbSpartaMatrix new.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> pop [
 	canvas popTransform
 	"self primSetTransform: (SpartaCairoMatrix fromSpartaMatrix: canvas popTransform)"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> push [
 
 	canvas pushTransform: self transformation
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> reset [
 	super reset.
 	transformation := TbSpartaMatrix new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> set: aMatrix [
 
 	transformation := TbSpartaMatrix new loadAffineTransform: aMatrix
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbTransformationBuilder2 >> transformation [
 	^ transformation
 ]

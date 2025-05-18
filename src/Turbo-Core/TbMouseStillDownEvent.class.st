@@ -1,15 +1,17 @@
 Class {
-	#name : #TbMouseStillDownEvent,
-	#superclass : #TbMouseEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbMouseStillDownEvent',
+	#superclass : 'TbMouseEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbMouseStillDownEvent >> isMouseDown [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbMouseStillDownEvent >> sendTo: anObject [
 	anObject mouseStillDownEvent: self
 ]

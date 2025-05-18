@@ -1,6 +1,6 @@
 Class {
-	#name : #TbOvershootingSplineBasedScroller,
-	#superclass : #Object,
+	#name : 'TbOvershootingSplineBasedScroller',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -28,10 +28,12 @@ Class {
 	#pools : [
 		'TbScrollerConstants'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling'
+	#category : 'Turbo-Core-Utilities - Scrolling',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling'
 }
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbOvershootingSplineBasedScroller >> adjustDuration: aDuration start: aStart final: aNewFinal previousFinal: anOldFinal [
 	<return: #Duration>
 	| anOldDistance aNewDistance anX anIndex anIndexPlusOne aNewDuration |
@@ -58,7 +60,7 @@ TbOvershootingSplineBasedScroller >> adjustDuration: aDuration start: aStart fin
 	^ aNewDuration
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbOvershootingSplineBasedScroller >> bePrecise [
 	"Do not round or truncate values. Computations will be precise, not suitable for actual use,
 	however, can be used to create nice visualisations and graphs of scrolling behaviour"
@@ -66,14 +68,14 @@ TbOvershootingSplineBasedScroller >> bePrecise [
 	shouldRound := false
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbOvershootingSplineBasedScroller >> beRounded [
 	"Round or truncate values to produce integer results (default)"
 
 	shouldRound := true
 ]
 
-{ #category : #'private - lifecycle' }
+{ #category : 'private - lifecycle' }
 TbOvershootingSplineBasedScroller >> continue [
 	"Let scrolling decide whether animation should continue even though we reached our
 	destination or animation duration is over. #continue allows scroller to support
@@ -91,14 +93,14 @@ TbOvershootingSplineBasedScroller >> continue [
 	^ shouldContinue
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbOvershootingSplineBasedScroller >> currentPosition [
 	<return: #Number>
 
 	^ currentPosition
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> currentPosition: aNumber [
 	
 	self
@@ -108,21 +110,21 @@ TbOvershootingSplineBasedScroller >> currentPosition: aNumber [
 	currentPosition := aNumber
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbOvershootingSplineBasedScroller >> currentStep [
 	<return: #BlSplineOverScrollerStep>
 
 	^ currentStep
 ]
 
-{ #category : #'api - accessing' }
+{ #category : 'api - accessing' }
 TbOvershootingSplineBasedScroller >> currentVelocity [
 	<return: #Number>
 
 	^ currentVelocity
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> currentVelocity: aNumber [
 	
 	self
@@ -132,7 +134,7 @@ TbOvershootingSplineBasedScroller >> currentVelocity: aNumber [
 	currentVelocity := aNumber
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> deceleration [
 	"Return constant current deceleration"
 	<return: #Number>
@@ -140,12 +142,12 @@ TbOvershootingSplineBasedScroller >> deceleration [
 	^ deceleration
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> deceleration: aNumber [
 	deceleration := aNumber
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbOvershootingSplineBasedScroller >> decelerationFor: aVelocity [
 	"Return a signed deceleration that will reduce the velocity"
 	<return: #Number>
@@ -155,14 +157,14 @@ TbOvershootingSplineBasedScroller >> decelerationFor: aVelocity [
 		ifFalse: [ Gravity ]
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> decelerationRate [
 	<return: #Number>
 	
 	^ DecelerationRate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> duration [
 	"Return animation duration"
 	<return: #Duration>
@@ -170,39 +172,39 @@ TbOvershootingSplineBasedScroller >> duration [
 	^ duration
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> duration: aDuration [
 
 	duration := aDuration
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> endTension [
 	<return: #Number>
 	
 	^ EndTension
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> finalPosition [
 	<return: #Number>
 
 	^ finalPosition
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> finalPosition: aNumber [
 	finalPosition := aNumber
 ]
 
-{ #category : #'private - lifecycle' }
+{ #category : 'private - lifecycle' }
 TbOvershootingSplineBasedScroller >> finish [
 	"Finish animation and perform the necessary cleanup"
 
 	self mode finishOn: self
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbOvershootingSplineBasedScroller >> fitOnBounceCurveFor: aVelocity start: aStart end: anEnd [
 	| aDurationToApex aDistanceToApex aDistanceToEdge aSquaredVelocity aTotalDuration |
 	
@@ -221,7 +223,7 @@ TbOvershootingSplineBasedScroller >> fitOnBounceCurveFor: aVelocity start: aStar
 	startVelocity := self truncated: (deceleration negated * aTotalDuration).
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbOvershootingSplineBasedScroller >> fling: aVelocity start: aStart min: aMin max: aMax over: anOvershotDistance [
 	
 	self flag: 'refactor'.
@@ -240,7 +242,7 @@ TbOvershootingSplineBasedScroller >> fling: aVelocity start: aStart min: aMin ma
 		overshotDistance: anOvershotDistance)
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> friction [
 	"Return the amount of friction applied to scrolls and flings.
 	It is a scalar dimensionless value representing the coefficient of friction."
@@ -249,19 +251,19 @@ TbOvershootingSplineBasedScroller >> friction [
 	^ friction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> friction: aNumber [
 	friction := aNumber
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> inflexion [
 	<return: #Number>
 
 	^ Inflexion
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbOvershootingSplineBasedScroller >> initialize [
 	super initialize.
 
@@ -283,47 +285,47 @@ TbOvershootingSplineBasedScroller >> initialize [
 	isFinished := true.
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbOvershootingSplineBasedScroller >> isBallistic [
 	<return: #Boolean>
 
 	^ currentStep = Ballistic
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbOvershootingSplineBasedScroller >> isCubic [
 	<return: #Boolean>
 
 	^ currentStep = Cubic
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbOvershootingSplineBasedScroller >> isFinished [
 	<return: #Boolean>
 
 	^ isFinished
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> isFinished: aBoolean [
 	isFinished := aBoolean
 ]
 
-{ #category : #'api - testing' }
+{ #category : 'api - testing' }
 TbOvershootingSplineBasedScroller >> isSpline [
 	<return: #Boolean>
 
 	^ currentStep = Spline
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbOvershootingSplineBasedScroller >> mode [
 	<return: #BlSplineOverScrollerMode>
 
 	^ mode
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbOvershootingSplineBasedScroller >> mode: aBlSplineScrollerMode [
 	"Switch current scroller mode"
 
@@ -331,14 +333,14 @@ TbOvershootingSplineBasedScroller >> mode: aBlSplineScrollerMode [
 	mode initializeOn: self
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> nbSamples [
 	<return: #Number>
 
 	^ NbSamples
 ]
 
-{ #category : #'private - scrolling' }
+{ #category : 'private - scrolling' }
 TbOvershootingSplineBasedScroller >> notifyEdgeReached: anOvershotDistance start: aStart end: anEnd [
 	
 	currentStep = Spline
@@ -350,7 +352,7 @@ TbOvershootingSplineBasedScroller >> notifyEdgeReached: anOvershotDistance start
 			self startAfterEdgeFor: self currentVelocity start: aStart min: anEnd max: anEnd ]
 ]
 
-{ #category : #hooks }
+{ #category : 'hooks' }
 TbOvershootingSplineBasedScroller >> onEdgeReached [
 	| aSquaredVelocity aDistance |
 	"startPosition, startVelocity and startTime were adjusted to their values when edge was reached"
@@ -375,20 +377,20 @@ TbOvershootingSplineBasedScroller >> onEdgeReached [
 	duration := (self truncated: (1000 * startVelocity / deceleration)) negated milliSeconds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> overshotDistance [
 	<return: #Number>
 
 	^ overshotDistance
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> overshotDistance: aNumber [
 
 	overshotDistance := aNumber
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> physicalCoefficient [
 	<return: #Number>
 
@@ -398,19 +400,19 @@ TbOvershootingSplineBasedScroller >> physicalCoefficient [
 		* 0.84. "look and feel tuning"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> ppi [
 	<return: #Number>
 
 	^ ppi
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> ppi: aNumber [
 	ppi := aNumber
 ]
 
-{ #category : #'private - rounding' }
+{ #category : 'private - rounding' }
 TbOvershootingSplineBasedScroller >> rounded: aNumber [
 	"Round a given number according to my current rounding precision"
 	<return: #Number>
@@ -420,7 +422,7 @@ TbOvershootingSplineBasedScroller >> rounded: aNumber [
 		ifFalse: [ aNumber ]
 ]
 
-{ #category : #'api - running' }
+{ #category : 'api - running' }
 TbOvershootingSplineBasedScroller >> run [
 	"Run a simulation step and return true if animation is not finished"
 	<return: #Boolean>
@@ -438,7 +440,7 @@ TbOvershootingSplineBasedScroller >> run [
 	^ false
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbOvershootingSplineBasedScroller >> shouldRound [
 	"Return true if I round values and produce integer results, false otherwise"
 	<return: #Boolean>
@@ -446,14 +448,14 @@ TbOvershootingSplineBasedScroller >> shouldRound [
 	^ shouldRound
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbOvershootingSplineBasedScroller >> splineDecelerationFor: aVelocity [
 	<return: #Number>
 
 	^ ((self inflexion * aVelocity abs) / (self friction * self physicalCoefficient)) ln
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> splineDistance [
 	"Distance to travel along spline animation"
 	<return: #Number>
@@ -461,12 +463,12 @@ TbOvershootingSplineBasedScroller >> splineDistance [
 	^ splineDistance
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> splineDistance: aNumber [
 	splineDistance := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> splineDuration [
 	"Duration to complete spline component of animation"
 	<return: #Duration>
@@ -474,13 +476,13 @@ TbOvershootingSplineBasedScroller >> splineDuration [
 	^ splineDuration
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> splineDuration: aDuration [
 
 	splineDuration := aDuration
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbOvershootingSplineBasedScroller >> splineFlingDistanceFor: aVelocity [
 	<return: #Number>
 	| aSplineDeceleration |
@@ -489,7 +491,7 @@ TbOvershootingSplineBasedScroller >> splineFlingDistanceFor: aVelocity [
 	^ (self friction * self physicalCoefficient * (self decelerationRate / (self decelerationRate - 1) * aSplineDeceleration ) exp)
 ]
 
-{ #category : #'private - physics' }
+{ #category : 'private - physics' }
 TbOvershootingSplineBasedScroller >> splineFlingDurationFor: aVelocity [
 	"Return the duration, expressed in milliseconds"
 	<return: #Duration>
@@ -500,14 +502,14 @@ TbOvershootingSplineBasedScroller >> splineFlingDurationFor: aVelocity [
 	^ (self truncated: (1000.0 * (aSplineDeceleration / ( DecelerationRate - 1 ) ) exp)) milliSeconds
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> splineTime [
 	<return: #Array of: #Number>
 
 	^ SplineTime
 ]
 
-{ #category : #'private - scrolling' }
+{ #category : 'private - scrolling' }
 TbOvershootingSplineBasedScroller >> springback: aStart min: aMin max: aMax [
 	
 	isFinished := true.
@@ -527,7 +529,7 @@ TbOvershootingSplineBasedScroller >> springback: aStart min: aMin max: aMax [
 	^ isFinished not
 ]
 
-{ #category : #'private - scrolling' }
+{ #category : 'private - scrolling' }
 TbOvershootingSplineBasedScroller >> startAfterEdgeFor: aVelocity start: aStart min: aMin max: aMax [
 	| isPositive anEdge anOverDistance shouldKeepInscreasing |
 	
@@ -559,7 +561,7 @@ TbOvershootingSplineBasedScroller >> startAfterEdgeFor: aVelocity start: aStart 
 				ifFalse: [ self startSpringbackFor: aVelocity start: aStart end: anEdge ] ]
 ]
 
-{ #category : #'private - scrolling' }
+{ #category : 'private - scrolling' }
 TbOvershootingSplineBasedScroller >> startBounceAfterEdgeFor: aVelocity start: aStart end: anEnd [
 
 	deceleration := self decelerationFor: ( aVelocity isZero
@@ -570,19 +572,19 @@ TbOvershootingSplineBasedScroller >> startBounceAfterEdgeFor: aVelocity start: a
 	self onEdgeReached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> startPosition [
 	<return: #Number>
 
 	^ startPosition
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> startPosition: aNumber [
 	startPosition := aNumber
 ]
 
-{ #category : #'api - scrolling' }
+{ #category : 'api - scrolling' }
 TbOvershootingSplineBasedScroller >> startScrollBy: aDistance from: aStartPosition during: aDuration interpolator: anInterpolator [
 	
 	self mode: (TbSplineOverScrollerScrollMode new
@@ -592,7 +594,7 @@ TbOvershootingSplineBasedScroller >> startScrollBy: aDistance from: aStartPositi
 		interpolator: anInterpolator)
 ]
 
-{ #category : #'private - scrolling' }
+{ #category : 'private - scrolling' }
 TbOvershootingSplineBasedScroller >> startSpringbackFor: aVelocity start: aStartPosition end: anEndPosition [
 	| aDelta |
 	
@@ -610,14 +612,14 @@ TbOvershootingSplineBasedScroller >> startSpringbackFor: aVelocity start: aStart
 	duration := (self truncated: (1000 * (-2.0 * aDelta / deceleration) sqrt)) milliSeconds
 ]
 
-{ #category : #'api - physics' }
+{ #category : 'api - physics' }
 TbOvershootingSplineBasedScroller >> startTension [
 	<return: #Number>
 	
 	^ StartTension
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> startTime [
 	"Return animation starting time"
 	<return: #DateAndTime>
@@ -625,46 +627,46 @@ TbOvershootingSplineBasedScroller >> startTime [
 	^ startTime
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> startTime: aDateAndTime [
 	startTime := aDateAndTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> startVelocity [
 	<retrun: #Number>
 
 	^ startVelocity
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TbOvershootingSplineBasedScroller >> startVelocity: aNumber [
 	startVelocity := aNumber
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbOvershootingSplineBasedScroller >> switchToBallistic [
 	currentStep := TbSplineOverScrollerStep ballistic
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbOvershootingSplineBasedScroller >> switchToCubic [
 	currentStep := TbSplineOverScrollerStep cubic
 ]
 
-{ #category : #'private - steps' }
+{ #category : 'private - steps' }
 TbOvershootingSplineBasedScroller >> switchToSpline [
 	currentStep := TbSplineOverScrollerStep spline
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> time [
 	<return: #BlTime>
 	
 	^ time
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> time: aBlTime [
 	"Set a new time provider"
 	
@@ -675,7 +677,7 @@ TbOvershootingSplineBasedScroller >> time: aBlTime [
 	self startTime: self time now
 ]
 
-{ #category : #'private - rounding' }
+{ #category : 'private - rounding' }
 TbOvershootingSplineBasedScroller >> truncated: aNumber [
 	"Truncate a given number according to my current rounding precision"
 	<return: #Number>
@@ -685,7 +687,7 @@ TbOvershootingSplineBasedScroller >> truncated: aNumber [
 		ifFalse: [ aNumber ]
 ]
 
-{ #category : #'private - lifecycle' }
+{ #category : 'private - lifecycle' }
 TbOvershootingSplineBasedScroller >> update [
 	"Update the current position and velocity for current time.
 	Returns true if update has been done and false if animation duration has been reached."
@@ -696,7 +698,7 @@ TbOvershootingSplineBasedScroller >> update [
 	^ self mode updateOn: self
 ]
 
-{ #category : #'private - updating' }
+{ #category : 'private - updating' }
 TbOvershootingSplineBasedScroller >> updateBallistic: aDeltaTime [
 	"r = vt + at^2 / 2, r - distance, t - delta time, a - acceleration (constant)
 	https://en.wikipedia.org/wiki/Acceleration#Uniform_acceleration"
@@ -709,7 +711,7 @@ TbOvershootingSplineBasedScroller >> updateBallistic: aDeltaTime [
 	^ (startVelocity * aTimeInSeconds) + (self deceleration * aTimeInSeconds * aTimeInSeconds / 2.0)
 ]
 
-{ #category : #'private - updating' }
+{ #category : 'private - updating' }
 TbOvershootingSplineBasedScroller >> updateCubic: aDeltaTime [
 	| aTime aSquaredTime aSign |
 	
@@ -722,7 +724,7 @@ TbOvershootingSplineBasedScroller >> updateCubic: aDeltaTime [
 	^ aSign * overshotDistance * ((3.0 * aSquaredTime) - (2 * aTime * aSquaredTime))
 ]
 
-{ #category : #'private - updating' }
+{ #category : 'private - updating' }
 TbOvershootingSplineBasedScroller >> updateSpline: aDeltaTime [
 	| aTime anIndex aDistanceCoef aVelocityCoef |
 	
@@ -746,7 +748,7 @@ TbOvershootingSplineBasedScroller >> updateSpline: aDeltaTime [
 	^ aDistanceCoef * splineDistance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> updateTime [
 	"Return last update time"
 	<return: #DateAndTime>
@@ -754,7 +756,7 @@ TbOvershootingSplineBasedScroller >> updateTime [
 	^ updateTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbOvershootingSplineBasedScroller >> updateTime: aDateAndTime [
 	updateTime := aDateAndTime
 ]

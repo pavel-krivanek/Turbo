@@ -4,29 +4,31 @@ I extend selection handler in the sense that I add a visual selection rectangle 
 I simulate Desktop behaviour of most OS
 "
 Class {
-	#name : #TbVisualSelectionHandler,
-	#superclass : #TbSelectionHandler,
+	#name : 'TbVisualSelectionHandler',
+	#superclass : 'TbSelectionHandler',
 	#instVars : [
 		'selection'
 	],
-	#category : #'Turbo-Core-Utilities - Selection'
+	#category : 'Turbo-Core-Utilities - Selection',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Selection'
 }
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbVisualSelectionHandler >> dragEndEvent: anEvent [
 	super dragEndEvent: anEvent.
 	
 	container removeChild: selection
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbVisualSelectionHandler >> dragStartEvent: anEvent [
 	super dragStartEvent: anEvent.
 	
 	container addChild: selection
 ]
 
-{ #category : #'mouse handlers' }
+{ #category : 'mouse handlers' }
 TbVisualSelectionHandler >> mouseDownEvent: anEvent [
 	| oldSelected |
 	super mouseDownEvent: anEvent.
@@ -36,7 +38,7 @@ TbVisualSelectionHandler >> mouseDownEvent: anEvent [
 	oldSelected keysDo: [ :anElement | self handleDeselected: anElement ]
 ]
 
-{ #category : #installation }
+{ #category : 'installation' }
 TbVisualSelectionHandler >> onInstalledIn: anElement [
 	super onInstalledIn: anElement.
 
@@ -47,7 +49,7 @@ TbVisualSelectionHandler >> onInstalledIn: anElement [
 		yourself
 ]
 
-{ #category : #'selection - handling' }
+{ #category : 'selection - handling' }
 TbVisualSelectionHandler >> selectionChanged [
 	| aSelectionBounds |
 	super selectionChanged.

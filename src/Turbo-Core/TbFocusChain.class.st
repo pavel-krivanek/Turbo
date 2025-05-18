@@ -6,12 +6,14 @@ Even if  ""parent <-> child"" connection between elements is lost due to removin
 I am used by ${class:BlFocusProcessor}$ to properly send events
 "
 Class {
-	#name : #TbFocusChain,
-	#superclass : #DoubleLinkedList,
-	#category : #'Turbo-Core-Space-Support'
+	#name : 'TbFocusChain',
+	#superclass : 'DoubleLinkedList',
+	#category : 'Turbo-Core-Space-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Space-Support'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFocusChain class >> of: anElement [
 	| aChain |
 	
@@ -22,7 +24,7 @@ TbFocusChain class >> of: anElement [
 	^ aChain
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 TbFocusChain >> leafsDo: aBlock [
 	"Evaluate a given block with all leaf elements in the chain starting from the focused element in reverse order"
 	| previousElementHadParent |

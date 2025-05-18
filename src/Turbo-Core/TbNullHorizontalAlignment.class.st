@@ -1,19 +1,21 @@
 Class {
-	#name : #TbNullHorizontalAlignment,
-	#superclass : #TbNullAlignment,
+	#name : 'TbNullHorizontalAlignment',
+	#superclass : 'TbNullAlignment',
 	#classInstVars : [
 		'rightToLeft',
 		'leftToRight'
 	],
-	#category : #'Turbo-Core-Layouts-Support'
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullHorizontalAlignment class >> directed: aBlLayoutDirection [
 	^ aBlLayoutDirection of: self
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbNullHorizontalAlignment class >> initialize [
 	super initialize.
 	
@@ -21,37 +23,37 @@ TbNullHorizontalAlignment class >> initialize [
 	leftToRight := TbNullLeftAlignment new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullHorizontalAlignment class >> leftToRight [
 	^ leftToRight
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullHorizontalAlignment class >> rightToLeft [
 	^ rightToLeft
 ]
 
-{ #category : #composition }
+{ #category : 'composition' }
 TbNullHorizontalAlignment >> + aVerticalAlignment [
 	^ TbCompositeAlignment horizontal: self vertical: aVerticalAlignment
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullHorizontalAlignment >> directed: aBlLayoutDirection [
 	^ self class directed: aBlLayoutDirection
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullHorizontalAlignment >> leftToRight [
 	^ self class leftToRight
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbNullHorizontalAlignment >> rightToLeft [
 	^ self class rightToLeft
 ]
 
-{ #category : #translation }
+{ #category : 'translation' }
 TbNullHorizontalAlignment >> translationOf: aBounds in: aContainerBounds [
 	^ 0 @ 0
 ]

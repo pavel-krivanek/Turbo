@@ -7,8 +7,8 @@ Negative values are not allowed.
 @see BlRectangle
 "
 Class {
-	#name : #TbCornerRadii,
-	#superclass : #Object,
+	#name : 'TbCornerRadii',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -20,10 +20,12 @@ Class {
 	#classInstVars : [
 		'empty'
 	],
-	#category : #'Turbo-Core-Basic-Support'
+	#category : 'Turbo-Core-Basic-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Support'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbCornerRadii class >> cleanUp [
 	<script: 'self cleanUp'>
 	super cleanUp.
@@ -31,19 +33,19 @@ TbCornerRadii class >> cleanUp [
 	empty := nil
 ]
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbCornerRadii class >> empty [
 	^ empty ifNil: [ empty := self radius: 0 ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbCornerRadii class >> radius: aNumber [
 	^ self new
 		radius: aNumber;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbCornerRadii >> = aBlCornerRadii [
 	self species == aBlCornerRadii species
 		ifFalse: [ ^ false ].
@@ -54,12 +56,12 @@ TbCornerRadii >> = aBlCornerRadii [
 				and: [ self topRight = aBlCornerRadii topRight ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> bottomLeft [
 	^ bottomLeft
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> bottomLeft: aNumber [
 	"Initialize bottom left corner radius with a given number.
 	It can be done only once"
@@ -71,12 +73,12 @@ TbCornerRadii >> bottomLeft: aNumber [
 	bottomLeft := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> bottomRight [
 	^ bottomRight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> bottomRight: aNumber [
 	"Initialize bottom right corner radius with a given number.
 	It can be done only once"
@@ -88,12 +90,12 @@ TbCornerRadii >> bottomRight: aNumber [
 	bottomRight := aNumber
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbCornerRadii >> hash [
 	^ bottomLeft hash bitXor: (bottomRight hash bitXor: (topLeft hash bitXor: topLeft))
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbCornerRadii >> max [
 	"Return the biggest corner radius among top left, top right, bottom left and bottom right"
 	<return: #Number>
@@ -101,7 +103,7 @@ TbCornerRadii >> max [
 	^ topLeft max: (topRight max: (bottomLeft max: bottomRight))
 ]
 
-{ #category : #arithmetic }
+{ #category : 'arithmetic' }
 TbCornerRadii >> min [
 	"Return the smallest corner radius among top left, top right, bottom left and bottom right"
 	<return: #Number>
@@ -109,17 +111,17 @@ TbCornerRadii >> min [
 	^ topLeft min: (topRight min: (bottomLeft min: bottomRight))
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbCornerRadii >> radius: aNumber [
 	topLeft := topRight := bottomLeft := bottomRight := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> topLeft [
 	^ topLeft
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> topLeft: aNumber [
 	"Initialize top left corner radius with a given number.
 	It can be done only once"
@@ -131,12 +133,12 @@ TbCornerRadii >> topLeft: aNumber [
 	topLeft := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> topRight [
 	^ topRight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbCornerRadii >> topRight: aNumber [
 	"Initialize top right corner radius with a given number.
 	It can be done only once"

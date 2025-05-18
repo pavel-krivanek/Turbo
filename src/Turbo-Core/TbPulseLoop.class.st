@@ -6,8 +6,8 @@ A pulse is fired all the 16ms to obtain 60 frames per second (fps) maximum.
 The opened spaces listen the pulse to be synchronized and to update their state when it is needed.
 "
 Class {
-	#name : #TbPulseLoop,
-	#superclass : #Object,
+	#name : 'TbPulseLoop',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -19,10 +19,12 @@ Class {
 		'pulsePeriod',
 		'session'
 	],
-	#category : #'Turbo-Core-Universe'
+	#category : 'Turbo-Core-Universe',
+	#package : 'Turbo-Core',
+	#tag : 'Universe'
 }
 
-{ #category : #'loop process' }
+{ #category : 'loop process' }
 TbPulseLoop >> createLoopProcess [
 	^ self createLoopTask newProcess
 		priority: TbUniverse default mainLoopPriority;
@@ -30,17 +32,17 @@ TbPulseLoop >> createLoopProcess [
 		yourself
 ]
 
-{ #category : #'loop process' }
+{ #category : 'loop process' }
 TbPulseLoop >> createLoopTask [
 	^ [ [ self firePulse ] repeat ]
 ]
 
-{ #category : #period }
+{ #category : 'period' }
 TbPulseLoop >> defaultPulsePeriod [
 	^ 16 milliSeconds
 ]
 
-{ #category : #'loop process' }
+{ #category : 'loop process' }
 TbPulseLoop >> firePulse [
 	pulseStartTime := DateAndTime now.
 	self pulseEvent timestamp: pulseStartTime.
@@ -49,7 +51,7 @@ TbPulseLoop >> firePulse [
 	Processor yield
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbPulseLoop >> forceStartNewUIProcess [
 	"I should only be used by the logic for opening the debugger.
 	
@@ -63,7 +65,7 @@ TbPulseLoop >> forceStartNewUIProcess [
 	loopProcess resume.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TbPulseLoop >> forceStartOfUIProcess: aProces [
 	"I should only be used by the logic for closing the debugger."
 	
@@ -71,7 +73,7 @@ TbPulseLoop >> forceStartOfUIProcess: aProces [
 	loopProcess resume.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbPulseLoop >> initialize [
 	super initialize.
 	pulseEvent := TbPulseEvent new.
@@ -79,47 +81,47 @@ TbPulseLoop >> initialize [
 	pulseStartTime := DateAndTime now.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbPulseLoop >> isRunning [
 	^ loopProcess isNotNil and: [ loopProcess isTerminated not ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbPulseLoop >> isRunningInTheSameProcess [
 	^ Processor activeProcess effectiveProcess == loopProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPulseLoop >> lastElpasedTime [
 	^ lastElpasedTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPulseLoop >> loopProcess [
 	^ loopProcess
 ]
 
-{ #category : #'loop process' }
+{ #category : 'loop process' }
 TbPulseLoop >> processId [
 	^ 'Turbo Main Loop'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbPulseLoop >> pulseEvent [
 	^ pulseEvent 
 ]
 
-{ #category : #period }
+{ #category : 'period' }
 TbPulseLoop >> pulsePeriod [
 	^ pulsePeriod ifNil: [ pulsePeriod := self defaultPulsePeriod ]
 ]
 
-{ #category : #period }
+{ #category : 'period' }
 TbPulseLoop >> pulsePeriod: aTime [
 	^ pulsePeriod := aTime
 ]
 
-{ #category : #lifecycle }
+{ #category : 'lifecycle' }
 TbPulseLoop >> start [
 	self isRunning
 		ifTrue: [ ^ self ].
@@ -132,7 +134,7 @@ TbPulseLoop >> start [
 	loopProcess resume
 ]
 
-{ #category : #lifecycle }
+{ #category : 'lifecycle' }
 TbPulseLoop >> stop [
 	| currentProcess |
 	
@@ -148,12 +150,12 @@ TbPulseLoop >> stop [
 	currentProcess terminate
 ]
 
-{ #category : #period }
+{ #category : 'period' }
 TbPulseLoop >> timeIsUp [
 	^ DateAndTime now - pulseStartTime > self pulsePeriod
 ]
 
-{ #category : #period }
+{ #category : 'period' }
 TbPulseLoop >> wait [
 	"Do not pause UI thread if there are no background tasks. UI becomes much smoother
 (Processor nextReadyProcess == Processor backgroundProcess)

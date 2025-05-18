@@ -7,29 +7,31 @@ Note: I am never #isTransparent even if all Form pixels are transparent. The rea
 Examples are provided by the class ${class:BlImageBackgroundExamples}$.
 "
 Class {
-	#name : #TbImageBackground,
-	#superclass : #TbBackground,
+	#name : 'TbImageBackground',
+	#superclass : 'TbBackground',
 	#instVars : [
 		'image',
 		'session',
 		'bitmap'
 	],
-	#category : #'Turbo-Core-Basic-Background'
+	#category : 'Turbo-Core-Basic-Background',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Background'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbImageBackground class >> image: aForm [
 	^ self new image: aForm
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImageBackground >> image [
 	<return: #Form>
 
 	^ image
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbImageBackground >> image: aForm [
 	self
 		assert: [ aForm isNotNil ]
@@ -42,7 +44,7 @@ TbImageBackground >> image: aForm [
 	bitmap := nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbImageBackground >> isTransparent [
 	"Unfortunately there is no fast way to detect if a Form is completely transparent,
 	the only check we can afford to do is to see whether the extent of the form is positive"
@@ -51,7 +53,7 @@ TbImageBackground >> isTransparent [
 	^ (self opacity closeTo: 0) or: [ self image extent min = 0 ]
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbImageBackground >> matchExtent: anExtent [
 	"Not sure what we should do with image background.
 	Will implement later"

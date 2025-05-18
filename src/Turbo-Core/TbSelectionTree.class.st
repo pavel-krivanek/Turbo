@@ -12,17 +12,19 @@ Both insertions and deletion have logarithmic complexity O(logN) where N is curr
 [1] Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Stein, Clifford (2009), Introduction to Algorithms (3rd ed.), MIT Press and McGraw-Hill, ISBN 978-0-262-03384-8
 "
 Class {
-	#name : #TbSelectionTree,
-	#superclass : #Object,
+	#name : 'TbSelectionTree',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'root'
 	],
-	#category : #'Turbo-Core-Utilities - Selection'
+	#category : 'Turbo-Core-Utilities - Selection',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Selection'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSelectionTree >> = anObject [
 	self == anObject
 		ifTrue: [ ^ true ].
@@ -37,7 +39,7 @@ TbSelectionTree >> = anObject [
 		ifFalse: [ false ]
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionTree >> contains: anIndex [
 	"Return true if this selection interval includes a given index, false otherwise"
 	<return: #Boolean>
@@ -47,7 +49,7 @@ TbSelectionTree >> contains: anIndex [
 		ifFalse: [ false ]
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionTree >> delete: aMonotoneTextSelection [
 	| theOverlapping |
 	self hasRoot
@@ -65,27 +67,27 @@ TbSelectionTree >> delete: aMonotoneTextSelection [
 			do: [ :aSelection | aSelection isNotEmpty ifTrue: [ self insert: aSelection ] ] ]
 ]
 
-{ #category : #'tree - enumerating' }
+{ #category : 'tree - enumerating' }
 TbSelectionTree >> do: aBlock [
 	self hasRoot
 		ifTrue: [ self root do: aBlock ]
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionTree >> findOverlapping: aMonotoneTextSelection [
 	<return: #Collection of: #BlMonotoneSelection>
 	
 	^ Array streamContents: [ :aStream | self overlapping: aMonotoneTextSelection in: aStream ]
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionTree >> findOverlappingNeighbours: aMonotoneTextSelection [
 	<return: #Collection of: #BlMonotoneSelection>
 	
 	^ Array streamContents: [ :aStream | self overlappingNeighbours: aMonotoneTextSelection in: aStream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionTree >> first [
 	self
 		assert: [ self hasRoot ]
@@ -94,19 +96,19 @@ TbSelectionTree >> first [
 	^ self root findMin
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionTree >> hasRoot [
 	^ root isNotNil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSelectionTree >> hash [
 	^ self hasRoot
 		ifTrue: [ self root hash bitXor: self class hash ]
 		ifFalse: [ self class hash ]
 ]
 
-{ #category : #'tree - inserting' }
+{ #category : 'tree - inserting' }
 TbSelectionTree >> insert: aMonotoneTextSelection [
 	| theNeighbours newFrom newTo |
 	
@@ -129,22 +131,22 @@ TbSelectionTree >> insert: aMonotoneTextSelection [
 	self root insert: (TbSelection from: newFrom to: newTo)
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionTree >> isEmpty [
 	^ self hasRoot not
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionTree >> isNotEmpty [
 	^ self hasRoot
 ]
 
-{ #category : #'tree - testing' }
+{ #category : 'tree - testing' }
 TbSelectionTree >> isRoot [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionTree >> last [
 	self
 		assert: [ self hasRoot ]
@@ -153,39 +155,39 @@ TbSelectionTree >> last [
 	^ self root findMax
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionTree >> overlapping: aMonotoneTextSelection in: aStream [
 	
 	self hasRoot
 		ifTrue: [ self root overlapping: aMonotoneTextSelection in: aStream ]
 ]
 
-{ #category : #'tree - searching' }
+{ #category : 'tree - searching' }
 TbSelectionTree >> overlappingNeighbours: aMonotoneTextSelection in: aStream [
 	
 	self hasRoot
 		ifTrue: [ self root overlappingNeighbours: aMonotoneTextSelection in: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbSelectionTree >> printOn: aStream [
 
 	self hasRoot
 		ifTrue: [ self root printOn: aStream ]
 ]
 
-{ #category : #'tree - deletion' }
+{ #category : 'tree - deletion' }
 TbSelectionTree >> removeRoot [
 	root := nil
 ]
 
-{ #category : #'tree - enumerating' }
+{ #category : 'tree - enumerating' }
 TbSelectionTree >> reverseDo: aBlock [
 	self hasRoot
 		ifTrue: [ self root reverseDo: aBlock ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionTree >> root [
 	<return: #BlSelectionNode>
 	
@@ -196,7 +198,7 @@ TbSelectionTree >> root [
 	^ root
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSelectionTree >> root: aTextSelectionNode [
 	root := aTextSelectionNode
 ]

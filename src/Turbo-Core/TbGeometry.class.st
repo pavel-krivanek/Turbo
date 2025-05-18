@@ -2,18 +2,20 @@
 The geometry is used to define the geometry to be drawn and the interaction area.
 "
 Class {
-	#name : #TbGeometry,
-	#superclass : #Object,
+	#name : 'TbGeometry',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
 		'extent',
 		'pathCache'
 	],
-	#category : #'Turbo-Core-Basic'
+	#category : 'Turbo-Core-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Basic'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbGeometry >> asElement [
 	"Create an appropriate element with me as its geometry.
 	By default create an instance of the basic BlElement simply setting its
@@ -27,7 +29,7 @@ TbGeometry >> asElement [
 		geometry: self
 ]
 
-{ #category : #'geometry testing' }
+{ #category : 'geometry testing' }
 TbGeometry >> containsPoint: aPoint in: aBlElement [
 	"Note: we have to pass BlElement in order to give geometry a chance to use element properties
 	as as border during the testing process"
@@ -39,7 +41,7 @@ TbGeometry >> containsPoint: aPoint in: aBlElement [
 		on: TbBloc preferableSpartaCanvas offscreen
 ]
 
-{ #category : #'geometry testing' }
+{ #category : 'geometry testing' }
 TbGeometry >> containsPoint: aPoint in: anElement on: aSpartaCanvas [
 	"Note: I am a fallback method to determine if a point lies within a geometry path
 	when geometry is complex and it is mathematically difficult to compute manually"
@@ -52,12 +54,12 @@ TbGeometry >> containsPoint: aPoint in: anElement on: aSpartaCanvas [
 		containsPoint: aPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGeometry >> extent [
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGeometry >> extent: aPoint [
 	"The argument has to be a Point of numbers (integer or float).
 	Do not try to provide a fraction as x or y of the point!
@@ -71,7 +73,7 @@ TbGeometry >> extent: aPoint [
 	extent := aPoint
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbGeometry >> geometryBounds [
 	"Return my geometry bounds.
 	This property is different from #visualBounds in the sense that I don't take stroke into account.
@@ -81,7 +83,7 @@ TbGeometry >> geometryBounds [
 	^ (self geometryBounds: TbBounds new) asRectangle
 ]
 
-{ #category : #'geometry bounds' }
+{ #category : 'geometry bounds' }
 TbGeometry >> geometryBounds: aBounds [
 	"Load my bounds in mutable rectangle.
 	@see #geometryBounds for more info"
@@ -92,7 +94,7 @@ TbGeometry >> geometryBounds: aBounds [
 		extent: self extent
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGeometry >> initialize [
 	super initialize.
 	
@@ -100,29 +102,29 @@ TbGeometry >> initialize [
 	pathCache := TbPathCache on: self
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbGeometry >> matchElement: anElement [
 	self matchExtent: anElement extent
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbGeometry >> matchExtent: aPoint [
 	"Resize geometry to exactly match provided extent as a Point"
 
 	self subclassResponsibility
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbGeometry >> postCopy [
 	self releaseCache
 ]
 
-{ #category : #cache }
+{ #category : 'cache' }
 TbGeometry >> releaseCache [
 	pathCache releaseCache
 ]
 
-{ #category : #'visual bounds' }
+{ #category : 'visual bounds' }
 TbGeometry >> strokedBounds: aBlBounds of: anElement on: aCanvas [
 	"Return stroked bounds of a geometry if it would be stroked
 	according to element's border configuration.
@@ -132,7 +134,7 @@ TbGeometry >> strokedBounds: aBlBounds of: anElement on: aCanvas [
 	^ anElement outskirts strokedBounds: aBlBounds of: anElement on: aCanvas
 ]
 
-{ #category : #'visual bounds' }
+{ #category : 'visual bounds' }
 TbGeometry >> strokedBoundsCentered: aBlBounds of: anElement on: aCanvas [
 	| spartaPath strokeOptions strokedBounds |
 
@@ -146,7 +148,7 @@ TbGeometry >> strokedBoundsCentered: aBlBounds of: anElement on: aCanvas [
 	^ aBlBounds rectangle: strokedBounds
 ]
 
-{ #category : #'visual bounds' }
+{ #category : 'visual bounds' }
 TbGeometry >> strokedBoundsInside: aBlBounds of: anElement on: aCanvas [
 	"Stroked inside bounds property is equal to geometry bounds"
 	<return: #BlBounds>
@@ -154,7 +156,7 @@ TbGeometry >> strokedBoundsInside: aBlBounds of: anElement on: aCanvas [
 	^ self geometryBounds: aBlBounds
 ]
 
-{ #category : #'visual bounds' }
+{ #category : 'visual bounds' }
 TbGeometry >> strokedBoundsOutside: aBlBounds of: anElement on: aCanvas [
 	| spartaPath strokeOptions strokedBounds |
 

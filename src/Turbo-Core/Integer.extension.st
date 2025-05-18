@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Integer >> ceilingTicks: aNumber [
 	"Round me to the tick closest to positive infinity on the scale [0...1] that has aNumber of ticks"
 	<return: #Float>
@@ -8,7 +8,7 @@ Integer >> ceilingTicks: aNumber [
 	^ self asFloat
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Integer >> floorTicks: aNumber [
 	"Round me to the tick closest to negative infinity on the scale [0...1] that has aNumber of ticks"
 	<return: #Float>
@@ -16,7 +16,7 @@ Integer >> floorTicks: aNumber [
 	^ self asFloat
 ]
 
-{ #category : #'*Turbo-Core' }
+{ #category : '*Turbo-Core' }
 Integer >> roundTicks: aNumber [
 	"Round me to the closest tick on the scale [0...1] that has aNumber of ticks"
 	<return: #Float>

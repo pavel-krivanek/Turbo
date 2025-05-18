@@ -1,23 +1,24 @@
 Class {
-	#name : #TbAbstractBuilder,
-	#superclass : #Object,
+	#name : 'TbAbstractBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'canvas'
 	],
-	#category : #'Turbo-Canvas'
+	#category : 'Turbo-Canvas',
+	#package : 'Turbo-Canvas'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAbstractBuilder >> canvas [
 	^ canvas
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbAbstractBuilder >> canvas: aCanvas [
 	canvas := aCanvas
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbAbstractBuilder >> reset [
 	canvas := nil
 ]

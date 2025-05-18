@@ -1,17 +1,19 @@
 Class {
-	#name : #TbBaseFocusEvent,
-	#superclass : #TbEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbBaseFocusEvent',
+	#superclass : 'TbEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbBaseFocusEvent >> asBlurEvent [
 	^ TbBlurEvent new
 		copyFrom: self;
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbBaseFocusEvent >> asFocusInEvent [
 	^ TbFocusInEvent new
 		copyFrom: self;
@@ -19,7 +21,7 @@ TbBaseFocusEvent >> asFocusInEvent [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbBaseFocusEvent >> asFocusOutEvent [
 	^ TbFocusOutEvent new
 		copyFrom: self;
@@ -27,7 +29,7 @@ TbBaseFocusEvent >> asFocusOutEvent [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbBaseFocusEvent >> isBaseFocus [
 	^ true
 ]

@@ -4,8 +4,8 @@ I am a helper class intended to help developer implement drag-based selection.
 May be used to implement text selection or desktop like selection behaviour
 "
 Class {
-	#name : #TbSelectionHandler,
-	#superclass : #TbElementEventListener,
+	#name : 'TbSelectionHandler',
+	#superclass : 'TbElementEventListener',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -15,15 +15,17 @@ Class {
 		'container',
 		'selected'
 	],
-	#category : #'Turbo-Core-Utilities - Selection'
+	#category : 'Turbo-Core-Utilities - Selection',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Selection'
 }
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbSelectionHandler >> computeSelectionArea [
 	area origin: (origin min: corner) corner: (corner max: origin)
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbSelectionHandler >> dragEndEvent: anEvent [
 	super dragEndEvent: anEvent.
 	
@@ -34,7 +36,7 @@ TbSelectionHandler >> dragEndEvent: anEvent [
 	area left: 0 top: 0 right: 0 bottom: 0
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbSelectionHandler >> dragEvent: anEvent [	
 	"For selection we want to handle only those drag events that began exactly
 	on the elemen I attached to"
@@ -50,14 +52,14 @@ TbSelectionHandler >> dragEvent: anEvent [
 	self selectionChanged
 ]
 
-{ #category : #'dnd handlers' }
+{ #category : 'dnd handlers' }
 TbSelectionHandler >> dragStartEvent: anEvent [
 	anEvent consumed: true.
 
 	origin := anEvent position
 ]
 
-{ #category : #'selection - handling' }
+{ #category : 'selection - handling' }
 TbSelectionHandler >> handleDeselected: anElement [
 	| anEvent |
 	
@@ -66,7 +68,7 @@ TbSelectionHandler >> handleDeselected: anElement [
 	anElement dispatchEvent: anEvent
 ]
 
-{ #category : #'selection - handling' }
+{ #category : 'selection - handling' }
 TbSelectionHandler >> handleSelected: anElement in: anIntersection [
 	| anEvent |
 
@@ -83,7 +85,7 @@ TbSelectionHandler >> handleSelected: anElement in: anIntersection [
 	^ anEvent isConsumed
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSelectionHandler >> hasOrigin [
 	"Return true if I know selection origin position, false otherwise"
 	<return: #Boolean>
@@ -91,7 +93,7 @@ TbSelectionHandler >> hasOrigin [
 	^ origin isNotNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSelectionHandler >> initialize [
 	super initialize.
 	
@@ -99,7 +101,7 @@ TbSelectionHandler >> initialize [
 	selected := IdentityDictionary new
 ]
 
-{ #category : #selection }
+{ #category : 'selection' }
 TbSelectionHandler >> intersect: aChildElement in: aSelectionBounds ifNone: aNoneBlock [
 	"Return selection intersection bounds of a given element and provided
 	selection bounds in local child cordinates if intersection exists
@@ -113,14 +115,14 @@ TbSelectionHandler >> intersect: aChildElement in: aSelectionBounds ifNone: aNon
 		ifNone: aNoneBlock
 ]
 
-{ #category : #installation }
+{ #category : 'installation' }
 TbSelectionHandler >> onInstalledIn: anElement [
 	super onInstalledIn: anElement.
 	
 	container := anElement
 ]
 
-{ #category : #selection }
+{ #category : 'selection' }
 TbSelectionHandler >> selectedChildren: anElement in: aBlBounds do: aBlock [
 	"Evaluate a block with all children of an element that intersect with provided bounds.
 	aBlBounds is given in local coordinates of anElement"	
@@ -138,7 +140,7 @@ TbSelectionHandler >> selectedChildren: anElement in: aBlBounds do: aBlock [
 			do: aBlock ]
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbSelectionHandler >> selectionArea [
 	"Return bounds representing a selection area in global coordinates"
 	<return: #BlBounds>
@@ -149,7 +151,7 @@ TbSelectionHandler >> selectionArea [
 	^ area
 ]
 
-{ #category : #'selection - handling' }
+{ #category : 'selection - handling' }
 TbSelectionHandler >> selectionChanged [
 	"Is sent when #selectionArea changed"
 	| oldSelected |
@@ -187,7 +189,7 @@ TbSelectionHandler >> selectionChanged [
 	oldSelected keysDo: [ :anElement | self handleDeselected: anElement ]
 ]
 
-{ #category : #selection }
+{ #category : 'selection' }
 TbSelectionHandler >> shouldSelect: aChildElement in: aSelectionBounds [
 	"Return true if a child element should be selected taking into account
 	provided selection area bounds given int local coordinates of a child element"

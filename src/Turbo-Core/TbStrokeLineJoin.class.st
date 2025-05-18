@@ -12,8 +12,8 @@ Evaluate to see a visual preview:
 === BlStrokeLineJoin new inspect ===
 "
 Class {
-	#name : #TbStrokeLineJoin,
-	#superclass : #Object,
+	#name : 'TbStrokeLineJoin',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#classInstVars : [
@@ -21,15 +21,17 @@ Class {
 		'miter',
 		'round'
 	],
-	#category : #'Turbo-Core-Paint-Support'
+	#category : 'Turbo-Core-Paint-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Paint-Support'
 }
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbStrokeLineJoin class >> bevel [
 	^ bevel ifNil: [ bevel := TbStrokeLineBevelJoin new ]
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbStrokeLineJoin class >> cleanUp [
 	<script: 'self cleanUp'>
 	super cleanUp.
@@ -37,22 +39,22 @@ TbStrokeLineJoin class >> cleanUp [
 	bevel := miter := round := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbStrokeLineJoin class >> joinName [
 	^ self subclassResponsibility
 ]
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbStrokeLineJoin class >> miter [
 	^ miter ifNil: [ miter := TbStrokeLineMiterJoin new ]
 ]
 
-{ #category : #'predefined instances' }
+{ #category : 'predefined instances' }
 TbStrokeLineJoin class >> round [
 	^ round ifNil: [ round := TbStrokeLineRoundJoin new ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbStrokeLineJoin >> printOn: aStream [
 
 	self class ~= TbStrokeLineJoin

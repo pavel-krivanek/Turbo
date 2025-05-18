@@ -1,6 +1,6 @@
 Class {
-	#name : #TbScrollerConstants,
-	#superclass : #SharedPool,
+	#name : 'TbScrollerConstants',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'Ballistic',
 		'Cubic',
@@ -18,10 +18,12 @@ Class {
 		'SplineTime',
 		'StartTension'
 	],
-	#category : #'Turbo-Core-Utilities - Scrolling Helpers'
+	#category : 'Turbo-Core-Utilities - Scrolling Helpers',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Scrolling Helpers'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollerConstants class >> initialize [
 	super initialize.
 	
@@ -45,7 +47,7 @@ TbScrollerConstants class >> initialize [
 	self initializeSplines
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbScrollerConstants class >> initializeSplines [
 	"Precomputes spline position and time
 	https://en.wikipedia.org/wiki/Spline_interpolation

@@ -4,31 +4,33 @@ I add support of drawing cache to any element.
 Simple use me in a class definition and implement explicitly required methods from private accessing protocol
 "
 Trait {
-	#name : #TTbDrawingCache,
-	#category : #'Turbo-Core-Utilities - Drawing Cache'
+	#name : 'TTbDrawingCache',
+	#category : 'Turbo-Core-Utilities - Drawing Cache',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Drawing Cache'
 }
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TTbDrawingCache >> cachedSurface [
 	^ self explicitRequirement
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TTbDrawingCache >> cachedSurface: aSurface [
 	self explicitRequirement
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TTbDrawingCache >> damageReported [
 	^ self explicitRequirement
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TTbDrawingCache >> damageReported: aBoolean [
 	self explicitRequirement
 ]
 
-{ #category : #'change reporting' }
+{ #category : 'change reporting' }
 TTbDrawingCache >> invalidRect: aBlBounds from: anElement [
 	"we should only optimize it for children. I myself should invalidate as usually.
 	The problem is that if we optimize for myself, then the second invalidation after
@@ -47,32 +49,32 @@ TTbDrawingCache >> invalidRect: aBlBounds from: anElement [
 	self releaseCaches
 ]
 
-{ #category : #'children hooks' }
+{ #category : 'children hooks' }
 TTbDrawingCache >> onRemovedFromSceneGraph [
 	super onRemovedFromSceneGraph.
 
 	self releaseCaches
 ]
 
-{ #category : #'hooks - geometry' }
+{ #category : 'hooks - geometry' }
 TTbDrawingCache >> onTransformationInSpaceChanged [
 	super onTransformationInSpaceChanged.
 	
 	self releaseCaches
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TTbDrawingCache >> releaseCaches [
 	self cachedSurface ifNotNil: #release.
 	self cachedSurface: nil
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TTbDrawingCache >> session [
 	^ self explicitRequirement
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 TTbDrawingCache >> session: aSession [
 	self explicitRequirement
 ]

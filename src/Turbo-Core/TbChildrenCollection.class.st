@@ -16,40 +16,42 @@ The following subclasses can be used to store children:
 Subclasses need to provide the implementation for methods adding and removing children.
 "
 Class {
-	#name : #TbChildrenCollection,
-	#superclass : #TbChildren,
-	#category : #'Turbo-Core-Basic-Children'
+	#name : 'TbChildrenCollection',
+	#superclass : 'TbChildren',
+	#category : 'Turbo-Core-Basic-Children',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Children'
 }
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenCollection >> add: anElement [
 	"Adds aChild as a last one in a collection"
 
 	self add: anElement at: self size + 1
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenCollection >> add: anElement at: anIndex [
 	"Adds anElement at a given index moving existing children to the right"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenCollection >> addAll: aCollectionOfBlElement [
 	"Add all elements from a given collection appending them to the end"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'children - adding' }
+{ #category : 'children - adding' }
 TbChildrenCollection >> addFirst: anElement [
 	"Add a given element as a first item moving all existing children to the right"
 
 	self add: anElement at: 1
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenCollection >> remove: anElement [
 	| anIndex |
 
@@ -60,12 +62,12 @@ TbChildrenCollection >> remove: anElement [
 	self removeAt: anIndex
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenCollection >> removeAll: aCollectionOfBlElement [
 	self subclassResponsibility
 ]
 
-{ #category : #'children - removing' }
+{ #category : 'children - removing' }
 TbChildrenCollection >> removeAt: anIndex [
 	self subclassResponsibility
 ]

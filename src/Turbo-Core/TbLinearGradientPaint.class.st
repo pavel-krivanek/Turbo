@@ -1,14 +1,16 @@
 Class {
-	#name : #TbLinearGradientPaint,
-	#superclass : #TbGradientPaint,
+	#name : 'TbLinearGradientPaint',
+	#superclass : 'TbGradientPaint',
 	#instVars : [
 		'start',
 		'end'
 	],
-	#category : #'Turbo-Core-Paint'
+	#category : 'Turbo-Core-Paint',
+	#package : 'Turbo-Core',
+	#tag : 'Paint'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbLinearGradientPaint class >> direction: aPoint [
 	"Create a linear gradient in a given direction"
 	<return: #BlLinearGradientPaint>
@@ -29,7 +31,7 @@ TbLinearGradientPaint class >> direction: aPoint [
 		matchExtent: 1.0 asPoint
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbLinearGradientPaint class >> horizontal [
 	"Create a horizontal linear gradient"
 	<return: #BlLinearGradientPaint>
@@ -39,7 +41,7 @@ TbLinearGradientPaint class >> horizontal [
 		end: 1@0
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbLinearGradientPaint class >> vertical [
 	"Create a vertical linear gradient"
 	<return: #BlLinearGradientPaint>
@@ -49,24 +51,24 @@ TbLinearGradientPaint class >> vertical [
 		end: 0@1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearGradientPaint >> end [
 	^ end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearGradientPaint >> end: aPoint [
 	end := aPoint
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearGradientPaint >> initialize [
 	super initialize.
 	
 	
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbLinearGradientPaint >> matchExtent: anExtent [
 	| aDirection aStart anEnd aDelta aScaleX aScaleY |
 	
@@ -92,12 +94,12 @@ TbLinearGradientPaint >> matchExtent: anExtent [
 	self end: anEnd - aDelta
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearGradientPaint >> start [
 	^ start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearGradientPaint >> start: aPoint [
 	start := aPoint
 ]

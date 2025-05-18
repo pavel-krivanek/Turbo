@@ -1,12 +1,14 @@
 Class {
-	#name : #TbPoint,
-	#superclass : #Object,
+	#name : 'TbPoint',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
-	#category : #'Turbo-Core-Basic-Math'
+	#category : 'Turbo-Core-Basic-Math',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Math'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPoint >> < aPoint [
 	"Answer whether the receiver is above and to the left of aPoint."
 	<return: #Boolean>
@@ -14,7 +16,7 @@ TbPoint >> < aPoint [
 	^ self subclassResponsibility
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbPoint >> asPoint2D [
 	"Return a projected version of this point on 2D plane"
 	<return: #BlPoint2D>
@@ -22,26 +24,26 @@ TbPoint >> asPoint2D [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbPoint >> isPoint [
 	^ true
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPoint >> max: aBlPoint [
 	<return: #BlPoint>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbPoint >> min: aBlPoint [
 	<return: #BlPoint>
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #'matrix - transforming points' }
+{ #category : 'matrix - transforming points' }
 TbPoint >> transformedOn: aBlMatrix [
 	<return: #BlPoint>
 	

@@ -2,8 +2,8 @@
 I sort element according to their visual layout and geometry
 "
 Class {
-	#name : #TbFocusFinderComparator,
-	#superclass : #Object,
+	#name : 'TbFocusFinderComparator',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -11,10 +11,12 @@ Class {
 		'firstBounds',
 		'secondBounds'
 	],
-	#category : #'Turbo-Core-Utilities - Focus'
+	#category : 'Turbo-Core-Utilities - Focus',
+	#package : 'Turbo-Core',
+	#tag : 'Utilities - Focus'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 TbFocusFinderComparator >> bounds: aBlBounds of: anElement [
 	"Store and return visual bounds of a given element in root's coordinates
 	that will be used for comparison.
@@ -27,7 +29,7 @@ TbFocusFinderComparator >> bounds: aBlBounds of: anElement [
 	^ rootElement localBoundsToMine: aBlBounds fromChild: anElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFocusFinderComparator >> initialize [
 	super initialize.
 	
@@ -35,7 +37,7 @@ TbFocusFinderComparator >> initialize [
 	secondBounds := TbBorder new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFocusFinderComparator >> isRightToLeft [
 	"Return true if I compare element in a context of right to left layout, false otherwise"
 	<return: #Boolean>
@@ -43,7 +45,7 @@ TbFocusFinderComparator >> isRightToLeft [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusFinderComparator >> rootElement [
 	"Return an element that plays a role of a root for a visual focus search"
 	<return: #BlElement>
@@ -51,7 +53,7 @@ TbFocusFinderComparator >> rootElement [
 	^ rootElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFocusFinderComparator >> rootElement: anElement [
 	"Set an element that should be considered a root during visual focus search.
 	Note: element are compared by their visual bounds transformed to local coordinates
@@ -60,7 +62,7 @@ TbFocusFinderComparator >> rootElement: anElement [
 	rootElement := anElement
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 TbFocusFinderComparator >> value: aFirstElement value: aSecondElement [
 	" I sort elements according to the following strategy:
 	

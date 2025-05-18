@@ -15,38 +15,40 @@ Internal Representation and Key Implementation Points.
 I must be set to ===consumed=== if there was a matching shortcut.
 "
 Class {
-	#name : #TbShortcutEvent,
-	#superclass : #TbKeyboardEvent,
+	#name : 'TbShortcutEvent',
+	#superclass : 'TbKeyboardEvent',
 	#instVars : [
 		'buffer',
 		'isRepeated'
 	],
-	#category : #'Turbo-Core-Events'
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutEvent >> beRepeated [
 	isRepeated := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutEvent >> buffer [
 	^ buffer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutEvent >> buffer: anObject [
 	buffer := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbShortcutEvent >> initialize [
 	super initialize.
 	
 	isRepeated := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbShortcutEvent >> isRepeated [
 	"Return true if this shortcut is a repeated event giving handlers a chance to ignore such shortcuts"
 	<return: #Boolean>
@@ -54,7 +56,7 @@ TbShortcutEvent >> isRepeated [
 	^ isRepeated
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbShortcutEvent >> sendTo: anObject [
 	anObject shortcutEvent: self
 ]

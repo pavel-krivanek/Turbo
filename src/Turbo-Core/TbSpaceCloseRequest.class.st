@@ -9,17 +9,19 @@ space close
 After that space sents an actual BlSpaceClosedEvent that indicates that windows was indeed closed
 "
 Class {
-	#name : #TbSpaceCloseRequest,
-	#superclass : #TbSpaceEvent,
-	#category : #'Turbo-Core-Events'
+	#name : 'TbSpaceCloseRequest',
+	#superclass : 'TbSpaceEvent',
+	#category : 'Turbo-Core-Events',
+	#package : 'Turbo-Core',
+	#tag : 'Events'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpaceCloseRequest >> isSpaceCloseRequest [
 	^ true
 ]
 
-{ #category : #sending }
+{ #category : 'sending' }
 TbSpaceCloseRequest >> sendTo: anObject [
 	anObject spaceCloseRequest: self
 ]

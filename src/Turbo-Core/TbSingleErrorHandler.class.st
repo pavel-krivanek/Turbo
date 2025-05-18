@@ -1,25 +1,27 @@
 Class {
-	#name : #TbSingleErrorHandler,
-	#superclass : #TbErrorHandler,
+	#name : 'TbSingleErrorHandler',
+	#superclass : 'TbErrorHandler',
 	#instVars : [
 		'error'
 	],
-	#category : #'Turbo-Core-Basic-Errors'
+	#category : 'Turbo-Core-Basic-Errors',
+	#package : 'Turbo-Core',
+	#tag : 'Basic-Errors'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSingleErrorHandler >> = anObject [
 	^ self class = anObject class
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSingleErrorHandler >> error [
 	<return: #BlHandledError>
 
 	^ error
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSingleErrorHandler >> error: aHandledError [
 	
 	self
@@ -29,24 +31,24 @@ TbSingleErrorHandler >> error: aHandledError [
 	error := aHandledError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSingleErrorHandler >> errors [
 	^ { self error }
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSingleErrorHandler >> hasError [
 	<return: #Boolean>
 
 	^ error isNotNil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSingleErrorHandler >> hash [
 	^ self class hash
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 TbSingleErrorHandler >> registerError: aHandledError [
 	"Register a given handled error for further debugging"
 

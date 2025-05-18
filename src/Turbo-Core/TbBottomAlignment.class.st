@@ -1,35 +1,37 @@
 Class {
-	#name : #TbBottomAlignment,
-	#superclass : #TbVerticalAlignment,
-	#category : #'Turbo-Core-Layouts-Support'
+	#name : 'TbBottomAlignment',
+	#superclass : 'TbVerticalAlignment',
+	#category : 'Turbo-Core-Layouts-Support',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Support'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbBottomAlignment class >> initialize [
 	super initialize.
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbBottomAlignment class >> leftToRight [
 	^ self bottom
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbBottomAlignment class >> rightToLeft [
 	^ self bottom
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbBottomAlignment >> inverted [
 	^ TbElementAlignment horizontal end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbBottomAlignment >> swap [
 	^ TbElementAlignment top
 ]
 
-{ #category : #translation }
+{ #category : 'translation' }
 TbBottomAlignment >> translationOf: aBounds in: aContainerBounds [
 	<return: #Point>
 	

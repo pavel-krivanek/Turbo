@@ -1,20 +1,22 @@
 Class {
-	#name : #TbIgnoredLayoutConstraints,
-	#superclass : #TbLayoutConstraints,
-	#category : #'Turbo-Core-Layouts-Basic'
+	#name : 'TbIgnoredLayoutConstraints',
+	#superclass : 'TbLayoutConstraints',
+	#category : 'Turbo-Core-Layouts-Basic',
+	#package : 'Turbo-Core',
+	#tag : 'Layouts-Basic'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbIgnoredLayoutConstraints >> alignment [
 	^ self horizontal alignment + self vertical alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbIgnoredLayoutConstraints >> defaultHorizontal [
 	^ TbIgnoredLayoutConstraintsHorizontal new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbIgnoredLayoutConstraints >> defaultVertical [
 	^ TbIgnoredLayoutConstraintsVertical new
 ]
