@@ -31,21 +31,21 @@ TbPoint >> isPoint [
 
 { #category : 'comparing' }
 TbPoint >> max: aBlPoint [
-	<return: #BlPoint>
+	<return: #TbPoint>
 
 	^ self subclassResponsibility
 ]
 
 { #category : 'comparing' }
 TbPoint >> min: aBlPoint [
-	<return: #BlPoint>
+	<return: #TbPoint>
 
 	^ self subclassResponsibility
 ]
 
 { #category : 'matrix - transforming points' }
 TbPoint >> transformedOn: aBlMatrix [
-	<return: #BlPoint>
+	<return: #TbPoint>
 	
 	^ self subclassResponsibility
 ]
