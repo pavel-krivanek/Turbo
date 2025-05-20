@@ -25,6 +25,13 @@ TbPoint2D >> < aPoint [
 ]
 
 { #category : 'converting' }
+TbPoint2D >> asPoint [
+	<return: #Point>
+
+	^ self x @ self y
+]
+
+{ #category : 'converting' }
 TbPoint2D >> asPoint2D [
 	<return: #BlPoint2D>
 
