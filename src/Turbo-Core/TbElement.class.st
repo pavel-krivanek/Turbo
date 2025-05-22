@@ -568,22 +568,6 @@ TbElement >> boundsInLocal: aBounds [
 ]
 
 { #category : 'geometry bounds' }
-TbElement >> boundsInParent [
-	self deprecated: 'Use `element bounds inParent` instead'.
-
-	^ self bounds inParent asRectangle
-]
-
-{ #category : 'geometry bounds' }
-TbElement >> boundsInParent: aBounds [
-	<return: #BlBounds>
-	
-	self deprecated: 'Use `element bounds inParent` instead'.
-	
-	^ self localBoundsToParent: (self boundsInLocal: aBounds)
-]
-
-{ #category : 'geometry bounds' }
 TbElement >> boundsInSpace [
 	^ boundsCache boundsInSpace
 ]
@@ -605,32 +589,6 @@ TbElement >> boundsInWindow [
 	^ self isAttachedToSceneGraph
 		ifTrue: [ boundsCache boundsInSpace scaleBy: self space windowScale ]
 		ifFalse: [ boundsCache boundsInSpace ]
-]
-
-{ #category : 'geometry transform' }
-TbElement >> centerRotateByDegrees: anAngle [ 
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		rotateBy: anAngle axis: TbVector zAxis;
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> centerRotateByRadians: anAngle [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		rotateBy: anAngle radiansToDegrees axis: TbVector zAxis;
-		apply
 ]
 
 { #category : 'updating' }
@@ -1731,16 +1689,6 @@ TbElement >> isLayoutRequested [
 	^ self layout requestingLayout
 ]
 
-{ #category : 'layout' }
-TbElement >> isManaged [
-	self 
-		deprecated: 'Use "constraints ignoredByLayout not" instead'
-		on: 	'17 March 2018' 
-		in: 'Pharo-6.0-60539-'.
-		
-	^ self constraints ignoredByLayout not
-]
-
 { #category : 'testing' }
 TbElement >> isOpaque [
 	"Return true if I am completely opaque (my opacity is 1)"
@@ -1959,59 +1907,6 @@ TbElement >> looseFocus: aChildElement [
 		ifFalse: [ self space looseFocusFor: aChildElement ]
 ]
 
-{ #category : 'accessing' }
-TbElement >> managed [
-	self 
-		deprecated: 'Use "constraints ignoredByLayout not" instead'
-		on: 	'17 March 2018' 
-		in: 'Pharo-6.0-60539-'.
-	
-	^ self isManaged
-]
-
-{ #category : 'accessing' }
-TbElement >> managed: aBoolean [
-	"If false is provided, then the element is not subject to the parent's layout"
-	self 
-		deprecated: 'Use "constraintsDo: [ :c | c ignoreByLayout ]" instead'
-		on: 	'17 March 2018' 
-		in: 'Pharo-6.0-60539-'.
-
-	self constraintsDo: [ :c |
-		aBoolean
-			ifTrue: [ c accountByLayout ]
-			ifFalse: [ c ignoreByLayout ] ]
-]
-
-{ #category : 'children accessing' }
-TbElement >> managedChildren [
-	"Return an array of all my direct managed children.
-	Managed children are taken into account during layout process.
-	children can not be nil"
-	<return: #Array>
-	self 
-		deprecated: 'Use "children accountedByLayout" instead'
-		on: 	'17 March 2018' 
-		in: 'Pharo-6.0-60539-'.
-		
-	^ self children accountedByLayout
-]
-
-{ #category : 'children accessing' }
-TbElement >> managedChildrenDo: aBlock [
-   "Evaluate aBlock with each of my direct managed children as argument.
-	aBlock can not be nil.
-	aBlock must accept exactly one argument"
-	self assert: aBlock isNotNil.
-	self assert: aBlock argumentCount = 1.
-	self 
-		deprecated: 'Use "children accountedByLayout do:" instead'
-		on: 	'17 March 2018' 
-		in: 'Pharo-6.0-60539-'.
-		
-	^ self children accountedByLayout do: aBlock
-]
-
 { #category : 'api - layout' }
 TbElement >> margin [
 	"Return my current margin - a space outside around my bounds.
@@ -2028,68 +1923,6 @@ TbElement >> margin: aBlInsets [
 		description: [ 'Margin must not be nil' ].
 
 	self constraintsDo: [ :c | c margin: aBlInsets ]
-]
-
-{ #category : 'layout constraints' }
-TbElement >> maxExtent [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	^ self maxWidth @ self maxHeight
-]
-
-{ #category : 'layout constraints' }
-TbElement >> maxExtent: aPoint [
-	self 
-		deprecated: 'Use #constraintsDo: instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	self  maxWidth: aPoint x.
-	self  maxHeight: aPoint y
-]
-
-{ #category : 'layout constraints' }
-TbElement >> maxHeight [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	^ self constraints maxHeight
-]
-
-{ #category : 'layout constraints' }
-TbElement >> maxHeight: aNumber [
-	self 
-		deprecated: 'Use #constraintsDo: instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	self constraints maxHeight: aNumber
-]
-
-{ #category : 'layout constraints' }
-TbElement >> maxWidth [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	^ self constraints maxWidth
-]
-
-{ #category : 'layout constraints' }
-TbElement >> maxWidth: aNumber [
-	
-	self 
-		deprecated: 'Use #constraintsDo: instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self constraints maxWidth: aNumber
 ]
 
 { #category : 'layout' }
@@ -2188,67 +2021,6 @@ TbElement >> measuredWidth [
 	<return: #Number>
 	
 	^ self measuredBounds width
-]
-
-{ #category : 'layout constraints' }
-TbElement >> minExtent [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	^ self minWidth @ self minHeight
-]
-
-{ #category : 'layout constraints' }
-TbElement >> minExtent: aPoint [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	self  minWidth: aPoint x.
-	self  minHeight: aPoint y
-]
-
-{ #category : 'layout constraints' }
-TbElement >> minHeight [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	^ self constraints minHeight
-]
-
-{ #category : 'layout constraints' }
-TbElement >> minHeight: aNumber [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	 self constraints minHeight:  aNumber
-]
-
-{ #category : 'layout constraints' }
-TbElement >> minWidth [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	^  self constraints minWidth
-]
-
-{ #category : 'layout constraints' }
-TbElement >> minWidth: aNumber [
-	self 
-		deprecated: 'Use #constraints instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-		
-	self constraints minWidth: aNumber
 ]
 
 { #category : 'accessing' }
@@ -2567,15 +2339,6 @@ TbElement >> position [
 	<return: #Point>
 
 	^ self bounds position
-]
-
-{ #category : 'geometry position' }
-TbElement >> position: aPoint [ 
-	self 
-		deprecated: 'Use relocate: instead'
-		on: 	'1 October 2017' 
-		in: 'Pharo-7.0-alpha.build.132.sha.4ea2f39a9f43185d31b844be5ad33b677f43bf17'.
-	^ self relocate: aPoint 
 ]
 
 { #category : 'accessing' }
@@ -2951,146 +2714,6 @@ TbElement >> resetChildrenArray [
 	children := TbBloc preferableChildrenDataStructure new
 ]
 
-{ #category : 'geometry transform' }
-TbElement >> rotateByDegrees: anAngle [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	"self transform
-		inherit;
-		origin: (BlAffineTransformationPositionOrigin position: 0@0);
-		rotateBy: anAngle axis: BlVector zAxis;
-		apply"
-]
-
-{ #category : 'geometry transform' }
-TbElement >> rotateByDegrees: angle axis: aVector [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		rotateBy: angle axis: aVector;
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> rotateByDegrees: angle axis: aVector around: anOrigin [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		origin: anOrigin;
-		rotateBy: angle axis: aVector;
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> rotateByDegrees: angle center: aPoint [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		origin: (TbAffineTransformationPositionOrigin position: aPoint);
-		rotateBy: angle axis: TbVector zAxis;
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> rotateByRadians: anAngle [ 
-	self 
-		deprecated: 'Use rotateByDegrees: instead'
-		on: 	'16 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-	^ self rotateByDegrees: anAngle radiansToDegrees
-]
-
-{ #category : 'geometry transform' }
-TbElement >> rotateByRadians: angle center: aPoint [ 
-	self 
-		deprecated: 'Use rotateByDegrees:center: instead'
-		on: 	'16 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-	^ self rotateByDegrees: angle radiansToDegrees center: aPoint 
-]
-
-{ #category : 'geometry transform' }
-TbElement >> scaleBy: aVector [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (TbVector x: aVector asPoint x y: aVector asPoint y z: 1);
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> scaleTo: aFactorPoint [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (TbVector x: aFactorPoint asPoint x y: aFactorPoint asPoint y z: 1);
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> scaleX: factor [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (TbVector x: factor y: 1 z: 1);
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> scaleX: fx Y: fy [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (TbVector x: fx y: fy z: 1);
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> scaleY: factor [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		scaleBy: (TbVector x: 1 y: factor z: 1);
-		apply
-]
-
 { #category : 'event handling' }
 TbElement >> shouldChildrenHandleMouseEvents [
 	"Return true if my children are allowed to handle mouse events.
@@ -3208,39 +2831,6 @@ TbElement >> transformedBounds [
 TbElement >> transformedBounds: aSpartaRectangle [
 
 	^ transformation transformBounds: (self boundsInLocal: aSpartaRectangle)
-]
-
-{ #category : 'geometry transform' }
-TbElement >> translateBy: aDelta [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		inherit;
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		translateBy: (TbVector x: aDelta asPoint x y: aDelta asPoint y z: 0);
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> translateTo: aPoint [
-	self 
-		deprecated: 'Use Transformation Builder instead'
-		on: 	'15 October 2017' 
-		in: 'Pharo-7.0+alpha.build.171.sha.df95d5fd8faa4c6bfd3537e26d67bb2c37daf99f (32 Bit)'.
-
-	self transform
-		origin: (TbAffineTransformationPositionOrigin position: 0@0);
-		translateBy: (TbVector x: aPoint asPoint x y: aPoint asPoint y z: 0);
-		apply
-]
-
-{ #category : 'geometry transform' }
-TbElement >> translateX: xFactor Y: yFactor [
-	self deprecated: 'Use translateBy: aBlPoint'.
-	self translateBy: xFactor @ yFactor
 ]
 
 { #category : 'change reporting' }
