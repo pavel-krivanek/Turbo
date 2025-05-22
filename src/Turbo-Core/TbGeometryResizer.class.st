@@ -21,7 +21,7 @@ TbGeometryResizer class >> exact: anExtent [
 	anExtent must not be nil"
 	<return: #BlGeometryResizer>
 	
-	^ TbGeomExactResizer extent: anExtent
+	^ TbGeomExactResizer new extent: anExtent
 ]
 
 { #category : 'instance creation' }
