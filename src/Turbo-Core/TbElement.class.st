@@ -897,7 +897,7 @@ TbElement >> defaultFocusability [
 
 { #category : 'initialization' }
 TbElement >> defaultGeometry [
-	^ TbRectangle new
+	^ TbRectangleGeometry new
 ]
 
 { #category : 'initialization' }

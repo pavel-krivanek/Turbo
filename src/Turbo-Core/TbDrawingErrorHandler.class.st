@@ -34,7 +34,7 @@ TbDrawingErrorHandler >> processError: aHandledError [
 		addChild: (BlTextElement new
 			padding: (TbInsets all: 5);
 			text: 'Debug draw error' asRopedText;
-			geometry: (TbRectangle cornerRadius: 3);
+			geometry: (TbRectangleGeometry new);
 			border: (TbBorder paint: Color gray width: 1);
 			background: Color white;
 			when: TbClickEvent do: [ :anEvent |

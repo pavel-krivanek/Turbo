@@ -7,8 +7,7 @@ Class {
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
-		'extent',
-		'pathCache'
+		'extent'
 	],
 	#category : 'Turbo-Core-Basic',
 	#package : 'Turbo-Core',
@@ -31,27 +30,8 @@ TbGeometry >> asElement [
 
 { #category : 'geometry testing' }
 TbGeometry >> containsPoint: aPoint in: aBlElement [
-	"Note: we have to pass BlElement in order to give geometry a chance to use element properties
-	as as border during the testing process"
-	<return: #Boolean>
 
-	^ self
-		containsPoint: aPoint
-		in: aBlElement
-		on: TbBloc preferableSpartaCanvas offscreen
-]
-
-{ #category : 'geometry testing' }
-TbGeometry >> containsPoint: aPoint in: anElement on: aSpartaCanvas [
-	"Note: I am a fallback method to determine if a point lies within a geometry path
-	when geometry is complex and it is mathematically difficult to compute manually"
-	<return: #Boolean>
-	| aPath |
-
-	aPath := pathCache pathOnSpartaCanvas: aSpartaCanvas.
-	^ aSpartaCanvas fill
-		path: aPath;
-		containsPoint: aPoint
+	self subclassResponsibility 
 ]
 
 { #category : 'accessing' }
@@ -99,7 +79,6 @@ TbGeometry >> initialize [
 	super initialize.
 	
 	extent := 0@0.
-	pathCache := TbPathCache on: self
 ]
 
 { #category : 'geometry' }
@@ -121,7 +100,8 @@ TbGeometry >> postCopy [
 
 { #category : 'cache' }
 TbGeometry >> releaseCache [
-	pathCache releaseCache
+	
+	"do nothing"
 ]
 
 { #category : 'visual bounds' }
@@ -136,16 +116,8 @@ TbGeometry >> strokedBounds: aBlBounds of: anElement on: aCanvas [
 
 { #category : 'visual bounds' }
 TbGeometry >> strokedBoundsCentered: aBlBounds of: anElement on: aCanvas [
-	| spartaPath strokeOptions strokedBounds |
-
-	spartaPath := anElement geometry pathOnSpartaCanvas: aCanvas.
-	strokeOptions := aCanvas stroke
-		width: (anElement border width max: 1);
-		in: [ :aPainter | anElement border style applyOn: aPainter ];
-		strokeOptions.
-
-	strokedBounds := spartaPath strokedBoundsOn: aCanvas with: strokeOptions.
-	^ aBlBounds rectangle: strokedBounds
+	
+	self subclassResponsibility 
 ]
 
 { #category : 'visual bounds' }
@@ -158,14 +130,6 @@ TbGeometry >> strokedBoundsInside: aBlBounds of: anElement on: aCanvas [
 
 { #category : 'visual bounds' }
 TbGeometry >> strokedBoundsOutside: aBlBounds of: anElement on: aCanvas [
-	| spartaPath strokeOptions strokedBounds |
-
-	spartaPath := anElement geometry pathOnSpartaCanvas: aCanvas.
-	strokeOptions := aCanvas stroke
-		in: [ :aPainter | anElement border style applyOn: aPainter ];
-		width: ((anElement border width * 2.0) max: 1);
-		strokeOptions.
-
-	strokedBounds := spartaPath strokedBoundsOn: aCanvas with: strokeOptions.
-	^ aBlBounds rectangle: strokedBounds
+	
+	self subclassResponsibility 
 ]
