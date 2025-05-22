@@ -1,8 +1,9 @@
 Class {
 	#name : 'TbMatrixElement',
 	#superclass : 'TbElement',
-	#category : 'Turbo-Tests',
-	#package : 'Turbo-Tests'
+	#category : 'Turbo-Tests-Math',
+	#package : 'Turbo-Tests',
+	#tag : 'Math'
 }
 
 { #category : 'as yet unclassified' }

@@ -1,8 +1,9 @@
 Class {
 	#name : 'TbPoint4DTest',
 	#superclass : 'TestCase',
-	#category : 'Turbo-Tests',
-	#package : 'Turbo-Tests'
+	#category : 'Turbo-Tests-Math',
+	#package : 'Turbo-Tests',
+	#tag : 'Math'
 }
 
 { #category : 'tests' }
