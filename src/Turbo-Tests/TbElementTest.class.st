@@ -11,6 +11,8 @@ Class {
 
 { #category : 'system startup' }
 TbElementTest >> setUp [ 
+	
+	super setUp.
 
 	element := TbElement new.
 ]
@@ -138,6 +140,16 @@ TbElementTest >> testClipChildren [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testCopyShouldNotImplement [
+	self should: [ element copy ] raise: ShouldNotImplement.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testDeepCopyShouldNotImplement [
+	self should: [ element deepCopy ] raise: ShouldNotImplement.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testElevation [ 
 
 	self assert: element elevation equals: TbRelativeElevation zero
@@ -198,9 +210,25 @@ TbElementTest >> testIsAttachedToSceneGraph [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testLabeledAndGtDisplay [
+	| str |
+	element labeled: 'MyLabel'.
+	
+	str := String streamContents: [ :stream |
+		element gtDisplayOn: stream. ].
+	self assert: str equals: 'MyLabel'.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testParentIsNIl [
 
 	self assert: element parent isNil
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testPositionExtentDefaults [
+    self assert: element position equals: 0@0.
+    self assert: element extent equals: 0@0.
 ]
 
 { #category : 'system startup' }
@@ -282,6 +310,32 @@ TbElementTest >> testReplaceChildAs [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testRequestFocusWhenAttached [ 
+
+	| space eventFired |
+	eventFired := false.
+	space := TbSpace new.
+	"element space: space."
+	space root: element.
+	element when: TbFocusInEvent do: [ :evt | eventFired := true ].
+	element requestFocus.
+	self assert: eventFired
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testRequestFocusWhenNotAttached [
+
+	| eventFired |
+	eventFired := false.
+	self deny: element isFocused.
+	element when: TbFocusInEvent do: [ :evt | eventFired := true. ].
+	element requestFocus.
+	self assert: element isFocused. 
+	
+	self deny: eventFired  "when an element is not attached to a space, the focue event is not fired"
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testSetBorder [ 
 
 	| firedEvent |
@@ -297,9 +351,25 @@ TbElementTest >> testSetBorder [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testSize [ 
+    element size: 100@200.
+    self assert: element constraints horizontal resizer isExact.
+    self assert: element constraints horizontal resizer size equals: 100.
+    self assert: element constraints vertical resizer isExact.
+    self assert: element constraints vertical resizer size equals: 200.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testTransformationOwner [ 
 
 	self assert: element transformation owner equals: element
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testUserData [
+	self assert: element userData isEmpty.
+	element userData at: #foo put: #bar.
+	self assert: (element userData at: #foo) equals: #bar.
 ]
 
 { #category : 'system startup' }
