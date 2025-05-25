@@ -504,15 +504,6 @@ TbElement >> backgroundResizer: aBackgroundResizer [
 	 backgroundResizer := aBackgroundResizer
 ]
 
-{ #category : 'layout' }
-TbElement >> baselineOffset [
-	"Return the offset of the element's text baseline from the element's top boundary.
-	If I don't not support baseline alignment, BlElement>>#supportsBaseline return false"
-	<return: #Number>
-
-	^ 0
-]
-
 { #category : 'api - look' }
 TbElement >> border [
 	<return: #BlBorder>

@@ -64,7 +64,7 @@ TbUniverse class >> reset [
 { #category : 'pulse managing' }
 TbUniverse >> addPulseListener: anObject [
 	pulseListeners add: anObject.
-	announcer subscribe: TbPulseEvent send: #pulse to: anObject
+	announcer when: TbPulseEvent do: #pulse for: anObject
 ]
 
 { #category : 'enumerating' }

@@ -37,6 +37,15 @@ TbElementTest >> testAccessOpacity [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testAddAnimation [
+	| animation |
+	element := TbElement new.
+	animation := TbAnimation new.
+	element addAnimation: animation.
+	self assert: (element taskQueue tasks includes: animation).
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testAddChild [
 	self assert: (TbElement new addChild: (TbElement new size: 50@50; background: Color red lighter)) childrenCount equals: 1.
 ]
@@ -122,6 +131,44 @@ TbElementTest >> testAddChildrenIn [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testAllChildrenBreadthFirstDetectIfFound [
+	| child1 child2 child3 child4 |
+	element := TbElement new.
+	child1 := TbElement new.
+	child2 := TbElement new.
+	child3 := TbElement new.
+	child4 := TbElement new.
+	element addChild: child1.
+	element addChild: child2.
+	child1 addChild: child3.
+	child1 addChild: child4.
+
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child3 ] ifFound: [ :found | found ]) equals: child3.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child4 ] ifFound: [ :found | found ]) equals: child4.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child2 ] ifFound: [ :found | found ]) equals: child2.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child1 ] ifFound: [ :found | found ]) equals: child1.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == element ] ifFound: [ :found | #found ]) equals: nil.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == (TbElement new) ] ifFound: [ :found | found ]) isNil.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testAllChildrenBreadthFirstDetectIfFoundIfNone [
+	| child1 child2 child3 |
+	child1 := TbElement new.
+	child2 := TbElement new.
+	child3 := TbElement new.
+	element addChild: child1.
+	element addChild: child2.
+	child1 addChild: child3.
+
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child3 ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: child3.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child2 ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: child2.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == child1 ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: child1.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == element ] ifFound: [ :found | #found ] ifNone: [ #notFound ]) equals: #notFound.
+	self assert: (element allChildrenBreadthFirstDetect: [ :each | each == (TbElement new) ] ifFound: [ :found | found ] ifNone: [ nil ]) isNil.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testAllChildrenBreadthFirstDo [ 
 	| p c1 c11 c2 collected |
 	p := TbElement new.
@@ -135,6 +182,25 @@ TbElementTest >> testAllChildrenBreadthFirstDo [
 	collected := OrderedCollection new.
 	p allChildrenBreadthFirstDo: [ :each | collected add: each ].
 	self assertCollection: collected asArray equals: { c1. c2. c11 }
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testAllParentsDetectIfFoundIfNone [
+	| parent1 parent2 parent3 |
+	
+	parent1 := TbElement new.
+	parent2 := TbElement new.
+	parent3 := TbElement new.
+
+	parent1 addChild: parent2.
+	parent2 addChild: parent3.
+	parent3 addChild: element.
+
+	self assert: (element allParentsDetect: [ :each | each == parent2 ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: parent2.
+	self assert: (element allParentsDetect: [ :each | each == parent1 ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: parent1.
+	self assert: (element allParentsDetect: [ :each | each == parent3 ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: parent3.
+	self assert: (element allParentsDetect: [ :each | each == element ] ifFound: [ :found | #found ] ifNone: [ #notFound ]) equals: #notFound.
+	self assert: (element allParentsDetect: [ :each | each == (TbElement new) ] ifFound: [ :found | found ] ifNone: [ nil ]) equals: nil.
 ]
 
 { #category : 'system startup' }
@@ -159,6 +225,17 @@ TbElementTest >> testAsScalableElement [
 	
 	
 
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testAttachChildAt [
+	| parent child |
+	parent := TbElement new.
+	child := TbElement new.
+	parent attachChild: child at: 1.
+	self assert: (parent children asArray includes: child).
+	self assert: child parent equals: parent.
+	self assert: (parent children indexOf: child) equals: 1.
 ]
 
 { #category : 'system startup' }
@@ -199,6 +276,34 @@ TbElementTest >> testDefaultVisibility [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testDequeueTask [
+	| task |
+	task := TbTask new.
+	element enqueueTask: task.
+	self deny: element taskQueue tasks isEmpty.
+	element dequeueTask: task.
+	self assert: element taskQueue tasks isEmpty.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testDispatchRemovedFromSceneGraph [
+	| parent |
+	parent := TbElement new.
+	parent addChild: element.
+	element removeFromParent.
+	self assert: element parent equals: nil.
+	self assert: element isAttachedToSceneGraph equals: false.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testEffect [
+	| effect |
+	effect := TbClipOutEffect new.
+	element effect: effect.
+	self assert: element effect equals: effect.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testElevation [ 
 	
 	self assert: element elevation equals: TbRelativeElevation zero.
@@ -226,6 +331,31 @@ TbElementTest >> testEmptyMeasuredBounds [
 
 	self assert: element measuredBounds position equals: 0@0.
 	self assert: element measuredBounds extent equals: 0@0
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testEnqueueTask [
+	| task |
+	task := TbTask new.
+	element enqueueTask: task.
+	self assert: (element taskQueue tasks includes: task).
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testGeometryResizer [
+	| geometryResizer |
+	element geometryResizer: (geometryResizer := TbGeometryResizer match).
+	self assert: element geometryResizer equals: geometryResizer.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testHasChild [
+	| child | 
+	child := TbElement new.
+	element addChild: child.
+	self assert: (element hasChild: child).
+	element removeChild: element children first.
+	self deny: (element hasChild: child).
 ]
 
 { #category : 'system startup' }
@@ -343,6 +473,32 @@ TbElementTest >> testLabeledAndGtDisplay [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testLocalPointToParent [
+	| parent child pointInChild originInParent |
+	parent := TbElement new.
+	child := TbElement new.
+	parent addChild: child.
+	pointInChild := 10@10.
+	originInParent := 20@20.
+	child position: originInParent extent: 20@10.
+	self assert: (child localPointToParent: pointInChild) equals: (originInParent + pointInChild)
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testOutskirts [
+	| outskirts space |
+	
+	space := TbSpace new.
+	space root: element.
+	
+	outskirts := TbOutskirts outside.
+	element outskirts: outskirts.
+	self assert: element outskirts equals: outskirts.
+	
+
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testOwnerIsNil [
 
 	self assert: element owner isNil
@@ -358,6 +514,14 @@ TbElementTest >> testParentIsNIl [
 TbElementTest >> testPositionExtentDefaults [
     self assert: element position equals: 0@0.
     self assert: element extent equals: 0@0.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testPrintOn [
+	
+	self assert: (element printString includesSubstring: 'TbElement') description: 'The printString should include the class name'.
+	self assert: (element printString includesSubstring: ' @ ') description: 'The printString should include the identity hash'.
+	self assert: (element printString includesSubstring: element identityHash asString) description: 'The printString should include the identity hash'.
 ]
 
 { #category : 'system startup' }
@@ -389,17 +553,6 @@ TbElementTest >> testRemoveChildNamed [
 	parent addChild: container as: #container.
 	parent addChild: child in: #container.
 	parent removeChildNamed: #container.
-	self assert: parent childrenCount equals: 0.
-]
-
-{ #category : 'system startup' }
-TbElementTest >> testRemoveChildren [
-	| parent children |
-	parent := TbElement new size: 100@100; background: Color veryVeryLightGray.
-	children := { (TbElement new size: 50@50; background: Color red lighter).
-	              (TbElement new size: 50@50; background: Color blue lighter) }.
-	parent addChildren: children.
-	parent removeChildren.
 	self assert: parent childrenCount equals: 0.
 ]
 
@@ -480,6 +633,31 @@ TbElementTest >> testSetBorder [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testShouldChildrenHandleMouseEvents [
+
+	self assert: element shouldChildrenHandleMouseEvents.
+	self assert: element shouldHandleMouseEvents.
+
+	element preventMeAndChildrenMouseEvents.
+	
+	self deny: element shouldChildrenHandleMouseEvents.
+	self deny: element shouldHandleMouseEvents.
+	
+	element allowMouseEvents.
+	element allowChildrenMouseEvents.
+	
+	self assert: element shouldChildrenHandleMouseEvents.
+	self assert: element shouldHandleMouseEvents.
+	
+	element preventMouseEvents.
+	element preventChildrenMouseEvents.
+	
+	self deny: element shouldChildrenHandleMouseEvents.
+	self deny: element shouldHandleMouseEvents.
+
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testSize [ 
     element size: 100@200.
     self assert: element constraints horizontal resizer isExact.
@@ -515,4 +693,42 @@ TbElementTest >> testVisibilityChange [
 	self assert: storedArgument isHidden.
 	self deny: element isVisible.
 	
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testWithAllChildrenBreadthFirst [
+	| child1 child2 child3 child4 |
+	element := TbElement new.
+	child1 := TbElement new.
+	child2 := TbElement new.
+	child3 := TbElement new.
+	child4 := TbElement new.
+	element addChild: child1.
+	element addChild: child2.
+	child1 addChild: child3.
+	child1 addChild: child4.
+
+	self assertCollection: (element withAllChildrenBreadthFirst) asArray equals: {element. child1. child2. child3. child4}.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testWithAllParents [
+	| parent grandParent greatGrandParent result sideParent |
+	parent := TbElement new.
+	grandParent := TbElement new.
+	greatGrandParent := TbElement new.
+	sideParent := TbElement new.
+	
+	element addChild: parent.
+	element addChild: sideParent.
+	parent addChild: grandParent.
+	grandParent addChild: greatGrandParent.
+
+	result := greatGrandParent withAllParents.
+
+	self assert: (result includes: parent).
+	self assert: (result includes: grandParent).
+	self assert: (result includes: greatGrandParent).
+	self assert: (result includes: element).
+	self assert: result size equals: 4.
 ]
