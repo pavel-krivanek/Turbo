@@ -1,13 +1,15 @@
 Class {
-	#name : #TbFlowLayoutFloatingChild,
-	#superclass : #TbFlowLayoutChild,
+	#name : 'TbFlowLayoutFloatingChild',
+	#superclass : 'TbFlowLayoutChild',
 	#instVars : [
 		'lines'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutFloatingChild >> addToLine: aLine [
 	
 	"Only add me to the first line"
@@ -18,24 +20,24 @@ TbFlowLayoutFloatingChild >> addToLine: aLine [
 	lines add: aLine
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutFloatingChild >> excessBreadth [
 	^ self totalBreadth - (self lines inject: 0 into: [ :aTotalBreadth :aLine | aTotalBreadth + aLine breadth ] )
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutFloatingChild >> initialize [
 	super initialize.
 	
 	lines := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutFloatingChild >> lastLine [
 	^ lines last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutFloatingChild >> lines [
 	^ lines
 ]

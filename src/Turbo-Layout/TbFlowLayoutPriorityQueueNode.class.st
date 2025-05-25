@@ -1,61 +1,63 @@
 Class {
-	#name : #TbFlowLayoutPriorityQueueNode,
-	#superclass : #Object,
+	#name : 'TbFlowLayoutPriorityQueueNode',
+	#superclass : 'Object',
 	#instVars : [
 		'value',
 		'priority',
 		'queueIndex',
 		'insertionIndex'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbFlowLayoutPriorityQueueNode >> asAssociation [
 	^ self priority -> self value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> insertionIndex [
 	^ insertionIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> insertionIndex: anObject [
 	insertionIndex := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbFlowLayoutPriorityQueueNode >> printOn: aStream [
 	self asAssociation printOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> priority [
 	^ priority
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> priority: anObject [
 	priority := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> queueIndex [
 	^ queueIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> queueIndex: anObject [
 	queueIndex := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueueNode >> value: anObject [
 	value := anObject
 ]

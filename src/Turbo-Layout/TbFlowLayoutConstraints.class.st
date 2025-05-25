@@ -1,45 +1,47 @@
 Class {
-	#name : #TbFlowLayoutConstraints,
-	#superclass : #TbLayoutConstraints,
+	#name : 'TbFlowLayoutConstraints',
+	#superclass : 'TbLayoutConstraints',
 	#instVars : [
 		'newLine',
 		'weight',
 		'display'
 	],
-	#category : #'Turbo-Layout-Flow'
+	#category : 'Turbo-Layout-Flow',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> alignment [
 	^ self horizontal alignment + self vertical alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutConstraints >> defaultDisplay [
 	^ TbFlowLayoutDisplay inline
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutConstraints >> defaultHorizontal [
 	^ TbFlowLayoutConstraintsHorizontal new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutConstraints >> defaultVertical [
 	^ TbFlowLayoutConstraintsVertical new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> display [
 	^ display
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> float [
 	display := TbFlowLayoutDisplay float
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutConstraints >> initialize [
 	super initialize.
 	
@@ -48,27 +50,27 @@ TbFlowLayoutConstraints >> initialize [
 	display := self defaultDisplay
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> inline [
 	display := TbFlowLayoutDisplay inline
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutConstraints >> isNewLine [
 	^ newLine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> newLine: aBoolean [
 	newLine := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> weight [
 	^ weight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraints >> weight: aNumber [
 	weight := aNumber
 ]

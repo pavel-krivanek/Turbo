@@ -4,8 +4,8 @@ For each group (with a given alignment) we need to store the amount of space req
 The general algorithm therefore is to create a Map (actually a PackedMap) from group to Bounds and to loop through all Views in the group taking the maximum of the values for each View.
 "
 Class {
-	#name : #TbGridLayoutBounds,
-	#superclass : #Object,
+	#name : 'TbGridLayoutBounds',
+	#superclass : 'Object',
 	#instVars : [
 		'before',
 		'after',
@@ -14,34 +14,36 @@ Class {
 	#pools : [
 		'TbGridLayoutConstants'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds class >> canStretch [
 	^ TbGridFlexibility canStretch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds class >> inflexible [
 	^ TbGridFlexibility inflexible
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds class >> maxSize [
 	^ 100000
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridLayoutBounds >> canStretch [
 	^ flexibility = self class canStretch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds >> includeBefore: newBefore after: newAfter [
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds >> includeElement: anElement spec: aSpec axis: anAxis size: size [
 	| alignment newBefore newAfter |
 	flexibility := flexibility and: aSpec flexibility.
@@ -57,19 +59,19 @@ TbGridLayoutBounds >> includeElement: anElement spec: aSpec axis: anAxis size: s
 	self includeBefore: newBefore after: newAfter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutBounds >> initialize [
 	super initialize.
 	
 	self reset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds >> offset: anElement alignment: anAlignment size: size [
 	^ before - (anAlignment alignmentValue: anElement viewSize: size)
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbGridLayoutBounds >> printOn: aStream [
 	aStream
 		nextPutAll: 'before: ';
@@ -82,14 +84,14 @@ TbGridLayoutBounds >> printOn: aStream [
 		nextPutAll: (self size: true) asString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutBounds >> reset [
 	before := UNDEFINED.
    after := UNDEFINED.
    flexibility := self class canStretch "we are flexible when empty"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBounds >> size: min [
 	^ (min not and: [ self canStretch ])
 		ifTrue: [ self class maxSize ]

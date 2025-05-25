@@ -1,6 +1,6 @@
 Class {
-	#name : #TbGridLayoutImpl,
-	#superclass : #TbLayout,
+	#name : 'TbGridLayoutImpl',
+	#superclass : 'TbLayout',
 	#instVars : [
 		'horizontalAxis',
 		'verticalAxis',
@@ -11,17 +11,19 @@ Class {
 	#pools : [
 		'TbGridLayoutConstants'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutImpl class >> on: aGridLayout [
 	^ self new
 		layout: aGridLayout;
 		yourself
 ]
 
-{ #category : #'private utilities' }
+{ #category : 'private utilities' }
 TbGridLayoutImpl >> adjust: aMeasurementSpec by: delta [
 
 	^ TbMeasurementSpec new
@@ -29,12 +31,12 @@ TbGridLayoutImpl >> adjust: aMeasurementSpec by: delta [
 		mode: aMeasurementSpec mode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutImpl >> alignment [
 	^ layout alignment
 ]
 
-{ #category : #'private accessing' }
+{ #category : 'private accessing' }
 TbGridLayoutImpl >> axis: isHorizontal [
 	"Return an object that represents a horizontal axis if isHorizontal is true and vertical axis otherwise"
 	<return: #BlGridLayoutAxis>
@@ -44,12 +46,12 @@ TbGridLayoutImpl >> axis: isHorizontal [
 		ifFalse: [ verticalAxis ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutImpl >> cellSpacing [
 	^ layout cellSpacing
 ]
 
-{ #category : #computation }
+{ #category : 'computation' }
 TbGridLayoutImpl >> cellSpacingOf: aChildElement isAtEdge: isAtEdge isHorizontal: isHorizontal isLeading: isLeading [
 	"Return cell spacing around aChildElement at the side defined by isAtEdge, isHorizontal and isLeading.
 	isAtEdge is a boolean whose value is true if cell is located on the grid's edge, meaning that it
@@ -70,7 +72,7 @@ TbGridLayoutImpl >> cellSpacingOf: aChildElement isAtEdge: isAtEdge isHorizontal
 		ifFalse: [ self cellSpacing / 2.0 ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutImpl >> checkConsistency: anElement [
 
 	lastLayoutParamsHashCode
@@ -84,7 +86,7 @@ TbGridLayoutImpl >> checkConsistency: anElement [
 				self checkConsistency: anElement ] ]
 ]
 
-{ #category : #'private utilities' }
+{ #category : 'private utilities' }
 TbGridLayoutImpl >> clip: aBlGridLayoutInterval isDefined: isDefined count: count [
 	"Logic to avert infinite loops by ensuring that the cells can be placed somewhere."
 	<return: #Number>
@@ -102,23 +104,23 @@ TbGridLayoutImpl >> clip: aBlGridLayoutInterval isDefined: isDefined count: coun
 	^ size min: count - min
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutImpl >> columnCount: aNumber [
 	horizontalAxis count: aNumber
 ]
 
-{ #category : #'private utilities' }
+{ #category : 'private utilities' }
 TbGridLayoutImpl >> constraintsHashCode: anElement [
 	
 	^ anElement children accountedByLayout inject: 1 into: [ :hash :child | hash bitXor: child constraints hash ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutImpl >> defaultMeasurer [
 	^ TbGridMeasurer new
 ]
 
-{ #category : #'private utilities' }
+{ #category : 'private utilities' }
 TbGridLayoutImpl >> fill: anArray from: fromIndex to: toIndex with: aValue [
 	| aLength start end |
 	
@@ -132,7 +134,7 @@ TbGridLayoutImpl >> fill: anArray from: fromIndex to: toIndex with: aValue [
 	anArray atAll: (start + 1 to: end) put: aValue
 ]
 
-{ #category : #'private utilities' }
+{ #category : 'private utilities' }
 TbGridLayoutImpl >> fits: anArray from: fromIndex to: toIndex with: value [
 	"Return true if value fits inside array within interval
 	fromIndex to toIndex exclusive, false otherwise.
@@ -147,7 +149,7 @@ TbGridLayoutImpl >> fits: anArray from: fromIndex to: toIndex with: value [
 	^ (fromIndex to: toIndex - 1) allSatisfy: [ :anIndex | (anArray at: anIndex + 1) <= value ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutImpl >> initialize [
 	super initialize.
 
@@ -156,7 +158,7 @@ TbGridLayoutImpl >> initialize [
 	measurer := self defaultMeasurer
 ]
 
-{ #category : #'private invalidate' }
+{ #category : 'private invalidate' }
 TbGridLayoutImpl >> invalidateStructure [
 	lastLayoutParamsHashCode := nil.
 	horizontalAxis invalidateStructure.
@@ -164,18 +166,18 @@ TbGridLayoutImpl >> invalidateStructure [
 	self invalidateValues
 ]
 
-{ #category : #'private invalidate' }
+{ #category : 'private invalidate' }
 TbGridLayoutImpl >> invalidateValues [
 	horizontalAxis invalidateValues.
 	verticalAxis invalidateValues
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutImpl >> layout: aGridLayout [
 	layout := aGridLayout
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbGridLayoutImpl >> layout: anElement in: aRectangle [
 	| targetWidth targetHeight paddingLeft paddingTop paddingRight paddingBottom hLocations vLocations|
 	
@@ -248,7 +250,7 @@ TbGridLayoutImpl >> layout: anElement in: aRectangle [
 		child applyLayoutIn: (cx @ cy extent: width @ height) ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridLayoutImpl >> measure: anElement with: anExtentSpec [
 	| widthSpec heightSpec hPadding vPadding widthSpecSansPadding heightSpecSansPadding widthSansPadding heightSansPadding measuredWidth measuredHeight |
 
@@ -295,22 +297,22 @@ TbGridLayoutImpl >> measure: anElement with: anExtentSpec [
 	anElement measuredExtent: (anExtentSpec sizeFor: measuredWidth @ measuredHeight)
 ]
 
-{ #category : #'private accessing' }
+{ #category : 'private accessing' }
 TbGridLayoutImpl >> measurer [
 	^ measurer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutImpl >> orientation [
 	^ layout orientation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutImpl >> rowCount: aNumber [
 	verticalAxis count: aNumber
 ]
 
-{ #category : #'private utilities' }
+{ #category : 'private utilities' }
 TbGridLayoutImpl >> setGroup: child row: row span: rowSpan col: col span: colSpan [
 	| childConstraints |
 
@@ -319,7 +321,7 @@ TbGridLayoutImpl >> setGroup: child row: row span: rowSpan col: col span: colSpa
 	childConstraints horizontal specSpan: (TbGridLayoutInterval min: col max: col + colSpan)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutImpl >> validateChildConstraints: aChildElement [
 	| childConstraints |
 	childConstraints := aChildElement constraints grid.
@@ -337,7 +339,7 @@ TbGridLayoutImpl >> validateChildConstraints: aChildElement [
 			childConstraints vertical specAlignment: TbGridAlignment fill ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutImpl >> validateLayoutParams: anElement [
 	"install default indices for cells that don't define them"
 	| isHorizontal anAxis aCount major minor maxSizes |

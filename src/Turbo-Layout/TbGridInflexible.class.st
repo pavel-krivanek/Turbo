@@ -1,20 +1,22 @@
 Class {
-	#name : #TbGridInflexible,
-	#superclass : #TbGridFlexibility,
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#name : 'TbGridInflexible',
+	#superclass : 'TbGridFlexibility',
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridInflexible >> and: aFlexibility [
 	aFlexibility andInflexible: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridInflexible >> andCanStretch: aFlexibility [
 	^ self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridInflexible >> andInflexible: aFlexibility [
 	^ self
 ]

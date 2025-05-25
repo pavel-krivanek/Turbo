@@ -1,33 +1,35 @@
 Class {
-	#name : #TbFlowLayoutConstraintsVertical,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbFlowLayoutConstraintsVertical',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment'
 	],
-	#category : #'Turbo-Layout-Flow'
+	#category : 'Turbo-Layout-Flow',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFlowLayoutConstraintsVertical >> alignBottom [
 	alignment := TbElementAlignment vertical end
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFlowLayoutConstraintsVertical >> alignCenter [
 	alignment := TbElementAlignment vertical center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFlowLayoutConstraintsVertical >> alignTop [
 	alignment := TbElementAlignment vertical start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraintsVertical >> alignment [
 	^ alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutConstraintsVertical >> initialize [
 	super initialize.
 	

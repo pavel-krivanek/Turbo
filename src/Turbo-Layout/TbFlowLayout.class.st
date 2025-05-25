@@ -1,6 +1,6 @@
 Class {
-	#name : #TbFlowLayout,
-	#superclass : #TbLayout,
+	#name : 'TbFlowLayout',
+	#superclass : 'TbLayout',
 	#traits : 'TTbAlignable',
 	#classTraits : 'TTbAlignable classTrait',
 	#instVars : [
@@ -9,34 +9,36 @@ Class {
 		'horizontalAlignment',
 		'verticalAlignment'
 	],
-	#category : #'Turbo-Layout-Flow'
+	#category : 'Turbo-Layout-Flow',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow'
 }
 
-{ #category : #constraints }
+{ #category : 'constraints' }
 TbFlowLayout class >> constraints [
 	^ TbFlowLayoutConstraints new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbFlowLayout class >> horizontal [
 	^ self new
 		horizontal;
 		yourself
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbFlowLayout class >> vertical [
 	^ self new
 		vertical;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> alignment [
 	^ self horizontalAlignment + self verticalAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayout >> defaultHorizontalAlignment [
 	"By default alignment should not influence on layout process,
 	so to not deal with nils use null object"
@@ -45,12 +47,12 @@ TbFlowLayout >> defaultHorizontalAlignment [
 	^ TbElementAlignment start horizontal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayout >> defaultOrientation [
 	^ TbLayoutOrientation horizontal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayout >> defaultVerticalAlignment [
 	"By default alignment should not influence on layout process,
 	so to not deal with nils use null object"
@@ -59,25 +61,25 @@ TbFlowLayout >> defaultVerticalAlignment [
 	^ TbElementAlignment start vertical
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> horizontal [
 	orientation := TbLayoutOrientation horizontal.
 	measurer beHorizontal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> horizontalAlignment [
 
 	<ignoreForCoverage>
 	^ horizontalAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> horizontalAlignment: anAlignment [
 	horizontalAlignment := anAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayout >> initialize [
 	super initialize.
 	
@@ -87,44 +89,44 @@ TbFlowLayout >> initialize [
 	self orientation: self defaultOrientation
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbFlowLayout >> layout: anElement in: newBounds [
 	measurer layout: anElement in: newBounds.
 	self layoutIgnored: anElement
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFlowLayout >> measure: anElement with: anExtentSpec [
 	measurer measure: anElement with: anExtentSpec.
 	self measureIgnored: anElement with: anExtentSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> orientation [
 	<ignoreForCoverage>
 	^ orientation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> orientation: aLayoutOrientation [
 	"Dispatches to self horizontal or vertical"
 	aLayoutOrientation of: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> vertical [
 	orientation := TbLayoutOrientation vertical.
 	measurer beVertical
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> verticalAlignment [
 
 	<ignoreForCoverage>
 	^ verticalAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayout >> verticalAlignment: anAlignment [
 	verticalAlignment := anAlignment
 ]

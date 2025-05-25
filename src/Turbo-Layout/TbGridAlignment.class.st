@@ -1,94 +1,96 @@
 Class {
-	#name : #TbGridAlignment,
-	#superclass : #Object,
+	#name : 'TbGridAlignment',
+	#superclass : 'Object',
 	#pools : [
 		'TbGridLayoutConstants'
 	],
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> baseline [
 	^ TbGridBaselineAlignment uniqueInstance
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> bottom [
 	^ self trailing
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> center [
 	^ TbGridCenterAlignment uniqueInstance
 ]
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbGridAlignment class >> cleanUp [
 	super cleanUp.
 	
 	uniqueInstance := nil
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> end [
 	^ self trailing
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> fill [
 	^ TbGridFillAlignment uniqueInstance
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> leading [
 	^ TbGridLeadingAlignment uniqueInstance
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> left [
 	^ self start
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> right [
 	^ self end
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> start [
 	^ self leading
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> top [
 	^ self leading
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> trailing [
 	^ TbGridTrailingAlignment uniqueInstance
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridAlignment class >> undefined [
 	^ TbGridUndefinedAlignment uniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridAlignment class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridAlignment >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	^ self class = anObject class
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridAlignment >> alignmentValue: anElement viewSize: viewSize [
 	"Returns an alignment value. In the case of vertical alignments the value
 	returned should indicate the distance from the top of the view to the
@@ -101,27 +103,27 @@ TbGridAlignment >> alignmentValue: anElement viewSize: viewSize [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridAlignment >> bounds [
 	^ TbGridLayoutBounds new
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridAlignment >> gravityOffset: anElement cellDelta: cellDelta [
 	^ self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridAlignment >> hash [
 	^ self class hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridAlignment >> isFill [
 	^ false
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridAlignment >> sizeInCell: anElement viewSize: viewSize cellSize: cellSize [
 	"Returns the size of the view specified by this alignment.
 	In the case of vertical alignments this method should return a height; for

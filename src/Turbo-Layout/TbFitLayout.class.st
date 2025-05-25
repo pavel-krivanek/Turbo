@@ -4,12 +4,14 @@ I am a special layout that uses measured positions of children to determine pare
 I should be considered to be a root of graph or visualisation layouts. For that purpose override measurePositions: with:
 "
 Class {
-	#name : #TbFitLayout,
-	#superclass : #TbLayout,
-	#category : #'Turbo-Layout-Fit'
+	#name : 'TbFitLayout',
+	#superclass : 'TbLayout',
+	#category : 'Turbo-Layout-Fit',
+	#package : 'Turbo-Layout',
+	#tag : 'Fit'
 }
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFitLayout >> boundingBox: anElement [
 	<return: #Rectangle>
 	| aBoundingBox |
@@ -28,7 +30,7 @@ TbFitLayout >> boundingBox: anElement [
 	^ aBoundingBox expanded asRectangle
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbFitLayout >> fit: anElement with: anExtentSpec [
 	| boundingBox width height |
 		
@@ -40,7 +42,7 @@ TbFitLayout >> fit: anElement with: anExtentSpec [
 	anElement measuredExtent: (width @ height)
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbFitLayout >> layout: anElement in: aRectangle [
 
 	self normalize: anElement in: aRectangle.
@@ -51,7 +53,7 @@ TbFitLayout >> layout: anElement in: aRectangle [
 		do: [ :aChild | aChild applyLayoutIn: aChild measuredBounds asRectangle ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFitLayout >> measure: anElement with: anExtentSpec [
 	
 	self measuredChildren: anElement do: [ :aChild |
@@ -65,13 +67,13 @@ TbFitLayout >> measure: anElement with: anExtentSpec [
 	self fit: anElement with: anExtentSpec
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFitLayout >> measurePositions: anElement with: anExtentSpec [
 	"Override me to implement a custom child position measurement algorithm.
 	Graph or visualisation layouts should implement me"
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFitLayout >> normalize: anElement in: aRectangle [
 	| boundingBox delta |
 

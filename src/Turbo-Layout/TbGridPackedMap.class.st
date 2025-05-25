@@ -1,25 +1,27 @@
 Class {
-	#name : #TbGridPackedMap,
-	#superclass : #Object,
+	#name : 'TbGridPackedMap',
+	#superclass : 'Object',
 	#instVars : [
 		'values',
 		'indices',
 		'keys'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridPackedMap class >> fromAssociations: anArrayOfAssociations [
 	^ self new values: (anArrayOfAssociations collect: #value) keys: (anArrayOfAssociations collect: #key)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> at: index [
 	^ values at: (indices at: index)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridPackedMap >> compact: anArray indices: theIndices [
 	|size result|
 	size := anArray size.
@@ -29,7 +31,7 @@ TbGridPackedMap >> compact: anArray indices: theIndices [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridPackedMap >> createIndex: theKeys [
 	| size result keyToIndex |
 	size := theKeys size.
@@ -44,35 +46,35 @@ TbGridPackedMap >> createIndex: theKeys [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> keys [
 	^ keys
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> keysAndValuesDo: aBlock [
 
 	1 to: self keys size do: [ :i | aBlock value: (self keys at: i) value: (self values at: i) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> keysDo: aBlock [
 	self keys do: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> values [
 	^ values
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> values: theValues keys: theKeys [
 	indices := self createIndex: theKeys.
 	keys := self compact: theKeys indices: indices.
 	values := self compact: theValues indices: indices
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridPackedMap >> valuesDo: aBlock [
 	self values do: aBlock
 ]

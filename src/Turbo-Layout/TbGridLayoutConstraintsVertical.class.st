@@ -1,20 +1,22 @@
 Class {
-	#name : #TbGridLayoutConstraintsVertical,
-	#superclass : #TbGridLayoutConstraintsAxis,
-	#category : #'Turbo-Layout-Grid'
+	#name : 'TbGridLayoutConstraintsVertical',
+	#superclass : 'TbGridLayoutConstraintsAxis',
+	#category : 'Turbo-Layout-Grid',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridLayoutConstraintsVertical >> alignBottom [
 	self specAlignment: TbGridAlignment bottom
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridLayoutConstraintsVertical >> alignCenter [
 	self specAlignment: TbGridAlignment center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridLayoutConstraintsVertical >> alignTop [
 	self specAlignment: TbGridAlignment top
 ]

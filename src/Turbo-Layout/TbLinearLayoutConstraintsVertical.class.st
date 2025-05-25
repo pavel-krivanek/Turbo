@@ -1,38 +1,40 @@
 Class {
-	#name : #TbLinearLayoutConstraintsVertical,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbLinearLayoutConstraintsVertical',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment'
 	],
-	#category : #'Turbo-Layout-Linear'
+	#category : 'Turbo-Layout-Linear',
+	#package : 'Turbo-Layout',
+	#tag : 'Linear'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraintsVertical >> alignBottom [
 	alignment := TbElementAlignment vertical end
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraintsVertical >> alignCenter [
 	alignment := TbElementAlignment vertical center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraintsVertical >> alignTop [
 	alignment := TbElementAlignment vertical start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutConstraintsVertical >> alignment [
 	^ alignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutConstraintsVertical >> alignment: aBlElementAlignment [
 	alignment := aBlElementAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutConstraintsVertical >> initialize [
 	super initialize.
 	

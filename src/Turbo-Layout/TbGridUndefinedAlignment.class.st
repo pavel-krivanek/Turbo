@@ -1,15 +1,17 @@
 Class {
-	#name : #TbGridUndefinedAlignment,
-	#superclass : #TbGridAlignment,
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#name : 'TbGridUndefinedAlignment',
+	#superclass : 'TbGridAlignment',
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridUndefinedAlignment >> alignmentValue: anElement viewSize: viewSize [
 	^ UNDEFINED
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridUndefinedAlignment >> gravityOffset: anElement cellDelta: cellDelta [
 	^ UNDEFINED
 ]

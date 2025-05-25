@@ -1,15 +1,17 @@
 Class {
-	#name : #TbFlowLayoutInline,
-	#superclass : #TbFlowLayoutDisplay,
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#name : 'TbFlowLayoutInline',
+	#superclass : 'TbFlowLayoutDisplay',
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutInline >> isFloating [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutInline >> isInline [
 	^ true
 ]

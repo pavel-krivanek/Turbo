@@ -2,45 +2,47 @@
 A mutable Integer - used to avoid heap allocation during the layout operation
 "
 Class {
-	#name : #TbGridMutableInteger,
-	#superclass : #Object,
+	#name : 'TbGridMutableInteger',
+	#superclass : 'Object',
 	#instVars : [
 		'value'
 	],
 	#pools : [
 		'TbGridLayoutConstants'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridMutableInteger class >> value: aNumber [
 	^ self new value: aNumber
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridMutableInteger >> initialize [
 	super initialize.
 	
 	self reset
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbGridMutableInteger >> printOn: aStream [
 	aStream nextPutAll: self value asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridMutableInteger >> reset [
 	value := UNDEFINED
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridMutableInteger >> value [
 	^ 	value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridMutableInteger >> value: aNumber [
 	value := aNumber
 ]

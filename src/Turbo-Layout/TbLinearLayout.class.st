@@ -1,6 +1,6 @@
 Class {
-	#name : #TbLinearLayout,
-	#superclass : #TbLayout,
+	#name : 'TbLinearLayout',
+	#superclass : 'TbLayout',
 	#traits : 'TTbAlignable',
 	#classTraits : 'TTbAlignable classTrait',
 	#instVars : [
@@ -11,66 +11,68 @@ Class {
 		'shouldUseLargestChild',
 		'cellSpacing'
 	],
-	#category : #'Turbo-Layout-Linear'
+	#category : 'Turbo-Layout-Linear',
+	#package : 'Turbo-Layout',
+	#tag : 'Linear'
 }
 
-{ #category : #constraints }
+{ #category : 'constraints' }
 TbLinearLayout class >> constraints [
 	^ TbLinearLayoutConstraints new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbLinearLayout class >> horizontal [
 	^ self new beHorizontal
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbLinearLayout class >> vertical [
 	^ self new beVertical
 ]
 
-{ #category : #'api - alignment' }
+{ #category : 'api - alignment' }
 TbLinearLayout >> align: aChildElement horizontal: aBlAlignment [
 	aChildElement constraintsDo: [ :c | (c at: self class) horizontal alignment: aBlAlignment ]
 ]
 
-{ #category : #'api - alignment' }
+{ #category : 'api - alignment' }
 TbLinearLayout >> align: aChildElement vertical: aBlAlignment [
 	aChildElement constraintsDo: [ :c | (c at: self class) vertical alignment: aBlAlignment ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> alignment [
 	^ (self horizontalAlignment + self verticalAlignment) directed: self direction
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayout >> beHorizontal [
 	"Change my orientation to horizontal"
 	
 	self orientation: TbLinearLayoutHorizontalOrientation new
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayout >> beVertical [
 	"Change my orientation to vertical"
 	
 	self orientation: TbLinearLayoutVerticalOrientation new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> cellSpacing [
 	<return: #Number>
 	
 	^ cellSpacing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> cellSpacing: aNumber [	
 	cellSpacing := aNumber
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayout >> defaultHorizontalAlignment [
 	"By default alignment should not influence on layout process,
 	so to not deal with nils use null object"
@@ -79,7 +81,7 @@ TbLinearLayout >> defaultHorizontalAlignment [
 	^ TbElementAlignment null horizontal
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayout >> defaultOrientation [
 	"Return default orientation used by LinearLayout. If
 	instance of my class is created with #new a horizontal orientation
@@ -89,7 +91,7 @@ TbLinearLayout >> defaultOrientation [
 	^ TbLinearLayoutHorizontalOrientation new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayout >> defaultVerticalAlignment [
 	"By default alignment should not influence on layout process,
 	so to not deal with nils use null object"
@@ -98,7 +100,7 @@ TbLinearLayout >> defaultVerticalAlignment [
 	^ TbElementAlignment null vertical
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayout >> defaultWeightSum [
 	"Default weight sum should be 0 to indicate that actual weight should be calculated
 	as arithmetic sum of childrens' weight"
@@ -107,17 +109,17 @@ TbLinearLayout >> defaultWeightSum [
 	^ 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> horizontalAlignment [
 	^ horizontalAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> horizontalAlignment: anAlignment [
 	horizontalAlignment := anAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayout >> initialize [
 	super initialize.
 	
@@ -130,23 +132,23 @@ TbLinearLayout >> initialize [
 	self orientation: self defaultOrientation.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLinearLayout >> isHorizontal [
 	^ self orientation isHorizontal
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLinearLayout >> isVertical [
 	^ self orientation isVertical
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbLinearLayout >> layout: anElement in: aRectangle [
 	self orientation layout: anElement in: aRectangle.
 	self layoutIgnored: anElement
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbLinearLayout >> measure: anElement with: anExtentSpec [
 	| aMeasurer |
 	"I measure a new extent of myself and my children"
@@ -166,18 +168,18 @@ TbLinearLayout >> measure: anElement with: anExtentSpec [
 	self measureIgnored: anElement with: (TbExtentMeasurementSpec exact: anElement measuredExtent)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> orientation [
 	^ orientation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> orientation: anOrientation [
 	orientation := anOrientation.
 	anOrientation applyLayoutIn: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLinearLayout >> shouldUseLargestChild [
 	"When true, all children with a weight will be considered having the minimum size of the largest child.
 	If false, all children are measured normally."
@@ -186,29 +188,29 @@ TbLinearLayout >> shouldUseLargestChild [
 	^ shouldUseLargestChild
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> verticalAlignment [
 	^ verticalAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> verticalAlignment: anAlignment [
 	verticalAlignment := anAlignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> weightSum [
 	<return: #Number>
 
 	^ weightSum
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayout >> weightSum: aNumber [
 	weightSum := aNumber
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbLinearLayout >> withSpaceEqualization [
 	"When set to true, all children with a weight will be considered having the minimum size of the largest child.
 	If false, all children are measured normally.
@@ -217,7 +219,7 @@ TbLinearLayout >> withSpaceEqualization [
 	shouldUseLargestChild := true
 ]
 
-{ #category : #'api - configuration' }
+{ #category : 'api - configuration' }
 TbLinearLayout >> withoutSpaceEqualization [
 	"When set to true, all children with a weight will be considered having the minimum size of the largest child.
 	If false, all children are measured normally.

@@ -11,23 +11,25 @@ Intervals are often written as [min, max) and represent the set of values min <=
 I am used by ${class:BlGridLayoutArc}$
 "
 Class {
-	#name : #TbGridLayoutInterval,
-	#superclass : #Object,
+	#name : 'TbGridLayoutInterval',
+	#superclass : 'Object',
 	#instVars : [
 		'min',
 		'max'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutInterval class >> min: aMinValue max: aMaxValue [
 	<return: #BlGridLayoutInterval>
 
 	^ self new min: aMinValue max: aMaxValue
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridLayoutInterval >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -38,35 +40,35 @@ TbGridLayoutInterval >> = anObject [
 	^ min = anObject min and: [ max = anObject max ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridLayoutInterval >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ min hash bitXor: max hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutInterval >> inversed [
 	<return: #BlGridLayoutInterval>
 
 	^ self class min: max max: min
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutInterval >> max [
 	<return: #Number>
 
 	^ max
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutInterval >> min [
 	<return: #Number>
 
 	^ min
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutInterval >> min: aMinValue max: aMaxValue [
 	"Construct a new interval"
 
@@ -77,7 +79,7 @@ TbGridLayoutInterval >> min: aMinValue max: aMaxValue [
 	max := aMaxValue
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbGridLayoutInterval >> printOn: aStream [
 	"Append a sequence of characters to aStream that identify the receiver."
 
@@ -90,7 +92,7 @@ TbGridLayoutInterval >> printOn: aStream [
 		print: max
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutInterval >> size [
 	<return: #Number>
 

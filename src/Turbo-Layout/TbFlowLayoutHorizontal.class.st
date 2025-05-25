@@ -1,80 +1,82 @@
 Class {
-	#name : #TbFlowLayoutHorizontal,
-	#superclass : #TbFlowLayoutOrientation,
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#name : 'TbFlowLayoutHorizontal',
+	#superclass : 'TbFlowLayoutOrientation',
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> breadthModeOf: aMeasurer [
 	^ aMeasurer heightMode
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> breadthOf: aChild [
 	^ aChild height
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> breadthOf: aChild set: aNumber [
 	aChild height: aNumber
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> inlineX: aChild [
 	^ aChild startLength
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> inlineY: aChild [
 	^ aChild startBreadth
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutHorizontal >> isHorizontal [
 	^ true
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> lengthModeOf: aMeasurer [
 	^ aMeasurer widthMode
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> lengthOf: aChild [
 	^ aChild width
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> lengthOf: aChild set: aNumber [
 	aChild width: aNumber
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> lineX: aLine [
 	^ aLine startLength
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> lineY: aLine [
 	^ aLine startBreadth
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> maxBreadthOf: aMeasurer [
 	^ aMeasurer maxHeight
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> maxLengthOf: aMeasurer [
 	^ aMeasurer maxWidth
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> spacingBreadthOf: aChild [
 	^ aChild marginTop + aChild marginBottom
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutHorizontal >> spacingLengthOf: aChild [
 	^ aChild marginLeft + aChild marginRight
 ]

@@ -2770,14 +2770,6 @@ TbElement >> space: aSpace [
 	self childrenDo: [ :each | each space: aSpace ]
 ]
 
-{ #category : 'layout' }
-TbElement >> supportsBaseline [
-	"Return true if I support baseline alignment"
-	<return: #Boolean>
-
-	^ false
-]
-
 { #category : 'api - tasks' }
 TbElement >> taskQueue [
 	<return: #BlTaskQueue>

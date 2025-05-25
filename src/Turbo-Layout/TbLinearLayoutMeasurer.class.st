@@ -1,8 +1,7 @@
 Class {
-	#name : #TbLinearLayoutMeasurer,
-	#superclass : #Object,
+	#name : 'TbLinearLayoutMeasurer',
+	#superclass : 'Object',
 	#instVars : [
-		'isBaselineAligned',
 		'useLargestChild',
 		'cellSpacing',
 		'nodes',
@@ -25,30 +24,31 @@ Class {
 		'useSpaceDistribution',
 		'layout'
 	],
-	#category : #'Turbo-Layout-Linear-Utilities'
+	#category : 'Turbo-Layout-Linear-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Linear-Utilities'
 }
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> baselineMeasure [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutMeasurer >> breadthSpec [
 	^ breadthSpec
 ]
 
-{ #category : #'accessing - properties' }
+{ #category : 'accessing - properties' }
 TbLinearLayoutMeasurer >> cellSpacing [
 	^ cellSpacing
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutMeasurer >> initialize [
 	super initialize.
 
 	useLargestChild := false.
-	isBaselineAligned := false.
 	cellSpacing := 0.
 
 	totalLength := 0.
@@ -64,7 +64,7 @@ TbLinearLayoutMeasurer >> initialize [
 	weightedMaxBreadth := 0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutMeasurer >> initializeWith: aParentElement layout: aLinearLayout extentSpec: anExtentSpec orientation: aBlLinearLayoutOrientation [
 
 	parent := aParentElement.
@@ -81,22 +81,17 @@ TbLinearLayoutMeasurer >> initializeWith: aParentElement layout: aLinearLayout e
 		collect: [ :aChildElement | TbLinearLayoutNode new initializeWith: aChildElement orientation: orientation ]
 ]
 
-{ #category : #'accessing - properties' }
-TbLinearLayoutMeasurer >> isBaselineAligned [
-	^ isBaselineAligned
-]
-
-{ #category : #testing }
+{ #category : 'testing' }
 TbLinearLayoutMeasurer >> isBreadthExact [
 	^ self breadthSpec isExact
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLinearLayoutMeasurer >> isLengthExact [
 	^ self lengthSpec isExact
 ]
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> largestMeasure [
 	"I re-measure my length for the case when we consider all weighted children to have the minimum size of the largest child"
 	
@@ -111,12 +106,12 @@ TbLinearLayoutMeasurer >> largestMeasure [
 	self nodes do: [ :aNode | self updateTotalLengthFromLargestChild: aNode ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutMeasurer >> lengthSpec [
 	^ lengthSpec
 ]
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> measure [
 	self preMeasure.
 
@@ -130,7 +125,7 @@ TbLinearLayoutMeasurer >> measure [
 	self uniformMeasure
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLinearLayoutMeasurer >> measureExactUsingExcessSpace: aNode [
 	"Optimization: don't bother measuring children who are only laid out using excess space.
 	These views will get measured later if we have space to distribute."
@@ -138,21 +133,21 @@ TbLinearLayoutMeasurer >> measureExactUsingExcessSpace: aNode [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutMeasurer >> nodes [
 	<return: #Collection of: #BlLinearLayoutNode>
 
 	^ nodes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutMeasurer >> parent [
 	<return: #BlElement>
 
 	^ parent
 ]
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> postMeasure [
 
 	(allFillParent not and: [ breadthSpec isExact not ])
@@ -166,7 +161,7 @@ TbLinearLayoutMeasurer >> postMeasure [
 	parent measuredExtent: (orientation extentBreadth: (breadthSpec sizeFor: maxBreadth) lengthSpec: measuredLength).
 ]
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> preMeasure [
 
 	"See how wide/tall everyone is. Also remember max breadth."
@@ -229,7 +224,6 @@ TbLinearLayoutMeasurer >> preMeasure [
 				matchBreadthLocally := true ].
 		
 		childBreadth := aNode measuredBreadth + aNode marginBreadth.
-		self processBaseline: aNode breadth: childBreadth.
 
 		maxBreadth := maxBreadth max: childBreadth.
 		allFillParent := allFillParent and: [ aNode breadthResizer isMatchParent ].
@@ -250,19 +244,19 @@ TbLinearLayoutMeasurer >> preMeasure [
 			ifTrue: [ totalLength := totalLength + self cellSpacing ] ]
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLinearLayoutMeasurer >> prepareForWeightedMeasure [
 	self subclassResponsibility
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLinearLayoutMeasurer >> processBaseline: aNode breadth: aChildBreadth [
 	"I process baseline of a given child node if it is supported."
 
 	self subclassResponsibility
 ]
 
-{ #category : #'accessing - properties' }
+{ #category : 'accessing - properties' }
 TbLinearLayoutMeasurer >> remainingWeightSum [
 	<return: #Number>
 
@@ -271,7 +265,7 @@ TbLinearLayoutMeasurer >> remainingWeightSum [
 		ifFalse: [ totalWeight ]
 ]
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> uniformMeasure [
 	| uniformMeasureSpec |
 	matchBreadth
@@ -302,31 +296,31 @@ TbLinearLayoutMeasurer >> uniformMeasure [
 			aNode lengthResizer: oldResizer ].
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLinearLayoutMeasurer >> updateTotalLengthAfterMeasuring: aNode [
 	"I update the total length after measuring a given node based on its measured length and margin"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'private - measurement' }
+{ #category : 'private - measurement' }
 TbLinearLayoutMeasurer >> updateTotalLengthFromLargestChild: aNode [
 	"I update the total length taking into account the length of the largest child"
 
 	self subclassResponsibility
 ]
 
-{ #category : #'accessing - properties' }
+{ #category : 'accessing - properties' }
 TbLinearLayoutMeasurer >> useLargestChild [
 	^ useLargestChild
 ]
 
-{ #category : #'accessing - properties' }
+{ #category : 'accessing - properties' }
 TbLinearLayoutMeasurer >> weightSum [
 	^ layout weightSum
 ]
 
-{ #category : #measurement }
+{ #category : 'measurement' }
 TbLinearLayoutMeasurer >> weightedMeasure [
 	"I measure weighted children if there is enough excess space"	
 	| remainingExcess |
@@ -385,9 +379,7 @@ TbLinearLayoutMeasurer >> weightedMeasure [
 				alternativeMaxBreadth := (matchBreadthLocally
 					ifTrue: [ aNode marginBreadth ]
 					ifFalse: [ childBreadth ]) max: alternativeMaxBreadth.
-				allFillParent := allFillParent and: [ aNode breadthResizer isMatchParent ].
-				
-				self processBaseline: aNode breadth: childBreadth ].
+				allFillParent := allFillParent and: [ aNode breadthResizer isMatchParent ] ].
 			
 			totalLength := totalLength + (orientation paddingLength: parent).
 			self baselineMeasure ]

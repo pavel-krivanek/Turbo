@@ -1,20 +1,22 @@
 Class {
-	#name : #TbGridBaselineAlignment,
-	#superclass : #TbGridAlignment,
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#name : 'TbGridBaselineAlignment',
+	#superclass : 'TbGridAlignment',
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridBaselineAlignment >> alignmentValue: anElement viewSize: viewSize [
 	^ UNDEFINED
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridBaselineAlignment >> bounds [
 	^ TbGridLayoutBaselineBounds new
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridBaselineAlignment >> gravityOffset: anElement cellDelta: cellDelta [
 	^ 0
 ]

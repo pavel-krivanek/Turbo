@@ -1,32 +1,34 @@
 Class {
-	#name : #TbGridLayoutConstraintsAxis,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbGridLayoutConstraintsAxis',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'spec'
 	],
-	#category : #'Turbo-Layout-Grid'
+	#category : 'Turbo-Layout-Grid',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbGridLayoutConstraintsAxis >> alignCenter [
 	self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutConstraintsAxis >> defaultSpec [
 	<return: #BlGridLayoutSpec>
 
 	^ TbGridLayoutSpec undefined
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutConstraintsAxis >> initialize [
 	super initialize.
 	
 	spec := self defaultSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutConstraintsAxis >> span: aNumber [
 	"Change how many cells (rows or columns) an element needs to take.
 	if span is set to 0 grid will ignore space needs of that element
@@ -39,7 +41,7 @@ TbGridLayoutConstraintsAxis >> span: aNumber [
 	self specSpan: (TbGridLayoutInterval min: self spec span min max: self spec span min + aNumber)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutConstraintsAxis >> spec [
 	"Return child's axis specification.
 	spec can not be nil"
@@ -51,12 +53,12 @@ TbGridLayoutConstraintsAxis >> spec [
 	^ spec
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutConstraintsAxis >> specAlignment: anAlignment [
 	spec := self spec copyWithAlignment: anAlignment
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutConstraintsAxis >> specSpan: aSpan [
 	"aSpan is an instance of BlGridlLayoutInterval and must not be nil"
 	self
@@ -66,7 +68,7 @@ TbGridLayoutConstraintsAxis >> specSpan: aSpan [
 	spec := spec copyWithSpan: aSpan
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutConstraintsAxis >> weight: aNumber [
 	"Set cell's weight along corresponding axis. Only positive
 	weight (> 0) is taken into account. In order reset/disable

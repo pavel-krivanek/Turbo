@@ -1,13 +1,15 @@
 Class {
-	#name : #TbFlowLayoutLineSpace,
-	#superclass : #Object,
+	#name : 'TbFlowLayoutLineSpace',
+	#superclass : 'Object',
 	#instVars : [
 		'intervals'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutLineSpace >> initializeFor: aCollectionOfFloatingChildren maxLength: aNumber [
 	"By definition floating elements can not overlap"
 	| endOfOccupiedSpace maxLength |
@@ -29,12 +31,12 @@ TbFlowLayoutLineSpace >> initializeFor: aCollectionOfFloatingChildren maxLength:
 	intervals add: (endOfOccupiedSpace to: maxLength)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLineSpace >> intervals [
 	^ intervals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLineSpace >> lineStart [
 	^ intervals first first
 ]

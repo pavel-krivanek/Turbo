@@ -26,8 +26,8 @@ Instance Variables
 	weight:		<Number>
 "
 Class {
-	#name : #TbGridLayoutSpec,
-	#superclass : #Object,
+	#name : 'TbGridLayoutSpec',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -45,27 +45,29 @@ Class {
 	#classInstVars : [
 		'undefined'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 TbGridLayoutSpec class >> cleanUp [
 	super cleanUp.
 	
 	undefined := nil
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbGridLayoutSpec class >> initialize [
 	DefaultWeight := 0
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutSpec class >> new [
 	self error: 'Use one of the factory methods instead'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutSpec class >> start: aStart [
 	<return: #BlGridLayoutSpec>
 
@@ -74,7 +76,7 @@ TbGridLayoutSpec class >> start: aStart [
 		size: 1
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutSpec class >> start: aStart size: aSize [
 	<return: #BlGridLayoutSpec>
 
@@ -84,7 +86,7 @@ TbGridLayoutSpec class >> start: aStart size: aSize [
 		alignment: TbGridAlignment undefined
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutSpec class >> start: aStart size: aSize alignment: anAlignment [
 	<return: #BlGridLayoutSpec>
 
@@ -95,7 +97,7 @@ TbGridLayoutSpec class >> start: aStart size: aSize alignment: anAlignment [
 		weight: DefaultWeight
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutSpec class >> start: aStart size: aSize alignment: anAlignment weight: aWeight [
 	<return: #BlGridLayoutSpec>
 
@@ -106,14 +108,14 @@ TbGridLayoutSpec class >> start: aStart size: aSize alignment: anAlignment weigh
 		weight: aWeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutSpec class >> undefined [
 	<return: #BlGridLayoutSpec>
 	
 	^ undefined ifNil: [ undefined := self start: UNDEFINED ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridLayoutSpec >> = anObject [
 	"Answer whether the receiver and anObject represent the same object."
 
@@ -124,7 +126,7 @@ TbGridLayoutSpec >> = anObject [
 	^ span = anObject span and: [ alignment = anObject alignment ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbGridLayoutSpec >> absoluteAlignment: isHorizontal [
 	<return: #BlGridAlignment>
 
@@ -139,14 +141,14 @@ TbGridLayoutSpec >> absoluteAlignment: isHorizontal [
 	^ TbGridAlignment fill
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutSpec >> alignment [
 	<return: #BlGridAlignment>
 
 	^ alignment
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbGridLayoutSpec >> copyWithAlignment: anAlignment [
 	<return: #BlGridLayoutSpec>
 
@@ -157,7 +159,7 @@ TbGridLayoutSpec >> copyWithAlignment: anAlignment [
 		weight: weight
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbGridLayoutSpec >> copyWithSpan: newSpan [
 	<return: #BlGridLayoutSpec>
 
@@ -168,7 +170,7 @@ TbGridLayoutSpec >> copyWithSpan: newSpan [
 		weight: weight
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 TbGridLayoutSpec >> copyWithWeight: newWeight [
 	<return: #BlGridLayoutSpec>
 
@@ -179,7 +181,7 @@ TbGridLayoutSpec >> copyWithWeight: newWeight [
 		weight: newWeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutSpec >> flexibility [
 	<return: #BlGridFlexibility>
 
@@ -188,21 +190,21 @@ TbGridLayoutSpec >> flexibility [
 		ifFalse: [ TbGridLayoutBounds canStretch ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridLayoutSpec >> hasWeight [
 	<return: #Boolean>
 
 	^ (self weight closeTo: 0.0) not
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridLayoutSpec >> hash [
 	"Answer an integer value that is related to the identity of the receiver."
 
 	^ span hash bitXor: alignment hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutSpec >> setAlignment: anAlignment span: aSpan startDefined: isStartDefined weight: aWeight [
 
 	"Debugging internal implementation"
@@ -216,20 +218,20 @@ TbGridLayoutSpec >> setAlignment: anAlignment span: aSpan startDefined: isStartD
 	weight := aWeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutSpec >> span [
 	<return: #Interval>
 	^ span
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutSpec >> startDefined [
 	<return: #Boolean>
 
 	^ startDefined
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutSpec >> weight [
 	^ weight
 ]

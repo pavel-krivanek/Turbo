@@ -2,22 +2,24 @@
 A helper class containing the help for Grid layout.
 "
 Class {
-	#name : #TbGridLayoutHelp,
-	#superclass : #Object,
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#name : 'TbGridLayoutHelp',
+	#superclass : 'Object',
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutHelp class >> bookName [ 
 	^'Grid Layout'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutHelp class >> key [
 	^ self name
 ]
 
-{ #category : #pages }
+{ #category : 'pages' }
 TbGridLayoutHelp class >> license [
 	"This method was automatically generated."
 	^ HelpTopic
@@ -38,7 +40,7 @@ See the License for the specific language governing permissions and
 limitations under the License.!' readStream nextChunkText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutHelp class >> pages [
 	^#(license)
 ]

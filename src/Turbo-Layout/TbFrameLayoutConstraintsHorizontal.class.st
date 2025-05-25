@@ -1,39 +1,41 @@
 Class {
-	#name : #TbFrameLayoutConstraintsHorizontal,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbFrameLayoutConstraintsHorizontal',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment',
 		'weight'
 	],
-	#category : #'Turbo-Layout-Frame'
+	#category : 'Turbo-Layout-Frame',
+	#package : 'Turbo-Layout',
+	#tag : 'Frame'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsHorizontal >> alignCenter [
 	alignment := TbElementAlignment horizontal center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsHorizontal >> alignLeft [
 	alignment := TbElementAlignment horizontal start
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsHorizontal >> alignRight [
 	alignment := TbElementAlignment horizontal end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsHorizontal >> alignment [
 	^ alignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsHorizontal >> alignment: aBlElementAlignment [
 	alignment := aBlElementAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFrameLayoutConstraintsHorizontal >> initialize [
 	super initialize.
 	
@@ -41,14 +43,14 @@ TbFrameLayoutConstraintsHorizontal >> initialize [
 	weight := 1.0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsHorizontal >> weight [
 	<return: #Number>
 
 	^ weight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsHorizontal >> weight: aNumber [
 	self
 		assert: [ aNumber isNotNil ]

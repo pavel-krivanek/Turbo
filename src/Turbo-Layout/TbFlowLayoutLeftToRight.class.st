@@ -1,15 +1,17 @@
 Class {
-	#name : #TbFlowLayoutLeftToRight,
-	#superclass : #TbFlowLayoutDirection,
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#name : 'TbFlowLayoutLeftToRight',
+	#superclass : 'TbFlowLayoutDirection',
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutLeftToRight >> isLeftToRight [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutLeftToRight >> isRightToLeft [
 	^ false
 ]

@@ -1,35 +1,37 @@
 Class {
-	#name : #TbLinearLayoutConstraints,
-	#superclass : #TbLayoutConstraints,
+	#name : 'TbLinearLayoutConstraints',
+	#superclass : 'TbLayoutConstraints',
 	#instVars : [
 		'weight'
 	],
-	#category : #'Turbo-Layout-Linear'
+	#category : 'Turbo-Layout-Linear',
+	#package : 'Turbo-Layout',
+	#tag : 'Linear'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraints >> alignment [
 	^ self horizontal alignment + self vertical alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutConstraints >> defaultHorizontal [
 	^ TbLinearLayoutConstraintsHorizontal new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutConstraints >> defaultVertical [
 	^ TbLinearLayoutConstraintsVertical new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutConstraints >> initialize [
 	super initialize.
 	
 	weight := 1
 ]
 
-{ #category : #weight }
+{ #category : 'weight' }
 TbLinearLayoutConstraints >> weight [
 	"Return weight that defines how much space an element takes within parent's available space.
 	weight can not be nil and is always non negative"
@@ -38,7 +40,7 @@ TbLinearLayoutConstraints >> weight [
 	^ weight
 ]
 
-{ #category : #weight }
+{ #category : 'weight' }
 TbLinearLayoutConstraints >> weight: aNumber [
 	"Set new weight value that defines how much space an element takes within parent's available space.
 	aNumber must not be nil

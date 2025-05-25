@@ -1,35 +1,37 @@
 Class {
-	#name : #TbSquaredLayout,
-	#superclass : #TbLayout,
+	#name : 'TbSquaredLayout',
+	#superclass : 'TbLayout',
 	#instVars : [
 		'layout',
 		'isTight'
 	],
-	#category : #'Turbo-Layout-Squared'
+	#category : 'Turbo-Layout-Squared',
+	#package : 'Turbo-Layout',
+	#tag : 'Squared'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSquaredLayout class >> on: aBlLayout [
 	<return: #BlSquaredLayout>
 
 	^ self new layout: aBlLayout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSquaredLayout >> beLoose [
 	"Will use the max(width, height) to compute the extent"
 
 	isTight := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSquaredLayout >> beTight [
 	"Will use the min(width, height) to compute the extent"
 
 	isTight := true
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSquaredLayout >> initialize [
 	super initialize.
 	
@@ -37,32 +39,32 @@ TbSquaredLayout >> initialize [
 	isTight := false "be loose by default"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSquaredLayout >> isLoose [
 	^ self isTight not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSquaredLayout >> isTight [
 	^ isTight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSquaredLayout >> layout [
 	^ layout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSquaredLayout >> layout: aLayout [
 	layout := aLayout
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbSquaredLayout >> layout: anElement in: aRectangle [
 	self layout layout: anElement in: aRectangle
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbSquaredLayout >> measure: anElement with: anExtentSpec [
 	| aMeasuredExtent anExtent |
 	

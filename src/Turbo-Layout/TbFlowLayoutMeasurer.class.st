@@ -1,6 +1,6 @@
 Class {
-	#name : #TbFlowLayoutMeasurer,
-	#superclass : #Object,
+	#name : 'TbFlowLayoutMeasurer',
+	#superclass : 'Object',
 	#instVars : [
 		'layout',
 		'children',
@@ -12,17 +12,19 @@ Class {
 		'heightMode',
 		'checkCanFit'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFlowLayoutMeasurer class >> for: aLayout [
 	^ self new
 		layout: aLayout;
 		yourself
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 TbFlowLayoutMeasurer >> alignLine: aLine [
 	| totalWeight lastChild excessLength excessOffset |
 	aLine isEmpty
@@ -58,7 +60,7 @@ TbFlowLayoutMeasurer >> alignLine: aLine [
 		aChild startBreadth: origin y ]
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 TbFlowLayoutMeasurer >> alignLines: theLines within: anExtent [
 	| lastLine excessBreadth excessOffset |
 	theLines
@@ -93,22 +95,22 @@ TbFlowLayoutMeasurer >> alignLines: theLines within: anExtent [
 		self alignLine: aLine ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> beHorizontal [
 	orientation := TbFlowLayoutHorizontal new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> beVertical [
 	orientation := TbFlowLayoutVertical new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> breadthMode [
 	^ self orientation breadthModeOf: self
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 TbFlowLayoutMeasurer >> calculatePositions: theLines [
 	
 	"theLines inject: 0 into: [ :totalBreadth :aLine |
@@ -119,12 +121,12 @@ TbFlowLayoutMeasurer >> calculatePositions: theLines [
 		totalBreadth + aLine breadth ]"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> direction [
 	^ layout direction
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 TbFlowLayoutMeasurer >> fillLines: theLines with: theChildren [
 	| currentLine floatingQueue lineLength availableSpace totalBreadth currentSpaceIndex currentSpace |
 	self flag: 'This is something horrible!!!!'.
@@ -195,12 +197,12 @@ TbFlowLayoutMeasurer >> fillLines: theLines with: theChildren [
 			ifTrue: [ floatingQueue add: aChild ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> heightMode [
 	^ heightMode
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutMeasurer >> initialize [
 	super initialize.
 	
@@ -208,17 +210,17 @@ TbFlowLayoutMeasurer >> initialize [
 	lines := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutMeasurer >> isCheckCanFit [
 	^ checkCanFit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> layout: aLayout [
 	layout := aLayout
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbFlowLayoutMeasurer >> layout: anElement in: newBounds [
 	lines do: [ :aLine |
 		aLine children do: [ :aChild |
@@ -231,32 +233,32 @@ TbFlowLayoutMeasurer >> layout: anElement in: newBounds [
 			aChild element applyLayoutIn: (left @ top extent: width @ height) ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> lengthMode [
 	^ self orientation lengthModeOf: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> maxBreadth [
 	^ self orientation maxBreadthOf: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> maxHeight [
 	^ maxHeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> maxLength [
 	^ self orientation maxLengthOf: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> maxWidth [
 	^ maxWidth
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFlowLayoutMeasurer >> measure: anElement with: anExtentSpec [
 	| lastLine contentLength contentBreadth parentLength parentBreadth totalContentWidth totalContentHeight |
 	
@@ -317,7 +319,7 @@ TbFlowLayoutMeasurer >> measure: anElement with: anExtentSpec [
 	anElement measuredExtent: (anExtentSpec sizeFor: totalContentWidth @ totalContentHeight)
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 TbFlowLayoutMeasurer >> measureLine: aLine [
 	
 	aLine children do: [ :aChild |
@@ -327,12 +329,12 @@ TbFlowLayoutMeasurer >> measureLine: aLine [
 			aChild element measure: (TbExtentMeasurementSpec exact: aRequestedExtent) ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> orientation [
 	^ orientation
 ]
 
-{ #category : #calculating }
+{ #category : 'calculating' }
 TbFlowLayoutMeasurer >> size: aContentSize max: aMaxContentSize for: aMeasumentSpec [
 
 	aMeasumentSpec isUnspecified
@@ -347,7 +349,7 @@ TbFlowLayoutMeasurer >> size: aContentSize max: aMaxContentSize for: aMeasumentS
 	^ aContentSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutMeasurer >> widthMode [
 	^ widthMode
 ]

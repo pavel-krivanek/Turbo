@@ -50,17 +50,19 @@ parent
 ]]]
 "
 Class {
-	#name : #TbFrameLayoutDel,
-	#superclass : #TbBasicLayoutWithPadding,
-	#category : #'Turbo-Layout-Frame'
+	#name : 'TbFrameLayoutDel',
+	#superclass : 'TbBasicLayoutWithPadding',
+	#category : 'Turbo-Layout-Frame',
+	#package : 'Turbo-Layout',
+	#tag : 'Frame'
 }
 
-{ #category : #constraints }
+{ #category : 'constraints' }
 TbFrameLayoutDel class >> constraints [
 	^ TbFrameLayoutConstraints new
 ]
 
-{ #category : #protected }
+{ #category : 'protected' }
 TbFrameLayoutDel >> initialize [ 
 
 	super initialize.

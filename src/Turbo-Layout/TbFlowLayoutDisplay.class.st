@@ -1,19 +1,21 @@
 Class {
-	#name : #TbFlowLayoutDisplay,
-	#superclass : #Object,
+	#name : 'TbFlowLayoutDisplay',
+	#superclass : 'Object',
 	#classInstVars : [
 		'float',
 		'inline'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbFlowLayoutDisplay class >> float [
 	^ float
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbFlowLayoutDisplay class >> initialize [
 	super initialize.
 	
@@ -21,17 +23,17 @@ TbFlowLayoutDisplay class >> initialize [
 	float := TbFlowLayoutFloat new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbFlowLayoutDisplay class >> inline [
 	^ inline
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutDisplay >> isFloating [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutDisplay >> isInline [
 	^ self subclassResponsibility
 ]

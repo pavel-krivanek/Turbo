@@ -1,6 +1,6 @@
 Class {
-	#name : #TbFlowLayoutLine,
-	#superclass : #Object,
+	#name : 'TbFlowLayoutLine',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -12,17 +12,19 @@ Class {
 		'measurer',
 		'index'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFlowLayoutLine class >> for: aMeasurer [
 	^ self new
 		measurer: aMeasurer;
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutLine >> addFloatFirst: aChild [
 	self
 		assert: [ aChild isFloating ]
@@ -33,7 +35,7 @@ TbFlowLayoutLine >> addFloatFirst: aChild [
 	length := length + aChild length + aChild spacingLength
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutLine >> addFloatLast: aChild [
 	self
 		assert: [ aChild isFloating ]
@@ -44,7 +46,7 @@ TbFlowLayoutLine >> addFloatLast: aChild [
 	length := length + aChild length + aChild spacingLength
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutLine >> addInlineFirst: aChild [
 	self
 		assert: [ aChild isInline ]
@@ -56,7 +58,7 @@ TbFlowLayoutLine >> addInlineFirst: aChild [
 	breadth := breadth max: aChild breadth + aChild spacingBreadth
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutLine >> addInlineLast: aChild [
 	self
 		assert: [ aChild isInline ]
@@ -68,7 +70,7 @@ TbFlowLayoutLine >> addInlineLast: aChild [
 	breadth := breadth max: aChild breadth + aChild spacingBreadth
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutLine >> addTo: theLines [
 	"I dispatch to concreate addFirst/addLast based on layout configuration"
 	(self orientation isVertical and: [ self direction isRightToLeft ])
@@ -77,42 +79,42 @@ TbFlowLayoutLine >> addTo: theLines [
 	index := theLines size
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutLine >> breadth [
 	^ breadth
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutLine >> breadth: aNumber [
 	breadth := aNumber
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutLine >> canFit: aChild [
 	^ self length + aChild length + aChild spacingLength <= measurer maxLength
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> children [
 	^ children
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> direction [
 	^ measurer direction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> index [
 	^ index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> index: anIndex [
 	index := anIndex
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutLine >> initialize [
 	super initialize.
 	
@@ -126,57 +128,57 @@ TbFlowLayoutLine >> initialize [
 	measurer := nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutLine >> isEmpty [
 	^ children isEmpty
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutLine >> length [
 	^ length
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutLine >> length: aNumber [
 	length := aNumber
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutLine >> lineX [
 	^ self orientation lineX: self
 ]
 
-{ #category : #geometry }
+{ #category : 'geometry' }
 TbFlowLayoutLine >> lineY [
 	^ self orientation lineY: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutLine >> measurer: aMeasurer [
 	measurer := aMeasurer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> orientation [
 	^ measurer orientation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> startBreadth [
 	^ startBreadth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> startBreadth: aNumber [
 	startBreadth := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> startLength [
 	^ startLength
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutLine >> startLength: aNumber [
 	startLength := aNumber
 ]

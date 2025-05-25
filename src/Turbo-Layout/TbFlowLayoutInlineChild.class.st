@@ -1,10 +1,12 @@
 Class {
-	#name : #TbFlowLayoutInlineChild,
-	#superclass : #TbFlowLayoutChild,
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#name : 'TbFlowLayoutInlineChild',
+	#superclass : 'TbFlowLayoutChild',
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 TbFlowLayoutInlineChild >> addToLine: aLine [
 	
 	(self orientation isHorizontal and: [ self direction isRightToLeft ])

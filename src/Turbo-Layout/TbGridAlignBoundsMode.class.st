@@ -1,15 +1,17 @@
 Class {
-	#name : #TbGridAlignBoundsMode,
-	#superclass : #TbGridAlignmentMode,
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#name : 'TbGridAlignBoundsMode',
+	#superclass : 'TbGridAlignmentMode',
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridAlignBoundsMode >> isAlignBounds [
 	^ true
 ]
 
-{ #category : #'computing margins' }
+{ #category : 'computing margins' }
 TbGridAlignBoundsMode >> marginOf: anChildElement in: aGridLayout isHorizontal: isHorizontal isLeading: isLeading [
 	|axis margins spec index |
 

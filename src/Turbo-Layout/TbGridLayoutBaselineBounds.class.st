@@ -1,30 +1,32 @@
 Class {
-	#name : #TbGridLayoutBaselineBounds,
-	#superclass : #TbGridLayoutBounds,
+	#name : 'TbGridLayoutBaselineBounds',
+	#superclass : 'TbGridLayoutBounds',
 	#instVars : [
 		'size'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBaselineBounds >> includeBefore: newBefore after: newAfter [
 	super includeBefore: newBefore after: newAfter.
 	size := size max: (newBefore + newAfter).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBaselineBounds >> offset: anElement alignment: anAlignment size: aSize [
 	^ (super offset: anElement alignment: anAlignment size: aSize) max: 0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutBaselineBounds >> reset [
 	super reset.
 	size := UNDEFINED
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutBaselineBounds >> size: min [
 	^ (super size: min) max: size
 ]

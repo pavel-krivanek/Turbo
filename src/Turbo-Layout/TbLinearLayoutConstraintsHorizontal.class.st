@@ -1,38 +1,40 @@
 Class {
-	#name : #TbLinearLayoutConstraintsHorizontal,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbLinearLayoutConstraintsHorizontal',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment'
 	],
-	#category : #'Turbo-Layout-Linear'
+	#category : 'Turbo-Layout-Linear',
+	#package : 'Turbo-Layout',
+	#tag : 'Linear'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraintsHorizontal >> alignCenter [
 	alignment := TbElementAlignment horizontal center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraintsHorizontal >> alignLeft [
 	alignment := TbElementAlignment horizontal start
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbLinearLayoutConstraintsHorizontal >> alignRight [
 	alignment := TbElementAlignment horizontal end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutConstraintsHorizontal >> alignment [
 	^ alignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbLinearLayoutConstraintsHorizontal >> alignment: aBlElementAlignment [
 	alignment := aBlElementAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbLinearLayoutConstraintsHorizontal >> initialize [
 	super initialize.
 	

@@ -1,13 +1,15 @@
 Class {
-	#name : #TbGridLayoutConstants,
-	#superclass : #SharedPool,
+	#name : 'TbGridLayoutConstants',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'UNDEFINED'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbGridLayoutConstants class >> initialize [
 	super initialize.
 	

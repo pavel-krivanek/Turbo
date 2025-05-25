@@ -1,85 +1,87 @@
 Class {
-	#name : #TbFlowLayoutOrientation,
-	#superclass : #Object,
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#name : 'TbFlowLayoutOrientation',
+	#superclass : 'Object',
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> breadthModeOf: aMeasurer [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> breadthOf: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> breadthOf: aChild set: aNumber [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> inlineX: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> inlineY: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutOrientation >> isHorizontal [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbFlowLayoutOrientation >> isVertical [
 	^ false
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> lengthModeOf: aMeasurer [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> lengthOf: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> lengthOf: aChild set: aNumber [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> lineX: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> lineY: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> maxBreadthOf: aMeasurer [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> maxLengthOf: aMeasurer [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> spacingBreadthOf: aChild [
 	^ self subclassResponsibility
 ]
 
-{ #category : #measuring }
+{ #category : 'measuring' }
 TbFlowLayoutOrientation >> spacingLengthOf: aChild [
 	^ self subclassResponsibility
 ]

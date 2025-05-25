@@ -1,19 +1,21 @@
 Class {
-	#name : #TbGridOrientation,
-	#superclass : #Object,
+	#name : 'TbGridOrientation',
+	#superclass : 'Object',
 	#classVars : [
 		'HORIZONTAL',
 		'VERTICAL'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridOrientation class >> horizontal [
 	^ HORIZONTAL
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbGridOrientation class >> initialize [
 	super initialize.
 	
@@ -21,23 +23,23 @@ TbGridOrientation class >> initialize [
 	VERTICAL := TbGridVerticalOrientation new.
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridOrientation class >> vertical [
 	^ VERTICAL
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbGridOrientation >> = anObject [
 	self == anObject ifTrue: [ ^ true ].
 	^ self class = anObject class
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridOrientation >> isHorizontal [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridOrientation >> isVertical [
 	^ false
 ]

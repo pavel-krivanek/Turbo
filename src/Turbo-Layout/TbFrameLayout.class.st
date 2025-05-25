@@ -1,25 +1,27 @@
 Class {
-	#name : #TbFrameLayout,
-	#superclass : #TbLayout,
-	#category : #'Turbo-Layout-Frame'
+	#name : 'TbFrameLayout',
+	#superclass : 'TbLayout',
+	#category : 'Turbo-Layout-Frame',
+	#package : 'Turbo-Layout',
+	#tag : 'Frame'
 }
 
-{ #category : #constraints }
+{ #category : 'constraints' }
 TbFrameLayout class >> constraints [
 	^ TbFrameLayoutConstraints new
 ]
 
-{ #category : #'api - alignment' }
+{ #category : 'api - alignment' }
 TbFrameLayout >> align: aChildElement horizontal: aBlAlignment [
 	aChildElement constraintsDo: [ :c | (c at: self class) horizontal alignment: aBlAlignment ]
 ]
 
-{ #category : #'api - alignment' }
+{ #category : 'api - alignment' }
 TbFrameLayout >> align: aChildElement vertical: aBlAlignment [
 	aChildElement constraintsDo: [ :c | (c at: self class) vertical alignment: aBlAlignment ]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbFrameLayout >> layout: anElement in: aRectangle [
 	| parentBounds |
 	
@@ -46,7 +48,7 @@ TbFrameLayout >> layout: anElement in: aRectangle [
 			aChild applyLayoutIn: childBounds ].
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFrameLayout >> measure: anElement with: anExtentSpec [
 	| matchParentChildren |
 
@@ -57,7 +59,7 @@ TbFrameLayout >> measure: anElement with: anExtentSpec [
 	self measureMatching: matchParentChildren of: anElement with: anExtentSpec
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFrameLayout >> measureChild: aChildElement of: anElement with: anExtentSpec [
 	| aParentHeight aParentWidth |
 
@@ -76,7 +78,7 @@ TbFrameLayout >> measureChild: aChildElement of: anElement with: anExtentSpec [
 		height: aParentHeight
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFrameLayout >> measureChild: aChildElement of: anElement with: anExtentSpec width: aParentWidth height: aParentHeight [
 	| childWidthMeasureSpec childHeightMeasureSpec |
 
@@ -107,7 +109,7 @@ TbFrameLayout >> measureChild: aChildElement of: anElement with: anExtentSpec wi
 	aChildElement measure: childWidthMeasureSpec @ childHeightMeasureSpec
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFrameLayout >> measureChildren: anElement with: anExtentSpec [
 	"Perform a first measurement pass and measure those children for which we can
 	determine an extent, otherwise add children to a collection that should be
@@ -155,7 +157,7 @@ TbFrameLayout >> measureChildren: anElement with: anExtentSpec [
 	^ matchParentChildren
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFrameLayout >> measureMatching: theChildren of: anElement with: anExtentSpec [
 	theChildren
 		ifEmpty: [ ^ self ].
@@ -164,7 +166,7 @@ TbFrameLayout >> measureMatching: theChildren of: anElement with: anExtentSpec [
 		self measureMatchingChild: aChildElement of: anElement with: anExtentSpec ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbFrameLayout >> measureMatchingChild: aChildElement of: anElement with: anExtentSpec [
 	| aParentHeight aParentWidth |
 

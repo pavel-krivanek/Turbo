@@ -1,47 +1,49 @@
 Class {
-	#name : #TbLinearLayoutVerticalOrientation,
-	#superclass : #TbLinearLayoutOrientation,
-	#category : #'Turbo-Layout-Linear-Utilities'
+	#name : 'TbLinearLayoutVerticalOrientation',
+	#superclass : 'TbLinearLayoutOrientation',
+	#category : 'Turbo-Layout-Linear-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Linear-Utilities'
 }
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> breadthMode [
 	^ self layout cache widthMode
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> breadthProperties: anElement [
 	^ anElement constraints horizontal
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> breadthSpec [
 	^ self layout cache widthMeasureSpec
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> breadthSpec: anExtentSpec [
 	^ anExtentSpec widthSpec
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> extentBreadth: breadth lengthSpec: length [
 	^ breadth @ length
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> extentSpecBreadth: breadthSpec lengthSpec: lengthSpec [
 	^ TbExtentMeasurementSpec new
 		widthSpec: breadthSpec;
 		heightSpec: lengthSpec
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbLinearLayoutVerticalOrientation >> isVertical [
 	^ true
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbLinearLayoutVerticalOrientation >> layout: anElement in: aRectangle [
 	|top right bottom left majorBounds elementInnerBounds|
 	"Layout subnodes vertically in column one by one
@@ -98,42 +100,42 @@ TbLinearLayoutVerticalOrientation >> layout: anElement in: aRectangle [
 			origin x @(origin y + child measuredHeight + self layout cellSpacing + (child outsets height max: 0)) ]
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> lengthLinearProperties: aChildElement [
 	^ aChildElement constraints linear vertical
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> lengthMode [
 	^ self layout cache heightMode
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> lengthProperties: aChildElement [
 	^ aChildElement constraints vertical
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> lengthSpec [
 	^ self layout cache heightMeasureSpec
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> lengthSpec: anExtentSpec [
 	^ anExtentSpec heightSpec
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> marginBreadth: anElement [
 	^ anElement outsets width
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> marginLength: anElement [
 	^ anElement outsets height
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> measureChildWithMargin: child parentSpec: anExtentMeasurementSpec breadthUsed: breadthUsed lengthUsed: lengthUsed [
 	self layout
 		measureChildWithMargins: child
@@ -142,32 +144,32 @@ TbLinearLayoutVerticalOrientation >> measureChildWithMargin: child parentSpec: a
 		heightUsed: lengthUsed
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> measuredBreadth: anElement [
 	^ anElement measuredWidth
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> measuredLength: anElement [
 	^ anElement measuredHeight
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> minimalBreadth: anElement [
 	^ anElement constraints minWidth
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> minimalLength: anElement [
 	^ anElement constraints minHeight
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> paddingBreadth: anElement [
 	^ anElement insets width
 ]
 
-{ #category : #orientation }
+{ #category : 'orientation' }
 TbLinearLayoutVerticalOrientation >> paddingLength: anElement [
 	^ anElement insets height
 ]

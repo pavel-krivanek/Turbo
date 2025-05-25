@@ -47,8 +47,8 @@ Internal Representation and Key Implementation Points.
 	trailingMarginsValid:		<Object>
 "
 Class {
-	#name : #TbGridLayoutAxis,
-	#superclass : #Object,
+	#name : 'TbGridLayoutAxis',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -87,10 +87,12 @@ Class {
 	#pools : [
 		'TbGridLayoutConstants'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TbGridLayoutAxis class >> initialize [
 	super initialize.
 	
@@ -99,7 +101,7 @@ TbGridLayoutAxis class >> initialize [
 	COMPLETE := 2.
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> addComponentSizesIn: theArcs links: links [
 	"arcs is collection of BlGridLayoutArc
 	links is BlGridPackedMap<Interval, BlMutableInteger>"
@@ -108,14 +110,14 @@ TbGridLayoutAxis >> addComponentSizesIn: theArcs links: links [
 		self includeIn: theArcs span: span size: size ignoreIfPresent: false ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridLayoutAxis >> applyLayoutIn: size [
 
 	self parentConstraintsMin: size max: size.
 	self locations
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> arcs [
 
 	arcs
@@ -128,7 +130,7 @@ TbGridLayoutAxis >> arcs [
 	^ arcs
 ]
 
-{ #category : #'computing links' }
+{ #category : 'computing links' }
 TbGridLayoutAxis >> backwardLinks [
 	<return: #BlGridPackedMap key: #Interval value: #BlGridMutableInteger>
 	
@@ -142,7 +144,7 @@ TbGridLayoutAxis >> backwardLinks [
 	^ backwardLinks
 ]
 
-{ #category : #computing }
+{ #category : 'computing' }
 TbGridLayoutAxis >> calculateMaxIndex [
 	"return UNDEFINED when there are no children"
 	<return: #Number>
@@ -161,7 +163,7 @@ TbGridLayoutAxis >> calculateMaxIndex [
 		ifFalse: [ aResult ]
 ]
 
-{ #category : #'computing weights' }
+{ #category : 'computing weights' }
 TbGridLayoutAxis >> calculateTotalWeight [
 
 	^ self element children accountedByLayout
@@ -169,7 +171,7 @@ TbGridLayoutAxis >> calculateTotalWeight [
 		into: [ :totalWeight :child | totalWeight + (self specOf: child) weight asFloat ]
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> computeArcs [
 	"getting the links validates the values that are shared by the arc list"
 
@@ -177,7 +179,7 @@ TbGridLayoutAxis >> computeArcs [
 	self backwardLinks.
 ]
 
-{ #category : #'computing group bounds' }
+{ #category : 'computing group bounds' }
 TbGridLayoutAxis >> computeGroupBounds [
 
 	groupBounds valuesDo: [ :bounds | bounds reset ].
@@ -191,13 +193,13 @@ TbGridLayoutAxis >> computeGroupBounds [
 		(groupBounds at: index) includeElement: self element spec: spec axis: self size: size ]
 ]
 
-{ #category : #'computing weights' }
+{ #category : 'computing weights' }
 TbGridLayoutAxis >> computeHasWeights [
 	
 	^ self element children accountedByLayout anySatisfy: [ :child | (self specOf: child) weight isZero not ]
 ]
 
-{ #category : #'computing links' }
+{ #category : 'computing links' }
 TbGridLayoutAxis >> computeLinks: theLinks min: isMin [
 
 	theLinks valuesDo: [ :span | span reset ].
@@ -209,7 +211,7 @@ TbGridLayoutAxis >> computeLinks: theLinks min: isMin [
 		span value: (span value max: ( isMin ifTrue: [ size ] ifFalse: [ size negated ] ) ) ].
 ]
 
-{ #category : #'computing locations' }
+{ #category : 'computing locations' }
 TbGridLayoutAxis >> computeLocations: theLocations [
 
 	self hasWeights
@@ -227,7 +229,7 @@ TbGridLayoutAxis >> computeLocations: theLocations [
 		theLocations at: index put: (location - theLocations first) ]
 ]
 
-{ #category : #'computing margins' }
+{ #category : 'computing margins' }
 TbGridLayoutAxis >> computeMargins: isLeading [
 	| margins |
 	
@@ -246,14 +248,14 @@ TbGridLayoutAxis >> computeMargins: isLeading [
 		margins at: index put: margin ]
 ]
 
-{ #category : #computing }
+{ #category : 'computing' }
 TbGridLayoutAxis >> count [
 	<return: #Number>
 
 	^ definedCount max: self maxIndex
 ]
 
-{ #category : #computing }
+{ #category : 'computing' }
 TbGridLayoutAxis >> count: aNumber [
 	self assert: aNumber isNotNil.
 	"self
@@ -263,7 +265,7 @@ TbGridLayoutAxis >> count: aNumber [
 	definedCount := aNumber
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> createArcs [
 	| mins maxs n sMins sMaxs |
 	
@@ -297,7 +299,7 @@ TbGridLayoutAxis >> createArcs [
 	^ sMins, sMaxs
 ]
 
-{ #category : #'computing group bounds' }
+{ #category : 'computing group bounds' }
 TbGridLayoutAxis >> createGroupBounds [     
 	<return: #BlGridPackedMap key: #BlGridLayoutSpec value: #BlGridLayoutBounds>      
 	|assocs|
@@ -311,7 +313,7 @@ TbGridLayoutAxis >> createGroupBounds [
 	^ TbGridPackedMap fromAssociations: assocs
 ]
 
-{ #category : #'computing links' }
+{ #category : 'computing links' }
 TbGridLayoutAxis >> createLinks: isMin [
 	<return: #BlGridPackedMap key: #Interval value: #BlGridMutableInteger>
 	| theLinks |
@@ -327,37 +329,37 @@ TbGridLayoutAxis >> createLinks: isMin [
 	^ TbGridPackedMap fromAssociations: theLinks
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutAxis >> defaultOrderPreserved [
 	^ true
 ]
 
-{ #category : #computing }
+{ #category : 'computing' }
 TbGridLayoutAxis >> definedCount [
 	^ definedCount
 ]
 
-{ #category : #'computing deltas' }
+{ #category : 'computing deltas' }
 TbGridLayoutAxis >> deltas [
 	^ deltas ifNil: [ 
 		deltas := Array new: self element children accountedByLayout size withAll: 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> element [
 	self assert: element isNotNil.
 	
 	^ element
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> element: anElement [
 	self assert: anElement isNotNil.
 	
 	element := anElement
 ]
 
-{ #category : #'computing links' }
+{ #category : 'computing links' }
 TbGridLayoutAxis >> forwardLinks [
 	<return: #BlGridPackedMap key: #Interval value: #BlGridMutableInteger>
 	
@@ -371,7 +373,7 @@ TbGridLayoutAxis >> forwardLinks [
 	^ forwardLinks
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> groupArcsByFirstVertex: theArcs [
 	"Group arcs by their first vertex, returning an array of arrays of Arcs.
 	This is linear in the number of arcs.
@@ -400,7 +402,7 @@ TbGridLayoutAxis >> groupArcsByFirstVertex: theArcs [
 	^ groups
 ]
 
-{ #category : #'computing group bounds' }
+{ #category : 'computing group bounds' }
 TbGridLayoutAxis >> groupBounds [
 	<return: #BlGridPackedMap key: #BlGridLayoutSpec value: #BlGridLayoutBounds>  
 	
@@ -414,7 +416,7 @@ TbGridLayoutAxis >> groupBounds [
 	^ groupBounds
 ]
 
-{ #category : #'computing weights' }
+{ #category : 'computing weights' }
 TbGridLayoutAxis >> hasWeights [
 
 	hasWeightsValid ifFalse: [ 
@@ -423,23 +425,23 @@ TbGridLayoutAxis >> hasWeights [
 	^ hasWeights
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> horizontal [
 	^ isHorizontal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> horizontal: anObject [
 	isHorizontal := anObject
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> includeIn: theArcs span: span size: size [
 
 	self includeIn: theArcs span: span size: size ignoreIfPresent: true
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> includeIn: theArcs span: aSpan size: aSize ignoreIfPresent: ignoreIfPresent [
 	"Remove self referential links.
 	These appear:
@@ -462,12 +464,12 @@ TbGridLayoutAxis >> includeIn: theArcs span: aSpan size: aSize ignoreIfPresent: 
 	theArcs add: (TbGridLayoutArc span: aSpan value: aSize )
 ]
 
-{ #category : #'computing locations' }
+{ #category : 'computing locations' }
 TbGridLayoutAxis >> initLocations: theLocations [
 	theLocations atAllPut: 0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutAxis >> initialize [
 	super initialize.
 	
@@ -507,7 +509,7 @@ TbGridLayoutAxis >> initialize [
 	parentMax := TbGridMutableInteger value: SmallInteger minVal
 ]
 
-{ #category : #invalidate }
+{ #category : 'invalidate' }
 TbGridLayoutAxis >> invalidateStructure [
 	maxIndex := UNDEFINED.
 
@@ -534,7 +536,7 @@ TbGridLayoutAxis >> invalidateStructure [
 			ifFalse: [ child constraints grid vertical ] ]
 ]
 
-{ #category : #invalidate }
+{ #category : 'invalidate' }
 TbGridLayoutAxis >> invalidateValues [
 	groupBoundsValid := false.
 	forwardLinksValid := false.
@@ -547,22 +549,22 @@ TbGridLayoutAxis >> invalidateValues [
 	locationsValid := false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbGridLayoutAxis >> isOrderPreserved [
 	^ orderPreserved
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> layout [
 	^ layout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> layout: aLayout [
 	layout := aLayout
 ]
 
-{ #category : #'computing margins' }
+{ #category : 'computing margins' }
 TbGridLayoutAxis >> leadingMargins [
 	
 	leadingMargins
@@ -575,7 +577,7 @@ TbGridLayoutAxis >> leadingMargins [
 	^ leadingMargins
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutAxis >> locations [
 	<return: #Array of: #Integer>
 
@@ -589,7 +591,7 @@ TbGridLayoutAxis >> locations [
 	^ locations
 ]
 
-{ #category : #computing }
+{ #category : 'computing' }
 TbGridLayoutAxis >> maxIndex [
 	<return: #Number>
 
@@ -598,7 +600,7 @@ TbGridLayoutAxis >> maxIndex [
 		ifFalse: [ maxIndex ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridLayoutAxis >> measure: aMeasurementSpec [
 	| mode size |
 	mode := aMeasurementSpec mode.
@@ -618,14 +620,14 @@ TbGridLayoutAxis >> measure: aMeasurementSpec [
 	^ 0
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridLayoutAxis >> measureMin: min max: max [
 
 	self parentConstraintsMin: min max: max.
 	^ self sizeLocations: self locations
 ]
 
-{ #category : #computing }
+{ #category : 'computing' }
 TbGridLayoutAxis >> orderPreserved: aBoolean [
 	self assert: aBoolean isNotNil.
 	
@@ -633,7 +635,7 @@ TbGridLayoutAxis >> orderPreserved: aBoolean [
 	self invalidateStructure
 ]
 
-{ #category : #'accessing spec' }
+{ #category : 'accessing spec' }
 TbGridLayoutAxis >> parentConstraintsMin: min max: max [
 
 	parentMin value: min.
@@ -641,7 +643,7 @@ TbGridLayoutAxis >> parentConstraintsMin: min max: max [
 	locationsValid := false
 ]
 
-{ #category : #'computing locations' }
+{ #category : 'computing locations' }
 TbGridLayoutAxis >> relaxLocations: theLocations arc: arc [
 	"locations is array of integers.
 	arc is BlGridLayoutArc"
@@ -664,7 +666,7 @@ TbGridLayoutAxis >> relaxLocations: theLocations arc: arc [
 		ifFalse: [ false ]
 ]
 
-{ #category : #'computing deltas' }
+{ #category : 'computing deltas' }
 TbGridLayoutAxis >> shareOutDelta: totalDelta totalWeight: totalWeight [
 	| mTotalDelta mTotalWeight |
 	mTotalDelta := totalDelta.
@@ -685,13 +687,13 @@ TbGridLayoutAxis >> shareOutDelta: totalDelta totalWeight: totalWeight [
 			mTotalWeight := mTotalWeight - weight ] ]
 ]
 
-{ #category : #'computing locations' }
+{ #category : 'computing locations' }
 TbGridLayoutAxis >> sizeLocations: theLocations [
 
 	^ theLocations at: self count + 1
 ]
 
-{ #category : #'computing inequalities' }
+{ #category : 'computing inequalities' }
 TbGridLayoutAxis >> solve: theArcs locations: theLocations [
 	"Bellman-Ford variant - modified to reduce typical running time from O(N^2) to O(N)
 	
@@ -715,7 +717,7 @@ TbGridLayoutAxis >> solve: theArcs locations: theLocations [
 	^ self solve: theArcs locations: theLocations modifyOnError: true
 ]
 
-{ #category : #'computing inequalities' }
+{ #category : 'computing inequalities' }
 TbGridLayoutAxis >> solve: theArcs locations: theLocations modifyOnError: modifyOnError [
 	"See ${method:BlGridLayoutAxis>>#solve:locations:}$ for more information"
 	| verticesCount originalCulprits |
@@ -769,7 +771,7 @@ TbGridLayoutAxis >> solve: theArcs locations: theLocations modifyOnError: modify
 	^ true
 ]
 
-{ #category : #'computing inequalities' }
+{ #category : 'computing inequalities' }
 TbGridLayoutAxis >> solveAndDistributeSpaceLocations: theLocations [
 	| deltaMax deltaMin totalWeight validDelta validSolution |
 
@@ -804,19 +806,19 @@ TbGridLayoutAxis >> solveAndDistributeSpaceLocations: theLocations [
 		self solveLocations: theLocations ]
 ]
 
-{ #category : #'computing inequalities' }
+{ #category : 'computing inequalities' }
 TbGridLayoutAxis >> solveLocations: theLocations [
 	^ self solve: self arcs locations: theLocations
 ]
 
-{ #category : #'accessing spec' }
+{ #category : 'accessing spec' }
 TbGridLayoutAxis >> specOf: anElement [
 	^ self horizontal
 		ifTrue: [ anElement constraints grid columnSpec ]
 		ifFalse: [ anElement constraints grid rowSpec ]
 ]
 
-{ #category : #'computing arcs' }
+{ #category : 'computing arcs' }
 TbGridLayoutAxis >> topologicalSort: theArcs [
 	| result cursor arcsByVertex visited walk |
 
@@ -852,7 +854,7 @@ TbGridLayoutAxis >> topologicalSort: theArcs [
 	^ result
 ]
 
-{ #category : #'computing margins' }
+{ #category : 'computing margins' }
 TbGridLayoutAxis >> trailingMargins [
 	
 	trailingMargins

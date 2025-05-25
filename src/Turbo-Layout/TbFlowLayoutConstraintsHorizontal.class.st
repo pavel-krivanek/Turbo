@@ -1,33 +1,35 @@
 Class {
-	#name : #TbFlowLayoutConstraintsHorizontal,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbFlowLayoutConstraintsHorizontal',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment'
 	],
-	#category : #'Turbo-Layout-Flow'
+	#category : 'Turbo-Layout-Flow',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFlowLayoutConstraintsHorizontal >> alignCenter [
 	alignment := TbElementAlignment horizontal center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFlowLayoutConstraintsHorizontal >> alignLeft [
 	alignment := TbElementAlignment horizontal start
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFlowLayoutConstraintsHorizontal >> alignRight [
 	alignment := TbElementAlignment horizontal end
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutConstraintsHorizontal >> alignment [
 	^ alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutConstraintsHorizontal >> initialize [
 	super initialize.
 	

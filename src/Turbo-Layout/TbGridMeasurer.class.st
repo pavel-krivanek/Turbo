@@ -1,20 +1,22 @@
 Class {
-	#name : #TbGridMeasurer,
-	#superclass : #Object,
+	#name : 'TbGridMeasurer',
+	#superclass : 'Object',
 	#instVars : [
 		'element',
 		'layout'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #margin }
+{ #category : 'margin' }
 TbGridMeasurer >> alignedMarginOf: aChildElement isHorizontal: isHorizontal isLeading: isLeading [
 
 	^ self layout alignment marginOf: aChildElement in: self layout isHorizontal: isHorizontal isLeading: isLeading
 ]
 
-{ #category : #margin }
+{ #category : 'margin' }
 TbGridMeasurer >> cellSpacingOf: aChildElement isHorizontal: isHorizontal isLeading: isLeading [
 	"Return cell spacing around aChildElement for the side defined by isHorizontal and isLeading.
 	First of all I determine if cell is on the edge and use it as additional parameter to allow more precise
@@ -38,7 +40,7 @@ TbGridMeasurer >> cellSpacingOf: aChildElement isHorizontal: isHorizontal isLead
 	^ self layout cellSpacingOf: aChildElement isAtEdge: isAtEdge isHorizontal: isHorizontal isLeading: isLeading
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridMeasurer >> improvedMeasureChild: aChildElement parentSpec: anExtentSpec [
 	| horizontal spec span axis locations cellSize childSize|
 	
@@ -68,17 +70,17 @@ TbGridMeasurer >> improvedMeasureChild: aChildElement parentSpec: anExtentSpec [
 			heightResizer: (TbLayoutResizer exact: childSize) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridMeasurer >> layout [
 	^ layout
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridMeasurer >> layout: aGridLayout [
 	layout := aGridLayout
 ]
 
-{ #category : #margin }
+{ #category : 'margin' }
 TbGridMeasurer >> marginOf: aChildElement isHorizontal: isHorizontal isLeading: isLeading [
 	| margin |
 
@@ -91,7 +93,7 @@ TbGridMeasurer >> marginOf: aChildElement isHorizontal: isHorizontal isLeading: 
 		ifFalse: [ margin ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridMeasurer >> measureChild: anElement parentSpec: anExtentSpec widthResizer: widthResizer heightResizer: heightResizer [
 	| childWidthSpec childHeightSpec |
 
@@ -108,7 +110,7 @@ TbGridMeasurer >> measureChild: anElement parentSpec: anExtentSpec widthResizer:
 	anElement measure: (childWidthSpec @ childHeightSpec)
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridMeasurer >> measureChildren: anElement parentSpec: anExtentSpec isFirstPass: isFirstPass [
 
 	anElement children accountedByLayout do: [ :child |
@@ -117,7 +119,7 @@ TbGridMeasurer >> measureChildren: anElement parentSpec: anExtentSpec isFirstPas
 			ifFalse: [ self improvedMeasureChild: child parentSpec: anExtentSpec ] ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridMeasurer >> measurementOf: anElement isHorizontal: isHorizontal [
 	<return: #Number>
 	
@@ -126,14 +128,14 @@ TbGridMeasurer >> measurementOf: anElement isHorizontal: isHorizontal [
 		ifFalse: [ anElement measuredHeight ]
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridMeasurer >> measurementWithMarginOf: aChildElement isHorizontal: isHorizontal [
 	<return: #Number>
 
 	^ (self measurementOf: aChildElement isHorizontal: isHorizontal) + (self totalMarginOf: aChildElement isHorizontal: isHorizontal)
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridMeasurer >> naiveMeasureChild: aChildElement parentSpec: anExtentSpec [
 
 	self
@@ -143,7 +145,7 @@ TbGridMeasurer >> naiveMeasureChild: aChildElement parentSpec: anExtentSpec [
 		heightResizer: aChildElement constraints vertical resizer
 ]
 
-{ #category : #margin }
+{ #category : 'margin' }
 TbGridMeasurer >> totalMarginOf: aChildElement isHorizontal: isHorizontal [
 
 	^ (self alignedMarginOf: aChildElement isHorizontal: isHorizontal isLeading: true) + (self alignedMarginOf: aChildElement isHorizontal: isHorizontal isLeading: false)

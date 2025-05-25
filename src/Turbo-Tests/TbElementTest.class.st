@@ -18,6 +18,25 @@ TbElementTest >> setUp [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testAccessOpacity [ 
+	
+	element opacity: 0.5.
+	self assert: element opacity equals: 0.5.
+
+	element opacity: -1.
+	self assert: element opacity equals: 0.0.
+
+	element opacity: 2.
+	self assert: element opacity equals: 1.0.
+	
+	element opacity: 0.0001.
+	self assert: element opacity equals: 0.0. "Closeness to 0"
+	
+	element opacity: 0.9999.
+	self assert: element opacity equals: 1.0. "Closeness to 1"
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testAddChild [
 	self assert: (TbElement new addChild: (TbElement new size: 50@50; background: Color red lighter)) childrenCount equals: 1.
 ]
@@ -119,6 +138,30 @@ TbElementTest >> testAllChildrenBreadthFirstDo [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testAsElement [
+	| newElement |
+	newElement := element asElement.
+	self assert: newElement equals: element
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testAsScalableElement [ 
+
+	| oldParent scalable | 
+	oldParent := TbElement new.
+	oldParent addChild: element.
+	
+	scalable := element asScalableElement.
+	self deny: element parent equals: oldParent.
+	self assert: element parent equals: scalable.
+	self assert: scalable constraints horizontal resizer isMatchParent.
+	self assert: scalable constraints vertical resizer isMatchParent.
+	
+	
+
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testBorder [ 
 
 	self assert: element border paint equals: TbPaint transparent.
@@ -150,9 +193,19 @@ TbElementTest >> testDeepCopyShouldNotImplement [
 ]
 
 { #category : 'system startup' }
-TbElementTest >> testElevation [ 
+TbElementTest >> testDefaultVisibility [ 
 
-	self assert: element elevation equals: TbRelativeElevation zero
+	self assert: element defaultVisibility equals: TbVisibility visible 
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testElevation [ 
+	
+	self assert: element elevation equals: TbRelativeElevation zero.
+
+	element zIndex: 1.
+	
+ 	self assert: element elevation elevation equals: 1.
 ]
 
 { #category : 'system startup' }
@@ -173,6 +226,24 @@ TbElementTest >> testEmptyMeasuredBounds [
 
 	self assert: element measuredBounds position equals: 0@0.
 	self assert: element measuredBounds extent equals: 0@0
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testHasParent [
+	| p c1 c11 c2 |
+	p := TbElement new.
+	c1 := TbElement new.
+	c11 := TbElement new.
+	c2 := TbElement new.
+	p addChild: c1.
+	c1 addChild: c11.
+	p addChild: c2.
+	
+	self deny: p hasOwner.
+	self assert: c1 hasOwner.
+	self assert: c2 hasOwner.
+	self assert: c11 hasOwner.
+	
 ]
 
 { #category : 'system startup' }
@@ -201,12 +272,64 @@ TbElementTest >> testInitializeDefaults [
 
 { #category : 'system startup' }
 TbElementTest >> testIsAttachedToSceneGraph [ 
+
+	| space |
+	space := TbSpace new.
 	self deny: element isAttachedToSceneGraph.
-	element space: TbSpace new.
+	element space: space.
 	self assert: element isAttachedToSceneGraph.
 	
-	element onRemovedFromSceneGraph. "Simulates removal effect on space ivar"
+	element onRemovedFromSceneGraph. "Simulates removal effect"
 	self deny: element isAttachedToSceneGraph.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testIsOpaque [
+
+	element opacity: 0.
+	self deny: element isOpaque.
+	
+	element opacity: 0.5.
+	self deny: element isOpaque.
+
+	element opacity: 1.
+	self assert: element isOpaque.
+
+	element opacity: 2.
+	self deny: element isTranslucent.
+
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testIsRoot [
+
+	| space child |
+	child := TbElement new.
+	element addChild: child.
+	space := TbSpace new.
+	self deny: element isRoot.
+
+	space root: element.
+
+	self assert: element isRoot.
+	self deny: child isRoot
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testIsTranslucent [
+
+	element opacity: 0.
+	self deny: element isTranslucent.
+	
+	element opacity: 0.5.
+	self assert: element isTranslucent.
+
+	element opacity: 1.
+	self deny: element isTranslucent.
+
+	element opacity: 2.
+	self deny: element isTranslucent.
+
 ]
 
 { #category : 'system startup' }
@@ -217,6 +340,12 @@ TbElementTest >> testLabeledAndGtDisplay [
 	str := String streamContents: [ :stream |
 		element gtDisplayOn: stream. ].
 	self assert: str equals: 'MyLabel'.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testOwnerIsNil [
+
+	self assert: element owner isNil
 ]
 
 { #category : 'system startup' }

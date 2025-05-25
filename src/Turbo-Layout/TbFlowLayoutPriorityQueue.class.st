@@ -1,6 +1,6 @@
 Class {
-	#name : #TbFlowLayoutPriorityQueue,
-	#superclass : #Object,
+	#name : 'TbFlowLayoutPriorityQueue',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -8,17 +8,19 @@ Class {
 		'nodes',
 		'priorityBlock'
 	],
-	#category : #'Turbo-Layout-Flow-Utilities'
+	#category : 'Turbo-Layout-Flow-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Flow-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbFlowLayoutPriorityQueue class >> priority: aPriorityBlock [
 	^ self new
 		priorityBlock: aPriorityBlock;
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbFlowLayoutPriorityQueue >> asDictionary [
 	| index lastPriority |
 	index := 0.
@@ -37,7 +39,7 @@ TbFlowLayoutPriorityQueue >> asDictionary [
 			key -> node value	 ]) asOrderedDictionary
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbFlowLayoutPriorityQueue >> cascadeDown: aNode [
 	| finalQueueIndex newParentNode |
 	finalQueueIndex := aNode queueIndex.
@@ -81,7 +83,7 @@ TbFlowLayoutPriorityQueue >> cascadeDown: aNode [
 	 ] repeat
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbFlowLayoutPriorityQueue >> cascadeUp: aNode [
 	| parentIndex |
 	parentIndex := (aNode queueIndex / 2) asInteger.
@@ -96,13 +98,13 @@ TbFlowLayoutPriorityQueue >> cascadeUp: aNode [
 		parentIndex := (aNode queueIndex / 2) asInteger ]
 ]
 
-{ #category : #'add / remove' }
+{ #category : 'add / remove' }
 TbFlowLayoutPriorityQueue >> dequeue [
 	"Removes node with highest priority"
 	^ self remove: nodes first
 ]
 
-{ #category : #'add / remove' }
+{ #category : 'add / remove' }
 TbFlowLayoutPriorityQueue >> enqueue: anObject [
 	| priority node |
 	priority := priorityBlock value: anObject.
@@ -122,7 +124,7 @@ TbFlowLayoutPriorityQueue >> enqueue: anObject [
 	^ node
 ]
 
-{ #category : #'gt-inspector-extension' }
+{ #category : 'gt-inspector-extension' }
 TbFlowLayoutPriorityQueue >> gtInspectorItemsIn: composite [
 	<gtInspectorPresentationOrder: 0>
 	^ (composite table)
@@ -153,7 +155,7 @@ TbFlowLayoutPriorityQueue >> gtInspectorItemsIn: composite [
 		helpMessage: 'Quick selection field. Given your INPUT, it executes: self select: [:each | INPUT ]'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbFlowLayoutPriorityQueue >> hasHigherPriority: aNodeA than: aNodeB [
 
 	^ aNodeA priority < aNodeB priority
@@ -161,7 +163,7 @@ TbFlowLayoutPriorityQueue >> hasHigherPriority: aNodeA than: aNodeB [
 			and: [ aNodeA insertionIndex < aNodeB insertionIndex ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFlowLayoutPriorityQueue >> initialize [
 	super initialize.
 	
@@ -169,7 +171,7 @@ TbFlowLayoutPriorityQueue >> initialize [
 	totalSize := 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbFlowLayoutPriorityQueue >> nodeUpdated: aNode [
 	| parentIndex parentNode |
 
@@ -181,7 +183,7 @@ TbFlowLayoutPriorityQueue >> nodeUpdated: aNode [
 		ifFalse: [ self cascadeDown: aNode ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueue >> priorityBlock: aPriorityBlock [
 
 	self assert: priorityBlock isNil.
@@ -189,7 +191,7 @@ TbFlowLayoutPriorityQueue >> priorityBlock: aPriorityBlock [
 	priorityBlock := aPriorityBlock
 ]
 
-{ #category : #'add / remove' }
+{ #category : 'add / remove' }
 TbFlowLayoutPriorityQueue >> remove: aNode [
 	<return: #TbFlowLayoutPriorityQueueNode>
 	
@@ -206,12 +208,12 @@ TbFlowLayoutPriorityQueue >> remove: aNode [
 	^ aNode value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueue >> size [
 	^ nodes size
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbFlowLayoutPriorityQueue >> swap: aNodeA and: aNodeB [
 	| index |
 	
@@ -223,7 +225,7 @@ TbFlowLayoutPriorityQueue >> swap: aNodeA and: aNodeB [
 	aNodeB queueIndex: index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFlowLayoutPriorityQueue >> top [
 	^ nodes first
 ]

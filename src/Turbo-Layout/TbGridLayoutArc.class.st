@@ -11,8 +11,8 @@ Instance Variables
 	value:		<BlGridMutableInteger>
 "
 Class {
-	#name : #TbGridLayoutArc,
-	#superclass : #Object,
+	#name : 'TbGridLayoutArc',
+	#superclass : 'Object',
 	#traits : 'TTbDebug',
 	#classTraits : 'TTbDebug classTrait',
 	#instVars : [
@@ -20,24 +20,26 @@ Class {
 		'value',
 		'valid'
 	],
-	#category : #'Turbo-Layout-Grid-Utilities'
+	#category : 'Turbo-Layout-Grid-Utilities',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid-Utilities'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbGridLayoutArc class >> span: span value: value [
 	^ self new
 		span: span;
 		value: value
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayoutArc >> initialize [
 	super initialize.
 	
 	valid := true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbGridLayoutArc >> printOn: aStream [
 	aStream
 		nextPutAll: self span asString;
@@ -47,14 +49,14 @@ TbGridLayoutArc >> printOn: aStream [
 		nextPutAll: self valid asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutArc >> span [
 	<return: #BlGridLayoutInterval>
 
 	^ span
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutArc >> span: aBlGridLayoutInterval [
 	"Debugging internal implementation"
 	self
@@ -64,26 +66,26 @@ TbGridLayoutArc >> span: aBlGridLayoutInterval [
 	span := aBlGridLayoutInterval
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutArc >> valid [
 	<return: #Boolean>
 
 	^ valid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutArc >> valid: aBoolean [
 	valid := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutArc >> value [
 	<return: #BlGridMutableInteger>
 
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayoutArc >> value: aBlGridMutableInteger [
 	value := aBlGridMutableInteger
 ]

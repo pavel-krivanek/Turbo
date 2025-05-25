@@ -1,20 +1,22 @@
 Class {
-	#name : #TbFrameLayoutConstraints,
-	#superclass : #TbLayoutConstraints,
-	#category : #'Turbo-Layout-Frame'
+	#name : 'TbFrameLayoutConstraints',
+	#superclass : 'TbLayoutConstraints',
+	#category : 'Turbo-Layout-Frame',
+	#package : 'Turbo-Layout',
+	#tag : 'Frame'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraints >> alignment [
 	^ self horizontal alignment + self vertical alignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFrameLayoutConstraints >> defaultHorizontal [
 	^ TbFrameLayoutConstraintsHorizontal new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFrameLayoutConstraints >> defaultVertical [
 	^ TbFrameLayoutConstraintsVertical new
 ]

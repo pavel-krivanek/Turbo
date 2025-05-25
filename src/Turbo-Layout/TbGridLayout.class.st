@@ -39,8 +39,8 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #TbGridLayout,
-	#superclass : #TbLayout,
+	#name : 'TbGridLayout',
+	#superclass : 'TbLayout',
 	#instVars : [
 		'impl',
 		'cellSpacing',
@@ -50,80 +50,82 @@ Class {
 	#pools : [
 		'TbGridLayoutConstants'
 	],
-	#category : #'Turbo-Layout-Grid'
+	#category : 'Turbo-Layout-Grid',
+	#package : 'Turbo-Layout',
+	#tag : 'Grid'
 }
 
-{ #category : #constraints }
+{ #category : 'constraints' }
 TbGridLayout class >> constraints [
 	^ TbGridLayoutConstraints new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridLayout class >> horizontal [
 	^ self new
 		horizontal;
 		yourself
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 TbGridLayout class >> vertical [
 	^ self new
 		vertical;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> alignBounds [
 	alignment := TbGridAlignmentMode alignBounds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> alignMargins [
 	alignment := TbGridAlignmentMode alignMargins
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> alignment [
 	^ alignment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> cellSpacing [
 	^ cellSpacing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> cellSpacing: aNumber [
 	cellSpacing := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> columnCount: aNumber [
 	impl columnCount: aNumber
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayout >> defaultAlignment [
 	^ TbGridAlignmentMode alignMargins
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayout >> defaultCellSpacing [
 	^ 0.0
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayout >> defaultOrientation [
 	^ TbGridOrientation horizontal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> horizontal [
 	orientation := TbGridOrientation horizontal.
 	impl invalidateStructure
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbGridLayout >> initialize [
 	super initialize.
 	
@@ -134,30 +136,30 @@ TbGridLayout >> initialize [
 	impl := TbGridLayoutImpl on: self
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 TbGridLayout >> layout: anElement in: aRectangle [
 	impl layout: anElement in: aRectangle.
 	self layoutIgnored: anElement
 ]
 
-{ #category : #measure }
+{ #category : 'measure' }
 TbGridLayout >> measure: anElement with: anExtentSpec [
 	impl measure: anElement with: anExtentSpec.
 
 	self measureIgnored: anElement with: (TbExtentMeasurementSpec exact: anElement measuredExtent)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> orientation [
 	^ orientation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> rowCount: aNumber [
 	impl rowCount: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbGridLayout >> vertical [
 	orientation := TbGridOrientation vertical.
 	impl invalidateStructure

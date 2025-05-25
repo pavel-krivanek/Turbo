@@ -1,39 +1,41 @@
 Class {
-	#name : #TbFrameLayoutConstraintsVertical,
-	#superclass : #TbLayoutConstraintsAxis,
+	#name : 'TbFrameLayoutConstraintsVertical',
+	#superclass : 'TbLayoutConstraintsAxis',
 	#instVars : [
 		'alignment',
 		'weight'
 	],
-	#category : #'Turbo-Layout-Frame'
+	#category : 'Turbo-Layout-Frame',
+	#package : 'Turbo-Layout',
+	#tag : 'Frame'
 }
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsVertical >> alignBottom [
 	alignment := TbElementAlignment vertical end
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsVertical >> alignCenter [
 	alignment := TbElementAlignment vertical center
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsVertical >> alignTop [
 	alignment := TbElementAlignment vertical start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsVertical >> alignment [
 	^ alignment
 ]
 
-{ #category : #alignment }
+{ #category : 'alignment' }
 TbFrameLayoutConstraintsVertical >> alignment: aBlElementAlignment [
 	alignment := aBlElementAlignment
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbFrameLayoutConstraintsVertical >> initialize [
 	super initialize.
 	
@@ -41,14 +43,14 @@ TbFrameLayoutConstraintsVertical >> initialize [
 	weight := 1.0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsVertical >> weight [
 	<return: #Number>
 
 	^ weight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbFrameLayoutConstraintsVertical >> weight: aNumber [
 	self
 		assert: [ aNumber isNotNil ]
