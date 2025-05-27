@@ -10,6 +10,72 @@ Class {
 }
 
 { #category : 'system startup' }
+TbElementTest >> FAILINGtestContainsGlobalPointInside [
+    "Points inside or on the boundary of the element’s global bounds should be contained."
+    | elem insidePoints |
+    elem := TbElement new.
+	
+	 elem position: 10@20 extent: 30@40.
+    insidePoints := { 10@20.    "top-left corner"
+                     39@59.    "about bottom-right corner"
+                     25@35  }. "somewhere in the middle"
+
+	
+	elem forceLayout.
+	element constraintsDo: [ :c |
+    c horizontal exact: element measuredWidth.
+    c vertical   exact: element measuredHeight ].
+    
+    insidePoints do: [ :pt |
+        self 
+            assert: (elem containsGlobalPoint: pt)
+            description: 'Expected ', pt printString, ' to be inside ', elem geometryBoundsInSpace printString ].
+
+]
+
+{ #category : 'system startup' }
+TbElementTest >> FAILINGtestGlobalPointToLocalSimple [
+    "An element at 10@20 should map its own origin back to 0@0,
+    and any global point to that point minus the position."
+    | elem |
+    elem := TbElement new.
+    elem position: 10@20 extent: 30@40.
+    elem forceLayout.  "Ensure any cached bounds/transform are up-to-date"
+    
+    "Origin in global space should map to (0@0) in local coords"
+    self assert: (elem globalPointToLocal: 10@20) equals: 0@0.  
+    
+    "A point 5 pixels right and down of the origin"
+    self assert: (elem globalPointToLocal: 15@25) equals: 5@5.
+    "Implementation note: this uses parentPointToLocal: internally"
+]
+
+{ #category : 'system startup' }
+TbElementTest >> FAILINGtestLocalBoundsToMineFromChild [
+    | parent child grandchild bounds resultBounds |
+    
+    "Set up a two‐level hierarchy: parent ← child ← grandchild"
+    parent := TbElement new.
+    child := TbElement new.
+    parent addChild: child.
+    child position: 5@10 extent: 0@0.
+    child addChild: (grandchild := TbElement new).
+    grandchild position: 2@3 extent: 0@0.
+    
+    "Create a bounds in grandchild's local coordinates"
+    bounds := TbBounds new.
+    bounds position: 7@8 extent: 4@6.
+    
+    "Transform those bounds all the way up to 'parent'" 
+    resultBounds := parent localBoundsToMine: bounds fromChild: grandchild.
+    
+    "Expect origin to be shifted by grandchild.position then child.position"
+    self assert: resultBounds position equals: (7@8 + 2@3 + 5@10).
+    "Extent should be unchanged"
+    self assert: resultBounds extent equals: 4@6.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> setUp [ 
 	
 	super setUp.
@@ -185,6 +251,31 @@ TbElementTest >> testAllChildrenBreadthFirstDo [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testAllChildrenBreadthFirstSelect [
+	|  child1 child2 child3 child4 child5 |
+	child1 := TbElement new.
+	child2 := TbElement new.
+	child3 := TbElement new.
+	child4 := TbElement new.
+	child5 := TbElement new.
+
+	element addChild: child1.
+	element addChild: child2.
+	child1 addChild: child3.
+	child1 addChild: child4.
+	child2 addChild: child5.
+
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == child1 ]) size equals: 1.
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == child2 ]) size equals: 1.
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == child3 ]) size equals: 1.
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == child4 ]) size equals: 1.
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == child5 ]) size equals: 1.
+
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == element ]) size equals: 0.
+	self assert: (element allChildrenBreadthFirstSelect: [ :each | each == nil ]) size equals: 0.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testAllParentsDetectIfFoundIfNone [
 	| parent1 parent2 parent3 |
 	
@@ -228,6 +319,23 @@ TbElementTest >> testAsScalableElement [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testAttachChild [
+    | parent child |
+    parent := TbElement new.
+    child := TbElement new.
+    
+    "Attach without specifying an index – should go to end (childrenCount + 1)"
+    parent attachChild: child.
+    
+    "Now there's exactly one child, and it's our child"
+    self assert: parent childrenCount equals: 1.
+    self assert: (parent children at: 1) equals: child.
+    
+    "And the child's parent pointer must have been set"
+    self assert: child parent equals: parent.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testAttachChildAt [
 	| parent child |
 	parent := TbElement new.
@@ -243,6 +351,19 @@ TbElementTest >> testBorder [
 
 	self assert: element border paint equals: TbPaint transparent.
 	self assert: element border width equals: 0.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testBoundsInWindowWhenNotAttached [
+    "If the element is not in a scene graph, boundsInWindow should
+     simply return boundsInSpace (i.e. no scaling)."
+    | b |
+    "Set a known position and extent"
+    element position: 1@2 extent: 3@4.
+    "Compute window bounds"
+    b := element boundsInWindow.
+    self assert: b origin equals: 1@2.
+    self assert: b extent equals: 3@4.  "No scaling when not attached to space" 
 ]
 
 { #category : 'system startup' }
@@ -296,6 +417,71 @@ TbElementTest >> testDispatchRemovedFromSceneGraph [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testDispatchRemovedFromSceneGraphFromScene [
+    | space parent child |
+    "Create a space and make `parent` its root"
+    space := TbSpace new.
+    parent := TbElement new.
+    space root: parent.
+
+    "Attach our test element and a child under it"
+    parent addChild: element.
+    child := TbElement new.
+    element addChild: child.
+
+    "Both element and its child should now be in the scene graph"
+    self assert: element isAttachedToSceneGraph.
+    self assert: child isAttachedToSceneGraph.
+
+    element dispatchRemovedFromSceneGraph.
+
+    "parent still in the scene so the element is attached"
+    self assert: element isAttachedToSceneGraph.
+    self assert: child isAttachedToSceneGraph.
+
+	parent dispatchRemovedFromSceneGraph.
+	
+	self deny: element isAttachedToSceneGraph.
+	self deny: child isAttachedToSceneGraph.
+
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testDistanceToYAboveTop [
+    "If the point’s y is above (less than) my top edge, distance = top – y"
+    | abovePoint |
+    element position: 10@20 extent: 30@40.
+    abovePoint := 5@10.  "10 is 10 units above top=20"
+    self assert: (element distanceToY: abovePoint) equals: 10. 
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testDistanceToYAtEdgesReturnsZero [
+    "Points exactly on the top or bottom edge should also yield zero distance"
+    element position: 10@20 extent: 30@40.
+    self assert: (element distanceToY: 0@(20)) equals: 0.  "on top edge" 
+    self assert: (element distanceToY: 0@(60)) equals: 0. 
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testDistanceToYBelowBottom [
+    "If the point’s y is below (greater than) my bottom edge, distance = y – bottom"
+    | belowPoint |
+	element position: 10@20 extent: 30@40.   
+    belowPoint := 5@70.  "70 is 10 units below bottom=60"
+    self assert: (element distanceToY: belowPoint) equals: 10.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testDistanceToYWhenInsideReturnsZero [
+    "When the point’s y falls between my top and bottom edges, distance should be zero"
+    | insidePoint |
+    element position: 10@20 extent: 30@40.
+    insidePoint := 15@30.  "30 is between top=20 and bottom=60"
+    self assert: (element distanceToY: insidePoint) equals: 0.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testEffect [
 	| effect |
 	effect := TbClipOutEffect new.
@@ -342,6 +528,20 @@ TbElementTest >> testEnqueueTask [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testFirstCommonParentIfFoundIfNone [
+	| parentElement childElement otherElement |
+	parentElement := TbElement new.
+	childElement := TbElement new.
+	otherElement := TbElement new.
+	parentElement addChild: childElement.
+	parentElement addChild: otherElement.
+
+	childElement firstCommonParent: otherElement
+		ifFound: [ :commonParent | self assert: commonParent equals: parentElement ]
+		ifNone: [ self fail ]
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testGeometryResizer [
 	| geometryResizer |
 	element geometryResizer: (geometryResizer := TbGeometryResizer match).
@@ -360,20 +560,45 @@ TbElementTest >> testHasChild [
 
 { #category : 'system startup' }
 TbElementTest >> testHasParent [
-	| p c1 c11 c2 |
-	p := TbElement new.
-	c1 := TbElement new.
-	c11 := TbElement new.
-	c2 := TbElement new.
-	p addChild: c1.
-	c1 addChild: c11.
-	p addChild: c2.
-	
-	self deny: p hasOwner.
-	self assert: c1 hasOwner.
-	self assert: c2 hasOwner.
-	self assert: c11 hasOwner.
-	
+	| parent child |
+	parent := TbElement new.
+	child := TbElement new.
+	parent addChild: child.
+	child addChild: element.
+	self assert: (child hasParent: parent).
+	self deny: (child hasParent: TbElement new).
+	self assert: (element hasParent: parent). "transitive"
+
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testHeightGetterDefaultsToZero [
+    "By default, extent is 0@0, so height should be 0"
+    self assert: element height equals: 0.   
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testHeightGetterReflectsExtentY [
+    "After setting size to 10@20, height should return 20"
+    element size: 10@20.
+	 element forceLayout.
+    self assert: element height equals: 20. 
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testHeightSetterAdjustsVerticalExactConstraint [
+    "Calling height: should install an exact vertical constraint of the given size"
+    | resizer |
+    element height: 30.
+    resizer := element constraints vertical resizer.
+    self assert: resizer isExact.
+    self assert: resizer size equals: 30.
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testHeightSetterReturnsSelf [
+    "The setter should return the element itself for easy chaining"
+    self assert: (element height: 42) == element.
 ]
 
 { #category : 'system startup' }
@@ -473,6 +698,43 @@ TbElementTest >> testLabeledAndGtDisplay [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testLayoutDoExecutesBlockAndRequestsLayout [ [
+    | executed |
+    "Before calling layoutDo: there should be no pending layout request"
+    self deny: element isLayoutRequested.
+    
+    executed := false.
+    element layoutDo: [ :layoutInstance |
+        "The block is called with the element’s current layout"
+        self assert: layoutInstance equals: element layout.
+        executed := true.
+    ].
+    
+    "Verify that the block actually ran"
+    self assert: executed.
+    "And that layoutDo: enqueued a layout request"
+    self assert: element isLayoutRequested.
+]
+
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testLayoutDoNilBlock [
+    "Passing nil must trigger an assertion"
+    self should: [ element layoutDo: nil ] raise: AssertionFailure.
+
+
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testLayoutDoWrongArgumentCountBlock [ 
+    "Blocks must take exactly one argument"
+    self should: [ element layoutDo: [ :a :b | ] ] raise: AssertionFailure.
+
+
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testLocalPointToParent [
 	| parent child pointInChild originInParent |
 	parent := TbElement new.
@@ -482,6 +744,16 @@ TbElementTest >> testLocalPointToParent [
 	originInParent := 20@20.
 	child position: originInParent extent: 20@10.
 	self assert: (child localPointToParent: pointInChild) equals: (originInParent + pointInChild)
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testMargin [
+
+	element margin: (TbInsets top: 10 left: 20 bottom: 30 right: 40).
+	self assert: (element margin top = 10).
+	self assert: (element margin left = 20).
+	self assert: (element margin bottom = 30).
+	self assert: (element margin right = 40).
 ]
 
 { #category : 'system startup' }
@@ -670,6 +942,12 @@ TbElementTest >> testSize [
 TbElementTest >> testTransformationOwner [ 
 
 	self assert: element transformation owner equals: element
+]
+
+{ #category : 'system startup' }
+TbElementTest >> testTransformationSetterRejectsNil [
+    "transformation: should not accept nil"
+    self should: [ element transformation: nil ] raise: Error.
 ]
 
 { #category : 'system startup' }
