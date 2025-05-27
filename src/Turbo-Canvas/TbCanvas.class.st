@@ -152,16 +152,6 @@ TbCanvas >> clipBuilder [
 	^ TbClipper new
 ]
 
-{ #category : 'accessing' }
-TbCanvas >> currentTransformation [
-	^ currentTransformation
-]
-
-{ #category : 'accessing' }
-TbCanvas >> currentTransformation: anObject [
-	currentTransformation := anObject
-]
-
 { #category : 'colors' }
 TbCanvas >> cyanBackground [
 
@@ -209,7 +199,6 @@ TbCanvas >> initialize [
 	
 	transformationStack := Stack new.
 	layerStack := Stack new.
-	currentTransformation := TbSpartaMatrix new.
 	
 	self blueBackground.
 	self whiteText.

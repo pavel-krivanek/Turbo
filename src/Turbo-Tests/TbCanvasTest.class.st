@@ -37,11 +37,31 @@ TbCanvasTest >> testAtWriteWritesCharacter [
 ]
 
 { #category : 'as yet unclassified' }
+TbCanvasTest >> testAttributesSetterAndGetter [
+	| attrs |
+	attrs := {#bold. #underline} asSet.
+	canvas attributes: attrs.
+	self assertCollection: canvas attributes hasSameElements: attrs.
+]
+
+{ #category : 'as yet unclassified' }
 TbCanvasTest >> testBackgroundColorChanges [ 
     canvas greenBackground.
     self assert: canvas backgroundColor equals: (Color r: 0.0 g: 0.659 b: 0.0 alpha: 1.0).
     canvas yellowBackground.
     self assert: canvas backgroundColor equals: (Color r: 0.659 g: 0.659 b: 0.0 alpha: 1.0).
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testBackgroundColorSetter [
+	canvas backgroundColor: Color blue.
+	self assert: canvas backgroundColor equals: Color blue.
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testBlackBackgroundSetsBackgroundColor [
+	canvas blackBackground.
+	self assert: canvas backgroundColor equals: Color black.
 ]
 
 { #category : 'as yet unclassified' }
@@ -53,6 +73,12 @@ TbCanvasTest >> testBoldAttribute [
 { #category : 'as yet unclassified' }
 TbCanvasTest >> testClipReturnsClipper [ 
     self assert: ((canvas clip) isKindOf: TbClipper).
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testCyanTextSetsTextColor [
+	canvas cyanText.
+	self assert: canvas textColor equals: Color cyan.
 ]
 
 { #category : 'as yet unclassified' }
@@ -70,6 +96,24 @@ TbCanvasTest >> testFullDrawDelegatesToObject [
     drawable := TbMockDrawable new.
     canvas fullDraw: drawable.
     self assert: (drawable wasDrawnOn: canvas).
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testGreenTextSetsTextColor [
+	canvas greenText.
+	self assert: canvas textColor equals: (Color r: 0.0 g: 0.659 b: 0.0 alpha: 1.0).
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testMagentaBackgroundSetsBackgroundColor [
+	canvas magentaBackground.
+	self assert: canvas backgroundColor equals: Color magenta.
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testMagentaTextSetsTextColor [
+	canvas magentaText.
+	self assert: canvas textColor equals: (Color r: 0.659 g: 0.0 b: 0.659 alpha: 1.0).
 ]
 
 { #category : 'as yet unclassified' }
@@ -116,6 +160,24 @@ TbCanvasTest >> testTextColorChanges [
 ]
 
 { #category : 'as yet unclassified' }
+TbCanvasTest >> testTextColorSetter [
+	canvas textColor: Color red.
+	self assert: canvas textColor equals: Color red.
+]
+
+{ #category : 'as yet unclassified' }
 TbCanvasTest >> testTransformReturnsBuilder [
     self assert: ((canvas transform) isKindOf: TbTransformationBuilder2).
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testWhiteBackgroundSetsBackgroundColor [
+	canvas whiteBackground.
+	self assert: canvas backgroundColor equals: (Color r: 0.659 g: 0.659 b: 0.659 alpha: 1.0).
+]
+
+{ #category : 'as yet unclassified' }
+TbCanvasTest >> testYellowTextSetsTextColor [
+	canvas yellowText.
+	self assert: canvas textColor equals: (Color r: 0.659 g: 0.659 b: 0.0 alpha: 1.0)
 ]
