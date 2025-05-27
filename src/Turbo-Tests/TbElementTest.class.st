@@ -542,6 +542,19 @@ TbElementTest >> testFirstCommonParentIfFoundIfNone [
 ]
 
 { #category : 'system startup' }
+TbElementTest >> testFocusablesReturnsGivenCollection [ 
+    | root collection direction result |
+
+    root := TbElement new.
+    collection := OrderedCollection new.
+    direction := TbFocusSearchDirectionLeft new.
+
+    "The method should delegate to `root focusability` and return the same collection"
+    result := root focusables: collection along: direction.
+    self assertCollection: { result } equals: collection asArray.
+]
+
+{ #category : 'system startup' }
 TbElementTest >> testGeometryResizer [
 	| geometryResizer |
 	element geometryResizer: (geometryResizer := TbGeometryResizer match).
