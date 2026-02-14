@@ -1,6 +1,6 @@
-Extension { #name : #TbMatrix2D }
+Extension { #name : 'TbMatrix2D' }
 
-{ #category : #'*Turbo-Math' }
+{ #category : '*Turbo-Math' }
 TbMatrix2D >> spartaMultiplyWith: aSpartaMatrix [ 
 	aSpartaMatrix multiplyBy: self
 ]

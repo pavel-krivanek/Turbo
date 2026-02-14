@@ -2,25 +2,26 @@
 I am mutable implementation of Rectangle which stores coordinates as Numbers and not Points
 "
 Class {
-	#name : #TbSpartaRectangle,
-	#superclass : #Object,
+	#name : 'TbSpartaRectangle',
+	#superclass : 'Object',
 	#instVars : [
 		'left',
 		'top',
 		'right',
 		'bottom'
 	],
-	#category : #'Turbo-Math'
+	#category : 'Turbo-Math',
+	#package : 'Turbo-Math'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSpartaRectangle class >> fromRectangle: aRectangle [
 	^ self new
 		rectangle: aRectangle;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TbSpartaRectangle class >> origin: anOrigin extent: anExtent [
 
 	self
@@ -35,7 +36,7 @@ TbSpartaRectangle class >> origin: anOrigin extent: anExtent [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbSpartaRectangle >> asRectangle [
 	"Convert me to immutable Rectangle.
 	Note, that using left:right:top:bottom: is the fastest way to create
@@ -44,23 +45,23 @@ TbSpartaRectangle >> asRectangle [
 	^ Rectangle left: left right: right top: top bottom: bottom
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 TbSpartaRectangle >> asSpartaPathOn: aSpartaCanvas [
 	"I am polymorphic with TSpartaPath and can be used directly"
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> bottom [
 	^ bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> bottom: anObject [
 	bottom := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpartaRectangle >> containedInRect: aRectangle [
 	"Answer whether a receiver is within a aRectangle"
 	<return: #Boolean>
@@ -77,7 +78,7 @@ TbSpartaRectangle >> containedInRect: aRectangle [
 				aBottom >= bottom ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpartaRectangle >> containsRect: aRectangle [
 	"Answer whether aRectangle is within the receiver"
 	<return: #Boolean>
@@ -94,12 +95,12 @@ TbSpartaRectangle >> containsRect: aRectangle [
 				aBottom <= bottom ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> corner [
 	^ right @ bottom
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> expandBy: aDelta [ 
 	"Outset me by delta. Delta is a Rectangle, Point, or Number."
 
@@ -112,7 +113,7 @@ TbSpartaRectangle >> expandBy: aDelta [
 				ifFalse: [ self expandByMargin: aDelta ] ] ]
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> expandByLeft: aLeft top: aTop right: aRight bottom: aBottom [
 
 	left := left - aLeft.
@@ -121,7 +122,7 @@ TbSpartaRectangle >> expandByLeft: aLeft top: aTop right: aRight bottom: aBottom
 	bottom := bottom + aBottom
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> expandByMargin: aMargin [ 
 
 	left := left - aMargin left.
@@ -130,7 +131,7 @@ TbSpartaRectangle >> expandByMargin: aMargin [
 	bottom := bottom + aMargin bottom
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> expandByNumber: aNumber [ 
 		
 	left := left - aNumber.
@@ -139,7 +140,7 @@ TbSpartaRectangle >> expandByNumber: aNumber [
 	bottom := bottom + aNumber
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> expandByPoint: aPoint [ 
 	
 	left := left - aPoint x.
@@ -148,7 +149,7 @@ TbSpartaRectangle >> expandByPoint: aPoint [
 	bottom := bottom + aPoint y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> expanded [
 	"Transform me so that origin and corner are rounded to integers.
 	Rounding is done by upper value on origin and lower value on corner so that
@@ -160,23 +161,23 @@ TbSpartaRectangle >> expanded [
 	bottom := bottom ceiling
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> extent [
 
 	^ (right - left) @ (bottom - top)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpartaRectangle >> hasPositiveExtent [
 	^ right > left and: [ bottom > top ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> height [
 	^ bottom - top
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpartaRectangle >> initialize [
 	super initialize.
 	
@@ -186,7 +187,7 @@ TbSpartaRectangle >> initialize [
 	bottom := 0
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> intersect: aRectangle ifNone: aBlock [
 	"Answer a Rectangle that is the area in which the receiver overlaps with 
 	aRectangle. 
@@ -213,7 +214,7 @@ TbSpartaRectangle >> intersect: aRectangle ifNone: aBlock [
 		bottom: newBottom
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpartaRectangle >> intersects: aRectangle [ 
 	"Answer whether aRectangle intersects the receiver anywhere"
 	<return: #Boolean>
@@ -231,17 +232,17 @@ TbSpartaRectangle >> intersects: aRectangle [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> left [
 	^ left
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> left: anObject [
 	left := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpartaRectangle >> left: aLeft top: aTop corner: aCorner [
 
 	left := aLeft.
@@ -250,7 +251,7 @@ TbSpartaRectangle >> left: aLeft top: aTop corner: aCorner [
 	bottom := aCorner y
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpartaRectangle >> left: aLeft top: aTop right: aRight bottom: aBottom [
 	left := aLeft.
 	top := aTop.
@@ -258,7 +259,7 @@ TbSpartaRectangle >> left: aLeft top: aTop right: aRight bottom: aBottom [
 	bottom := aBottom
 ]
 
-{ #category : #'rectangle functions' }
+{ #category : 'rectangle functions' }
 TbSpartaRectangle >> merge: aRectangle [ 
 	"Merge provided rectangle into me.
 	aRectangle must not be nil"
@@ -302,12 +303,12 @@ TbSpartaRectangle >> merge: aRectangle [
 	bottom := maxY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> origin [
 	^ left @ top
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpartaRectangle >> origin: anOrigin extent: anExtent [
 
 	left := anOrigin x.
@@ -316,7 +317,7 @@ TbSpartaRectangle >> origin: anOrigin extent: anExtent [
 	bottom := top + anExtent y
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TbSpartaRectangle >> rectangle: aRectangle [
 	self
 		left: aRectangle left
@@ -325,17 +326,17 @@ TbSpartaRectangle >> rectangle: aRectangle [
 		bottom: aRectangle bottom
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> right [
 	^ right
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> right: anObject [
 	right := anObject
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbSpartaRectangle >> scaleBy: aFactor [
 	
 	^ aFactor isPoint
@@ -345,7 +346,7 @@ TbSpartaRectangle >> scaleBy: aFactor [
 			ifFalse: [ self scaleX: aFactor x Y: aFactor y ] ]
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbSpartaRectangle >> scaleX: aX Y: aY [
 
 	left := left * aX.
@@ -354,32 +355,32 @@ TbSpartaRectangle >> scaleX: aX Y: aY [
 	bottom := bottom * aY
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbSpartaRectangle >> spartaClipOn: aSpartaCanvas with: aSpartaClipper [
 	aSpartaClipper pushRectangle: self
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbSpartaRectangle >> spartaFillOn: aSpartaCanvas with: aSpartaFiller [
 	aSpartaFiller fillRectangle: self
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbSpartaRectangle >> spartaStrokeOn: aSpartaCanvas with: aSpartaStrokePainter [
 	aSpartaStrokePainter strokeRectangle: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> top [
 	^ top
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> top: anObject [
 	top := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> topLeft [
 	"Answer the point at the top left corner of the receiver's top horizontal line"
 	<return: #Point>
@@ -387,13 +388,13 @@ TbSpartaRectangle >> topLeft [
 	^ left @ top
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbSpartaRectangle >> translateBy: aPoint [
 
 	self translateX: aPoint x Y: aPoint y
 ]
 
-{ #category : #transforming }
+{ #category : 'transforming' }
 TbSpartaRectangle >> translateX: aX Y: aY [
 
 	left := left + aX.
@@ -402,7 +403,7 @@ TbSpartaRectangle >> translateX: aX Y: aY [
 	bottom := bottom + aY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaRectangle >> width [
 	^ right - left
 ]

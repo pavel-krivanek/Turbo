@@ -1,6 +1,6 @@
 Class {
-	#name : #TbSpartaMatrix,
-	#superclass : #Object,
+	#name : 'TbSpartaMatrix',
+	#superclass : 'Object',
 	#instVars : [
 		'sx',
 		'shx',
@@ -9,22 +9,23 @@ Class {
 		'sy',
 		'y'
 	],
-	#category : #'Turbo-Math'
+	#category : 'Turbo-Math',
+	#package : 'Turbo-Math'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix class >> scale: aPoint [
 
 	^ self new scaleBy: aPoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix class >> translation: aPoint [
 
 	^ self new translateBy: aPoint
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TbSpartaMatrix >> = anObject [
 	"Return true if I am equals to the given object, false otherwise"
 	<return: #Boolean>
@@ -40,19 +41,19 @@ TbSpartaMatrix >> = anObject [
 						shy = anObject shy ] ] ] ] ]
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> clearTranslation [
 	"reset a translation from matrix, leaving only scale and rotation"
 	
 	x := y := 0.0
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 TbSpartaMatrix >> initialize [
 	self loadIdentity
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> inverseTransform: aPoint [ 
 "  (we assume matrix is never degenerate)"
 	| px py y0 x0 |
@@ -98,7 +99,7 @@ TbSpartaMatrix >> inverseTransform: aPoint [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbSpartaMatrix >> inverseTransformHalfPi: aPoint [
 	"assume sx,sy = 0
 		
@@ -118,7 +119,7 @@ TbSpartaMatrix >> inverseTransformHalfPi: aPoint [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 TbSpartaMatrix >> inverseTransformPiOrZero: aPoint [
 	"assume shx,shy = 0
 		
@@ -138,7 +139,7 @@ TbSpartaMatrix >> inverseTransformPiOrZero: aPoint [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> inverted [
 	"answer an inverse transformation of receiver"
 	| det |
@@ -153,19 +154,19 @@ TbSpartaMatrix >> inverted [
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpartaMatrix >> isIdentity [
 	^ x = 0.0 and: [ y = 0.0 and: [ sx = 1.0 and: [sy = 1.0 and: [ shx = 0.0 and: [ shy = 0.0 ] ] ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TbSpartaMatrix >> isPureTranslation [
 	"Return true if the receiver specifies no rotation or scaling."
 
 	^ sx = 1.0 and: [sy = 1.0 and: [ shx = 0.0 and: [ shy = 0.0 ] ] ]
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> loadAffineTransform: m [
 
 	x := m x.
@@ -176,7 +177,7 @@ TbSpartaMatrix >> loadAffineTransform: m [
 	shy := m shy.
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> loadIdentity [
 	"initialize with identity transform"
 	sx := sy := 1.0.
@@ -185,7 +186,7 @@ TbSpartaMatrix >> loadIdentity [
 	
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> multiplyBy: m [
 
 	"multiply receiver by given affine matrix"
@@ -214,7 +215,7 @@ TbSpartaMatrix >> multiplyBy: m [
 	y := ny.		
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 TbSpartaMatrix >> printOn: aStream [
 	|array|
 	"| sx   shx   x  |
@@ -231,21 +232,21 @@ TbSpartaMatrix >> printOn: aStream [
 	aStream nextPutAll: ' |'; nextPutAll: (array at: 7); nextPutAll: (array at: 8); nextPutAll: (array at: 9); nextPutAll: '  |'.
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> restoreAfter: aBlock [
 	|previous|
 	previous := self copy.
 	aBlock ensure: [ 	self loadAffineTransform: previous ]
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> rotateByDegrees: angle [
 
 
 	^ self rotateByRadians: angle degreesToRadians
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> rotateByRadians: angle [
 
 	"multiply receiver by rotation matrix
@@ -271,12 +272,12 @@ TbSpartaMatrix >> rotateByRadians: angle [
 	sy := newSy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> scale [
 	^ sx@sy
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> scaleBy: factor [
 
 	"multiply receiver by uniform scale matrix
@@ -299,7 +300,7 @@ TbSpartaMatrix >> scaleBy: factor [
 
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> scaleX: fx Y: fy [
 
 	"multiply receiver by scale matrix
@@ -316,52 +317,52 @@ TbSpartaMatrix >> scaleX: fx Y: fy [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> shx [
 	^ shx
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> shx: number [
 	shx := number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> shy [
 	^ shy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> shy: number [
 	shy := number
 ]
 
-{ #category : #dispatch }
+{ #category : 'dispatch' }
 TbSpartaMatrix >> spartaMultiplyWith: aSpartaMatrix [
 	aSpartaMatrix multiplyBy: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> sx [
 	^ sx
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> sx: number [
 	sx := number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> sy [
 	^ sy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> sy: number [
 	sy := number
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transform: aPoint [ 
 	| px py |
 
@@ -372,7 +373,7 @@ TbSpartaMatrix >> transform: aPoint [
 		y: (shy*px + (sy*py) + y) 
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transformRectangle: aSpartaRectangle [
 	"In-place transform rectangle according to my transformation.
 	(local to global transformation)"
@@ -405,13 +406,13 @@ TbSpartaMatrix >> transformRectangle: aSpartaRectangle [
 	^ aSpartaRectangle
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transformX: aNumber [ 
 
 	^ (sx * aNumber) abs
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transformX: px Y: py [
 	" transform x and y coordinates by receiver. Answer a Point"
 	^ Point 
@@ -419,7 +420,7 @@ TbSpartaMatrix >> transformX: px Y: py [
 		y: (shy*px + (sy*py) + y) 
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transformX: aX with: aY [
 	"Transform X coordinate taking Y coordinate into account.
 	I am useful if you care about only one coordinate and don't
@@ -429,13 +430,13 @@ TbSpartaMatrix >> transformX: aX with: aY [
 	^ (sx * aX) + (shx * aY) + x
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transformY: aNumber [ 
 
 	^ (sy * aNumber) abs
 ]
 
-{ #category : #'vector-transform' }
+{ #category : 'vector-transform' }
 TbSpartaMatrix >> transformY: aY with: aX [
 	"Transform Y coordinate taking X coordinate into account.
 	I am useful if you care about only one coordinate and don't
@@ -445,13 +446,13 @@ TbSpartaMatrix >> transformY: aY with: aX [
 	^ (shy * aX) + (sy * aY) + y
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> translateBy: aPoint [
 
 	^ self translateX: aPoint x Y: aPoint y
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> translateX: aX Y: aY [
 
 
@@ -467,18 +468,18 @@ TbSpartaMatrix >> translateX: aX Y: aY [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> translation [
 	^ x@y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> translation: aPoint [
 	x := aPoint x.
 	y := aPoint y.
 ]
 
-{ #category : #transformations }
+{ #category : 'transformations' }
 TbSpartaMatrix >> transposed [
 	
 	| s |
@@ -487,22 +488,22 @@ TbSpartaMatrix >> transposed [
 	shy := s.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> x [
 	^ x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> x: number [
 	x := number
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> y [
 	^ y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TbSpartaMatrix >> y: number [
 	y := number
 ]

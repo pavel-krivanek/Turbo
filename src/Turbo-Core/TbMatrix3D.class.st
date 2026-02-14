@@ -63,7 +63,7 @@ TbMatrix3D class >> rotation: aTheta axis: aVector [
 
 { #category : 'converting' }
 TbMatrix3D >> asMatrixCollection [
-	^ Array2D
+	^ Array2DOld
 		rows: 4
 		columns: 4
 		contents: {

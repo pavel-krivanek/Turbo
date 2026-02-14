@@ -1,1 +1,1 @@
-Package { #name : #'Turbo-Math' }
+Package { #name : 'Turbo-Math' }
