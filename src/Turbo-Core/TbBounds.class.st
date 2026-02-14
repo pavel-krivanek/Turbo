@@ -11,12 +11,21 @@ Class {
 		'left',
 		'top',
 		'right',
-		'bottom'
+		'bottom',
+		'DefaultPrecision'
 	],
 	#category : 'Turbo-Core-Basic-Bounds',
 	#package : 'Turbo-Core',
 	#tag : 'Basic-Bounds'
 }
+
+{ #category : 'accessing' }
+TbBounds class >> defaultPrecision [
+	"Return the default precision for closeTo: comparisons"
+	<return: #Number>
+	
+	^ 5e-5
+]
 
 { #category : 'instance creation' }
 TbBounds class >> fromRectangle: aRectangle [
@@ -186,15 +195,17 @@ TbBounds >> clockwiseEdges [
 	}
 ]
 
-{ #category : 'testing' }
+{ #category : 'comparing' }
 TbBounds >> closeTo: aBlBounds [
 	"Return true if I am close to the given bounds"
 	<return: #Boolean>
 	
-	^ (self left closeTo: aBlBounds left)
-		and: [ (self right closeTo: aBlBounds right)
-			and: [ (self top closeTo: aBlBounds top)
-				and: [ (self bottom closeTo: aBlBounds bottom) ] ] ]
+	| precision |
+	precision := self class defaultPrecision.
+	^ (self left closeTo: aBlBounds left precision: precision)
+		and: [ (self right closeTo: aBlBounds right precision: precision)
+				and: [ (self top closeTo: aBlBounds top precision: precision)
+						and: [ (self bottom closeTo: aBlBounds bottom precision: precision) ] ] ]
 ]
 
 { #category : 'vector functions' }
